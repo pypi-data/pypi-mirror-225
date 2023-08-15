@@ -1,0 +1,24 @@
+[build-system]
+requires=["setuptools", "wheel", "setuptools-git-versioning<2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+dynamic=["version"]
+name="property-graph"
+description="python library for working with objects as graphs of property data"
+readme="README.md"
+authors=[{name="Matt Fowler", email="mattefowler@gmail.com"}]
+keywords=["graph", "serialization", "metadata", "property", "schema"]
+classifiers=[
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+license={file="LICENSE"}
+requires-python=">=3.10"
+[tool.black]
+line-length=79
