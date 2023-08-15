@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "webint-player"
+version = "0.0.3"
+description = "play media on your website"
+authors = ["Angelo Gladding <angelo@ragt.ag>"]
+homepage = "https://ragt.ag/code/projects/webint-player"
+repository = "https://ragt.ag/code/projects/webint-player.git"
+documentation = "https://ragt.ag/code/projects/webint-player/api"
+license = "AGPL-3.0-or-later"
+packages = [{include="webint_player"}]
+
+[tool.poetry.plugins."webapps"]
+player = "webint_player:app"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+webint = ">=0.0"
+webagt = ">=0.0"
+
+[tool.poetry.group.dev.dependencies]
+gmpg = {path="../gmpg", develop=true}
+bgq = {path="../bgq", develop=true}
+webint = {path="../webint", develop=true}
+webagt = {path="../webagt", develop=true}
+newmath = {path="../newmath", develop=true}
+sqlyte = {path="../sqlyte", develop=true}
+microformats = {path="../python-microformats", develop=true}
+
+# [[tool.poetry.source]]
+# name = "main"
+# url = "https://ragt.ag/code/pypi"
+
+[tool.pyright]
+reportGeneralTypeIssues = false
+reportOptionalMemberAccess = false
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

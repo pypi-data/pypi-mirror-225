@@ -1,0 +1,20 @@
+$def with ()
+
+$ youtube_url = f"https://youtube.com/embed/"
+<iframe id=youtubePlayer src=$:(youtube_url)BAdLRRbzOv4 type=text/html width=640 height=360 frameborder=0></iframe>
+<label>Video: <input id=youtubeVideo></label>
+<button id=youtubeChanger>Change</button>
+
+$ twitch_url = f"https://player.twitch.tv/?parent={tx.host.name}&channel="
+<iframe id=twitchPlayer src=$:(twitch_url)djmissshelton width=640 height=360 allowfullscreen></iframe>
+<label>Channel: <input id=twitchChannel></label>
+<button id=twitchChanger>Change</button>
+
+<script type=module>
+youtubeChanger.addEventListener('click', e => {
+  youtubePlayer.src = `$:(youtube_url)$${youtubeVideo.value}`
+})
+twitchChanger.addEventListener('click', e => {
+  twitchPlayer.src = `$:(twitch_url)$${twitchChannel.value}`
+})
+</script>
