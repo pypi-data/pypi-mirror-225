@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: pygrype
+Version: 0.1.3
+Summary: Python wrapper for Grype
+Author-email: Albert Simon <simon.albert75@gmail.com>
+License: MIT License
+Keywords: anchore,grype,security
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Framework :: IPython
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PyGrype
+A python wrapper for Grype
+
+![PyPI](https://img.shields.io/pypi/v/pygrype)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pygrype)
+![PyPI - License](https://img.shields.io/pypi/l/pygrype)
+
+
+## Status
+Supported commands
+
+- [ ] ~~completion~~
+- [x] db
+    - [ ] check
+    - [x] delete
+    - [ ] diff
+    - [ ] import
+    - [ ] list
+    - [ ] status
+    - [x] update
+- [ ] ~~help~~
+- [x] scan
+- [x] version
+
+## Installation
+install using `pip`
+
+```bash
+pip install pygrype
+```
+
+## Usage
+```python3
+from pygrype.grype import Grype
+
+image = 'alpine:3.12'
+grype = Grype('/opt/grype')
+
+version = grype.version()
+print('Using Grype version {version}'.format(version=version['version']))
+
+print('Updating DB...')
+grype.db.update()
+
+scan = grype.scan(image)
+print('Image {image} has {matches} vlunerabilities'.format(
+    image=image,
+    matches=len(scan['matches'])))
+```
+
