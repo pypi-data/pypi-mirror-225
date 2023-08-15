@@ -1,0 +1,39 @@
+[package]
+name = "wasmtime-environ"
+version= "12.0.0"
+authors= ["The Wasmtime Project Developers"]
+description = "Standalone environment support for WebAsssembly code in Cranelift"
+license = "Apache-2.0 WITH LLVM-exception"
+repository = "https://github.com/bytecodealliance/wasmtime"
+documentation = "https://docs.rs/wasmtime-environ/"
+categories = ["wasm"]
+keywords = ["webassembly", "wasm"]
+edition= "2021"
+resolver = '2'
+
+[dependencies]
+anyhow = "1.0.22"
+cranelift-entity = { path = "../cranelift-entity" }
+wasmtime-types = { path = "../wasmtime-types" }
+wasmparser = "0.110.0"
+indexmap = { version = "2.0.0", features = ["serde"] }
+thiserror = "1.0.43"
+serde = { version = "1.0.94", features = ["derive"] }
+log = { version = "0.4.8", default-features = false }
+gimli = { version = "0.27.0", default-features = false, features = ['read', 'std',"write"] }
+object = { version = "0.31.1", default-features = false, features = ['read_core', 'elf', 'std','write_core'] }
+target-lexicon = { version = "0.12.3", default-features = false, features = ["std"] }
+wasm-encoder = { version = "0.31.1", optional = true }
+wasmprinter = { version = "0.2.62", optional = true }
+wasmtime-component-util = { optional = true , path = "../wasmtime-component-util" }
+
+[[example]]
+name = "factc"
+required-features = ['component-model']
+
+[features]
+component-model = [
+  "dep:wasm-encoder",
+  "dep:wasmprinter",
+  "dep:wasmtime-component-util",
+]
