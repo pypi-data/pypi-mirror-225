@@ -1,0 +1,227 @@
+Metadata-Version: 2.1
+Name: threed_optix
+Version: 1.0.10
+Home-page: https://3doptix.com
+Author: 3DOptix
+Author-email: ereztep@3doptix.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# What is 3DOptix?
+
+## The fastest, most intuitive, non-sequential, ray tracing, cloud-based, optical system simulation software.
+
+3DOptix’s innovative GPU and cloud-based ray tracing engine can trace billions of rays per second, faster than any other simulation software on the market.
+Our easy-to-use application enables you to easily design both simple and complex optical systems and make smart decisions based on real data.
+3DOptix Warehouse is the first ever cloud-based workspace for sharing optical designs. With numerous designs available, the 3DOptix Warehouse offers engineers an unparalleled resource for exploring new ideas, discovering innovative solutions, and finding great starting points for their own designs.
+
+# API Python Wrapper
+
+Our API python wrapper is released in a beta version and has only limited features support at the moment. We are working on supporting more features and you can expect new versions to come out soon.
+
+## Features
+
+The API contains the following abilities:
+
+- **Get information** about your current setups.
+- **Choose setup** to work on.
+- **Change position and rotation** of simulation parts.
+- **Run simulations** on the cloud.
+
+And it has the following logic and terminology:
+
+- **Get**: Used to get the basic information about the element (setup, part, etc), such as id and name.
+- **Fetch**: Used to request deeper information about the chosen element, such as setup's parts or part's position and rotation.
+- **Update**: Used to push changes that were made locally to 3DOptix systems.
+- **Run**: Used to execute simulations on 3DOptix systems.
+
+## Installation
+
+API python wrapper installation is available using PyPi:
+
+```bash
+pip install threed-optix
+```
+
+Get your API key from 3DOptix user interface (under "user settings"):
+
+- Click on your email, and choose **"user settings"** in the drop-down
+- On the buttom of the settings manu, click on **"API"**
+- **Copy your API key**
+
+## Begin
+
+The API consists of:
+
+- **`ThreedOptixAPI`** object, that communicates with our server.
+- **`Setup`** object, that contains information about a simulation setup.
+- **`Part`** object, that holds the information about a setup part.
+- **`AnalysisResult`** object, which handles the simulation results data.
+- **`Vector3`** object, which allows to transform and rotate the parts.
+
+### Import and authenticate:
+
+```python
+import threed-optix as tdo
+​
+#Your API key from 3DOptix user interface
+api_key = '<your_api_key>'
+​
+#api is the object that manages the communication with 3DOptix server
+api = tdo.ThreedOptixAPI(api_key)
+```
+
+### Get a list of your 3DOptix setups:
+
+```python
+#'setups' will be a list of your simulation setups, each one has a name and id
+setups = api.get_setups()
+```
+
+### Choose the simulation setup you want to work on:
+
+```python
+#Chosen setup name (Be careful- setup name doesn't have to be unique)
+setup_name = '<your setup name>'
+​
+#Get the 'tdo.Setup' object to work on
+setup = None
+for s in setups:
+​
+    #Pay attention that setup name is not unique, and id is.
+    print(s.name, s.id)
+​
+    #Get your setup by name
+    if s.name == setup_name:
+        setup = s​
+        break
+​
+assert setup is not None, "Setup was not found"
+​
+# Fetch setup parts and information
+# The method updates the setup object parts
+api.fetch_setup(setup)
+```
+
+## Change Simulation Setups
+
+We can change the properties of setup parts.
+At the moment, we support changing the position and rotation of parts.
+We can identify each part with its id and label properties.
+
+### Access setup parts:
+
+```python
+# 'parts' will be a list of the optical elements, lasers and detectors in the setup
+parts = setup.get_parts()
+```
+
+### Choose the part that you want to modify:
+
+```python
+#Chosen part id
+part_id = '<the id of the part to change'
+
+#Get the 'tdo.Part' object to work on
+part = None
+for p in parts:
+​
+    #Pay attention that the part name is not unique, and id is.
+    print(p.label, p.id)
+​
+    #Get part by id
+    if p.id == part_id:
+       part = p
+       break
+​
+assert part is not None, "Part was not found"
+​
+#Fetch the part data
+# The methods update the part object position and rotation
+api.fetch(part)
+​
+#Before you make any changes, we recommend to import copy and store the original part with deepcopy:
+original_part = copy.deepcopy(part)
+```
+
+### Change Rotation
+
+Each part has a `part.change_rotation` method, which enables to change the rotation with respect to the x, y, and z axis, using `tdo.Vector3 ` object. Rotation is stated using **degrees**.
+
+```python
+#Define the rotation
+new_rotation = tdo.Vector3(90, 0, 45)
+​
+#Apply on the part
+part.change_rotation(new_rotation)
+```
+
+### Change Position
+
+Each part has a `part.change_position` method, which enables to change the part x, y, and z locations relative to their primary coordinate system, using `tdo.Vector3 ` object. Position change is stated in **mm**.
+
+```python
+#Define changes
+new_position = tdo.Vector3(1, 0.5, 3)
+​
+#Apply on the part
+part.change_position(new_position)
+```
+
+### Update Part
+
+In order to update the local changes to the original setup in the 3DOptix interface, we need to use `api.update` method:
+
+```python
+#Update the changes
+api.update(part)
+​
+#Since we stored the original part, we could always restore it
+api.update(original_part)
+```
+
+## Run Simulations And Analyze
+
+### Run Simulation
+
+Running the simulation on the cloud is really simple:
+
+```python
+#run the simulation
+result = api.run(setup)
+​
+#fetch the data
+api.fetch(result)
+​
+#Get the results as a pandas DataFrame:
+data = result.data
+​
+#Save the data locally
+data_path = 'path/to/save/data'
+result.data.to_csv(data_path)
+```
+
+### Results
+
+Results are a `pd.DataFrame` object where each line is a single ray. The columns are:
+
+- **Ox, Oy, Oz**: The origin point of the ray for each axis.
+- **Dx, Dy, Dz**: The initial direction of the ray for each axis.
+- **Hx, Hy, Hz**: The hit position of the ray for each axis.
+- **wavelength**: The wavelength of the ray.
+- **Ap**: The p amplitude of the ray.
+- **hit_surface_idx**: The index of the surface that the ray hit, when -1 means no hit.
+- **source_idx**: The index of the light source that generated the ray.
+
+| Ray | Ox  | Oy   | Oz   | Dx        | Dy        | Dz        | wavelength | Ap        | Hx         | Hy        | Hz        | hit_surface_idx | source_idx  |
+| --- | --- | ---- | ---- | --------- | --------- | --------- | ---------- | --------- | ---------- | --------- | --------- | --------------- | ----------- |
+| 0   | 0.0 | 50.0 | 58.0 | -0.153695 | -0.768473 | -0.62115  | 455        | 7503794.5 | -7.684731  | 11.576334 | 26.94252  | -1              | LF0VOM15D9J |
+| 1   | 0.0 | 50.0 | 58.0 | -0.422857 | -0.704762 | -0.569652 | 455        | 6881677.5 | -21.142845 | 14.761925 | 29.517403 | -1              | LF0VOM15D9J |
+| 2   | 0.0 | 50.0 | 58.0 | -0.194871 | -0.584613 | -0.787562 | 455        | 9514133.0 | -4.528074  | 36.415771 | 39.699997 | 5               | LF0VOM15D9J |
+| 3   | 0.0 | 50.0 | 58.0 | -0.511992 | -0.511992 | -0.689731 | 455        | 8332286.0 | -25.599606 | 24.400393 | 23.513474 | -1              | LF0VOM15D9J |
+| 4   | 0.0 | 50.0 | 58.0 | -0.704761 | -0.422857 | -0.569652 | 455        | 6881677.5 | -35.238071 | 28.857153 | 29.517403 | -1              | LF0VOM15D9J |
+
+# License
+
+3DOptix API is available with [MIT License](https://choosealicense.com/licenses/mit/).
