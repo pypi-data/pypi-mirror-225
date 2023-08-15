@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: pattern-tiler
+Version: 0.1.0
+Summary: 
+Author: Diego Canez
+Author-email: canezdiego@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pillow (>=10.0.0,<11.0.0)
+Description-Content-Type: text/markdown
+
+# Pattern Tiler
+
+```sh
+usage: pattern-tiler [-h] --input INPUT --output OUTPUT --multiplier MULTIPLIER --output_res OUTPUT_RES
+
+Tile (w, h) image to (m * w, m * h) image given multiplier m and then resize to output_resolution.
+
+options:
+  -h, --help            show this help message and exit
+  --input INPUT         Path to input image
+  --output OUTPUT       Path to output image
+  --multiplier MULTIPLIER
+                        Size multiplier for image
+  --output_res OUTPUT_RES
+                        Output resolution
+```
+
