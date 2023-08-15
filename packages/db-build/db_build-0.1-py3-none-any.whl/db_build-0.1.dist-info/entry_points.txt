@@ -1,0 +1,5 @@
+[console_scripts]
+db-build = db_build.cli:cli
+
+[sqlite_utils]
+db_build = db_build.sqlite_utils_plugin
