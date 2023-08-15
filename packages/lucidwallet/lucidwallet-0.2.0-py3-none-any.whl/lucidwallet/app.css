@@ -1,0 +1,868 @@
+/* Fix this mess */
+
+.hidden {
+    visibility: hidden;
+}
+
+FirstRun {
+    border: double $primary;
+}
+
+#encrypt_db_label {
+    border: heavy white;
+    background: green;
+    color: white 90%;
+}
+
+WalletLanding {
+    layers: base overlay notification;
+    overflow: hidden;
+}
+
+WalletLanding>Horizontal {
+    width: 100%;
+}
+
+#first_time {
+    width: 80%;
+    height: auto;
+    margin: 2 1 2 1;
+    padding: 1;
+    background: green;
+    color: white 90%;
+    border: heavy white;
+    content-align: center middle;
+}
+
+.horizontal_center {
+    align-horizontal: center;
+}
+
+.horizontal_center Button {
+    margin: 1;
+}
+
+
+LanguagePicker {
+    dock: right;
+    width: 20;
+    height: 1fr;
+}
+
+LanguagePicker Select {
+    content-align: center top;
+}
+
+LanguagePicker SelectCurrent {
+    height: 3;
+    padding: 0;
+    margin: 0;
+}
+
+LanguagePicker Label {
+    content-align: center middle;
+    width: 1fr;
+    border: tall transparent;
+    background: $boost;
+}
+
+ImportFromMnemonic {
+    border: double $primary;
+}
+
+#wrong_checksum {
+    color: red;
+    text-align: center;
+    margin-top: 2;
+    width: 1fr;
+}
+
+ImportFromMnemonic>Horizontal {
+    align: center middle;
+    height: auto;
+    margin: 4 1;
+}
+
+ImportFromMnemonic Horizontal Button {
+    margin: 1;
+    padding-left: 1;
+}
+
+ImportFromMnemonic Grid {
+    margin-top: 2;
+    grid-size: 4 3;
+    width: 100%;
+}
+
+Grid MnemonicWord {
+    content-align: center middle;
+    border: thick $primary 60%;
+    width: 1fr;
+    height: 5;
+}
+
+Grid MnemonicWord.-focused {
+    border: thick $primary;
+}
+
+Grid MnemonicWord.-found {
+    background: greenyellow 60%;
+    color: black;
+}
+
+Grid MnemonicWord.-found.-focused {
+    border: thick $primary;
+    background: greenyellow;
+}
+
+/* TX SENT */
+TxSentOverlay {
+    align: center middle;
+}
+
+TxSentOverlay>Container {
+    padding: 0 1;
+    width: 70%;
+    height: auto;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+TxSentOverlay>Container>Static {
+    height: 3;
+    content-align: center middle;
+}
+
+TxSentOverlay>Container>Horizontal {
+    border: tall $primary;
+    height: 5;
+    margin-bottom: 1;
+    background: $primary-background;
+}
+
+#txid {
+    margin-left: 2;
+    height: 3;
+    # height: 1fr;
+    # width: 1fr;
+    content-align: center middle;
+    padding-left: 1;
+    padding-right: 1;
+}
+
+#exit {
+    margin-right: 2;
+    min-width: 5;
+    width: 5;
+}
+
+#button_container {
+    align: right middle;
+}
+
+/* TOP BAR stUFF */
+
+.topbar_button {
+    padding: 0;
+    margin-right: 1;
+    height: auto;
+    min-width: 4;
+    width: auto;
+    layer: below;
+}
+
+.topbar_button:focus {
+    text-style: none;
+    outline-top: tall black;
+    background: black 80%;
+}
+
+
+TopBar>Container {
+    layer: below;
+    width: 3fr;
+    layout: horizontal;
+
+}
+
+TopBar Select {
+    /* column-span: 2; */
+    padding: 0;
+    margin: 0;
+    layer: below;
+    align: center middle;
+}
+
+
+#topbar_wallet_id {
+    width: 1fr;
+}
+
+#topbar_network_id {
+    width: 20;
+    layer: below;
+}
+
+#balance {
+    content-align: center middle;
+    width: auto;
+    min-width: 20;
+}
+
+TopBar Label {
+    padding: 0 1 0 1;
+    /* content-align: center middle; */
+    border: tall black;
+    layer: below;
+    outline: tall $primary;
+    background: $boost;
+}
+
+TopBar Select SelectCurrent {
+    height: 3;
+    border: tall $primary;
+}
+
+TopBar {
+    margin: 0;
+    padding: 0;
+    height: 5;
+    layout: horizontal;
+
+    border: tall $primary;
+    layers: below above;
+    background: $panel;
+}
+
+
+/* sign message stuff stuff */
+
+SignMessageOverlay {
+    border: double $primary;
+    background: $panel;
+}
+
+#sign_buttons {
+
+    align: center middle;
+    height: 7;
+}
+
+#sign_top_bar {
+    height: 6;
+}
+
+SignMessageOverlay Button {
+    margin: 1;
+    width: auto;
+}
+
+SignMessageOverlay Input {
+    margin: 2 1 2 1;
+}
+
+SignMessageOverlay Container {
+    max-width: 5;
+    height: auto;
+    width: auto;
+    dock: top;
+}
+
+#sign_message_address Static {
+    align: center middle;
+    border: tall $primary;
+    padding: 0 1;
+}
+
+#sign_message_sig Static {
+    border: tall $primary;
+    padding: 0 1;
+}
+
+#sign_message_sig {
+    align: center middle;
+    height: 1fr;
+
+}
+
+#title Static {
+    padding-top: 0;
+    content-align: center top;
+
+}
+
+/* */
+
+Header {
+    margin: 1;
+    outline: tall $primary;
+}
+
+Notification {
+    dock: left;
+    layer: notification;
+    width: auto;
+    margin: 0 0 0 1;
+    padding: 1 2;
+    background: $background;
+    color: $text;
+    height: auto;
+    outline: tall green;
+
+}
+
+Navigation {
+    margin: 1;
+}
+
+Sidebar {
+    width: 40;
+    background: $panel;
+    transition: offset 500ms in_out_cubic;
+    layer: overlay;
+
+}
+
+Sidebar:focus-within {
+    offset: 0 0 !important;
+}
+
+Sidebar.-hidden {
+    offset-x: -100%;
+}
+
+Sidebar Title {
+    background: $boost;
+    color: $secondary;
+    padding: 2 4;
+    border-right: vkey $background;
+    dock: top;
+    text-align: center;
+    text-style: bold;
+}
+
+
+OptionGroup {
+    background: $boost;
+    color: $text;
+    height: 1fr;
+    border-right: vkey $background;
+}
+
+Version {
+    color: $text-disabled;
+    dock: bottom;
+    text-align: center;
+    padding: 1;
+}
+
+DarkSwitch {
+    background: $panel;
+    padding: 1;
+    dock: bottom;
+    height: auto;
+    border-right: vkey $background;
+}
+
+DarkSwitch .label {
+    width: 1fr;
+    padding: 1 2;
+    color: $text-muted;
+}
+
+DarkSwitch Switch {
+    background: $boost;
+    dock: left;
+}
+
+
+/* IMPORT KEY TO WALLET */
+
+ImportKeyToWallet {
+    border: $primary;
+}
+
+.import_key_buttons {
+    margin: 1;
+}
+
+ImportKeyToWallet>Horizontal>Input {
+    width: 1fr;
+}
+
+#import_key_toggle {
+    max-width: 4;
+    margin-right: 1;
+}
+
+#import_key_title Static {
+    padding-top: 0;
+    content-align: center top;
+
+}
+
+ImportKeyToWallet Container {
+    margin-right: 1;
+    max-width: 5;
+    height: auto;
+    width: auto;
+    dock: top;
+}
+
+/* .import_key_select {
+    border: tall red;
+} */
+
+#import_key_top_bar {
+    height: 6;
+}
+
+#private_key_container {
+    margin-top: 6;
+    height: 1fr;
+}
+
+#import_key_buttons_container {
+
+    align: center middle;
+    height: 1fr;
+}
+
+Toast {
+    width: auto;
+    /* border: yellowgreen; */
+}
+
+
+/* TXLOADING STUFF */
+
+/* TxLoading {
+    height: 1fr;
+    width: 1fr;
+    opacity: 0%;
+    layer: notification;
+    align: center middle;
+
+
+} */
+
+TxLoading {
+    layer: notification;
+    width: auto;
+    height: auto;
+}
+
+TxLoading>Container {
+    width: 16;
+    height: 9;
+    align: center middle;
+    /* max-height: 5; */
+    /* width: 15; */
+    border: round greenyellow;
+    background: $surface-lighten-2;
+
+
+}
+
+TxLoading LoadingIndicator {
+    max-height: 1;
+    border: blank;
+    layer: notification;
+}
+
+/* #weiner_town {
+    layer: notification;
+    border: greenyellow;
+    width: 16;
+    height: 9
+} */
+
+
+#tx_loading_scanning {
+    margin-left: 2;
+    width: auto;
+    layer: notification;
+}
+
+#tx_loading_transactions {
+    margin-left: 1;
+    width: auto;
+    layer: notification;
+}
+
+
+
+
+/* Encryption password stuff */
+
+#password_matcher {
+    width: auto;
+    border: tall $error;
+    /* margin: 0 2 0 2; */
+    padding: 0 1;
+}
+
+#password_matcher.-matcher_success {
+    border: tall yellowgreen;
+}
+
+EncryptionPassword>Horizontal {
+    align: center middle;
+    height: 3;
+    margin: 2;
+}
+
+EncryptionPassword>Horizontal>Input {
+    width: 80%;
+}
+
+EncryptionPassword Button {
+    margin: 1;
+}
+
+
+.encryption_toggle {
+    max-width: 4;
+    margin-right: 1;
+}
+
+#get_encryption_password_title Static {
+    padding-top: 2;
+    content-align: center top;
+
+}
+
+EncryptionPassword Container {
+    margin-right: 1;
+    max-width: 5;
+    height: auto;
+    width: auto;
+    dock: top;
+}
+
+#encryption_password_top_bar {
+    height: 6;
+}
+
+#private_key_container {
+    margin-top: 6;
+    height: 1fr;
+}
+
+#get_encryption_buttons {
+
+    align: center middle;
+    height: 1fr;
+}
+
+EncryptionPassword .label {
+    width: auto;
+    padding: 1 2;
+    color: $text-muted;
+}
+
+EncryptionPassword Switch {
+    background: $boost;
+    /* dock: left; */
+}
+
+#switch_container {
+    align: center middle;
+
+}
+
+/* create wallet */
+
+CreateWallet {
+    border: double $primary;
+}
+
+CreateWallet Input {
+    margin-top: 1;
+}
+
+#create_wallet_title {
+    margin-top: 1;
+    text-align: center;
+}
+
+#create_wallet_button_container {
+    align: center middle;
+}
+
+
+/* Mnemonic overlay stuff */
+
+
+MnemonicOverlay {
+    layers: base notification;
+    align: center middle;
+}
+
+MnemonicOverlay>Container {
+    padding: 0 1;
+    border: $primary;
+    width: 80%;
+    height: 90%;
+    align: center middle;
+}
+
+/* MnemonicOverlay Button {
+    dock: left;
+} */
+
+MnemonicOverlay Grid>Static {
+    content-align: center middle;
+    border: thick $primary 60%;
+    width: 1fr;
+    min-height: 3;
+}
+
+MnemonicOverlay Button {
+    margin: 1;
+}
+
+#mnemonic_notice {
+    text-align: center;
+    margin-top: 1;
+    border: $primary;
+    width: auto;
+    height: auto;
+}
+
+MnemonicOverlay Grid {
+    margin-top: 1;
+    grid-size: 4 3;
+    width: 100%;
+}
+
+#mnemonic_button_container {
+    align: center middle;
+}
+
+#mnemonic_exit {
+    align: right top;
+    height: 3;
+    width: 1fr;
+}
+
+#mnemonic_exit>Button {
+    margin-right: 0;
+    min-width: 5;
+    width: 5;
+
+}
+
+
+
+/* Network Bar */
+
+NetworkBar {
+    width: 1fr;
+    margin: 0 1 1 0;
+    layout: horizontal;
+    background: $panel;
+    height: 3;
+
+}
+
+.networkbar_item {
+    border: tall $primary;
+    margin: 0;
+    padding: 0;
+    content-align: center middle;
+    background: $panel;
+    width: 1fr;
+}
+
+NetworkBar>Button {
+    dock: right;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-width: 0;
+    width: auto;
+}
+
+NetworkBar>Button:focus {
+    text-style: none;
+    outline-top: tall black;
+    background: black 80%;
+}
+
+/* SEND */
+
+Send {
+    width: 50%;
+    margin-bottom: 1;
+    margin-right: 0;
+    padding-right: 0;
+    /* min-width: 60; */
+    outline: tall $primary;
+
+    background: $panel;
+    layers: default notification;
+    /* align: center middle; */
+
+}
+
+#disabled_send_banner {
+    content-align: center middle;
+    layer: notification;
+    width: 16;
+    height: 8;
+    border: yellowgreen;
+    visibility: visible;
+}
+
+#disabled_container {
+    align: center middle;
+    layer: notification;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+
+Send>Input {
+    margin: 1;
+}
+
+Send>Horizontal {
+    margin-top: 1;
+    margin-left: 1;
+    height: 5;
+}
+
+Send>Horizontal>Select {
+    width: 1fr;
+    max-height: 3;
+    margin-left: 2;
+}
+
+Send>Input {
+    border: tall $primary;
+}
+
+Send>Horizontal>Input {
+    width: 2fr;
+    border: tall $primary;
+    # margin: 1;
+}
+
+Send>Center {
+    margin-left: 1;
+    margin-top: 1;
+}
+
+#save {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-width: 0;
+    width: auto;
+}
+
+#save:focus {
+    text-style: none;
+    outline-top: tall black;
+    background: black 80%;
+}
+
+#buttons {
+    margin-left: 1;
+    margin-top: 1;
+    align: center middle;
+}
+
+#all_funds {
+    margin: 0;
+    padding-right: 1;
+    margin-left: 1;
+    outline-right: tall black;
+    min-width: 0;
+}
+
+#all_funds:focus {
+    text-style: none;
+    outline-top: tall black;
+    background: black 80%;
+}
+
+Send>Horizontal>Button {
+    margin: 1;
+
+}
+
+Send>Horizontal>Select>SelectCurrent {
+    border: tall $primary;
+    max-height: 3;
+}
+
+Send>Horizontal>Select>SelectCurrent Static#label {
+    overflow: hidden;
+}
+
+/* Transactions */
+
+TransactionHistory {
+    align: center middle;
+    width: 50%;
+    /* margin-top: 1; */
+    padding-left: 0;
+    margin-left: 0;
+    margin-bottom: 1;
+    background: $panel;
+    outline-top: tall $primary;
+    outline-left: tall $primary;
+    outline-right: tall $primary;
+    layers: base notifications;
+}
+
+/* Tx history stuff */
+
+
+TransactionHistory>ScrollCenter {
+    height: 1fr;
+    margin-left: 1;
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+TransactionHistory ScrollDataTable {
+    width: auto;
+    /* hack to allow ScrollCenter to scroll */
+    max-height: 9999999999;
+    background: $panel;
+}
+
+.top {
+    /* outline-top: tall $primary; */
+    width: 100%;
+    height: 3;
+    margin: 0 1 0 1;
+    content-align: center middle;
+    background: $panel;
+}
+
+.bottom {
+    outline-bottom: tall $primary;
+    width: 100%;
+    height: 2;
+    margin: 0 1 0 1;
+    padding-bottom: 1;
+    background: $panel;
+}
+
+/*
+# TransactionHistory>Center>ScrollDataTable {
+    # margin-left: 1;
+    # background: $panel;
+    # # height: 1fr;
+    # # scrollbar-gutter: stable;
+    # # max-height: 100%;
+    # width: auto;
+    #
+
+}
+*/
