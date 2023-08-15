@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: pandoc-math
+Version: 1.0.0
+Summary: A pandoc filter for converting LaTeX to html for mathematics teaching
+Author-email: Gavin McWhinnie <gmcwhinn@ed.ac.uk>
+Project-URL: Homepage, https://github.com/GavinMcWhinnie/pandoc-math
+Project-URL: Bug Tracker, https://github.com/GavinMcWhinnie/pandoc-math/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: panflute >=2.3.0
+Requires-Dist: pylatexenc >=2.10
+
+# pandoc-math
+A pandoc filter for converting LaTeX to html for mathematics documents. Provides support for various environments & commands in the amsthm/amsmath packages and equation labelling & referencing.
+
+Installation
+------------
+
+Requires Python > 3.7 which can be installed here: [Python download page](https://www.python.org/downloads/) and Pandoc > 2.11 which can be installed here: [Pandoc installation page](https://pandoc.org/installing.html).
+
+To download pandoc-math, use the pip tool with the command:
+
+    pip install pandoc-math
+
+Documentation:
+-------------
+https://gavinmcwhinnie.github.io/pandoc-math
+
+Usage
+-----
+
+The basic usage of pandoc-math is:
+
+    pandoc-math [file] [options]
+
+Where  `[file]` is a `.TeX` file to be converted to html.
