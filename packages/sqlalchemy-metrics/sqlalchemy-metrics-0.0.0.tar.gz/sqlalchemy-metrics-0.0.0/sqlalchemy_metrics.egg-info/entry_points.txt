@@ -1,0 +1,5 @@
+[console_scripts]
+connmon = sqlalchemy_metrics.connmon.main:main
+
+[sqlalchemy.plugins]
+collectd = sqlalchemy_metrics.client.plugin:Plugin
