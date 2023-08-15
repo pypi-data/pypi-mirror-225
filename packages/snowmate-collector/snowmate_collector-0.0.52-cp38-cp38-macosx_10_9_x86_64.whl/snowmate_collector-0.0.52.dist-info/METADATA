@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: snowmate-collector
+Version: 0.0.52
+Summary: snowmate_collector
+License-File: LICENSE
+Requires-Dist: aiohttp
+Requires-Dist: pyzmq
+Requires-Dist: gitignore-parser
+Requires-Dist: jsonpickle
+Requires-Dist: snowmate-common (==0.3.9)
+
