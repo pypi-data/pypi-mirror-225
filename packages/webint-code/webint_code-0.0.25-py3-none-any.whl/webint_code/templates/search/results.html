@@ -1,0 +1,32 @@
+$def with (query, files)
+$var breadcrumbs = ("search", "Search")
+$var title: Results for
+
+<link rel=stylesheet href=$tx.origin/static/solarized.css media=screen>
+<style>
+.linenodiv .normal {
+  display: none; }
+</style>
+
+<form action=/search>
+<input name=q value="$query"> <button>Search</button>
+</form>
+
+<h2>Projects</h2>
+$ previous_project = ""
+<ul style=font-size:.75em>
+$for (project, file), blocks in sorted(files.items()):
+    $if project == previous_project:
+        $continue
+    $ previous_project = project
+    <li><a href=#$project>$project</a></li>
+</ul>
+
+$ previous_project = ""
+$for (project, file), blocks in sorted(files.items()):
+    $if project != previous_project:
+        <h3 id=$project><a href=/projects/$project>$project</a></h3>
+        $ previous_project = project
+    <h4 id="$file"><a href=/projects/$project/files/$file>$file</a></h4>
+    $for starting_line, block in sorted(blocks.items()):
+        <pre style=font-size:.75em>$:highlight(block, file, starting_line=starting_line, search=query)</pre>
