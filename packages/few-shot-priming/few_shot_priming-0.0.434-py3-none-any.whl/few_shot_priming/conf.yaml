@@ -1,0 +1,72 @@
+dataset:
+  path-ibmsc-root: data/claim_stance_dataset_v1.csv
+experiment:
+  ibmsc:
+    path-training: experiment/ibmsc-train.csv
+    path-validation: experiment/ibmsc-validation.csv
+    path-test: experiment/ibmsc-test.csv
+    path-few-shots: experiment/ibmsc-few-shots.csv
+    path-logs: ibm-sc-validation-time.logs
+  vast:
+    path-training: experiment/vast-train.csv
+    path-validation: experiment/vast-validation.csv
+    path-test: experiment/vast-test.csv
+    path-few-shots: experiment/vast-few-shots.csv
+    path-logs: vast-validation-time.logs
+
+prompt-fine-tuning:
+  model-name : "EleutherAI/gpt-j-6B"
+  model-type : "EleutherAI/gpt-j-6B"
+  model-path: "/bigwork/nhwpajjy/pre-trained-models/gptj"
+  few-shot-size: 16
+  params:
+    #batch-size : [16, 32, 8]
+    batch-size : [1]
+    learning-rate : [2e-5, 5e-5, 1e-3, 1e-5, 1e-6]
+    #learning-rate : [3e-4]
+    epochs: [20]
+  model-path-fine-tuned : "/bigwork/nhwpajjy/pre-trained-models/gpt2-fine-tuned"
+  best-params:
+    batch-size: 16
+    learning-rate: 2e-5
+    epochs: 1
+
+prompt:
+  model-name : "EleutherAI/gpt-neox-20b"
+  model-type : "EleutherAI/gpt-neox-20b"
+  model-path: "/bigwork/nhwpajjy/pre-trained-models/EleutherAI/gpt-neox-20b"
+  model-input-limit: 2000
+  few-shot-size: 16
+  batch-size: 16
+  logs: "logs/prompt.log"
+
+
+pre-trained-models:
+  path: "/bigwork/nhwpajjy/pre-trained-models"
+  models : ["t5-base", "bert-base-uncased", "gpt2", "opt", "gpt2-xl"]
+  alpaca:
+    model-name: "wxjiao/alpaca-7b"
+    model-path: "/bigwork/nhwpajjy/pre-trained-models/wxjiao/alpaca-7b"
+  gpt-j:
+    model-name: "EleutherAI/gpt-j-6B"
+    model-path: "/bigwork/nhwpajjy/pre-trained-models/gptj-16"
+
+baseline:
+  model-path: "/bigwork/nhwpajjy/pre-trained-models/microsoft/deberta-base"
+  model-name: "microsoft/deberta-base"
+  api-key: "cc362e03e225e86476ac8d0a18460b40L05"
+  model-path-fine-tuned : "/bigwork/nhwpajjy/pre-trained-models/deberta-base-fine-tuned"
+  params:
+    #batch-size: [16, 32]
+    batch-size: [16]
+    #learning-rate: [1e-5, 5e-5, 1e-6]
+    learning-rate: [1e-5]
+    head-size: [30]
+    epochs: [15]
+
+  best-params:
+    batch-size: 8
+    learning-rate: 1e-4
+    head-size: 30
+    epochs: 1
+
