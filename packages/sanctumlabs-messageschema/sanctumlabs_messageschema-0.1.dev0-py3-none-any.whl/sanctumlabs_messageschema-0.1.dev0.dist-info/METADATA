@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: sanctumlabs-messageschema
+Version: 0.1.dev0
+Summary: Shared data models & message schemas for Sanctum Labs services
+Home-page: https://gitlab.com/sanctumlabs/libraries/messageschema
+Author: Brian Lusina
+Author-email: 1178317-BrianLusina@users.noreply.gitlab.com
+License: Proprietary
+Requires-Python: >=3.6
+Requires-Dist: protobuf >=4.22.4
+Requires-Dist: protoc-gen-validate >=1.0.0
+
