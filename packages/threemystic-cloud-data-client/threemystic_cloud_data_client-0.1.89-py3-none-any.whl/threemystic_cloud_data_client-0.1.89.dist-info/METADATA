@@ -1,0 +1,115 @@
+Metadata-Version: 2.1
+Name: threemystic-cloud-data-client
+Version: 0.1.89
+Summary: A tool for collecting data from various cloud providers
+Project-URL: Homepage, https://github.com/3MysticApes/3mystic_cloud_data_client
+Project-URL: Bug Tracker, https://github.com/3MysticApes/3mystic_cloud_data_client/issues
+Author: Ron Truex
+License-Expression: MIT
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: asyncio>=3.4.3
+Requires-Dist: azure-keyvault-administration>=4
+Requires-Dist: azure-keyvault-certificates>=4
+Requires-Dist: azure-keyvault-keys>=4
+Requires-Dist: azure-keyvault-secrets>=4
+Requires-Dist: azure-mgmt-compute>=29
+Requires-Dist: azure-mgmt-cosmosdb>=9
+Requires-Dist: azure-mgmt-costmanagement>=4
+Requires-Dist: azure-mgmt-dns>=8
+Requires-Dist: azure-mgmt-keyvault>=10
+Requires-Dist: azure-mgmt-managementgroups>=1
+Requires-Dist: azure-mgmt-monitor>=5
+Requires-Dist: azure-mgmt-network>=23
+Requires-Dist: azure-mgmt-privatedns>=1
+Requires-Dist: azure-mgmt-rdbms>=10
+Requires-Dist: azure-mgmt-redis>=14
+Requires-Dist: azure-mgmt-resourcegraph>=8
+Requires-Dist: azure-mgmt-sql>=3
+Requires-Dist: azure-mgmt-sqlvirtualmachine>=0.6
+Requires-Dist: azure-mgmt-subscription>=3
+Requires-Dist: azure-mgmt-synapse>=2
+Requires-Dist: colorama; platform_system == 'Windows'
+Requires-Dist: threemystic-cloud-client>=0.1.63
+Requires-Dist: threemystic-common>=0.1.17
+Requires-Dist: tqdm>=4.65.0
+Requires-Dist: typing-extensions>=4.4.0
+Description-Content-Type: text/markdown
+
+# 3mystic_cloud_data_client
+A set of scripts to help uniformly pull data from the cloud providers for various resources.
+Currently supports AWS/Azure
+
+This project is currently in beta, along with the other projects. Once the other projects come out of beta this one will as well. However, this is also, the most stable of the project. I am trying not to change things that would break from version to version. So if you would like to use something here, it should be relatively safe. I will try to call out breaking changes. The connection for both AWS and Azure does currently work. So if you have issues please create an issue.
+
+While in beta not all datasets might be working.
+
+# Install
+
+## pip
+
+The latest version of this project is currently being pushed to
+https://pypi.org/project/threemystic-cloud-data-client/
+
+pip install threemystic-cloud-data-client
+
+If you would prefer to install directly from GitHub you need to install Hatch.
+Please refer to the section below for that.
+
+Once hatch is installed you can use pip
+
+pip install https://github.com/3MysticApes/3mystic_cloud_data_client
+
+## Hatch
+This project is packaged using Hatch. If you need to install Hatch please refer to their documentation
+https://hatch.pypa.io/latest/install/
+
+# Setup
+
+Once installed please run 
+3mystic_cloud_data_client -c
+
+# Usage
+
+usage: 3mystic_cloud_data_client [--version] [--config] [--data] [--provider {aws,azure}]
+
+One Action is required
+
+options:</br>
+  -h, --help            show this help message and exit</br>
+  -v, --verbose         Verbose output</br>
+  --version             Action: outputs the versions of the app being used.</br>
+  --config, -c          Action: This is so you can setup the data client</br>
+  --data, -d            Action: Pull the various Data from the provider</br>
+  --provider {aws,azure}, -p {aws,azure} Provider: This is to set the provider that should be used</br>
+
+The --provider/-p is only reqired if you do not set a default provider with the config.
+
+To see the various data options you can run 
+3mystic_cloud_data_client --data/-d
+
+That will list all current options for pulling datasets for. 
+
+# Contribute
+You need to install Hatch. Please see the previous Hatch section under install.
+
+Once you download the project you can do the following
+You should be able to run the following command in the root directory for a general status
+hatch status
+
+Then from the root directory you can run
+pip install ./
+
+I would suggest while you are debugging issues to install it with the command below. Once you are done with your development you can uninstall. This allows you to make edits and test easier.
+pip install -e ./
+https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-e
+
