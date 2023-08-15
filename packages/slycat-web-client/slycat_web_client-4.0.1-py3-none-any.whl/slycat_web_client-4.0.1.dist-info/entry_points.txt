@@ -1,0 +1,6 @@
+[console_scripts]
+dac_gen = slycat.web.client.dac_gen:main
+dac_tdms = slycat.web.client.dac_tdms:main
+dac_tdms_batch = slycat.web.client.dac_tdms_batch:main
+dac_tdms_batch_file = slycat.web.client.dac_tdms_batch_file:main
+ps_csv = slycat.web.client.ps_csv:main
