@@ -1,0 +1,22 @@
+[project]
+name = "okn_py_updater"
+version = "1.0.6"
+authors = [
+  { name="Zaw Lin Tun", email="zawlintun1511@gmail.com" },
+]
+description = "Python Library for OKN Data Updater"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ZawLinTun16925410/okn_data_updater"
+"Bug Tracker" = "https://github.com/ZawLinTun16925410/okn_data_updater/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
