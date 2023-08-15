@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: git-picker
+Version: 0.0.3
+Summary: git picker
+Home-page: https://github.com/JiauZhang/git-picker
+Author: JiauZhang
+Author-email: jiauzhang@163.com
+License: MIT
+Keywords: GitHub
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+### Install
+```shell
+pip install git-picker
+```
+
+### Usage
+```python
+import gitpicker as gp
+
+user = 'JiauZhang'
+repo = 'git-picker'
+branch = 'main'
+files = {
+    'dir': [
+        'examples',
+        'gitpicker',
+    ],
+    'file': [
+        'LICENSE',
+        'setup.py',
+    ],
+}
+
+picker = gp.Picker(user, repo, branch, files)
+picker.pick()
+```
