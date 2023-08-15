@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["_generate*"]
+
+[project]
+name = "thoughtspot_tml"
+dynamic = ["version"]
+description = "Library for manipulating ThoughtSpot Modeling Language (TML) files"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Bryant Howell", email = "bryant.howell@thoughtspot.com"},
+    {name = "Bill B", email = "bill.back@thoughtspot.com"},
+    {name = "boonhapus", email = "nicholas.cooper@thoughtspot.com"},
+]
+maintainers = [
+    {name = "Bryant Howell", email = "bryant.howell@thoughtspot.com"},
+    {name = "boonhapus", email = "nicholas.cooper@thoughtspot.com"},
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "PyYAML >= 6.0",
+    "betterproto[compiler] >= 2.0.0b5",
+
+    # version specific
+    "typing_extensions >= 4.4.0; python_version < '3.8.0'",
+    "zipp >= 3.11.0; python_version < '3.10.0'"
+]
+
+[project.urls]
+repository = "https://github.com/thoughtspot/thoughtspot_tml"
+bug_tracker = "https://github.com/thoughtspot/thoughtspot_tml/issues"
+
+[project.optional-dependencies]
+# cli = [
+#     "typer[all]==0.7.0",
+#     "click==8.1.3",
+# ]
+dev = [
+    "black",
+    "coverage[toml]",
+    "nox",
+    "rich",
+    "ward",
+]
+
+# eventual plans for a jq-like utility for TML
+# [project.scripts]
+# tml = "thoughtspot_tml.cli.main:run"
+
+[tool.setuptools.dynamic]
+version = {attr = "thoughtspot_tml._version.__version__"}
+
+[tool.black]
+line-length = 120
+exclude = '''
+(
+      __pycache__   # ignore compiled bytecode
+    | \.venv*       # ignore virtual environments
+    | \.nox         # ignore virtual environments
+)
+'''
+
+[tool.ward]
+path = "tests/"
+
+[tool.coverage.run]
+branch = true
+include = [
+    "src/**.py",
+]
+omit = [
+    "src/thoughtspot_tml/_scriptability.py",
+    "src/thoughtspot_tml/_compat.py",
+    "__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "# pragma: no cover",
+    "# pragma: peephole optimzer",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+]
