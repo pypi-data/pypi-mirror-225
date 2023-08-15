@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: synthesizers
+Version: 0.1.3
+Summary: A meta framework for synthetic data generation.
+Project-URL: Homepage, https://github.com/schneiderkamplab/synthesizers
+Project-URL: Bug Tracker, https://github.com/schneiderkamplab/synthesizers/issues
+Author: Peter Schneider-Kamp
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: datasets
+Requires-Dist: pandas
+Requires-Dist: py-synthpop
+Requires-Dist: pydantic<2
+Requires-Dist: synthcity
+Requires-Dist: syntheval
+Description-Content-Type: text/markdown
+
+# synthesizers
+meta library for synthetic data generation
