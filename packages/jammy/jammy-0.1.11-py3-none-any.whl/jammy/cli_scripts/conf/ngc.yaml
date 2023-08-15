@@ -1,0 +1,28 @@
+hydra:
+  run:
+    dir: /tmp/jam_ngc_debug/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  hydra_logging:
+    disable_existing_loggers: true
+  sweep:
+    dir: /tmp/jam_ngc_debug/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+
+img: nvidian/lpr-imagine/imaginaire_qsh:1.1
+name: 
+device: "1x16x1"
+
+cmd:
+  - "sleep 1d"
+  - "sleep 7d"
+
+debug: True
+
+ws_qsh: True
+key_qsh: True
+extra_ws:
+dataset:
+  88175: "/mnt/datasets/imagenet"
+
+file: ngc_cus.yaml
+exec: ${debug}
+submit: False
