@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: e2xcore
+Version: 0.0.3
+Summary: An template for a server app for e2xgrader
+Project-URL: Documentation, https://e2x.inf.h-brs.de
+Project-URL: Issues, https://github.com/Digiklausur/e2xcore/issues
+Project-URL: Source, https://github.com/Digiklausur/e2xcore
+Author-email: Tim Metzler <tim.metzler@h-brs.de>
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Requires-Dist: nbgrader>=0.8
+Provides-Extra: dev
+Requires-Dist: hatchling; extra == 'dev'
+Requires-Dist: pre-commit; extra == 'dev'
+Requires-Dist: tbump; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# e2xcore
+
+---
+
+e2xcore combines functionality for writing e2xgrader extensions
