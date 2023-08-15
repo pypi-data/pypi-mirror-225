@@ -1,0 +1,165 @@
+# reference can be found 
+# https://github.com/pypa/hatch/blob/master/pyproject.toml
+
+[build-system]
+requires = ["hatchling>=1.11.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "threemystic-cloud-data-client"
+description = "A tool for collecting data from various cloud providers"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+  { name="Ron Truex" },
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "colorama; platform_system == 'Windows'",
+  "threemystic-common >= 0.1.17",
+  "threemystic-cloud-client >= 0.1.63",
+  "typing-extensions >= 4.4.0",
+  "asyncio >= 3.4.3",
+  "tqdm >= 4.65.0",
+  "azure-mgmt-compute >= 29",
+  "azure-mgmt-cosmosdb >= 9",
+  "azure-mgmt-costmanagement >= 4",
+  "azure-mgmt-dns >= 8",
+  "azure-mgmt-keyvault >= 10",
+  "azure-mgmt-managementgroups >= 1",
+  "azure-mgmt-monitor >= 5",
+  "azure-mgmt-network >= 23",
+  "azure-mgmt-privatedns >= 1",
+  "azure-mgmt-rdbms >= 10",
+  "azure-mgmt-redis >= 14",
+  "azure-mgmt-resourcegraph >= 8",
+  "azure-mgmt-sql >= 3",
+  "azure-mgmt-sqlvirtualmachine >= 0.6",
+  "azure-mgmt-subscription >= 3",
+  "azure-mgmt-synapse >= 2",
+  "azure-keyvault-administration >= 4",
+  "azure-keyvault-certificates >= 4",
+  "azure-keyvault-keys >= 4",
+  "azure-keyvault-secrets >= 4",
+
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/3MysticApes/3mystic_cloud_data_client"
+"Bug Tracker" = "https://github.com/3MysticApes/3mystic_cloud_data_client/issues"
+
+[project.scripts]
+3mystic_cloud_data_client = "threemystic_cloud_data_client.cli:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+path = "threemystic_cloud_data_client/__version__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+  "/scripts",
+]
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py37"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+select = [
+  "A",
+  "B",
+  "C",
+  "DTZ",
+  "E",
+  "EM",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "Q",
+  "RUF",
+  "S",
+  "SIM",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Ignore McCabe complexity
+  "C901",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105", "S106", "S107",
+  # https://github.com/charliermarsh/ruff/issues/1949
+  "PLR2004",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["3mystic-cloud-data-client"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use assertions and relative imports
+"tests/**/*" = ["S101", "TID252"]
+
+[tool.mypy]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+follow_imports = "normal"
+ignore_missing_imports = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+warn_no_return = false
+warn_unused_ignores = true
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["3mystic-cloud-data-client", "tests"]
+omit = [
+  "threemystic_cloud_data_client/__main__.py",
+]
+
+[tool.coverage.paths]
+threemystic_cloud_data_client = ["threemystic_cloud_data_client"]
+tests = ["tests", "*/threemystic_cloud_data_client/tests"]
+
