@@ -1,0 +1,165 @@
+Metadata-Version: 2.1
+Name: chowda
+Version: 0.3.0
+Summary: A CLAMS processing application
+Home-page: https://github.com/WGBH-MLA/chowda
+Author-Email: WGBH-MLA <ryan_harbert@wgbh.org>
+License: MIT
+Project-URL: Homepage, https://github.com/WGBH-MLA/chowda
+Project-URL: Documentation, https://WGBH-MLA.github.io/chowda/
+Project-URL: Repository, https://github.com/WGBH-MLA/chowda
+Requires-Python: <4.0,>=3.8.1
+Requires-Dist: fastapi~=0.101
+Requires-Dist: starlette-admin~=0.11
+Requires-Dist: sqlmodel~=0.0
+Requires-Dist: pydantic[email]~=1.10
+Requires-Dist: sonyci~=0.1
+Requires-Dist: psycopg2~=2.9
+Requires-Dist: metaflow~=2.9
+Requires-Dist: alembic~=1.11
+Requires-Dist: python-dotenv~=1.0
+Requires-Dist: authlib~=1.2
+Requires-Dist: itsdangerous~=2.1
+Requires-Dist: httpx~=0.24
+Requires-Dist: rich~=13.5
+Requires-Dist: uvicorn[standard]~=0.23; extra == "production"
+Requires-Dist: gunicorn~=21.2; extra == "production"
+Requires-Dist: factory-boy~=3.3; extra == "test"
+Requires-Dist: pytest~=7.4; extra == "test"
+Requires-Dist: pytest-cov~=4.1; extra == "test"
+Requires-Dist: pytest-sugar~=0.9; extra == "test"
+Requires-Dist: pytest-xdist~=3.3; extra == "test"
+Requires-Dist: httpx~=0.24; extra == "test"
+Requires-Dist: nbmake~=1.4; extra == "test"
+Requires-Dist: vcrpy~=5.1; extra == "test"
+Requires-Dist: pytest-vcr~=1.0; extra == "test"
+Requires-Dist: urllib3~=1.26; extra == "test"
+Requires-Dist: pytest-mock~=3.11; extra == "test"
+Requires-Dist: trio~=0.22; extra == "test"
+Requires-Dist: locust~=2.16; extra == "locust"
+Requires-Dist: pydantic-factories~=1.17; extra == "locust"
+Requires-Dist: kubernetes~=27.2; extra == "development"
+Provides-Extra: production
+Provides-Extra: test
+Provides-Extra: locust
+Provides-Extra: development
+Description-Content-Type: text/markdown
+
+![deploy](https://github.com/WGBH-MLA/chowda/actions/workflows/CI.yml/badge.svg)
+![deploy](https://github.com/WGBH-MLA/chowda/actions/workflows/CD.yml/badge.svg)
+[![codecov](https://codecov.io/gh/WGBH-MLA/chowda/branch/main/graph/badge.svg?token=0MKFUJD8UE)](https://codecov.io/gh/WGBH-MLA/chowda)
+
+# Chowda
+
+CLAMS processing app
+
+## Documentation
+
+Visit the [documentation](https://wgbh-mla.github.io/chowda/) for install and usage instructions.
+
+### Basic Pipeline with 2 CLAMS Apps
+
+Actors:
+
+- **User**
+- **Chowda**
+  - Webapp
+  - Pulbicly available on internet
+- **DB**
+  - Postgresql
+  - VPC
+  - Sperate Cluster?
+- **Runner**
+  - Pipeline Runner
+  - In CLAMS cluster
+- **CLAMS**
+  - Individual CLAMS apps
+  - In CLAMS cluster
+  - Deployed as either:
+    - Webservice
+    - Kubernetes Job
+
+### Call Sequence Diagram
+
+- **User** starts job
+- **Chowda** enters it in the **DB**
+- **Runner** sees new job and starts **CLAM1** with initial MMIF
+- **CLAM1** Processes data and returns MMIF to **Runner**
+- **Runner** Updates **DB** and starts **CLAM2**
+- **CLAM2** Processes data and returns MMIF to **Runner**
+- **Runner** Updates **DB**
+- **User** gets data from **Chowda**
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Chowda
+    participant DB
+    participant Runner
+    participant CLAM1
+    participant CLAM2
+
+
+    %% User starts job
+    activate User
+    note left of User: Hey, Chowda! Start batch 123 on pipeline 456
+    User ->> + Chowda: Start batch 123 with files [] through pipeline 456
+    Chowda ->> + DB: INSERT (batch, pipeline, Initial mmif) to TABLE pipeline_runs
+    DB ->> - Chowda: {pipeline_run_id, status: waiting}
+    Chowda ->> - User: Pipeline run {id} is {status}
+    deactivate User
+    loop backgroud process
+        Runner ->> DB: Check for new jobs
+    end
+
+    %% Runner
+    activate Runner
+    note left of Runner: Found new job!
+    Runner ->> + CLAM1: Start app 1, with initial MMIF
+    deactivate Runner
+
+    %% CLAM1
+    note right of CLAM1: Processing!
+    loop Status check
+        Runner ->> CLAM1: Status report!
+        CLAM1 ->> Runner: XX %
+        Runner ->> DB: UPDATE pipeline_run_id SET status CLAM1 XX %
+    end
+    note right of CLAM1: Done!
+    CLAM1 ->> - Runner: intermediate MMIF
+    activate Runner
+    Runner ->> DB: UPDATE pipeline_run_id SET status 'done' + MMIF
+
+    %% CLAM 2
+    Runner ->> + CLAM2: Start app 2 with intermediate MMIF
+    deactivate Runner
+    note right of CLAM2: Processing!
+    loop Status check
+        Runner ->> CLAM2: Status report!
+        CLAM2 ->> Runner: XX %
+        Runner ->> DB: UPDATE pipeline_run_id SET status CLAM2 XX %
+    end
+
+    %% User update
+    activate User
+    note left of User: Is it done yet?
+    User ->> + Chowda: Pipeline update?
+    Chowda ->> + DB: WATCH pipeline_runs WHERE status=running
+    DB ->> Chowda: ACTIVE_PIPELINE_RUNS
+    Chowda -->> User: Websocket: Batch 123 status [CLAM1: done, CLAM2: XX %]
+    note left of User: Not quite, but it should be done soon.
+
+    %% CLAMS finished
+    note right of CLAM2: Done!
+    CLAM2 -->> - Runner: finished MMIF
+    activate Runner
+    Runner ->> - DB: UPDATE pipeline_run_id SET status MMIF
+    DB ->> Chowda: Batch 123 update
+    Chowda -->> User: WS: batch 123 Finished!
+    deactivate Chowda
+    deactivate DB
+
+    note left of User: Yay! My metadata is perfect!
+    deactivate User
+
+```
