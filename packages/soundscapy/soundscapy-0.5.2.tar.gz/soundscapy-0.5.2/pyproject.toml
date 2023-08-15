@@ -1,0 +1,77 @@
+[tool.pdm.build]
+includes = []
+
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+groups = [
+    "default",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[project]
+name = "soundscapy"
+version = "0.5.2"
+description = "A python library for analysing and visualising soundscape assessments."
+authors = [
+    { name = "Andrew Mitchell", email = "andrew.mitchell.18@ucl.ac.uk" },
+]
+dependencies = [
+    "pandas[excel,performance]>=2.0.3",
+    "seaborn>=0.12.2",
+    "acoustics>=0.2.6",
+    "mosqito>=1.0.8",
+    "PyYAML>=6.0.1",
+    "scikit-maad>=1.4.0",
+    "tqdm>=4.66.1",
+    "matplotlib>=3.7.2",
+    "setuptools>=68.0.0",
+]
+requires-python = ">=3.9,<4.0"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: BSD License",
+]
+keywords = [
+    "soundscape",
+    "psychoacoustics",
+    "acoustics",
+    "audio analysis",
+]
+
+[project.license]
+text = "BSD-3-Clause"
+
+[project.urls]
+repository = "https://github.com/MitchellAcoustics/Soundscapy"
+documentation = "https://soundscapy.readthedocs.io/en/latest/"
+
+[project.optional-dependencies]
+docs = [
+    "sphinxcontrib-napoleon>=0.7",
+    "numpydoc>=1.5.0",
+    "jupyter>=1.0.0",
+    "jupytext>=1.15.0",
+    "sphinx-autodoc-typehints>=1.24.0",
+    "nbsphinx>=0.9.2",
+    "sphinx-autoapi>=2.1.1",
+    "sphinx-rtd-theme>1.2.2",
+    "Sphinx>=7.1.2",
+]
+test = [
+    "pytest>=7.4.0",
+    "setuptools>=68.0.0",
+    "nbmake>=1.4.1",
+    "pytest-xdist>=3.3.1",
+]
+dev = [
+    "black>=23.7.0",
+    "pycircular>=0.1.2",
+    "statsmodels>=0.14.0",
+]
