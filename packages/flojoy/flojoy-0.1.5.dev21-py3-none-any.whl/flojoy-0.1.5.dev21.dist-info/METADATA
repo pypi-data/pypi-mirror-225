@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: flojoy
+Version: 0.1.5.dev21
+Summary: Python client library for Flojoy.
+Home-page: https://github.com/flojoy-io/flojoy-python
+Download-URL: https://github.com/flojoy-io/flojoy-python/archive/refs/heads/main.zip
+Author: flojoy
+Author-email: jack.parmer@proton.me
+License: MIT
+Keywords: data-acquisition,lab-automation,low-code,python,scheduler,topic
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.10
+License-File: LICENSE.txt
+Requires-Dist: python-box
+Requires-Dist: requests
+Requires-Dist: networkx
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: pytest
+Requires-Dist: python-dotenv
+Requires-Dist: pyyaml
+Requires-Dist: plotly ==5.8.2
+Requires-Dist: huggingface-hub ==0.16.4
+Requires-Dist: Pillow
+Requires-Dist: cloudpickle
+
