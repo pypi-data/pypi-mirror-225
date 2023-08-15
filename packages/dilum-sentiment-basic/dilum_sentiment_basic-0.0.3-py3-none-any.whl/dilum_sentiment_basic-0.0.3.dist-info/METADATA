@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: dilum-sentiment-basic
+Version: 0.0.3
+Summary: Streamlit custom component to display sentiment analysis data.
+Home-page: https://dilums.com
+Author: Dilum Sanjaya
+Author-email: info@dilums.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: streamlit >=0.63
+
+# dilum-sentiment-basic
+
+Streamlit component that allows you to do X
+
+## Installation instructions
+
+```sh
+pip install dilum-sentiment-basic
+```
+
+## Usage instructions
+
+```python
+import streamlit as st
+
+from dilum_sentiment_basic import dilum_sentiment_basic
+
+value = dilum_sentiment_basic()
+
+st.write(value)
+```
