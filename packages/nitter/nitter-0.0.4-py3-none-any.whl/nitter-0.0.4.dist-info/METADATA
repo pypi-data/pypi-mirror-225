@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: nitter
+Version: 0.0.4
+Summary: Nitter is a simple library to scrap Twitter data using the Nitter website
+Home-page: https://github.com/iAliF/Nitter/
+Download-URL: https://github.com/iAliF/Nitter/archive/refs/tags/v0.0.4-alpha.zip
+Author: Ali Fotouhi
+Author-email: the.alif.dev@gmail.com 
+License: MIT
+Project-URL: Documentation, https://github.com/iAliF/Nitter/
+Project-URL: Source, https://github.com/iAliF/Nitter/
+Project-URL: Bug Tracker, https://github.com/iAliF/Nitter/issues
+Keywords: Nitter,Twitter,Twitter Scraper
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+
+# Nitter
+
+Simple **Twitter** scraper using **[Nitter](https://nitter.moomoo.me/)**
+
+For now, It's used only to scrap media (images)
+
+## How To Install
+
+You can use the following command to install it.
+
+```
+pip install nitter
+```
+
+## Getting Started
+
+```python
+from nitter import Nitter
+
+n = Nitter()
+from nitter import Nitter
+
+nitter = Nitter()
+username = "X"
+
+for media in nitter.get_media(username):
+    print("Caption:", media.caption)
+    print("Pub Date:", media.pub_date)
+    print("Images:", "\n".join(img.src for img in media.images), "\n")
+```
+
+## Licence
+
+[MIT](https://github.com/iAliF/Nitter/blob/master/LICENSE)
