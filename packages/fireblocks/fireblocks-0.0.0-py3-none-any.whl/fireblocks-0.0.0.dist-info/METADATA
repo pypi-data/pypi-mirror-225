@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: fireblocks
+Version: 0.0.0
+Summary: Fireblocks Auto Generated SDK
+Home-page: https://pypi.org/project/fireblocks
+Author: Fireblocks
+Author-email: support@fireblocks.com
+License: MIT License (MIT)
+Keywords: Fireblocks,SDK,Fireblocks API
+Requires-Python: >=3.7
+Requires-Dist: certifi >=14.5.14
+Requires-Dist: frozendict ~=2.3.4
+Requires-Dist: python-dateutil ~=2.7.0
+Requires-Dist: setuptools >=21.0.0
+Requires-Dist: typing-extensions ~=4.3.0
+Requires-Dist: urllib3 ~=2.0.0
+Requires-Dist: aenum >=3.1.11
+Requires-Dist: cryptography >=2.7
+Requires-Dist: PyJWT >=2.3.0
+Requires-Dist: requests >=2.22.0
+
+The Fireblocks SDK allows developers to seamlessly integrate with the Fireblocks platform and perform a variety of operations, including managing vault accounts and executing transactions securely.
