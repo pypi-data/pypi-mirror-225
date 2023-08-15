@@ -1,0 +1,30 @@
+[project]
+name = "datasette-litestream"
+version = "0.0.1a10"
+description = ""
+readme = "README.md"
+authors = [{name = "Alex Garcia"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = ["datasette>=1.0a3", "prometheus-client"]
+
+[project.urls]
+Homepage = "https://github.com/datasette/datasette-litestream"
+Changelog = "https://github.com/datasette/datasette-litestream/releases"
+Issues = "https://github.com/datasette/datasette-litestream/issues"
+CI = "https://github.com/datasette/datasette-litestream/actions"
+
+
+[project.entry-points.datasette]
+litestream = "datasette_litestream"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-asyncio"]
+
+[tool.setuptools.packages.find]
+namespaces = false
+
+[tool.setuptools.package-data]
+datasette_litestream = ["bin/*", "templates/*.html"]

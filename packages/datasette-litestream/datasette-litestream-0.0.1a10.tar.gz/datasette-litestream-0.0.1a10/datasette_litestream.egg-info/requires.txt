@@ -1,0 +1,6 @@
+datasette>=1.0a3
+prometheus-client
+
+[test]
+pytest
+pytest-asyncio
