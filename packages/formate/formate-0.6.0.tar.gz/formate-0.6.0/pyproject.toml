@@ -1,0 +1,213 @@
+[build-system]
+requires = [ "whey",]
+build-backend = "whey"
+
+[project]
+name = "formate"
+version = "0.6.0"
+description = "Python formatting mate."
+readme = "README.rst"
+keywords = [ "formatting", "linting",]
+dynamic = []
+dependencies = [
+    "astatine>=0.3.1",
+    "asttokens>=2.0.4",
+    "attr-utils>=0.5.5",
+    "attrs>=20.3.0",
+    "click>=7.1.2",
+    "consolekit>=1.0.0",
+    "dom-toml>=0.4.0",
+    "domdf-python-tools>=2.5.0",
+    "isort<5.11.0,>=5.5.2",
+    "prettyprinter>=0.18.0",
+    "typing-extensions>=3.7.4.3",
+    "yapf<0.33.0,>=0.30.0",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Typing :: Typed",
+]
+requires-python = ">=3.6"
+
+[[project.authors]]
+name = "Dominic Davis-Foster"
+email = "dominic@davis-foster.co.uk"
+
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/python-formate/formate"
+"Issue Tracker" = "https://github.com/python-formate/formate/issues"
+"Source Code" = "https://github.com/python-formate/formate"
+Documentation = "https://formate.readthedocs.io/en/latest"
+
+[project.scripts]
+formate = "formate.__main__:main"
+
+[tool.whey]
+base-classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Typing :: Typed",
+]
+python-versions = [ "3.6", "3.7", "3.8", "3.9", "3.10", "3.11",]
+python-implementations = [ "CPython", "PyPy",]
+platforms = [ "Windows", "macOS", "Linux",]
+license-key = "MIT"
+
+[tool.mkrecipe]
+conda-channels = [ "conda-forge", "domdfcoding",]
+extras = "all"
+
+[tool.dep_checker]
+allowed_unused = [ "prettyprinter",]
+
+[tool.sphinx-pyproject]
+github_username = "python-formate"
+github_repository = "formate"
+author = "Dominic Davis-Foster"
+project = "formate"
+copyright = "2020-2022 Dominic Davis-Foster"
+language = "en"
+package_root = "formate"
+extensions = [
+    "sphinx_toolbox",
+    "sphinx_toolbox.more_autodoc",
+    "sphinx_toolbox.more_autosummary",
+    "sphinx_toolbox.documentation_summary",
+    "sphinx_toolbox.tweaks.param_dash",
+    "sphinxcontrib.toctree_plus",
+    "sphinx_toolbox.tweaks.latex_layout",
+    "sphinx_toolbox.tweaks.latex_toc",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.mathjax",
+    "sphinxcontrib.extras_require",
+    "sphinx.ext.todo",
+    "sphinxemoji.sphinxemoji",
+    "notfound.extension",
+    "sphinx_copybutton",
+    "sphinxcontrib.default_values",
+    "sphinx_debuginfo",
+    "sphinx_licenseinfo",
+    "seed_intersphinx_mapping",
+    "html_section",
+    "attr_utils.autoattrs",
+    "sphinx_click",
+    "sphinx_toolbox.pre_commit",
+    "sphinx_toolbox.more_autosummary.column_widths",
+    "sphinx_favicon",
+    "sphinx_toolbox_experimental.changelog",
+    "sphinx_toolbox_experimental.missing_xref",
+    "local_extension",
+]
+sphinxemoji_style = "twemoji"
+gitstamp_fmt = "%d %b %Y"
+templates_path = [ "_templates",]
+html_static_path = [ "_static",]
+source_suffix = ".rst"
+master_doc = "index"
+suppress_warnings = [ "image.nonlocal_uri",]
+pygments_style = "default"
+html_theme = "furo"
+html_theme_path = [ "../..",]
+html_show_sourcelink = true
+toctree_plus_types = [
+    "class",
+    "confval",
+    "data",
+    "directive",
+    "enum",
+    "exception",
+    "flag",
+    "function",
+    "namedtuple",
+    "protocol",
+    "role",
+    "typeddict",
+]
+add_module_names = false
+hide_none_rtype = true
+all_typevars = true
+overloads_location = "bottom"
+html_codeblock_linenos_style = "table"
+autodoc_exclude_members = [
+    "__dict__",
+    "__class__",
+    "__dir__",
+    "__weakref__",
+    "__module__",
+    "__annotations__",
+    "__orig_bases__",
+    "__parameters__",
+    "__subclasshook__",
+    "__init_subclass__",
+    "__attrs_attrs__",
+    "__init__",
+    "__new__",
+    "__getnewargs__",
+    "__abstractmethods__",
+    "__hash__",
+]
+
+[tool.mypy]
+python_version = "3.8"
+namespace_packages = true
+check_untyped_defs = true
+warn_unused_ignores = true
+no_implicit_optional = true
+plugins = [ "attr_utils.mypy_plugin",]
+show_error_codes = true
+
+[tool.snippet-fmt]
+directives = [ "code-block",]
+
+[project.entry-points.formate_hooks]
+reformat-generics = "formate.reformat_generics:reformat_generics"
+dynamic_quotes = "formate.dynamic_quotes:dynamic_quotes"
+noqa_reformat = "formate.mini_hooks:noqa_reformat"
+squish_stubs = "formate.mini_hooks:squish_stubs"
+ellipsis_reformat = "formate.ellipses:ellipsis_reformat"
+collections-import-rewrite = "formate.imports:rewrite_collections_abc_imports"
+isort = "formate:isort_hook"
+yapf = "formate:yapf_hook"
+
+[tool.dep_checker.name_mapping]
+attrs = "attr"
+
+[tool.dependency-dash."requirements.txt"]
+order = 10
+
+[tool.dependency-dash."tests/requirements.txt"]
+order = 20
+include = false
+
+[tool.dependency-dash."doc-source/requirements.txt"]
+order = 30
+include = false
+
+[tool.snippet-fmt.languages.python]
+reformat = true
+
+[tool.snippet-fmt.languages.TOML]
+reformat = true
+
+[tool.snippet-fmt.languages.ini]
+
+[tool.snippet-fmt.languages.json]
