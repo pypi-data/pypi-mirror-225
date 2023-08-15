@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: oc-checksums-worker
+Version: 2.0.4
+Summary: Checksums worker for AMQP queue
+License: Apache2.0
+Requires-Python: >=3.6
+Description-Content-Type: text/plain
+License-File: LICENSE
+Requires-Dist: oc-checksumsq
+Requires-Dist: oc-delivery-apps >=11.2.9
+Requires-Dist: oc-orm-initializator
+Requires-Dist: oc-cdtapi
+
+Checksums Django-based worker for AMQP queue
