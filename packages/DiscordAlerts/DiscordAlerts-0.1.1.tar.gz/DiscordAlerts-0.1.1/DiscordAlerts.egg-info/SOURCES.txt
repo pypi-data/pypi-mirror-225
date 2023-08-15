@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+DiscordAlerts.egg-info/PKG-INFO
+DiscordAlerts.egg-info/SOURCES.txt
+DiscordAlerts.egg-info/dependency_links.txt
+DiscordAlerts.egg-info/requires.txt
+DiscordAlerts.egg-info/top_level.txt
+alerts/__init__.py
+alerts/alerts.py
+discord_alert/__init__.py
+discord_alert/discord_alert.py
+tests/__init__.py
+tests/test_alerts.py
+tests/test_discord_alert.py
