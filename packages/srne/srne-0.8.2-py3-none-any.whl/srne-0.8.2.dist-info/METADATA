@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: srne
+Version: 0.8.2
+Summary: A library for SRNE compatible devices.
+Author-email: adorjanw <adorjanw@outlook.com>
+Project-URL: Homepage, https://github.com/adorjanw/srne-python
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.7.3
+Description-Content-Type: text/markdown
+Requires-Dist: pyserial ==3.5
+
+# srne-python
+ A python library for controlling SRNE compatible off-grid, grid-connected and energy storage inverters.
+
+# Usage:
+
+- Import the controller
+- Basic configuration (serial port, register filter, etc.)
+- Read, write registers
+
+## Example:
+
+```python
+from srne import Controller
+
+controller = Controller(dummy=True)
+
+result = controller.read_register("battery_voltage")
+
+print(result)
+# output:
+# {'register': Register(0x101), 'response': ReadHoldingRegistersResponse([0x0, 0x3, 0x2, 0x1, 0x1, 0x45, 0xd4])}
+```
+
+For additional examples check the repo.
+
+## Notes
+
+No tests. Most of the functionality is showcased in the examples, you can see if it works.
+
+Input value validators or `encoder`s aren't implemented yet, not sure if will be.
+
+Modbus implementation is partial and has poor error handling, but follows Modbus and SRNE specifications.
+
+For writing web apps the `AsyncController` is recommended.
+
+Register filtering is a bit complicated...
+Calling it with no arguments will select every readable register to make things easier.
+Its intended use is to run less function calls when reading the same registers over
+and over again. To use this, first call the `filter_registers()` function then each subsequent call of `get_register_values()` and `serialize()` on the controller will use the buffered register sequences.
