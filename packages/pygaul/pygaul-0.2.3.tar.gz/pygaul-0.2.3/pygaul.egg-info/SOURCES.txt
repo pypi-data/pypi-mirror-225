@@ -1,0 +1,14 @@
+LICENSE
+README.rst
+pyproject.toml
+pygaul/__init__.py
+pygaul.egg-info/PKG-INFO
+pygaul.egg-info/SOURCES.txt
+pygaul.egg-info/dependency_links.txt
+pygaul.egg-info/requires.txt
+pygaul.egg-info/top_level.txt
+pygaul/data/gaul_continent.json
+pygaul/data/gaul_database.parquet
+tests/test_continent.py
+tests/test_get_items.py
+tests/test_get_name.py
