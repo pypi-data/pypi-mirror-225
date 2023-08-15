@@ -1,0 +1,4 @@
+[console_scripts]
+delogo_video = sometools.videos.delogo:delogo_video.shell
+download = sometools.https.downloader:download.shell
+gen_residence_permit_photo = sometools.images.photo:gen_residence_permit_photo.shell
