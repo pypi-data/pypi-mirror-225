@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = auditmiddleware
+omit = auditmiddleware/tests/*
+
+[report]
+ignore_errors = False

@@ -1,0 +1,143 @@
+CHANGES
+=======
+
+* fix trailing whitespace
+* add get to webob.adhoc\_attrs
+* attempt backup project\_id in case of none
+* replace setdaemon
+* Update neutron\_audit\_map.yaml
+* undeclared resources X is a prefix
+* Add application credential id to message payload
+* update swift\_audit\_map.yaml
+* swift audit mapping service type to 'storage/object'
+* create swift\_audit\_map.yaml
+* Octavia audit map: Add missing typeuri for members
+* Revert "add app cred to audit logging"
+* add app cred to audit logging
+* setup.cfg: Replace dashes with underscores
+* Update all audit maps to current versions
+* Update cinder audit map
+* Update Barbican Audit Map with secret exclusion
+* Add renovate.json
+
+v1.1
+----
+
+* Don't read JSON from request of non application/json content-type
+* Add custom ID for barbican audit map
+* update barbican audit map with custom\_id
+* add unique l7policy\_id to octavia audit map
+* add octavia support and audit map
+
+v1.0
+----
+
+* Ironic support and audit map
+* update barbican audit map
+* Add Glance and Barbican support
+* pin datadog requirements, test failures
+* glance mapping: fix linting rules
+* fix singleton child id
+* additional updates
+* first updates
+* fix pep8
+* fix pep8
+* fixing https://bugs.launchpad.net/keystonemiddleware/+bug/1809101 inherited by us \* better not change the request context since we do not own it
+* add docs + fix pep8 issues (#44)
+* fixing https://bugs.launchpad.net/keystonemiddleware/+bug/1809101 inherited by us \* better not change the request context since we do not own it
+* first attempt
+* updated mapping
+* glance audit map v1
+* Fix unwanted sideeffect of attach\_payload on original request payload / Cleanup (#42)
+* update el\_type\_uri for l7policies
+* improve documentation (#41)
+* sanitize debug similar to payload for events
+* add l7policies to neutron mapping
+* fix dump on integer resource ID (#39)
+* fix dump on integer resource ID (#38)
+* support RFC 7159 + robustness (#37)
+* pep8 message
+* fix pep8 message
+* Add designate mapping test
+* add py3.6 build to travis
+* update manila mapping
+* Minor improvements (#34)
+* Create events also for undeclared resources (#31)
+* Manila + Misc. (#33)
+* fix include/exclude syntax (#32)
+* update designate audit map
+* More python 3 fixes
+* Fixup travis yaml
+* Python 3 compatability
+* add custom router actions
+* clarify configuration
+* also set overflow to zero on start; fix doc
+* reset sporadic metrics so they show up
+* cumulative fixes to mapping files
+* typo fixes (#29)
+* improve default mapping; improve tests+doc \* automatically ignore "os-" prefix when deriving the JSON   envelope attribute name from the api name of the resource \* add tests to find issues in the notifier's background thread \* improve documentation
+* fix attribute error
+* remove sample\_rates due to lack of P8S support
+* fix doc on config
+* Update README.md
+* Update README.md
+* Emit event stats and operational metrics using dogstatsd (#28)
+* fix typo
+* Support Cinder + misc. improvements (#25)
+* use sub-action for keys; add to cinder mapping
+* Support resource keys
+* merge master
+* use named parameters to clarity
+* explain payload rec
+* record payloads (#24)
+* 19 event time format fix (#21)
+* refine neutron mapping and tests
+* fix log level
+* support old tenant\_id attribute
+* support HEAD and PATCH
+* consistent naming for floating IPs
+* 15 cross tenant (#17)
+* 15 cross tenant (#16)
+* warn on missing ID field; add tests
+* handle non-standard name fields
+* handle resource names with dashes properly
+* Use one observer type per service (#14)
+* add audit mapping for neutron (#12)
+* Support batch-create events required e.g. by the networks resource of neutron (#11)
+* Support batch-create events required e.g. by the networks resource of neutron
+* fix pep8 issue on travis build
+* fixes #8
+* avoid debug log on first queued msg
+* more diag info for filtered actions
+* more debug logging
+* set observer
+* catch any exception from thread to keep it up
+* increase log-level for ignored paths
+* support regex in prefix
+* backwards compatible to older webob package version
+* log skipped prefix
+* remove dependency to keystonemiddleware \_common package since this is what breaks on staging (#7)
+* remove dependency to keystonemiddleware \_common package since this is what breaks on staging
+* Nonblocking (#6)
+* remove bloated request context from msg
+* Revert "remove bloated request context from msg"
+* remove bloated request context from msg
+* completion of mapping to cover full Nova api
+* fix remaining tests; cover cornercases
+* finish tests for engine; start with nova mapping
+* fix all pep8 issues
+* disable pep8
+* add stestr
+* make executable
+* Create tox\_install.sh
+* Update .travis.yml
+* Update .travis.yml
+* Update README.md
+* Rename .travis to .travis.yml
+* Create .travis
+* rework tests: 5 done
+* first test passes after redesign
+* Single event per call
+* inherit what is reusable
+* Update README.md
+* Initial commit

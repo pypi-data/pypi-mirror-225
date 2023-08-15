@@ -1,0 +1,15 @@
+service_type: 'service/dns'
+service_name: 'designate'
+
+prefix: '/v2'
+
+resources:
+  zones:
+    children:
+      recordsets:
+  tlds:
+  tsigkeys:
+  blacklists:
+  quotas:
+  # this path is reverse/floatingips, needs mapping adjustment
+  floatingips:

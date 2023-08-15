@@ -1,0 +1,23 @@
+service_type: 'storage/object'
+service_name: 'swift'
+
+prefix: '/v1'
+
+resources:
+  accounts:
+    custom_id: account
+    children:
+      containers:
+        custom_id: container_name
+        children:
+          # Objects can have / in the name, but are not additional sub hirearchy. Need to determine how to map that.
+          objects:
+            custom_id: object_name
+            payloads:
+              exclude:
+                - etag
+                - delete_at
+                - delete_after
+            custom_actions:
+              # model details listing a action
+              details: read/list/details
