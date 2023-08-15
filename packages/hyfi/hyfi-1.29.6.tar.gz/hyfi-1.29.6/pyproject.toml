@@ -1,0 +1,222 @@
+[tool.poetry]
+name = "hyfi"
+version = "1.29.6"
+description = "Hydra Fast Interface (Hydra and Pydantic based interface framework)"
+authors = ["Young Joon Lee <entelecheia@hotmail.com>"]
+license = "MIT"
+homepage = "https://hyfi.entelecheia.ai"
+repository = "https://github.com/entelecheia/hyfi"
+readme = "README.md"
+packages = [{ include = "hyfi", from = "src" }]
+
+[tool.poetry.scripts]
+hyfi = 'hyfi.__cli__:hyfi_main'
+hyfi-run = 'hyfi.__click__:cli'
+
+[tool.poetry.dependencies]
+python = "^3.8.1, <3.12"
+hydra-core = "^1.3.2"
+hydra-colorlog = "^1.2.0"
+pydantic = "^2.1.1"
+chardet = "<=5.2.0"
+pandas = ">=1.5.3,<=2.0.3"
+scipy = "^1.10.1"
+matplotlib = "^3.7.1"
+numpy = "<=1.25.2"
+python-dotenv = "^1.0.0"
+requests = "^2.27.1"
+tqdm = "^4.64.1"
+colorama = "^0.4.3"
+pathspec = ">=0.9.0"
+filelock = ">=3.4,<=3.12.2"
+rich = ">=12.1,<14.0"
+gdown = "<=4.6.6"
+huggingface-hub = ">=0.8.1,<=0.16.4"
+# google-cloud-storage = ">=1.32.0,<3.0"
+# boto3 = ">=1.0,<2.0"
+click = "<=8.1.6"
+pyarrow = "<=12.0.1"
+datasets = ">=2.0.0,<=2.14.4"
+joblib = ">=1.2.0,<=1.3.2"
+pydantic-settings = "^2.0.1"
+
+[tool.poetry.group.ipython]
+optional = true
+
+[tool.poetry.group.ipython.dependencies]
+# A list of all of the optional dependencies, some of which are included in the
+# below `extras`. They can be opted into by apps.
+ipython = "<=8.12.2"
+ipython-autotime = "^0.3.1"
+ipywidgets = "^8.0.6"
+
+[tool.poetry.group.loky]
+optional = true
+
+[tool.poetry.group.loky.dependencies]
+loky = "^3.4.1"
+
+[tool.poetry.group.ray]
+optional = true
+
+[tool.poetry.group.ray.dependencies]
+ray = "^2.5.1"
+
+[tool.poetry.group.p_tqdm]
+optional = true
+
+[tool.poetry.group.p_tqdm.dependencies]
+p-tqdm = "^1.4.0"
+
+[tool.poetry.group.numba]
+optional = true
+
+[tool.poetry.group.numba.dependencies]
+numba = "^0.57.1"
+
+[tool.poetry.extras]
+ipython = ["ipython", "ipython-autotime", "ipywidgets"]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+python-semantic-release = "^7.33.1"
+isort = "^5.12.0"
+black = ">=23.0.0,<=23.3.0"
+flake8 = "^6.0.0"
+mypy = "^1.0.0"
+flake8-pyproject = "^1.2.2"
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+ipykernel = "^6.22.0"
+flaky = "^3.7.0"
+responses = "^0.23.1"
+cryptography = "^41.0.3"
+
+[tool.poe]
+include = [".tasks.toml", ".tasks-extra.toml"]
+
+[tool.black]
+exclude = [
+    '_version.py',
+    'node_modules',
+    '_build',
+    'config',
+    'docs',
+    'tests',
+    'venv',
+    '.copier-template',
+    '.refs',
+]
+
+[tool.isort]
+profile = "black"
+skip = [
+    '_version.py',
+    'node_modules',
+    '_build',
+    'config',
+    'docs',
+    'tests',
+    'venv',
+    '.copier-template',
+    '.refs',
+    "cpath",
+]
+
+[tool.flake8]
+exclude = [
+    "node_modules",
+    "_build",
+    "docs",
+    'config',
+    "tests",
+    "venv",
+    ".copier-template",
+    ".refs",
+    "cached_path",
+]
+ignore = ["E501", "W503"]
+per-file-ignores = [
+    '__init__.py:F401,F403',
+    '_version.py:W292',
+    '*:E501,E203',
+    'notebook.py:F821,E501',
+    'motion.py:W605,E501',
+]
+
+[tool.mypy]
+namespace_packages = true
+exclude = [
+    "node_modules",
+    "build",
+    "_build",
+    'config',
+    "dist",
+    "docs",
+    "tests",
+    "venv",
+    ".copier-template",
+    ".refs",
+    "cpath",
+]
+# 3rd party import
+ignore_missing_imports = true
+# dynamic typing
+disallow_any_unimported = false
+disallow_any_expr = false
+disallow_any_decorated = false
+disallow_any_explicit = false
+disallow_any_generics = false
+disallow_subclassing_any = false
+# platform
+python_version = "3.8"
+# untyped
+disallow_untyped_calls = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_untyped_decorators = false
+# None and Optional
+no_implicit_optional = false
+# Warnings
+warn_return_any = false
+warn_unreachable = true
+# Misc
+pretty = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider" # deactivating pytest caching.
+
+[tool.coverage.report]
+exclude_lines = ['if __name__ == "__main__":']
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.0.1"
+tag_format = "v$version"
+
+[tool.setuptools_scm]
+write_to_template = '__version__ = "{version}"'
+tag_regex = '^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$'
+
+[tool.semantic_release]
+branch = "main"
+version_variable = "src/hyfi/_version.py:__version__"
+version_toml = "pyproject.toml:tool.poetry.version"
+version_source = "tag"
+commit_version_number = true                                    # required for version_source = "tag"
+commit_subject = "chore(release): :rocket: {version} [skip ci]"
+prerelease_tag = "rc"
+major_on_zero = true
+tag_commit = true
+changelog_file = "CHANGELOG.md"
+upload_to_repository = true
+upload_to_release = true
+build_command = "poetry build --no-cache"
+hvcs = "github"                                                 # hosting version control system, gitlab is also supported
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
