@@ -1,0 +1,20 @@
+/* your styles go here */
+
+.i_green {
+    color: green;
+}
+
+.i_red {
+    color: red;
+}
+
+.i_blue {
+    color: cornflowerblue;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+    color: grey;
+  }

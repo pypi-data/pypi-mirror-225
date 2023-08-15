@@ -1,0 +1,96 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid"><br/>
+	{% if painel_check %}
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-header">Painel Rekrutamentu</div>
+				<div class="card-body">
+          {% for painel in painel_check %}
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table table-sm table-bordered">
+								<tr>
+									<th width="20%">Deskrisaun</th><td width="25%">{{ painel.plan.description }}</td> <th width="30%" class="text-center">Vaga</th> <th width="15%" class="text-center">Ita Nia Pojisaun</th> <th class="text-center">#</th>
+								</tr>
+								<tr>
+									<th>Objectivu</th><td>{{ painel.plan.objective }}</td> <td rowspan="2" align="center" class="align-middle"><a href="{% url 'rec2-u-cand-list' painel.plan_pos.id painel.id %}">{{ painel.plan_pos.position }}</a></td></td><td rowspan="2" align="center" class="align-middle">{{ painel.position }}</td> <td rowspan="2" align="center" class="align-middle"><a href="{% url 'rec2-cand-result-list' painel.plan.hashed painel.plan_pos.id %}" class="btn btn-sm btn-info">Resultadu <i class="fa fa-list"></i></a></td>
+								</tr>
+								<tr>
+									<th>Data</th><td>{{ painel.plan.date|date:"d/m/Y" }}
+								</tr>
+                <tr></tr>
+							</table>
+						</div><!--end col-->
+					</div><!--end row-->
+          {% endfor %}
+				</div>
+			</div><!--end card-->
+		</div><!--end col-->
+	</div><!--end row-->
+	{% endif %}
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+              <figure class="highcharts-figure">
+                  <div id="genderChart_data1"></div>
+              </figure>
+            </div>
+          </div>
+        </div><!--end col-->
+        <div class="col-sm-6">
+          <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+              <figure class="highcharts-figure">
+                  <div id="ageChart_data"></div>
+              </figure>
+            </div>
+          </div>
+        </div><!--end col-->
+      </div>
+    <hr/>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+          <div class="card-body">
+                <figure class="highcharts-figure">
+                    <div id="setEmpNivelAca"></div>
+                </figure>
+              </div>
+            </div>
+          </div><!--end col-->
+          <div class="col-sm-6">
+            <div class="card shadow-lg pt-1 border-primary rounded">
+              <div class="card-body">
+              <figure class="highcharts-figure">
+                  <div id="setEmpContCat"></div>
+              </figure>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+    </div><!--end row-->
+  </div><!--end container-->
+{% endblock %}
+{% block scripts %}
+<!-- Charts-->
+    <!-- Charts-->
+    <script src="{% static 'main/js/highcharts/highcharts.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/sankey.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/organization.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/export-data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/exporting.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/accessibility.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/3d.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/cylinder.js' %}"></script>
+    <script>
+        {% include 'employee_chart/myoption.js' %}
+        {% include 'employee_chart/emp_gender.js' %}
+        {% include 'employee_chart/emp_nivelaca.js' %}
+        {% include 'employee_chart/emp_age2.js' %}
+        {% include 'contract_chart/cont_cat.js' %}
+    </script>
+{% endblock %}

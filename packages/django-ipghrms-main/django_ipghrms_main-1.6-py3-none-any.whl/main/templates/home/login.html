@@ -1,0 +1,79 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>LOGIN</title>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}">
+		<link rel="shortcut icon" href="{% static 'main/images/logo.ico' %}">
+		<link rel="stylesheet" href="{% static 'main/vendor/font-awesome/css/font-awesome.min.css' %}">
+
+	</head>
+	<body>
+        <!-- <header class="site-header">
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+            </nav>
+        </header> -->
+
+	<main role="main" class="container">
+		<div class="row mt-2 d-flex justify-content-center">
+			<table>
+				<thead>
+					<tr align="center">
+						<td>
+							<img src="{% static 'main/images/ipg.png' %}" style="height: 150px; max-width: 100%; "  />
+						</td>
+					</tr>
+					<tr align="center">
+						<td>
+							<h4>INSTITUTO DO PETRÓLEO E GEOLOGIA, TIMOR LESTE - (IPG)</h4>
+                			<h5><strong>HUMAN RESOURCE MANAGEMENT SYSTEM</strong></h5>
+						</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row justify-content-center">
+                        <div class="col-sm-4">
+                            <div class="card border-primary shadow-lg">
+                                <div class="card-header bg-primary" style="color: white">
+                                    Prenche Username no Password
+                                </div>
+                                <div class="card-body">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <button class="btn btn-sm btn-outline-info" type="submit">Log In <i class="fa fa-sign-in"></i></button>
+                                        </div>
+                                    </form>
+                                </div> <!--end card-body-->
+                            </div> <!--end card-->
+                        </div> <!--end col-->
+                    </div> <!--end row-->
+				</div>
+			</div>
+		</main>
+		<!-- Footer -->
+		<footer class="page-footer font-small blue">
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">© 2022 Copyright:
+				<a href="#"> IPG-HRMS</a>
+			</div>
+			<!-- Copyright -->
+		</footer>
+		<!-- Footer -->
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'main/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	</body>
+</html>

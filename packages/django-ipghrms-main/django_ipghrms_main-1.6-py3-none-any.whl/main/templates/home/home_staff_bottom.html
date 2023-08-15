@@ -1,0 +1,74 @@
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>DEPENDENCIA</strong></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>Naran</th>
+		<th>Fatin & Data Moris</th>
+		<th>Sexu</th>
+		<th>Relasaun</th>
+	</tr>
+	{% for obj in empdependency %}
+	<tr>
+		<td>{{ obj }}</td>
+		<td>{{ obj.pob }}, {{ obj.dob }}</td>
+		<td>{{ obj.sex }}</td>
+		<td>{{ obj.family_relation }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>EDUKASAUN FORMAL</strong></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>Nivel Academiku</th>
+		<th>Universidade</th>
+		<th>Ekipa</th>
+		<th>Area</th>
+		<th>Tinan</th>
+	</tr>
+	<tr>
+		<td>{{ formaledu.education_level }}</td>
+		<td>{% if formaledu.university %}{{ formaledu.university }}{% endif %}</td>
+		<td>{% if formaledu.department %}{{ formaledu.department }}{% endif %}</td>
+		<td>{% if formaledu.area %}{{ formaledu.area }}{% endif %}</td>
+		<td>{{ formaledu.graduation_year|date:"Y" }}</td>
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>EDUKASAUN NON-FORMAL</strong></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>Titulu</th>
+		<th>Fatin</th>
+		<th>Periodu</th>
+		<th>Horas</th>
+	</tr>
+	<tr>
+		<td>{{ nonformaledu.title }}</td>
+		<td>{{ nonformaledu.tutelary_entity }}</td>
+		<td>{{ nonformaledu.start_date|date:"d/m/Y" }} - {{ nonformaledu.end_date|date:"d/m/Y" }}</td>
+		<td>{{ nonformaledu.hours }}</td>
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="4"><h6><strong>ESPERENCIA SERVISU</strong></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>Instituisaun</th>
+		<th>Pojisaun</th>
+		<th>Periodu</th>
+	</tr>
+	<tr>
+		<td>{{ workexp.institute }}</td>
+		<td>{{ workexp.position }}</td>
+		<td>{{ workexp.start_date|date:"d/m/Y" }} - {{ workexp.end_date|date:"d/m/Y" }}</td>
+	</tr>
+</table>

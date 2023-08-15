@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if title %}
+			<title>IPG-HRMS - {{ title|upper }}</title>
+		{% else %}
+			<title>IPG-HRMS</title>
+		{% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{% static 'main/vendor/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="{% static 'main/css/fontastic.css' %}">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="{% static 'main/css/grasp_mobile_progress_circle-1.0.0.min.css' %}">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet" href="{% static 'main/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css' %}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'main/css/style.default.css' %}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}">
+    <script src="{% static 'main/js/fa_kit.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'main/css/select2.min.css' %}">
+    {% block head %}
+      
+    {% endblock head %}
+  </head>
+  <body>
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+      {% include 'main/sidebar.html' %}
+    </nav>
+    <div class="page">
+      <!-- navbar-->
+      <header class="header">
+        {% include 'main/header.html' %}
+      </header>
+      <section>
+        {% if messages %}
+						{% for message in messages %}
+							<div class=" text-center alert alert-{{ message.tags }} alert-dismissible m-2 p-2" id="alertPopup">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endif %}
+        {% block content %}{% endblock %}
+      </section>
+      <footer class="main-footer">
+        {% include 'main/footer.html' %}
+      </footer>
+    </div>
+    <!-- JavaScript files-->
+    <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'main/vendor/popper.js/umd/popper.min.js' %}"> </script>
+    <script src="{% static 'main/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/grasp_mobile_progress_circle-1.0.0.min.js' %}"></script>
+    <script src="{% static 'main/vendor/jquery.cookie/jquery.cookie.js' %}"> </script>
+    <script src="{% static 'main/vendor/jquery-validation/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'main/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <!-- Main File-->
+    <script src="{% static 'main/js/front.js' %}"></script>
+    <script src="{% static 'main/js/select2.min.js' %}"></script>
+    <!-- Datatable -->
+		<link href="{% static 'main/vendor/datatables/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+		<script src="{% static 'main/vendor/datatables/js/jquery.dataTables.min.js' %}" type="text/javascript"></script>
+		<script src="{% static 'main/vendor/datatables/js/dataTables.bootstrap4.min.js' %}" type="text/javascript"></script>
+    <script>
+      setTimeout(function() {
+        $("#alertPopup").fadeOut(1000, function() {
+          $(this).alert("close");
+        });
+      }, 4500);
+    </script>
+      {% if user_group == 'hr' %}
+      <script src="{% static 'notif/hr/notif1.js' %}"></script>
+      <script src="{% static 'notif/hr/notif2.js' %}"></script>
+      <script src="{% static 'notif/hr/notif3.js' %}"></script>
+      <script src="{% static 'notif/hr/notif4.js' %}"></script>
+      <script src="{% static 'notif/hr/notif5.js' %}"></script>
+      <script src="{% static 'notif/hr/notif6.js' %}"></script>
+      {% endif %} 
+      {% if user_group == 'dep' %}
+      <script src="{% static 'notif/dep/notif0.js' %}"></script>
+      <script src="{% static 'notif/dep/notif1.js' %}"></script>
+      {% endif %} 
+      {% if user_group == 'staff' %}
+      <script src="{% static 'notif/staff/notif0.js' %}"></script>
+      <script src="{% static 'notif/staff/notif1.js' %}"></script>
+      {% endif %} 
+      {% if user_group == 'unit' %}
+      <script src="{% static 'notif/div/notif0.js' %}"></script>
+      <script src="{% static 'notif/div/notif1.js' %}"></script>
+      {% endif %} 
+      {% if user_group == 'de' %}
+      <script src="{% static 'notif/pr/notif0.js' %}"></script>
+      <script src="{% static 'notif/pr/notif1.js' %}"></script>
+      {% endif %} 
+      {% if user_group == 'deputy' %}
+      <script src="{% static 'notif/vice/notif0.js' %}"></script>
+      <script src="{% static 'notif/vice/notif1.js' %}"></script>
+      {% endif %} 
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{% load filter %}
+<div class="main-menu">
+  <h5 class="sidenav-heading">Main</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li class="{% if request.path == '/'  %} active {% endif %}" ><a href="{% url 'home' %}"> <i class="icon-home"></i>Painel</a></li>
+    <li class="{% if request.path|starts_with:'/employee/'   %} active {% endif %}"><a href="{% url 'u-emp-dep-dash' %}"> <i class="icon-user"></i> Pessoal</a></li>
+    <!-- <li><a href="#"> <i class="icon-bill"></i> Kontratu</a></li> -->
+    <!-- <li><a href="{% url 'leave-dep-list' %}"> <i class="icon-interface-windows"></i> Licensa</a></li> -->
+    <li class="{% if request.path|starts_with:'/leave/' %} active {% endif %}"><a href="#licencaDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> Licenca </a>
+      <ul id="licencaDropdown" class="collapse list-unstyled ">
+        <li><a href="{% url 'leave-dep-list' %}">Aplikasaun</a></li>
+        <li><a href="{% url 'leave-dep-aprv-list' %}">Aprovasaun</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path|starts_with:'/perform/' %} active {% endif %}"><a href="{% url 'staff-perform-list' %}"> <i class="fa-solid fa-clipboard-list"></i> Avaliasaun</a></li>
+    <li class="{% if request.path|starts_with:'/employee-contact/' %} active {% endif %}"><a href="{% url 'emp-contact-list' %}"> <i class="fa fa-file-lines"></i> Kontakto</a></li>
+  </ul>
+</div>
+<div class="admin-menu">
+<h5 class="sidenav-heading">Perfil & Konta</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">                  
+  <li class="{% if request.path|starts_with:'/profile/' %} active {% endif %}"><a href="{% url 'user-profile' %}"> <i class="icon-home"></i>Perfil</a></li>
+  <li class="{% if request.path|starts_with:'/account/' %} active {% endif %}"><a href="{% url 'user-account' %}"> <i class="icon-user"></i>Konta</a></li>
+</ul>
+</div>
+<div class="admin-menu">
+<!-- <h5 class="sidenav-heading">Mapa</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">
+  <li><a href="#"> <i class="fa fa-google"></i>Google</a></li>
+</ul> -->
+</div>

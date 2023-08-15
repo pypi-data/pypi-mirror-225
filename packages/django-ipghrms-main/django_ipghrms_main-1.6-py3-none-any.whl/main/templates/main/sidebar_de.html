@@ -1,0 +1,36 @@
+{% load filter %}
+<div class="main-menu">
+  <h5 class="sidenav-heading">Main</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li class="{% if request.path == '/'  %} active text-color   {% endif %}" ><a href="{% url 'home' %}"><i class="fa fa-home"></i> Painel</a></li>
+    <li class="{% if request.path|starts_with:'/employee/'   %} active {% endif %}"><a href="{% url 'emp-dash' %}"><i class="fa fa-user"></i> Pessoal</a></li>
+    <li class="{% if request.path|starts_with:'/cont/' or  request.path|starts_with:'/payroll/'  %} active {% endif %}"><a href="{% url 'cont-dash' %}"><i class="fa fa-file-invoice"></i> Kontratu</a></li>
+    <li class="{% if request.path|starts_with:'/manager/' %} active {% endif %}"><a href="{% url 'man-dash' %}"><i class="fa fa-users-gear"></i> Organograma</a></li>
+    <li class="{% if request.path|starts_with:'/recruitment/' %} active {% endif %}"><a href="{% url 'rec2-de-plan-list' %}"> <i class="fa fa-users"></i> Rekrutamentu</a></li>
+    <li class="{% if request.path|starts_with:'/onboard/' %} active {% endif %}"><a href="{% url 'onboard-emp-list' %}"><i class="fa fa-list-check"></i> Onboard</a></li>
+    <li class="{% if request.path|starts_with:'/leave/' %} active {% endif %}"><a href="#licencaDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-file-lines"></i> Licenca </a>
+      <ul id="licencaDropdown" class="collapse list-unstyled ">
+        <li><a href="{% url 'leave-de-list' %}">Aplikasaun</a></li>
+        <li><a href="{% url 'leave-de-appr-list' %}">Aprovasaun</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path|starts_with:'/perform/' %} active {% endif %}"><a href="{% url 'all-eval-dash' %}"> <i class="fa fa-clipboard-list"></i>Avaliasaun</a></li>
+    <li class="{% if request.path|starts_with:'/attendance/' %} active {% endif %}"><a href="{% url 'r-att-dash' %}"> <i class="fa fa-clipboard-user"></i> Absensia</a></li>
+    <li class="{% if request.path|starts_with:'/training/' or  request.path|starts_with:'/scholarship/' %} active {% endif %}"><a href="{% url 'train-de-dash' %}"> <i class="fa-solid fa-users-viewfinder"></i> Treinamento</a></li>
+    <li class="{% if request.path|starts_with:'/trip/' %} active {% endif %}"><a href="{% url 't-dash' %}"> <i class="fa-solid fa-plane-departure"></i> Trip</a></li>
+    <li class="{% if request.path|starts_with:'/employee-contact/' %} active {% endif %}"><a href="{% url 'emp-contact-list' %}"> <i class="fa fa-file-lines"></i> Kontakto</a></li>
+  </ul>
+</div>
+<div class="admin-menu">
+<h5 class="sidenav-heading">Perfil & Konta</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">                  
+  <li class="{% if request.path|starts_with:'/profile/' %} active {% endif %}"><a href="{% url 'user-profile' %}"> <i class="fa-solid fa-address-book"></i>Perfil</a></li>
+    <li class="{% if request.path|starts_with:'/account/' %} active {% endif %}"><a href="{% url 'user-account' %}"> <i class="fa-solid fa-user-gear"></i>Konta</a></li>
+</ul>
+</div>
+<div class="admin-menu">
+<!-- <h5 class="sidenav-heading">Mapa</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">
+  <li><a href="#"> <i class="fa fa-google"></i>Google</a></li>
+</ul> -->
+</div>

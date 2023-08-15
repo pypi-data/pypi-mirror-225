@@ -1,0 +1,64 @@
+{% load filter %}
+<div class="main-menu">
+    <h5 class="sidenav-heading  ">Main Menu</h5>
+    <ul id="side-main-menu" class="side-menu list-unstyled">                  
+      <li class="{% if request.path == '/'  %} active text-color   {% endif %}" ><a href="{% url 'home' %}"><i class="fa fa-home "></i> Painel</a></li>
+      <li class="{% if request.path|starts_with:'/employee/'   %} active {% endif %}"><a href="{% url 'emp-dash' %}"><i class="fa fa-users"></i> Pessoal</a></li>
+      
+      <li class="{% if request.path|starts_with:'/cont/' or  request.path|starts_with:'/payroll/'  %} active {% endif %}"><a href="#payrollDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-address-card"></i> Payroll </a>
+        <ul id="payrollDropdown" class="collapse list-unstyled ">
+          <li><a href="{% url 'cont-dash' %}"> Kontratu</a></li>
+          <li><a href="{% url 'payroll-dash' %}"> Payroll</a></li>
+        </ul>
+      </li>
+      <li class="{% if request.path|starts_with:'/manager/' %} active {% endif %}"><a href="{% url 'man-dash' %}"><i class="fa-solid fa-sitemap"></i> Organograma</a></li>
+      <li class="{% if request.path|starts_with:'/recruitment/' %} active {% endif %}"><a href="{% url 'rec2-hr-plan-list' %}"> <i class="fa-solid fa-user-plus"></i> Rekrutamentu</a></li>
+      <li class="{% if request.path|starts_with:'/onboard/' %} active {% endif %}"><a href="{% url 'onboard-emp-list' %}"><i class="fa-solid fa-list-check"></i> Onboard</a></li>
+      <li class="{% if request.path|starts_with:'/leave/' %} active {% endif %}"><a href="#licencaDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa-solid fa-person-walking-arrow-right"></i>Licenca </a>
+        <ul id="licencaDropdown" class="collapse list-unstyled ">
+          <li><a href="{% url 'leave-hr-period-list' %}">Konfigurasaun no Summario</a></li>
+          <li><a href="{% url 'leave-hr-list' %}">Lista Aplikasaun</a></li>
+          <li><a href="{% url 'leave-hr-app-list' %}">Lista Pedido Aplikasaun</a></li>
+          <li><a href="{% url 'leave-hr-approved-list' %}">Lista Licensa Aprovado</a></li>
+        </ul>
+      </li>
+      <li class="{% if request.path|starts_with:'/perform/' %} active {% endif %}"><a href="{% url 'all-eval-dash' %}"> <i class="fa-solid fa-users-gear"></i>Avaliasaun</a></li>
+      <li class="{% if request.path|starts_with:'/attendance/' %} active {% endif %}"><a href="{% url 'attend-dash' %}"> <i class="fa fa-clipboard-user"></i> Absensia</a></li>
+      <li class="{% if request.path|starts_with:'/training/' or  request.path|starts_with:'/scholarship/' %} active {% endif %}"><a href="{% url 'train-hr-dash' %}"> <i class="fa-solid fa-user-graduate"></i> Formasaun</a></li>
+      <li class="{% if request.path|starts_with:'/trip/' %} active {% endif %}"><a href="{% url 't-dash' %}"> <i class="fa-solid fa-plane-departure"></i> Trip</a></li>
+      
+    </ul>
+    
+</div>
+<div class="admin-menu">
+  <h5 class="sidenav-heading">Perfil & Konta</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li class="{% if request.path|starts_with:'/profile/' %} active {% endif %}"><a href="{% url 'user-profile' %}"> <i class="fa-solid fa-address-book"></i>Perfil</a></li>
+    <li class="{% if request.path|starts_with:'/account/' %} active {% endif %}"><a href="{% url 'user-account' %}"> <i class="fa-solid fa-user-gear"></i>Konta</a></li>
+  </ul>
+</div>
+
+
+{% block scripts %}
+  <style>
+    .main-menu li {
+      transition: transform 0.3s;
+    }
+    .main-menu li:hover {
+      transform: scale(1.06);
+    }
+    .active {
+      transform: scale(1.06);
+    }
+    .text-color {
+      background-color: red !important;
+    }
+    @keyframes flash {
+  0% {background-color: white;}
+  50% {background-color: yellow;}
+  100% {background-color: white;}
+}
+
+    
+  </style>
+{% endblock scripts %}

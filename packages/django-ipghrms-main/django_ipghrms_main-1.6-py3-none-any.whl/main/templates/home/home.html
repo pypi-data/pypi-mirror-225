@@ -1,0 +1,216 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid"><br/>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+          <div class="card-header text-center border-primary h1">PAINEL SISTEMA HRMS - IPG TIMOR LESTE</div>
+          {% if painel_check %}
+            
+          
+          <div class="card-body">
+            {% for painel in painel_check %}
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-sm table-bordered">
+                  <tr>
+                    <th width="20%">Deskrisaun</th><td width="25%">{{ painel.plan.description }}</td> <th width="30%" class="text-center">Vaga</th> <th width="15%" class="text-center">Ita Nia Pojisaun</th> <th class="text-center">#</th>
+                  </tr>
+                  <tr>
+                    <th>Objectivu</th><td>{{ painel.plan.objective }}</td> <td rowspan="2" align="center" class="align-middle"><a href="{% url 'rec2-u-cand-list' painel.plan_pos.id painel.id %}">{{ painel.plan_pos.position }}</a></td></td><td rowspan="2" align="center" class="align-middle">{{ painel.position }}</td> <td rowspan="2" align="center" class="align-middle"><a href="{% url 'rec2-cand-result-list' painel.plan.hashed painel.plan_pos.id %}" class="btn btn-sm btn-info">Resultadu <i class="fa fa-list"></i></a></td>
+                  </tr>
+                  <tr>
+                    <th>Data</th><td>{{ painel.plan.date|date:"d/m/Y" }}
+                  </tr>
+                  <tr></tr>
+                </table>
+              </div>
+            </div><!--end row-->
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+                <figure class="highcharts-figure">
+                    <div id="setFlowAllEmp"></div>
+                </figure>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+                <figure class="highcharts-figure">
+                    <div id="setEmpDivision"></div>
+                </figure>
+            </div>
+        </div>
+      </div><!--end col-->
+
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+              <figure class="highcharts-figure">
+                <div id="setEmpDep"></div>
+            </figure>
+            
+            </div>
+        </div>
+      </div>
+     
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+              <figure class="highcharts-figure">
+                  <div id="nivelacaChart_data1"></div>
+              </figure>
+            </div>
+        </div>
+      </div><!--end col-->
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+          <div class="card-body">
+                <figure class="highcharts-figure">
+                  <div id="setEmpContCat"></div>
+              </figure>
+              <div id="sliders">
+                <table>
+                    <tr>
+                        <td><label for="alpha">Alpha Angle</label></td>
+                        <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+                        <td><label for="beta">Beta Angle</label></td>
+                        <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+                        <td><label for="depth">Depth</label></td>
+                        <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+                    
+                </table>
+              </div>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+      <div class="col-sm-5">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+          <div class="card-body">
+              <figure class="highcharts-figure">
+                <div id="setEmpAge"></div>
+            </figure>
+          </div><!--end card-body-->
+        </div><!--end card-->
+      </div><!--end col-->
+    </div><!--end row-->
+  </div><!--end container-->
+{% endblock %}
+{% block scripts %}
+  
+
+
+    <!-- HIGHCHARTS -->
+    <script src="{% static 'main/js/highcharts/highcharts.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/sankey.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/organization.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/export-data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/exporting.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/accessibility.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/3d.js' %}"></script>
+    <script>
+        {% include 'employee_chart/emp_all.js' %}
+        {% include 'employee_chart/emp_unit.js' %}
+        {% include 'employee_chart/emp_dep.js' %}
+        {% include 'employee_chart/emp_nivelaca2.js' %}
+        {% include 'contract_chart/cont_cat.js' %}
+        {% include 'employee_chart/emp_age.js' %}
+        {% include 'employee_chart/myoption.js' %}
+    </script>
+
+    
+
+    <script>
+      
+    </script>
+
+
+  <style>
+    .highcharts-figure,
+  .highcharts-data-table table {
+    min-width: 360px;
+    /* max-width: 700px; */
+    margin: 1em auto;
+  }
+
+  .highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: rgb(0, 0, 0);
+  }
+
+  .highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+  }
+
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    padding: 0.5em;
+  }
+
+  .highcharts-data-table thead tr,
+  .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+  }
+
+  .highcharts-data-table tr:hover {
+    background: #f1f7ff;
+  }
+  .card:not([class*="text"]) p {
+    color: black;
+  }
+
+  #container h4 {
+    text-transform: none;
+    font-size: 19px;
+    font-weight: normal;
+  }
+
+  #container p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  @media screen and (max-width: 600px) {
+    #container h4 {
+      font-size: 2.3vw;
+      line-height: 3vw;
+    }
+
+    #container p {
+      font-size: 2.3vw;
+      line-height: 3vw;
+    }
+  }
+  </style>
+
+
+{% endblock %}

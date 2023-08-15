@@ -1,0 +1,30 @@
+<li class="nav-item dropdown"> 
+    <a class="nav-link " href="#" id="notifications" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-bell"></i>
+    <span class="badge bg-success" id="depNotifTot"></span></a>
+    
+  <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="notifications">
+    <li><a class="dropdown-item p-0" href="{% url 'dep-leave-list' %}"> 
+        <div class="d-flex">
+          <div class="icon  bg-blue">
+          <i class="fa fa-person-walking-arrow-right"></i>
+          </div>
+          <div class=""><span class="h6  fw-normal text-gray-600">Licensa (<span class="text-danger w-bold" id="depNotifLeave" ></span>) </span></div>
+        </div></a>
+      </li>
+  </ul>
+</li>
+
+
+<style>
+    @keyframes blink {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+    #hrNotifTot{
+    transition: opacity 1s ease-in-out;
+}
+    .blink {
+        opacity: 0;
+    }
+</style>

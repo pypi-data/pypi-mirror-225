@@ -1,0 +1,37 @@
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto ml-5">
+				<li class="nav-item">
+					<a class="nav-link" href="#">DASHBOARD</a>
+				</li>			
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROJECT</a>
+					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="#">PLAN</a>
+						<a class="dropdown-item" href="#">IMPLEMENTATION</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">COMPANY</a>
+					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="#">PROFILE</a>
+						<a class="dropdown-item" href="#">EMPLOYEES</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">REPORTS</a>
+				</li>
+			</ul>
+			
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username|upper }}</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown02">
+						<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+						<a class="dropdown-item" href="#"><i class="fa fa-gear"></i> Account</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a>
+					</div>
+				</li>
+			</ul>
+		</div>

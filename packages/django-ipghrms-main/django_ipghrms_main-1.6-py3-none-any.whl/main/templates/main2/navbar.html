@@ -1,0 +1,29 @@
+{% load static %}
+<header class="site-header">
+	<nav class="navbar navbar-expand-md navbar-dark bg-card fixed-top">
+		<a class="navbar-brand" href="{% url 'home' %}">
+		IPG - HRMS
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		{% if user.is_authenticated %}
+			{% if user_group == 'hr' %}
+				{% include 'main/hr_navbar.html' %}
+			{% elif user_group == 'de' %}
+				{% include 'main/de_navbar.html' %}
+			{% elif user_group == 'deputy' %}
+				{% include 'main/adj_navbar.html' %}
+			{% elif user_group == 'unit' %}
+				{% include 'main/unit_navbar.html' %}
+			{% elif user_group == 'dep' %}
+				{% include 'main/dep_navbar.html' %}
+			{% elif user_group == 'staff' %}
+				{% include 'main/staff_navbar.html' %}
+			{% else %}
+				{% include 'main/admin_navbar.html' %}
+			{% endif %}
+		{% endif %}
+	</nav>
+</header>
+<hr/>

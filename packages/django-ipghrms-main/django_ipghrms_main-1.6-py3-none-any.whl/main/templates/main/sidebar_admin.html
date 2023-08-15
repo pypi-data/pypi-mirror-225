@@ -1,0 +1,32 @@
+<div class="main-menu">
+    <h5 class="sidenav-heading">Main</h5>
+    <ul id="side-main-menu" class="side-menu list-unstyled">                  
+      <li><a href="{% url 'home' %}"><i class="icon-home"></i> Painel</a></li>
+      <li><a href="{% url 'emp-dash' %}"><i class="icon-user"></i> Pessoal</a></li>
+      <li><a href="{% url 'cont-dash' %}"><i class="icon-bill"></i> Kontratu</a></li>
+      <li><a href="{% url 'man-dash' %}"><i class="icon-user"></i> Nomeasaun</a></li>
+      <li><a href="#"><i class="icon-user"></i> Rekrutamentu</a></li>
+      <li><a href="{% url 'onboard-emp-list' %}"><i class="icon-list"></i> Onboard</a></li>
+      <li><a href="#licencaDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> Licenca </a>
+        <ul id="licencaDropdown" class="collapse list-unstyled ">
+          <li><a href="{% url 'leave-hr-app-list' %}">Lista Aplikasaun</a></li>
+        </ul>
+      </li>
+      <li><a href="#"> <i class="icon-padnote"></i> Avaliasaun</a></li>
+      <li><a href="{% url 'attend-dash' %}"> <i class="icon-check"></i> Absensia</a></li>
+      <li><a href="#"> <i class="icon-check"></i> Treinamento</a></li>
+    </ul>
+</div>
+<div class="admin-menu">
+  <h5 class="sidenav-heading">Perfil & Konta</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li><a href="{% url 'user-profile' %}"> <i class="icon-home"></i>Perfil</a></li>
+    <li><a href="{% url 'user-account' %}"> <i class="icon-user"></i>Konta</a></li>
+  </ul>
+</div>
+<div class="admin-menu">
+  <!-- <h5 class="sidenav-heading">Mapa</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">
+    <li><a href="#"> <i class="fa fa-google"></i>Google</a></li>
+  </ul> -->
+</div>
