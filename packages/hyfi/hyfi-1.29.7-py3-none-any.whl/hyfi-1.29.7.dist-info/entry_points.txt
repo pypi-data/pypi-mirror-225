@@ -1,0 +1,4 @@
+[console_scripts]
+hyfi=hyfi.__cli__:hyfi_main
+hyfi-run=hyfi.__click__:cli
+
