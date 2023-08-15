@@ -1,0 +1,4 @@
+[console_scripts]
+recording_times_generator = src.recording_times_generator:main
+sound_extraction = src.sound_extraction:main
+
