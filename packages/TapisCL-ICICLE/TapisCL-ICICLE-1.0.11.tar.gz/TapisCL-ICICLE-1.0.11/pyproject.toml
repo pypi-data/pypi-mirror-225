@@ -1,0 +1,43 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel", "poetry-core>=1.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TapisCL-ICICLE"
+version = "1.0.11"
+description = "Provide good performance command line user interface for Tapis services hosted on HPC clusters"
+readme = "README.md"
+authors = [{ name = "Michael Ray", email = "m.ray37990@gmail.com" }]
+license = { file = "LICENSE" }
+requires-python = ">=3.6"
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["Tapis", "CLI", "Agave", "HPC", "Tapis Pods", "TACC"]
+
+dependencies = [
+    "pydantic==1.10.4",
+    "pyfiglet==0.8.post1",
+    "tapipy",
+    "blessed",
+    "pyperclip",
+    "py2neo",
+    "psycopg2-binary",
+    "prompt_toolkit",
+    "TapisFederatedAuthClientAPI",
+    "requests",
+    "questionary==1.10.0"
+]
+
+[project.optional-dependencies]
+dev = []
+
+[project.urls]
+Homepage = "https://github.com/sdsc-hpc-training-org/hello_icicle_auth_clients/tree/main/icicle_rel_03_2023/CLI/TapisCL-ICICLE"
+
+[project.entry-points."console_scripts"]
+TapisCLICICLE = "src.TapisCLICICLE:main"
