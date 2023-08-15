@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: fv1-programmer
+Version: 0.3.1
+Summary: An EEPROM programming tool for the FV-1 DSP
+Home-page: https://github.com/audiofab/fv1_programmer
+License: MIT
+Author: Mark Melvin
+Author-email: mark.melvin@audiofab.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: Microsoft :: Windows :: Windows 11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Typing :: Typed
+Requires-Dist: easymcp2221 (>=1.6.2,<2.0.0)
+Requires-Dist: intelhex (>=2.3.0,<3.0.0)
+Requires-Dist: pyperclip (>=1.8.2,<2.0.0)
+Requires-Dist: textual (>=0.30.0,<0.31.0)
+Description-Content-Type: text/markdown
+
+# FV-1 Programmer
+
+An EEPROM programming tool for the [Audiofab](https://audiofab.com/) [Easy Spin](https://audiofab.com/products/easy-spin) effects pedal.
+
+# Installation
+
+This utility requires Python 3.8 or greater and has been tested on Windows, but should also work on MacOS and Linux. 
+
+The easiest way to install this utility is with Python's built-in pip but it will also install a bunch of dependencies directly into your Python environment:
+
+`pip install fv1-programmer`
+
+If you care about a clean Python environment, a cleaner way to install this utility is to first install [pipx](https://pypa.github.io/pipx/), and then install it with:
+
+`pipx install fv1-programmer`
+
+Either way, you will now have a `fv1_programmer` command on your path, which you can run in a terminal ([Windows Terminal](https://aka.ms/terminal) highly recommended on Windows):
+
+```
+$ fv1_programmer
+```
+
+This will bring up a user interface that will allow you to configure all 8 program slots of the Easy Spin's FV-1 DSP and write the EEPROM.
+
+![image](https://github.com/audiofab/fv1_programmer/assets/1384978/36d8e9b9-4fe6-4cc4-b7b3-194910aaff97)
+
+This utility was made possible by the amazing [Textual](https://textual.textualize.io/) project. Check it out!
+
+This utility also leverages the excellent FV-1 assembler ([asfv1](https://github.com/ndf-zz/asfv1)) and disassembler ([disfv1](https://github.com/ndf-zz/disfv1)).
+
