@@ -1,0 +1,137 @@
+QProgressBar {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    background-color: qlineargradient(x1:1, y1:0, x2:1, y2:0.4, stop:0 white, stop:1 #dedede);
+}
+
+QProgressBar::chunk {
+    background-color: qlineargradient(x1:1, y1:0, x2:1, y2:0.4, stop:0 white, stop:1 #64d651);
+    border-radius： 2px;
+}
+
+QPushButton {
+    border: 1px solid #B7B7B7;
+    border-radius: 0px;
+    color: #555555;
+    background-color: qlineargradient(x1:1, y1:0, x2:1, y2:0.4, stop:0 white, stop:1 #EEEEEE);
+}
+
+QPushButton:hover:!pressed {
+    color: #D7D7D7;
+    background-color: qlineargradient(x1:1, y1:0, x2:1, y2:0.4, stop:0 white, stop:1 #EEEEEE);
+}
+
+QPushButton:hover:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+QPushButton:disabled {
+    color: #D7D7D7;
+    background-color: #B4B4B4;
+}
+
+QListView {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
+
+QListView::item:alternate {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+QListView::item:selected {
+    border: 1px solid #C4C4C3;
+    border-radius: 3px;
+}
+
+QListView::item:selected:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QListView::item:selected:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #D5D5D5, stop: 0.4 #EEEEEE,
+                                stop: 0.5 #EEEEEE, stop: 1.0 #D5D5D5);
+}
+
+QListView::item:hover {
+    color: #B3B3B3;
+    border: 1px solid #C4C4C3;
+    border-radius: 3px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabWidget#menutab::pane { /* The tab widget frame */
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid #C2C7CB;
+}
+
+QTabWidget#menutab::tab-bar {
+    top: 5px; /* move to the right by 5px */
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar#menutabbar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+    border-top: 2px solid #C4C4C3;
+    border-bottom: 2px solid #C4C4C3;
+    border-left: 2px solid #C4C4C3;
+    border-right: 0px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    min-width: 12px;
+    min-height: 20px;
+}
+
+QTabBar#menutabbar::tab:selected, QTabBar#menutabbar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar#menutabbar::tab:selected {
+    border-color: #9B9B9B;
+    border-right-color: #C2C7CB; /* same as pane color */
+}
+
+QTabBar#menutabbar::tab:hover {
+    color: #D7D7D7;
+}
+
+
+QTabBar#menutabbar::tab:!selected {
+    margin-left: 4px; /* make non-selected tabs look smaller */
+    margin-right: -4px;
+}
+
+/* make use of negative margins for overlapping tabs */
+QTabBar#menutabbar::tab:selected {
+    /* expand/overlap to the left and right by 4px */
+    margin-top: -4px;
+    margin-bottom: -4px;
+    color: #555555;
+    margin-right: -4px;
+}
+
+QTabBar#menutabbar::tab:first:selected {
+    margin-top: 0; /* the first selected tab has nothing to overlap with on the left */
+}
+
+QTabBar#menutabbar::tab:last:selected {
+    margin-bottom: 0; /* the last selected tab has nothing to overlap with on the right */
+}
+
+QTabBar#menutabbar::tab:only-one {
+    margin: 0; /* if there is only one tab, we don't want overlapping margins */
+}
