@@ -1,0 +1,217 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+{% extends "base.j2" %}
+
+{% block body_attrs %}
+class="gradesheet fullwidth"
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+  <a
+   href="{{url_for("route_dash", course=course, semester=semester)}}"
+   title="Click here to go back to the dashboard"
+   tabindex="0"
+  >Back to the dashboard</a>
+
+<h2>
+  Gradesheet for
+  <a
+   href="{{group_obj["url"]}}"
+   title="View instructions for {{group_obj["group"]}}"
+  >{{group_obj["group"]}}</a>
+</h2>
+
+<p>
+{% set deadline = group_obj.get("timely_by") %}
+{% if deadline == None %}
+  Unknown deadline.
+  {{group_obj}}
+{% else %}
+  {{ simple_due_at(deadline) }}
+  {{ simple_countdown(deadline - now()) }}
+{% endif %}
+</p>
+
+<table class="grade_table" id="grades">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th title="Hover for more student information">🛈</th>
+      <th>Pronoun</th>
+      <th>Username</th>
+      <th colspan="2">Sections</th>
+      <th class="groupend">Exp?</th>
+      <th class="groupend" colspan="2">Overall</th>
+      <th class="groupend" colspan="{{group_obj["exercises"]|length}}">
+        Exercises
+      </th>
+    </tr>
+    {# TODO #}
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th class="section">Lec</th>
+      <th class="section">Lab</th>
+      <th class="groupend"></th>
+      <th>Grade</th>
+      <th class="groupend">Ext?</th>
+      {% for i, ex in enumerate(group_obj["exercises"]) %}
+        <th
+         class="{% if loop.last %}groupend{% endif %}"
+         title="{{ex.id}}"
+        >{{i + 1}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for student in roster %}
+      {% if student_info %}
+        {% set sinfo = student_info.get(student["username"], {}) %}
+      {% else %}
+        {% set sinfo = {} %}
+      {% endif %}
+      <tr> <!-- one row per student -->
+        <td class="name" title="{{sinfo["pronunciation"]|escape}}">
+          <span>
+            {% if sinfo["nonce"] %}({{sinfo["nonce"]}}){% endif %}
+            {{sinfo["full_name"] or student["fullname"]}}
+          </span>
+        </td>
+        <td title="My favorite thing: {{sinfo["favorite_thing"]|escape}}
+My expectations: {{sinfo["expectations"]|escape}}">
+          🛈 
+        </td>
+        <td class="pronouns">
+          <span>{{sinfo.get("pronouns","?")|pronoun}}</span>
+        </td>
+        <td class="username"><span>{{student["username"]}}</span></td>
+        <td
+         class="section lec_section"
+         title="{{sinfo["lecture_instructor"]|escape}}">
+          {{sinfo.get("lecture_instructor", "")|initials}}
+        </td>
+        <td
+         class="section lab_section"
+         title="{{sinfo["lab_instructor"]|escape}}">
+          {{sinfo.get("lab_instructor", "")|initials}}
+        </td>
+        {% set exp = sinfo.get("experience_amount") %}
+        {% if exp in (None, "None") %}
+          {% set estr = "none" %}
+          {% set eclass = "no-experience" %}
+        {% elif exp.startswith("Less") %}
+          {% set estr = "a bit" %}
+          {% set eclass = "short-experience" %}
+        {% elif exp.startswith("More") %}
+          {% set estr = ">1mo" %}
+          {% set eclass = "long-experience" %}
+        {% else %}
+          {% set estr = exp %}
+          {% set eclass = "unknown-experience" %}
+        {% endif %}
+        <td
+         class="experience groupend {{eclass}}"
+         title="{{(sinfo["experience_description"] or "")|escape}}"
+        >
+          {{estr|safe}}
+        </td>
+        {% if student["this_group"] == None %}
+          <td colspan="2" class="ex_grade missing groupend">
+            missing
+          </td>
+          {% for ex in group_obj["exercises"] %}
+            <td></td>
+          {% endfor %}
+        {% else %}
+          {% set this_group = student["this_group"] %}
+
+          {# Overall grade and extensions #}
+          {% set ex_grade = this_group|ex_combined_grade(task_info) %}
+          <td class="ex_grade {{ex_grade|grade_category}}">
+            {{ex_grade|grade_string(task_info, this_group)|shorter_grade}}
+          </td>
+
+          {# TODO #}
+          
+          {# extensions info + link #}
+          {% set extension = this_group.extension %}
+          {% if not extension %}
+            {% set extension = '-' %}
+            {% set has_extension = False %}
+            {% set ext_class = "" %}
+          {% else %}
+            {% set has_extension = True %}
+            {% set ext_class = " extended" %}
+          {% endif %}
+          <td
+           class="groupend extensions{{ext_class}}"
+           {% if has_extension %}
+             title="{{ extension }}h extension"
+           {% else %}
+             title="no extension"
+           {% endif %}
+          >
+            <a
+             href="{{url_for(
+               'route_manage_extensions',
+               course=course,
+               semester=semester,
+               target_user=student["username"]
+             )}}"
+             title="Manage extensions for {{student.username}}"
+            >{{ extension }}</a>
+          </td>
+ 
+          {# Individual exercise results #}
+          {% for ex in this_group.exercises %}
+            {% if ex.status == "complete" %}
+              {% set status_indicator='✓' %}
+            {% elif ex.status == "partial" %}
+              {% set status_indicator='~' %}
+            {% elif ex.status == "incomplete" %}
+              {% set status_indicator='✗' %}
+            {% elif ex.status == "unsubmitted" %}
+              {% set status_indicator='.' %}
+            {% else %}
+              {% set status_indicator='?' %}
+            {% endif %}
+            {% if not ex.on_time %}
+              {% set late='<sub>L</sub>' %}
+            {% else %}
+              {% set late='' %}
+            {% endif %}
+            {% if loop.last %}
+              {% set end=' groupend' %}
+            {% else %}
+              {% set end='' %}
+            {% endif %}
+            <td
+             class="exercise {{ex.status}}{{end}}">
+              <a
+               href="{{url_for(
+                 'route_exercise',
+                 course=course,
+                 semester=semester,
+                 target_user=student["username"],
+                 eid=ex["id"]
+               )}}"
+               title="View {{ex.id}} for {{student.username}} (status is {{ex.status}})"
+              >{{status_indicator}}{{late}}</a>
+            </td>
+          {% endfor %}
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- this textarea is managed by javascript -->
+Text for copy-pasting:
+<textarea id="copy-area">
+</textarea>
+</div> <!-- end of container -->
+
+{% endblock %}

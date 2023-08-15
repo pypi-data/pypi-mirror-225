@@ -1,0 +1,145 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+{% extends "base.j2" %}
+
+{% block body_attrs %}
+class="gradesheet fullwidth"
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+  <a
+   href="{{url_for("route_dash", course=course, semester=semester)}}"
+   title="Click here to go back to the dashboard"
+   tabindex="0"
+  >Back to the dashboard</a>
+
+<h2>Full-class Gradesheet</h2>
+
+<table class="grade_table" id="grades">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th title="Hover for more student information">🛈</th>
+      <th>Pronoun</th>
+      <th>Username</th>
+      <th colspan="2">Sections</th>
+      <th class="groupend">Exp?</th>
+      <th class="groupend">Total&nbsp;%</th>
+      {% for item in grade_items %}
+        <th
+         class="groupend"
+         {% if "parts" in item %}colspan="{{item["parts"]|length + 1}}"
+         {% endif %}>
+          <span class="short"><a href="{{item["url"]}}">{{item["name"]}}</a></span>
+        </th>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th class="section">Lec</th>
+      <th class="section">Lab</th>
+      <th class="groupend"></th>
+      <th class="groupend"></th>
+      {% for item in grade_items %}
+        {% if "parts" in item %}
+          <th><span class="short">Total</span></th>
+          {% for part in item["parts"] %}
+            <th{% if loop.last %} class="groupend"{% endif %}>
+              <span class="short">{{part["name"]}}</span>
+            </th>
+          {% endfor %}
+        {% else %}
+          <th class="groupend"></th>
+        {% endif %}
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for student in roster %}
+      {% if student_info %}
+        {% set sinfo = student_info.get(student["username"], {}) %}
+      {% else %}
+        {% set sinfo = {} %}
+      {% endif %}
+      <tr> <!-- one row per student -->
+        <td class="name" title="{{sinfo["pronunciation"]|escape}}">
+          <span>
+            {% if sinfo["nonce"] %}({{sinfo["nonce"]}}){% endif %}
+            {{sinfo["full_name"] or student["fullname"]}}
+          </span>
+        </td>
+        <td title="My favorite thing: {{sinfo["favorite_thing"]|escape}}
+My expectations: {{sinfo["expectations"]|escape}}">
+          🛈 
+        </td>
+        <td class="pronouns">
+          <span>{{sinfo.get("pronouns","?")|pronoun}}</span>
+        </td>
+        <td class="username"><span>{{student["username"]}}</span></td>
+        <td
+         class="section lec_section"
+         title="{{sinfo["lecture_instructor"]|escape}}">
+          {{sinfo.get("lecture_instructor", "")|initials}}
+        </td>
+        <td
+         class="section lab_section"
+         title="{{sinfo["lab_instructor"]|escape}}">
+          {{sinfo.get("lab_instructor", "")|initials}}
+        </td>
+        {% set exp = sinfo.get("experience_amount") %}
+        {% if exp in (None, "None") %}
+          {% set estr = "none" %}
+          {% set eclass = "no-experience" %}
+        {% elif exp.startswith("Less") %}
+          {% set estr = "a bit" %}
+          {% set eclass = "short-experience" %}
+        {% elif exp.startswith("More") %}
+          {% set estr = ">1mo" %}
+          {% set eclass = "long-experience" %}
+        {% else %}
+          {% set estr = exp %}
+          {% set eclass = "unknown-experience" %}
+        {% endif %}
+        <td
+         class="experience groupend {{eclass}}"
+         title="{{(sinfo["experience_description"] or "")|escape}}"
+        >
+          {{estr|safe}}
+        </td>
+        <td
+         class="groupend {{student["combined_pct"]|grade_category(task_info)}}"
+        >{{student["combined_pct"]}}</td>
+
+        {# Grades for each graded item & part #}
+        {% for item in student["grade_items"] %}
+          <td class="{{item["grade"]|grade_category(task_info, item)}}{%if "parts" not in item %} groupend{%endif%}">
+            <a href="{{item["url"]}}">
+              {{item["grade"]|grade_string(task_info, item)|shorter_grade}}
+            </a>
+          </td>
+          {% if "parts" in item %}
+            {% for part in item["parts"] %}
+              <td class="{{part["grade"]|grade_category(task_info, part)}}{%if loop.last%} groupend{%endif%}">
+                <a href="{{part["url"]}}">
+                  {{part["grade"]|grade_string(task_info, part)|shorter_grade}}
+                </a>
+              </td>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </tr>{# End row per student #}
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- this textarea is managed by javascript -->
+Text for copy-pasting:
+<textarea id="copy-area">
+</textarea>
+</div> <!-- end of container -->
+
+{% endblock %}

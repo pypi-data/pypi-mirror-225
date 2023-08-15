@@ -1,0 +1,73 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+<form
+ action="{{url_for(
+   'route_set_extensions',
+   course=course,
+   semester=semester,
+   target_user=target_user,
+   prid=pr['id']
+ )}}"
+ method="POST"
+ class="extensions_form"
+>
+  {# CSRF token for flask_seasurf #}
+  <input
+   type="hidden"
+   name="_csrf_token"
+   value="{{csrf_token()}}"
+  >
+  Extensions for {{target_user}} on {{pr.id}}:<br>
+  <label for="{{pr.id}}-initial-extension">
+    initial extension:
+    <input
+     class="extension-hours-input"
+     id="{{pr.id}}-initial-extension"
+     name="initial"
+     type="text"
+     value="{{ pr.status.initial_extension }}"
+    >
+    hours
+  </label>
+  <input
+   type="button"
+   class="add24"
+   title="Add 24 hours to the initial extension for {{pr.id}}."
+   value="+24h"
+   data-target="{{pr.id}}-initial-extension"
+  >
+  <input
+   type="button"
+   class="subtract24"
+   title="Subtract 24 hours to the initial extension for {{pr.id}}."
+   value="-24h"
+   data-target="{{pr.id}}-initial-extension"
+  >
+  <br>
+  <label for="{{pr.id}}-revision-extension">
+    revision extension:
+    <input
+     class="extension-hours-input"
+     id="{{pr.id}}-revision-extension"
+     name="revision"
+     type="text"
+     value="{{ pr.status.revision_extension }}"
+    >
+    hours
+  </label>
+  <input
+   type="button"
+   class="add24"
+   title="Add 24 hours to the revision extension for {{pr.id}}."
+   value="+24h"
+   data-target="{{pr.id}}-revision-extension"
+  >
+  <input
+   type="button"
+   class="subtract24"
+   title="Subtract 24 hours to the revision extension for {{pr.id}}."
+   value="-24h"
+   data-target="{{pr.id}}-revision-extension"
+  >
+  <br>
+  <input type="submit" value="Update {{target_user}}'s {{pr.id}} extensions">
+</form>

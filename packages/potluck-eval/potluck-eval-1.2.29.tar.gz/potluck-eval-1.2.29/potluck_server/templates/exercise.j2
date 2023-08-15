@@ -1,0 +1,329 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+{% extends "base.j2" %}
+
+{% block main_content %}
+<div class="container">
+  <a
+   href="{{url_for("route_dash", course=course, semester=semester)}}"
+   title="Click here to go back to the dashboard"
+   tabindex="0"
+  >Back to the dashboard</a>
+
+  {% if is_admin %}
+    {% if results.code == "__override__" %}
+      {% set existing_note = results.outcomes %}
+      {% set existing_override = results.credit %}
+    {% else %}
+      {% set existing_note = '' %}
+      {% set existing_override = '' %}
+    {% endif %}
+    <h2>Your grade override for this exercise:</h2>
+    <form
+     action="{{url_for(
+       'route_exercise_override',
+       course=course,
+       semester=semester,
+       target_user=target_user,
+       eid=eid
+     )}}"
+     method="POST"
+    >
+      {# CSRF token for flask_seasurf #}
+      <input
+       type="hidden"
+       name="_csrf_token"
+       value="{{csrf_token()}}"
+      >
+      Existing override notes for {{target_user}}:<br>
+      <div class="manual_evaluation">
+        {% if existing_note %}
+          {{existing_note|safe}}
+        {% else %}
+          (no notes)
+        {% endif %}
+      </div>
+
+      {% if existing_override != '' %}
+        Existing credit override for {{target_user}}:
+        {{existing_override}}
+        <br>
+      {% endif %}
+
+      <label for="override_for">
+        Override grade for:
+        <select name="override_for" id="override_for">
+          <option selected value="exercise">this exercise</option>
+          {% if ginfo != None %}
+            <option value="group">the whole {{ginfo.group}} group</option>
+          {% endif %}
+        </select>
+      </label>
+      <br>
+
+      <label for="note">
+      New note for {{target_user}} (markdown that can include HTML):<br>
+      <textarea id="note" name="note" rows="12"
+      cols="80">{{existing_note}}</textarea>
+      </label>
+      <br>
+
+      <label for="credit">
+      Grade override (fraction between 0.0 and 1.0):<br>
+      <input type="text" id="credit" name="credit"
+      {% if existing_override %}
+        value="{{existing_override}}"
+      {% endif %}
+      >
+      </label>
+      (Note that this sets completion percentage, which may be subject to
+      grade bumps to determine the final grade)
+      <!-- TODO: Not that! -->
+      <br>
+
+      <label for="status">
+      Status override:<br>
+      <select name="status" id="status">
+        <option selected value="auto">auto (based on credit)</option>
+        <option>incomplete</option>
+        <option>partial</option>
+        <option>complete</option>
+        <option>perfect</option>
+        <option value="unsubmitted">unsubmitted (for exercises)</option>
+        <option value="pending">pending (for groups)</option>
+        <option value="unreleased">unreleased (for groups)</option>
+        <!-- TODO: Don't permit incorrect status override -->
+      </select>
+      </label>
+      <br>
+
+      <label for="status">
+      Timeliness override (ignored for group overrides):<br>
+      <select name="time_override" id="time_override">
+        <option selected value="on_time">on time</option>
+        <option value="late">late (may modify credit)</option>
+      </select>
+      </label>
+      <br>
+
+      <input type="submit" value="Submit override">
+    </form>
+  {% endif %}
+
+  <h2>
+    Results for {{target_user}} for exercise
+    {% if ginfo == None %}
+      {{eid}} (unlisted)
+    {% else %}
+      <a
+         href="{{ginfo.url}}"
+         title="View exercises for {{ginfo.group}}"
+      >
+        {{ginfo.group}}
+      </a>
+      → {{eid}}
+    {% endif %}
+  </h2>
+
+  {# TODO: Get due + countdown working for egroup info #}
+  {#
+  <p>
+  {{ due_at(ginfo) }}
+  {{ countdown(ginfo) }}
+  </p>
+  #}
+
+    {% if ginfo != None %}
+      <p
+       tabindex="0"
+       aria-label="submission timing"
+      >
+        {% if results.submitted_at == "on_time" %}
+          Your result has been counted as on-time.
+        {% elif results.submitted_at == "late" %}
+          Your result has been counted as late.
+        {% elif results.submitted_at != None %}
+          Your best submission for this exercise was received
+          {{results.submitted_at|timestamp}}<br>
+          (More recent submissions are not shown if they have worse
+          outcomes; check the messages printed when submitting for more
+          info on why and see the expander below to access all
+          submissions.)
+        {% else %}
+          You have not yet submitted this exercise.<br>
+          (If you have attempted it, one reason might be that your
+          attempt generates an error before the submission can happen.
+          Look for a line in the output that says "Traceback" when you
+          run the tests.)
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if results.on_time %}
+      {% set timely="on time" %}
+      {% set timely_class="on_time" %}
+    {% else %}
+      {% set timely="late" %}
+      {% set timely_class="late" %}
+    {% endif %}
+
+    <p>
+    The status for this exercise is:
+    <a class="status {{results.status}}">{{results.status}}</a><br>
+    {% if results.status != "unsubmitted" %}
+      This exercise was submitted
+      <a class="timely {{timely_class}}">{{timely}}</a><br>
+      You have {{round(results.group_credit*100)}}% credit<br>
+    {% endif %}
+    {% if results.code == "__override__" %}
+      Your result was overridden by: {{', '.join(results.authors)}}
+    {% else %}
+      The full authors list was: {{', '.join(results.authors)}}
+    {% endif %}
+    </p>
+
+    {% if results.code == "__override__" %}
+      This exercise has an override: you have been awarded
+      {{round(results.credit*100)}}% credit. The explanation is:
+      <p>{{results.outcomes|safe}}</p>
+    {% elif results.outcomes|length > 0 %}
+      Outcomes for this exercise:
+
+      <ul
+       class="outcomes"
+       tabindex="0"
+       aria-label="Oucomes for this exercise."
+      >
+        {% for outcome in results.outcomes %}
+          {% if outcome[0] %}
+            {% set cls = "success" %}
+          {% else %}
+            {% set cls = "failure" %}
+          {% endif %}
+          <li class="outcome {{cls}}"><pre>{{outcome[2]}}</pre></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>There were no test outcomes for this exercise.</p>
+    {% endif %}
+
+    <p>
+      {% if results.code == "__override__" %}
+        See below for all submissions including code you submitted.
+      {% elif results.code|length == 1 %}
+        The code we received:<br>
+
+        For <code>{{results.code[0][0]|e}}</code>:
+        <pre class="exercise-code"><code>{{results.code[0][1]|e}}</code></pre>
+        {# TODO: Syntax highlighting for this code! #}
+      {% elif results.code|length > 0 %}
+        The code we received:<br>
+
+        <ul
+         tabindex="0"
+         aria-label="Code for this exercise"
+        >
+          {% for codepair in results.code %}
+            <li>
+              For <code>{{codepair[0]|e}}</code>:
+              <pre><code>{{codepair[1]|e}}</code></pre>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        Your submission did not include any code.
+      {% endif %}
+    </p>
+
+    {% if results.status != "unsubmitted" %}
+      <details>
+        <summary>Show all submissions for this exercise...</summary>
+        <ul class="all_exercise_submissions">
+          {% for particular in all_submissions %}
+          <li>
+            {% if particular.on_time %}
+              {% set timely="on time" %}
+              {% set timely_class="on_time" %}
+            {% else %}
+              {% set timely="late" %}
+              {% set timely_class="late" %}
+            {% endif %}
+
+            <p>
+            Status:
+            <a class="status {{particular.status}}">
+              {{particular.status}}
+            </a><br>
+
+            Credit: {{round(particular.group_credit*100)}}%<br>
+
+            {% if particular.status != "unsubmitted" %}
+              Submitted <a class="timely {{timely_class}}">{{timely}}</a>
+              at: {{particular.submitted_at}}<br>
+
+            {% endif %}
+            Authors: {{', '.join(particular.authors)}}
+            </p>
+
+            {% if particular.code == "__override__" %}
+              Override note:
+              <p>{{particular.outcomes|safe}}</p>
+            {% elif particular.outcomes|length > 0 %}
+              Outcomes:
+
+              <ul
+               class="outcomes"
+               tabindex="0"
+               aria-label="Oucomes for this submission."
+              >
+                {% for outcome in particular.outcomes %}
+                  {% if outcome[0] %}
+                    {% set cls = "success" %}
+                  {% else %}
+                    {% set cls = "failure" %}
+                  {% endif %}
+                  <li class="outcome {{cls}}"><pre>{{outcome[2]}}</pre></li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>There were no test outcomes for this exercise.</p>
+            {% endif %}
+
+            <p>
+              {% if particular.code == "__override__" %}
+                This is a manual override set by
+                {{', '.join(particular.authors)}}.
+              {% elif particular.code|length == 1 %}
+                The code:<br>
+
+                For <code>{{particular.code[0][0]|e}}</code>:
+                <pre class="exercise-code"><code>{{particular.code[0][1]|e}}</code></pre>
+                {# TODO: Syntax highlighting for this code! #}
+              {% elif particular.code|length > 0 %}
+                The code:<br>
+
+                <ul
+                 tabindex="0"
+                 aria-label="Code for this submission"
+                >
+                  {% for codepair in results.code %}
+                    <li>
+                      For <code>{{codepair[0]|e}}</code>:
+                      <pre><code>{{codepair[1]|e}}</code></pre>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                Your submission did not include any code.
+              {% endif %}
+            </p>
+
+          </li>
+
+          {% endfor %}
+        </ul>
+      </details>
+    {% endif %}
+
+</div> <!-- end of entire container -->
+
+{% endblock %}
