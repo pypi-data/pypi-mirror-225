@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "budgetmanager"
+version = "1.0.0"
+authors = [
+  { name="Elli Greaves" },
+]
+license = { text = "BSD-3-Clause-Clear license" }
+description = "Django app for keeping track of budgets, payees, and payments"
+readme = "README.md"
+requires-python = ">=3.10,<4"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "django>=4.2.3",
+    "djangorestframework>=3.14.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Grvs44/budgetmanager"
+
+[tool.setuptools]
+packages = ["budgetmanager", "budgetmanager.migrations"]
