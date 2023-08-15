@@ -1,0 +1,28 @@
+[package]
+name = "ahocorasick_rs"
+version = "0.15.0"
+edition = "2021"
+authors = ["G-Research <c.rindi@gr-oss.io>", "Itamar Turner-Trauring <itamar@pythonspeed.com>"]
+description = "Search a string for multiple substrings at once"
+readme = "README.md"
+license = "Apache 2.0"
+homepage = "https://github.com/G-Research/ahocorasick_rs"
+repository = "https://github.com/G-Research/ahocorasick_rs"
+
+[lib]
+name = "ahocorasick_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+aho-corasick = "1.0"
+itertools = "0.11.0"
+pyo3 = "0.19"
+
+[features]
+# The extension-module song and dance is explained here:
+# https://pyo3.rs/v0.14.1/faq.html
+extension-module = ["pyo3/extension-module"]
+default = ["extension-module"]
+
+[profile.release]
+lto = "fat"
