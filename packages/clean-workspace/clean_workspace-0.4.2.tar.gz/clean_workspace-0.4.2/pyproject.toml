@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "clean-workspace"
+version = "0.4.2"
+description = "Collect all browser URLs, output to terminal, and archive to todoist. Useful for cleaning up your workspace at the end of the day, without loosing important urls."
+authors = ["Mike Bianco <mike@mikebian.co>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/iloveitaly/clean-workspace"
+keywords = ["todoist", "browser", "productivity"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyobjc-framework-ScriptingBridge = "^9.0.1"
+todoist-api-python = "^2.0.1"
+chrome-bookmarks = "^2020.10.25"
+click = "^8.1.4"
+
+[tool.poetry.scripts]
+clean-workspace = "clean_workspace:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
