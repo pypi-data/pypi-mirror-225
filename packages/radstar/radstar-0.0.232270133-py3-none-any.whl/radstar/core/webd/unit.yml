@@ -1,0 +1,6 @@
+services:
+  - name: nginx
+    cmd: "nginx -c {nginx_conf_path}"
+    user: null
+  - name: webd
+    cmd: python -u -m core.webd.server
