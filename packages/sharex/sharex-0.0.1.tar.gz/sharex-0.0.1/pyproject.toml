@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sharex"
+version = "0.0.1"
+authors = [{ name = "Kevin Tao", email = "minzetao@gmail.com" }]
+description = "A common sharex package"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/KevinTao24/sharex"
+"Bug Tracker" = "https://github.com/KevinTao24/sharex/issues"
