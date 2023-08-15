@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "pygrpm"
+version = "0.4.4"
+description = "Medical physics library containing many utilty functions"
+readme = "README.md"
+maintainers = ["Yannick Lemaréchal <yannick.lemarechal.1@ulaval.ca>"]
+homepage = "https://paradim.science/"
+repository = "https://git.valeria.science/YALEM10/pygrpm"
+keywords = ["Medical physics", "dicom", "tg43"]
+authors = [
+    "Pierre-Luc Asselin <pierre-luc.asselin.2@ulaval.ca>",
+    "Gabriel Couture <gabriel.couture.4@ulaval.ca>",
+    "Leonardo Di Schiavi Trotta <leonardo.di-schiavi-trotta.1@ulaval.ca>",
+    "Charles Joachim-Paquet <charles.joachim-paquet.1@ulaval.ca>",
+    "Marie-Anne Lebel-Cormier <marie-anne.lebel-cormier.1@ulaval.ca>",
+    "Ronan Lefol <ronan.lefol.1@ulaval.ca>",
+    "Yannick Lemaréchal <yannick.lemarechal.1@ulaval.ca>",
+    "Samuel Ouellet <samuel.ouellet.10@ulaval.ca>",
+    "Fançois Pelletier <francois.pelletier.6@ulaval.ca>",
+    "Alexandre Sagona <alexandre.sagona.1@ulaval.ca>"
+]
+license = "MIT"
+include = ["pygrpm/**/*.csv"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydicom = "^2.2.2"
+pyfakefs = "^3.4.1"
+periodictable = "^1.6.0"
+xarray = "^2022.6.0"
+numpy = "^1.23.0"
+scipy = "^1.9.0"
+pandas = "^1.4.0"
+matplotlib = "^3.5.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning:pydicom.*",
+]
