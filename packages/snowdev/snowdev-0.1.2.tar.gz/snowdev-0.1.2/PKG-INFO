@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: snowdev
+Version: 0.1.2
+Summary: snowdev is a Python package that allows you to deploy Snowflake UDFs, stored procedures, tasks, streamlit from your local environment.
+Author: kaarthik
+Requires-Python: ==3.9.17
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: black (==22.10.0)
+Requires-Dist: joblib (==1.2.0)
+Requires-Dist: plotly (==5.9.0)
+Requires-Dist: pydantic (==1.10.9)
+Requires-Dist: pyyaml (==6.0)
+Requires-Dist: snowflake-connector-python (==3.0.4)
+Requires-Dist: snowflake-snowpark-python[pandas] (==1.5.0)
+Requires-Dist: streamlit (==1.25.0)
+Requires-Dist: termcolor (==2.3.0)
+Description-Content-Type: text/markdown
+
+
