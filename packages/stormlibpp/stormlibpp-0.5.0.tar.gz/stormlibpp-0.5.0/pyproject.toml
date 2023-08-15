@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stormlibpp"
+version = "0.5.0"
+description = "The stormlibpp Python package"
+readme = "README.md"
+requires-python = ">=3.11"
+
+# Fill in dependencies here.
+dependencies = [
+    "synapse==2.139.0"
+]
+
+[[project.authors]]
+name = "John Gorman"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/gormaniac/stormlibpp"
+Documentation = "https://gormo.co/stormlibpp/"
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
