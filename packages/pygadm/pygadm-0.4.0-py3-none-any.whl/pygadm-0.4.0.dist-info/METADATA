@@ -1,0 +1,111 @@
+Metadata-Version: 2.1
+Name: pygadm
+Version: 0.4.0
+Summary: Easy access to administrative boundary defined by GADM from Python scripts
+Author-email: Pierrick Rambaud <pierrick.rambaud49@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/12rambau/pygadm
+Project-URL: Download, https://github.com/12rambau/pygadm/archive/${metadata:version}.tar.gz
+Keywords: Python
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7.10
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: Deprecated
+Requires-Dist: geopandas
+Requires-Dist: pyarrow
+Requires-Dist: requests-cache
+Provides-Extra: dev
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: commitizen ; extra == 'dev'
+Requires-Dist: nox ; extra == 'dev'
+Provides-Extra: doc
+Requires-Dist: sphinx <7 ; extra == 'doc'
+Requires-Dist: pydata-sphinx-theme ; extra == 'doc'
+Requires-Dist: sphinx-copybutton ; extra == 'doc'
+Requires-Dist: jupyter-sphinx ; extra == 'doc'
+Requires-Dist: sphinx-design ; extra == 'doc'
+Requires-Dist: ipyleaflet ; extra == 'doc'
+Requires-Dist: geemap ; extra == 'doc'
+Requires-Dist: sphinx-favicon ; extra == 'doc'
+Requires-Dist: ipykernel ; extra == 'doc'
+Requires-Dist: sphinx-autoapi ; extra == 'doc'
+Requires-Dist: httplib2 ; extra == 'doc'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-sugar ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-regressions ; extra == 'test'
+
+PyGADM
+======
+
+.. image:: https://img.shields.io/badge/License-MIT-yellow?logo=opensourceinitiative&logoColor=white
+    :target: https://opensource.org/licenses/MIT
+    :alt: License: MIT
+
+.. image:: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow?logo=git&logoColor=white
+   :target: https://conventionalcommits.org
+   :alt: conventional commit
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Black badge
+
+.. image:: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?logo=prettier&logoColor=white
+   :target: https://github.com/prettier/prettier
+   :alt: prettier badge
+
+.. image:: https://img.shields.io/conda/vn/conda-forge/pygadm?logo=condaforge&logoColor=white
+   :target: https://anaconda.org/conda-forge/pygadm
+   :alt: Conda (channel only)
+
+.. image:: https://img.shields.io/pypi/v/pygadm?logo=pypi&logoColor=white
+   :target: https://pypi.org/project/pygadm/
+   :alt: PyPI
+
+.. image:: https://img.shields.io/readthedocs/pygadm?logo=readthedocs&logoColor=white
+    :target: https://pygadm.readthedocs.io/en/stable
+    :alt: Documentation Status
+
+.. image:: https://img.shields.io/github/actions/workflow/status/12rambau/pygadm/unit.yaml?logo=github&logoColor=white
+   :target: https://github.com/12rambau/pygadm/actions/workflows/unit.yaml
+   :alt: Build
+
+.. image:: https://img.shields.io/codeclimate/maintainability/12rambau/pygadm?logo=codeclimate&logoColor=white
+   :target: https://codeclimate.com/github/12rambau/pygadm/maintainability
+   :alt: Maintainability
+
+.. image:: https://img.shields.io/codecov/c/github/12rambau/pygadm?label=codecov&logo=codecov&logoColor=white&token=O6ksUUazr4
+   :target: https://codecov.io/gh/12rambau/pygadm
+   :alt: Coverage
+
+Easy access to administrative boundary defined by GADM from a Python scripts.
+
+This lib provides access to GADM datasets from a Python script without downloading the file from their server. We provide access to The current version (4.1.) which delimits 400,276 administrative areas. 
+
+The data are freely available for academic use and other non-commercial use. Redistribution, or commercial use is not allowed without prior permission. See the `license <https://gadm.org/license.html>`__ of the GADM project for more details.
+
+.. note:: 
+
+   the dataset are generated in the GADM (Global Administrative Areas) project from Berkeley University. Any request relative to the geometries should be redirected to them. 
+
+install it using either ``pip`` or ``conda``: 
+
+.. code-block:: console
+
+   pip install pygadm 
+
+and then request area of interest from their name or GADM Id: 
+
+.. code-block:: python
+
+   import pygadm 
+
+   gdf = pygadm.get_items(name="Singapore", content_level=1)
