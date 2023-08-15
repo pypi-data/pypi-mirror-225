@@ -1,0 +1,49 @@
+#syntax=docker/dockerfile:1
+
+FROM python:{{ v.python }}-{{ v.codename }}
+
+ARG USER_UID=9999
+ARG USER_GID=9999
+
+RUN <<EOT bash -ex
+{% for repo in (apt_repos + apt_build_repos + apt_dev_repos) | sort(attribute='name') %}
+    # add {{ repo.name }} repository
+    curl -fsSL {{ repo.key }} | apt-key add -
+    echo "{{ repo.entry }}" \
+        > /etc/apt/sources.list.d/{{ repo.name }}.list
+{% endfor %}{% if apt_pkgs or apt_build_pkgs or apt_dev_pkgs %}
+    # update and install
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        {{ (apt_pkgs + apt_build_pkgs + apt_dev_pkgs) | sort | join(' \\\n') | indent(8) }}
+{% endif %}
+    # create user
+    groupadd --gid $USER_GID rs
+    useradd -s /usr/bin/fish --uid $USER_UID --gid $USER_GID -m rs
+
+    # grant user sudo access
+    echo "rs ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/rs
+    chmod 0440 /etc/sudoers.d/rs
+
+    # create environment
+    python -m venv --system-site-packages --without-pip /rs
+    chown -R rs:rs /rs
+{% if docker_setup %}
+    {{ docker_setup | trim | indent(4) }}
+{% endif %}{% if docker_build_setup %}
+    {{ docker_build_setup | trim | indent(4) }}
+{% endif %}{% if docker_dev_setup %}
+    {{ docker_dev_setup | trim | indent(4) }}
+{% endif %}
+    # cleanup
+    apt-get autoremove -y
+    apt-get clean -y
+    rm -rf /var/lib/apt/lists/*
+
+EOT
+
+ENV PATH="/rs/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
+ENV RS_DEVMODE=1
+ENV RS_FERNET_KEY="u79vNV2jmEXU32IAPojIwzTpxc07PjEUUULxwyrRElQ="
+ENV VIRTUAL_ENV_DISABLE_PROMPT=1

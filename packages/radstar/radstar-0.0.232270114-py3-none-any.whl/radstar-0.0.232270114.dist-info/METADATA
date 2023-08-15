@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: radstar
+Version: 0.0.232270114
+Summary: rapid application development environment
+License-File: LICENSE
+Requires-Dist: click
+Requires-Dist: Jinja2
+Requires-Dist: psycopg[binary,pool] (>=3.1)
+Requires-Dist: PyYAML
+Requires-Dist: requests[socks]
+Requires-Dist: rsrpc

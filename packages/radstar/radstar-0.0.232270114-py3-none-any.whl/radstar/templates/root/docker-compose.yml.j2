@@ -1,0 +1,35 @@
+version: '3'
+
+volumes:
+  postgres-data:
+
+services:
+
+  main:
+    image: {{ repo }}:{{ tag | default('latest') }}
+    init: true
+    environment:
+      RS_DB_CONNINFO: 'postgres://{{ name }}:password@postgres/{{ name }}'
+      RS_FERNET_KEY: '--CHANGE-ME-CHANGE-ME--CHANGE-ME-CHANGE-ME-='
+      RS_INIT_DB: '1'
+      RS_REDIS_URL: 'redis://redis/'
+      RS_WORKER_ARGS: '-c 4'
+    ports:
+      - '127.0.0.1:8080:8080'
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:{{ v.postgres }}
+    environment:
+      POSTGRES_USER: '{{ name }}'
+      POSTGRES_PASSWORD: 'password'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    restart: unless-stopped

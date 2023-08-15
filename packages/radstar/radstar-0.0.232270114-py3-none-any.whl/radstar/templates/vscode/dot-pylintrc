@@ -1,0 +1,23 @@
+[MASTER]
+
+init-hook="import sys; sys.path.insert(0, '/rs/radstar'); sys.path.insert(0, '/rs/project')"
+max-line-length=120
+
+disable=
+    bare-except,
+    broad-except,
+    broad-exception-raised,
+    dangerous-default-value,
+    global-statement,
+    import-outside-toplevel,
+    invalid-name,
+    logging-fstring-interpolation,
+    missing-class-docstring,
+    missing-function-docstring,
+    missing-module-docstring,
+    protected-access,
+    raise-missing-from,
+    redefined-builtin,
+    relative-beyond-top-level,
+    too-few-public-methods,
+    unspecified-encoding,

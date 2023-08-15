@@ -1,0 +1,93 @@
+#syntax=docker/dockerfile:1
+
+#
+# base
+#
+
+FROM python:{{ v.python }}-{{ v.codename }} AS base
+
+ARG USER_UID=9999
+ARG USER_GID=9999
+
+RUN <<EOT bash -ex
+{% for repo in apt_repos|sort(attribute='name') %}
+    # add {{ repo.name }} repository
+    curl -fsSL {{ repo.key }} | apt-key add -
+    echo "{{ repo.entry }}" \
+        > /etc/apt/sources.list.d/{{ repo.name }}.list
+{% endfor %}{% if apt_pkgs %}
+    # update and install
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        {{ apt_pkgs | sort | join(' \\\n') | indent(8) }}
+{% endif %}
+    # create user
+    groupadd --gid $USER_GID rs
+    useradd -s /bin/false --uid $USER_UID --gid $USER_GID -m rs
+{% if docker_setup %}
+    {{ docker_setup | trim | indent(4) }}
+{% endif %}
+    # cleanup
+    apt-get autoremove -y
+    apt-get clean -y
+    rm -rf /var/lib/apt/lists/*
+
+EOT
+
+ADD . /rs/project
+
+ENV PATH="/rs/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
+
+#
+# build
+#
+
+FROM base AS build
+
+RUN <<EOT bash -ex
+{% for repo in apt_build_repos|sort(attribute='name') %}
+    # add {{ repo.name }} repository
+    curl -fsSL {{ repo.key }} | apt-key add -
+    echo "{{ repo.entry }}" \
+        > /etc/apt/sources.list.d/{{ repo.name }}.list
+{% endfor %}{% if apt_build_pkgs %}
+    # update and install
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        {{ apt_build_pkgs | sort | join(' \\\n') | indent(8) }}
+{% endif %}
+    # create environment
+    python -m venv --system-site-packages --without-pip /rs
+    chown -R rs:rs /rs
+{% if docker_build_setup %}
+    {{ docker_build_setup | trim | indent(4) }}
+{% endif %}
+EOT
+
+USER rs
+
+RUN <<EOT bash -ex
+
+    # install dependencies and initialize environment
+    # use legacy-resolver to work around https://github.com/pypa/pip/issues/9644
+    python -m pip install -r /rs/project/requirements.txt \
+        --require-virtualenv --force-reinstall --use-deprecated=legacy-resolver
+    python -m initenv
+
+    # compile project files
+    python -m compileall -q /rs/project
+{% if docker_build %}
+    {{ docker_build | trim | indent(4) }}
+{% endif %}
+EOT
+
+#
+# {{ name }}
+#
+
+FROM base
+COPY --from=build --chown=root:root /rs /rs
+
+ENTRYPOINT ["/rs/bin/rs"]
+CMD ["run"]

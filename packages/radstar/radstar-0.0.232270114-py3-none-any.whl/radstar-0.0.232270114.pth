@@ -1,0 +1,1 @@
+import sys; [sys.path.insert(0, x) for x in ['/rs/radstar', '/rs/project'] if x not in sys.path]
