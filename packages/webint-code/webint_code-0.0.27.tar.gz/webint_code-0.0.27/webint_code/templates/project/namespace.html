@@ -1,0 +1,77 @@
+$def with (project, namespace, details)
+$var breadcrumbs = ("projects", "Projects", project, f"<b>{project}</b>", "api", "API")
+$var title: $namespace
+
+$ namespaces = namespace.split("/")
+$if len(namespaces) > 1:
+    $ details = details["descendants"][namespaces[1]]
+
+$:mkdn(details["mod"]["doc"])
+
+<hr>
+
+$ _imports, _globals, _exceptions, _functions, _classes = details["members"]
+
+$# $ unique_imports = set(dict(_imports).keys()).difference(stdlib_module_names).difference(set(details["descendants"].keys()))
+$# $if unique_imports:
+$#     <p><small>
+$#     $for module in unique_imports:
+$#         $module\
+$#         $if not loop.last:
+$#              ,
+$#     </small></p>
+$# <ul>
+$# $for descendant, desc_details in details["descendants"].items():
+$#     <li><a href=/projects/$project/api/$details["name"]/$descendant>$descendant</a></li>
+$# </ul>
+$# <p>$details["mod"]["all"]</p>
+$# $for global_name, global_details in _globals:
+$#     $if global_name == "__path__":
+$#         $continue
+$#     <h4 id=$global_name>$(details["name"]).<big><strong>$global_name</strong></big>\
+$#     $if isinstance(global_details, (bool, str, int, float)):
+$#         = $global_details</h4>
+$#         $continue
+$#     $if global_details.get("type") in ("function", "class"):
+$#         $global_details["sig"]
+$#     <a href=/projects/$project/api/$details["name"]#$global_name>&para;</a></h4>
+$#     $if doc := global_details.get("doc"):
+$#         <p>$doc</p>
+
+$ sname = details["name"].replace(".", "/")
+
+$for glob_name, glob_details in _globals:
+    $if glob_name not in details["mod"]["all"]:
+        $continue
+    $# $glob_name $glob_details["type"]
+    $# <h4 id=$func_name style="padding:0 2em;text-indent:-2em">$func_name\
+    $# <span style=font-weight:normal>\
+    $# <em>$func_details["sig"]</em>
+    $# <small><a href=/projects/$project/api/$details["name"]#$func_name>#</a>
+    $# [<a href=/projects/$project/files/$(details["name"]).py>source</a>]</small>
+    $# </span></h4>
+    $# $:mkdn(glob_details["doc"])
+
+$for func_name, func_details in _functions:
+    $if func_name not in details["mod"]["all"]:
+        $continue
+    <h4 id=$func_name style="padding:0 2em;text-indent:-2em">$func_name\
+    <span style=font-weight:normal>\
+    <em>$func_details["sig"]</em>
+    <small><a href=/projects/$project/api/$sname#$func_name>#</a>
+    [<a href=/projects/$project/files/$(sname).py>source</a>]</small>
+    </span></h4>
+    $:mkdn(func_details["doc"])
+
+$for cls_name, cls_details in _classes:
+    $if cls_name not in details["mod"]["all"]:
+        $continue
+    <h4 id=$func_name style="padding:0 2em;text-indent:-2em">$cls_name\
+    <span style=font-weight:normal>\
+    <em>$cls_details["sig"]</em>
+    <small><a href=/projects/$project/api/$sname#$cls_name>#</a>
+    [<a href=/projects/$project/files/$(sname).py>source</a>]</small>
+    </span></h4>
+    $:mkdn(cls_details["doc"])
+
+$# <pre>$pformat(details)</pre>
