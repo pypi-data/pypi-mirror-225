@@ -1,0 +1,11 @@
+django-qr-code
+huscy.consents
+huscy.projects
+huscy.subjects
+
+[development]
+psycopg2-binary
+
+[testing]
+tox
+watchdog
