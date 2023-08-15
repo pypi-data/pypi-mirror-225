@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "apispec-helper"
+version = "0.1.4"
+description = "This project provides objective oriented helper classes collection for defining OpenAPI objects in [apispec](https://pypi.org/project/apispec/)."
+authors = ["hallblazzar <hallblazzar@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "apispec_helper"}]
+repository = "https://github.com/HallBlazzar/apispec-helper"
+keywords = ["openapi", "apispec"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Topic :: Software Development :: Documentation"
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.group.dev.dependencies]
+apispec = "^6.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
