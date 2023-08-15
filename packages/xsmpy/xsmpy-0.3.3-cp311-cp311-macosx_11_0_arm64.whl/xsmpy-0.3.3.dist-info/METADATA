@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: xsmpy
+Version: 0.3.3
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: msgpack
+Requires-Dist: loguru
+Summary: redis stream for python
+Home-Page: https://github.com/xxai-art/xsm
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# xsm
+
+redis stream for python and rust
+
+python install
+
+`pip install xsmpy`
+
