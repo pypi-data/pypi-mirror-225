@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: sdss-lvmtelemetry
+Version: 0.2.2
+Summary: The package for lvmtelemetry
+Home-page: https://github.com/sdss/lvmtelemetry
+License: BSD-3-Clause
+Keywords: astronomy,software
+Author: Florian Briegel
+Author-email: briegel@mpia.de
+Maintainer: José Sánchez-Gallego
+Maintainer-email: gallegoj@uw.edu
+Requires-Python: >=3.10,<3.12
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: httpx (>=0.24.1,<0.25.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: sdss-clu (>=2.1.0,<3.0.0)
+Project-URL: Repository, https://github.com/sdss/lvmtelemetry
+Description-Content-Type: text/markdown
+
+# lvmtel
+
+LVM telescope telemetry.
+
