@@ -1,0 +1,28 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "usefulgram"
+version = "0.0.0b2"
+description = "Like aiogram but more easy"
+license = "MIT"
+authors = ["Alexandr Bortnik <sambonsttt@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/Sethis/usefulgram"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiogram = "^3.0.0rc1"
+cachetools ="^4.0.0"
+pydantic ="^2.1.0"
+
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/Sethis/usefulgram/issues"
