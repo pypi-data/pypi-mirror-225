@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: mini-document-storage
+Version: 1.0.82
+Summary: Fast, inexpensive document storage backed by a standard database connector.
+Author-email: Stevo Brock <StevoGTA@aol.com>
+Project-URL: Homepage, https://github.com/StevoGTA/Mini-Document-Storage
+Keywords: document storage
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp
+
+
+# Mini Document Storage
+
+Fast, inexpensive document storage backed by a standard database connector.
+
+
+## Installation
+
+Install my-project with pip
+
+```bash
+  pip install mini-document-storage
+```
+    
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
