@@ -1,0 +1,175 @@
+[build-system]
+requires = ["poetry-core >=1.1.0", "poetry-dynamic-versioning >=0.21.5"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+substitution.files = ["src/instawow/_version.py"]
+
+[tool.poetry]
+name = "instawow"
+version = "3.1.0"
+description = "World of Warcraft add-on manager"
+license = "GPL-3.0-or-later"
+authors = [
+  "layday <layday@protonmail.com>",
+]
+readme = "README.rst"
+urls.homepage = "http://github.com/layday/instawow"
+packages = [
+  { include = "instawow", from = "src" },
+  { include = "instawow_gui", from = "gui-webview/src" },
+]
+include = [
+  { path = "CHANGELOG.rst", format = "sdist" },
+  { path = "COPYING", format = "sdist" },
+  { path = "gui-webview/src/instawow_gui/frontend/*" },
+  { path = "tests", format = "sdist" },
+]
+scripts.instawow = "instawow.cli:main"
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+
+aiohttp = ">=3.8.2, <4"
+aiohttp-client-cache = ">=0.8.0"
+alembic = ">=1.9.0"
+attrs = ">=23.1.0"
+cattrs = ">=23.1.2"
+click = ">=8.1.0"
+iso8601 = ">=1.0.2"
+loguru = ">=0.7.0"
+mako = ">=1.2.4"
+packaging = ">=23.0"
+pluggy = ">=0.13"
+prompt-toolkit = ">=3.0.29, <4"
+questionary = ">=1.10"
+rapidfuzz = ">=2.12.0"
+sqlalchemy = ">=2.0.0"
+typing-extensions = ">=4.3.0"
+yarl = ">=1.8.1"
+
+aiohttp-rpc = { version = ">=1.0.0", optional = true }
+anyio = { version = ">=3.6.2", optional = true }
+toga = { version = ">=0.3.0", optional = true }
+
+aresponses = { version = ">=2.1.4", optional = true }
+coverage = { version = ">=6.2", extras = ["toml"], optional = true }
+pytest = { version = ">=6.2.5", optional = true }
+pytest-asyncio = { version = ">=0.17.0", optional = true }
+pytest-xdist = { version = ">=2.5.0", optional = true }
+
+types-certifi = { version = "*", optional = true }
+
+[tool.poetry.extras]
+gui = [
+  "aiohttp-rpc",
+  "anyio",
+  "toga",
+]
+test = [
+  "aresponses",
+  "coverage",
+  "pytest",
+  "pytest-asyncio",
+  "pytest-xdist",
+]
+types = [
+  "types-certifi",
+]
+
+
+[tool.ruff]
+select = [
+  "B",   # flake8-bugbear (without opinionated rules)
+  "C4",  # flake8-comprehensions
+  "DTZ", # flake8-datetimez
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "PGH", # pygrep-hooks
+  "PIE", # flake8-pie
+  "PT",  # flake8-pytest-style
+  "PYI", # flake8-pyi
+  "Q",   # flake8-quotes
+  "RUF", # ruff: unused-noqa
+  "TRY", # tryceratops
+  "UP",  # pyupgrade
+  "W",   # pycodestyle
+  "YTT", # flake8-2020
+]
+ignore = [
+  "E501",   # pycodestyle: line-too-long
+  "TRY003", # tryceratops: raise-vanilla-args
+]
+line-length = 99
+target-version = "py39"
+
+[tool.ruff.per-file-ignores]
+"**.py" = [
+  "PYI",
+]
+"**.pyi" = [
+  "I002", # isort: missing-required-import
+]
+
+[tool.ruff.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "single"
+
+[tool.ruff.isort]
+known-first-party = [
+  "instawow",
+  "instawow_gui",
+]
+required-imports = [
+  "from __future__ import annotations",
+]
+
+[tool.ruff.pyupgrade]
+keep-runtime-typing = true
+
+
+[tool.black]
+line-length = 99
+skip-string-normalization = true
+target-version = ["py39", "py310", "py311"]
+
+
+[tool.coverage.run]
+source_pkgs = [
+  "instawow",
+]
+omit = [
+  "**/instawow/_migrations/*",
+]
+parallel = true
+branch = true
+dynamic_context = "test_function"
+
+[tool.coverage.paths]
+combine = ["src/instawow", "**/instawow"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "raise NotImplementedError",
+  "@overload",
+]
+
+[tool.pytest.ini_options]
+markers = [
+  "iw_no_mock_http",
+]
+xfail_strict = true
+filterwarnings = [
+  "error",
+]
+asyncio_mode = "auto"
+addopts = ["-ra", "--strict-config", "--strict-markers"]
