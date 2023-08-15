@@ -1,0 +1,11 @@
+beautifulsoup4
+requests
+click<8
+humanize
+colorama
+requests-mock
+google
+proxy-db
+futures; python_version < '3.0'
+py2-ipaddress; python_version < '3.0'
+greenlet>=3.0.0a1; python_version >= '3.12'
