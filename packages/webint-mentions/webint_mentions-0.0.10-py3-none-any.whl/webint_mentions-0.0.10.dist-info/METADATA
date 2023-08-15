@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: webint-mentions
+Version: 0.0.10
+Summary: manage mentions on your website
+License: AGPL-3.0-or-later
+Keywords: Webmention
+Author: Angelo Gladding
+Author-email: angelo@ragt.ag
+Requires-Python: >=3.10,<3.11
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: webint (>=0.0)
