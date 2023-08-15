@@ -1,0 +1,17 @@
+version-query~=1.5
+
+[config]
+
+[packaging_tests]
+build>=0.10
+docutils~=0.20
+Pygments~=2.14
+setuptools>=67.4
+pip>=23.0
+wheel>=0.40
+
+[setup]
+build>=0.10
+docutils~=0.20
+Pygments~=2.14
+setuptools>=67.4
