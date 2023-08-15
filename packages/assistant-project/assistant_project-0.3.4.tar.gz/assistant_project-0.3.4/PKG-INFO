@@ -1,0 +1,93 @@
+Metadata-Version: 2.1
+Name: assistant_project
+Version: 0.3.4
+Summary: Python Library for the EU ASSISTANT-Project
+Author-email: Nikolas Laudenbach <nikolas.laudenbach@tum.de>
+License: Copyright (c) 2018 The Python Packaging Authority
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: homepage, https://assistant-project.eu
+Project-URL: repository, https://gitlab.lrz.de/pd/pd.graphdbmapping/python-library.git
+Keywords: graphdb,assistant
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+# Python Library for the EU ASSISTANT Project
+
+## Library Description
+
+This library contains the following sublibraries:
+1. [**graphdb**](#graphdb)
+2. [**production_system**](#production-system)
+3. [**dict_wrapper**](#dict-wrapper)
+
+### GraphDB
+Enables using the Rest API for 
+[OntoText GraphDB](https://www.ontotext.com/products/graphdb/) 
+to Up-/Download files to
+and from the selected graph inside a repository. 
+
+With OntoRefine you can upload a file and map the keywords, preprocessing the data for uploading it to a graph.
+
+
+### Production System
+
+Enables reading ProductionSystem file from GraphDB and turning it into valid json format.
+
+
+### Dict Wrapper
+
+Allows to read every key-value pair and return list/dict based on custom config.
+
+---
+## Change History
+
+**0.3.4**:
+- Fix error where list isn't returned when it is not in top level dictionary.
+
+**0.3.3**:
+- Bug fixes
+
+**0.3.2**:
+- FIX: relative import of *json_wapper*
+- Add condition to return correct value if two keys are identical in different subdirectories
+
+**0.3.1**:
+- Add method to get identifier from cfg_file based on name for *json_wrapper*
+
+**0.3**:
+- Create new sublibrary *json_wrapper*
+
+**0.2**:
+- Create new sublibrary *production_system*
+- Remove prints from *graphdb*
+
+**0.1.1**:
+- Update graphdb download
+
+**0.1**:
+- Create library
+- Create new sublibrary *graphdb*
+
+---
+For more information about the project go to the [ASSISTANT Homepage](https://assistant-project.eu).
+

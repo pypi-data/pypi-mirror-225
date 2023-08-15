@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "requests~=2.28", "PyYAML>=6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assistant_project"
+version = "0.3.4"
+authors = [
+  { name="Nikolas Laudenbach", email="nikolas.laudenbach@tum.de" },
+]
+description = "Python Library for the EU ASSISTANT-Project"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENCE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+#    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+keywords = ["graphdb", "assistant"]
+
+[project.urls]
+homepage = "https://assistant-project.eu"
+repository = "https://gitlab.lrz.de/pd/pd.graphdbmapping/python-library.git"
+
