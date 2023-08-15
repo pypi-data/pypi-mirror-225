@@ -1,0 +1,54 @@
+%YAML 1.2
+---
+training_type: { training_type } # Type of training to run. Either "diffuser" or "transformer". In this case, "transformer".
+name: { deployment_name } # Your name for the fine-tuning run.
+
+# Model params:
+hf_model_path: "YOUR_HUGGINGFACE_MODEL_PATH_HERE" # Path to the huggingface diffusion model to train.
+train_prompt: "INSERT YOUR TRAINING PROMPT" # Your prompt to train.
+log_level: "INFO" # log_level level for logging. Can be "DEBUG", "INFO", "WARNING", "ERROR".
+cpu: 2 # Number of CPUs to use for training.
+memory: 16 # Memory to use for training in GB.
+
+###############################################################
+#  Optional Parameters
+###############################################################
+# Diffuser params
+prior_class_prompt: "INSERT YOUR PRIOR CLASS PROMPT HERE" # Your prompt to train prior class images. Only use if you would like to train prior class images.
+revision: "main" # Revision of the diffuser model to use.
+validation_prompt: ~ # an optional validation prompt to use. If ~, will use the training prompt.
+custom_tokenizer: "" # custom tokenizer from AutoTokenizer if required.
+
+# Dataset params
+train_image_dir: data/training_class_images/ # Directory of training images.
+prior_class_image_dir: ~ # or "path/to/your/prior_class_images". Optional directory of images to use if you would like to train prior class images as well.
+
+# Training params
+training_args:
+  # General training params
+  learning_rate: 1.0E-5
+  num_validation_images: 4 # Number of images to generate in validation.
+  num_train_epochs: 50
+  seed: 1
+  resolution: 512 # Resolution to train images at.
+  center_crop: False # Whether to center crop images to resolution.
+  train_batch_size: 2
+  num_prior_class_images: 0 # Number of prior class images to train on. If 0, will not generate any prior class images. Requires prior_class_prompt to be set.
+  prior_class_generation_batch_size: 2
+  prior_loss_weight: 1.0 # Weight of prior loss in the total loss if using.
+  max_train_steps: ~ # maximum training steps which overrides number of training epochs
+  validation_epochs: 5 # number of epochs before running validation and checkpointing
+
+  # Training loop params
+  gradient_accumulation_steps: 1
+  lr_scheduler: "constant"
+  lr_warmup_steps: 50
+  lr_num_cycles: 1
+  lr_power: 1.0
+  allow_tf32: False
+  max_grad_norm: 1.0
+  mixed_precision: "no" # If you would like to use mixed precision. Supports fp16 and bf16. Defaults to 'no'
+  prior_generation_precision: ~
+  scale_lr: False
+  use_8bit_adam: True
+  use_xformers: True # Whether to use xformers memory efficient attention or not.
