@@ -1,0 +1,29 @@
+---
+core:
+  paths:
+    # the user config directory
+    user_directory: '~/.config/plapperkasten'
+    # where to expect the plugins
+    # relative to the user config directory
+    plugins: 'plugins'
+    # where to expect the user-defined eventmap
+    # relative to the user config directory
+    eventmap: 'events.map'
+
+  mapping:
+    # the delimiter to use in a map file
+    delimiter: '|'
+
+  system:
+    # time to set for shutdown command
+    shutdown_time: 0
+    # will prevent certain actions like real shutdown
+    debug: False
+
+  plugins:
+    # suppress loading of plugins
+    blacklist: []
+
+  events:
+    # events that will be re-emitted when they are recieved by the main process
+    passthrough: []
