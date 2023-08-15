@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: cm3
+Version: 0.1.0
+Summary: Description of the cm3 package
+License: MIT
+Author: Your Name
+Author-email: youremail@example.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: SentencePiece
+Requires-Dist: accelerate
+Requires-Dist: bitsandbytes
+Requires-Dist: datasets
+Requires-Dist: deepspeed
+Requires-Dist: einops
+Requires-Dist: lion-pytorch
+Requires-Dist: memory-profiler
+Requires-Dist: numpy
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: triton
