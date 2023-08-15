@@ -1,0 +1,24 @@
+add_library(
+  lapackd
+  dlae2.f
+  dlaev2.f
+  dlamch.f
+  dlansp.f
+  dlanst.f
+  dlapy2.f
+  dlarf.f
+  dlarfg.f
+  dlartg.f
+  dlascl.f
+  dlaset.f
+  dlasr.f
+  dlasrt.f
+  dlassq.f
+  dopgtr.f
+  dorg2l.f
+  dorg2r.f
+  dspev.f
+  dsptrd.f
+  dsteqr.f
+  dsterf.f)
+install(TARGETS lapackd ARCHIVE DESTINATION lib)

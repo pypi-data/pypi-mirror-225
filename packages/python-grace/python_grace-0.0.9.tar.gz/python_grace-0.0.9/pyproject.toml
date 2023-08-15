@@ -1,0 +1,161 @@
+[tool.poetry]
+name = "python-grace"
+version = "0.0.9"
+description = "An unofficial Python wrapper for the GRACE system."
+license = "MIT"
+authors = ["Takahiro Ueda <tueda@st.seikei.ac.jp>"]
+readme = "README.md"
+repository = "https://github.com/tueda/python-grace"
+keywords = ["particle physics", "automatic calculation"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+packages = [
+    {include = "grace"},
+]
+include = [
+    {path = "grace/extern/CMakeLists.txt", format = "sdist"},
+    {path = "grace/patch/**/*.cmake", format = "sdist"},
+    {path = "grace/patch/**/*.in", format = "sdist"},
+    {path = "grace/patch/**/*.patch", format = "sdist"},
+    {path = "grace/patch/**/CMakeLists.txt", format = "sdist"},
+
+    {path = "grace/bin/*", format = "wheel"},
+    {path = "grace/bin/debug/*", format = "wheel"},
+    {path = "grace/lib/*.a", format = "wheel"},
+    {path = "grace/lib/dbkinem/**/*.f", format = "wheel"},
+    {path = "grace/lib/debug/*.a", format = "wheel"},
+    {path = "grace/lib/model/**/*.fin", format = "wheel"},
+    {path = "grace/lib/model/**/*.mdl", format = "wheel"},
+    {path = "grace/lib/templates/**/in.prc", format = "wheel"},
+]
+exclude = [
+    "grace/bin",
+    "grace/extern",
+    "grace/lib",
+    "grace/patch",
+]
+
+[tool.poetry.build]
+generate-setup-file = false
+script = "build.py"
+
+[tool.poetry.scripts]
+grace = "grace.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.6.1"
+
+appdirs = "^1.4.4"
+click = "^8.0.4"  # frozen for python 3.6
+patch = "^1.16"
+
+importlib-metadata = {version = "^4.8.2", python = "<3.8"}
+
+[tool.poetry.dev-dependencies]
+cmake = "^3.25.2"
+ninja = "^1.11.1"
+pre-commit = "^2.17.0"  # frozen for python 3.6
+pytest = "^7.0.1"  # frozen for python 3.6
+pytest-cov = "^4.0.0"
+scikit-build = "^0.16.6"
+taskipy = "^1.10.3"
+
+[build-system]
+requires = [
+    "poetry-core>=1.0.8",
+    "scikit-build>=0.16.6",
+    "cmake>=3.25.2",
+    "ninja>=1.11.1",
+
+    "appdirs",
+    "patch",
+]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.report]
+exclude_lines = [
+    "@overload",
+    "if TYPE_CHECKING:",
+    "pragma: no cover",
+    "raise AssertionError()",
+    "return NotImplemented",
+]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = [
+    "E203",  # for black
+    "S404",  # import_subprocess
+]
+per-file-ignores = [
+    "tests/test_*.py:D100,D103,S101,S603",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+pretty = true
+show_error_codes = true
+strict = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = [
+    "appdirs",
+    "importlib_metadata",
+    "patch",
+    "skbuild",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov-report=html",
+    "--cov-report=term",
+    "--cov=grace",
+    "--doctest-modules",
+    "--ignore=_skbuild",
+    "--ignore=build.py",
+    "--strict-markers",
+    "-m",
+    "not test_install",
+]
+markers = [
+    "test_install"
+]
+
+[tool.taskipy.tasks.prepare]
+cmd = "pre-commit install && pre-commit install --hook-type commit-msg"
+help = "set up a development environment"
+
+[tool.taskipy.tasks.lint]
+cmd = "pre-commit run --all-files"
+help = "run linters (+ fix)"
+
+[tool.taskipy.tasks.build]
+cmd = "python build.py"
+help = "build native libraries"
+
+[tool.taskipy.tasks.test]
+cmd = "task build && pytest"
+help = "run tests"
+
+[tool.taskipy.tasks.testall]
+cmd = "task build && pytest -m ''"
+help = "run all tests"
+
+[tool.taskipy.tasks.makepatch]
+cmd = "python build.py diff"
+help = "create a patch set"
+
+[tool.taskipy.tasks.reset]
+cmd = "python build.py reset"
+help = "reset the source tree (original + patch)"
+
+[tool.taskipy.tasks.rebuild]
+cmd = "task reset && task build"
+help = "reset and rebuild"

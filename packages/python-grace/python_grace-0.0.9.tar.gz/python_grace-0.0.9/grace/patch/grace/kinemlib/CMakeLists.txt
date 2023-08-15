@@ -1,0 +1,22 @@
+add_library(
+  kinem
+  arrclr.f
+  arrcpy.f
+  determ.f
+  ktolab.f
+  labtok.f
+  memclc.f
+  memclr.f
+  minor.f
+  minvr2.f
+  minvrt.f
+  mmmult.f
+  mtxclr.f
+  mtxcpy.f
+  mtxinv.f
+  mvmult.f
+  pboost.f
+  rotmtx.f
+  vvvmlt.f
+  wtolab.f)
+install(TARGETS kinem ARCHIVE DESTINATION lib)

@@ -1,0 +1,31 @@
+#ifdef DEFGLOBAL
+Global char *gracedir  = "@GRACE_DIR@";
+Global char *graceldir = "@GRACE_LIBDIR@";
+Global char *modelpath = "@GRACE_MODEL_PATH@";
+Global char *kinempath = "@GRACE_KINEM_PATH@";
+Global char *machine   = "@CMAKE_SYSTEM_NAME@";
+Global char *mpihome   = "@GRACE_MPIHOME@";
+Global char *cmpdate   = __DATE__ " " __TIME__;
+Global char *huname    = "@BUILD_HOSTNAME@";
+Global char *fortcmp   = "@GRACE_FC@";
+Global char *fflags    = "@GRACE_FCFLAGS@";
+Global char *lflags    = "@GRACE_LDFLAGS@";
+Global char *cernlib   = "@GRACE_CERNLIB@";
+Global char *reduce    = "@GRACE_REDUCE@";
+Global char *vorm      = "@GRACE_FORM@";
+#else
+Global char *gracedir;
+Global char *graceldir;
+Global char *modelpath;
+Global char *kinempath;
+Global char *machine;
+Global char *mpihome;
+Global char *cmpdate;
+Global char *huname;
+Global char *fortcmp;
+Global char *fflags;
+Global char *lflags;
+Global char *cernlib;
+Global char *reduce;
+Global char *vorm;
+#endif
