@@ -1,0 +1,31 @@
+{% load filter %}
+<div class="main-menu">
+  <h5 class="sidenav-heading">Main</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li class="{% if request.path == '/'  %} active {% endif %}"><a href="{% url 'home' %}"> <i class="fa fa-home"></i>Painel</a></li>
+    <li class="{% if request.path|starts_with:'/employee/'   %} active {% endif %}"><a href="{% url 'u-emp-unit-dash' %}"> <i class="fa fa-user"></i> Pessoal</a></li>
+    <li class="{% if request.path|starts_with:'/leave/' %} active {% endif %}"><a href="#licencaDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-file-lines"></i> Licenca </a>
+      <ul id="licencaDropdown" class="collapse list-unstyled ">
+        <li><a href="{% url 'leave-c-list' %}">Aplikasaun</a></li>
+        <li><a href="{% url 'leave-c-ver-list' %}">Aprovasaun</a></li>
+      </ul>
+    </li>
+    <li class="{% if request.path|starts_with:'/perform/' %} active {% endif %}"><a href="{% url 'all-eval-dash' %}"> <i class="fa fa-clipboard-list"></i> Avaliasaun</a></li>
+    <li class="{% if request.path|starts_with:'/attendance/' %} active {% endif %}"><a href="{% url 'ur-att-unit-dash' %}"> <i class="fa fa-clipboard-user"></i> Absensia</a></li>
+    <li class="{% if request.path|starts_with:'/training/' %} active {% endif %}"><a href="{% url 'train-c-dash' %}"> <i class="fa-solid fa-users-viewfinder"></i> Treinamento</a></li>
+    <li class="{% if request.path|starts_with:'/employee-contact/' %} active {% endif %}"><a href="{% url 'emp-contact-list' %}"> <i class="fa fa-file-lines"></i> Kontakto</a></li>
+  </ul>
+</div>
+<div class="admin-menu">
+<h5 class="sidenav-heading">Perfil & Konta</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">                  
+  <li class="{% if request.path|starts_with:'/profile/' %} active {% endif %}"><a href="{% url 'user-profile' %}"> <i class="fa-solid fa-address-book"></i>Perfil</a></li>
+  <li  class="{% if request.path|starts_with:'/account/' %} active {% endif %}"><a href="{% url 'user-account' %}"> <i class="fa-solid fa-user-gear"></i>Konta</a></li>
+</ul>
+</div>
+<!-- <div class="admin-menu">
+<h5 class="sidenav-heading">Mapa</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">
+  <li><a href="#"> <i class="fa fa-google"></i>Google</a></li>
+</ul>
+</div> -->

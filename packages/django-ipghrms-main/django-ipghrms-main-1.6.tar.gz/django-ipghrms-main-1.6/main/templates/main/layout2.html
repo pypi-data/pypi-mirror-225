@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if title %}
+			<title>IPG-HRMS - {{ title|upper }}</title>
+		{% else %}
+			<title>IPG-HRMS</title>
+		{% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{% static 'main/vendor/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Custom stylesheet - for your changes-->
+    {% block head %}
+      
+    {% endblock head %}
+  </head>
+  <body>
+    <div class="page">
+      <!-- navbar-->
+      <section>
+        {% block content %}{% endblock %}
+      </section>
+    </div>
+    <!-- Main File-->
+    <script src="{% static 'main/js/front.js' %}"></script>
+
+  </body>
+</html>

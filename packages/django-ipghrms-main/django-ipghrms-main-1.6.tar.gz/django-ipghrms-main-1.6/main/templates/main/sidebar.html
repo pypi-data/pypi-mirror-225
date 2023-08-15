@@ -1,0 +1,49 @@
+{% load static %}
+<div class="side-navbar-wrapper">
+    <!-- Sidebar Header    -->
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+      <!-- User Info-->
+      <div class="sidenav-header-inner text-center">
+        <!-- <img src="{% static '' %}" alt=""> -->
+        <i class="fa fa-user text-center m-0" style="font-size: 19px;"></i>
+        <h6 class="mb-1"> {{ employee_first_name|title }}</h6>
+        <small class="text-center">
+          {% if user_group == 'de' %}
+            <i>PRESIDENTE</i>
+          {% elif user_group == 'deputy' %}
+            <i>VICE PRESIDENTE</i>
+          {% elif user_group == 'unit' %}
+            CHEFE DIVIZAUN          
+          {% elif user_group == 'dep' %}
+            CHEFE EKIPA          
+          {% elif user_group == 'hr' %}
+            RH
+          {% else %}
+          {{ user_group|upper }}
+          {% endif %}
+        </small>
+      </div>
+      <!-- Small Brand information, appears on minimized sidebar-->
+      <div class="sidenav-header-logo"><a href="{% url 'home' %}" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+    </div>
+    <!-- Sidebar Navigation Menus-->
+    {% if user.is_authenticated %}
+			{% if user_group == 'staff' %}
+				{% include 'main/sidebar_staff.html' %}
+			{% elif user_group == 'dep' %}
+				{% include 'main/sidebar_dep.html' %}
+			{% elif user_group == 'unit' %}
+				{% include 'main/sidebar_unit.html' %}
+      {% elif user_group == 'deputy' %}
+        {% include 'main/sidebar_deputy.html' %}
+      {% elif user_group == 'de' %}
+        {% include 'main/sidebar_de.html' %}
+      {% elif user_group == 'hr' %}
+        {% include 'main/sidebar_hr.html' %}
+      {% elif user_group == 'hr_s' %}
+        {% include 'main/sidebar_hr_s.html' %}
+			{% else %}
+				{% include 'main/sidebar_admin.html' %}
+			{% endif %}
+		{% endif %}
+  </div>

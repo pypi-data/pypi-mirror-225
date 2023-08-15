@@ -1,0 +1,21 @@
+{% load filter %}
+<div class="main-menu">
+  <h5 class="sidenav-heading">Main</h5>
+  <ul id="side-main-menu" class="side-menu list-unstyled">                  
+    <li class="{% if request.path == '/'  %} active {% endif %}"><a href="{% url 'home' %}"> <i class="fa fa-home"></i>Varanda</a></li>
+    <li class="{% if request.path|starts_with:'/leave/' %} active {% endif %}"><a href="{% url 'leave-s-list' %}"> <i class="fa fa-file-lines"></i>Licensa</a></li>
+    </li>
+    <li class="{% if request.path|starts_with:'/perform/' %} active {% endif %}"><a href="{% url 'staff-perform-list' %}"> <i class="fa-solid fa-clipboard-list"></i> Avaliasaun</a></li>
+    {% if user.is_superuser %}
+      <li  class="{% if request.path|starts_with:'/log/' %} active {% endif %}"><a href="{% url 'log-list' %}"> <i class="fa-solid fa-clipboard-list"></i> Logs </a></li>
+    {% endif %}
+    <li class="{% if request.path|starts_with:'/employee-contact/' %} active {% endif %}"><a href="{% url 'emp-contact-list' %}"> <i class="fa fa-file-lines"></i> Kontakto</a></li>
+  </ul>
+</div>
+<div class="admin-menu">
+<h5 class="sidenav-heading">Konta</h5>
+<ul id="side-main-menu" class="side-menu list-unstyled">
+    <li class="{% if request.path|starts_with:'/profile/' %} active {% endif %}"><a href="{% url 'user-profile' %}"> <i class="fa fa-user"></i>Perfil</a></li>
+    <li class="{% if request.path|starts_with:'/account/' %} active {% endif %}" ><a href="{% url 'user-account' %}"> <i class="fa-solid fa-user-gear"></i>Konta</a></li>
+</ul>
+</div>

@@ -1,0 +1,299 @@
+{% load humanize %}
+<table class="table table-sm">
+	<tr class="bg-light">
+		<th colspan="3" ><h6 class="mb-0 p-1">INFORMASAUN PESSOAL
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'emp-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>ID#</td><td>: {{ objects.emp_id }}</td>
+		<td rowspan="6" align="center">
+			{% if img.image %}
+				<img src="{{ img.image.url }}" width="120" />
+			{% endif %}
+			<br/>
+			{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'photo-update'  objects.hashed %}"><i class="fa fa-edit"></i></a>
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Naran propiu</td><td>: {{ objects.first_name }}</td>
+	</tr>
+	<tr>
+		<td>Apelidu</td><td>:  {{ objects.last_name|upper }}</td>
+	</tr>
+	<tr>
+		<td>Generu</td><td>: {{ objects.sex }}</td>
+	</tr>
+	<tr>
+		<td>Fatin moris</td><td>: 
+			{% if objects.pob %}
+			  {{ objects.pob }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Data moris</td><td>: 
+			{% if objects.dob %}
+				{{ objects.dob }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Estadu civil</td><td>: 
+			{% if objects.marital %}		  
+				{{ objects.marital }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Grupu ran</td><td colspan="2">:
+			{% if objects.blood %}
+				{{ objects.blood }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Nasaun</td><td colspan="2">:
+			{% if objects.country %}		  
+				{{ objects.country.name }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Naran Aman/Inan</td><td colspan="2">: 
+			{% if objects.father  %}
+				{{ objects.father }}
+			{% else %}
+				-
+			{% endif %}
+			/
+			{% if objects.mother %}
+			  
+			{{ objects.mother }}
+			{% else %}
+			-
+			{% endif %}
+		</td>
+	</tr>
+	{% if objects.country.code == "TLS" %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">ID NACIONAL
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'lidnumber-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Certidaun RDTL</td>
+		<td colspan="2">:
+			{% if lidnum.cert_rdtl %}
+				{{ lidnum.cert_rdtl }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Nu. Eleitoral</td>
+		<td colspan="2">: 
+			{% if lidnum.electoral %}
+				{{ lidnum.electoral }}
+			{% else %}
+				-
+			{% endif %}	
+		
+		</td>
+	</tr>
+	<tr>
+		<td>BI (Validade)</td>
+		<td colspan="2">:
+			{% if lidnum.bi %}
+				{{ lidnum.bi }} ({{ lidnum.bi_expiry_date|date:"d/m/Y" }})
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Passaporte (Validade)</td>
+		<td colspan="2">: 
+			{% if lidnum.passport %}
+				{{ lidnum.passport }} ({{ lidnum.passport_expiry_date|date:"d/m/Y" }})
+			{% else %}
+				-
+			{% endif %}
+			
+		</td>
+	</tr>
+	{% else %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 >ID INTERNACIONAL
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'iidnumber-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Passaporte</td><td colspan="2">: {{ iidnum.passport }}</td>
+	</tr>
+	{% endif %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">KONTAKTU
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %} 
+			<a href="{% url 'contactinfo-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}		
+		</th>
+	</tr>
+	<tr>
+		<td>Email</td><td colspan="2">: {{ contactinfo.email }}</td>
+	</tr>
+	<tr>
+		<td>Nu. Telemovel</td><td colspan="2">: {{ contactinfo.phone }}</td>
+	</tr>
+	<tr>
+		<td>Kontaktu Emergencia</td><td colspan="2">: {{ contactinfo.emergency_call }}</td>
+	</tr>
+	{% if objects.country.code == "TLS" %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">NATURALIDADE 
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'loctl-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Municipiu</td><td colspan="2">:
+			{% if loctl.municipality  %}
+			  {{loctl.municipality}}
+			{% else %}
+				-	
+			{% endif %}	
+		</td>
+	</tr>
+	<tr>
+		<td>Posto</td><td colspan="2">:
+			{% if loctl.administrativepost %}
+				{{ loctl.administrativepost }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Suco</td><td colspan="2">:
+			{% if loctl.village %}
+				{{ loctl.village }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	{% else %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">ENDERESU INTERNACIONAL 
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'locinter-update' objects.hashed %}#"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Cidade</td><td colspan="2">: 
+			{% if locinter.city  %}		  
+				{{ locinter.city }}
+			{% else %}
+				-
+			{% endif %}
+		
+		</td>
+	</tr>
+	<tr>
+		<td>Enderesu</td><td colspan="2">:
+			{% if locinter.address  %}		  
+				{{ locinter.address }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Nasaun</td><td colspan="2">: 
+			{% if locinter.country  %}	  
+				{{ locinter.country }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	{% endif %}
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">ENDERESU IHA TIMOR-LESTE  
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'addtl-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Enderesu</td>
+		<td colspan="2">:
+			{% if addtl.address %}{{ addtl.address }}{% else %}-{% endif %},
+			{% if addtl.village %}{{ addtl.village }}{% else %}-{% endif %},
+			{% if addtl.administrativepost %}{{ addtl.administrativepost }}{% else %}-{% endif %},
+			{% if addtl.municipality %}{{ addtl.municipality }}{% else %}-{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Coordenada</td><td colspan="2">:
+			{% if addtl.latitude %}{{ addtl.latitude }}{% else %}-{% endif %}/
+			{% if addtl.latitude %}{{ addtl.latitude }}{% else %}-{% endif %}
+		</td>
+	</tr>
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">KARTA KONDUSAUN
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'driver-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>Numeru</td><td colspan="2">: 
+			{% if driver.number %}		  
+				{{ driver.number }}
+			{% else %}
+			-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Tipu</td><td colspan="2">: 
+			{% if driver.type %}		  
+				{{ driver.type }}
+			{% else %}
+			-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Validade</td><td colspan="2">: 
+			{% if driver.expiry_date %}
+				{{ driver.expiry_date }}
+			{% else %}
+			-
+			{% endif %}
+		</td>
+	</tr>
+</table>
+

@@ -1,0 +1,106 @@
+{% load humanize %}
+<table class="table table-sm">
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">ID FINANCEIRU
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'fidnumber-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>NISS</td><td colspan="2">: 
+			{% if fidnum.niss  %}	  
+				{{ fidnum.niss }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Payrol</td><td colspan="2">: 
+			{% if fidnum.payrol_number  %}	  
+				{{ fidnum.payrol_number }}
+			{% else %}
+				-
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Banku</td><td colspan="2">:
+			{% if fidnum.bank  %}	  
+				{{ fidnum.bank }}
+			{% else %}
+				-
+			{% endif %} 
+		</td>
+	</tr>
+	<tr>
+		<td>Konta Bankaria</td>
+		<td colspan="2">: 
+			{% if fidnum.bank_account  %}	  
+				{{ fidnum.bank_account }}
+			{% else %}
+				-
+			{% endif %} 
+		</td>
+	</tr>
+	<tr>
+		<td>IBAN</td>
+		<td colspan="2">: {{ fidnum.iban }}</td>
+	</tr>
+	<tr class="bg-light">
+		<th colspan="3"><h6 class="mb-0 p-1">INFORMASAUN KONTRATU
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			{% if not empcont %}
+			<a href="{% url 'cont-add' objects.hashed %}"><i class="fa fa-plus"></i></a>
+			{% else %}
+			<a href="{% url 'cont-update' empcont.hashed %}"><i class="fa fa-edit"></i></a>
+			{% endif %}
+		{% endif %}
+		</h6></th>
+	</tr>
+	<tr>
+		<td>Tipu</td><td colspan="2">: {{ empcont.contract_type }}</td>
+	</tr>
+	<tr>
+		<td>Data hahu</td><td colspan="2">: {{ empcont.start_date }}</td>
+	</tr>
+	<tr>
+		<td>Data termina</td><td colspan="2">: {{ empcont.end_date }}</td>
+	</tr>
+	<tr>
+		<td>Kategoria</td><td colspan="2">: {{ empcont.category }}</td>
+	</tr>
+	{% if emppos.position %}
+	<tr>
+		<td>Pojisaun</td><td colspan="2">: {{ emppos.position }}</td>
+	</tr>
+	{% endif %}
+	{% if empdiv.department %}
+	<tr>
+		<td>Ekipa</td>
+		<td colspan="2">: {{ empdiv.department }}</td>
+	</tr>
+	{% elif empdiv.unit %}
+	<tr>
+		<td>Unidade</td>
+		<td colspan="2">: {{ empdiv.unit }}</td>
+	</tr>
+	{% elif empdiv.de %}
+	<tr>
+		<td>DE/Adjuntu</td>
+		<td colspan="2">: {{ empdiv.de }}</td>
+	</tr>
+	{% endif %}
+	<tr>
+		<td>Salariu</td>
+		<td colspan="2">: 
+			$ {{ empsalary.amount|intcomma }} 
+			{% if group == 'admin' %}
+			{% if empsalary %}
+			<a href="{% url 'salary-detail' empsalary.hashed %}" title="Detalha"><i class="fa fa-eye"></i></a>
+			{% endif %}
+			{% endif %}
+		</td>
+	</tr>
+</table>
