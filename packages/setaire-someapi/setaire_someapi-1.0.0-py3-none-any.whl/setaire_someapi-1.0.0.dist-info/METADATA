@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: setaire-someapi
+Version: 1.0.0
+Home-page: http://119.29.99.24:9980/setaire/python/someapi
+Author: setaire
+Author-email: admin@example.com
+License: MIT
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setaire-sometools ==1.0.1
+Requires-Dist: PyExecJS ==1.5.1
+Requires-Dist: retry ==0.9.2
+
+# SomeAPI
+
+这是一个封装了一些网络上的api的库，比如哔哩哔哩、新浪、抖音等等
+
+---
+[![pipeline status](http://119.29.99.24:9980/setaire/python/someapi/badges/main/pipeline.svg)](http://119.29.99.24:9980/setaire/python/someapi/-/commits/main) [![coverage report](http://119.29.99.24:9980/setaire/python/someapi/badges/main/coverage.svg?job=unit-test-job)](http://119.29.99.24:9980/setaire/python/someapi/-/commits/main?job=unit-test-job) [![Latest Release](http://119.29.99.24:9980/setaire/python/someapi/-/badges/release.svg)](http://119.29.99.24:9980/setaire/python/someapi/-/releases)
+
+
+## Getting Started
+
+
+拉取代码直接安装:
+
+```bash
+python setup.py install
+```
+
+使用 pip 安装:
+
+```bash
+pip install setaire_someapi
+```
+
+使用 docker 安装:
+
+```bash
+docker pull setaire/someapi:[Latest Release]
+```
+
+
+---
+
+## Test
+NOTE: 该测试是单元测试并不对api进行测试
+```
+coverage run test.py
+```
+
