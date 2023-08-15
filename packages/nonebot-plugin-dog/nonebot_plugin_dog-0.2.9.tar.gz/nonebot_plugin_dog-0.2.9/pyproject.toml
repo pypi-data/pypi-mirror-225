@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "nonebot-plugin-dog"
+version = "0.2.9"
+description = "随机返回一句舔狗日记...嘤嘤嘤"
+license = "MIT"
+authors = ["Reversedeer"]
+readme = "README.md"
+homepage = "https://github.com/Reversedeer/nonebot_plugin_dog"
+repository = "https://github.com/Reversedeer/nonebot_plugin_dog"
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+nonebot2 = ">=2.0.0rc2"
+httpx = "^0.23.1"
+poetry = "^1.5.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
