@@ -1,0 +1,117 @@
+[project]
+name = "graiax-playwright"
+version = "0.3.1"
+description = "适用于 Graia 的 Playwright 管理器"
+authors = [
+    { name = "BlueGlassBlock", email = "blueglassblock@outlook.com" },
+    { name = "I Love Study", email = "1450069615@qq.com" },
+    { name = "Redlnn", email = "w731347477@gmail.com" },
+]
+dependencies = [
+    "launart>=0.8.1",
+    "loguru>=0.6.0",
+    "playwright>=1.36.0",
+    "typing-extensions>=4.7.1",
+]
+keywords = [
+    "graia",
+    "graiax",
+    "launart",
+    "playwright",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+classifiers = [
+    "Typing :: Typed",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+repository = "https://github.com/GraiaCommunity/graiax-playwright"
+
+[build-system]
+requires = [
+    "pdm-backend",
+    "babel",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "babel>=2.12.1",
+    "black>=23.7.0",
+    "creart>=0.3.0",
+    "isort>=5.12.0",
+    "richuru>=0.1.1",
+]
+
+[tool.pdm.build]
+package-dir = "src"
+includes = [
+    "src/graiax",
+]
+excludes = [
+    "src/graiax/playwright/locale/**/*.po",
+]
+source_includes = [
+    "src/graiax/playwright/locale/**/*.po",
+]
+
+[tool.pdm.scripts]
+extract = "pybabel extract -o messages.pot --project graiax-playwright --version 1.0.0 -k N_ src/graiax/playwright/"
+_init = "pybabel init -D graiax-playwright -i messages.pot -d src/graiax/playwright/locale/ -l {args}"
+_update = "pybabel update -D graiax-playwright -i messages.pot -d src/graiax/playwright/locale/"
+compile = "pybabel compile -D graiax-playwright -d src/graiax/playwright/locale/"
+
+[tool.pdm.scripts.init]
+composite = [
+    "extract",
+    "_init {args}",
+]
+
+[tool.pdm.scripts.update]
+composite = [
+    "extract",
+    "_update",
+]
+
+[tool.black]
+line-length = 120
+target-version = [
+    "py38",
+    "py39",
+    "py310",
+    "py311",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+select = [
+    "E",
+    "F",
+    "UP",
+    "ASYNC",
+]
+exclude = [
+    ".git",
+    ".venv",
+    "__pypackages__",
+    "dist",
+]
+ignore = [
+    "F401",
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
