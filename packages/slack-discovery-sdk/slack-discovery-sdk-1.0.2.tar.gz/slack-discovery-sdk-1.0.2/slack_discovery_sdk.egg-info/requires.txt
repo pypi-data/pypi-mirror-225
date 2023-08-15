@@ -1,0 +1,6 @@
+
+[testing]
+slack_sdk<4,>=3.21.3
+pytest<7,>=6
+pytest-cov<4,>=3
+black==22.8.0
