@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: scraper-util-avliu
+Version: 0.1.5
+License-File: LICENSE
+Requires-Dist: beautifulsoup4
+Requires-Dist: urllib3
+Requires-Dist: selenium
+Requires-Dist: mysql-connector
+Requires-Dist: undetected-chromedriver
+Requires-Dist: boto3
+
