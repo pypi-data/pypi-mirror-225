@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: JsonDF
+Version: 1.0.1
+Summary: A project for reading JSON data and parse it for DF
+Project-URL: Homepage, https://github.com/OsamaElsherif/JsonDF
+Project-URL: Bug Tracker, https://github.com/OsamaElsherif/JsonDF/issues
+Author-email: Osama Elsherif <elsherif.osama155@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+### JsonDF [Json parser for DataFrane usage]
+
+This package is a package for converting nested Json/Dictionaries/Lists for DataFrame usage
+
+to download it just clone this project in your dirictory
+
+and to use it : 
+
+```python
+import JsonDf.src.Data as Data
+
+data = Data(prefix="your_prefered_prefix_default_is_root", data=YourJson)
+
+data.childs() #for processing the childs of the Json/Dict/List
+print(data.rows) #organized dictionary with the data !! Not for DataFrame usage
+data.flatten() #for flattening the result for DataFram usage
+print(data.rows_flatten) #flatten the data for DataFrame usage
+```
+
+feel free to contribute in this project.
+
+cheers.
