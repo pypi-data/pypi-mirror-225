@@ -1,0 +1,25 @@
+pre-commit
+isort
+black
+gitchangelog
+
+transformers
+jinja2
+pyyaml
+diffusers
+torch
+torchvision
+piexif
+accelerate
+xformers
+argcomplete
+compel
+safetensors
+
+insightface
+onnx
+onnxruntime
+huggingface_hub
+numpy
+
+-e .

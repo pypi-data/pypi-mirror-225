@@ -1,0 +1,22 @@
+pytest-snapshot
+mock
+
+transformers
+jinja2
+pyyaml
+diffusers
+torch
+torchvision
+piexif
+accelerate
+argcomplete
+compel
+safetensors
+
+insightface
+onnx
+onnxruntime
+huggingface_hub
+numpy
+
+-e .
