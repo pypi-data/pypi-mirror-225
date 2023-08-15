@@ -1,0 +1,24 @@
+ci:
+  autofix_commit_msg: "chore: Fix lint errors"
+  autofix_prs: true
+  autoupdate_branch: main
+  autoupdate_commit_msg: "chore: Update pre-commit hooks"
+  autoupdate_schedule: weekly
+  submodules: false
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        args: [--branch, main]
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.284
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
