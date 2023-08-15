@@ -1,0 +1,7 @@
+sensor:
+  host: 10.8.38.125
+
+actor:
+  name: lvmtelemetry.test
+  host: 10.8.38.21
+  port: 5672

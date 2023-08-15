@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "sensor": {
+      "type": "object",
+      "properties": {
+        "temperature": { "type": "number" },
+        "humidity": { "type": "number" },
+        "dew_point": { "type": "number" },
+        "dew_diff": { "type": "number" },
+        "pressure": { "type": "number" }
+      },
+      "required": ["temperature"],
+      "additionalItems": false
+    }
+  },
+  "type": "object",
+  "patternProperties": {
+    "sensor[0-9]": { "$ref": "#/definitions/sensor" }
+  },
+  "properties": {},
+  "additionalProperties": false
+}

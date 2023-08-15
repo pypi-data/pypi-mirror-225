@@ -1,0 +1,81 @@
+[tool.poetry]
+name = "sdss-lvmtelemetry"
+version = "0.2.2"
+description = "The package for lvmtelemetry"
+authors = ["Florian Briegel <briegel@mpia.de>"]
+maintainers = ["José Sánchez-Gallego <gallegoj@uw.edu>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+homepage = "https://github.com/sdss/lvmtelemetry"
+repository = "https://github.com/sdss/lvmtelemetry"
+keywords = ["astronomy", "software"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+    "Topic :: Documentation :: Sphinx",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+    { include = "lvmtelemetry", from = "python" }
+]
+include = ["python/lvmtelemetry/etc/*"]
+
+[tool.poetry.scripts]
+lvmtelemetry = "lvmtelemetry.__main__:main"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+sdss-clu = "^2.1.0"
+requests = "^2.31.0"
+httpx = "^0.24.1"
+
+[tool.poetry.group.dev.dependencies]
+ipython = ">=7.11.0"
+coverage = {version = ">=5.0", extras = ["toml"]}
+ipdb = ">=0.12.3"
+black = ">=23.1.0"
+ruff = ">=0.0.284"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+fast = true
+
+[tool.ruff]
+line-length = 88
+target-version = 'py311'
+select = ["E", "F", "I"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F403", "F401", "E402"]
+
+[tool.ruff.isort]
+known-first-party = ["ifoo"]
+lines-after-imports = 2
+section-order = ["future", "standard-library", "typing", "third-party", "sdss", "first-party", "local-folder"]
+
+[tool.ruff.isort.sections]
+typing = ["typing"]
+sdss = ["sdsstools", "clu"]
+
+[tool.pytest.ini_options]
+addopts = "--cov lvmtelemetry --cov-report xml --cov-report html --cov-report term"
+
+[tool.coverage.run]
+branch = true
+include = ["python/lvmtelemetry/*"]
+omit = [
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
