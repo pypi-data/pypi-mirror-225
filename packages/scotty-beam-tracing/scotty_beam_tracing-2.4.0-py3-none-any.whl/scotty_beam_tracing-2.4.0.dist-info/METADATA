@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: scotty-beam-tracing
+Version: 2.4.0
+Summary: Beam tracing for tokamak DBS diagnostics
+Author: Valerian Hall-Chen
+Project-URL: project, https://github.com/valerian-chen/Scotty
+Requires-Python: >3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: numpy ~=1.20
+Requires-Dist: scipy ~=1.7
+Requires-Dist: matplotlib ~=3.3
+Requires-Dist: netCDF4 ~=1.5
+Requires-Dist: freeqdsk ==0.1.0
+Provides-Extra: docs
+Requires-Dist: sphinx >=4.0 ; extra == 'docs'
+Requires-Dist: sphinx-book-theme ~=0.3.3 ; extra == 'docs'
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+
+Scotty
+======
+
+Beam tracing for tokamak DBS diagnostics
+
+
+Install
+-------
+
+Scotty can be installed using `pip`:
+
+```
+pip install scotty-beam-tracing
+```
+
+Note that the package to install is called `scotty-beam-tracing`, but
+the python module is just `scotty`.
+
+To install the development version of `scotty` straight from Github:
+
+```
+pip install git+https://github.com/beam-tracing/Scotty
+```
+
+or from a local clone:
+
+```
+pip install .
+```
+
+when developing, use:
+
+```
+pip install -e .
+```
+
+Documentation
+-------
+https://scotty.readthedocs.io/
+
+Background
+-------
+Description of the Scotty [[1]](#1), derivation of beam tracing given in Appendix A.
+
+## References
+<a id="1">[1]</a> 
+Hall-Chen, V. H., Parra, F. I., & Hillesheim, J. C. (2022). 
+[Beam model of Doppler backscattering](https://iopscience.iop.org/article/10.1088/1361-6587/ac57a1). 
+*Plasma Physics and Controlled Fusion*, **64**(9), 095002.
