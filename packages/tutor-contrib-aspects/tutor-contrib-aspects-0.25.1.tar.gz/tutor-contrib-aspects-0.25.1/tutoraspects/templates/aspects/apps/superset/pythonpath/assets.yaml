@@ -1,0 +1,6 @@
+{% for file in "openedx-assets/assets/"|walk_templates %}
+{% include file %}
+{% endfor %}
+
+
+{{ patch("superset-extra-assets") }}
