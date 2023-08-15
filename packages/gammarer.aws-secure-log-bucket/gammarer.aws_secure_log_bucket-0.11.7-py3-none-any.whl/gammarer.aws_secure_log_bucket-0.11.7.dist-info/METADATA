@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: gammarer.aws-secure-log-bucket
+Version: 0.11.7
+Summary: secure multiple transition phases in a single lifecycle policy bucket.
+Home-page: https://github.com/yicr/aws-secure-log-bucket.git
+Author: yicr<yicr@users.noreply.github.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/yicr/aws-secure-log-bucket.git
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved
+Requires-Python: ~=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aws-cdk-lib <3.0.0,>=2.61.0
+Requires-Dist: constructs <11.0.0,>=10.0.5
+Requires-Dist: gammarer.aws-secure-bucket <0.12.0,>=0.11.3
+Requires-Dist: jsii <2.0.0,>=1.87.0
+Requires-Dist: publication >=0.0.3
+Requires-Dist: typeguard ~=2.13.3
+
+# AWS Secure Log Bucket
+
+secure multiple transition phases in a single lifecycle policy bucket.
+
+## Lifecycle rule
+
+The storage class will be changed with the following lifecycle configuration.
+
+| Storage Class       | Defaul transition after days |
+| ------------------- |------------------------------|
+| INFREQUENT_ACCESS   | 60 days                      |
+| INTELLIGENT_TIERING | 120 days                     |
+| GLACIER             | 180 days                     |
+| DEEP_ARCHIVE        | 360 days                     |
+
+## Install
+
+### TypeScript
+
+```shell
+npm install @gammarer/aws-secure-log-bucket
+# or
+yarn add @gammarer/aws-secure-log-bucket
+```
+
+### Python
+
+```shell
+pip install gammarer.aws-secure-log-bucket
+```
+
+### Java
+
+Add the following to pom.xml:
+
+```xml
+<dependency>
+  <groupId>com.gammarer</groupId>
+  <artifactId>aws-secure-log-bucket</artifactId>
+</dependency>
+```
+
+## Example
+
+```python
+import { SecureLogBucket } from '@gammarer/aws-secure-log-bucket';
+
+new SecureLogBucket(stack, 'SecureLogBucket');
+```
+
+## License
+
+This project is licensed under the Apache-2.0 License.
