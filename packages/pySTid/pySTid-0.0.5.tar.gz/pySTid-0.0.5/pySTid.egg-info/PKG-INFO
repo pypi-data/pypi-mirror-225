@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: pySTid
+Version: 0.0.5
+Summary: Python wrapper for using access the STid credential issuing server
+Author: Sensor Access
+Maintainer-email: admin@sensoraccess.co.uk
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+pySTid
+===============
+
+pySTid is a Python wrapper for the STid credential issuing API.
+
+
+Examples
+------------------
+Firstly you will always need to import the module:
+
+    from pySTid import STidAPI
+    STid = STidAPI()
+
+
+Links
+------------------
+
+https://www.sensoraccess.co.uk
