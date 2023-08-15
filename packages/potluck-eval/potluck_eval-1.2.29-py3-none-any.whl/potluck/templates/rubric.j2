@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>{{taskid}} Rubric</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      {{css}}
+    </style>
+
+    <script type="text/javascript">
+      {{js}}
+    </script>
+
+  </head>
+  <body class="rubric">
+
+    <h1>Rubric for {{taskid}}</h1>
+      Group goals:
+      <select id="grouping_policy">
+        <option selected value="category">by category</option>
+        <option value="type">by goal type</option>
+        <option value="function">by function</option>
+      </select>
+      {{rendered_table}}
+    <details class="context_summary">
+      <summary>
+        Contexts (test results and code fragments) used for these tests
+        &amp; checks (click to expand):
+      </summary>
+      {{rendered_contexts}}
+    </details>
+
+  </body>
+</html>

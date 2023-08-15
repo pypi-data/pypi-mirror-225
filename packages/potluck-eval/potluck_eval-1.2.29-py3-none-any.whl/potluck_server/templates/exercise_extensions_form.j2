@@ -1,0 +1,50 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+<form
+ action="{{url_for(
+   'route_set_extensions',
+   course=course,
+   semester=semester,
+   target_user=target_user,
+   prid=egroup['group']
+ )}}"
+ method="POST"
+ class="extensions_form"
+>
+  {# CSRF token for flask_seasurf #}
+  <input
+   type="hidden"
+   name="_csrf_token"
+   value="{{csrf_token()}}"
+  >
+  Extensions for {{target_user}} on {{egroup.group}} exercises:<br>
+  <label for="{{egroup.group}}-extension">
+    extension:
+    <input
+     class="extension-hours-input"
+     id="{{egroup.group}}-extension"
+     name="initial"
+     type="text"
+     value="{{ egroup.extension }}"
+    >
+    hours
+  </label>
+  <input
+   type="button"
+   class="add24"
+   title="Add 24 hours to the extension for {{egroup.group}}."
+   value="+24h"
+   data-target="{{egroup.group}}-extension"
+  >
+  <input
+   type="button"
+   class="subtract24"
+   title="Subtract 24 hours to the extension for {{egroup.group}}."
+   value="-24h"
+   data-target="{{egroup.group}}-extension"
+  >
+  <br>
+  <input
+   type="submit"
+   value="Update {{target_user}}'s {{egroup.group}} exercises extensions"
+  >
+</form>

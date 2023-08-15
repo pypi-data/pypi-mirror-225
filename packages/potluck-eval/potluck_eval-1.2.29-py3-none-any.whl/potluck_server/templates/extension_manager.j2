@@ -1,0 +1,57 @@
+{# vim: set shiftwidth=2 tabstop=2 syntax=html: #}
+{% extends "base.j2" %}
+
+{% block body_attrs %}
+class="extension_manager fullwidth"
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+  <a
+   href="{{url_for("route_dash", course=course, semester=semester)}}"
+   title="Click here to go back to the dashboard"
+   tabindex="0"
+  >Back to the dashboard</a>
+
+<h2>
+  Extensions for {{ target_user }}
+</h2>
+
+Note: enter extensions in hours as an integer.
+
+<h2>Exercises</h2>
+
+<ul class="exercise_extensions">
+  {% for egroup in task_info["exercises"] %}
+    {% set ext = egroup["extension"] %}
+    <li class="egroup{% if ext != 0 %} has-extension{% endif %}">
+      {% include 'exercise_extensions_form.j2' %}
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Projects</h2>
+
+{% set projects = task_info.projects %}
+{% if not projects %}
+  {% set projects = task_info.psets %}
+{% endif %}
+
+<ul class="project_extensions">
+  {% for pr in projects %}
+    {% set initial = pr["status"]["initial_extension"] %}
+    {% set revision = pr["status"]["revision_extension"] %}
+    {% if initial != 0 or revision != 0 %}
+      {% set ext_class = "has-extension" %}
+    {% else %}
+      {% set ext_class = "no-extension" %}
+    {% endif %}
+    <li class="project {{ ext_class }}" id="{{pr["id"]}}">
+      {% include 'project_extensions_form.j2' %}
+    </li>
+  {% endfor %}
+</ul>
+
+</div> <!-- end of container -->
+
+{% endblock %}
