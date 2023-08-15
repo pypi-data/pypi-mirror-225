@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: galore
+Version: 0.9.0
+Summary: Broadening and weighting for simulated spectra
+Home-page: https://github.com/SMTG-UCL/galore
+Author: Scanlon Materials Theory Group
+Author-email: d.scanlon@ucl.ac.uk
+License: GPL v3
+Keywords: spectroscopy spectra chemistry physics raman xps haxpes pes photoelectron dos pdos gaussian lorentzian broadening
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8, <4
+License-File: LICENSE
+Requires-Dist: numpy >=1.17
+Requires-Dist: scipy
+Requires-Dist: matplotlib ; python_version >= "3.8"
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Requires-Dist: sphinx-argparse ; extra == 'docs'
+Requires-Dist: sphinxcontrib-bibtex ; extra == 'docs'
+Provides-Extra: vasp
+Requires-Dist: pymatgen ; extra == 'vasp'
+
+
+    Apply Gaussian and Lorentzian broadening to data from ab initio
+    calculations. The two main intended applications are
+
+    1. Broadening of electronic density-of-states to simulate photoemission
+       spectroscopy (PES) data. Orbital contributions may also be weighted to
+       account for the frequency-dependent photoionisation cross-section.
+
+    2. Application of Lorentzian instrumental broadening to simulated
+       Raman spectra from DFPT calculations.
+    
