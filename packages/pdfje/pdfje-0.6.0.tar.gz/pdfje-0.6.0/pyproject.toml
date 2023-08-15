@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "pdfje"
+version = "0.6.0"
+description = "Write beautiful PDFs in declarative Python"
+authors = ["Arie Bovenberg <a.c.bovenberg@gmail.com>"]
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+packages = [
+    { include = "pdfje", from = "src" },
+]
+documentation = "https://pdfje.readthedocs.io"
+readme = "README.rst"
+include = ["CHANGELOG.rst", "README.rst"]
+repository = "https://github.com/ariebovenberg/pdfje"
+keywords = ["pdf"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+fonttools = {version="^4.38.0", optional=true}
+pyphen = {version=">=0.13.0", optional=true}
+
+[tool.poetry.extras]
+fonts = ["fonttools"]
+hyphens = ["pyphen"]
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.0.1"
+pytest-cov = "^4.0.0"
+pytest-benchmark = "^4.0.0"
+hypothesis = "^6.68.2"
+
+[tool.poetry.group.typecheck.dependencies]
+mypy = "^1.0.0"
+
+[tool.poetry.group.linting.dependencies]
+black = "^23.1"
+flake8 = "^6.0.0"
+isort = "^5.7.0"
+slotscheck = "^0.17.0"
+
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.eggs
+| \.git
+| \.mypy_cache
+| \.tox
+| \.venv
+| _build
+| build
+| dist
+)/
+'''
+
+[tool.isort]
+line_length = 79
+profile = 'black'
+add_imports = ['from __future__ import annotations']
+
+[tool.slotscheck]
+strict-imports = true
+require-superclass = true
+require-subclass = true
+exclude-modules = "^pdfje\\.vendor.*"
+
+[build-system]
+requires = ["poetry-core>=1.1.0"]
+build-backend = "poetry.core.masonry.api"
