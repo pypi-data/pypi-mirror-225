@@ -1,0 +1,98 @@
+Metadata-Version: 2.1
+Name: aws-prototyping-sdk.type-safe-api
+Version: 0.19.66
+Summary: @aws-prototyping-sdk/type-safe-api
+Home-page: https://github.com/aws/aws-prototyping-sdk
+Author: AWS APJ COPE<apj-cope@amazon.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/aws/aws-prototyping-sdk
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved
+Requires-Python: ~=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aws-cdk-lib (<3.0.0,>=2.81.0)
+Requires-Dist: aws-prototyping-sdk.nx-monorepo (<1.0.0)
+Requires-Dist: aws-prototyping-sdk.pdk-nag (<1.0.0)
+Requires-Dist: cdk-nag (<3.0.0,>=2.27.24)
+Requires-Dist: constructs (<11.0.0,>=10.2.39)
+Requires-Dist: jsii (<2.0.0,>=1.82.0)
+Requires-Dist: projen (<0.72.0,>=0.71.92)
+Requires-Dist: publication (>=0.0.3)
+Requires-Dist: typeguard (~=2.13.3)
+
+# Type Safe API
+
+Define your APIs using [Smithy](https://smithy.io/2.0/) or [OpenAPI v3](https://swagger.io/specification/), and leverage the power of generated client and server types, infrastructure, documentation, and automatic input validation!
+
+This package vends a projen project type which allows you to define an API using either [Smithy](https://smithy.io/2.0/) or [OpenAPI v3](https://swagger.io/specification/), and a construct which manages deploying this API in API Gateway, given an integration (eg a lambda) for every operation.
+
+The project will generate "runtime" projects from your API definition in your desired languages, which can be utilised both client side for interacting with your API, or server side for implementing your API. The project also generates a type-safe CDK construct which ensures an integration is provided for every API operation.
+
+Code is generated at build time, so when you change your API model, just rebuild and you'll see your changes reflected in the generated code.
+
+### Project Structure
+
+The `TypeSafeApiProject` projen project will create the following directory structure within its `outdir`:
+
+```
+|_ model/
+    |_ src/
+        |_ main/
+            |_ smithy - your API definition if you chose ModelLanguage.SMITHY
+            |_ openapi - your API definition if you chose ModelLanguage.OPENAPI
+|_ generated/
+    |_ runtime/ - generated types, client, and server code in the languages you specified
+        |_ typescript
+        |_ python
+        |_ java
+    |_ infrastructure/ - generated infrastructure (you'll find only one directory in here based on your chosen infrastructure language)
+        |_ typescript
+        |_ python
+        |_ java
+    |_ documentation/ - generated documentation in the formats you specified
+        |_ html2
+        |_ html_redoc
+        |_ plantuml
+        |_ markdown
+    |_ library/ - generated libraries if specified
+        |_ typescript-react-query-hooks
+```
+
+### Getting Started
+
+Please see the [Getting Started Guide](docs/developer_guides/type-safe-api/index.md) for how to get started!
+
+### Developer Guides
+
+For more information about Type Safe API, take a look at the developer guides:
+
+* [Using Smithy](docs/developer_guides/type-safe-api/using_smithy.md)
+* [Using OpenAPI](docs/developer_guides/type-safe-api/using_openapi.md)
+* [Integrations](docs/developer_guides/type-safe-api/integrations.md)
+* [Mocking Responses](docs/developer_guides/type-safe-api/mocking_responses.md)
+* [Authorizers](docs/developer_guides/type-safe-api/authorizers.md)
+* [Lambda Handlers](docs/developer_guides/type-safe-api/lambda_handlers.md)
+* [React Query Hooks](docs/developer_guides/type-safe-api/typescript_react_query_hooks.md)
+* [API Keys](docs/developer_guides/type-safe-api/api_keys.md)
+
+### Walkthroughs
+
+For detailed end-to-end examples, take a look at the walkthroughs:
+
+* [Custom Integration: ECS and NLB](docs/walkthroughs/type-safe-api/custom_integration_ecs.md)
+
+You can also check out the [Frequently Asked Questions](docs/faqs/type-safe-api/index.md).
+
+

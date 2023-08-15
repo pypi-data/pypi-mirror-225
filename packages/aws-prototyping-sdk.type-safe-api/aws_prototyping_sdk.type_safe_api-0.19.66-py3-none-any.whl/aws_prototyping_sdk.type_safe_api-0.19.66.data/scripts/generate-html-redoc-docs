@@ -1,0 +1,16 @@
+#!python
+
+import jsii
+import sys
+
+__jsii_assembly__ = jsii.JSIIAssembly.load(
+    "@aws-prototyping-sdk/type-safe-api",
+    "0.19.66",
+    "aws_prototyping_sdk.type_safe_api",
+    "type-safe-api@0.19.66.jsii.tgz",
+)
+
+exit_code = __jsii_assembly__.invokeBinScript(
+    "@aws-prototyping-sdk/type-safe-api", "generate-html-redoc-docs", sys.argv[1:]
+)
+exit(exit_code)
