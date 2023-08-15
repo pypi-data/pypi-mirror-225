@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: FastSetup
+Version: 0.0.14
+Summary: Static code in python scripts
+Home-page: 
+Author: Tareq Abeda
+Author-email: TareqAbeda@outlook.com
+License: MIT
+Keywords: FastSetup
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows :: Windows 11
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Programming Language :: Python :: 3
+License-File: LICENCE.txt
+
+This is a library for a static code that get frequently used in python scripts.
+
+Updates Log
+==============
+
+0.0.1 (13/08/2023)
+-------------------
+- added three functions that are: [main_log, Get_Config, custom_log] 
+
+0.0.13 (14/08/2023)
+-------------------
+- Simple edit on the Classifiers and the structure of the py files and added prerequisite libraries like {pandas, datetime, logging} and also added Updates Log
+- Fixed a Logic error in the (main_log) library
+- Changed the name of (Get_Config) library to (get_config) 
