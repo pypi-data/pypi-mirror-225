@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: cvlayer
+Version: 0.3.0
+Summary: OpenCV Layer Helper
+Home-page: https://github.com/osom8979/cvlayer
+Author: zer0
+Author-email: osom8979@gmail.com
+Maintainer: zer0
+Maintainer-email: osom8979@gmail.com
+License: MIT License
+Project-URL: GitHub: issues, https://github.com/osom8979/cvlayer/issues
+Project-URL: GitHub: repo, https://github.com/osom8979/cvlayer
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Requires: numpy
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: headless
+Requires-Dist: opencv-python-headless ; extra == 'headless'
+Provides-Extra: opencv
+Requires-Dist: opencv-python ; extra == 'opencv'
+
+# cvlayer
+
+[![PyPI](https://img.shields.io/pypi/v/cvlayer?style=flat-square)](https://pypi.org/project/cvlayer/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cvlayer?style=flat-square)
+[![GitHub](https://img.shields.io/github/license/osom8979/cvlayer?style=flat-square)](https://github.com/osom8979/cvlayer/)
+
+OpenCV Layer Helper
+
+## Usage
+
+Just inherit `cvlayer.CvLayer`.
+
+```python
+from cvlayer import CvLayer
+
+
+class YourApp(CvLayer):
+    def func(self, image):
+        self.cvl_cvt_color_bgr2hsv(image)
+```
+
+## License
+
+See the [LICENSE](./LICENSE) file for details. In summary,
+**cvlayer** is licensed under the **MIT license**.
+
+
