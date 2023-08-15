@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pyodbc-sqlite-orm-fmj
+Version: 1.0.6
+Summary: 基于pyodbc和sqlite的orm工具
+Home-page: https://github.com/mjfang09/pyodbc-orm.git
+Author: fangmj
+Author-email: 1427347600@qq.com
+License: Apache License
+Platform: UNKNOWN
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: pyodbc
+Requires-Dist: pymongo
+
+基于pyodbc和sqlite的orm工具
+
