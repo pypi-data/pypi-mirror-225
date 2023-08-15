@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: codai
+Version: 0.0.5
+Summary: AI coding assistant
+Project-URL: Homepage, https://github.com/lostmygithubaccount/codai
+Project-URL: Bug Tracker, https://github.com/lostmygithubaccount/codai/issues
+Author-email: Cody <cody@dkdc.dev>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.11
+Requires-Dist: ibis-framework[deltalake,duckdb,polars]
+Requires-Dist: langchain
+Requires-Dist: openai
+Requires-Dist: plotly
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: streamlit
+Requires-Dist: typer[all]
+Description-Content-Type: text/markdown
+
+# codai
+
+AI coding assistant. Pronounced "code-eye".
+
