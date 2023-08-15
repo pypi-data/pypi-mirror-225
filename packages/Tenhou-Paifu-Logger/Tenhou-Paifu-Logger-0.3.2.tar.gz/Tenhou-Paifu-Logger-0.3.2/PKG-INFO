@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: Tenhou-Paifu-Logger
+Version: 0.3.2
+Summary: Logging tenhou paifu into excel or html file with some key information.
+Author-email: Jim137 <jim@mail.jim137.eu.org>
+License: MIT License
+        
+        Copyright (c) 2023 Jim137
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Project-URL: Homepage, https://github.com/Jim137/Tenhou-Paifu-Logger
+Keywords: mahjong,review,logger,paifu,tenhou,haifu,paipu,riichi-mahjong
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Tenhou Paifu Logger
+
+[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+
+Logging tenhou paifu into excel or html file with some key information.
+
+If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
+
+[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
+
+## Usage
+
+1. Download the project.
+
+  >a. Download from github.
+
+  >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
+
+     git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+
+  >>ii. Copy the paifu URL from tenhou.net to clipboard.
+  >>iii. Open `runlog-user.bat`.
+    
+  >b. Download from pypi.
+
+  >>i. Open command line and type
+
+    pip install Tenhou-Paifu-Logger
+
+  >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
+
+    log -l [language] -o [output directory] [paifu URLs]
+
+2. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
+Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
+3. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
+4. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
+
+## Features
+* [x] Log paifu into excel or html file with some key information.
+* [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
+* [x] Skip duplicated paifu
+* [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
+* [x] Customized output directory (-o, --output)
+* [x] Localization support (-l, --language)
+  * [x] English: en
+  * [x] Traditional Chinese: zh_tw
+  * [x] Simplified Chinese: zh
+  * [x] Japanese (ChatGPT): ja
+
+## Information logged
+
+* Game time
+* Placing
+* URL (for future use)
+* Rate before the game
+
+## Future features
+
+* [ ] Add match replay for every round in html file
+* [ ] The change of Rate
+* [ ] Agari analysis
+* [ ] Support Majsoul paifu
+* [ ] GUI
+
+## Contribute
+We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.
+
+## License
+
+[MIT](LICENSE)
