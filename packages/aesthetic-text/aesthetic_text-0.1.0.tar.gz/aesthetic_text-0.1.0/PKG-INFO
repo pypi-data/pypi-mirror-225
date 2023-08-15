@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: aesthetic_text
+Version: 0.1.0
+Summary: to stylized terminal text
+Home-page: https://github.com/kyleex/aesthetic_text
+Author: Kyleex
+Author-email: antwill34@icloud.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+
+# Aesthetic TEXT
+
+Give a beautiful look of your text in the terminal.
+
+## Installation
+
+```zsh
+$ pip install aesthetic-text
+```
+
+## Usage
+
+```python
+import aesthetic_text as aesthetic
+
+# print a text with a style
+# style: bold, italic, underline, strikethrough, reverse, conceal, crossed
+print(f"{aesthetic.style.bold}{aesthetic.style.underline}" + "Hello World" + f"{aesthetic.reset}")
+
+# print a text with a color
+# colors: black, red, green, yellow, blue, magenta, cyan, white...
+print(f"{aesthetic.color.red}" + "Hello World" + f"{aesthetic.reset}")
+
+# print a text with style and color
+print(f"{aesthetic.style.bold}{aesthetic.color.red}" + "Hello World" + f"{aesthetic.reset}"
+
+
