@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "SoleStormCatPY"
+version = "0.2"
+authors = [
+  { name="SoleStormCat Corp", email="solestormcat.corp@proton.me" },
+]
+description = "SoleStormCatPY is a set of Python apps/scripts that can help you with whatever you need, wether it be your development of a Python script/app, or you just want to mess around for fun, SoleStormCatPY is for you!"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/solestormcat-corp/SoleStormCatPY"
+"Bug Tracker" = "https://github.com/solestormcat-corp/SoleStormCatPY/issues"
