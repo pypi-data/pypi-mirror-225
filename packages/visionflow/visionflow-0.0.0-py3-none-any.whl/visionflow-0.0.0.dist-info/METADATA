@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: visionflow
+Version: 0.0.0
+Summary: manage multiple camera connections over a network
+License: MIT
+Author: Mac Prible
+Author-email: prible@gmail.com
+Requires-Python: >=3.10,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: PySide6 (>=6.5.2,<7.0.0)
+Requires-Dist: opencv-contrib-python (>=4.8.0.76,<5.0.0.0)
+Description-Content-Type: text/markdown
+
+# learn_networks
+
+A place for me to start to figure out how to use sockets to transmit frame data from an embedded device (i.e. Orange Pi) to a central client. I believe this is the primary component needed to create a scaleable open-source motion capture system. Otherwise, the bottleneck of a single system for pulling down pixels will result in a profound limnitation on number of cameras/available workflows.
+
