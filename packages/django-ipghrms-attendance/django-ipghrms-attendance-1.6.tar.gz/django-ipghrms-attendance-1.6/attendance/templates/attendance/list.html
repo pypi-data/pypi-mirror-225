@@ -1,0 +1,71 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABSENSIA</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">
+					<center><h2>Status Absensia Fulan {{ month.name }} Tinan {{ year }}</h2></center>
+					
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-warning">
+								<i class="fa fa-warning"> </i> <small> Klik Loron, hodi importa absensia  </small>
+								<br>
+								<small>
+									Sinais <i class="text-success fa fa-check"></i> Signifika Absensia iha Loron Refere, Importa tiha Ona
+								</small>
+							</div>
+						</div>
+					</div>
+					<table class="table table-sm table-bordered table-striped">
+                        <thead>
+                            <tr align="center">
+                                <th>Data</th>
+							{% for i in days %}
+								{% if i.2 == 0 %}<!--weekend-->
+									{% if i.3 == 0 %}<!--holiday-->
+										<th>
+                                            <a href="{% url 'attend-day-list' i.0 month.pk year.year %}">{{ i.0 }}</a>
+										</th>
+									{% else %}
+										<th class="bg-danger" style="color: white;">{{ i.0 }}</th>
+									{% endif %}
+								{% else %}
+									<th class="bg-secondary"><a href="#" class="text-white">{{ i.0 }}</a></th>
+								{% endif %}
+							{% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+							<tr align="center">
+								<td>STATUS</td>
+								{% for i in days %}
+								<td>
+									{% if i.4 %}
+									  <i class="fa fa-check text-success"></i>
+									{% endif %}
+								</td>
+								{% endfor %}
+							</tr>
+                        </tbody>
+                    </table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

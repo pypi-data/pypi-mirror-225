@@ -1,0 +1,59 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item" aria-current="page"><a href="{% url 'attend-dash' %}">PAINEL ABSENSIA</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">
+                    <center>
+                        <h2>{{ legend|upper }}</h2>
+                    </center>
+                </div>
+				<div class="card-body">
+                    <div class="">
+
+                        <div class="alert alert-sm alert-warning"><i class="fa fa-warning"> </i> <small>INFORMASAUN:</small> <small>Klik iha naran Divizaun hodi hare relatorio iha Divizaun ida nia laran</small></span>
+                    </div>
+                    <a class="btn  btn-sm btn-info mb-1" href="{% url 'r-att-emp-search' %}">Relatoriu baseia Ema <i class="fa fa-user"></i></a>
+                    <a class="btn btn-sm btn-danger mb-1" href="{% url 'r-att-fal-year' %}" target="_blank">Relatoriu Falta <i class="fa-solid fa-user-xmark"></i></a>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-sm table-striped table-bodered">
+                            <thead>
+                                <tr align="center">
+                                    <th>LISTA DIVIZAUN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in units %}
+                                <tr align="center">
+                                    <td>
+                                        <a href="{% url 'r-att-unit-list' obj.pk year_now month_now %}">
+                                            {{ obj.name }} ({{ obj.code }})</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="">
+                        
+                    </div>
+                </div>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

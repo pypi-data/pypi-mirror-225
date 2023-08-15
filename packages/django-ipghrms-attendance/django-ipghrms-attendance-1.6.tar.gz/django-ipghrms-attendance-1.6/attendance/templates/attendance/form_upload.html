@@ -1,0 +1,30 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABESENSIA</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'attend-unit-list' objects.unit.pk %}">{{ objects.div.code|upper }}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+                    <center><h4>{{ objects.unit }}</h4>
+                    <h6>Absensia Fulan {{ monthname }} Tinan {{ objects.year }}</h6></center>
+					<hr/>
+                    {% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

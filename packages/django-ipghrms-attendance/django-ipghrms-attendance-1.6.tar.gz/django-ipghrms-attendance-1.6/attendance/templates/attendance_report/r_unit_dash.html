@@ -1,0 +1,391 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary text-center">
+					<h2>{{ legend|upper }}</h2>
+				</div>
+				<div class="card-body">
+                    <center><h1>{{ unit.name|upper }}</h1>
+                    <h3>Fulan {{ month.name }} Tinan {{ year }}</h3></center>
+					<hr/>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <select id="tinan" name="tinan" class="form-control" required>
+                                            <option selected value="0">Tinan...</option>
+                                            {% for y in years %}
+                                            <option value="{{ y.year }}">{{ y.year }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <select id="fulan" name="fulan" class="form-control" required>
+                                            <option selected value="0">Fulan...</option>
+                                            {% for m in months %}
+                                            <option value="{{ m.id }}">{{ m.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <button class="btn btn-info" type="submit" value="View">Hare <i class="fa fa-eye"></i></button>
+                                    </div>
+                                  </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-3">
+                            <a class="btn btn-info" href="{% url 'ur-att-unit-emp-search' %}">Relatoriu baseia Ema <i class="fa fa-user"></i></a>
+                        </div>
+                        <div class="col-sm-4">
+                            <p align="right">
+                            {% if att_div %}
+                                <a class="btn btn-danger" href="{% url 'attend-pdf' att_unit.id %}" target="_blank">Hare Absensia Original <i class="fa fa-file-pdf-o"></i></a>
+                            {% endif %}
+                                <!-- <a class="btn btn-secondary" href="{% url 'attend-print' unit.pk year month.id %}" target="_blank">Print <i class="fa fa-print"></i></a> -->
+                            </p>
+                        </div>
+                    </div>                       
+					<hr/>
+					<table class="table table-sm table-bordered table-striped">
+                        <thead>
+                            <tr><th>Nu</th>
+                                <th>Pessoal</th>
+                                <th>Pozisaun</th>
+                                <th>Oras</th>
+							{% for i in days %}
+								{% if i.2 == 0 %}<!--weekend-->
+									{% if i.3 == 0 %}<!--holiday-->
+										{% if i.1 == 0 %}
+										<th>
+										{% if not att_unit or att_unit.is_confirm == False %}
+											<!-- <a href="{% url 'attend-unit-day' unit.pk i.0 %}">{{ i.0 }}</a> -->
+											{{ i.0 }}
+										{% else %}{{ i.0 }}{% endif %}
+										</th>
+										{% else %}
+										<th>{{ i.0 }}</th>
+										{% endif %}
+									{% else %}
+										<th class="text-white" style="background-color: rgb(134, 91, 0);" >{{ i.0 }}</th>
+									{% endif %}
+								{% else %}
+									<th class="bg-secondary">{{ i.0 }}</th>
+								{% endif %}
+							{% endfor %}
+                            </tr>
+                        </thead>
+                    {% for obj in objects %}
+						<!-- work: DADER -->
+                        <tr>
+							<td rowspan="4">{{ forloop.counter }}</td>
+                            <td rowspan="4">{{ obj.0 }}</td>
+                            <td rowspan="4">{{obj.0.curempposition.position.name}}</td>
+							<td>IN</td>
+							{% for obj2 in obj.1 %}
+							  {% if obj2.3 == 0 %} 
+								{% if obj2.4 == 0 %}
+								<td align="center">
+									{% if obj2.6 %}
+
+									{% if obj3.13.is_time_am_change %}
+											<span class="badge bg-warning" style="font-size: 14px;">
+												{{ obj2.6|date:"H:i"}}  <i class="fa fa-message" data-message="{{ obj3.13.desc }}"></i>
+											</span>
+									{% else %}
+										{{ obj2.6|date:"H:i"}}
+									{% endif %}
+
+										 
+
+
+
+									{% elif obj2.0 %}
+										{% if obj2.1.pk == 5 %}									  
+											<span style="background-color: rgb(201, 59, 177); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 6 %}									  
+											<span style="background-color: rgb(235, 56, 56); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 3 %}									  
+											<span style="background-color: rgb(255, 205, 112); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 4 %}									  
+											<span style="background-color: rgb(83, 203, 87); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 13 %}									  
+											<span style="background-color: rgb(51, 126, 54); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 7 %}									  
+											<span style="background-color: rgb(50, 80, 249); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 8 %}									  
+											<span style="background-color: rgb(6, 31, 171); color: white; padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 11 %}
+											<span style="background-color: rgb(255, 178, 55); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 12 %}
+											<span style="background-color: rgb(156, 255, 123); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% elif obj2.1.pk == 14 %}
+											<span style="background-color: rgb(247, 100, 151); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj2.1.code}}</span>
+										{% endif %}
+									{% endif %}
+								</td>
+								{% else %}
+								<td class=""  style="background-color: rgb(134, 91, 0);"><span class="text-white">PH</span></td>
+								{% endif %}
+							  {% else %}
+								<td class="bg-secondary"></td>
+							  {% endif %}
+							{% endfor %}
+                        </tr>
+						<tr>
+							<td>OUT</td>
+							{% for obj3 in obj.1 %} {{obj3.0.id}}
+							  {% if obj3.3 == 0 %} <!--weekend-->
+								{% if obj3.4 == 0 %} <!--holiday-->
+								<td align="center">
+									{% if obj3.7 %}
+
+									{% if obj3.13.is_time_am_out_change %}
+											<span class="badge bg-warning" style="font-size: 14px;">
+												{{ obj3.7|date:"H:i" }}   <i class="fa fa-message" data-message="{{ obj3.13.desc }}"></i>
+											</span>
+									{% else %}
+										{{ obj3.7|date:"H:i" }} 
+									{% endif %}
+
+
+									
+									{% elif obj3.0 %}
+										{% if obj3.1.pk == 5 %}									  
+											<span style="background-color: rgb(201, 59, 177); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 6 %}									  
+											<span style="background-color: rgb(235, 56, 56); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 3 %}									  
+											<span style="background-color: rgb(255, 205, 112); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 13 %}									  
+											<span style="background-color: rgb(51, 126, 54); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 4 %}									  
+											<span style="background-color: rgb(83, 203, 87); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 7 %}									  
+											<span style="background-color: rgb(50, 80, 249); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 8 %}									  
+											<span style="background-color: rgb(6, 31, 171); color: white; padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 11 %}
+											<span style="background-color: rgb(255, 178, 55); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 12 %}
+											<span style="background-color: rgb(156, 255, 123); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% elif obj3.1.pk == 14 %}
+											<span style="background-color: rgb(247, 100, 151); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.1.code}}</span>
+										{% endif %}
+										{% if att_unit.is_confirm == False %}
+										{% endif %}
+										<!-- <a href="{% url 'attend-process-pm' obj3.0 %}"><i class="fa fa-edit"></i></a> -->
+									{% endif %}</td>							
+								{% else %}
+									<td class=""  style="background-color: rgb(134, 91, 0);"><span class="text-white">PH</span></td>
+								{% endif %}
+							  {% else %}
+								<td class="bg-secondary"></td>
+							  {% endif %}
+							{% endfor %}
+						</tr>
+
+						<!-- work: LOKRAIK -->
+						<tr>
+							<td>IN</td>
+							{% for obj3 in obj.1 %} {{obj3.0.id}}
+							  {% if obj3.3 == 0 %} <!--weekend-->
+								{% if obj3.4 == 0 %} <!--holiday-->
+								<td align="center">
+									{% if obj3.8 %}
+										{% if obj3.13.is_time_pm_change %}
+											<span class="badge bg-warning" style="font-size: 14px;">
+												{{ obj3.8|date:"H:i" }}  <i class="fa fa-message" data-message="{{ obj3.13.desc }}"></i>
+											</span>
+										{% else %}
+											{{ obj3.8|date:"H:i" }} 
+										{% endif %}
+									{% elif obj3.0 %}
+										{% if obj3.2.pk == 5 %}
+											<span style="background-color: rgb(201, 59, 177); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 6 %}									  
+											<span style="background-color: rgb(235, 56, 56); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 7 %}									  
+											<span style="background-color: rgb(50, 80, 249); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 3 %}									  
+											<span style="background-color: rgb(255, 205, 112); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 13 %}									  
+											<span style="background-color: rgb(51, 126, 54); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 4 %}									  
+											<span style="background-color: rgb(83, 203, 87); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 8 %}									  
+											<span style="background-color: rgb(6, 31, 171); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 11 %}
+											<span style="background-color: rgb(255, 178, 55); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 12 %}
+											<span style="background-color: rgb(156, 255, 123); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 14 %}
+											<span style="background-color: rgb(247, 100, 151); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% endif %}
+										{% if att_unit.is_confirm == False %}
+										{% endif %}
+										<!-- <a href="{% url 'attend-process-pm' obj3.0 %}"><i class="fa fa-edit"></i></a> -->
+									{% endif %}</td>							
+								{% else %}
+									<td class=""  style="background-color: rgb(134, 91, 0);"><span class="text-white">PH</span></td>
+								{% endif %}
+							  {% else %}
+								<td class="bg-secondary"></td>
+							  {% endif %}
+							{% endfor %}
+						</tr>
+						<tr>
+							<td>OUT</td>
+							{% for obj3 in obj.1 %} {{obj3.0.id}}
+							  {% if obj3.3 == 0 %} <!--weekend-->
+								{% if obj3.4 == 0 %} <!--holiday-->
+								<td align="center">
+									{% if obj3.9 %}
+
+									{% if obj3.13.is_time_pm_out_change %}
+											<span class="badge bg-warning" style="font-size: 14px;">
+												{{ obj3.9|date:"H:i" }}  <i class="fa fa-message" data-message="{{ obj3.13.desc }}"></i>
+											</span>
+									{% else %}
+										{{ obj3.9|date:"H:i" }} 
+									{% endif %}
+
+
+									
+									{% elif obj3.0 %}
+										{% if obj3.2.pk == 5 %}
+											<span style="background-color: rgb(201, 59, 177); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 6 %}									  
+											<span style="background-color: rgb(235, 56, 56); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 3 %}									  
+											<span style="background-color: rgb(255, 205, 112); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 4 %}									  
+											<span style="background-color: rgb(83, 203, 87); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 13 %}									  
+											<span style="background-color: rgb(51, 126, 54); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 7 %}									  
+											<span style="background-color: rgb(50, 80, 249); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 8 %}									  
+											<span style="background-color: rgb(6, 31, 171); color: white; padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 11 %}
+											<span style="background-color: rgb(255, 178, 55); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 12 %}
+											<span style="background-color: rgb(156, 255, 123); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% elif obj3.2.pk == 14 %}
+											<span style="background-color: rgb(247, 100, 151); color: rgb(0, 0, 0); padding: 0 2px 0 2px;">{{obj3.2.code}}</span>
+										{% endif %}
+										{% if att_unit.is_confirm == False %}
+										{% endif %}
+										<!-- <a href="{% url 'attend-process-pm' obj3.0 %}"><i class="fa fa-edit"></i></a> -->
+									{% endif %}</td>							
+								{% else %}
+									<td class="" style="background-color: rgb(134, 91, 0);"><span class="text-white">PH</span></td>
+								{% endif %}
+							  {% else %}
+								<td class="bg-secondary"></td>
+							  {% endif %}
+							{% endfor %}
+						</tr>
+						<!-- work:TOTAL -->
+						<tr align="center">
+							<td colspan="4"><strong>TOTAL WORKING HOURS</strong></td>
+							{% for obj3 in obj.1 %}
+							  {% if obj3.3 == 0 %} <!--weekend-->
+								{% if obj3.4 == 0 %} <!--holiday-->
+								<td>
+									
+									{% if obj3.12 %}
+										<strong>{{obj3.12|date:"H:i"}}	</strong>
+									{% elif obj3.10 %}
+										<strong>{{obj3.10|date:"H:i"}}	</strong>
+									{% elif obj3.11 %}
+										<strong>{{obj3.11|date:"H:i"}}</strong>	
+									{% endif %}
+								</td>							
+								{% else %}
+									<td class="" style="background-color: rgb(134, 91, 0);"><span class="text-white">PH</span></td>
+								{% endif %}
+							  {% else %}
+								<td class="bg-secondary"></td>
+							  {% endif %}
+							{% endfor %}
+						</tr>
+                    {% endfor %}
+                    </table>
+					<br>
+					<hr>
+					<table>
+						<tbody>
+							<tr>
+								<td colspan="2">STATUS</td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(134, 91, 0);; width: 20%;"></td>
+								<td>Public Holiday (PH) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(235, 56, 56); width: 20%;"></td>
+								<td>Annual Leave (AL) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(255, 205, 112); width: 20%;"></td>
+								<td>Sick Leave (SL) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(156, 255, 123); width: 20%;"></td>
+								<td>Special Leave (SP) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(50, 80, 249); width: 20%;"></td>
+								<td>Maternity Leave (ML) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(6, 31, 171); width: 20%;"></td>
+								<td>Paternity Leave (PL) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(83, 203, 87); width: 20%;"></td>
+								<td>Field Trip (FL) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(51, 126, 54); width: 20%;"></td>
+								<td>Overseas Trip (OT) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(201, 59, 177); width: 20%;"></td>
+								<td>Training (TR) </td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(255, 178, 55); width: 20%;"></td>
+								<td>Scholarship (S)</td>
+							</tr>
+							<tr>
+								<td style="background-color: rgb(247, 100, 151); width: 20%;"></td>
+								<td>Child Care (CH)</td>
+							</tr>
+							<tr>
+								<td style="background-color: #868e96; width:20%"></td>
+								<td>Sabado & Domingo</td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

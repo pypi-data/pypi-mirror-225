@@ -1,0 +1,56 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABSENSIA</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'attend-list' %}">ABSENSIA FULAN</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+                    <center><h1>{{legend}}</h1></center>
+					<p align="right">
+                    <a class="btn btn-sm btn-danger" href="{% url 'attend-import' day month.pk year.year %}">IMPORT <i class="fa fa-file-arrow-up"></i></a>
+					</p>
+					<table class="table table-sm table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nu.</th>
+                                <th>PIN</th>
+                                <th>Naran</th>
+                                <th>Oras Tama Dader</th>
+                                <th>Oras Sai Meiudia</th>
+                                <th>Oras Tama Lorokraik</th>
+                                <th>Oras Sai lorokraik</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for obj in attend  %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td> {% if obj.employee.pin %}{{obj.employee.pin}}{% else %}-{% endif %} </td>
+                                    <td>{{obj.employee.first_name}} {{obj.employee.last_name}}</td>
+                                    <td>{% if obj.time_am %}{{obj.time_am|date:"H:i a"}}{% else %}-{% endif %} </td>
+                                    <td>{% if obj.timeout_am %}{{obj.timeout_am|date:"H:i a"}}{% else %}-{% endif %}</td>
+                                    <td>{% if obj.time_pm %}{{obj.time_pm|date:"H:i a"}}{% else %}-{% endif %}</td>
+                                    <td>{% if obj.timeout_pm %}{{obj.timeout_pm|date:"H:i a"}}{% else %}-{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "attendance_print/layout.html" %}
+{% load static %}
+{% block content %}
+<table>
+    <tr>
+        <th align="left"  width="25%" height="90%">
+            <img src="{% static 'main/images/mpm.png' %}" width="100%">
+        </th>
+        <th align="center" width="50%">
+            <span><strong>MINIST&#201;RIO DO PLANO E ORDENAMENTO</strong></span> <br>
+            <span>AG&#202;N&#199;IA DE DEZENVOLVIMENTO NACIONAL, INSTITUTO P&#218;BLICO (ADN,IP)</span> 
+        </th >
+        <th align="right" width="250%">
+            <img src="{% static 'main/images/ipg.png' %}" width="100%">
+        </th>
+    </tr>
+</table>
+<hr/>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+                <h3 align="center">{{ emp|upper }}</h3>
+                <h4 align="center">{{ legend|upper }}</h4>
+                <table border="1px" align="center">
+                    <tr style="background-color: grey;"><th>TIPU</th><th>TOTAL</th></tr>
+                {% for att_obj in att_objs %} 
+                    <tr><td>{{ att_obj.0.name }} ({{ att_obj.0.code }})</td><td align="center">{{ att_obj.1 }}</td></tr>
+                {% endfor %}
+                </table>
+                <hr/>
+                <table border="0" width="100%" align="center">
+                    <tr>
+                        <td align="center" width="50%">
+                            Dili, _____ Fulan _____________ 20_____<br/><br/><br/>
+                
+                            (____________________________________)</td>
+                        <td align="center"><br/><br/><br/>
+                            (____________________________________)</td>
+                    </tr>
+                    <tr>
+                        <td align="center" width="50%">CD de _____________________________</td>
+                        <td align="center" width="50%">Chefe Seksaun da DRHF</td>
+                    </tr>
+                </table>
+                <hr/>
+            </div> <!--end card-body-->
+        </div> <!--end card-->
+    </div> <!--end col-->
+</div> <!--end row-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

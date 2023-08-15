@@ -1,0 +1,45 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="breadcrumb-holder">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABSENSIA</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'attend-list' %}">ABSENSIA FULAN</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid"><br/>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card shadow-lg border-info rounded">
+                    <div class="card-header border-primary text-center">
+                        <h2>FORMULARIO {{ legend|upper }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-0">
+                                    <label for="fupload"> Upload ficheiru</label>
+                                    <input type="file" id="fupload" name="fupload" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 mb-0">
+                                    <small>So bele simu ficheiru ho formatu CSV</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 mb-0">
+                                    <button class="btn btn-primary" type="submit">Importa <i class="fa fa-download"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!--end card-body-->
+                </div> <!--end card-->
+            </div> <!--end col-->
+        </div> <!--end row-->
+    </div>
+{% endblock %}
