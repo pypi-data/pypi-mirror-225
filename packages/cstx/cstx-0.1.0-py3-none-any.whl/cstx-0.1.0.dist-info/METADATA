@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: cstx
+Version: 0.1.0
+Summary: Description of the cstx package
+License: MIT
+Author: Kye Gomez
+Author-email: kye@apac.ai
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: decord
+Requires-Dist: easydict
+Requires-Dist: einops
+Requires-Dist: ftfy
+Requires-Dist: librosa
+Requires-Dist: pytorch-lightning
+Requires-Dist: six
+Requires-Dist: timm
+Requires-Dist: torchlibrosa
+Requires-Dist: tqdm
+Requires-Dist: transformers
