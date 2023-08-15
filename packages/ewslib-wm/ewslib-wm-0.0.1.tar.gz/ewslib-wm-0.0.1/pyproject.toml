@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ewslib_wm*"] # Future me: Keep the * !!!
+
+[tool.setuptools.dynamic]
+version = { attr = "ewslib_wm.__version__" }
+readme = { file = ["README.md"] }
+
+[project]
+name = "ewslib-wm"
+description = "Placeholder repo"
+dynamic = ["version", "readme"]
+authors = [
+    { name = "EWS Consulting - Testing Center", email = "github@ews-consulting.at" },
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["wind"]
+dependencies = []
+requires-python = ">=3.9"
+
+
+[project.urls]
+Homepage = 'https://github.com/EWS-Consulting-Private/ewslib-wm'
+Documentation = 'http://cm.ews.local/mb/ewslib-wm'
+Source = 'https://github.com/EWS-Consulting-Private/ewslib-wm'
