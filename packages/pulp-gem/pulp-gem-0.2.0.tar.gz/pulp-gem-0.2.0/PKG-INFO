@@ -1,0 +1,27 @@
+Metadata-Version: 1.2
+Name: pulp-gem
+Version: 0.2.0
+Summary: Gemfile plugin for the Pulp Project
+Home-page: https://pulpproject.org/
+Author: Pulp Project Developers
+Author-email: pulp-dev@redhat.com
+License: GPLv2+
+Project-URL: Documentation, https://docs.pulpproject.org/pulp_gem/
+Project-URL: Source, https://github.com/pulp/pulp_gem
+Project-URL: Tracker, https://github.com/pulp/pulp_gem/issues
+Description: # pulp-gem
+        
+        A Pulp plugin to support hosting your own gem.
+        
+        For more information, please see the [documentation](docs/index.rst) or the [Pulp project page](https://pulpproject.org/).
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.8
