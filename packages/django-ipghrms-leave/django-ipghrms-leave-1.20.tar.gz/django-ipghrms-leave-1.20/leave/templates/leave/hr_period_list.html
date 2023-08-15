@@ -1,0 +1,63 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<a href="{% url 'leave-hr-app-raw-list' %}" class="btn btn-sm btn-warning mb-2">KONFIGURASAUN <i class="fa fa-list-ol"></i></a>
+					<a href="{% url 'leave-chart-dash' %}" class="btn btn-sm btn-secondary mb-2" target="_blank">GRAFIKU <i class="fa fa-bar-chart"></i></a>
+					<a href="{% url 'hr-leave-r-dash' %}" class="btn btn-sm btn-success mb-2">RELATORIO <i class="fa fa-file"></i></a>
+					<table class="table table-sm table-striped table-bordered" id="example" width="100%" cellspacing="0">
+						<thead>
+							<tr align="center">
+								<th>Nu.</th>
+								<th class="text-left">Naran</th>
+								<th>Periode Hahu</th>
+								<th>Periode Remata</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+                            {% for obj in objects  %}
+                              <tr align="center">
+                                <td>{{forloop.counter}}</td>
+                                <td class="text-left">{{obj.employee}}</td>
+                                <td>{{obj.start_month}} - {{obj.start_year}}</td>
+                                <td>{{obj.end_month}} - {{obj.end_year}}</td>
+                                <td>
+                                    {% if obj.is_active %}
+                                      <span class="badge badge-info">ATIVU</span>
+                                    {% else %}
+                                      <span class="badge badge-danger">LA ATIVU</span>
+                                    {% endif %}
+                                </td>
+                              </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

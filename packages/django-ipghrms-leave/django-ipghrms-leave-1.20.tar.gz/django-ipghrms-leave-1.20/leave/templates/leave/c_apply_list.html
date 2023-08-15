@@ -1,0 +1,82 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}
+							<i class="fa fa-arrow-right"></i>
+							<a class="btn btn-sm btn-info mb-1" href="{% url 'leave-add' %}">Aplika <i class="fa fa-plus"></i></a>
+							<a class="btn btn-sm btn-primary mb-1" href="{% url 'leave-bal-check' %}">Balansu Licenca <i class="fa fa-list"></i></a>
+						</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table class="table table-sm table-striped" id="example" width="100%" cellspacing="0">
+						<thead>
+							<tr class="text-center">
+								<th>Nu.</th>
+								<th>Asuntu</th>
+								<th>Tipu Licenca</th>
+								<th>Data Aplika</th>
+								<th>Data Hahu</th>
+								<th>Data Termina</th>
+								<th>Loron</th>
+								<th>#</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for obj in objects %}
+							{% if obj.is_cancel == False %}
+							  
+								<tr align="center">
+									<td>{{ forloop.counter }}</td>
+									<td>{{ obj.description }}</td>
+									<td>{{ obj.leave_type }}</td>
+									<td>{{ obj.date|date:"d/m/Y" }}</td>
+									<td>{{ obj.start_date|date:"d/m/Y" }}</td>
+									<td>{{ obj.end_date|date:"d/m/Y" }}</td>
+									<td>{{ obj.days }}</td>
+									<td>
+										<a class="btn btn-sm btn-info" href="{% url 'leave-c-detail' obj.hashed %}" title="Detalha">Detalha <i class="fa fa-list"></i></a>
+									</td>
+								</tr>
+							{% elif obj.is_cancel %}
+							<tr align="center">
+								<td><strike>{{ forloop.counter }}</strike></td>
+								<td><strike>{{ obj.description }}</strike></td>
+								<td><strike>{{ obj.leave_type }}</strike></td>
+								<td><strike>{{ obj.date|date:"d/m/Y" }}</strike></td>
+								<td><strike>{{ obj.start_date|date:"d/m/Y" }}</strike></td>
+								<td><strike>{{ obj.end_date|date:"d/m/Y" }}</strike></td>
+								<td><strike>{{ obj.days }}</strike></td>
+								<td>
+									<a class="btn btn-sm btn-danger disabled" href="#" title="Detalha">Kansela <i class="fa fa-close"></i></a>
+								</td>
+							</tr>
+							{% endif %}
+						{% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'leave-hr-list' %}">LISTA LICENSA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-info rounded">
+                <div class="card-header border-primary">
+                    <center>
+                        <h4>INFORMASAUN LICENSA</h4>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <h4>APLIKANTE</h4>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <th width="20%">Naran</th>
+                            <td width="25%"><a href="{% url 'emp-detail' leave.employee.hashed %}">{{ leave.employee }}</a></td>
+                            <th width="20%" rowspan="2">Data Aplikasaun</th>
+                            <td rowspan="2">{{ leave.date|date:"d-m-Y" }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID#</th>
+                            <td>{{ leave.employee.emp_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pozisaun/Local Servisu</th>
+                            <td>{{ leave.employee.curempposition.position }}</td>
+                            <th rowspan="2">Unidade/Seksaun</th>
+                            <td rowspan="2">
+                            {% if leave.employee.curempdivision.department %}
+                                {{ leave.employee.curempdivision.department }}<br/>
+                                {{ leave.employee.curempdivision.department.unit.code }}
+                            {% elif leave.employee.curempdivision.unit %}
+                                {{ leave.employee.curempdivision.unit }}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tr align="center">
+                            <th rowspan="2" width="25%">Tipu Licensa</th>
+                            <th colspan="2">Loron</th>
+                            <td rowspan="2" width="25%">Total loron ne'ebe foti</td>
+                        </tr>
+                        <tr align="center">
+                            <th>Husi</th><th>To'o</th>
+                        </tr>
+                        <tr align="center">
+                            <td>{{ leave.leave_type }}</td>
+                            <td>{{ leave.start_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.days }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" colspan="6">KOMENTARIU SELUK</th>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                {{leave.comments|safe}}
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <h4>DELEGASAUN SERVISU</h4>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <td>Servisu Delega ba:</td>
+                            <td>{{ leavedel.employee }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pozisaun</td>
+                            <td>{{ leavedel.employee.curempposition.position }}</td>
+                        </tr>
+                        <tr>
+                            <td>Hela Fatin</td>
+                            <td>{{ leavedel.employee.addresstl.address }}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Telemovel</td>
+                            <td>{{ leavedel.employee.contactinfo.phone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kosiente ba Delegasaun Servisu<br/>
+                            {% if leavedel.obs == "Sim" %}SIM / <strike>LAE</strike>
+                            {% elif leavedel.obs == "Lae" %}<strike>SIM</strike> / LAE
+                            {% else %}SIM / LAE{% endif %}                        
+                            </td>
+                            <td rowspan="2">Assinatura Delega Servisu: </td>
+                        </tr>
+                        <tr>
+                            <td>Se responde lae favor deskreve razaun<br/>
+                                {% if leavedel.obs == "Lae" %}<strong><i>{{ leavedel.reason }}</i></strong>{% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <h4>APROVASAUN UNIDADE</h4>                    
+                    {% if leaveunit.obs == "Sim" %}
+                    <div class="alert alert-info">Decijaun <strong>APROVA</strong></div>
+                    {% elif leaveunit.obs == "Lae" %}
+                    <div class="alert alert-danger">Decijaun <strong>LA APROVA</strong><hr/><i>Rajaun: {{ leaveunit.reason }}</i></div>
+                    {% endif %}
+                    <hr/>
+                    <h4>REKURSU HUMANU CERTIFIKA {% if leave.unit_send == True and leave.hr_send == False %}<a href="{% url 'leave-hr-cert-update' leave.hashed %}" title="Certifika"><i class="fa fa-plus"></i></a>{% endif %}</h4>                    
+                    {% if leavehr.obs == "Sim" %}
+                    <div class="alert alert-info">Decijaun <strong>APROVA</strong></div>
+                        {% if leave.hr_send == False %}
+                        <a class="btn btn-sm btn-info" href="{% url 'leave-hr-cert-send' leave.hashed %}">Manda ba DE <i class="fa fa-send"></i></a>
+                        {% else %}
+                        <a class="btn btn-sm btn-secondary disabled" href="#">Manda ona ba DE <i class="fa fa-send"></i></a>
+                        {% endif %}
+                    {% elif leavehr.obs == "Lae" %}
+                    <div class="alert alert-danger">Decijaun <strong>LA APROVA</strong><hr/><i>Rajaun: {{ leavehr.reason }}</i></div>
+                    {% endif %}
+                    <hr/>
+                    <h5>Track Aplikasaun</h5>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Aplikante</th>
+                            <th>Delegasaun</th>
+                            <th>Unidade</th>
+                            <th>Rekursu Humanu</th>
+                            <th>DE/Adjuntu</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% if leave.is_send == True %}Manda ona <i class="fa fa-check i_green"></i>
+                                {% else %}Procesu hela <i class="fa fa-refresh i_blue"></i>{% endif %}
+                            </td>
+                            <td>
+                            {% if leave.is_send == True and leave.is_delegate == False %}Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% else %}
+                                {% if leavedel.obs == "Sim" %} Simu ona <i class="fa fa-check i_green"></i>
+                                {% elif leavedel.obs == "Lae" %} La simu  <i class="fa fa-close i_red"></i>{% endif %}
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if leave.is_delegate == True and leave.unit_confirm == False %}
+                                Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% elif leave.is_delegate == True and leave.unit_confirm == True %}
+                                {% if leaveunit.obs == "Sim" %} Simu ona <i class="fa fa-check i_green"></i>
+                                {% elif leaveunit.obs == "Lae" %} La simu  <i class="fa fa-close i_red"></i>{% endif %}
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if leave.unit_send == True and leave.hr_send == False %}
+                                Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% elif leave.hr_send == True %}
+                                {% if leavehr.obs == "Sim" %} Simu ona <i class="fa fa-check i_green"></i>
+                                {% elif leavehr.obs == "Lae" %} La simu  <i class="fa fa-close i_red"></i>{% endif %}
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if leave.hr_send == True and leave.de_approve == False %}
+                                Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% elif leave.de_approve == True %}
+                                {% if leavede.obs == "Sim" %} Simu ona <i class="fa fa-check i_green"></i>
+                                {% elif leavede.obs == "Lae" %} La simu  <i class="fa fa-close i_red"></i>{% endif %}
+                            {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div> <!--end card-body-->
+            </div> <!--end card-->
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

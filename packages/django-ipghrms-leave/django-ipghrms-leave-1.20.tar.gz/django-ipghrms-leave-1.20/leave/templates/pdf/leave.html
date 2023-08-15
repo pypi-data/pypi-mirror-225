@@ -1,0 +1,257 @@
+{% extends "pdf/layout.html" %}
+{% load static %}
+{% block content %}
+<header>
+    {% include "pdf/cop.html" %}
+</header>
+<main>
+    <h1 align="center">INFORMASAUN LICENSA</h1>
+    <table border="1" class="" id="#" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th colspan="4" align="left" style="background-color: #e7e7e7;">
+                    <h2>APLIKANTE</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>Naran</th>
+                <th style="color: rgb(52, 52, 157); font-weight: 600;">{{leave.employee}}</th>
+                <th rowspan="2">Data Aplikasaun</th>
+                <th rowspan="2">{{ leave.datetime|date:"d-F-Y" }}</th>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>{{ leave.employee.emp_id }}</th>
+            </tr>
+            <tr>
+                <th>Pozisaun</th>
+                <th>
+                    {% if leave.employee.curempposition.position %}  
+                       {{ leave.employee.curempposition.position }}
+                    {% endif %}
+                </th>
+                <th rowspan="2">Divizaun/Ekipa</th>
+                <th rowspan="2">
+                {% if leave.employee.curempdivision.department %}
+                    {{ leave.employee.curempdivision.department }}<br/>
+                    {{ leave.employee.curempdivision.department.unit.code }}
+                {% elif leave.employee.curempdivision.unit %}
+                    {{ leave.employee.curempdivision.unit }}
+                {% endif %}
+                </th>
+            </tr>
+            <tr>
+                <th style="text-align: center;">No. Telemovel</th>
+                <th>
+                    {% if leave.employee.contactinfo.phone1 %}
+                        {{ leave.employee.contactinfo.phone1 }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <table border="1" class="" id="#" width="100%" cellspacing="0" style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th colspan="6" align="left" style="background-color: #e7e7e7;">
+                    <h2>INFORMASAUN LICENSA</h2>
+                </th>
+            </tr>
+            <tr>
+                <th rowspan="2" width="25%">Deskrisaun</th>
+                <th rowspan="2" width="10%">Tipu Licensa</th>
+                <th colspan="2">Loron</th>
+                <th rowspan="2" width="15%">Total loron ne'ebe foti</th>
+                <th rowspan="2" width="10%">Balansu loron</th>
+            </tr>
+            <tr align="center">
+                <th>Husi</th><th>To'o</th>
+            </tr>
+            <tr align="center">
+                <th>{{ leave.description }}</th>
+                <th>{{ leave.leave_type }}</th>
+                <th style="color: rgb(124, 26, 26);">{{ leave.start_date|date:"d-F-Y" }}</th>
+                <th style="color: rgb(124, 26, 26);">{{ leave.end_date|date:"d-F-Y" }}</th>
+                <th style="color: rgb(124, 26, 26);">{{ leave.days }}</th>
+                {% if leave.leave_type.pk != 1 %}
+                <th>{{ leave_count.total_balance }}</th>
+                {% else %}
+                <th>{{ leave_count.total_balance }}</th>
+                {% endif %}
+            </tr>
+            <tr>
+                <th class="text-center" colspan="6">KOMENTARIU SELUK</th>
+            </tr>
+            <tr>
+                <td colspan="6" style="padding: 5px;">
+                    <p>
+                        {{leave.comments|safe}}
+                    </p>
+                </td>
+            </tr>
+        </thead>
+    </table>
+    <table border="1" class="" id="#" width="100%" cellspacing="0" style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th colspan="3" align="left" style="background-color: #e7e7e7;">
+                    <h2>DESIZAUN</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>Naran</th>
+                <th>Pozisaun</th>
+                <th>Desizaun</th>
+            </tr>
+            
+            {% if leavedep.user %}
+            <tr>
+                <th>{{leavedep.user.employeeuser.employee|title}}</th>
+                <th>{{leavedep.user.employeeuser.employee.empposition.all.last.position.name|upper}} - {{leavedep.user.employeeuser.employee.curempdivision.department.name|title}}</th>
+                <th>
+                    {% if leavedep.obs == 'Sim' %}
+                    <span style="color: rgb(16, 164, 2);">APROVA</span>
+                    {% endif %}
+                </th>
+            </tr>
+            {% endif %}
+            {% if leaveunit.user %}
+            <tr>
+                <th>{{leaveunit.user.employeeuser.employee|title}}</th>
+                <th>{{leaveunit.user.employeeuser.employee.empposition.all.last.position.name|upper}} - {{leaveunit.user.employeeuser.employee.empposition.all.last.unit.name|title}}</th>
+                <th>
+                    {% if leaveunit.obs == 'Sim' %}
+                    <span style="color: rgb(16, 164, 2);">APROVA</span>
+                    {% endif %}
+                </th>
+            </tr>
+            {% endif %}
+            {% if leavede.user %}
+            <tr>
+                <th>{{leavede.user.employeeuser.employee|title}}</th>
+                <th>{{leavede.user.employeeuser.employee.empposition.all.last.position.name|upper}} </th>
+                <th>
+                    {% if leavede.obs == 'Sim' %}
+                        <span style="color: rgb(16, 164, 2);">APROVA</span>
+                    {% endif %}
+                </th>
+            </tr>
+            {% endif %}
+        </thead>
+    </table>
+    <table border="1" class="" id="#" width="100%" cellspacing="0" style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th colspan="3" align="left"  style="background-color: #e7e7e7;">
+                    <h2>KOMENTARIO HUSI RECURSO HUMANO</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>Naran</th>
+                <th>Pozisaun</th>
+                <th>Komentario</th>
+            </tr>
+            
+            {% if leavehr.user %}
+            <tr>
+                <th>{{leavehr.user.employeeuser.employee|title}}</th>
+                <th>{{leavehr.user.employeeuser.employee.curempdivision.department.name|title}}</th>
+                <th>
+                    <span>{{leavehr.comment|safe}}</span>
+                </th>
+            </tr>
+            {% endif %}
+        </thead>
+    </table>
+    <table border="0" class="" id="#" width="100%" cellspacing="0" style="margin-top: 20px; margin-bottom: 10px;">
+        <thead>
+            <tr>
+                <th></th>
+                <th style="text-align: right;">DATA APROVA</th>
+            </tr>
+            {% if leavede.user %}
+            <tr>
+                <td></td>
+                <td style="text-align: right;">
+                    <img src="{{signature_path}}" style="width: 90px; height: 160px;" alt="">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th style="text-align: right;">{{leavede.user.employeeuser.employee|title}}  - {{leavede.datetime|date:"d F Y, H:i:s"}}</th>
+            </tr>
+            {% endif %}
+            {% if leaveunit.user %}
+            <tr>
+                <td></td>
+                <td style="text-align: right;">
+                    <img src="{{signature_path}}" style="width: 90px; height: 160px;" alt="">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th style="text-align: right;">{{leaveunit.user.employeeuser.employee|title}}  - {{leaveunit.datetime|date:"d F Y, H:i:s"}} </th>
+            </tr>
+            {% endif %}
+            {% if leavedep.user %}
+            <tr>
+                <th></th>
+                <th style="text-align: right;">{{leavedep.user.employeeuser.employee|title}}  - {{leavedep.datetime|date:"d F Y, H:i:s"}} </th>
+            </tr>
+            {% endif %}
+        </thead>
+    </table>
+    
+</main>
+<footer>
+    <div >
+        <hr>
+        <table border="0" class="" id="#" width="100%" 
+				
+				cellspacing="0" >
+					<thead>
+						<tr>
+							<th></th>
+							<th style="text-align: right; font-size: 10px; font-weight: 100;" >Rua: {{ipginfo.address}} </th>
+						</tr>
+						<tr>
+							<th></th>
+							<th style="text-align: right; font-size: 10px; font-weight: 100;" > {{ipginfo.municipality}} </th>
+						</tr>
+						<tr>
+							<th></th>
+							<th style="text-align: right; font-size: 10px; font-weight: 100;" >Telf. {{ipginfo.mobile}} </th>
+						</tr>
+						<tr>
+							<th></th>
+							<th style="text-align: right; font-size: 10px; font-weight: 100;" >Website: {{ipginfo.website}} </th>
+						</tr>
+					</thead>
+			</table>
+    </div>
+</footer>
+
+    
+
+
+
+
+
+
+{% endblock %}
+{% block scripts %}
+<style>
+    
+    table h2 {
+        padding: 10px 10px 2px 10px;
+        margin-bottom: 0;
+    }
+    table th {
+        padding: 4px 4px 0 4px;
+    }
+    
+
+</style>
+{% endblock %}

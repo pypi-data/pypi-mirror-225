@@ -1,0 +1,96 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			{% if group == 'hr' %}
+    	        <li class="breadcrumb-item"><a href="{% url 'leave-hr-list' %}">LISTA LICENSA</a></li>
+			{% elif group == 'unit'  %}
+				<li class="breadcrumb-item"><a href="{% url 'leave-c-list' %}">LISTA LICENSA</a></li>
+			{% elif group == 'dep'  %}
+				<li class="breadcrumb-item"><a href="{% url 'leave-dep-list' %}">LISTA LICENSA</a></li>
+			{% elif group == 'de' or group == 'deputy' %}
+				<li class="breadcrumb-item"><a href="{% url 'leave-de-list' %}">LISTA LICENSA</a></li>
+			{% else %}
+	            <li class="breadcrumb-item"><a href="{% url 'leave-s-list' %}">LISTA LICENSA</a></li>
+			{% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h4>{{ legend|upper }}</h4>
+					</center>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4">
+							<table class="table table-sm" border="0">
+								<tr>
+									<th>Naran</th> <td>{{c_emp}}</td>
+								</tr>
+								<tr>
+									<th>Sexu</th> <td>{{ c_emp.sex }}</td>
+								</tr>
+								<tr>
+									<th>Divizaun/Ekipa</th> <td>{% if c_emp.curempdivision.department %}{{ c_emp.curempdivision.department }}
+										{% elif c_emp.curempdivision.unit %}{{ c_emp.curempdivision.unit }}{% endif %}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-md-8">
+							<table class="table table-sm table-striped table-bordered" id="example" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Nu.</th>
+										<th>Tipu Licenca / Tinan</th>
+										<th class="text-center">Max. Loron to'o fulan ida ne'e</th>
+										<th class="text-center">Total Loron Foti</th>
+										<th class="text-center">Balansu Loron to'o fulan ida ne'e</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for obj in objects %}
+									<tr>
+										<td>{{ forloop.counter }}</td>
+										<td>{{ obj.0.name }}</td>
+										<td align="center">{% if obj.1.total_balance  %}{{ obj.1.total_balance }}{% else %}{{obj.0.total}}{% endif %}</td>
+										<td align="center">{% if obj.1.total_taken  %}{{ obj.1.total_taken }}{% else %}0.00{% endif %}</td>
+										<td align="center">{% if obj.1.total_balance %}{{ obj.1.total_balance }} {% else %}0.00 {% endif %}</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+                    
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<style>
+		.table th, .table td{
+			border-top: none;
+		}
+		.table tr {
+			padding: 0;
+			margin: 0;
+		}
+		.table th, .table td {
+			padding-bottom: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

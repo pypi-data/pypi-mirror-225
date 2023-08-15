@@ -1,0 +1,177 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-period-list' %}">LISTA PERIODE</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+                <div class="card-header border-primary">
+                    <center>
+                        <h2>{{ legend|upper }}</h2>
+                    </center>
+                </div>
+				<div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fa fa-info-circle"></i>
+                        Klik iha <strong>Funsionario</strong> nia naran hodi aumenta <strong> Periode Licensa</strong> <i>ou</i> aumenta <strong> Record Licensa</strong> 
+                    </div>
+                    <!-- {% if periodcheck == False %}
+                    <a href="{% url 'leave-hr-period-set' %}" class="btn btn-info btn-sm mb-1"> Aumenta Periode Licensa Geral <i class="fa fa-plus"></i> </a>
+                    {% endif %}
+                    
+                    {% if lc == False and periodcheck %}
+                    <a href="{% url 'leave-hr-leave-update-record' %}" class="btn btn-danger btn-sm mb-1"> Kria Record <i class="fa fa-refresh"></i> </a>
+                      
+                    {% endif %} -->
+
+					<table class="table table-sm table-striped table-bordered" id="example" width="100%" cellspacing="0">
+						<thead>
+                            <tr align="center">
+                                <th  colspan="14">Tipu Licensa</th>
+                            </tr>
+                            <tr  align="center">
+                                <th></th>
+                                <th></th>
+                                <th colspan="2">Annual Leave</th>
+                                <th colspan="2">Sick Leave</th>
+                                <th colspan="2">Special Leave</th>
+                                <th colspan="2">Maternity Leave</th>
+                                <th colspan="2">Paternity Leave</th>
+                                <th colspan="2">Childcare Leave</th>
+                            </tr>
+							<tr align="center">
+								<th>Nu.</th>
+								<th>Naran</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+								<th>Total Loron Foti</th>
+								<th>Balansu Loron</th>
+							</tr>
+						</thead>
+						<tbody>
+                            {% for obj in  objects  %}
+                                <tr align="center">
+                                    <td>{{forloop.counter}}</td>
+                                    <td align="left"> <a href="{% url 'leave-hr-leave-record' obj.0.hashed %}"> {{obj.0}} </a></td>
+                                    <td>
+                                        {% if obj.2.total_taken %}
+                                        {{obj.2.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if today <= obj.2.update_date %}
+										
+												{{obj.10.balance_month}}
+										{% elif obj.11 %}
+												{{obj.10.balance_month}}
+										{% else %}
+										
+											{{obj.2.total_balance}}
+												
+										{% endif %}
+
+                                    </td>
+                                    <td>
+                                        {% if obj.3.total_taken %}
+                                        {{obj.3.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.3.total_balance %}
+                                        {{obj.3.total_balance}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.4.total_taken %}
+                                        {{obj.4.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.4.total_balance %}
+                                        {{obj.4.total_balance}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.5.total_taken %}
+                                        {{obj.5.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.5.total_balance %}
+                                        {{obj.5.total_balance}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.6.total_taken %}
+                                        {{obj.6.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.6.total_balance %}
+                                        {{obj.6.total_balance}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.8.total_taken %}
+                                        {{obj.8.total_taken}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.8.total_balance %}
+                                        {{obj.8.total_balance}}
+                                        {% else %}
+                                        0
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

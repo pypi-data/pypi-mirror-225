@@ -1,0 +1,68 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h4>{{ legend|upper }}</h4>
+					</center>
+				</div>
+				<div class="card-body">
+					<!-- Provide filtering options -->
+					<table class="table table-sm table-striped table-bordered" id="example" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Nu.</th>
+								<th>Tipu Licenca</th>
+								<th>Funsionariu</th>
+								<th>Asuntu</th>
+								<th>Data Hahu</th>
+								<th>Data Termina</th>
+								<th width="8%">Total Loron</th>
+								<th>#</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for obj in objects %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td>{{ obj.leave_type }}</td>
+								<td>{{ obj.employee }}</td>
+								<td>{{ obj.description }}</td>
+								<td>{{ obj.start_date|date:"d/m/Y" }}</td>
+								<td>{{ obj.end_date|date:"d/m/Y" }}</td>
+								<td>{{ obj.days }}</td>								
+								<td>
+									<a class="btn btn-sm btn-primary" href="{% url 'leave-hr-app-detail' obj.hashed %}" title="Detalha"><i class="fa fa-eye"></i></a>
+								{% if obj.leavede.obs == "Sim" or obj.leaveunit.obs == "Sim" %}
+									{% if obj.is_print == False %}
+									<!-- <a class="btn btn-sm btn-secondary" href="{% url 'leave-hr-print' obj.hashed %}" title="Print Aplikasaun" target="_blank"><i class="fa fa-print"></i></a> -->
+									{% endif %}
+								{% endif %}
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

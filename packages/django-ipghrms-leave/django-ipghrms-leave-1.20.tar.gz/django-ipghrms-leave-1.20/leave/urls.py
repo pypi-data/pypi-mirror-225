@@ -1,0 +1,80 @@
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+	### Staff
+	path('s/list/', views.sLeaveList, name="leave-s-list"),
+	path('s/detail/<str:hashid>/', views.sLeaveDetail, name="leave-s-detail"),
+	path('s/leave/pdf/<str:hashid>/', views.sLeavePDF, name="leave-s-pdf"),
+	path('terminate/<str:hashid>/', views.LeaveTerminate, name="leave-terminate"),
+	#
+	path('add/', views.LeaveAdd, name="leave-add"),
+	path('update/<str:hashid>/', views.LeaveUpdate, name="leave-update"),
+	path('lock/<str:hashid>/', views.LeaveLock, name="leave-lock"),
+	path('unlock/<str:hashid>/', views.LeaveUnLock, name="leave-unlock"),
+	path('send/<str:hashid>/', views.LeaveSend, name="leave-send"),
+	path('balance/check/', views.sLeaveBalCheck, name="leave-bal-check"),
+	#
+	path('deleg/list/', views.LeaveDelegList, name="leave-deleg-list"),
+	path('deleg/update/<str:hashid>/', views.LeaveDelegUpdate, name="leave-deleg-update"),
+	path('deleg/confirm/<str:hashid>/', views.LeaveDelegConfirm, name="leave-deleg-confirm"),
+	path('deleg/confirm2/<str:hashid>/', views.LeaveDelegConfirm2, name="leave-deleg-confirm2"),
+	path('deleg/cancel/<str:hashid>/', views.LeaveDelegCancel, name="leave-deleg-cancel"),
+	path('deleg/detail/<str:hashid>/', views.LeaveDelegDetail, name="leave-deleg-detail"),
+	################################################################
+	path('dep/list/', views.LeaveDepList, name="leave-dep-list"),
+	path('dep/aprv/list/', views.LeaveDepAprvList, name="leave-dep-aprv-list"),
+	path('dep/detail/<str:hashid>/', views.LeaveDepDetail, name="leave-dep-detail"),
+	path('dep/update/<str:hashid>/', views.cLeaveDepUpdate, name="leave-dep-update"),
+	path('dep/send/<str:hashid>/', views.cLeaveDepSend, name="leave-dep-send"),
+	### Unit
+	path('c/ver/list/', views.cLeaveVerList, name="leave-c-ver-list"),
+	path('c/ver/detail/<str:hashid>/', views.cLeaveVerDetail, name="leave-c-ver-detail"),
+	path('c/ver/update/<str:hashid>/', views.cLeaveVerUpdate, name="leave-c-ver-update"),
+	path('c/ver/send/<str:hashid>/', views.cLeaveVerSend, name="leave-c-ver-send"),
+	path('c/ver/reject/<str:hashid>/', views.cLeaveVerReject, name="leave-c-ver-reject"),
+	path('c/send/<str:hashid>/', views.LeaveUnitSend, name="leave-unit-send"),
+	path('c/done/<str:hashid>/', views.LeaveUnitDone, name="leave-unit-done"),
+	#
+	path('c/list/', views.cLeaveList, name="leave-c-list"),
+	path('c/detail/<str:hashid>/', views.cLeaveDetail, name="leave-c-detail"),
+	### HR
+	path('hr/list/', views.hrLeaveList, name="leave-hr-list"),
+	path('hr/config/list/', views.hrPeriodList, name="leave-hr-period-list"),
+	path('hr/detail/<str:hashid>/', views.hrLeaveCertDetail, name="leave-hr-cert-detail"),
+	path('hr/update/<str:hashid>/', views.hrLeaveCertUpdate, name="leave-hr-cert-update"),
+	path('hr/send/<str:hashid>/', views.hrLeaveCertSend, name="leave-hr-cert-send"),
+	#
+	path('hr/leave/approved-list/', views.hrLeaveAproveList, name="leave-hr-approved-list"),
+	path('hr/leave/create/emp/period/<str:hashid>/', views.hrLeaveEmpPeriodAdd, name="leave-hr-leave-create-emp-record"),
+	path('hr/leave/update/record/<str:hashid>/', views.hrLeaveUpdateEmpRecord, name="leave-hr-leave-update-emp-record"),
+	path('hr/leave/record/<str:hashid>/', views.hrLeaveRecordPer, name="leave-hr-leave-record"),
+	path('hr/leave/per/record/<str:hashid>/<int:pk>/', views.hrLeavePeriodRecordPer, name="leave-hr-leave-per-record"),
+	path('hr/leave/update/record/month/<str:hashid>/', views.hrLeaveEmpUpdatePeriodMonth, name="leave-hr-leave-update-emp-record-month"),
+	path('hr/leave/update/record/', views.hrLeaveUpdateRecord, name="leave-hr-leave-update-record"),
+	path('hr/period/set/', views.hrLeavePeriodAdd, name="leave-hr-period-set"),
+	path('hr/leave/list/', views.hrLeaveAppList, name="leave-hr-app-list"),
+	path('hr/leave/raw/list/', views.hrLeaveAppRawList, name="leave-hr-app-raw-list"),
+	path('hr/leave/add/<str:hashid>/', views.hrLeaveAdd, name="leave-hr-add"),
+	path('hr/leave/add/spec/<str:hashid>/', views.hrLeaveAddSpecial, name="leave-hr-add-special"),
+	path('hr/leave/add/proc/<str:hashid>/', views.hrLeaveAddProcess, name="leave-hr-add-process"),
+	path('hr/app/detail/<str:hashid>/', views.hrLeaveAppDetail, name="leave-hr-app-detail"),
+	path('hr/update/att/<str:hashid>/<str:hashid2>/', views.hrLeaveUpdateAtt, name="leave-hr-udpate-att"),
+	path('hr/print/<str:hashid>/', views.hrLeavePrint, name="leave-hr-print"),
+	path('hr/add/comment/<str:hashid>/', views.hrLeaveAddComment, name="leave-hr-add-comment"),
+	path('hr/pdf/<str:hashid>/', views.hrLeavePDF, name="leave-hr-pdf"),
+	path('hr/leave-send-process/<str:hashid>/<str:leave>/', views.hrLeaveSendProcess, name="leave-hr-send-process"),
+	### DE
+	path('pr/list/', views.deLeaveList, name="leave-de-list"),
+	path('pr/detail/<str:hashid>/', views.deLeaveDetail, name="leave-de-detail"),
+	path('pr/aprove/list/', views.deLeaveApprList, name="leave-de-appr-list"),
+	path('pr/aprove/detail/<str:hashid>/', views.deLeaveApprDetail, name="leave-de-appr-detail"),
+	path('pr/aprove/update/<str:hashid>/', views.deLeaveApprUpdate, name="leave-de-appr-update"),
+	path('pr/aprove/finish/<str:hashid>/', views.deLeaveApprFinish, name="leave-de-appr-finish"),
+	path('pr/notify/<str:hashid>/send/', views.prLeaveSendNotif, name="leave-de-notify-send"),
+	path('pr/notify/rh/<str:hashid>/send/', views.prLeaveNotifyHR, name="leave-de-notify-hr"),
+	###
+	path('chart/dash/', views.LeaveChartDash, name="leave-chart-dash"),
+	path('report/', include('leave.urls_report')),
+    path('cancel/<str:hashid>/', views.LeaveCancel, name="leave-cancel"),
+]

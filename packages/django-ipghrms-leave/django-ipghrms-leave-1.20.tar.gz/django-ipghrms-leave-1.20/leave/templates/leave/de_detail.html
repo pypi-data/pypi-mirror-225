@@ -1,0 +1,86 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'leave-de-list' %}">LISTA LICENSA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-info rounded">
+                <div class="card-header border-primary">
+                    <center>
+                        <h2>
+                            {{ legend|upper }}
+                        </h2>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <center>
+                        <h4>Informasaun Licensa</h4>
+                    </center>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <th width="20%">Naran</th>
+                            <td width="25%"><a href="{% url 'emp-detail' leave.employee.hashed %}">{{ leave.employee }}</a></td>
+                            <th width="20%" rowspan="2">Data Kria Aplikasaun</th>
+                            <td rowspan="2">{{ leave.datetime|date:"d-m-Y, H:m A" }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID#</th>
+                            <td>{{ leave.employee.emp_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pozisaun/Local Servisu</th>
+                            <td>{{ leave.employee.curempposition.position }}</td>
+                            <th rowspan="2">Unidade/Seksaun</th>
+                            <td rowspan="2">
+                            {% if leave.employee.curempdivision.department %}
+                                {{ leave.employee.curempdivision.department }}<br/>
+                                {{ leave.employee.curempdivision.department.unit.code }}
+                            {% elif leave.employee.curempdivision.unit %}
+                                {{ leave.employee.curempdivision.unit }}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tr align="center">
+                            <th rowspan="2" width="25%">Tipu Licensa</th>
+                            <th colspan="2">Loron</th>
+                            <td rowspan="2" width="25%">Total loron ne'ebe foti</td>
+                        </tr>
+                        <tr align="center">
+                            <th>Husi</th><th>To'o</th>
+                        </tr>
+                        <tr align="center">
+                            <td>{{ leave.leave_type }}</td>
+                            <td>{{ leave.start_date|date:"d-m-Y" }} <i>Horas</i> {{leave.start_time_status}} OTL</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }} <i>Horas</i> {{leave.end_time_status}} OTL</td>
+                            <td>{{ leave.days }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" colspan="6">KOMENTARIU SELUK</th>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                {{leave.comments|safe}}
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                </div> <!--end card-body-->
+            </div> <!--end card-->
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

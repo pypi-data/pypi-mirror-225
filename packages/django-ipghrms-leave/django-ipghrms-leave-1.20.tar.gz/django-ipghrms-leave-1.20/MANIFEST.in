@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+recursive-include leave/templates *
+recursive-include leave/migrations *
+recursive-include leave/views *
+recursive-include leave/templatetags *
+recursive-include leave/api *

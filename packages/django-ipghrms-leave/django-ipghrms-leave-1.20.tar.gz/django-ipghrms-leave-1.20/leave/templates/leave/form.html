@@ -1,0 +1,76 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+		{% if page == "apply" %}
+			{% if group == "staff" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-s-list' %}">LISTA APLIKASAUN</a></li>
+			{% elif group == "unit" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-c-list' %}">LISTA APLIKASAUN</a></li>
+			{% endif %}
+		{% elif page == "delegate" %}
+			<li class="breadcrumb-item"><a href="#">LISTA MATERIA</a></li>
+		{% elif page == "record" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-list' %}">LISTA LICENSA</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-leave-record' c_emp.hashed %}">LEAVE RECORD</a></li>
+			{% endif %}
+		{% if group == 'hr' %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-list' %}">LISTA LICENSA</a></li>
+		  
+		{% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table class="table table-sm table-striped table-bordered">
+						<tr>
+							<th>ID#</th><th>Naran</th><th>Divizaun/Ekipa</th>
+						</tr>
+						<tr>
+							<td>{{c_emp.id}}</td>
+							<td width="50%">{{ c_emp }}</td>
+							<td>
+								{% if c_emp.curempdivision.unit %}{{ c_emp.curempdivision.unit }}{% endif %} /
+								{% if c_emp.curempdivision.department %}{{ c_emp.curempdivision.department }}{% endif %}
+							</td>
+						</tr>
+					</table>
+					<hr/>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-info">
+								<i class="fa fa-circle-info"> </i> <small> </i> <i>Koluna sira ne'ebe iha <strong class="text-danger">*</strong> signifika Itaboot tenke prienche</i> </small>
+							</div>
+						</div>
+					</div>
+					{% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+<style>
+	#id_employee {
+		width: 100%;
+	}
+</style>
+<script>
+	$(document).ready(function() {
+    $('#id_employee').select2();
+});
+</script>
+{% endblock %}

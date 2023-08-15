@@ -1,0 +1,112 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'leave-deleg-list' %}">LISTA DELEGASAUN</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-info rounded">
+                <div class="card-header bg-steel">{{ legend|upper }}</div>
+                <div class="card-body">
+                    <center>
+                        <h4>Informasaun Feriadu</h4>
+                    </center>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <th width="20%">Naran</th>
+                            <td width="25%"><a href="{% url 'emp-detail' leave.employee.hashed %}">{{ leave.employee }}</a></td>
+                            <th width="20%" rowspan="2">Data Aplikasaun</th>
+                            <td rowspan="2">{{ leave.date|date:"d-m-Y" }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID#</th>
+                            <td>{{ leave.employee.emp_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pozisaun/Local Servisu</th>
+                            <td>{{ leave.employee.curempposition.position }}</td>
+                            <th rowspan="2">Unidade/Seksaun</th>
+                            <td rowspan="2">
+                            {% if leave.employee.curempdivision.department %}
+                                {{ leave.employee.curempdivision.department }}<br/>
+                                {{ leave.employee.curempdivision.department.unit.code }}
+                            {% elif leave.employee.curempdivision.unit %}
+                                {{ leave.employee.curempdivision.unit }}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tr align="center">
+                            <th rowspan="2" width="25%">Tipu Licensa</th>
+                            <th colspan="2">Loron</th>
+                            <td rowspan="2" width="25%">Total loron ne'ebe foti</td>
+                        </tr>
+                        <tr align="center">
+                            <th>Husi</th><th>To'o</th>
+                        </tr>
+                        <tr align="center">
+                            <td>{{ leave.leave_type }}</td>
+                            <td>{{ leave.start_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.days }}</td>
+                        </tr>
+                    </table>
+                    {% if leave.is_send == True and leave.is_delegate == False %}
+                        {% if leavedel.is_confirm == False %}
+                        <a class="btn btn-sm btn-primary mb-1" href="{% url 'leave-deleg-confirm' leavedel.hashed %}" title="Konfirmasaun">Konfirmasaun <i class="fa fa-check"></i></a>
+                        {% else %}
+                            {% if leavedel.is_confirm == True and leavedel.is_confirm2 == False %}
+                            <a class="btn btn-sm btn-danger mb-1" href="{% url 'leave-deleg-cancel' leavedel.hashed %}" title="Cancela">Cancela <i class="fa fa-close"></i></a>
+                            <a class="btn btn-sm btn-primary mb-1" href="{% url 'leave-deleg-confirm2' leavedel.hashed %}" title="Konfirmasaun">Konfirmasaun Ikus <i class="fa fa-check"></i></a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <td>Servisu Delega ba:</td>
+                            <td>{{ leavedel.employee }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pozisaun</td>
+                            <td>{{ leavedel.employee.curempposition.position }}</td>
+                        </tr>
+                        <tr>
+                            <td>Hela Fatin</td>
+                            <td>{{ leavedel.employee.addresstl.address }}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Telemovel</td>
+                            <td>{{ leavedel.employee.contactinfo.phone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kosiente ba Delegasaun Servisu<br/>
+                            {% if leavedel.obs == "Sim" %}SIM / <strike>LAE</strike>
+                            {% elif leavedel.obs == "Lae" %}<strike>SIM</strike> / LAE
+                            {% else %}SIM / LAE{% endif %}                        
+                            </td>
+                            <td rowspan="2">Assinatura Delega Servisu: </td>
+                        </tr>
+                        <tr>
+                            <td>Se responde lae favor deskreve razaun<br/>
+                                {% if leavedel.obs == "Lae" %}<strong><i>{{ leavedel.reason }}</i></strong>{% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div> <!--end card-body-->
+            </div> <!--end card-->
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

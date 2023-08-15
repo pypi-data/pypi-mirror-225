@@ -1,0 +1,193 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'leave-c-list' %}">LISTA APLIKASAUN</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-info rounded">
+                <div class="card-header border-primary">
+
+                    <center>
+                        <h2>INFORMASAUN LICENSA
+                        </h2>
+                            {% if leave.is_cancel %}
+                              <div class="alert alert-danger ">
+                                Itaboot Kansela Ona Licensa !!
+                                <br>
+                                <strong>KOMENTARIU</strong>:  <small> <i>{{leave.cancel_comment}}</i> </small>
+                              </div>
+                              {% endif %}
+                    </center>
+                </div>
+                <div class="card-body">
+                    <center>
+                        <h4>APLIKANTE</h4>
+                    </center>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <th width="20%">Naran</th>
+                            <td width="25%"><a href="{% url 'emp-detail' leave.employee.hashed %}">{{ leave.employee }}</a></td>
+                            <th width="20%" rowspan="2">Data Kria Aplikasaun</th>
+                            <td rowspan="2">{{ leave.datetime|date:"d-m-Y, H:i A" }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID#</th>
+                            <td>{{ leave.employee.emp_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pozisaun/Local Servisu</th>
+                            <td>{{ leave.employee.curempposition.position }}</td>
+                            <th rowspan="2">Unidade/Seksaun</th>
+                            <td rowspan="2">
+                            {% if leave.employee.curempdivision.department %}
+                                {{ leave.employee.curempdivision.department }}<br/>
+                                {{ leave.employee.curempdivision.department.unit.code }}
+                            {% elif leave.employee.curempdivision.unit %}
+                                {{ leave.employee.curempdivision.unit }}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tr align="center">
+                            <th rowspan="2" width="25%">Deskrisaun Licensa</th>
+                            <th rowspan="2" width="25%">Tipu Licensa</th>
+                            <th colspan="2">Loron</th>
+                            <td rowspan="2" width="25%">Total loron ne'ebe foti</td>
+                        </tr>
+                        <tr align="center">
+                            <th>Husi</th><th>To'o</th>
+                        </tr>
+                        <tr align="center">
+                            <td>{{ leave.description }}</td>
+                            <td>{{ leave.leave_type }}</td>
+                            <td>{{ leave.start_date|date:"d-m-Y" }} <i>Horas</i> {{leave.start_time_status}} OTL</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }} <i>Horas</i> {{leave.end_time_status}} OTL</td>
+                            <td>{{ leave.days }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th class="text-center" colspan="6">KOMENTARIU SELUK</th>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                {{leave.comments|safe}}
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <h4 class="text-center">KOMENTARIO HUSI RECURSO HUMANO
+
+                    </h4>
+                    {% if leavehr.comment %}
+                    <table class="table table-comment table-sm  w-100">
+                        <thead>
+                            <tr>
+                                <th colspan="2">{{leavehr.user.employeeuser.employee}}  ({{leavehr.user.employeeuser.employee.curempdivision.department.name}})</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{leavehr.comment|safe}}
+                                </td>
+                                <td align="right"><a href="{% url 'leave-hr-add-comment' leave.hashed %}" class="btn btn-sm btn-info">  <i class="fa fa-pencil"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <center>
+                        <div class="alert alert-danger">Seidauk Iha Komentario <i class="fa-regular fa-face-frown-open"></i></div>
+                    </center>
+                    {% endif %}
+
+                    {% if cgroup != 'de' %}
+                    <center>
+
+                        <h4>TRACKING APLIKASAUN
+                            
+                                <i class="fa fa-arrow-right"></i>
+                                {% if leave.unit_send_pr == False %}
+                                    {% if leave.is_lock == False %}
+                                        <a class="btn btn-sm btn-info" href="{% url 'leave-update' leave.hashed %}" title="Altera">Altera <i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-warning" href="{% url 'leave-lock' leave.hashed %}" title="Xavi hodi manda">Xavi <i class="fa fa-lock"></i></a>
+                                    {% else %}
+                                        <a class="btn btn-sm btn-warning" href="{% url 'leave-unlock' leave.hashed %}" title="Loke hodi altera">Loke <i class="fa fa-unlock"></i></a>
+                                        <a class="btn btn-sm btn-primary" href="{% url 'leave-unit-send' leave.hashed %}" title="Manda">Manda <i class="fa fa-send"></i></a>
+                                        {% endif %}
+                                {% else %}
+                                    {% if leave.pr_send  and leave.is_done == False %}
+                                        <a class="btn btn-sm btn-info" href="{% url 'leave-unit-done' leave.hashed %}" title="Manda">Termina <i class="fa fa-check"></i></a>      
+                                    {% else %}
+                                        <a href="#" class="btn btn-sm btn-info disabled ">Termina Ona <i class="fa fa-check"></i></a>
+                                        {% if leave.hr_confirm == False %}                          
+                                            {% if leave.is_cancel == False %}
+                                            
+                                            <a class="btn btn-sm btn-warning" href="{% url 'leave-cancel' leave.hashed %}">Kansela <i class="fa fa-close"></i></a>
+                                        
+                                            
+
+                                            {% endif %}
+                                        {% endif %}  
+                                    {% endif %}
+                                {% endif %}
+                            
+                        </h4>
+                    </center>
+                    <table class="table table-sm">
+                        <tr align="center">
+                            {% if group == 'deputy' %}
+                                <th>Vice Presidente</th>                         
+                            {% else %}
+                                <th>Chefe Divizaun</th>
+                            {% endif %}
+                            <th>Presidente</th>
+                        </tr>
+                        <tr align="center">
+                            <td>
+                            {% if leave.unit_send_pr == False %}
+                                Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% elif leave.unit_send_pr  %}
+                                 Manda  ona <i class="fa fa-check i_green"></i>
+                            {% endif %}
+                            </td>
+                            <td>
+                            {% if leave.unit_send_pr == True and leave.de_approve == False %}
+                                Procesu hela <i class="fa fa-refresh i_blue"></i>
+                            {% elif leave.de_approve == True %}
+                                {% if leavede.obs == "Sim" %} 
+                                <span class="alert alert-success alert-md w-50">
+                                    <h5>APROVA  <i class="fa fa-check i_green"></i></h5>
+                                    <hr>
+                                    {{leavede.reason}}
+                                </span>
+                                {% elif leavede.obs == "Lae" %} 
+                                <span class="alert alert-danger alert-md w-100 h-50">
+                                    <h5>LA APROVA  <i class="fa fa-close i_red"></i></h5>
+                                    <hr>
+                                    {{leavede.reason}}
+                                </span>
+                                {% endif %}
+                            {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                    {% endif %}
+                </div> <!--end card-body-->
+            </div> <!--end card-->
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		{% if title %}
+			<title>IPG - {{ title|upper }}</title>
+		{% else %}
+			<title>IPG-</title>
+		{% endif %}
+		<link rel="shortcut icon" href="{% static 'main/images/logo.ico' %}">
+		<link rel="stylesheet" href="{% static 'main/font-awesome/css/font-awesome.min.css' %}">
+		
+
+	</head>
+	<body>
+		{% block content %}{% endblock %}
+
+		{% block scripts %}{% endblock %}
+	</body>
+</html>
