@@ -1,0 +1,43 @@
+[build-system]
+requires = [
+    "setuptools",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vacuum-map-parser-base"
+version = "0.1.0"
+description = "Common code for vacuum map parsers"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Piotr Machowski", email = "piotr.machowski.dev@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Home Automation",
+]
+dynamic = [
+    "dependencies",
+]
+
+[project.license]
+text = "Apache-2.0"
+
+[project.urls]
+Homepage = "https://github.com/PiotrMachowski/Python-package-vacuum-map-parser-base"
+Repository = "https://github.com/PiotrMachowski/Python-package-vacuum-map-parser-base"
+"Bug Tracker" = "https://github.com/PiotrMachowski/Python-package-vacuum-map-parser-base/issues"
+
+[tool.setuptools.dynamic.dependencies]
+file = [
+    "requirements.txt",
+]
+
+[tool.setuptools.dynamic.optional-dependencies.dev]
+file = [
+    "requirements-dev.txt",
+]
