@@ -1,0 +1,35 @@
+$def with (project, filename, content, test_coverage)
+$ prefix, _, name = filename.rpartition("/")
+$if prefix:
+    $ file_tree = chain(*[(p, f"<b>{p}</b>") for p in prefix.split("/")])
+$else:
+    $ file_tree = []
+$ breadcrumbs = ("projects", "Projects", project, f"<b>{project}</b>")
+$if filename:
+    $ breadcrumbs += ("files", "Files") + tuple(file_tree)
+$var breadcrumbs = breadcrumbs
+$var title = name
+
+<link rel=stylesheet href=$tx.origin/static/solarized.css media=screen>
+<style>
+div.highlight {
+  font-size: .65em; }
+.linenodiv .normal {
+  display: none; }
+</style>
+
+$if content is None:
+    <img src=/projects/$project/raw/$filename>
+$elif isinstance(content, str):
+    <p style=text-align:right><a href=/projects/$project/raw/$filename>Raw</a></p>
+    $:highlight(content, name, coverage=test_coverage)
+$else:
+    $if filename:
+        $ filename = f"/{filename}"
+    <ul>
+    $for file in sorted(content):
+        <li><a href=/projects/$project/files$filename/$file.name>$file.name</a>\
+        $if file.is_dir():
+            /
+        </li>
+    </ul>

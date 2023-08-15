@@ -1,0 +1,24 @@
+$def with (project, release, filename, content)
+$ prefix, _, name = filename.rpartition("/")
+$if prefix:
+    $ file_tree = chain(*[(p, f"<b>{p}</b>") for p in prefix.split("/")])
+$else:
+    $ file_tree = []
+$var breadcrumbs = ("projects", "Projects", project, f"<b>{project}</b>", "releases", "Releases", release, f"<b>{release}</b>", "files", "Files") + tuple(file_tree)
+$var title = name
+
+<link rel=stylesheet href=$tx.origin/static/solarized.css media=screen>
+<style>
+div.highlight {
+  font-size: .75em; }
+.linenodiv .normal {
+  display: none; }
+</style>
+
+$if isinstance(content, str):
+    $:highlight(content, ".py")
+$else:
+    <ul>
+    $for file in content:
+        <li><a href=/projects/$project/releases/$release/files/$filename/$file.name>$file.name</a></li>
+    </ul>
