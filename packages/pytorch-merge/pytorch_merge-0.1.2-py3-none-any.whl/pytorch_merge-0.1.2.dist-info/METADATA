@@ -1,0 +1,102 @@
+Metadata-Version: 2.1
+Name: pytorch-merge
+Version: 0.1.2
+Summary: Merge LLM weights files that are split into multiple parts
+Author-email: Donalda Feith <donaldafeith@gmail.com>
+Maintainer-email: Donalda Feith <donaldafeith@gmail.com>, Stephen Karl Larroque <lrq3000@gmail.com>
+License: GNU General Public License v3 or later
+Project-URL: Homepage, https://github.com/donaldafeith/Pytorch_Merge
+Project-URL: Documentation, https://github.com/donaldafeith/Pytorch_Merge/blob/master/README.md
+Project-URL: Source, https://github.com/donaldafeith/Pytorch_Merge
+Project-URL: Tracker, https://github.com/donaldafeith/Pytorch_Merge/issues
+Project-URL: Download, https://github.com/donaldafeith/Pytorch_Merge/releases
+Keywords: video,gestalt,movie,summary,summarization,thumbnails
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Environment :: Console
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: tqdm
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Provides-Extra: testmeta
+Requires-Dist: build ; extra == 'testmeta'
+Requires-Dist: twine ; extra == 'testmeta'
+Requires-Dist: validate-pyproject ; extra == 'testmeta'
+
+# PyTorch Merge
+
+This repository contains a script, **py_merge.py**, that can be used to merge two PyTorch model .bin files into a single model file. This can be useful when you need to combine the weights of two models that have the same architecture and are compatible. The script averages the parameter values of the models for keys that exist in both models.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R8K4WLS)
+
+## Prerequisites
+Before using this script, make sure you have the following Python packages installed:
+
+* PyTorch
+* Transformers
+
+You can install them using pip:
+
+```
+pip install pytorch_merge
+```
+
+This will automatically install the dependencies (`torch` and `transformers`).
+
+## Usage
+
+Open a terminal, and type:
+
+```
+pytorch_merge --help
+```
+
+To get the instructions on how to use it.
+
+This tool requires 3 arguments:
+
+* `--config config.json` -- The configuration file for the model architecture you are working with.
+* `--bin model1.bin model2.bin model3.bin` -- All the model’s weights .bin files you want to merge. You can merge weights files of one multiparts model, or weights from different models, in which case weights will be averaged. You can specify as many files as you want, they will be merged one after the others in a loop.
+* `--output merged_model.bin` -- Where to save the output merged model.
+
+For example:
+
+```
+pytorch_merge -c config.json -b model1.bin model2.bin -o merged_model.bin
+```
+
+You can now use the merged **merged_model.bin** file with your model architecture.
+
+**Note**: Merging models may not always produce the desired results, especially if the models have different architectures or were trained on different data. 
+
+Use this script only when you are sure that the models are compatible.
+
+## License
+
+This tool was made by Donalda Feith and is licensed under GNU General Public License v3 or later (GPLv3+).
