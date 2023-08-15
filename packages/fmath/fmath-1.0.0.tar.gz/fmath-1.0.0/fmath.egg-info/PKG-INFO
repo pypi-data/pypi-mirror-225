@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: fmath
+Version: 1.0.0
+Summary: A library for Python for fast math on floats
+Home-page: https://github.com/donno2048/fmath
+Author: Elisha Hollander
+Author-email: just4now666666@gmail.com
+License: MIT
+Project-URL: Documentation, https://github.com/donno2048/fmath#readme
+Project-URL: Bug Reports, https://github.com/donno2048/fmath/issues
+Project-URL: Source Code, https://github.com/donno2048/fmath
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# fmath
+
+A library for Python for fast math on floats
+
+See the [demo](./test.ipynb)
+
+## Installation
+
+### From PyPI
+
+```sh
+pip3 install fmath
+```
+
+### From GitHub
+
+```sh
+pip3 install git+https://github.com/donno2048/fmath
+```
+
+## Usage
+
+Just replace
+
+```py
+from math import sqrt
+pow = pow
+abs = abs
+sign = lambda x: x >= 0
+```
+
+with
+
+```py
+from fmath import sqrt, pow, abs, sign
+```
+
+and make sure the input is `float`
