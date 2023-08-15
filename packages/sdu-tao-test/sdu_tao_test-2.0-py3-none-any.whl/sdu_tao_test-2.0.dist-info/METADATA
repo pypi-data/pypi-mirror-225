@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: sdu-tao-test
+Version: 2.0
+Summary: this is a test
+Author: ahangouth
+Author-email: ahangouth@163.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: asgiref >=3.7.2
+Requires-Dist: bleach >=6.0.0
+Requires-Dist: certifi >=2023.7.22
+Requires-Dist: charset-normalizer >=3.2.0
+Requires-Dist: construct >=2.5.3
+Requires-Dist: cssselect >=1.2.0
+Requires-Dist: Django >=3.2.18
+Requires-Dist: django-haystack >=3.2.1
+Requires-Dist: docutils >=0.20.1
+Requires-Dist: idna >=3.4
+Requires-Dist: importlib-metadata >=6.8.0
+Requires-Dist: jaraco.classes >=3.3.0
+Requires-Dist: jieba >=0.42.1
+Requires-Dist: keyring >=24.2.0
+Requires-Dist: lxml >=4.9.2
+Requires-Dist: markdown-it-py >=3.0.0
+Requires-Dist: mdurl >=0.1.2
+Requires-Dist: more-itertools >=10.1.0
+Requires-Dist: pefile >=2023.2.7
+Requires-Dist: Pillow >=9.5.0
+Requires-Dist: pkginfo >=1.9.6
+Requires-Dist: Pygments >=2.16.1
+Requires-Dist: pyquery >=2.0.0
+Requires-Dist: requests >=2.31.0
+Requires-Dist: requests-toolbelt >=1.0.0
+Requires-Dist: rfc3986 >=2.0.0
+Requires-Dist: rich >=13.5.2
+Requires-Dist: six >=1.16.0
+Requires-Dist: sqlparse >=0.4.4
+Requires-Dist: twine >=4.0.2
+Requires-Dist: typing-extensions >=4.6.3
+Requires-Dist: tzdata >=2023.3
+Requires-Dist: urllib3 >=2.0.4
+Requires-Dist: webencodings >=0.5.1
+Requires-Dist: Whoosh >=2.7.4
+Requires-Dist: zipp >=3.16.2
+
