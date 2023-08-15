@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "drake-eq"
+version = "1.0.0"
+description = "drake_eq is a Python implementation of the Drake equation"
+authors = ["Navid <navidjalili3@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["astronomy", "drake_equation", "frank_drake", "SETI"]
+repository = "https://github.com/Navid-JL/drake_eq"
+packages = [{include = "drake_eq", from="src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "poetry.core.masonry.api"
