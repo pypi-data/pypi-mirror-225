@@ -1,0 +1,110 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2 class="mb-0">{{legend|upper}}</h4>
+					</center>
+				</div>
+				<div class="card-body">
+					<div class="border-bottom p-2">						
+						<a class="btn btn-sm btn-info mt-1" href="{% url 'emp-list' %}">LISTA FUNCIONARIU <i class="fa fa-users"></i></a>
+						<a class="btn btn-sm btn-warning mt-1" href="{% url 'emp-chart-dash' %}" target="_blank">GRAFIKU <i class="fa fa-bar-chart"></i></a>
+						<a class="btn btn-sm btn-success mt-1" href="{% url 'emp-maps' %}" target="_blank">MAPS <i class="fa fa-map"></i></a>
+						<a class="btn btn-sm btn-danger mt-1" href="{% url 'emp-contact-list-all' %}">LISTA KONTAKTO <i class="fa fa-file"></i></a>
+					</div>
+
+					
+					<div class="row mt-3">
+						<div class="col-sm-4">
+							<div class="card shadow-lg rounded border-secondary">
+								<div class="card-header bg-secondary text-center rounded" style="color: white;"> <i class="fa-solid fa-user-group"></i> PRESIDENTE & VICE-PRESIDENTE</div>
+								<div class="card-body">
+									<table class="table table-sm table-bordered">
+										<thead>
+											<tr><th>NARAN</th> <th class="text-center">KARGO</th> </tr>
+										</thead>
+										<tbody>
+										{% for i in des %}
+											<tr>
+												<td> <a href="{% url 'emp-detail' i.employee.hashed %}">{{ i.employee }}</a></td>
+												<td class="text-center">{{ i.position.code }}</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div> <!--end card-body-->							
+							</div> <!--end card-->
+							<hr class="border-primary"/>
+							<div class="card shadow-lg rounded border-secondary">
+								<div class="card-header">
+									<a href="{% url 'adv-list' %}"> <i class="fa fa-users"></i> ASSESSOR/A <strong>({{ totadv }})</strong>
+									</a>
+								</div>					
+							</div> <!--end card-->
+						</div> <!--end col-->
+						<div class="col-sm-4">
+							<div class="card shadow-lg rounded border-secondary">
+								<div class="card-header bg-secondary text-center rounded" style="color: white;"><i class="fa-solid fa-users"></i> DIVIZAUN</div>
+								<div class="card-body">
+									<table class="table table-sm table-bordered">
+										<thead>
+											<tr><th>NARAN DIVIZAUN</th><th class="text-center">TOTAL</th></tr>
+										</thead>
+										<tbody>
+										{% for j in units %}
+											<tr>
+												<td><a href="{% url 'emp-unit-list' j.0.pk %}">{{ j.0.name }}</a></td>
+												<td align="center">{{ j.1 }}</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+										<tfoot>
+											<tr><th>TOTAL</th><th style="text-align: center;">{{ totunit }}</th></tr>
+										</tfoot>
+									</table>
+								</div> <!--end card-body-->							
+							</div> <!--end card-->
+							
+						</div> <!--end col-->
+						<div class="col-sm-4">
+							<div class="card shadow-lg rounded border-secondary">
+								<div class="card-header bg-secondary text-center rounded" style="color: white;"><i class="fa-solid fa-people-group"></i> EKIPA</div>
+								<div class="card-body">
+									<table class="table table-sm table-bordered">
+										<thead>
+											<tr><th>NARAN EKIPA</th><th>TOTAL</th></tr>
+										</thead>
+										<tbody>
+										{% for k in deps %}
+											<tr>
+												<td><a href="{% url 'emp-dep-list' k.0.pk %}">{{ k.0.name }}</a></td>
+												<td align="center">{{ k.1 }}</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+										<tfoot>
+											<tr><th>TOTAL</th><th style="text-align: center;">{{ totdep }}</th></tr>
+										</tfoot>
+									</table>
+								</div> <!--end card-body-->							
+							</div> <!--end card-->
+						</div> <!--end col-->
+					</div> <!--end row-->
+					<hr/>
+					<h2>TOTAL REKURSU HUMANU IPG</h2>
+					<h1 class="mb-0">{{ total }}</h1>
+					<small>Total Divizaun + Total Assessor + Presidente + Vice Presidente</small>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

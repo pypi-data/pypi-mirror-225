@@ -1,0 +1,38 @@
+<table border="0">
+    <tr>
+        <td>
+            <div style="width: 50%; font-size: 16px; background-color: grey;"><p style="margin-bottom: 0;">Naturalidade</p></div>
+            <div class="box">
+            <table>
+                <tr><td>Municípiu: {{ locationtl.municipality }}</td></tr>
+                <tr><td>Posto Administrativo: {{ locationtl.administrativepost }}</td></tr>
+                <tr><td>Suco: {{ locationtl.village }}</td></tr>
+                <tr><td>Aldeia: {{ locationtl.aldeia }}</td></tr>
+            </table>
+        </div>
+        </td>
+        <td>
+            <div style="width: 50%; font-size: 16px; background-color: grey;"><p style="margin-bottom: 0;">Recidencia</p></div>
+            <div class="box">
+            <table>
+                <tr><td>Municípiu: {{ addtl.municipality }}</td></tr>
+                <tr><td>Posto Administrativo: {{ addtl.administrativepost }}</td></tr>
+                <tr><td>Suco: {{ addtl.village }}</td></tr>
+                <tr><td>Aldeia: {{ addtl.aldeia }}</td></tr>
+            </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 0;">Familiares</p></div>
+<div class="box3">
+<table border="0">
+    {% for depen in empdependency %}
+    <tr>
+        <td>Tipu: {{ depen.type }}</td>
+        <td width="50%">Nome: {{ depen.first_name }} {{ depen.last_name }}</td>
+        <td>Nacimento: {{ depen.date_of_birth|date:"d/m/Y" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>

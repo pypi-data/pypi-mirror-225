@@ -1,0 +1,63 @@
+<div style="width: 20%; background-color: grey; margin-left: 2px;"><p style="margin-bottom: -2px;">Indentificação</p></div>
+<table border="0" style="margin-top: 0px;">
+    <tr>
+        <td width="90%">
+            <div class="box2">
+            <table border="0" style="font-size: 12px;">
+                <tr>
+                    <td colspan="2">Eleitor n<sup>o.</sup>: {{ lidnum.electoral }}</td>
+                    <td colspan="2">Data: {{ lidnum.elec_expiry_date|date:"d/m/Y" }}</td>
+                    <td colspan="2">BI/Passaporte: {% if lidnum.bi %}{{ lidnum.bi }}{% else %}{{ lidnum.passport }}{% endif %}</td>
+                    <td colspan="2">Data: {{ lidnum.bi_expiry_date|date:"d/m/Y" }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Nu. C.RDTL : {{ lidnum.cert_rdtl }}</td>
+                    <td colspan="2">Nacimento: {{ objects.place_of_birth }}</td>
+                    <td colspan="2">Sexo: {{ objects.sex }}</td>
+                    <td colspan="2">Estado Civil: {{ objects.marital }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Grupo de sanguíneo: {{ objects.ran }}</td>
+                    <td colspan="3">Pai: {{ objects.father }}</td>
+                    <td colspan="3">Mãe: {{ objects.mother }}</td>
+                </tr>
+                <tr>
+                    <td colspan="8">Naturalidade: {{ objects.country }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Banco: {{ idnum.bank_name }}</td>
+                    <td colspan="2">Contra Bancária: {{ idnum.bank_account }}</td>
+                    <td colspan="2">IBAN: {{ idnum.iban }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">N<sup>o.</sup> Payrol: {{ idnum.payrol_number }}</td>
+                    <td colspan="2">NSS: {{ idnum.niss }}</td>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="4">N<sup>o.</sup> carta condição: {{ driver.number }}</td>
+                    <td colspan="2">Tipu: {{ driver.type }}</td>
+                    <td colspan="2">Validade: {{ driver.expiry_date|date:"d/m/Y" }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Cartão de funcionário:</td>
+                    <td colspan="2">Implesso em: {{ card.issue_date|date:"d/m/Y" }}</td>
+                    <td colspan="2">Estado do cartão: {% if card.is_active == True%}Valido{% else %}Expiry{% endif %}</td>
+                    <td colspan="2">Válido até: {{ card.expiry_date|date:"d/m/Y" }}</td>
+                </tr>
+                <tr>
+                    <td colspan="8">Morada: {{ addtl.address }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Telemóvel: {{ contactinfo.phone }}</td>
+                    <td colspan="2">Email: {{ contactinfo.email }}</td>
+                    <td colspan="4">Contacto emergência: {{ contactinfo.emergency_call }}</td>
+                </tr>
+            </table>
+            </div>
+        </td>
+        <td align="center" valign="top">{% if img.image %}
+            <img src="{{ img.image.url }}" width="100" style="border: 1px solid black; box-shadow: 5px 5px #888888;"/>{% endif %}
+        </td>
+    </tr>
+</table>

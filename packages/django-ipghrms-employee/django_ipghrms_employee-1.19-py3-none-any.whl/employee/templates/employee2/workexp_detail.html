@@ -1,0 +1,64 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			{% if group == 'staff' %}
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail-user' %}">ITA NIA PERFIL</a></li>
+			{% else %}
+			<li class="breadcrumb-item"><a href="{% url 'emp-list' %}">LISTA FUNCIONARIU</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail' emp.hashed %}">DETALHA</a></li>
+			{% endif %}
+			<li class="breadcrumb-item"><a href="{% url 'work-exp-list' emp.hashed %}">EXPERENCIA SERVISU</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-INFO rounded">
+				<div class="card-header bg-steel">{{ legend|upper }}</div>
+				<div class="card-body">
+					<table class="table table-sm">
+						<tr>
+							<th>Naran</th><th>Fatin no Data Moris</th><th>Sexu</th><th>Nasaun</th>
+						</tr>
+						<tr>
+							<td>{{ emp }}</td><td>{{ emp.pob }}, {{ emp.dob }}</td><td>{{ emp.sex }}</td><td>{{ emp.country }}</td>
+						</tr>
+					</table>
+					<hr/>
+					<center><h5>{{ legend|upper }}</h5></center>
+					<table class="table table-sm">
+						<tr>
+							<th>Institutu</th>
+							<th>Pojisaun</th>
+							<th>Periodu</th>
+							<th>Tinan Hahu</th>
+							<th>Tinan Remata</th>
+						</tr>
+						<tr>
+							<td>{{ objects.institute }}</td>
+							<td>{{ objects.position }}</td>
+							<td>
+								{% if objects.start_date and objects.end_date %}
+									{{ objects.start_date }} to {{ objects.end_date }}
+								{% endif %}
+							</td>
+							<td>
+								{{ objects.start_year }}
+							</td>
+							<td>
+								{{ objects.end_year }}
+							</td>
+						</tr>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,85 @@
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>DEPENDENCIA</strong> 
+			<a href="{% url 'depend-list' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr align="center">
+		<th>Naran</th>
+		<th>Fatin & Data Moris</th>
+		<th>Sexu</th>
+		<th>Relasaun</th>
+	</tr>
+	{% for obj in empdepend %}
+	<tr align="center">
+		<td>{{ obj }}</td>
+		<td>{{ obj.pob }}, {{ obj.dob }}</td>
+		<td>{{ obj.sex }}</td>
+		<td>{{ obj.family_relation }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>EDUKASAUN FORMAL IKUS</strong> 
+			<a href="{% url 'formal-edu-list' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr align="center">
+		<th>Nivel Academiku</th>
+		<th>Universidade</th>
+		<th>Departamento</th>
+		<th>Area</th>
+		<th>Tinan</th>
+	</tr>
+	<tr align="center">
+		<td>{{ formaledu.education_level }}</td>
+		<td>{% if formaledu.university %}{{ formaledu.university }}{% endif %}</td>
+		<td>{% if formaledu.department %}{{ formaledu.department }}{% endif %}</td>
+		<td>{% if formaledu.area %}{{ formaledu.area }}{% endif %}</td>
+		<td>{{ formaledu.graduation_year|date:"d - M - Y" }}</td>
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="3"><h6><strong>EDUKASAUN NON-FORMAL IKUS</strong> 
+			<a href="{% url 'nonformal-edu-list' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr align="center">
+		<th>Titulu</th>
+		<th width="50%">Fatin</th>
+		<th>Periodu / Tinan</th>
+		<!-- <th>Horas</th> -->
+	</tr>
+	<tr align="center">
+		<td>{{ nonformaledu.title }}</td>
+		<td>{{ nonformaledu.tutelary_entity }}</td>
+		<td>
+			{% if nonformaledu.start_date and nonformaledu.end_date %}
+			  
+			{{ nonformaledu.start_date|date:"d/m/Y" }} - {{ nonformaledu.end_date|date:"d/m/Y" }}
+			{% else %}
+			{{ nonformaledu.year }}
+			{% endif %}
+		</td>
+		<!-- <td>{{ nonformaledu.hours }}</td> -->
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="4"><h6><strong>ESPERENCIA SERVISU IKUS</strong> 
+			<a href="{% url 'work-exp-list' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr align="center">
+		<th>Instituisaun</th>
+		<th>Pojisaun</th>
+		<th>Periodu</th>
+	</tr>
+	<tr align="center">
+		<td>{{ workexp.institute }}</td>
+		<td>{{ workexp.position }}</td>
+		<td>{{ workexp.start_date|date:"d/m/Y" }} - {{ workexp.end_date|date:"d/m/Y" }}</td>
+	</tr>
+</table>

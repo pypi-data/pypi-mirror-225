@@ -1,0 +1,77 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+        {% if group == "dg" %}
+			<li class="breadcrumb-item"><a href="{% url 'employee-dg-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% elif group == "div" %}
+			<li class="breadcrumb-item"><a href="{% url 'employee-div-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% else %}
+			<li class="breadcrumb-item"><a href="{% url 'employee-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+            {% if group == "hr" or group == "admin" %}
+                <div class="card-header">
+					<a class="btn btn-sm btn-info" href="{% url 'employee-dg-list-staff' dg.hashed %}">Funcionariu iha {{ dg.code }} <i class="fa fa-file-text"></i></a>
+				</div>
+			{% endif %}
+                <div class="card-body">
+                    <h3 align="center"><u>{{ dg.name|upper }} ({{ dg.code }})</u></h3><br/>
+                    {% if dirgen %}
+                    <table class="table table-sm">
+                        <tr>
+                            <td width="80%"><h5>
+                            {% if group == "hr" or group == "admin" %}
+                                <a href="{% url 'employee-detail' dirgen.employee.hashed %}">{{ dirgen.employee|upper }}</a>
+                            {% else %}{{ dirgen.employee|upper }}{% endif %}
+                            </h5>
+                                <small>{{ dirgen.position }}</small>
+                            </td>
+                            <td>
+                            {% if img.image %}
+                            <img src="{{ img.image.url }}" width="100" />
+                            {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                {% endif %}
+                    <h5 align="center">LISTA DIRESAUN</h5>
+                    <table class="table table-sm">
+                        <tr><th>Naran</th><th>Sexu</th><th>Fatin & Data Moris</th><th>Pojisaun</th></tr>
+                {% for obj in objects %}
+                        <tr><td colspan="4" align="center"><strong>{{ forloop.counter }}. <a href="{% url 'employee-div-list' obj.0.hashed %}">{{ obj.0 }}</a></strong></td></tr>
+                    {% if obj.1 %}
+                        <tr>
+                            <td data-title="Naran">
+                            {% if group == "hr" or group == "admin" %}
+                                <a href="{% url 'employee-detail' obj.1.employee.hashed %}">{{ obj.1.employee }}</a>
+                            {% else %}{{ obj.1.employee }}{% endif %}
+                            </td>
+                            <td data-title="Fatin & Data Moris">{{ obj.1.employee.place_of_birth }}, {{ obj.1.employee.date_of_birth|date:"d-m-Y" }}</td>
+                            <td data-title="Sexu">{{ obj.1.employee.sex }}</td>
+                            <td data-title="Pojisaun">{{ obj.1.position }}</td>
+                        </tr>
+                    {% endif %}
+				{% endfor %}
+                    </table>
+                </div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-->
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

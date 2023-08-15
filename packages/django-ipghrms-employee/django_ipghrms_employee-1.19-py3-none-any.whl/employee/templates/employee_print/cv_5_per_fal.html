@@ -1,0 +1,25 @@
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Classificação Serviço</p></div>
+<table border="1">
+    <tr><td colspan="4">Data</td><td colspan="2">Classificação Serviço</td></tr>
+    <tr>
+        <td>Ano</td><td>Homologação</td><td>Início</td><td>Fim</td>
+        <td>Qualitativa</td><td>Quantitativa</td>
+    </tr>
+    {% for perform in performs %}
+    <tr>
+        <td>{{ perform.0 }}</td><td>{{ perform.1.approve_date|date:"d/m/Y" }}</td>
+        <td>{{ perform.1.start_date|date:"d/m/Y" }}</td><td>{{ perform.1.end_date|date:"d/m/Y" }}</td>
+        <td>{{ perform.1.qualitative }}</td><td>{{ perform.1.quantitative }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Faltas</p></div>
+<table border="1">
+    <tr><td>Data de Faltas</td><th>Descrição</th></tr>
+    {% for falta in faltas %}    
+    <tr>
+        <td>{{ falta.date|date:"d/m/Y" }}</td><td>{{ falta.desc|lower }}</td>
+    </tr>
+    {% endfor %}
+</table>

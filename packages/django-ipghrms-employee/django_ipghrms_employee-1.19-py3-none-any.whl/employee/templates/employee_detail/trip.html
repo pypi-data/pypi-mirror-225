@@ -1,0 +1,81 @@
+<div class="card-body">
+    <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header border-primary">
+                            <center>
+                                <h4>LISTA TRIP</h4>
+                            </center>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 13px;" class="p-0 mb-1">Name of Staff:  <b>{{employee|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Position:  <b>{{employee.curempposition.position.name|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Contract Start Date:  <b>{{contract.start_date|date:"d F Y"}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 ">Contract End Date:  <b> 
+                                {% if contract.end_date %}
+                                    {{contract.end_date|date:"d F Y"}}
+                                {% else %}
+                                    <span class="bg-warning p-1" style="color: rgb(31, 31, 31);"> Indeterminable</span>
+                                {% endif %}
+                            </b> </p>
+                            
+                        </div> <!--end card-body-->
+        
+                    </div> <!--end card-->
+                </div> <!--end col-->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-md table-striped table-bordered" id="example2">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Nu.</th>
+                                        <th>Asuntu Trip</th>
+                                        <th>Tipu </th>
+                                        <th>Destinasaun Nasaun</th>
+                                        <th>Destinasaun Munisipiu</th>
+                                        <th>Data Sai</th>
+                                        <th>Data Tama</th>
+                                        <th>Pareser</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in objects  %}
+                                      <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{obj.trip.name|title}}</td>
+                                        <td>{{obj.trip.ttype|title}}</td>
+                                        <td>
+                                            {% if obj.trip.country %}
+                                            {{obj.trip.country}}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if obj.trip.municipality %}
+                                            {{obj.trip.municipality}}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {{obj.trip.date_out|date:"d-M-Y"}}
+                                        </td>
+                                        <td>
+                                            {{obj.trip.date_in|date:"d-M-Y"}}
+                                        </td>
+                                        <td>
+                                            {% if obj.trip.file %}
+                                              
+                                            <a href="{{obj.trip.file.url}}" target="_blank" class="btn btn-sm btn-info"> <i class="fa fa-file-pdf"></i> </a>
+                                            {% else %}
+                                            <span class="badge bg-danger text-white">Pareser Laiha!</span>
+                                            {% endif %}
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end row-->
+</div>

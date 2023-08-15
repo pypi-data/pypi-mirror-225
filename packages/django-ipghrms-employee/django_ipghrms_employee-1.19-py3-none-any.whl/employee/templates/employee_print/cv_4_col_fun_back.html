@@ -1,0 +1,58 @@
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 0;">Esperencia dos Serviços</p></div>
+<table border="0">
+    {% for work in workexperience %}
+    <tr><td colspan="6">
+        <table class="" border="1" width="100%">
+        <tr><td rowspan="7">{{ forloop.counter }}</td>
+            <td width="25%">Instituisaun/Ministeriu</td><td colspan="6">{{ work.instituisaun }}</td></tr>
+        <tr>
+            <td>DG/Diresaun/Seksaun</td>
+            <td colspan="6">{% if work.dg %}{{ work.dg }}{% endif %}{% if work.diresaun %}{{ work.diresaun }}{% endif %}
+                {% if work.departamentu %}{{ work.departamentu }}{% endif %}{% if work.seksaun %}{{ work.seksaun }}{% endif %}</td>
+        </tr>
+        <tr><td width="25%">Pojisaun/Kargu</td><td colspan="6">{{ work.pojisaun }}</td></tr>
+        <tr><td width="50%" colspan="3">Data Hahu: {{ work.start_date|date:"d/m/Y" }}</td>
+            <td width="50%" colspan="3">Data Remata: {{ work.end_date|date:"d/m/Y" }}</td></tr>
+        <tr>
+            <td rowspan="3" colspan="2"><center><b>Local de trabalho</b></center></td>
+            <td colspan="2">Aldeia: {{ work.aldeia }}</td>
+            <td colspan="2">Suco: {{ work.village }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">Posto Administrativo: {{ work.administrativepost }}</td>
+            <td colspan="2">Municípiu: {{ work.municipality }}</td>
+        </tr>
+        <tr><td colspan="4">Nação: {{ work.country }}</td></tr>
+        </table>
+    </tr>
+    {% endfor %}
+</table>
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Cargo/Função</p></div>
+<table border="1">
+    <tr><td colspan="6">Na função publica desde: {{ empcontract_init.date_start|date:"d/m/Y"}}</td></tr>
+{% for empcont in empcontract %}    
+    <tr><td colspan="6">
+        <table>
+            <tr><td>Data de situação:</td><td>Ficha de: {% if empcont.is_prom == True %}Promoção{% else %}Progreção{% endif %}</td></tr>
+            <tr>
+                <td>Relação Juridico Serviços: {{ empcont.contract_type }}</td>
+                <td>{% if conttype.contract_type_id == 1 %} desde: {{ conttype.start_date|date:"d/m/Y" }}
+                    {% else %}{{ empcont.date_start }}{% endif %}
+                </td>
+                <td>{% if not conttype.contract_type_id == 1 %} fim: {{ empcont.end_start }}{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Catagoria: {{ empcont.category }} Grau {{ empcont.grade }}</td>
+                <td>desde: {% if empcont.is_prom == True %}{{ empcont.prom_date|date:"d/m/Y "}}{% endif %}</td>
+                <td>Escalão: {{ empcont.echelon }}</td>
+                <td>desde: {% if empcont.is_prog == True %}{{ empcont.prog_date|date:"d/m/Y "}}{% endif %}</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+                 
+        </td>
+    </tr>
+    
+{% endfor %}
+</table>

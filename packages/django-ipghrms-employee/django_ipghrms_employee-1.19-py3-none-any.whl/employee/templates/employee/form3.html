@@ -1,0 +1,127 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">LISTA FUNCIONARIU</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail' emp.hashed %}">DETALHA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header bg-steel">{{ legend|upper }}</div>
+				<div class="card-body">
+					<table class="table table-sm">
+						<tr><th>Naran</th><th>Sexu</th><th>Fatin no Data Moris</th></tr>
+						<tr><td>{{ emp }}</td><td>{{ emp.sex }}</td><td>{{ emp.pob }}, {{ emp.dob|date:"d/m/Y" }}</td></tr>
+					</table>
+                    <form method="POST" >
+                        {% csrf_token %}
+                        <fieldset class="border p-2 ">
+                            <legend class="w-auto">KONTAKTU PESSOAL</legend>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        {{form.o_email|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        {{form.p_email|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        {{form.phone1|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        {{form.phone2|as_crispy_field}}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="border p-2 ">
+                            <legend class="w-auto">KONTAKTU PESSOAL EMERGENSIA (I)</legend>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.e_person1|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.e_phone1|as_crispy_field}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_email1|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_address1|as_crispy_field}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_relation1|as_crispy_field}}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="border p-2 ">
+                            <legend class="w-auto">KONTAKTU PESSOAL EMERGENSIA (II)</legend>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.e_person2|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form.e_phone2|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_email2|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_address2|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{form.e_relation2|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <div class="float-right">
+                            <button class="btn btn-md btn-success mt-2">Rai <i class="fa fa-save"></i></button>
+                        </div>
+                        
+                    </form> 
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'employee-dash' %}">PAINEL FUNCIONARIU</a></li>
+            <li class="breadcrumb-item active">{{ legend|upper }}</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+
+                <div class="card-body">
+                    <div class="card-header bg-steel">
+                        {% if group == "admin" %}
+                        <a class="btn btn-sm btn-info" href="{% url 'employee-p-raw-data' %}" target="_blank">Raw Data Permanente <i class="fa fa-list"></i></a>			
+                        <a class="btn btn-sm btn-info" href="{% url 'employee-np-raw-data' %}" target="_blank">Raw Data Laos Permanente <i class="fa fa-list"></i></a>			
+                        <a class="btn btn-sm btn-info" href="{% url 'employee-habi-raw-data' %}" target="_blank">Raw Data Habilitasaun <i class="fa fa-list"></i></a>
+                        {% endif %}
+                        </div>
+                    <h5 align="center">{{ legend|upper }}</h5>
+                    <hr/>
+                    <section id='no-more-tables'>
+                        <table id="example" class="table table-sm table-bordered responsive" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nu.</th>
+                                    <th>Naran Funcionariu</th>
+                                    <th>Fatin no Data Moris</th>
+                                    <th>Sexu</th>
+                                    <th>RJS</th>
+                                    <th>Nu.PMIS/NRF</th>
+                                    <th>Data Entrada FP/IPG</th>
+                                    <th>Nu.Payroll</th>
+                                    <th>NISS</th>
+                                    <th>Kategoria</th>
+                                    <th>Grau</th>
+                                    <th>Eskalaun</th>
+                                    <th>Kolokasaun</th>
+                                    <th>Posisaun</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in objects %}
+                                <tr>
+                                    <td data-title="Nu.">{{ forloop.counter }}</td>
+                                    <td data-title="Naran Funcionariu">
+                                    <a href="{% url 'employee-detail' obj.0.hashed %}">{{ obj.0 }}</a>
+                                    </td>
+                                    <td data-title="Fatin & Data Moris">{{ obj.0.place_of_birth }}, {{ obj.0.date_of_birth|date:"d/m/Y" }}</td>
+									<td data-title="Sexu">{{ obj.0.sex }}</td>
+                                    <td data-title="RJS">{{ obj.1.contract_type }}</td>
+                                    <td data-title="Nu.PMIS/NRF">{{ obj.1.nrf }}</td>
+                                    <td data-title="Entrada no FP/IPG">{{ obj.3.date_start|date:"d/m/Y" }}</td>
+                                    <td data-title="Nu.Payroll">{{ obj.2.payrol_number }}</td>
+                                    <td data-title="NISS">{{ obj.2.niss }}</td>
+                                    <td data-title="Kategoria">{{ obj.3.category }}</td>
+                                    <td data-title="Grau">{{ obj.3.grade }}</td>
+                                    <td data-title="Eskalaun">{{ obj.3.echelon }}</td>
+                                    <td data-title="Kolokasaun">
+                                        {% if obj.4.dg %}{{ obj.4.dg.code }}{% elif obj.4.division %}{{ obj.4.division.code }}
+                                        {% elif obj.4.department %}{{ obj.4.department.division.code }}{% else %}{{ obj.4.section.department.division.code }}{% endif %}
+                                    </td>
+                                    <td data-title="Posisaun">{{ obj.5.position }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-->
+{% endblock %}
+{% block scripts %}
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+<style type="text/css">
+    .dtsb-searchBuilder{
+        background: #b9c7e6 !important;
+        padding: 5px
+    }
+    .dt-button, .dtsb-add {
+        background: white !important;
+    }
+</style>
+<script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/jszip.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.colVis.min.js' %}"></script>
+<script>
+    var doc = {
+    pageSize: config.pageSize,
+    pageOrientation: config.orientation,
+    content: [
+        {
+            table: {
+                headerRows: 1,
+                body: rows
+            },
+            layout: 'Borders'
+        }
+    ],
+    styles: {
+        tableHeader: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154',
+            alignment: 'center'
+        },
+        tableBodyEven: {},
+        tableBodyOdd: {
+            fillColor: '#f3f3f3'
+        },
+        tableFooter: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154'
+        },
+        title: {
+            alignment: 'center',
+            fontSize: 12
+        },
+        message: {}
+    },
+    defaultStyle: {
+        fontSize: 9
+    }
+};
+</script>
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            "scrollY": "50vh",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            searchBuilder: true,
+            buttons:[
+                {
+                    extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+                },
+                {
+                    extend: 'print', autoPrint: false, orientation: 'landscape', pageSize: 'LEGAL',
+                    exportOptions: { columns: ':visible' },
+                    messageBottom: '<br/><table border=0 width=100%>\
+                        <tr><td colspan=2>Dili, __________, Fulan ____________ 20_____<br/><br/><br/><br/></td></tr>\
+                    <tr><td>(______________________________________________)</td>\
+                        <td>(______________________________________________)</td></tr>\
+                    <tr><td><br/>CD de __________________________________________</td>\
+                        <td><br/>Ekipa RH - IPG</td></tr>\
+                        </table>',
+                    title: '<center><h5>REPÚBLICA DEMOCRÁTICA DE TIMOR-LESTE <br/>\
+                        MINISTÉRIO DO TURISMO, COMÉRCIO E INDÚSTRIA<br/>\
+                        DIREÇÃO NACIONAL DE RECURSO HUMANO</h5>\
+                        <h6>Edificiu Fomento, Rua Dom Boa Ventura Mandarin Dili, Telefone: 3310612</h6></center><hr/>',
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .prepend(
+                                '<center><img src="http://localhost:8000/static/main/images/rdtl.jpg" style="width:80px;" /></center><br/>'
+                            );
+ 
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                },
+                'colvis',
+            ],
+            dom: 'Bfrtip',
+            "deferRender": true
+        });
+        table.searchBuilder.container().prependTo(table.table().container());
+    } );
+</script>
+{% endblock %}

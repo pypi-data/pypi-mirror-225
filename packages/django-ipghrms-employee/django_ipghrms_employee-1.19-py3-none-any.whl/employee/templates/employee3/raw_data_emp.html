@@ -1,0 +1,246 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL PESSOAL</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'emp-list' %}">LISTA FUNSIONARIU</a></li>
+            <li class="breadcrumb-item active">{{ legend|upper }}</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1  rounded">
+                <div class="card-header border-primary">
+
+                    <h2 align="center">{{ legend|upper }}</h2>
+                </div>
+                <div class="card-body">
+                    <section id='no-more-tables'>
+                        <table id="example" class="table table-sm table-bordered responsive" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nu.</th>
+                                    <th class="text-center">IPG ID CARD</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Position</th>
+                                    <th>Employement Category</th>
+                                    <th>Mobile</th>
+                                    <th>Ext</th>
+                                    <th>Official Email</th>
+                                    <th>Private Email</th>
+                                    <th>Level of Education</th>
+                                    <th>Nationality</th>
+                                    <th>INT/NAT</th>
+                                    <th>Contract Start Date</th>
+                                    <th>Contract End Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in objects %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td class="text-center">{{obj.0.emp_id}}</td>
+                                    <td>{{obj.0}}</td>
+                                    <td>{{obj.0.sex}}</td>
+                                    <td>{{obj.5.position.name}}</td>
+                                    <td>{{obj.2.category.name}}</td>
+                                    <td class="text-center">
+                                        {% if obj.0.contractinfo.phone1 %}
+                                            {{obj.0.contactinfo.phone1}}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if obj.0.ext %}
+                                            {{obj.0.ext}}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.0.contactinfo.o_email %}
+                                          {{obj.0.contactinfo.o_email}}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.0.contactinfo.p_email  %}
+                                        {{obj.0.contactinfo.p_email}}
+                                        {% else %}
+                                         -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% for i in obj.6  %}
+                                            {% if i.education_level.pk == 1 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 2 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 3 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 4 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 5 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 6 %}
+                                            {{i}}
+                                            {% elif i.education_level.pk == 7 %}
+                                            {{i}}
+                                            {% else %}
+                                            -
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>{{obj.0.country}}</td>
+                                    <td align="center">
+                                        {% if obj.0.country.pk == 1 %}
+                                              NAT
+                                        {% else %}
+                                            INT
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.2.start_date %}
+                                            {{obj.2.start_date}}                                          
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if obj.2.end_date %}
+                                            {{obj.2.end_date}}                     
+                                        {% else %}
+                                        Indeterminable   
+                                        {% endif %}
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-->
+{% endblock %}
+{% block scripts %}
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+<style type="text/css">
+    .dtsb-searchBuilder{
+        background: #b9c7e6 !important;
+        padding: 5px
+    }
+    .dt-button, .dtsb-add {
+        background: white !important;
+    }
+</style>
+<script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/jszip.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.colVis.min.js' %}"></script>
+<script>
+    var doc = {
+    pageSize: config.pageSize,
+    pageOrientation: config.orientation,
+    content: [
+        {
+            table: {
+                headerRows: 1,
+                body: rows
+            },
+            layout: 'Borders'
+        }
+    ],
+    styles: {
+        tableHeader: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154',
+            alignment: 'center'
+        },
+        tableBodyEven: {},
+        tableBodyOdd: {
+            fillColor: '#f3f3f3'
+        },
+        tableFooter: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154'
+        },
+        title: {
+            alignment: 'center',
+            fontSize: 12
+        },
+        message: {}
+    },
+    defaultStyle: {
+        fontSize: 9
+    }
+};
+</script>
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            "scrollY": "50vh",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            searchBuilder: true,
+            buttons:[
+                {
+                    extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+                },
+                {
+                    extend: 'print', autoPrint: false, orientation: 'landscape', pageSize: 'LEGAL',
+                    exportOptions: { columns: ':visible' },
+                    messageBottom: '<br/><table border=0 width=100%>\
+                        <tr><td colspan=2>Dili, __________, Fulan ____________ 20_____<br/><br/><br/><br/></td></tr>\
+                    <tr><td>(______________________________________________)</td>\
+                        <td>(______________________________________________)</td></tr>\
+                    <tr><td><br/>CD de __________________________________________</td>\
+                        <td><br/>Ekipa RH - IPG</td></tr>\
+                        </table>',
+                    title: '<center><h5>REPÚBLICA DEMOCRÁTICA DE TIMOR-LESTE <br/>\
+                        MINISTRO DO PETRÓLEO E RECURSOS MINERAIS<br/>\
+                        EKIPA RECURSO HUMANO</h5>\
+                        <h6>Delta II, Comoro Dili, Telefone: 3312301</h6>\
+                        <h5>Dadus Funcionariu Permanente - IPG</h5></center><hr/>',
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .prepend(
+                                '<center><img src="http://localhost:8000/static/main/images/rdtl.jpg" style="width:80px;" /></center><br/>'
+                            );
+ 
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                },
+                'colvis',
+            ],
+            dom: 'Bfrtip',
+            "deferRender": true
+        });
+        table.searchBuilder.container().prependTo(table.table().container());
+    } );
+</script>
+{% endblock %}

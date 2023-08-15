@@ -1,0 +1,117 @@
+{% load humanize %}
+<table class="table table-sm">
+	<tr class="bg-light">
+		<th colspan="3"><h6>ID FINANCEIRU
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			<a href="{% url 'fidnumber-update' objects.hashed %}"><i class="fa fa-edit"></i></a></h6>
+		{% endif %}
+		</th>
+	</tr>
+	<tr>
+		<td>NISS</td><td colspan="2">: {{ fidnum.niss }}</td>
+	</tr>
+	<tr>
+		<td>Payrol</td><td colspan="2">: {{ fidnum.payrol_number }}</td>
+	</tr>
+	<tr>
+		<td>Banku</td><td colspan="2">: {{ fidnum.bank }}</td>
+	</tr>
+	<tr>
+		<td>Naran</td><td colspan="2">: {{ fidnum.customer_name }}</td>
+	</tr>
+	<tr>
+		<td>Konta Bankaria</td>
+		<td colspan="2">: {{ fidnum.bank_account }}</td>
+	</tr>
+	<tr>
+		<td>IBAN</td>
+		<td colspan="2">: {{ fidnum.iban }}</td>
+	</tr>
+	<tr>
+		<td>Enderesu Banku</td>
+		<td colspan="2">: {{ fidnum.bank_address }}</td>
+	</tr>
+	<tr class="bg-light">
+		<th colspan="3"><h6>INFORMASAUN KONTRATU
+		{% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+			{% if not empcont %}
+			<a href="{% url 'cont-add' objects.hashed %}"><i class="fa fa-plus"></i></a>
+			{% else %}
+			<a href="{% url 'cont-update' empcont.hashed %}"><i class="fa fa-edit"></i></a>
+			{% endif %}
+		{% endif %}
+		</h6></th>
+	</tr>
+	<tr>
+		<td>Tipu</td><td colspan="2">: {{ empcont.contract_type }}</td>
+	</tr>
+	<tr>
+		<td>Data hahu</td><td colspan="2">: {{ empcont.start_date }}</td>
+	</tr>
+	<tr>
+		<td>Data termina</td><td colspan="2">:
+			{% if empcont.start_date %}	
+				{% if  empcont.end_date %}
+					{{ empcont.end_date }}
+				
+				{% else %}
+					Indeterminable
+				{% endif %}
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>Kategoria</td><td colspan="2">: {{ empcont.category }}</td>
+	</tr>
+	{% if empplacement.position %}
+	<tr>
+		<td>Pojisaun/Titulu</td><td colspan="2">: {{ empplacement.position.name }}</td>
+	</tr>
+	{% endif %}
+	{% if empdiv %}
+			{% if empdiv.department %}
+			  
+			<tr>
+				<td>Ekipa</td>
+				<td colspan="2">: {{ empplacement.department }}</td>
+			</tr>
+			{% endif %}
+			{% if empdiv.unit %}
+			<tr>
+				<td>Divizaun</td>
+				<td colspan="2">: 
+					{% if empdiv.unit %}
+						{{ empdiv.unit }} 
+					{% else %}
+						{{empplacement.unit}}  
+					{% endif %}  
+				</td>
+			</tr>
+			{% if empplacement.de %}
+			<tr>
+				<td>Presidente/Vise-Presidente</td>
+				<td colspan="2">: {{ empplacement.de }}</td>
+			</tr>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+	<tr>
+		<td>Salariu</td>
+		<td colspan="2">: 
+			<span class="blurry-text">
+			</span>
+			{% if group == 'hr' or group == 'de' or group == 'deputy' %}
+				{% if empsalary %}
+					<a href="{% url 'password-val-view' objects.hashed %}" class="btn btn-danger btn-sm">Hare Salario <i class="fa fa-lock"></i></a>
+				{% endif %}
+			{% endif %}
+		</td>
+	</tr>
+</table>
+<style>
+	.blurry-text {
+   color: transparent;
+   text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+</style>

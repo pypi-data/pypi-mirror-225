@@ -1,0 +1,103 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL FUNCIONARIU</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-body">
+                    <center>
+                        <h4 class="pb-3">GRAFIKU FUNSIONARIO</h4>
+                    </center>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card shadow-lg border-secondary rounded">
+                                <div class="card-body">
+                                    <figure class="highcharts-figure">
+                                        <div id="genderChart_data1"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-sm-8">
+                            <div class="card shadow-lg border-secondary rounded">
+                                <div class="card-body">
+                                    <figure class="highcharts-figure">
+                                        <div id="nivelacaChart_data1"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <hr/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card shadow-lg pt-1 border-primary rounded">
+                                <div class="card-body">
+                                    <figure class="highcharts-figure">
+                                        <div id="ageChart_data"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card shadow-lg border-secondary rounded">
+                                <div class="card-body">
+                                    <figure class="highcharts-figure">
+                                        <div id="munChart_data"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-sm-6">
+                            <div class="card shadow-lg border-secondary rounded">
+                                <div class="card-body">
+                                    <figure class="highcharts-figure">
+                                        <div id="countryChart_data"></div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    
+
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}}
+    <!-- Highcharts -->
+    <script src="{% static 'main/js/highcharts/highcharts.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/sankey.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/organization.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/export-data.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/exporting.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/accessibility.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/3d.js' %}"></script>
+    <script src="{% static 'main/js/highcharts/cylinder.js' %}"></script>
+    <script>
+        {% include 'employee_chart/myoption.js' %}
+        {% include 'employee_chart/emp_gender.js' %}
+        {% include 'employee_chart/emp_nivelaca2.js' %}
+        {% include 'employee_chart/emp_age2.js' %}
+        {% include 'employee_chart/emp_unit.js' %}
+        {% include 'employee_chart/emp_dep.js' %}
+        {% include 'employee_chart/emp_mun.js' %}
+        {% include 'employee_chart/emp_country.js' %}
+    </script>
+
+{% endblock %}

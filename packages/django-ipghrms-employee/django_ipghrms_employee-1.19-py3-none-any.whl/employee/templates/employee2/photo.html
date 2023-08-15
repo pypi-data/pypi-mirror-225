@@ -1,0 +1,133 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<ol class="breadcrumb mb-2 mt-1">
+		<li class="breadcrumb-item"><a href="{% url 'employee-list' %}">EMPLOYEE LIST</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'employee-detail' hashid=hashid %}">DETAIL</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+	</ol>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-3 rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-3">
+							<p>Please follow steps bellow!</p>
+							<ol>
+								<li>Take Picture</li>
+								<li>Take Snapshoot</li>
+								<li>Save</li>
+								<li>Crop</li>
+								<li>Save Changes</li>
+							</ol>
+							<h3 class="text-center"><a href="#takephoto" data-toggle="modal" class="btn btn-primary">Take Photo <i class="fa fa-camera"></i></a></h3>
+						<hr/>
+						</div> <!--end col-->
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<img id="cropbox" src="data:;base64,{{ image }}">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button id="crop", class="btn btn-danger btn-sm">Crop <i class="fa fa-crop"></i></button>
+								</div>
+							</div> <!--end row-->
+						</div>  <!--end col-->
+						<div class="col-md-3">
+							<form method="POST">
+								{% csrf_token %}
+								{{ b_form.image|as_crispy_field }}
+								<center>
+									<div id="cropped_img">Cropped image will appear here...</div>
+									<button type="submit" id="cropsave" class="btn btn-info btn-sm mt-2" style="display: none">
+										Save Changes <i class="fa fa-save"></i>
+									</button>
+								</center>
+							</form> <!--end form-->
+						</div> <!--end col-->
+					</div> <!--end row-->
+				</div> <!--end card-body-->
+				<div class="card-footer">
+					<div class="button-row d-flex">
+						<a class="btn btn-secondary mr-1" href="{% url 'photo-update' hashid %}">
+							<i class="fa fa-arrow-circle-left"></i> Back
+						</a>
+					</div> <!--end button -->
+				</div> <!--end card-footer-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+{% include 'employee2/photo_modal.html' %}
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		/// Grab elements, create settings, etc.
+		var video = document.getElementById('video');
+
+		// Get access to the camera!
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		    // Not adding `{ audio: true }` since we only want video now
+		    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+		        //video.src = window.URL.createObjectURL(stream);
+		        video.srcObject = stream;
+		        video.play();
+		    });
+		}
+
+		// Elements for taking the snapshot
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var video = document.getElementById('video');
+
+		// Trigger photo take
+		document.getElementById("snap").addEventListener("click", function() {
+			context.drawImage(video, 0, 0, 330, 250);
+			var dataURL = canvas.toDataURL("image/jpeg");
+			$("#id_capture-image").val(dataURL);
+		});
+	</script>
+	<!-- crop image -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+	<script type="text/javascript">
+		$uploadCrop = $('#cropbox').croppie({
+			enableExif: true,
+			viewport: {
+				width: 213,
+				height: 242,
+				type: 'round'
+			},
+			boundary: {
+				width: 300,
+				height: 300
+			}
+		});
+
+		$('#crop').on('click', function (ev) {
+
+			$uploadCrop.croppie('result', {
+				type: 'canvas',
+				size: 'viewport',
+				format : 'jpeg'
+			}).then(function (resp) {
+				$.ajax({
+				url: "crop/",
+				type: "POST",
+				data: {
+					"image":resp,
+					'csrfmiddlewaretoken': '{{ csrf_token }}',
+				},
+				success: function (data) {
+					$("#id_crop-image").val(resp);
+					$("#cropped_img").html('<img src="'+resp+'"/>');
+					$("#cropsave").show();
+				}
+			});
+		});
+	});
+	</script>
+{% endblock %}

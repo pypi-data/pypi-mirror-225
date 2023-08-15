@@ -1,0 +1,107 @@
+{% load humanize %}
+<table class="table table-sm">
+	<tr class="bg-light">
+		<th colspan="3"><h6>SERVISU INISIU</h6></th>
+	</tr>
+	<tr>
+		<td>RJL</td>
+		<td colspan="2">: {{ empcontract_init.contract_type }}</td>
+	</tr>
+	{% if empcontract_init.contract_type.name == "Permanente" %}
+	<tr>
+		<td>Nu. PMIS</td>
+		<td colspan="2">: {{ empcontract_init.pmis_id }}</td>
+	</tr>
+	{% endif %}
+	<tr>
+		<td>Instituisaun</td>
+		<td colspan="2">: {{ empcontract_init.institute }}</td>
+	</tr>
+	<tr>
+		<td>Diresaun</td>
+		<td colspan="2">: {{ empcontract_init.division }}</td>
+	</tr>
+	{% if empcontract_init.department %}
+	<tr>
+		<td>Seksaun</td>
+		<td colspan="2">: {{ empcontract_init.department }}</td>
+	</tr>
+	{% endif %}
+	{% if empcontract_init.section %}
+	<tr>
+		<td>Seksaun</td>
+		<td colspan="2">: {{ empcontract_init.section }}</td>
+	</tr>
+	{% endif %}
+	<tr>
+		<td>Kategoria</td>
+		<td colspan="2">: {{ empcontract_init.category }}</td>
+	</tr>
+	<tr>
+		<td>Grau/Eskalaun</td>
+		<td colspan="2">: {{ empcontract_init.grade }}/{{ empcontract_init.echelon.code }}</td>
+	</tr>
+	<tr>
+		<td>Data Hahu</td>
+		<td colspan="2">: {{ empcontract_init.date_start|date:"d/m/Y" }}</td>
+	</tr>
+	<tr class="bg-light">
+		<th colspan="3"><h6>SERVISU ATUAL</th>
+	</tr>
+	<tr>
+		<td>NRF</td>
+		<td colspan="2">: {{ idnum.nrf }}</td>
+	</tr>
+	<tr>
+		<td>RJL</td>
+		<td colspan="2">: {{ empcontract.contract_type }}</td>
+	</tr>
+	{% if not empcontract.contract_type.id == 4 %}
+	<tr>
+		<td>Kategoria</td>
+		<td colspan="2">: {{ empcontract.category }}</td>
+	</tr>
+	<tr>
+		<td>Grau/Eskalaun</td>
+		<td colspan="2">: {{ empcontract.grade }}/{{ empcontract.echelon.code }}</td>
+	</tr>
+	{% endif %}
+	<tr>
+		<td>Data Hahu Servisu</td>
+		<td colspan="2">: {{ empcontract.date_start }}</td>
+	</tr>
+	<tr>
+		<td>Salariu</td>
+		<td colspan="2">: $ {{ empsalary.total|intcomma }}</td>
+	</tr>
+	<tr>
+		<td>Status Servisu</td>
+		<td colspan="2">: {{ objects.status }}</td>
+	</tr>
+	<tr class="bg-light"><th colspan="3"><h6>POJISAUN</h6></th></tr>
+	<tr>
+		<td>POJISAUN</td>
+		<td colspan="2">: {{ empposition.position }}</td>
+	</tr>
+	{% if empdivision.section %}
+	<tr>
+		<td>Seksaun</td>
+		<td colspan="2">: {{ empdivision.section }}</td>
+	</tr>
+	{% elif empdivision.department %}
+	<tr>
+		<td>Seksaun</td>
+		<td colspan="2">: {{ empdivision.department }}</td>
+	</tr>
+	{% elif empdivision.division %}
+	<tr>
+		<td>Diresaun</td>
+		<td colspan="2">: {{ empdivision.division }}</td>
+	</tr>
+	{% elif empdivision.dg %}
+	<tr>
+		<td>Diresaun Geral</td>
+		<td colspan="2">: {{ empdivision.dg }}</td>
+	</tr>
+	{% endif %}
+</table>

@@ -1,0 +1,135 @@
+{% load humanize %}
+<table class="table table-sm">
+	<tr class="bg-light">
+		<th colspan="3"><h6>INFORMASAUN PESOAL</th>
+	</tr>
+	<tr>
+		<td>Naran Propiu</td>
+		<td>: {{ objects.first_name }}</td>
+		<td rowspan="7" align="center">
+			{% if img.image %}
+				<img src="{{ img.image.url }}" width="120" />
+			{% endif %}
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td>Apelidu</td>
+		<td>:  {{ objects.last_name|upper }}</td>
+	</tr>
+	<tr>
+		<td>Sexu</td>
+		<td>: {{ objects.sex }}</td>
+	</tr>
+	<tr>
+		<td>Fatin Moris</td>
+		<td>: {{ objects.place_of_birth }}</td>
+	</tr>
+	<tr>
+		<td>Data Moris</td>
+		<td>: {{ objects.date_of_birth }}</td>
+	</tr>
+	<tr>
+		<td>Stado</td>
+		<td>: {{ objects.marital }}</td>
+	</tr>
+	<tr>
+		<td>Nasaun</td>
+		<td>: {{ objects.country.name }}</td>
+	</tr>
+	<tr class="bg-light">
+		<th colspan="3"><h6>ID</th>
+	</tr>
+	<tr>
+		<td>NISS</td>
+		<td colspan="2">: {{ idnum.niss }}</td>
+	</tr>
+	<tr>
+		<td>Payrol</td>
+		<td colspan="2">: {{ idnum.payrol_number }}</td>
+	</tr>
+	<tr>
+		<td>Naran Banku</td>
+		<td colspan="2">: {{ idnum.bank_name }}</td>
+	</tr>
+	<tr>
+		<td>Konta/IBAN</td>
+		<td colspan="2">: {{ idnum.bank_account }}/{{ idnum.iban }}</td>
+	</tr>
+	{% if objects.country.code == "TLS" %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>ID LOCAL</th>
+	</tr>
+	<tr>
+		<td>Eleitoral </td>
+		<td colspan="2">: {{ lidnum.electoral }}</td>
+	</tr>
+	<tr>
+		<td>BI </td>
+		<td colspan="2">: {{ lidnum.bi }}</td>
+	</tr>
+	<tr>
+		<td>Passaporte </td>
+		<td colspan="2">: {{ lidnum.passport }}</td>
+	</tr>
+	{% else %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>ID ENTRANGEIRU</th>
+	</tr>
+	<tr>
+		<td>Passaporte</td>
+		<td colspan="2">: {{ iidnum.passport }}</td>
+	</tr>
+	{% endif %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>INFORMASAUN KONTAKTU</th>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td colspan="2">: {{ contactinfo.email }}</td>
+	</tr>
+	<tr>
+		<td>Nu. Telemovel</td>
+		<td colspan="2">: {{ contactinfo.phone }}</td>
+	</tr>
+	{% if objects.country.code == "TLS" %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>INFORMASAUN LOKALIZASAUN</th>
+	</tr>
+	<tr>
+		<td>Municipiu</td>
+		<td colspan="2">: {{ locationtl.municipality.name }}</td>
+	</tr>
+	<tr>
+		<td>Posto</td>
+		<td colspan="2">: {{ locationtl.administrativepost.name }}</td>
+	</tr>
+	<tr>
+		<td>Suco</td>
+		<td colspan="2">: {{ locationtl.village.name }}</td>
+	</tr>
+	{% else %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>INFORMASAUN LOKALIZASAUN</th>
+	</tr>
+	<tr>
+		<td>Cidade</td>
+		<td colspan="2">: {{ addori.city }}</td>
+	</tr>
+	<tr>
+		<td>Enderesu</td>
+		<td colspan="2">: {{ addori.address }}</td>
+	</tr>
+	{% endif %}
+	<tr class="bg-light">
+		<th colspan="3"><h6>ENDERESU IHA TL</th>
+	</tr>
+	<tr>
+		<td>Enderesu</td>
+		<td colspan="2">: {{ addtl.address }}, {{ addtl.village.name }}, {{ addtl.administrativepost.name }}, {{ addtl.municipality.name }}</td>
+	</tr>
+	<tr>
+		<td>Coordenada</td>
+		<td colspan="2">: {{ addtl.latitude }}/{{ addtl.longitude }}</td>
+	</tr>
+</table>

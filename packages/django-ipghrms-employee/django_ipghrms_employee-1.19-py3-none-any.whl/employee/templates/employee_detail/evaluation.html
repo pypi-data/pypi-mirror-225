@@ -1,0 +1,243 @@
+<div class="card-body">
+    <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header border-primary">
+                            <center>
+                                <h4>LISTA AVALIASAUN</h4>
+                            </center>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 13px;" class="p-0 mb-1">Name of Staff:  <b>{{employee|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Position:  <b>{{employee.curempposition.position.name|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Contract Start Date:  <b>{{contract.start_date|date:"d F Y"}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 ">Contract End Date:  <b> 
+                                {% if contract.end_date %}
+                                    {{contract.end_date|date:"d F Y"}}
+                                {% else %}
+                                    <span class="bg-warning p-1" style="color: rgb(31, 31, 31);"> Indeterminable</span>
+                                {% endif %}
+                            </b> </p>
+                            
+                        </div> <!--end card-body-->
+        
+                    </div> <!--end card-->
+                </div> <!--end col-->
+                <div class="col-md-12">
+                    <ol class="breadcrumb p-1">
+                        {% for y in all_year %}
+                            <li class="breadcrumb-item"><a href="{% url 'emp-detail-year-evaluation' employee.hashed y.year %}">{{ y.year }}</a></li>
+                        {% endfor %}
+                        </ol>
+                    {% if eval %}
+                      
+                    
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header bg-steel">{{ legend|upper }}</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <table class="table table-sm table-bordered table-striped">
+                                        <tr>
+                                            <th width="30%">Evaluator</th><td>{{ zuri.employee }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Position</th><td>{{ zuri.position }}</td>
+                                        </tr>
+                                    </table>
+                                </div><!--end col-->
+                                <div class="col-sm-6">
+                                    <table class="table table-sm table-bordered table-striped">
+                                        <tr>
+                                            <th width="30%">Evaluated</th><td>{{ eval.employee }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Position</th><td>{{ eval.position }}</td>
+                                        </tr>
+                                    </table>
+                                </div><!--end col-->
+                            </div><!--end row-->                 
+                            
+                            <table class="table table-sm table-bordered">
+                                <tr>
+                                    <th width="30%">Period under evaluation</th>
+                                    <td>{{ eval.start_date|date:"M Y" }} to {{ eval.end_date|date:"M Y" }}</td>
+                                </tr>
+                            </table>
+                            <div class="card">
+                                <div class="card-header">GLOBAL PERFORMANCE ASSESMENT</div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <table class="table table-sm table-bordered table-striped">
+                                                <tr align="center"><th colspan="3">Scores</th></tr>
+                                                <tr>
+                                                    <th>Individual Objective</th><td>{{ eval.score_a }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Professional Behavior</th><td>{{ eval.score_b }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total</th><td>{{ eval.total }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <table class="table table-sm table-bordered table-striped">
+                                                <tr align="center"><th colspan="3">Qualifikasaun</th></tr>
+                                                <tr>
+                                                    <th>Outstanding</th><td>{% if finalscore.a %}{{ finalscore.a }}{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Exceeds job requirements</th><td>{% if finalscore.b %}{{ finalscore.b }}{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Meets job requirements</th><td>{% if finalscore.c %}{{ finalscore.c }}{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Needs Improvements</th><td>{% if finalscore.d %}{{ finalscore.d }}{% endif %}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Unsatisfactory</th><td>{% if finalscore.e %}{{ finalscore.e }}{% endif %}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div><!--end row-->
+                                </div>
+                            </div><!--end card-->
+                            
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h2 align="center">PARAMETERS OF THE EVALUATION</h2>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-12">                            
+                                    <div class="card shadow-lg border-info rounded">
+                                        <div class="card-header bg-steel"><h4>A. INDIVIDUAL OBJECTIVES</h4></div>
+                                        <div class="card-body">
+                                            <table class="table table-sm table-bordered">
+                                                <tr>
+                                                    <td colspan="3">Gaoal description<br/>Determination of the Measurement Indicator (s) and Overcoming Crieteria</td>
+                                                    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                                                </tr>
+                                                {% for obj_a in obj_as %}
+                                                <tr>
+                                                    <th rowspan="3">{{ forloop.counter }}</th>
+                                                    <th>Goals/Activities</th>
+                                                    <td>{{ obj_a.parameter.name }}</td>
+                                                    <td rowspan="3">
+                                                        {% if obj_a.choice.score == 1 %}{{ obj_a.choice.score }}{% endif %}
+                                                        {% if obj_a.comments %}{{ obj_a.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td rowspan="3">
+                                                        {% if obj_a.choice.score == 2 %}{{ obj_a.choice.score }}{% endif %}
+                                                        {% if obj_a.comments %}{{ obj_a.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td rowspan="3">
+                                                        {% if obj_a.choice.score == 3 %}{{ obj_a.choice.score }}{% endif %}
+                                                        {% if obj_a.comments %}{{ obj_a.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td rowspan="3">
+                                                        {% if obj_a.choice.score == 4 %}{{ obj_a.choice.score }}{% endif %}
+                                                        {% if obj_a.comments %}{{ obj_a.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td rowspan="3">
+                                                        {% if obj_a.choice.score == 5 %}{{ obj_a.choice.score }}{% endif %}
+                                                        {% if obj_a.comments %}{{ obj_a.comments|safe }}{% endif %}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Measuring Indicator (s)</th>
+                                                    <td>{{ obj_a.parameter.measure }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Criteria for Overcoming Indicator (s)</th>
+                                                    <td>{{ obj_a.parameter.criteria }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                <tr align="center">
+                                                    <th colspan="3">Score of Paramenter</th><td colspan="6">{{ sum_a }}</td>
+                                                </tr>
+                                            </table>
+                                            <table class="table table-sm">
+                                                <tr>
+                                                    <td>The Evaluator</td><td>{{ evaldate.date_a_1 }}</td><td>{{ zuri.employee }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The Evaluated</td><td>{{ evaldate.date_a_2 }}</td><td>{{ eval.employee }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                            
+                            <div class="row">
+                                <div class="col-sm-12">                            
+                                    <div class="card shadow-lg border-info rounded">
+                                        <div class="card-header bg-steel"><h4>B. PROFESSIONAL BEHAVIOR</h4></div>
+                                        <div class="card-body">
+                                            <table class="table table-sm table-bordered">
+                                                <tr>
+                                                    <td>Nu.</td>
+                                                    <td>Area</td>
+                                                    <td>Indicators</td>
+                                                    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                                                </tr>
+                                                {% for obj_b in obj_bs %}
+                                                <tr>
+                                                    <th>{{ forloop.counter }}</th>
+                                                    <td>{{ obj_b.parameter.area }}</td>
+                                                    <td>{{ obj_b.parameter.indicator|safe }}</td>
+                                                    <td>
+                                                        {% if obj_b.choice.score == 1 %}{{ obj_b.choice.score }}{% endif %}
+                                                        {% if obj_b.comments %}{{ obj_b.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if obj_b.choice.score == 2 %}{{ obj_b.choice.score }}{% endif %}
+                                                        {% if obj_b.comments %}{{ obj_b.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if obj_b.choice.score == 3 %}{{ obj_b.choice.score }}{% endif %}
+                                                        {% if obj_b.comments %}{{ obj_b.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if obj_b.choice.score == 4 %}{{ obj_b.choice.score }}{% endif %}
+                                                        {% if obj_b.comments %}{{ obj_b.comments|safe }}{% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if obj_b.choice.score == 5 %}{{ obj_b.choice.score }}{% endif %}
+                                                        {% if obj_b.comments %}{{ obj_b.comments|safe }}{% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                <tr align="center">
+                                                    <th colspan="2">Score of Paramenter</th><td colspan="6">{{ sum_b }}</td>
+                                                </tr>
+                                            </table>
+                                            <table class="table table-sm">
+                                                <tr>
+                                                    <td>The Evaluator</td><td>{{ evaldate.date_b_1 }}</td><td>{{ zuri.employee }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>The Evaluated</td><td>{{ evaldate.date_b_2 }}</td><td>{{ eval.employee }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div> <!--end card-body-->
+                    </div> <!--end card-->
+                    {% else %}
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header bg-steel text-center text-danger">AVALIASAUN SEIDAUK KRIA</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div> <!--end row-->
+</div>
