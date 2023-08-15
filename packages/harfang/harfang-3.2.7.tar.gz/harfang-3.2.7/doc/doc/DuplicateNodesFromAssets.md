@@ -1,0 +1,1 @@
+Duplicate each node of a list. Resources will be loaded from the assets system.
