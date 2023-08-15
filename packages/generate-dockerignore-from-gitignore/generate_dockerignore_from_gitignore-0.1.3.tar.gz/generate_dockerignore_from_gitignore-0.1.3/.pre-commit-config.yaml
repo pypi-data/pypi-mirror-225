@@ -1,0 +1,63 @@
+repos:
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+    exclude: ^test/cases/
+
+- repo: local
+  hooks:
+
+  - id: cog
+    name: regenerate generated files (codegen)
+    language: system
+    entry: cog
+    args: [
+      -r, # replace input with output
+      -c, # include checksum
+      -P, # use 'print' for code output
+      -p, 'import subprocess as sp, re, os' # prelude
+    ]
+    files: |
+      (?x)^
+      #[[[cog
+      #  files = sp.check_output(['git', 'grep', '-l', '-F', '-e', '[[[' + 'cog'], text=True).splitlines()
+      #  print('\n' + ' |\n'.join(map(re.escape, files)) + '\n')
+      #]]]
+
+      \.pre\-commit\-config\.yaml |
+      README\.md
+
+      #[[[end]]] (checksum: 74345a875646da6d800f7047edca64c2)
+      $
+
+  - id: pip-compile-multi
+    name: pip-compile-multi
+    language: system
+    entry: pip-compile-multi --no-upgrade --allow-unsafe
+    pass_filenames: false
+    files: ^requirements/
+
+  - id: ruff
+    name: ruff (linting)
+    language: system
+    entry: ruff check --fix
+    types: [python]
+
+  - id: mypy
+    name: mypy (type checking)
+    language: system
+    entry: mypy
+    types: [python]
+
+  - id: tests
+    name: tests
+    language: system
+    entry: python -m unittest
+    pass_filenames: false
+    files: '(?x)
+      \.py$ |
+      ^test_cases/
+      '

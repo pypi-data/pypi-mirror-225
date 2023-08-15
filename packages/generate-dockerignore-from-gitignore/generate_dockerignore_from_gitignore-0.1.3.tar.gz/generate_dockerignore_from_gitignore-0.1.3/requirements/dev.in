@@ -1,0 +1,7 @@
+-e file:.
+-r test.in
+pip-compile-multi
+flit
+mypy
+cogapp
+ruff

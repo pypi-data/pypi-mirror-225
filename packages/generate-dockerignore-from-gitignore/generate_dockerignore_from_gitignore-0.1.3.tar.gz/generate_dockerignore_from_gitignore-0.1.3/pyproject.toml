@@ -1,0 +1,26 @@
+[project]
+name = "generate-dockerignore-from-gitignore"
+authors = [{name = "Tim Vergenz", email = "vergenzt@gmail.com"}]
+dynamic = ["version", "description"]
+readme = "README.md"
+
+[project.scripts]
+generate-dockerignore = "generate_dockerignore:main"
+
+[tool.ruff]
+src = ["src", "test"]
+select = ["E", "F", "I"]
+line-length = 130
+
+[tool.ruff.isort]
+lines-after-imports = 2
+
+[tool.mypy]
+warn_unused_configs = true
+
+[tool.flit.module]
+name = "generate_dockerignore"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
