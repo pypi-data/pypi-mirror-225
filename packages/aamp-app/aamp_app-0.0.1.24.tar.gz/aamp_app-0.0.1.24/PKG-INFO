@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: aamp_app
+Version: 0.0.1.24
+Summary: AAMP App
+Author: Piyush Pahuja
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+App to control the automated additive manufacturing platform.
+
+python3 setup.py sdist bdist_wheel
+
+twine upload --skip-existing dist/\*
