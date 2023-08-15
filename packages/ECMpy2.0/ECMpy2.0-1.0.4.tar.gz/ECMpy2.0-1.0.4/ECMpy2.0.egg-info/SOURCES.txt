@@ -1,0 +1,1625 @@
+MANIFEST.in
+README.md
+setup.py
+ECMpy/.DS_Store
+ECMpy/AutoPACMEN_function.py
+ECMpy/ECMpy_function.py
+ECMpy/__init__.py
+ECMpy/get_ecGEM_onestop.py
+ECMpy/model.py
+ECMpy/prediction_for_input.py
+ECMpy2.0.egg-info/PKG-INFO
+ECMpy2.0.egg-info/SOURCES.txt
+ECMpy2.0.egg-info/dependency_links.txt
+ECMpy2.0.egg-info/not-zip-safe
+ECMpy2.0.egg-info/requires.txt
+ECMpy2.0.egg-info/top_level.txt
+ECMpy/.ipynb_checkpoints/ECMpy_function-checkpoint.py
+ECMpy/.ipynb_checkpoints/get_ecGEM_onestop-checkpoint.py
+ECMpy/__pycache__/AutoPACMEN_function.cpython-37.pyc
+ECMpy/__pycache__/ECMpy_function.cpython-37.pyc
+ECMpy/__pycache__/model.cpython-37.pyc
+ECMpy/__pycache__/model.cpython-39.pyc
+ECMpy/_cache/.DS_Store
+ECMpy/_cache/ncbi_taxonomy/Acanthamoeba castellanii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acetivibrio clariflavus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acetivibrio thermocellus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acetobacter aceti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acetobacter xylinus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Acetobacter_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acetomicrobium mobile_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acholeplasma laidlawii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acidilobus saccharovorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acidithiobacillus ferrooxidans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acidithiobacillus thiooxidans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter baumannii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter baylyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter calcoaceticus (subsp. anitratus)_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter calcoaceticus subsp. anitratus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter calcoaceticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Acinetobacter sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Actinidia chinensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Actinomadura sp. R39_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Actinomadura sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Actinoplanes missouriensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Actinosynnema pretiosum subsp. auranticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Advenella mimigardefordensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aedes aegypti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aeribacillus pallidus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aeromonas veronii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aeropyrum pernix_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Agaricus bisporus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Agrobacterium tumefaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alcaligenes faecalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alcanivorax borkumensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alicyclobacillus acidocaldarius subsp. acidocaldarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alicyclobacillus acidocaldarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alicyclobacillus hesperidum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alkaliphilus oremlandii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alligator mississippiensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Allochromatium vinosum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alnus glutinosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alternanthera ficoidea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alternanthera pungens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alternanthera sessilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alteromonas macleodii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Alteromonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Amborella trichopoda_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Amycolatopsis orientalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Amycolatopsis sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anabaena sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anaerobiospirillum succiniciproducens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anaerotignum propionicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anas platyrhynchos_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aneurinibacillus migulanus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aneurinibacillus thermoaerophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anguilla anguilla_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anopheles gambiae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anoxybacillus flavithermus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anoxybacillus gonensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Anser sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Antarctic bacterium TAB5_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Apis cerana indica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Apis cerana japonica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Apis mellifera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aplysia californica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aplysia fasciata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aquaspirillum arcticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aquifex aeolicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aquifex pyrophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Arabidopsis thaliana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Archaeoglobus fulgidus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aromatoleum aromaticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aromatoleum evansii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Artemisia spiciformis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Artemisia tridentata subsp. spiciformis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Arthrobacter crystallopoietes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Arthrobacter globiformis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Arthrobacter nicotinovorans_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Arthrobacter psychrolactophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Arthrobacter sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Arthrospira platensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ascaris suum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus aculeatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus carbonarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus carneus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus clavatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus flavus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus fumigatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus nidulans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus niger_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus niveus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus oryzae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Aspergillus sojae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Astrosclera willeyana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Autographa californica multiple nucleopolyhedrovirus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Avena sativa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Avicennia marina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Azoarcus evansii_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Azospirillum brasilense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Azotobacter vinelandii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Babesia bovis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Babesia gibsoni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus altitudinis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus amyloliquefaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus anthracis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus cereus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus coagulans_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacillus halodurans_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacillus licheniformis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus methanolicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus pumilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus sp. (in_ firmicutes)_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus sp. PS3_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus sp. YM55-1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus sp._taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacillus subtilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacillus thuringiensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacopa monnieri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacteria Latreille et al. 1825_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacteria_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacteriophage T4_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacteriophage phi-13_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacteriophage phi-6_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacteriophage phi-8_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bacteroides fragilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacteroides ovatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bacteroides thetaiotaomicron_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bamboo mosaic virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bartonella henselae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bifidobacterium longum subsp. Longum_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Bifidobacterium longum subsp. infantis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bifidobacterium longum subsp. longum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bifidobacterium longum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bjerkandera adusta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bjerkandera fumosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bjerkandera sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Blastobotrys adeninivorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Blastochloris viridis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Blastocladiella emersonii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Blautia hydrogenotrophica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bombyx mori_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bordetella pertussis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Borrelia burgdorferi_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Borreliella burgdorferi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bos taurus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bothrops jararaca_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Botryococcus braunii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bradyrhizobium diazoefficiens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bradyrhizobium japonicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Branchiostoma floridae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Branchiostoma lanceolatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brassica capitata_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Brassica juncea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brassica napus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brassica oleracea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brassica rapa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brucella abortus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brucella anthropi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brucella melitensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brucella microti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brucella suis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Brugia malayi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Bubalus bubalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Buckleyzyma aurantiaca_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia cenocepacia J2315_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia cenocepacia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia cepacia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia glumae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia mallei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia pseudomallei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia thailandensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Burkholderia xenovorans LB400_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Burkholderia xenovorans_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Butyrivibrio crossotus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caenorhabditis elegans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caldanaerobacter subterraneus subsp. tengcongensis MB4_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caldanaerobacter subterraneus subsp. tengcongensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caldibacillus thermoamylovorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caldicellulosiruptor saccharolyticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Camelina sativa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Camellia sinensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Camelus dromedarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Campylobacter jejuni subsp. jejuni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Campylobacter jejuni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Candida albicans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Candida intermedia_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Candida mycoderma_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Candida tenuis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Candida tropicalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Candidatus Pelagibacter ubique_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Canid alphaherpesvirus 1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Canis familiaris_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Canis lupus familiaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Capitata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Capra capra_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Capra_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Capsicum frutescens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Carassius auratus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Carboxydothermus hydrogenoformans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Catenaria anguillulae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Caulobacter vibrioides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cavia porcellus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cellulomonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ceratitis capitata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cereibacter sphaeroides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chionodraco hamatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chlamydia pneumoniae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chlamydia trachomatis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chlamydomonas reinhardtii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chlamydomonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chlamydophila pneumoniae_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Chlorobaculum tepidum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chloroflexus aurantiacus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chromobacterium violaceum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Chromohalobacter salexigens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Citrobacter freundii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Citrobacter koseri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Citrobacter sp. S-77_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Citrobacter sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Classical swine fever virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clonorchis sinensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridioides difficile_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium acetobutylicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium perfringens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium subterminale_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium tetani_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Clostridium thermocellum_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Cobetia marina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Columba livia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Colwellia maris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Colwellia psychrerythraea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Comamonas testosteroni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Conticribra weissflogii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Coprococcus eutactus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corallomycetella repens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium ammoniagenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium callunae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium crenatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium glutamicum subsp. lactofermentum_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium glutamicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium sp. U-96_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Corynebacterium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Coturnix coturnix japonica_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Coturnix coturnix_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Coturnix japonica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cricetulus griseus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Crithidia fasciculata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Crocosphaera subtropica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Crotalus adamanteus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cryptococcus flavus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Cryptococcus neoformans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cryptosporidium parvum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cucumis sativus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cuphea hookeriana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cuphea palustris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cupriavidus necator_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cyanidium caldarium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cyanophora paradoxa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cyprinus carpio_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Cytobacillus firmus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Daboia russelii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Danio rerio_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dasyatis pastinaca_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Daucus carota_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Debaryomyces hansenii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Debaryomyces nepalensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dehalococcoides mccartyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Deinagkistrodon acutus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Deinococcus radiodurans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Delftia acidovorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Delftia sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Desulfitobacterium hafniense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Desulfotalea psychrophila_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Desulfovibrio sp. A2_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Desulfurococcus amylolyticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dickeya chrysanthemi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dictyoglomus turgidum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dictyostelium discoideum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dictyostelium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dioszegia sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dirofilaria immitis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Drosophila lebanonensis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Drosophila melanogaster_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Drosophila virilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dugesia ryukyuensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dunaliella salina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Dysdercus peruvianus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Edwardsiella ictaluri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Eimeria tenella_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Eisenia fetida_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Entamoeba histolytica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterobacter cloacae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterobacter sp. B13_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterococcus faecalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterococcus faecium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterococcus gallinarum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Enterococcus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Epstein-Barr virus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Equine infectious anemia virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Equus caballus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Eremothecium gossypii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Erwinia amylovora_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Erwinia chrysanthemi_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Erwinia rhapontici_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Erysipelothrix rhusiopathiae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Erythroxylum coca_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Escherichia coli K-12_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Escherichia coli P76440_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Escherichia coli_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Escherichia phage T2_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Escherichia phage T4_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ethanoligenens harbinense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Eucalyptus camaldulensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Euglena gracilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Euphorbia characias_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Exiguobacterium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fasciola gigantica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Felid alphaherpesvirus 1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Felis catus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ferroplasma acidiphilum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fibrobacter succinogenes subsp. succinogenes S85_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Flaveria bidentis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Flaveria pringlei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Flaveria trinervia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Flavobacterium frigidimaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Flavobacterium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Francisella tularensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fructobacillus fructosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fusarium oxysporum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fusarium solani_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fusarium verticillioides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Fusobacterium nucleatum subsp. nucleatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Gallus gallus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Ganoderma lucidum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Gemmata obscuriglobus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacillus kaustophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacillus sp. MAS1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacillus sp. Y4.1MC1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacillus stearothermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacillus thermodenitrificans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Geobacter sulfurreducens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Giardia intestinalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Giardia lamblia_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Gluconobacter oxydans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Glutamicibacter nicotianae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Glycine max_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Gramella forsetii_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Gryllus firmus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haemonchus contortus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haemophilus influenzae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Hafnia alvei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Halalkalibacterium halodurans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Halanaerobium hydrogeniformans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haliangium ochraceum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haloarcula japonica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haloarcula marismortui_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Haloferax volcanii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Halothiobacillus neapolitanus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Helianthus annuus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Helicobacter pylori_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Herpes simplex virus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Hippoglossus hippoglossus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Hippoglossus stenolepis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Histoplasma capsulatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Homo sapiens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Hordeum vulgare_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Human alphaherpesvirus 1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Human gammaherpesvirus 4_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Human gammaherpesvirus 8_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Human herpesvirus 1_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Huperzia serrata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Hydrogenobacter thermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Hydrogenobaculum sp. Y04AAS1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ignicoccus islandicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ignisphaera aggregans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ipomoea batatas_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Klebsiella aerogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Klebsiella pneumoniae subsp. pneumoniae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Klebsiella pneumoniae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Kluyveromyces lactis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Kluyveromyces marxianus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Komagataeibacter xylinus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Komagataella pastoris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lachancea kluyveri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lacticaseibacillus casei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactiplantibacillus pentosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactiplantibacillus plantarum WCFS1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactiplantibacillus plantarum subsp. plantarum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactiplantibacillus plantarum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus acidophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus brevis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus casei_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus delbrueckii subsp. bulgaricus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus delbrueckii subsp. lactis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus delbrueckii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus fermentum_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus gasseri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus helveticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus jensenii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus plantarum_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus reuteri_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus sakei_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus sp. 30A_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactobacillus sp. 30a_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactococcus cremoris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactococcus lactis subsp. cremoris_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lactococcus lactis subsp. lactis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lactococcus lactis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lampetra japonica_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Lancefieldella rimae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lathyrus cicera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Latilactobacillus sakei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Latimeria menadoensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Legionella pneumophila_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania amazonensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania braziliensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania chagasi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania donovani_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania infantum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania major_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leishmania mexicana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leminorella grimontii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lens culinaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lentilactobacillus buchneri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leptospira biflexa serovar Patoc_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leptospira interrogans serovar Copenhageni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leptospira interrogans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lethenteron camtschaticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lethocerus indicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leucaena leucocephala_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leuconostoc mesenteroides subsp. mesenteroides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Leuconostoc mesenteroides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Levilactobacillus brevis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ligilactobacillus saerimneri 30a_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Limosilactobacillus antri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Limosilactobacillus fermentum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Limosilactobacillus reuteri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Limulus polyphemus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lipomyces starkeyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Listeria monocytogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Listeria seeligeri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lithobates catesbeianus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lotus japonicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lucilia cuprina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lupinus luteus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lycium ruthenicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Lysinibacillus sphaericus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Macaca mulatta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Macaca radiata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Macadamia tetraphylla_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Magnaporthe grisea 70-15_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Malassezia globosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Malus domestica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mammalia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mammalian orthoreovirus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Manihot esculenta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Marchantia polymorpha_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Medicago truncatula_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Megalodesulfovibrio gigas_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Megasphaera elsdenii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Meiothermus ruber_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Meleagris gallopavo_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mesocricetus auratus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mesorhizobium loti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Metacordyceps brittlebankisoides_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Metallosphaera sedula_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Metarhizium anisopliae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Metarhizium brittlebankisoides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Metarhizium flavoviride_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanobacterium thermoautotrophicus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Methanocaldococcus jannaschii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanocella conradii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanococcus aeolicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanococcus maripaludis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanococcus voltae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanosarcina acetivorans C2A_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanosarcina acetivorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanosarcina mazei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanosarcina thermophila_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanothermobacter thermautotrophicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methanothermus fervidus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylococcus capsulatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylomonas aminofaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylomonas methanica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylorubrum extorquens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylosinus trichosporium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Methylotuvimicrobium alcaliphilum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Microbacterium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Microcebus murinus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Micrococcus luteus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Microcystis aeruginosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Micromonospora lupini_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Micropterus salmoides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mimosa pudica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mizuhopecten yessoensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Monopylocystis minor_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moorella thermoacetica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moraxella sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moritella japonica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moritella marina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moritella profunda_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moritella sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Moritella yayanosii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mortierella alliacea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mortierella alpina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mus musculus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium avium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium leprae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium marinum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium smegmatis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycobacterium tuberculosis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycolicibacterium smegmatis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycoplasma hyorhinis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Mycoplasma mycoides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mycoplasma pneumoniae_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Mycothermus thermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Mytilus galloprovincialis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Myxococcus xanthus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Naegleria fowleri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Natranaerobius thermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Natronomonas pharaonis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Neisseria gonorrhoeae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Neisseria meningitidis serogroup A _ serotype 4A_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Neisseria meningitidis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nelumbo nucifera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Neospora caninum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Neurospora crassa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Niallia circulans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nicotiana glutinosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nicotiana tabacum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nitrosomonas europaea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nocardioides sp. PD653_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Noccaea caerulescens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nonomuraea sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nostoc punctiforme_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nostoc sp. PCC 7120 = FACHB-418_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Nostoc sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Novosphingobium aromaticivorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Novosphingobium capsulatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oceanobacillus iheyensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ochromonas danica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oenococcus oeni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ogataea angusta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ogataea henricii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Onchocerca volvulus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oncorhynchus keta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oncorhynchus kisutch_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oncorhynchus mykiss_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Opuntia ficus-indica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oryctolagus cuniculus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oryza sativa Indica Group_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oryza sativa Japonica Group_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oryza sativa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ovis aries_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Oxalobacter formigenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenarthrobacter aurescens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenarthrobacter nicotinovorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenarthrobacter ureafaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenibacillus curdlanolyticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenibacillus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paenibacillus thiaminolyticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pagrus major_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pandalus borealis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Panicum miliaceum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pantoea agglomerans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Papaver somniferum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paraburkholderia phenoliruptrix_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paraburkholderia xenovorans LB400_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paraburkholderia xenovorans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paracoccus denitrificans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Parageobacillus thermoglucosidasius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paramecium bursaria Chlorella virus 1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Paramecium bursaria chlorella virus 1_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Pasteurella multocida_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pectobacterium carotovorum subsp. carotovorum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pectobacterium carotovorum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pediococcus pentosaceus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pelodictyon luteolum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pelotomaculum thermopropionicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Penaeus merguiensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Penaeus vannamei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Penicillium brevicompactum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Penicillium canescens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Penicillium chrysogenum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Persephonella marina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Petrotoga mobilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Petunia hybrida_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Petunia x hybrida_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Phaffia rhodozyma_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Phanerodontia chrysosporium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Phaseolus vulgaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pholiota nameko_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Phormidium lapideum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Photobacterium leiognathi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Photobacterium phosphoreum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Photobacterium profundum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Physcomitrium patens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Phytophthora capsici_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Picea abies_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Picrophilus oshimae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Picrophilus torridus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Pinus pinaster_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pinus pinea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pisum sativum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Planococcus sp._taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Plasmodium berghei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium cynomolgi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium falciparum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium gallinaceum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium knowlesi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium vivax_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Plasmodium yoelii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Platyrrhini_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pleurotus eryngii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pleurotus ostreatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pleurotus sapidus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pneumocystis carinii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pneumocystis jirovecii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Populus deltoides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Populus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Populus tremula_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Populus trichocarpa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Porphyromonas gingivalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Prevotella intermedia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Priestia megaterium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Prosthecobacter sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Proteus mirabilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Proteus vulgaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Providencia alcalifaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Prunella vulgaris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudanabaena sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudoalteromonas haloplanktis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudoalteromonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudoclostridium thermosuccinogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas aeruginosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas amygdali pv. tabaci_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas dacunhae_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas denitrificans (nom. rej.)_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas denitrificans_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas fluorescens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas phage phi6_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas phage phi8_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas protegens Pf-5_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas psychrophila_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas putida KT2440_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas putida_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas sp. WU-0701_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas stutzeri_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas syringae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudomonas taetrolens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pseudothermotoga lettingae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Psychrobacter arcticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Psychrobacter cryohalolentis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Psychrobacter sp. ANT206_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Psychrobacter sp. PRwf-1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Psychromonas ingrahamii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Psychromonas marina_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Putranjiva roxburghii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyricularia grisea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyricularia oryzae 70-15_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyricularia oryzae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrobaculum aerophilum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrobaculum calidifontis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrobaculum ferrireducens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus furiosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus horikoshii OT3_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus horikoshii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus woesei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus yayanosii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Pyrococcus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Python bivittatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ralstonia solanacearum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rana catesbeiana_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Rasamsonia emersonii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rattus norvegicus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhizobium etli_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhizobium leguminosarum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhizomucor miehei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhizosolenia setigera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodobacter capsulatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodococcus erythropolis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodococcus jostii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodococcus opacus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodococcus ruber_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodomicrobium vannielii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodopseudomonas palustris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodopseudomonas viridis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Rhodospirillum rubrum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodothermus marinus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Rhodotorula aurantiaca_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Ricinus communis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ruegeria pomeroyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ruminococcus champanellensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/SARS coronavirus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Saccharolobus shibatae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saccharolobus solfataricus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saccharomyces cerevisiae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saccharomyces kluyveri_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Saccharopolyspora erythraea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saccharopolyspora rectivirgula_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saimiri sciureus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Saitozyma flava_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Salmo trutta Labrax Coruhensis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Salmonella enterica subsp. enterica serovar Typhi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Salmonella enterica subsp. enterica serovar Typhimurium A0A0F6B484 _and_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Salmonella enterica subsp. enterica serovar Typhimurium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Salmonella enterica typhimurium_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Salmonella enterica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Salmonella typhi_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Salmonella typhimurium_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Scaptodrosophila lebanonensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Scheffersomyces stipitis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Schistosoma mansoni_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Schizosaccharomyces pombe_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Scyliorhinus canicula_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Selaginella moellendorffii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Selenomonas ruminantium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Semliki Forest virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Semliki forest virus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Serratia marcescens_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Serratia sp._taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Severe acute respiratory syndrome coronavirus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella benthica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella oneidensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella sp. T3-3_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella violacea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shewanella woodyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shigella flexneri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Shrimp white spot syndrome virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sinorhizobium meliloti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Slackia exigua_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Solanum chacoense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Solanum lycopersicum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Solanum pennellii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Solanum tuberosum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sordaria macrospora_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sorghum bicolor_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Southampton virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Spbetavirus SPbeta_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingobium chungbukense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingomonas elodea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingomonas sanxanigenens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingomonas sp. A1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingomonas sp. PAMC 26621_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sphingomonas sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Spinacia oleracea_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Spodoptera frugiperda_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sporolactobacillus inulinus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sporolactobacillus laevolacticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sporomusa ovata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sporomusa sphaeroides_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus aureus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus carnosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus epidermidis RP62A_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus haemolyticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus phage phi 13_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Staphylococcus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Stenotrophomonas maltophilia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Stereum hirsutum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus entericus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus equi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus gordonii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus mutans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus pneumoniae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus pyogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus suis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptococcus thermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces acidiscabies_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces albidoflavus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces ambofaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces avermitilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces canarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces coelicolor_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces collinus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces corchorusii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces davaonensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces diastaticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces globisporus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces griseochromogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces griseus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces lavendulae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces lividans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces murayamaensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces pristinaespiralis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces rubiginosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces sp. R61_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces venezuelae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces verticillus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces violaceoruber_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Streptomyces viridifaciens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Strongylocentrotus purpuratus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Struthio camelus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Stylophora pistillata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfolobus acidocaldarius_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfolobus shibatae_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Sulfolobus solfataricus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Sulfolobus tokodaii_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Sulfurihydrogenibium azorense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfurihydrogenibium sp. YO3AOP1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfurimonas denitrificans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfurisphaera tokodaii str. 7_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sulfurisphaera tokodaii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sus scrofa domesticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Sus scrofa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Symbiobacterium thermophilum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Symbiobacterium toebii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechococcus elongatus PCC 7942 = FACHB-805_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechococcus elongatus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechococcus phage S-PM2_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechococcus sp. PCC 7002_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechococcus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechocystis sp. PCC 6803 _ Kazusa_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Synechocystis sp. PCC 6803_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Synechocystis sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Taenia crassiceps_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Taenia solium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Talaromyces emersonii_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Talaromyces piceae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Talaromyces pinophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tenebrio molitor_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tetragenococcus halophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tetrahymena thermophila_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thalassiosira pseudonana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Theileria annulata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacter brockii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacter sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacter tengcongensis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacterium saccharolyticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacterium thermosaccharolyticum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoanaerobacterium thermosulfurigenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoascus aurantiacus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermobifida fusca_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus gammatolerans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus kodakaraensis_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Thermococcus kodakarensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus litoralis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus onnurineus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermococcus waiotapuensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermocrispum agreste_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermocrispum sp. RD004668_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermodesulfobium narugense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermofilum pendens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermomicrobium roseum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermomonospora curvata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermomyces lanuginosus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoplasma acidophilum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoplasma volcanium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoproteus tenax_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermoproteus uzoniensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermosynechococcus vestitus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermotoga maritima_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermotoga neapolitana_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermovibrio ammonificans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus aquaticus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus brockianus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus caldophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus sp. GH5_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus sp. NTU-237_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Thermus sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus thermophilus HB27_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus thermophilus HB8_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus thermophilus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thermus yunnanensis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thiobacillus denitrificans ATCC 25259_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Thunnus thynnus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tolypocladium inflatum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Toxoplasma gondii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trematomus bernacchii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Treponema denticola_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trichoderma reesei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trichomonas vaginalis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trichormus azollae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Triticum aestivum_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tritrichomonas foetus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Tritrichomonas suis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma brucei brucei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma brucei_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma congolense_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma cruzi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma vivax_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Trypanosoma_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Turbatrix aceti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Ureibacillus thermosphaericus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Urocitellus richardsonii_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vaccinia virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Variovorax paradoxus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Veillonella atypica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio cholerae O1_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio cholerae serotype O1_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/Vibrio cholerae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio harveyi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio natriegens_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio splendidus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vibrio vulnificus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vigna radiata_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vitis vinifera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vogesella indigofera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Vulcanisaeta moutnovskia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Weizmannia coagulans_taxonomy
+ECMpy/_cache/ncbi_taxonomy/West Nile virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/White spot syndrome virus_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Withania somnifera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Wolbachia endosymbiont of Brugia malayi_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Wolbachia pipientis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Wolbachia sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Wolinella succinogenes_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Wuchereria bancrofti_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xanthomonas campestris pv. campestris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xanthomonas campestris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xanthomonas citri_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xanthomonas oryzae_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xanthomonas phaseoli pv. manihotis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xenopus laevis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xerophyta viscosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Xylella fastidiosa_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yamadazyma tenuis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yarrowia lipolytica_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yersinia intermedia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yersinia pestis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yersinia pseudotuberculosis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Yokenella sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Zavarzinia compransoris_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Zea mays_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Zoogloea ramigera_taxonomy
+ECMpy/_cache/ncbi_taxonomy/Zunongwangia sp._taxonomy
+ECMpy/_cache/ncbi_taxonomy/Zymomonas mobilis subsp. mobilis_taxonomy
+ECMpy/_cache/ncbi_taxonomy/[Bacillus] caldotenax_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/[Candida] glabrata_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/[Candida] intermedia_taxonomy
+ECMpy/_cache/ncbi_taxonomy/equine infectious anemia virus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/mammalian orthoreovirus_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/plant_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/synthetic construct_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured Acidobacteria bacterium_taxonomy_NA
+ECMpy/_cache/ncbi_taxonomy/uncultured Acidobacteriota bacterium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured archaeon_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured bacterium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured microorganism_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured rumen bacterium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/uncultured soil bacterium_taxonomy
+ECMpy/_cache/ncbi_taxonomy/unidentified_taxonomy
+ECMpy/_cache/ncbi_taxonomy/white spot syndrome virus_taxonomy_NA
+ECMpy/_cache/sabio_rk_total/1_10_3_1.json
+ECMpy/_cache/sabio_rk_total/1_10_5_1.json
+ECMpy/_cache/sabio_rk_total/1_11_1_1.json
+ECMpy/_cache/sabio_rk_total/1_11_1_15.json
+ECMpy/_cache/sabio_rk_total/1_11_1_16.json
+ECMpy/_cache/sabio_rk_total/1_11_1_21.json
+ECMpy/_cache/sabio_rk_total/1_11_1_6.json
+ECMpy/_cache/sabio_rk_total/1_11_1_7.json
+ECMpy/_cache/sabio_rk_total/1_11_1_9.json
+ECMpy/_cache/sabio_rk_total/1_11_2_1.json
+ECMpy/_cache/sabio_rk_total/1_13_11_1.json
+ECMpy/_cache/sabio_rk_total/1_13_11_15.json
+ECMpy/_cache/sabio_rk_total/1_13_11_16.json
+ECMpy/_cache/sabio_rk_total/1_13_11_4.json
+ECMpy/_cache/sabio_rk_total/1_13_11_49.json
+ECMpy/_cache/sabio_rk_total/1_13_11_52.json
+ECMpy/_cache/sabio_rk_total/1_13_12_16.json
+ECMpy/_cache/sabio_rk_total/1_13_12_7.json
+ECMpy/_cache/sabio_rk_total/1_13_99_1.json
+ECMpy/_cache/sabio_rk_total/1_14_11_17.json
+ECMpy/_cache/sabio_rk_total/1_14_12_17.json
+ECMpy/_cache/sabio_rk_total/1_14_13_7.json
+ECMpy/_cache/sabio_rk_total/1_14_13_8.json
+ECMpy/_cache/sabio_rk_total/1_14_14_1.json
+ECMpy/_cache/sabio_rk_total/1_14_14_19.json
+ECMpy/_cache/sabio_rk_total/1_14_14_38.json
+ECMpy/_cache/sabio_rk_total/1_14_15_15.json
+ECMpy/_cache/sabio_rk_total/1_14_15_16.json
+ECMpy/_cache/sabio_rk_total/1_14_16_1.json
+ECMpy/_cache/sabio_rk_total/1_14_16_4.json
+ECMpy/_cache/sabio_rk_total/1_14_17_4.json
+ECMpy/_cache/sabio_rk_total/1_14_18_1.json
+ECMpy/_cache/sabio_rk_total/1_14_20_1.json
+ECMpy/_cache/sabio_rk_total/1_14_99_1.json
+ECMpy/_cache/sabio_rk_total/1_14_99_51.json
+ECMpy/_cache/sabio_rk_total/1_16_1_7.json
+ECMpy/_cache/sabio_rk_total/1_16_1_8.json
+ECMpy/_cache/sabio_rk_total/1_16_3_1.json
+ECMpy/_cache/sabio_rk_total/1_17_1_4.json
+ECMpy/_cache/sabio_rk_total/1_17_3_2.json
+ECMpy/_cache/sabio_rk_total/1_18_1_1.json
+ECMpy/_cache/sabio_rk_total/1_1_1_1.json
+ECMpy/_cache/sabio_rk_total/1_1_1_100.json
+ECMpy/_cache/sabio_rk_total/1_1_1_103.json
+ECMpy/_cache/sabio_rk_total/1_1_1_133.json
+ECMpy/_cache/sabio_rk_total/1_1_1_169.json
+ECMpy/_cache/sabio_rk_total/1_1_1_17.json
+ECMpy/_cache/sabio_rk_total/1_1_1_193.json
+ECMpy/_cache/sabio_rk_total/1_1_1_205.json
+ECMpy/_cache/sabio_rk_total/1_1_1_21.json
+ECMpy/_cache/sabio_rk_total/1_1_1_215.json
+ECMpy/_cache/sabio_rk_total/1_1_1_22.json
+ECMpy/_cache/sabio_rk_total/1_1_1_23.json
+ECMpy/_cache/sabio_rk_total/1_1_1_25.json
+ECMpy/_cache/sabio_rk_total/1_1_1_267.json
+ECMpy/_cache/sabio_rk_total/1_1_1_28.json
+ECMpy/_cache/sabio_rk_total/1_1_1_282.json
+ECMpy/_cache/sabio_rk_total/1_1_1_284.json
+ECMpy/_cache/sabio_rk_total/1_1_1_3.json
+ECMpy/_cache/sabio_rk_total/1_1_1_336.json
+ECMpy/_cache/sabio_rk_total/1_1_1_35.json
+ECMpy/_cache/sabio_rk_total/1_1_1_37.json
+ECMpy/_cache/sabio_rk_total/1_1_1_38.json
+ECMpy/_cache/sabio_rk_total/1_1_1_383.json
+ECMpy/_cache/sabio_rk_total/1_1_1_39.json
+ECMpy/_cache/sabio_rk_total/1_1_1_399.json
+ECMpy/_cache/sabio_rk_total/1_1_1_4.json
+ECMpy/_cache/sabio_rk_total/1_1_1_40.json
+ECMpy/_cache/sabio_rk_total/1_1_1_41.json
+ECMpy/_cache/sabio_rk_total/1_1_1_42.json
+ECMpy/_cache/sabio_rk_total/1_1_1_44.json
+ECMpy/_cache/sabio_rk_total/1_1_1_49.json
+ECMpy/_cache/sabio_rk_total/1_1_1_51.json
+ECMpy/_cache/sabio_rk_total/1_1_1_6.json
+ECMpy/_cache/sabio_rk_total/1_1_1_60.json
+ECMpy/_cache/sabio_rk_total/1_1_1_72.json
+ECMpy/_cache/sabio_rk_total/1_1_1_79.json
+ECMpy/_cache/sabio_rk_total/1_1_1_8.json
+ECMpy/_cache/sabio_rk_total/1_1_1_81.json
+ECMpy/_cache/sabio_rk_total/1_1_1_85.json
+ECMpy/_cache/sabio_rk_total/1_1_1_86.json
+ECMpy/_cache/sabio_rk_total/1_1_1_95.json
+ECMpy/_cache/sabio_rk_total/1_1_2_3.json
+ECMpy/_cache/sabio_rk_total/1_1_2_7.json
+ECMpy/_cache/sabio_rk_total/1_1_2_8.json
+ECMpy/_cache/sabio_rk_total/1_1_3_15.json
+ECMpy/_cache/sabio_rk_total/1_1_3_21.json
+ECMpy/_cache/sabio_rk_total/1_1_3_38.json
+ECMpy/_cache/sabio_rk_total/1_1_3_4.json
+ECMpy/_cache/sabio_rk_total/1_1_3_7.json
+ECMpy/_cache/sabio_rk_total/1_1_9_1.json
+ECMpy/_cache/sabio_rk_total/1_20_1_1.json
+ECMpy/_cache/sabio_rk_total/1_20_4_1.json
+ECMpy/_cache/sabio_rk_total/1_20_4_4.json
+ECMpy/_cache/sabio_rk_total/1_21_3_1.json
+ECMpy/_cache/sabio_rk_total/1_2_1_10.json
+ECMpy/_cache/sabio_rk_total/1_2_1_11.json
+ECMpy/_cache/sabio_rk_total/1_2_1_12.json
+ECMpy/_cache/sabio_rk_total/1_2_1_19.json
+ECMpy/_cache/sabio_rk_total/1_2_1_22.json
+ECMpy/_cache/sabio_rk_total/1_2_1_24.json
+ECMpy/_cache/sabio_rk_total/1_2_1_3.json
+ECMpy/_cache/sabio_rk_total/1_2_1_39.json
+ECMpy/_cache/sabio_rk_total/1_2_1_4.json
+ECMpy/_cache/sabio_rk_total/1_2_1_5.json
+ECMpy/_cache/sabio_rk_total/1_2_1_59.json
+ECMpy/_cache/sabio_rk_total/1_2_1_70.json
+ECMpy/_cache/sabio_rk_total/1_2_1_72.json
+ECMpy/_cache/sabio_rk_total/1_2_1_79.json
+ECMpy/_cache/sabio_rk_total/1_2_1_88.json
+ECMpy/_cache/sabio_rk_total/1_2_3_1.json
+ECMpy/_cache/sabio_rk_total/1_2_3_4.json
+ECMpy/_cache/sabio_rk_total/1_2_4_1 2_3_1_12 1_8_1_4.json
+ECMpy/_cache/sabio_rk_total/1_2_4_1.json
+ECMpy/_cache/sabio_rk_total/1_2_4_2 2_3_1_61 1_8_1_4.json
+ECMpy/_cache/sabio_rk_total/1_2_4_2.json
+ECMpy/_cache/sabio_rk_total/1_2_4_4.json
+ECMpy/_cache/sabio_rk_total/1_2_98_1.json
+ECMpy/_cache/sabio_rk_total/1_2_99_7.json
+ECMpy/_cache/sabio_rk_total/1_3_1_1.json
+ECMpy/_cache/sabio_rk_total/1_3_1_10.json
+ECMpy/_cache/sabio_rk_total/1_3_1_12.json
+ECMpy/_cache/sabio_rk_total/1_3_1_3.json
+ECMpy/_cache/sabio_rk_total/1_3_1_38.json
+ECMpy/_cache/sabio_rk_total/1_3_1_6.json
+ECMpy/_cache/sabio_rk_total/1_3_1_84.json
+ECMpy/_cache/sabio_rk_total/1_3_1_9.json
+ECMpy/_cache/sabio_rk_total/1_3_1_98.json
+ECMpy/_cache/sabio_rk_total/1_3_2_3.json
+ECMpy/_cache/sabio_rk_total/1_3_3_4.json
+ECMpy/_cache/sabio_rk_total/1_3_5_1.json
+ECMpy/_cache/sabio_rk_total/1_3_5_3.json
+ECMpy/_cache/sabio_rk_total/1_3_7_8.json
+ECMpy/_cache/sabio_rk_total/1_3_8_1.json
+ECMpy/_cache/sabio_rk_total/1_3_8_4.json
+ECMpy/_cache/sabio_rk_total/1_3_8_6.json
+ECMpy/_cache/sabio_rk_total/1_3_8_7.json
+ECMpy/_cache/sabio_rk_total/1_3_8_8.json
+ECMpy/_cache/sabio_rk_total/1_3_98_1.json
+ECMpy/_cache/sabio_rk_total/1_4_1_1.json
+ECMpy/_cache/sabio_rk_total/1_4_1_13.json
+ECMpy/_cache/sabio_rk_total/1_4_1_2.json
+ECMpy/_cache/sabio_rk_total/1_4_1_21.json
+ECMpy/_cache/sabio_rk_total/1_4_1_3.json
+ECMpy/_cache/sabio_rk_total/1_4_1_4.json
+ECMpy/_cache/sabio_rk_total/1_4_1_8.json
+ECMpy/_cache/sabio_rk_total/1_4_3_1.json
+ECMpy/_cache/sabio_rk_total/1_4_3_2.json
+ECMpy/_cache/sabio_rk_total/1_4_3_21.json
+ECMpy/_cache/sabio_rk_total/1_4_3_4.json
+ECMpy/_cache/sabio_rk_total/1_4_3_5.json
+ECMpy/_cache/sabio_rk_total/1_4_9_1.json
+ECMpy/_cache/sabio_rk_total/1_4_9_2.json
+ECMpy/_cache/sabio_rk_total/1_5_1_1.json
+ECMpy/_cache/sabio_rk_total/1_5_1_2.json
+ECMpy/_cache/sabio_rk_total/1_5_1_20.json
+ECMpy/_cache/sabio_rk_total/1_5_1_21.json
+ECMpy/_cache/sabio_rk_total/1_5_1_3.json
+ECMpy/_cache/sabio_rk_total/1_5_1_30.json
+ECMpy/_cache/sabio_rk_total/1_5_1_34.json
+ECMpy/_cache/sabio_rk_total/1_5_1_36.json
+ECMpy/_cache/sabio_rk_total/1_5_1_37.json
+ECMpy/_cache/sabio_rk_total/1_5_1_38.json
+ECMpy/_cache/sabio_rk_total/1_5_1_39.json
+ECMpy/_cache/sabio_rk_total/1_5_1_49.json
+ECMpy/_cache/sabio_rk_total/1_5_1_5.json
+ECMpy/_cache/sabio_rk_total/1_5_1_52.json
+ECMpy/_cache/sabio_rk_total/1_5_1_7.json
+ECMpy/_cache/sabio_rk_total/1_5_98_2.json
+ECMpy/_cache/sabio_rk_total/1_5_99_12.json
+ECMpy/_cache/sabio_rk_total/1_6_2_2.json
+ECMpy/_cache/sabio_rk_total/1_6_2_4.json
+ECMpy/_cache/sabio_rk_total/1_6_3_1.json
+ECMpy/_cache/sabio_rk_total/1_6_3_4.json
+ECMpy/_cache/sabio_rk_total/1_6_5_2.json
+ECMpy/_cache/sabio_rk_total/1_6_5_5.json
+ECMpy/_cache/sabio_rk_total/1_6_99_1.json
+ECMpy/_cache/sabio_rk_total/1_6_99_3.json
+ECMpy/_cache/sabio_rk_total/1_7_1_13.json
+ECMpy/_cache/sabio_rk_total/1_7_1_14.json
+ECMpy/_cache/sabio_rk_total/1_7_2_1.json
+ECMpy/_cache/sabio_rk_total/1_7_3_1.json
+ECMpy/_cache/sabio_rk_total/1_7_3_3.json
+ECMpy/_cache/sabio_rk_total/1_8_1_16.json
+ECMpy/_cache/sabio_rk_total/1_8_1_4.json
+ECMpy/_cache/sabio_rk_total/1_8_1_7.json
+ECMpy/_cache/sabio_rk_total/1_8_1_9.json
+ECMpy/_cache/sabio_rk_total/1_8_2_1.json
+ECMpy/_cache/sabio_rk_total/1_8_2_2.json
+ECMpy/_cache/sabio_rk_total/1_8_3_1.json
+ECMpy/_cache/sabio_rk_total/1_8_4_11.json
+ECMpy/_cache/sabio_rk_total/1_8_4_13.json
+ECMpy/_cache/sabio_rk_total/1_8_4_14.json
+ECMpy/_cache/sabio_rk_total/1_8_4_2.json
+ECMpy/_cache/sabio_rk_total/1_8_5_1.json
+ECMpy/_cache/sabio_rk_total/1_9_3_1.json
+ECMpy/_cache/sabio_rk_total/2_1_1_10.json
+ECMpy/_cache/sabio_rk_total/2_1_1_107.json
+ECMpy/_cache/sabio_rk_total/2_1_1_11.json
+ECMpy/_cache/sabio_rk_total/2_1_1_13.json
+ECMpy/_cache/sabio_rk_total/2_1_1_2.json
+ECMpy/_cache/sabio_rk_total/2_1_1_45.json
+ECMpy/_cache/sabio_rk_total/2_1_1_6.json
+ECMpy/_cache/sabio_rk_total/2_1_1_72.json
+ECMpy/_cache/sabio_rk_total/2_1_1_79.json
+ECMpy/_cache/sabio_rk_total/2_1_2_1.json
+ECMpy/_cache/sabio_rk_total/2_1_2_2.json
+ECMpy/_cache/sabio_rk_total/2_1_3_2.json
+ECMpy/_cache/sabio_rk_total/2_1_3_3.json
+ECMpy/_cache/sabio_rk_total/2_2_1_1.json
+ECMpy/_cache/sabio_rk_total/2_2_1_6.json
+ECMpy/_cache/sabio_rk_total/2_2_1_7.json
+ECMpy/_cache/sabio_rk_total/2_2_1_9 4_2_99_20.json
+ECMpy/_cache/sabio_rk_total/2_2_1_9.json
+ECMpy/_cache/sabio_rk_total/2_3_1_1.json
+ECMpy/_cache/sabio_rk_total/2_3_1_117.json
+ECMpy/_cache/sabio_rk_total/2_3_1_157.json
+ECMpy/_cache/sabio_rk_total/2_3_1_16.json
+ECMpy/_cache/sabio_rk_total/2_3_1_174.json
+ECMpy/_cache/sabio_rk_total/2_3_1_191.json
+ECMpy/_cache/sabio_rk_total/2_3_1_241.json
+ECMpy/_cache/sabio_rk_total/2_3_1_30.json
+ECMpy/_cache/sabio_rk_total/2_3_1_38.json
+ECMpy/_cache/sabio_rk_total/2_3_1_39.json
+ECMpy/_cache/sabio_rk_total/2_3_1_4.json
+ECMpy/_cache/sabio_rk_total/2_3_1_41.json
+ECMpy/_cache/sabio_rk_total/2_3_1_46.json
+ECMpy/_cache/sabio_rk_total/2_3_1_47.json
+ECMpy/_cache/sabio_rk_total/2_3_1_57.json
+ECMpy/_cache/sabio_rk_total/2_3_1_6.json
+ECMpy/_cache/sabio_rk_total/2_3_1_74.json
+ECMpy/_cache/sabio_rk_total/2_3_1_8.json
+ECMpy/_cache/sabio_rk_total/2_3_1_85.json
+ECMpy/_cache/sabio_rk_total/2_3_1_87.json
+ECMpy/_cache/sabio_rk_total/2_3_1_9.json
+ECMpy/_cache/sabio_rk_total/2_3_2_15.json
+ECMpy/_cache/sabio_rk_total/2_3_3_1.json
+ECMpy/_cache/sabio_rk_total/2_3_3_13.json
+ECMpy/_cache/sabio_rk_total/2_3_3_16.json
+ECMpy/_cache/sabio_rk_total/2_3_3_5.json
+ECMpy/_cache/sabio_rk_total/2_4_1_1.json
+ECMpy/_cache/sabio_rk_total/2_4_1_13.json
+ECMpy/_cache/sabio_rk_total/2_4_1_17.json
+ECMpy/_cache/sabio_rk_total/2_4_1_19.json
+ECMpy/_cache/sabio_rk_total/2_4_1_227.json
+ECMpy/_cache/sabio_rk_total/2_4_1_25.json
+ECMpy/_cache/sabio_rk_total/2_4_1_4.json
+ECMpy/_cache/sabio_rk_total/2_4_2_1.json
+ECMpy/_cache/sabio_rk_total/2_4_2_10.json
+ECMpy/_cache/sabio_rk_total/2_4_2_12.json
+ECMpy/_cache/sabio_rk_total/2_4_2_18.json
+ECMpy/_cache/sabio_rk_total/2_4_2_29.json
+ECMpy/_cache/sabio_rk_total/2_4_2_8.json
+ECMpy/_cache/sabio_rk_total/2_4_2_9.json
+ECMpy/_cache/sabio_rk_total/2_4_99_1.json
+ECMpy/_cache/sabio_rk_total/2_5_1_10.json
+ECMpy/_cache/sabio_rk_total/2_5_1_15.json
+ECMpy/_cache/sabio_rk_total/2_5_1_16.json
+ECMpy/_cache/sabio_rk_total/2_5_1_17.json
+ECMpy/_cache/sabio_rk_total/2_5_1_19.json
+ECMpy/_cache/sabio_rk_total/2_5_1_29.json
+ECMpy/_cache/sabio_rk_total/2_5_1_31.json
+ECMpy/_cache/sabio_rk_total/2_5_1_47.json
+ECMpy/_cache/sabio_rk_total/2_5_1_48.json
+ECMpy/_cache/sabio_rk_total/2_5_1_54.json
+ECMpy/_cache/sabio_rk_total/2_5_1_55.json
+ECMpy/_cache/sabio_rk_total/2_5_1_58.json
+ECMpy/_cache/sabio_rk_total/2_5_1_6.json
+ECMpy/_cache/sabio_rk_total/2_5_1_7.json
+ECMpy/_cache/sabio_rk_total/2_5_1_9.json
+ECMpy/_cache/sabio_rk_total/2_5_1_90.json
+ECMpy/_cache/sabio_rk_total/2_6_1_1.json
+ECMpy/_cache/sabio_rk_total/2_6_1_11.json
+ECMpy/_cache/sabio_rk_total/2_6_1_16.json
+ECMpy/_cache/sabio_rk_total/2_6_1_19.json
+ECMpy/_cache/sabio_rk_total/2_6_1_2.json
+ECMpy/_cache/sabio_rk_total/2_6_1_39.json
+ECMpy/_cache/sabio_rk_total/2_6_1_42.json
+ECMpy/_cache/sabio_rk_total/2_6_1_5.json
+ECMpy/_cache/sabio_rk_total/2_6_1_52.json
+ECMpy/_cache/sabio_rk_total/2_6_1_62.json
+ECMpy/_cache/sabio_rk_total/2_6_1_85.json
+ECMpy/_cache/sabio_rk_total/2_6_1_9.json
+ECMpy/_cache/sabio_rk_total/2_7_10_2.json
+ECMpy/_cache/sabio_rk_total/2_7_11_1.json
+ECMpy/_cache/sabio_rk_total/2_7_11_10.json
+ECMpy/_cache/sabio_rk_total/2_7_11_11.json
+ECMpy/_cache/sabio_rk_total/2_7_11_4.json
+ECMpy/_cache/sabio_rk_total/2_7_13_3.json
+ECMpy/_cache/sabio_rk_total/2_7_1_1.json
+ECMpy/_cache/sabio_rk_total/2_7_1_107.json
+ECMpy/_cache/sabio_rk_total/2_7_1_11.json
+ECMpy/_cache/sabio_rk_total/2_7_1_121.json
+ECMpy/_cache/sabio_rk_total/2_7_1_13.json
+ECMpy/_cache/sabio_rk_total/2_7_1_145.json
+ECMpy/_cache/sabio_rk_total/2_7_1_165.json
+ECMpy/_cache/sabio_rk_total/2_7_1_17.json
+ECMpy/_cache/sabio_rk_total/2_7_1_2.json
+ECMpy/_cache/sabio_rk_total/2_7_1_20.json
+ECMpy/_cache/sabio_rk_total/2_7_1_21.json
+ECMpy/_cache/sabio_rk_total/2_7_1_23.json
+ECMpy/_cache/sabio_rk_total/2_7_1_24.json
+ECMpy/_cache/sabio_rk_total/2_7_1_26.json
+ECMpy/_cache/sabio_rk_total/2_7_1_29.json
+ECMpy/_cache/sabio_rk_total/2_7_1_3.json
+ECMpy/_cache/sabio_rk_total/2_7_1_31.json
+ECMpy/_cache/sabio_rk_total/2_7_1_33.json
+ECMpy/_cache/sabio_rk_total/2_7_1_35.json
+ECMpy/_cache/sabio_rk_total/2_7_1_39.json
+ECMpy/_cache/sabio_rk_total/2_7_1_4.json
+ECMpy/_cache/sabio_rk_total/2_7_1_40.json
+ECMpy/_cache/sabio_rk_total/2_7_1_49.json
+ECMpy/_cache/sabio_rk_total/2_7_1_55.json
+ECMpy/_cache/sabio_rk_total/2_7_1_59.json
+ECMpy/_cache/sabio_rk_total/2_7_1_6.json
+ECMpy/_cache/sabio_rk_total/2_7_1_60.json
+ECMpy/_cache/sabio_rk_total/2_7_1_63.json
+ECMpy/_cache/sabio_rk_total/2_7_1_71.json
+ECMpy/_cache/sabio_rk_total/2_7_1_74.json
+ECMpy/_cache/sabio_rk_total/2_7_2_1.json
+ECMpy/_cache/sabio_rk_total/2_7_2_15.json
+ECMpy/_cache/sabio_rk_total/2_7_2_2.json
+ECMpy/_cache/sabio_rk_total/2_7_2_3.json
+ECMpy/_cache/sabio_rk_total/2_7_2_4.json
+ECMpy/_cache/sabio_rk_total/2_7_3_13.json
+ECMpy/_cache/sabio_rk_total/2_7_3_2.json
+ECMpy/_cache/sabio_rk_total/2_7_3_3.json
+ECMpy/_cache/sabio_rk_total/2_7_3_9.json
+ECMpy/_cache/sabio_rk_total/2_7_4_1.json
+ECMpy/_cache/sabio_rk_total/2_7_4_14.json
+ECMpy/_cache/sabio_rk_total/2_7_4_22.json
+ECMpy/_cache/sabio_rk_total/2_7_4_25.json
+ECMpy/_cache/sabio_rk_total/2_7_4_3.json
+ECMpy/_cache/sabio_rk_total/2_7_4_6.json
+ECMpy/_cache/sabio_rk_total/2_7_4_8.json
+ECMpy/_cache/sabio_rk_total/2_7_4_9.json
+ECMpy/_cache/sabio_rk_total/2_7_6_5.json
+ECMpy/_cache/sabio_rk_total/2_7_7_1.json
+ECMpy/_cache/sabio_rk_total/2_7_7_12.json
+ECMpy/_cache/sabio_rk_total/2_7_7_18.json
+ECMpy/_cache/sabio_rk_total/2_7_7_2.json
+ECMpy/_cache/sabio_rk_total/2_7_7_23.json
+ECMpy/_cache/sabio_rk_total/2_7_7_24.json
+ECMpy/_cache/sabio_rk_total/2_7_7_27.json
+ECMpy/_cache/sabio_rk_total/2_7_7_3.json
+ECMpy/_cache/sabio_rk_total/2_7_7_38.json
+ECMpy/_cache/sabio_rk_total/2_7_7_4.json
+ECMpy/_cache/sabio_rk_total/2_7_7_48.json
+ECMpy/_cache/sabio_rk_total/2_7_7_59.json
+ECMpy/_cache/sabio_rk_total/2_7_7_60.json
+ECMpy/_cache/sabio_rk_total/2_7_7_62.json
+ECMpy/_cache/sabio_rk_total/2_7_7_69.json
+ECMpy/_cache/sabio_rk_total/2_7_7_7.json
+ECMpy/_cache/sabio_rk_total/2_7_8_12.json
+ECMpy/_cache/sabio_rk_total/2_7_8_13.json
+ECMpy/_cache/sabio_rk_total/2_7_8_7.json
+ECMpy/_cache/sabio_rk_total/2_7_9_1.json
+ECMpy/_cache/sabio_rk_total/2_7_9_2.json
+ECMpy/_cache/sabio_rk_total/2_8_1_1.json
+ECMpy/_cache/sabio_rk_total/2_8_1_2.json
+ECMpy/_cache/sabio_rk_total/2_8_1_6.json
+ECMpy/_cache/sabio_rk_total/2_8_2_2.json
+ECMpy/_cache/sabio_rk_total/2_8_2_21.json
+ECMpy/_cache/sabio_rk_total/2_8_2_8.json
+ECMpy/_cache/sabio_rk_total/2_8_3_6.json
+ECMpy/_cache/sabio_rk_total/2_8_4_2.json
+ECMpy/_cache/sabio_rk_total/2_9_1_3.json
+ECMpy/_cache/sabio_rk_total/3_1_11_2.json
+ECMpy/_cache/sabio_rk_total/3_1_1_102.json
+ECMpy/_cache/sabio_rk_total/3_1_1_14.json
+ECMpy/_cache/sabio_rk_total/3_1_1_2.json
+ECMpy/_cache/sabio_rk_total/3_1_1_31.json
+ECMpy/_cache/sabio_rk_total/3_1_1_73.json
+ECMpy/_cache/sabio_rk_total/3_1_26_5.json
+ECMpy/_cache/sabio_rk_total/3_1_2_12.json
+ECMpy/_cache/sabio_rk_total/3_1_2_2.json
+ECMpy/_cache/sabio_rk_total/3_1_2_4.json
+ECMpy/_cache/sabio_rk_total/3_1_2_6.json
+ECMpy/_cache/sabio_rk_total/3_1_3_1.json
+ECMpy/_cache/sabio_rk_total/3_1_3_104.json
+ECMpy/_cache/sabio_rk_total/3_1_3_11.json
+ECMpy/_cache/sabio_rk_total/3_1_3_18.json
+ECMpy/_cache/sabio_rk_total/3_1_3_2.json
+ECMpy/_cache/sabio_rk_total/3_1_3_25.json
+ECMpy/_cache/sabio_rk_total/3_1_3_3.json
+ECMpy/_cache/sabio_rk_total/3_1_3_45.json
+ECMpy/_cache/sabio_rk_total/3_1_3_46.json
+ECMpy/_cache/sabio_rk_total/3_1_3_5.json
+ECMpy/_cache/sabio_rk_total/3_1_3_6.json
+ECMpy/_cache/sabio_rk_total/3_1_3_7.json
+ECMpy/_cache/sabio_rk_total/3_1_3_74.json
+ECMpy/_cache/sabio_rk_total/3_1_3_89.json
+ECMpy/_cache/sabio_rk_total/3_1_3_91.json
+ECMpy/_cache/sabio_rk_total/3_1_3_97.json
+ECMpy/_cache/sabio_rk_total/3_1_4_12.json
+ECMpy/_cache/sabio_rk_total/3_1_4_16.json
+ECMpy/_cache/sabio_rk_total/3_1_4_17.json
+ECMpy/_cache/sabio_rk_total/3_1_4_35.json
+ECMpy/_cache/sabio_rk_total/3_1_4_4.json
+ECMpy/_cache/sabio_rk_total/3_1_5_1.json
+ECMpy/_cache/sabio_rk_total/3_1_7_2.json
+ECMpy/_cache/sabio_rk_total/3_1_8_2.json
+ECMpy/_cache/sabio_rk_total/3_2_1_10.json
+ECMpy/_cache/sabio_rk_total/3_2_1_122.json
+ECMpy/_cache/sabio_rk_total/3_2_1_14.json
+ECMpy/_cache/sabio_rk_total/3_2_1_2.json
+ECMpy/_cache/sabio_rk_total/3_2_1_20.json
+ECMpy/_cache/sabio_rk_total/3_2_1_22.json
+ECMpy/_cache/sabio_rk_total/3_2_1_23.json
+ECMpy/_cache/sabio_rk_total/3_2_1_28.json
+ECMpy/_cache/sabio_rk_total/3_2_1_3.json
+ECMpy/_cache/sabio_rk_total/3_2_1_4.json
+ECMpy/_cache/sabio_rk_total/3_2_1_74.json
+ECMpy/_cache/sabio_rk_total/3_2_1_8.json
+ECMpy/_cache/sabio_rk_total/3_2_1_86.json
+ECMpy/_cache/sabio_rk_total/3_2_2_1.json
+ECMpy/_cache/sabio_rk_total/3_2_2_9.json
+ECMpy/_cache/sabio_rk_total/3_3_2_1.json
+ECMpy/_cache/sabio_rk_total/3_4_11_1.json
+ECMpy/_cache/sabio_rk_total/3_4_11_14.json
+ECMpy/_cache/sabio_rk_total/3_4_11_2.json
+ECMpy/_cache/sabio_rk_total/3_4_11_23.json
+ECMpy/_cache/sabio_rk_total/3_4_13_18.json
+ECMpy/_cache/sabio_rk_total/3_4_16_4.json
+ECMpy/_cache/sabio_rk_total/3_4_17_22.json
+ECMpy/_cache/sabio_rk_total/3_4_21_22.json
+ECMpy/_cache/sabio_rk_total/3_5_1_1.json
+ECMpy/_cache/sabio_rk_total/3_5_1_108.json
+ECMpy/_cache/sabio_rk_total/3_5_1_11.json
+ECMpy/_cache/sabio_rk_total/3_5_1_116.json
+ECMpy/_cache/sabio_rk_total/3_5_1_16.json
+ECMpy/_cache/sabio_rk_total/3_5_1_17.json
+ECMpy/_cache/sabio_rk_total/3_5_1_18.json
+ECMpy/_cache/sabio_rk_total/3_5_1_2.json
+ECMpy/_cache/sabio_rk_total/3_5_1_4.json
+ECMpy/_cache/sabio_rk_total/3_5_1_5.json
+ECMpy/_cache/sabio_rk_total/3_5_1_78.json
+ECMpy/_cache/sabio_rk_total/3_5_2_17.json
+ECMpy/_cache/sabio_rk_total/3_5_2_3.json
+ECMpy/_cache/sabio_rk_total/3_5_2_5.json
+ECMpy/_cache/sabio_rk_total/3_5_3_1.json
+ECMpy/_cache/sabio_rk_total/3_5_3_13.json
+ECMpy/_cache/sabio_rk_total/3_5_3_18.json
+ECMpy/_cache/sabio_rk_total/3_5_3_4.json
+ECMpy/_cache/sabio_rk_total/3_5_4_10.json
+ECMpy/_cache/sabio_rk_total/3_5_4_11.json
+ECMpy/_cache/sabio_rk_total/3_5_4_16.json
+ECMpy/_cache/sabio_rk_total/3_5_4_2.json
+ECMpy/_cache/sabio_rk_total/3_5_4_26.json
+ECMpy/_cache/sabio_rk_total/3_5_4_3.json
+ECMpy/_cache/sabio_rk_total/3_5_4_4.json
+ECMpy/_cache/sabio_rk_total/3_5_4_9.json
+ECMpy/_cache/sabio_rk_total/3_5_99_6.json
+ECMpy/_cache/sabio_rk_total/3_6_1_1.json
+ECMpy/_cache/sabio_rk_total/3_6_1_11.json
+ECMpy/_cache/sabio_rk_total/3_6_1_13.json
+ECMpy/_cache/sabio_rk_total/3_6_1_15.json
+ECMpy/_cache/sabio_rk_total/3_6_1_16.json
+ECMpy/_cache/sabio_rk_total/3_6_1_17.json
+ECMpy/_cache/sabio_rk_total/3_6_1_22.json
+ECMpy/_cache/sabio_rk_total/3_6_1_23.json
+ECMpy/_cache/sabio_rk_total/3_6_1_28.json
+ECMpy/_cache/sabio_rk_total/3_6_1_29.json
+ECMpy/_cache/sabio_rk_total/3_6_1_3.json
+ECMpy/_cache/sabio_rk_total/3_6_1_5.json
+ECMpy/_cache/sabio_rk_total/3_6_1_52.json
+ECMpy/_cache/sabio_rk_total/3_6_1_53.json
+ECMpy/_cache/sabio_rk_total/3_6_1_55.json
+ECMpy/_cache/sabio_rk_total/3_6_1_65.json
+ECMpy/_cache/sabio_rk_total/3_6_1_7.json
+ECMpy/_cache/sabio_rk_total/3_6_1_8.json
+ECMpy/_cache/sabio_rk_total/3_6_1_9.json
+ECMpy/_cache/sabio_rk_total/3_6_2_1.json
+ECMpy/_cache/sabio_rk_total/3_6_4_10.json
+ECMpy/_cache/sabio_rk_total/3_6_4_13.json
+ECMpy/_cache/sabio_rk_total/3_6_5_1.json
+ECMpy/_cache/sabio_rk_total/3_6_5_2.json
+ECMpy/_cache/sabio_rk_total/3_6_5_4.json
+ECMpy/_cache/sabio_rk_total/4_1_1_1.json
+ECMpy/_cache/sabio_rk_total/4_1_1_11.json
+ECMpy/_cache/sabio_rk_total/4_1_1_15.json
+ECMpy/_cache/sabio_rk_total/4_1_1_17.json
+ECMpy/_cache/sabio_rk_total/4_1_1_18.json
+ECMpy/_cache/sabio_rk_total/4_1_1_19.json
+ECMpy/_cache/sabio_rk_total/4_1_1_2.json
+ECMpy/_cache/sabio_rk_total/4_1_1_20.json
+ECMpy/_cache/sabio_rk_total/4_1_1_22.json
+ECMpy/_cache/sabio_rk_total/4_1_1_23.json
+ECMpy/_cache/sabio_rk_total/4_1_1_28.json
+ECMpy/_cache/sabio_rk_total/4_1_1_31.json
+ECMpy/_cache/sabio_rk_total/4_1_1_36.json
+ECMpy/_cache/sabio_rk_total/4_1_1_48.json
+ECMpy/_cache/sabio_rk_total/4_1_1_49.json
+ECMpy/_cache/sabio_rk_total/4_1_1_50.json
+ECMpy/_cache/sabio_rk_total/4_1_1_8.json
+ECMpy/_cache/sabio_rk_total/4_1_1_85.json
+ECMpy/_cache/sabio_rk_total/4_1_1_9.json
+ECMpy/_cache/sabio_rk_total/4_1_2_13.json
+ECMpy/_cache/sabio_rk_total/4_1_2_17.json
+ECMpy/_cache/sabio_rk_total/4_1_2_20.json
+ECMpy/_cache/sabio_rk_total/4_1_2_25.json
+ECMpy/_cache/sabio_rk_total/4_1_2_38.json
+ECMpy/_cache/sabio_rk_total/4_1_2_4.json
+ECMpy/_cache/sabio_rk_total/4_1_2_40.json
+ECMpy/_cache/sabio_rk_total/4_1_2_47.json
+ECMpy/_cache/sabio_rk_total/4_1_2_55.json
+ECMpy/_cache/sabio_rk_total/4_1_2_8.json
+ECMpy/_cache/sabio_rk_total/4_1_3_1.json
+ECMpy/_cache/sabio_rk_total/4_1_3_27.json
+ECMpy/_cache/sabio_rk_total/4_1_3_3.json
+ECMpy/_cache/sabio_rk_total/4_1_3_30.json
+ECMpy/_cache/sabio_rk_total/4_1_3_39.json
+ECMpy/_cache/sabio_rk_total/4_1_3_4.json
+ECMpy/_cache/sabio_rk_total/4_1_3_40.json
+ECMpy/_cache/sabio_rk_total/4_1_99_1.json
+ECMpy/_cache/sabio_rk_total/4_1_99_3.json
+ECMpy/_cache/sabio_rk_total/4_2_1_1.json
+ECMpy/_cache/sabio_rk_total/4_2_1_10.json
+ECMpy/_cache/sabio_rk_total/4_2_1_11.json
+ECMpy/_cache/sabio_rk_total/4_2_1_113.json
+ECMpy/_cache/sabio_rk_total/4_2_1_122.json
+ECMpy/_cache/sabio_rk_total/4_2_1_17.json
+ECMpy/_cache/sabio_rk_total/4_2_1_2.json
+ECMpy/_cache/sabio_rk_total/4_2_1_20.json
+ECMpy/_cache/sabio_rk_total/4_2_1_22.json
+ECMpy/_cache/sabio_rk_total/4_2_1_24.json
+ECMpy/_cache/sabio_rk_total/4_2_1_33.json
+ECMpy/_cache/sabio_rk_total/4_2_1_40.json
+ECMpy/_cache/sabio_rk_total/4_2_1_42.json
+ECMpy/_cache/sabio_rk_total/4_2_1_46.json
+ECMpy/_cache/sabio_rk_total/4_2_1_51.json
+ECMpy/_cache/sabio_rk_total/4_2_1_59.json
+ECMpy/_cache/sabio_rk_total/4_2_1_75.json
+ECMpy/_cache/sabio_rk_total/4_2_1_80.json
+ECMpy/_cache/sabio_rk_total/4_2_1_81.json
+ECMpy/_cache/sabio_rk_total/4_2_1_91.json
+ECMpy/_cache/sabio_rk_total/4_2_1_99.json
+ECMpy/_cache/sabio_rk_total/4_2_2_1.json
+ECMpy/_cache/sabio_rk_total/4_2_2_19.json
+ECMpy/_cache/sabio_rk_total/4_2_2_7.json
+ECMpy/_cache/sabio_rk_total/4_2_3_1.json
+ECMpy/_cache/sabio_rk_total/4_2_3_12.json
+ECMpy/_cache/sabio_rk_total/4_2_3_22.json
+ECMpy/_cache/sabio_rk_total/4_2_3_3.json
+ECMpy/_cache/sabio_rk_total/4_2_3_4.json
+ECMpy/_cache/sabio_rk_total/4_2_3_74.json
+ECMpy/_cache/sabio_rk_total/4_2_3_9.json
+ECMpy/_cache/sabio_rk_total/4_2_99_20.json
+ECMpy/_cache/sabio_rk_total/4_3_1_1.json
+ECMpy/_cache/sabio_rk_total/4_3_1_15.json
+ECMpy/_cache/sabio_rk_total/4_3_1_17.json
+ECMpy/_cache/sabio_rk_total/4_3_1_18.json
+ECMpy/_cache/sabio_rk_total/4_3_1_19.json
+ECMpy/_cache/sabio_rk_total/4_3_2_1.json
+ECMpy/_cache/sabio_rk_total/4_3_2_2.json
+ECMpy/_cache/sabio_rk_total/4_3_2_3.json
+ECMpy/_cache/sabio_rk_total/4_3_2_7.json
+ECMpy/_cache/sabio_rk_total/4_3_3_6.json
+ECMpy/_cache/sabio_rk_total/4_3_3_7.json
+ECMpy/_cache/sabio_rk_total/4_4_1_1.json
+ECMpy/_cache/sabio_rk_total/4_4_1_21.json
+ECMpy/_cache/sabio_rk_total/4_4_1_5.json
+ECMpy/_cache/sabio_rk_total/4_6_1_1.json
+ECMpy/_cache/sabio_rk_total/4_6_1_12.json
+ECMpy/_cache/sabio_rk_total/5_1_1_1.json
+ECMpy/_cache/sabio_rk_total/5_1_1_20.json
+ECMpy/_cache/sabio_rk_total/5_1_1_3.json
+ECMpy/_cache/sabio_rk_total/5_1_1_7.json
+ECMpy/_cache/sabio_rk_total/5_1_3_1.json
+ECMpy/_cache/sabio_rk_total/5_1_3_13.json
+ECMpy/_cache/sabio_rk_total/5_1_3_14.json
+ECMpy/_cache/sabio_rk_total/5_1_3_2.json
+ECMpy/_cache/sabio_rk_total/5_1_3_3.json
+ECMpy/_cache/sabio_rk_total/5_1_3_4.json
+ECMpy/_cache/sabio_rk_total/5_3_1_1.json
+ECMpy/_cache/sabio_rk_total/5_3_1_13.json
+ECMpy/_cache/sabio_rk_total/5_3_1_16.json
+ECMpy/_cache/sabio_rk_total/5_3_1_24.json
+ECMpy/_cache/sabio_rk_total/5_3_1_28.json
+ECMpy/_cache/sabio_rk_total/5_3_1_4.json
+ECMpy/_cache/sabio_rk_total/5_3_1_5.json
+ECMpy/_cache/sabio_rk_total/5_3_1_6.json
+ECMpy/_cache/sabio_rk_total/5_3_1_8.json
+ECMpy/_cache/sabio_rk_total/5_3_1_9.json
+ECMpy/_cache/sabio_rk_total/5_3_3_2.json
+ECMpy/_cache/sabio_rk_total/5_3_3_7.json
+ECMpy/_cache/sabio_rk_total/5_3_3_8.json
+ECMpy/_cache/sabio_rk_total/5_3_99_3.json
+ECMpy/_cache/sabio_rk_total/5_4_2_10.json
+ECMpy/_cache/sabio_rk_total/5_4_2_11.json
+ECMpy/_cache/sabio_rk_total/5_4_2_12.json
+ECMpy/_cache/sabio_rk_total/5_4_2_2.json
+ECMpy/_cache/sabio_rk_total/5_4_2_8.json
+ECMpy/_cache/sabio_rk_total/5_4_4_2.json
+ECMpy/_cache/sabio_rk_total/5_4_99_1.json
+ECMpy/_cache/sabio_rk_total/5_4_99_18.json
+ECMpy/_cache/sabio_rk_total/5_4_99_2.json
+ECMpy/_cache/sabio_rk_total/5_4_99_5.json
+ECMpy/_cache/sabio_rk_total/6_1_1_17.json
+ECMpy/_cache/sabio_rk_total/6_1_1_24.json
+ECMpy/_cache/sabio_rk_total/6_1_1_26.json
+ECMpy/_cache/sabio_rk_total/6_1_1_5.json
+ECMpy/_cache/sabio_rk_total/6_2_1_1.json
+ECMpy/_cache/sabio_rk_total/6_2_1_13.json
+ECMpy/_cache/sabio_rk_total/6_2_1_30.json
+ECMpy/_cache/sabio_rk_total/6_3_1_13.json
+ECMpy/_cache/sabio_rk_total/6_3_1_2.json
+ECMpy/_cache/sabio_rk_total/6_3_1_8.json
+ECMpy/_cache/sabio_rk_total/6_3_1_9.json
+ECMpy/_cache/sabio_rk_total/6_3_2_1.json
+ECMpy/_cache/sabio_rk_total/6_3_2_10.json
+ECMpy/_cache/sabio_rk_total/6_3_2_12.json
+ECMpy/_cache/sabio_rk_total/6_3_2_2.json
+ECMpy/_cache/sabio_rk_total/6_3_2_3.json
+ECMpy/_cache/sabio_rk_total/6_3_2_4.json
+ECMpy/_cache/sabio_rk_total/6_3_2_5.json
+ECMpy/_cache/sabio_rk_total/6_3_2_8.json
+ECMpy/_cache/sabio_rk_total/6_3_2_9.json
+ECMpy/_cache/sabio_rk_total/6_3_3_2.json
+ECMpy/_cache/sabio_rk_total/6_3_3_3.json
+ECMpy/_cache/sabio_rk_total/6_3_4_18.json
+ECMpy/_cache/sabio_rk_total/6_3_4_2.json
+ECMpy/_cache/sabio_rk_total/6_3_4_21.json
+ECMpy/_cache/sabio_rk_total/6_3_4_3.json
+ECMpy/_cache/sabio_rk_total/6_3_4_4.json
+ECMpy/_cache/sabio_rk_total/6_3_4_6.json
+ECMpy/_cache/sabio_rk_total/6_3_5_5.json
+ECMpy/_cache/sabio_rk_total/6_4_1_2.json
+ECMpy/analysis/.DS_Store
+ECMpy/analysis/get_kcat_mw_by_AutoPACMEN/reaction_kcat_MW.csv
+ECMpy/data/.DS_Store
+ECMpy/data/EC_kcat_max.json
+ECMpy/data/all--radius2--ngram3--dim20--layer_gnn3--window11--layer_cnn3--layer_output3--lr1e-3--lr_decay0.5--decay_interval10--weight_decay1e-6--iteration50
+ECMpy/data/atom_dict.pickle
+ECMpy/data/bigg_models_metabolites.txt
+ECMpy/data/bond_dict.pickle
+ECMpy/data/edge_dict.pickle
+ECMpy/data/fingerprint_dict.pickle
+ECMpy/data/gene_abundance.csv
+ECMpy/data/iBsu1147R.xml
+ECMpy/data/iCW773R.xml
+ECMpy/data/iML1515_new.xml
+ECMpy/data/reaction_kcat_MW_template.csv
+ECMpy/data/sequence_dict.pickle
+ECMpy/model/iML1515_irr_enz_constraint_adj.json
+ECMpy/script/.DS_Store
+ECMpy/script/00.Model_preview.ipynb
+ECMpy/script/01.get_reactiion_kcat_using_DLKcat.ipynb
+ECMpy/script/01.get_reaction_kcat_using_AutoPACMEN.ipynb
+ECMpy/script/02.get_ecModel_using_ECMpy.ipynb
+ECMpy/script/03.ecModel_calibration.ipynb
+ECMpy/script/04.ecModel_analysis.ipynb
+ECMpy/script/05.ecModel_ME.ipynb
+ECMpy/script/06.One-click_modeling.ipynb

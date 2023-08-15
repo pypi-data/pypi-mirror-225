@@ -1,0 +1,9 @@
+include ECMpy/*
+include ECMpy/*/*
+recursive-include ECMpy/_cache *
+recursive-include ECMpy/analysis *
+recursive-include ECMpy/data *
+recursive-include ECMpy/model *
+recursive-include ECMpy/script *
+recursive-include ECMpy/.ipynb_checkpoints *
+recursive-include ECMpy/__pycache__ *
