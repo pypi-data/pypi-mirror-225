@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: gammarer.aws-frontend-web-app-deploy-stack
+Version: 0.5.23
+Summary: This is an AWS CDK Construct to make deploying a Frontend Web App (SPA) deploy to S3 behind CloudFront.
+Home-page: https://github.com/yicr/aws-frontend-web-app-deploy-stack.git
+Author: yicr<yicr@users.noreply.github.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/yicr/aws-frontend-web-app-deploy-stack.git
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved
+Requires-Python: ~=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# AWS Frontend Web App Deploy Stack
+
+This is an AWS CDK Construct to make deploying a Frontend Web App (SPA) deploy to S3 behind CloudFront.
+
+## Install
+
+### TypeScript
+
+```shell
+npm install @gammarer/aws-frontend-web-app-deploy-stack
+# or
+yarn add @gammarer/aws-frontend-web-app-deploy-stack
+```
+
+### Python
+
+```shell
+pip install gammarer.aws-frontend-web-app-deploy-stack
+```
+
+## Example
+
+### TypeScript
+
+```shell
+npm install @gammarer/aws-frontend-web-app-deploy-stack
+```
+
+```python
+import { FrontendWebAppDeployStack } from '@gammarer/aws-frontend-web-app-deploy-stack';
+
+new FrontendWebAppDeployStack(app, 'FrontendWebAppDeployStack', {
+  env: { account: '012345678901', region: 'us-east-1' },
+  domainName: 'example.com',
+  hostedZoneId: 'Z0000000000000000000Q',
+  originBucketName: 'frontend-web-app-example-origin-bucket', // new create in this stack
+  deploySourceAssetPath: 'website/',
+  logBucketArn: 'arn:aws:s3:::frontend-web-app-example-access-log-bucket', // already created
+});
+```
+
+## License
+
+This project is licensed under the Apache-2.0 License.
