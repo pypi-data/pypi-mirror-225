@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: auto_rxn
+Version: 2023.8.2
+Project-URL: Source, https://github.com/uw-madison-chem-shops/auto_rxn
+Project-URL: Issues, https://github.com/uw-madison-chem-shops/auto_rxn/issues
+Project-URL: Home Page, https://github.com/uw-madison-chem-shops/auto_rxn
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9
+Requires-Dist: bluesky
+Requires-Dist: click
+Requires-Dist: happi
+Requires-Dist: pandas
+Requires-Dist: platformdirs
+Requires-Dist: suitcase-csv
+Requires-Dist: tomli
+Requires-Dist: tomli-w
+Provides-Extra: dev
+Requires-Dist: black; extra == 'dev'
+Requires-Dist: pre-commit; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# auto_rxn
+
+[![PyPI](https://img.shields.io/pypi/v/auto_rxn)](https://pypi.org/project/auto_rxn)
+[![Conda](https://img.shields.io/conda/vn/conda-forge/auto_rxn)](https://anaconda.org/conda-forge/auto_rxn)
+[![log](https://img.shields.io/badge/change-log-informational)](https://github.com/uw-madison-chem-shops/auto_rxn/blob/main/CHANGELOG.md#changelog)
+
+Python package for running chemical reactions as defined by "recipe" files.
+
+Credit for original design of this interface goes to Unni Kurumbail of the Herman's Group at University of Wisconsin-Madison Chemistry Department.
+https://github.com/ukurumbail/auto_rxn
+
+## installation
+
+TODO
+
+## usage
+
+`auto_rxn` is primarily a command-line Python application.
+Once hardware is configured, reactions can be run by passing a valid recipe_file on the command line.
+
+```bash
+$ auto_rxn run <recipe_file> --rxn_name "my cool reaction"
+```
+
+The `rxn_name` parameter is optional.
+
+## integrating hardware
+
+`auto_rxn` has built-in hardware support for a few models of hardware, under the package `auto_rxn.hardware`.
+Beyond this, `auto_rxn` supports the Bluesky Hardware protocol standard.
+
+## recipe files
+
+must have metadata:
+- `Control Point ID` (e.g. auto_rxn:FakeMFC)
+
+optional metadata
+- control point name
