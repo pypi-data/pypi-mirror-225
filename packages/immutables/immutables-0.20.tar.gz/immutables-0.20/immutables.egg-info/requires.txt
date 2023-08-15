@@ -1,0 +1,9 @@
+
+[:python_version < "3.8"]
+typing-extensions>=3.7.4.3
+
+[test]
+flake8~=5.0
+pycodestyle~=2.9
+mypy~=1.4
+pytest~=7.4
