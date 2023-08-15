@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+from neuronautics.analysis.type.bar_analysis import BarAnalysis
+
+
+class {{ class_name }}(BarAnalysis):
+    def get_input_params(self):
+        # Define your method logic here
+        return [
+                    {'name': 'vertical', 'default': True, 'type': 'bool'},
+                ]
+
+    def run(self, spikes, *args, **kwargs):
+        # Define your method logic here
+        data = {
+            'label': ['Category A', 'Category B', 'Category C'],
+            'value1': [10, 15, 20],
+            'value2': [5, 8, 12],
+            'value3': [8, 10, 15]
+        }
+        df = pd.DataFrame(data)
+        return df
+
+    def plot(self, *args, **kwargs):
+        return super().plot(title='{{ title }}', *args, **kwargs)
+
+if __name__ == "__main__":
+    # Sample dataframe
+    sample_data = pd.DataFrame({
+        'column1': [1, 2, 3],
+        'column2': ['A', 'B', 'C']
+    })
+
+    # Instantiate your class and call methods
+    instance = {{ class_name }}()
+    instance.get_input_params()
+    instance.run()
