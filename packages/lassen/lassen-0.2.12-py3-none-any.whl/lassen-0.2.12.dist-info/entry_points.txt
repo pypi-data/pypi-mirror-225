@@ -1,0 +1,4 @@
+[console_scripts]
+generate-lassen=lassen.stubs.generate:cli
+migrate=lassen.alembic.cli:main
+
