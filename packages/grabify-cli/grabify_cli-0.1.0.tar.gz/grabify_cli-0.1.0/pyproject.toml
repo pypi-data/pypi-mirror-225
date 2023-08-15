@@ -1,0 +1,47 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "grabify-cli"
+version = "0.1.0"
+description = 'Spotify images grabber'
+readme = "README.md"
+license = "MIT"
+keywords = ["console", "cli", "command-line", "grabify", "spotify", "spotipy"]
+authors = ["woidzero <woidzerov@gmail.com>"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+packages = [
+    { include = "grabify" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+rich = "^13.5.2"
+BeautifulSoup4 = "^4.12.2"
+
+[tool.poetry.urls]
+"Homepage" = "https://github.com/woidzero/grabify#readme"
+"Issues" = "https://github.com/woidzero/grabify/issues"
+"Source" = "https://github.com/woidzero/grabify"
+
+[tool.poetry.scripts]
+grabify = "grabify.__main__:main"
+
+[tool.ruff]
+target-version = "py311"
+unfixable = ["F401"]
