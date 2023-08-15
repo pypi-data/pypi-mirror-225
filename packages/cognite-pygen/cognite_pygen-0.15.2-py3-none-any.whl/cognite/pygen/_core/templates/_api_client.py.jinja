@@ -1,0 +1,71 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+from cognite.client import ClientConfig, CogniteClient
+from cognite.client.credentials import OAuthClientCredentials
+{% for class_ in classes %}
+from {{ top_level_package }}._api.{{ class_.file_name }} import {{ class_.api_class }}API{% endfor %}
+
+{% if not is_single_model %}{% for api_class in api_classes %}
+class {{ api_class.name }}:
+    """
+    {{ api_class.name }}
+
+    Data Model:
+        space: {{ api_class.model.space }}
+        externalId: {{ api_class.model.external_id }}
+        version: {{ api_class.model.version }}
+
+    """
+
+    def __init__(self, client: CogniteClient):{% for class_ in api_class.sub_apis %}
+        self.{{ class_.client_attribute }} = {{ class_.api_class }}API(client){% endfor %}
+
+{% endfor %}{% endif %}
+class {{ client_name }}:
+    """
+    {{ client_name }}
+
+    Generated with:
+        pygen = {{ pygen_version }}
+        cognite-sdk = {{ cognite_sdk_version }}
+        pydantic = {{ pydantic_version }}
+{% if is_single_model %}
+    Data Model:
+        space: {{ data_model.space }}
+        externalId: {{ data_model.external_id }}
+        version: {{ data_model.version }}{% endif %}
+    """
+
+    def __init__(self, config_or_client: CogniteClient | ClientConfig):
+        if isinstance(config_or_client, CogniteClient):
+            client = config_or_client
+        elif isinstance(config_or_client, ClientConfig):
+            client = CogniteClient(config_or_client)
+        else:
+            raise ValueError(f"Expected CogniteClient or ClientConfig, got {type(config_or_client)}"){% if is_single_model %}{% for class_ in classes %}
+        self.{{ class_.client_attribute }} = {{ class_.api_class }}API(client){% endfor %}{% else %}{% for api_class in api_classes %}
+        self.{{ api_class.variable }} = {{ api_class.name }}(client){% endfor %}{% endif %}
+
+    @classmethod
+    def azure_project(
+        cls, tenant_id: str, client_id: str, client_secret: str, cdf_cluster: str, project: str
+    ) -> {{ client_name }}:
+        credentials = OAuthClientCredentials.default_for_azure_ad(tenant_id, client_id, client_secret, cdf_cluster)
+        config = ClientConfig.default(project, cdf_cluster, credentials)
+
+        return cls(config)
+
+    @classmethod
+    def from_toml(cls, file_path: Path | str, section: str | None = "cognite") -> {{ client_name }}:
+        import toml
+
+        toml_content = toml.load(file_path)
+        if section is not None:
+            try:
+                toml_content = toml_content[section]
+            except KeyError:
+                raise ValueError(f"Could not find section '{section}' in {file_path}")
+
+        return cls.azure_project(**toml_content)
