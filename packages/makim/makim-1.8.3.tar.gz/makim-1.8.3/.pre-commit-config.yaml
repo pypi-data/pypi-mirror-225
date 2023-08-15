@@ -1,0 +1,78 @@
+default_stages:
+  - commit
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: end-of-file-fixer
+
+  - repo: local
+    hooks:
+    - id: blue
+      name: blue
+      entry: blue
+      exclude: |
+        (?x)(
+          docs
+        )
+      language: system
+      pass_filenames: true
+      types:
+        - python
+
+    - id: ruff
+      name: ruff
+      entry: ruff check
+      language: system
+      exclude: "docs/"
+      pass_filenames: true
+      types:
+        - python
+
+    - id: isort
+      name: isort
+      entry: isort
+      language: system
+      pass_filenames: true
+      types:
+        - python
+
+    - id: mypy
+      name: mypy
+      entry: mypy
+      language: system
+      files: "makim/"
+      pass_filenames: true
+      types:
+        - python
+
+
+    - id: bandit
+      name: bandit
+      entry: bandit
+      language: system
+      args: ['--configfile', 'pyproject.toml']
+      pass_filenames: true
+      types:
+        - python
+
+    - id: vulture
+      name: vulture
+      entry: vulture
+      language: system
+      files: "makim/"
+      description: Find unused Python code.
+      pass_filenames: true
+      types:
+        - python
+
+    - id: pydocstyle
+      name: pydocstyle
+      entry: pydocstyle
+      exclude: ^$
+      files: "makim/"
+      language: system
+      pass_filenames: true
+      types:
+        - python

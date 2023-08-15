@@ -1,0 +1,139 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        python_version:
+          - '3.8.1'
+          - '3.9'
+          - '3.10'
+        os:
+          - 'ubuntu'
+          - 'macos'
+          # poetry is failing on windows: https://github.com/python-poetry/poetry/issues/1031
+          # - 'windows'
+
+    runs-on: ${{ matrix.os }}-latest
+    timeout-minutes: 20
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    concurrency:
+      group: ci-tests-${{ matrix.os }}-${{ matrix.python_version }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install MacOS extra tools and add extra config
+      if: ${{ matrix.os == 'macos' }}
+      run: |
+        brew install gnu-sed
+        echo 'export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"' >> ~/.bashrc
+        echo 'export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"' >> ~/.bash_profile
+
+    - name: Prepare conda environment (windows)
+      if: ${{ matrix.os == 'windows' }}
+      run: |
+        $env:Path += ";C:\Program Files\Git\usr\bin"
+        sed -i s/python\ 3\.8/python\ ${{ matrix.python_version }}/ conda/dev.yaml
+        cat conda/dev.yaml
+
+    - name: Prepare conda environment
+      if: ${{ matrix.os != 'windows' }}
+      run: |
+        sed -i s/python\ 3\.8\.1/python\ ${{ matrix.python_version }}/ conda/dev.yaml
+        cat conda/dev.yaml
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        miniconda-version: "latest"
+        environment-file: conda/dev.yaml
+        channels: conda-forge,nodefaults
+        activate-environment: makim
+        use-mamba: true
+        miniforge-variant: Mambaforge
+
+    - name: Install dependencies
+      run: |
+        poetry config virtualenvs.create false
+        poetry install
+
+    - name: Run smoke tests using simple makim file
+      run: makim smoke-tests.simple
+
+    - name: Run smoke tests using complex makim file
+      run: makim smoke-tests.complex
+
+    - name: Run smoke tests using makim and containers-sugar
+      if: ${{ matrix.os != 'macos' }}
+      run: makim smoke-tests.containers
+
+    - name: Run smoke tests using unittest makim file
+      run: makim smoke-tests.unittest
+
+    - name: Run smoke test using bash
+      run: makim smoke-tests.bash
+
+    - name: Run smoke test for variable envs
+      run: makim smoke-tests.vars-env
+
+    - name: Run unit tests
+      run: makim tests.unittest
+
+    - name: Semantic Release PR Title Check
+      uses: osl-incubator/semantic-release-pr-title-check@v1.4.1
+      if: success() || failure()
+      with:
+        convention-name: conventionalcommits
+
+    - name: Setup tmate session
+      if: "${{ failure() && (contains(github.event.pull_request.labels.*.name, 'ci:enable-debugging')) }}"
+      uses: mxschmitt/action-tmate@v3
+
+  linter-and-docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    concurrency:
+      group: ci-linter-docs-${{ matrix.os }}-${{ matrix.python_version }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        miniconda-version: "latest"
+        environment-file: conda/dev.yaml
+        channels: conda-forge,nodefaults
+        activate-environment: makim
+        use-mamba: true
+        miniforge-variant: Mambaforge
+
+    - name: Install dependencies
+      run: |
+        poetry config virtualenvs.create false
+        poetry install
+
+    - name: Test documentation generation
+      run: makim docs.build
+
+    - name: Run style checks
+      if: success() || failure()
+      run: |
+        pre-commit install
+        makim tests.linter
+
+    - name: Setup tmate session
+      if: "${{ failure() && (contains(github.event.pull_request.labels.*.name, 'ci:enable-debugging')) }}"
+      uses: mxschmitt/action-tmate@v3
