@@ -1,0 +1,41 @@
+[project]
+name = "SlySheets"
+version = "0.2.2"
+description = "No-boilerplate, async and typed Google Sheets access."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file="LICENSE" }
+authors = [{name="Dunkyl 🔣🔣"}]
+classifiers = [
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    'SlyAPI >= 0.4.3',
+    'pytz'
+]
+[project.optional-dependencies]
+dev = [
+    # testing
+    'pytest',
+    'pytest-asyncio',
+
+    # docs
+    'myst-parser',
+    'furo',
+    'sphinxcontrib-trio',
+    'sphinx-copybutton',
+    'sphinxext-opengraph'
+]
+
+[project.urls]
+Homepage = "https://docs.dunkyl.net/SlySheets-Python/"
+Repository = "https://github.com/dunkyl/SlySheets-Python"
+Documentation = "https://docs.dunkyl.net/SlySheets-Python/"
+"Bug Tracker" = "https://github.com/dunkyl/SlySheets-Python/issues"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["test"] 
