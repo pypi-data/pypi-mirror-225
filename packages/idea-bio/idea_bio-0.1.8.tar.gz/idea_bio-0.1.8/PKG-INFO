@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: idea-bio
+Version: 0.1.8
+Summary: Integrated Differential Expression and Annotation
+Home-page: https://github.com/noamteyssier/idea
+License: MIT
+Keywords: bioinformatics,differential expression,annotation,networks
+Author: Noam Teyssier
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: ggetrs (>=0.1.73,<0.2.0)
+Requires-Dist: matplotlib (>=3.7.2,<4.0.0)
+Requires-Dist: networkx (>=3.1,<4.0)
+Requires-Dist: numpy (>=1.24.0,<2.0.0)
+Requires-Dist: pandas (>=2.0.3,<3.0.0)
+Requires-Dist: pyvis (>=0.3.2,<0.4.0)
+Project-URL: Documentation, https://idea-bio.readthedocs.io/en/latest/usage.html
+Project-URL: Repository, https://github.com/noamteyssier/idea
+Description-Content-Type: text/markdown
+
+# IDEA
+
+## Integrated Differential Expression and Annotation
+
+<p align="center">
+    <img src="https://github.com/noamteyssier/idea/blob/main/assets/logo.png?raw=true" width="50%" />
+</p>
+
+This is a python module to perform GO analysis using [Enrichr](https://maayanlab.cloud/Enrichr/)
+and visualize the [bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph)
+of terms and genes as an interactive force-directed graph.
+
+This uses [`pyvis`](https://pyvis.readthedocs.io/en/latest/tutorial.html) as the
+force-directed graph backend and [`ggetrs`](https://noamteyssier.github.io/ggetrs)
+to perform the gene set enrichment using the [`Enrichr`](https://maayanlab.cloud/Enrichr/) API.
+
+## Installation and Usage
+
+Checkout my [documentation](https://idea-bio.readthedocs.io/en/latest/index.html)
+for information on installation, usage, and recipes for analysis.
+
