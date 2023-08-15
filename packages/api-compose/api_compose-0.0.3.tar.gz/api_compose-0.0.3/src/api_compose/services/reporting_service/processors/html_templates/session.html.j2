@@ -1,0 +1,429 @@
+<html>
+  <head>
+    <title>Session Report - {{ model.id }} </title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pytest-html/3.1.1/style.css" />
+    <style>
+
+       .hidden {
+       display: none;
+       }
+
+       hr {
+          border: none;
+          border-bottom: 1px solid black;
+          margin: 20px 0;
+        }
+
+      .details-button {
+        background-color: #ddd;
+        border: none;
+        color: #333;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .details-button:hover {
+        background-color: #bbb;
+      }
+
+      .details-row {
+        background-color: #f7f7f7;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        table-ayout: fixed;
+      }
+      th {
+        widthL 10px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        text-align: left;
+        word-wrap: break-word;
+      }
+      td {
+        widthL 10px;
+        border: 1px solid #ddd;
+        padding: 8px;
+        word-wrap: break-word;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .point {
+        margin: 0;
+        padding: 0;
+      }
+      .point li {
+        list-style-type: none;
+        margin-bottom: 8px;
+      }
+
+      nav {
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #ddd;
+        padding: 1rem;
+      }
+
+      li {
+        margin-right: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+      }
+
+      a:hover {
+        color: #ff9900;
+      }
+
+      .banner {
+            background-color: #FF7F7F;
+            padding: 20px;
+            color: black;
+            font-size: 20px;
+            text-align: center;
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul style="display: flex; justify-content: center; align-items: center; list-style-type: none; margin: 0; padding: 0;">
+        <li style="margin-right: 1rem;"><a href="#Summary" style="text-decoration: none; color: #333;">Summary</a></li>
+        <li style="margin-right: 1rem;"><a href="#ScenarioGroups" style="text-decoration: none; color: #333;">ScenarioGroups</a></li>
+        <li><a href="#Legend" style="text-decoration: none; color: #333;">Legend</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Summary Section -->
+    <section id="Summary">
+    <div class="page-header">
+      <h1>Session Report Summary - {{ model.id }} </h1>
+    </div>
+    </section>
+    <div class="page-content">
+      <table class="table table-bordered">
+        <tr>
+          <th>Id</th>
+          <td>{{ model.id }}</td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{ model.description }}</td>
+        </tr>
+        <tr>
+          <th>Intermodel sleep seconds</th>
+          <td>{{ model.intersession_sleep_seconds }}</td>
+        </tr>
+        <tr>
+          <th>Backend</th>
+          <td>{{ model.config.backend.value }}</td>
+        </tr>
+        <tr>
+          <th>Report Renderer</th>
+          <td>{{ model.config.report_renderer.value }}</td>
+        </tr>
+      </table>
+    </div>
+
+
+    <!-- Scenario Groups Section -->
+      <section id="ScenarioGroups">
+        <h1>Scenario Groups Summary</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario Group</th>
+              <th>Scenario</th>
+              <th>Is Success</th>
+              <th>Elapsed Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for scenario_group in model['scenario_groups'] %}
+            {% if scenario_group['scenarios']|length == 1 %}
+            <tr>
+              <td><a href="#{{ scenario_group.id }}">{{ scenario_group.id }}</a></td>
+              <td><a href="#{{ scenario_group.id }}.{{ scenario_group['scenarios'][0].id }}">{{ scenario_group['scenarios'][0].id }}</a></td>
+              <td>
+                {% if scenario_group['scenarios'][0].is_success  %}
+                <span style="color:green">{{ scenario_group['scenarios'][0].is_success }}</span>
+                {% else %}
+                <span style="color:red">{{ scenario_group['scenarios'][0].is_success }}</span>
+                {% endif %}
+              </td>
+              <td>
+                 {{ scenario_group['scenarios'][0].elapsed_time }}
+              </td>
+            </tr>
+            {% else %}
+            {% for i, scenario in enumerate(scenario_group['scenarios']) %}
+            {% if i == 0 %}
+            <tr>
+              <td rowspan="{{ scenario_group['scenarios']|length }}"><a href="#{{ scenario_group.id }}">{{ scenario_group.id }}</a></td>
+              <td><a href="#{{ scenario_group.id }}.{{ scenario.id }}">{{ scenario.id }}</a></td>
+              <td>
+                {% if scenario.is_success  %}
+                <span style="color:green">{{ scenario.is_success }}</span>
+                {% else %}
+                <span style="color:red">{{ scenario.is_success }}</span>
+                {% endif %}
+              </td>
+              <td>
+                 {{ scenario.elapsed_time }}
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td><a href="#{{ scenario_group.id }}.{{ scenario.id }}">{{ scenario.id }}</a></td>
+              <td>
+                {% if scenario.is_success  %}
+                <span style="color:green">{{ scenario.is_success }}</span>
+                {% else %}
+                <span style="color:red">{{ scenario.is_success }}</span>
+                {% endif %}
+              </td>
+              <td>
+                 {{ scenario.elapsed_time }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+
+
+      <!-- Scenario Groups Section -->
+
+      {% for scenario_group in model['scenario_groups'] %}
+        {% set loop1 = loop %}
+        <section id="{{ scenario_group.id }}">
+        <div class="page-header">
+          <h2> Scenario Group: {{ loop1.index }} -  {{ scenario_group.id }} </h2>
+        </div>
+        <div class="page-content">
+          <table class="table striped">
+            <tr>
+              <th>Id</th>
+              <td>{{ scenario_group.id }}</td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>{{ scenario_group.description }}</td>
+            </tr>
+            <tr>
+              <th>Is Success</th>
+              <td>
+                {% if scenario_group.is_success  %}
+                <span style="color:green">{{ scenario_group.is_success }}</span>
+                {% else %}
+                <span style="color:red">{{ scenario_group.is_success }}</span>
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+
+          <!-- Scenarios Section -->
+            {% for scenario in scenario_group['scenarios'] %}
+            <section id="{{ scenario_group.id }}.{{ scenario.id }}">
+            {% set loop2 = loop %}
+            <div class="page-header">
+              <h3> Scenario: {{ loop1.index }}.{{ loop2.index }} -  {{ scenario.id }} </h3>
+            </div>
+
+              <div class="page-content">
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Id</th>
+                    <td>{{ scenario.id }}</td>
+                  </tr>
+                  <tr>
+                    <th>Description</th>
+                    <td>{{ scenario.description }}</td>
+                  </tr>
+                  <tr>
+                    <th>Is Success</th>
+                    <td>
+                      {% if scenario.is_success  %}
+                      <span style="color:green">{{ scenario.is_success }}</span>
+                      {% else %}
+                      <span style="color:red">{{ scenario.is_success }}</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Executor</th>
+                    <td>{{ scenario.config.executor.value }}</td>
+                  </tr>
+                </table>
+                <section id="{{ scenario.id }}_Actions">
+                  <h4>Actions: {{ loop1.index }}.{{ loop2.index }}.x </h4>
+                </section>
+
+
+                <table class="assertion table table-bordered">
+                  <thead>
+                  <tr>
+                    <th>Assertion</th>
+                    <th>is_success</th>
+                    <th>content</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  {% for assertion in scenario.assertions %}
+                  <tr>
+                    <td>{{ assertion.id }}</td>
+                    <td>{{ assertion.is_success }}</td>
+                    <td>{{ assertion.config.template }}</td>
+                  {% endfor %}
+                  </tbody>
+                </table>
+
+                </br>
+
+                <table class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th>Execution ID</th>
+                    <th>Description</th>
+                    <th>State</th>
+                    <th>URL</th>
+                    <th>Response Status</th>
+                    <th>Adapter</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                    <th>Exeception</th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for action in scenario.actions %}
+                  <tr>
+                    <td>{{ action.execution_id }}</td>
+                    <td>{{ action.description }}</td>
+
+                    <td>
+                      {% if action.state.name == "ENDED" %}
+                      <span style="color:green">{{ action.state.name }}</span>
+                      {% else %}
+                      <span style="color:red">{{ action.state.name }}</span>
+                      {% endif %}
+                    </td>
+
+                    <td>{{ action.input.url }}</td>
+
+                    <td>
+                      <span>{{ action.response_status.name }} ( {{ action.response_status.value }} )</span>
+                    </td>
+
+
+                    <td>{{ action.config.adapter_class_name }}</td>
+
+                    <td>
+                      <div class="details-container">
+                        <button class="details-button">Show Details</button>
+                        <ul class="point hidden">
+                          {% for key, value in action.input.dict().items() %}
+                          <li><strong>{{ key }}:</strong> {{ value }}</li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </td>
+
+
+                    <td>
+                      <div class="details-container">
+                        <button class="details-button">Show Details</button>
+                        <ul class="point hidden">
+                          {% for key, value in action.output.dict().items() %}
+                          <li><strong>{{ key }}:</strong> {{ value }}</li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="details-container">
+                        <button class="details-button">Show Details</button>
+                        <div class="point hidden">
+                        {% if action.exec is defined and action.exec is not none %}
+                        {{ action.exec.replace("\n", "<br>") }}
+                        {% else %}
+                        None
+                        {% endif %}
+                        </div>
+                      </div>
+                    </td>
+
+                  </tr>
+
+
+                  {% endfor %}
+                  </tbody>
+                </table>
+
+                <img src="{{ scenario.digraph_file_name }}" alt="Actions Execution Path">
+
+                <button onclick="window.location.href='#ScenarioGroups';" style="position: fixed; bottom: 1rem; right: 1rem;">Back to Scenario Groups</button>
+                <hr>
+              </div>
+            </section>
+            {% endfor %}
+
+        </div>
+      </section>
+      {% endfor %}
+
+
+    {% include 'base/legend.html.j2' with context %}
+
+    </div>
+
+    <script>
+      // get all "show details" buttons
+      var buttons = document.querySelectorAll('.details-button');
+
+      // loop through each button
+      for (var i = 0; i < buttons.length; i++) {
+        // add click event listener to button
+        buttons[i].addEventListener('click', function() {
+          // get the row containing the button
+          var container = this.parentNode;
+
+          // get the details row
+          var detailsRow = container.querySelector('.point');
+
+          // toggle visibility of details row
+          if (detailsRow.classList.contains('hidden')) {
+            console.log('Removing hidden....');
+            detailsRow.classList.remove('hidden');
+            this.innerHTML = 'Hide Details';
+          } else {
+            console.log('adding hidden....');
+            detailsRow.classList.add('hidden');
+            this.innerHTML = 'Show Details';
+          }
+        });
+      }
+    </script>
+
+  </body>
+</html>
