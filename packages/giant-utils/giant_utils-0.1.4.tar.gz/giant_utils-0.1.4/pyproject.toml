@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "giant-utils"
+version = "0.1.4"
+description = "A small reusable package that adds small commonly used functions to a project"
+authors = ["Dominic-Chaple <dominic.chaple@giantdigital.co.uk>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/giantmade/giant-utils"
+repository = "https://github.com/giantmade/giant-utils"
+keywords = ["app"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+include = [
+    "LICENSE",
+]
+packages = [
+    { include = "giant_utils" }
+]
+
+[tool.poetry.dependencies]
+python = ">3.7 <4"
+django = ">=3.0"
+dj-email-url = "^1.0.2"
+django-cms = ">=3 <4.0"
+
+
+[tool.poetry.dev-dependencies]
+black = "^21.11b1"
+coverage = "^5.3"
+flake8 = "^3.7"
+pytest = "^7.2"
+pytest-cov = "^4.0"
+pytest-django = "~4.5"
+pytest-mock = "3.10"
+flake8-bugbear = "^20.1.4"
+flake8-builtins = "^1.5.2"
+flake8-debugger = "^3.2.1"
+flake8-print = "^3.1.4"
+flake8-quotes = "^2.1.1"
+isort = "^5.7.0"
+flake8-isort = "^4.0.0"
+
+[tool.black]
+line-length = 99
+target-version = ['py36']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.ipython
+  | \.mypy_cache
+  | \.ropeproject
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+[build-system]
+requires = ["poetry>=1.0.0"]
+build-backend = "poetry.masonry.api"
