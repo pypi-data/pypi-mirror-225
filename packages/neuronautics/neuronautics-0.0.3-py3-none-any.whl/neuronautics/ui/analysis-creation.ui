@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>163</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>New analysis</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources/resources.qrc">
+    <normaloff>:/resources/logo.svg</normaloff>:/resources/logo.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+QPushButton {
+	text-align: left;
+  	padding: 10px 2px;
+   border: 2px;
+   text-decoration: none;
+}
+
+#nav QPushButton:hover{
+  background: rgb(249, 240, 107)
+}
+
+QPushButton:pressed {
+  border-radius: 5px;
+  border: 1px solid #3291a8; 
+
+}
+
+QComboBox {
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 1px 18px 1px 3px;
+                min-width: 6em;
+            }
+
+            QComboBox::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: top right;
+                width: 20px;
+                border-left-width: 1px;
+                border-left-color: darkgray;
+                border-left-style: solid;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+
+            QComboBox::down-arrow {
+                image: url(:/resources/icons/chevron-down.svg);
+
+            }
+
+QTableWidget {
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  gridline-color: #c0c0c0;
+  selection-background-color: #a6c9e2;
+  selection-color: #000000;
+}
+
+QTableWidget::item {
+  padding: 5px;
+}
+
+QTableWidget::item:selected {
+  background-color: #a6c9e2;
+}
+
+QHeaderView::section {
+  background-color: #e0e0e0;
+  color: #000000;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+QTableWidget QScrollBar:vertical {
+  border: none;
+  background: #f0f0f0;
+  width: 12px;
+  margin: 0px;
+}
+
+QTableWidget QScrollBar::handle:vertical {
+  background: #c0c0c0;
+  min-height: 20px;
+}
+
+QTableWidget QScrollBar::add-line:vertical,
+QTableWidget QScrollBar::sub-line:vertical {
+  height: 0px;
+}
+
+QTableWidget QScrollBar::add-page:vertical,
+QTableWidget QScrollBar::sub-page:vertical {
+  background: none;
+}
+
+QSpinBox, QDoubleSpinBox {
+  padding: 4px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  min-width: 60px;
+  min-height:30px;
+}
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button {
+  subcontrol-origin: border;
+  subcontrol-position: top right;
+  border-left: 1px solid #c0c0c0;
+  border-top-right-radius: 4px;
+  image: url(:/resources/icons/chevron-up.svg);
+
+}
+
+QSpinBox::up-button:hover,
+QSpinBox::up-button:pressed,
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::up-button:pressed {
+  background-color: #e0e0e0;
+}
+
+QSpinBox::down-button,
+QDoubleSpinBox::down-button {
+  subcontrol-origin: border;
+  subcontrol-position: bottom right;
+  border-left: 1px solid #c0c0c0;
+  border-bottom-right-radius: 4px;
+  image: url(:/resources/icons/chevron-down.svg);
+}
+
+QSpinBox::down-button:hover,
+QSpinBox::down-button:pressed ,
+QDoubleSpinBox::down-button:hover,
+QDoubleSpinBox::down-button:pressed {
+  background-color: #e0e0e0;
+}
+QSlider {
+  background-color: transparent;
+  height: 10px;
+}
+
+QSlider::groove:horizontal {
+  background-color: #c0c0c0;
+  border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  width: 16px;
+  height: 16px;
+  margin-top: -3px;
+  border-radius: 8px;
+  subcontrol-origin: margin;
+  subcontrol-position: center;
+}
+
+QSlider::handle:horizontal:hover {
+  background-color: #e0e0e0;
+  border-color: #a0a0a0;
+}
+
+QSlider::sub-page:horizontal {
+  background-color: #a6c9e2;
+  border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+  background-color: #c0c0c0;
+  border-radius: 5px;
+}
+
+/* This style is for the QProgressBar */
+QProgressBar {
+    border: 1px solid #b2b2b2;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* This style is for the chunk that fills the progress */
+QProgressBar::chunk {
+    background-color: #007BFF;
+    width: 10px; /* Change the width to control the chunk's thickness */
+}
+
+/* Style the QTabWidget */
+QTabWidget {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the QTabBar (the tabs) */
+QTabBar::tab {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+QTabBar::tab:selected {
+    background-color: #fff;
+    border-bottom-color: #fff;
+}
+
+/* Style the content area */
+QTabWidget::pane {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+            QTreeWidget {
+                background-color: #f2f2f2;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            
+            QTreeWidget::item {
+                height: 30px;
+            }
+            
+            QTreeWidget::item:selected {
+                background-color: #0078d4;
+                color: white;
+            }
+
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/resources/icons/circle.svg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/resources/icons/check-circle.svg);
+}
+
+QCheckBox::indicator:hover {
+    background-color: #f0f0f0;
+}
+
+QCheckBox::indicator:checked:hover {
+    background-color: #c0c0c0;
+}
+
+QLineEdit {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333;
+}
+
+QLineEdit:focus {
+    border-color: #0078d4;
+    outline: none;
+}
+
+QLineEdit::placeholder {
+    color: #aaa;
+}
+
+QLineEdit:hover {
+    background-color: #e0e0e0;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="analysisName"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Type</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="analysisType">
+        <item>
+         <property name="text">
+          <string>line</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/resources/icons_2/analytics-outline.svg</normaloff>:/resources/icons_2/analytics-outline.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>bar</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/resources/icons_2/bar-chart-outline.svg</normaloff>:/resources/icons_2/bar-chart-outline.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>graph</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/resources/icons_2/git-network-outline.svg</normaloff>:/resources/icons_2/git-network-outline.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>image</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/resources/icons_2/image-outline.svg</normaloff>:/resources/icons_2/image-outline.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>misc</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/resources/icons_2/balloon-outline.svg</normaloff>:/resources/icons_2/balloon-outline.svg</iconset>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_2" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Create</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/resources.qrc">
+          <normaloff>:/resources/icons_2/create-outline.svg</normaloff>:/resources/icons_2/create-outline.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/resources.qrc">
+          <normaloff>:/resources/icons/frown.svg</normaloff>:/resources/icons/frown.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>create_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>46</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>365</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>create_analysis()</slot>
+ </slots>
+</ui>
