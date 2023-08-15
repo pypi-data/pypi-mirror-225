@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: ansible-cdk
+Version: 0.1.1.dev0
+Summary: The ansible content development kit.
+Author-email: "Bradley A. Thornton" <bthornto@redhat.com>
+Maintainer-email: Ansible by Red Hat <info@ansible.com>
+License: GPL-3.0-only
+Project-URL: changelog, https://github.com/ansible-community/ansible-cdk/releases
+Project-URL: documentation, https://ansible-cdk.readthedocs.io/en/latest/
+Project-URL: homepage, https://github.com/ansible-community/ansible-cdk
+Project-URL: repository, https://github.com/ansible-community/ansible-cdk
+Keywords: ansible
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Utilities
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ansible-builder
+Requires-Dist: ansible-lint
+Requires-Dist: ansible-navigator
+Requires-Dist: ansible-sign
+Requires-Dist: molecule
+Requires-Dist: pytest-ansible
+Requires-Dist: tox-ansible
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pip-tools ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: pydoclint ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+Requires-Dist: toml-sort ; extra == 'dev'
+Provides-Extra: docs
+Provides-Extra: lock
+Provides-Extra: test
+
+# ansible-cdk
+
+The ansible content development kit
