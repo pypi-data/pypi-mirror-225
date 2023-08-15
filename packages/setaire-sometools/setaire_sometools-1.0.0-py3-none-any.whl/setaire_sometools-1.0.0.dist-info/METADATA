@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: setaire-sometools
+Version: 1.0.0
+Home-page: http://119.29.99.24:9980/setaire/sometools
+Author: setaire
+Author-email: admin@example.com
+License: MIT
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: moviepy ==1.0.3
+Requires-Dist: aiohttp ==3.8.4
+Requires-Dist: requests ==2.27.1
+Requires-Dist: numpy ==1.25.2
+Requires-Dist: opencv-python-headless ==4.8.0.76
+
+# SomeTools
+
+一些小工具，视频剪辑功能、照片处理等等
+
+---
+
+[![pipeline status](http://119.29.99.24:9980/setaire/sometools/badges/main/pipeline.svg)](http://119.29.99.24:9980/setaire/sometools/-/commits/main) [![coverage report](http://119.29.99.24:9980/setaire/sometools/badges/main/coverage.svg?job=unit-test-job)](http://119.29.99.24:9980/setaire/sometools/-/commits/main?job=unit-test-job) [![Latest Release](http://119.29.99.24:9980/setaire/sometools/-/badges/release.svg)](http://119.29.99.24:9980/setaire/sometools/-/releases)
+
+## Getting Started
+
+
+拉取代码直接安装:
+
+```bash
+python setup.py install
+```
+
+使用 pip 安装:
+
+```bash
+pip install setaire_sometools
+```
+
+使用 docker 安装:
+
+```bash
+docker pull setaire/sometools:[Latest Release]
+```
+
+---
+
+## 如何使用
+
+
+去水印：
+```
+delogo_video --help
+```
+
+生成证件照
+```
+gen_residence_permit_photo --help
+```
