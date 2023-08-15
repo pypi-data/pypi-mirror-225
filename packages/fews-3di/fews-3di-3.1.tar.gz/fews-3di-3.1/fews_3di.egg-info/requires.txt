@@ -1,0 +1,12 @@
+netCDF4
+pandas
+requests
+threedi-api-client>=4.0.1
+threedigrid
+
+[test]
+data-science-types
+mock
+pytest
+pytest-cov
+pytest-mypy
