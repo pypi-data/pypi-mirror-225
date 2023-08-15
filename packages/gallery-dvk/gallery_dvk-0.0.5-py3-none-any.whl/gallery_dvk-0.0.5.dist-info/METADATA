@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: gallery-dvk
+Version: 0.0.5
+Summary: Utility for downloading media from various image hosting websites.
+Home-page: https://github.com/Drakovek/gallery-dvk
+Author: Drakovek
+Author-email: DrakovekMail@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: beautifulsoup4
+Requires-Dist: HTML-String-Tools
+Requires-Dist: Metadata-Magic
+Requires-Dist: Python-Print-Tools
+Requires-Dist: requests
+Requires-Dist: tqdm
+
+# gallery-dvk
+Utility for downloading media from various image hosting websites.
