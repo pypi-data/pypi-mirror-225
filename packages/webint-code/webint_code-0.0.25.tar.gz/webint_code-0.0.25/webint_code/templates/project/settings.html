@@ -1,0 +1,17 @@
+$def with (project)
+$var breadcrumbs = ("projects", "Projects", project, f"<b>{project}</b>")
+$var title: Settings
+
+<form method=post action=/projects/$project/settings>
+<select name=visibility>
+<option value=public>Public</option>
+<option value=private>Private</option>
+<option value=protected>Protected</option>
+</select>
+<button>Save</button>
+</form>
+
+<form method=delete action=/projects/$project>
+<input type=hidden name=_http_method value=delete>
+<button>Delete</button>
+</form>

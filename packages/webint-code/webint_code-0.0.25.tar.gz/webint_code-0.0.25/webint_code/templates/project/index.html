@@ -1,0 +1,285 @@
+$def with (project, repo, readme, package_releases, pyproject, api_python, test_results, test_coverage, mentions)
+$var breadcrumbs = ("projects", "Projects")
+$ title = project
+$var title_classes = ["p-name"]
+$var classes = ["h-ragt-ag-project"]
+
+<style>
+/* h2 {
+  display: none; } */
+.files, .commits {
+  list-style: none;
+  padding-left: 0; }
+.testindicator {
+  border-radius: 50%;
+  display: inline-block;
+  height: .9em;
+  width: .9em; }
+</style>
+
+$ issues = 0
+$ likes = 0
+$for mention in mentions:
+    $if mention["data"]["comment_type"][0] == "like":
+         $ likes += 1
+    $elif mention["data"]["comment_type"][0] == "like":
+         $ likes += 1
+
+<p>
+$if issues:
+    $emoji.emojize(":note:")
+$if likes:
+    $emoji.emojize(":red_heart:") <sub>$likes</sub>
+</p>
+
+    $# <div>
+    $# $ data = mention["data"]
+    $# $if name := data.get("name", None):
+    $#     <h3>$name</h3>
+    $# $if data:
+    $#     $ a = data["author"]
+    $#     $ comment_type = data["comment_type"][0]
+    $#     $if comment_type == "like":
+    $#         $emoji.emojize(":red_heart:")
+    $#     $if content := data.get("content"):
+    $#         <div>$:content</div>
+    $# $ published = data["published"][0]
+    $# <small>Opened <a href=$data["url"]><time class=dt-published
+    $# datetime="$published.isoformat()">$published.diff_for_humans()</time></a>
+    $# $if data:
+    $#     by <a href=$a["url"]>$a.get("name", a["url"])</a>,
+    $#     $if comment := data.get("comment"):
+    $#         $ comment_count = len(comment)
+    $#         $if comment_count:
+    $#             💬 $comment_count comment$("s" if comment_count > 1 else "")
+    $# </small>
+    $# </div>
+
+$if pyproject:
+    $ py_project = pyproject["tool"]["poetry"]
+    $ title += f"&thinsp;<code style=font-size:.5em>{py_project.pop('version')}</code>"
+    <p><big>$py_project.pop("description")</big>
+    $if keywords := py_project.pop("keywords", None):
+        <small>
+        $for keyword in keywords:
+            $keyword\
+            $if not loop.last:
+                ,
+        </small>
+    </p>
+    $ license = py_project.pop("license")
+    $ licenses = {"0BSD": "BSD Zero Clause License",
+    $             "BSD-2-Clause": 'BSD 2-Clause "Simplified" License',
+    $             "BSD-3-Clause": 'BSD 3-Clause "Modified" License',
+    $             "AGPL-3.0-or-later": "GNU Affero General Public License v3.0 or later"}
+    <p><small><strong>Licensed:</strong> <a href=https://spdx.org/licenses/$(license).html><code>$licenses[license]</code></a></small></p>
+    $ plugins = py_project.pop("plugins", None)
+    $ scripts = py_project.pop("scripts", None)
+    $if plugins or scripts:
+        <p><small><strong>Provides:</strong></small>
+    $if plugins:
+        $if webapps := plugins.pop("webapps", None):
+            webapps (
+            $for webapp, webapp_callable in webapps.items():
+                $ webapp_path = webapp_callable.replace(".", "/").replace(":", "#")
+                <a href="/projects/$project/api/$webapp_path">$webapp</a>\
+                $if not loop.last:
+                    , \
+             )
+        $if websites := plugins.pop("websites", None):
+            websites (
+            $for webapp, webapp_callable in websites.items():
+                $ webapp_path = webapp_callable.replace(".", "/").replace(":", "#")
+                <a href="/projects/$project/api/$webapp_path">$webapp</a>\
+                $if not loop.last:
+                    , \
+             )
+    $if scripts:
+        scripts (
+        $for script, script_callable in scripts.items():
+            $ script_path = script_callable.replace(".", "/").replace(":", "#")
+            <a href="/projects/$project/api/$script_path">$script</a>\
+            $if not loop.last:
+                , \
+         )
+    $if plugins or scripts:
+        </p>
+
+$if "errors" in test_results:
+    <p>
+    $if test_results["errors"]:
+        $ test_color = "red"
+        $ test_indicator = "&#x25a0;"
+        $ test_msg = f"{test_results['errors']} tests of {test_results['tests']} failing"
+    $else:
+        $ test_color = "green"
+        $ test_indicator = "&#x25cf;"
+        $ test_msg = f"{test_results['tests']} tests passing"
+    <span style=color:$test_color>$:test_indicator</span>
+    $test_msg in $test_results["time"]&thinsp;s</p>
+
+<hr>
+
+$if readme:
+    <div>$:mkdn(readme)</div>
+    <hr>
+
+$if api_members := api_python.get("members"):
+    $ _imports, _globals, _exceptions, _functions, _classes = api_members
+    <img style=float:right;width:12em src=/projects/$project/api/$(api_python["name"]).svg>
+    <h3><a href=/projects/$project/api/$api_python["name"]>$api_python["name"]</a></h3>
+    $if mod_doc := api_python["mod"].get("doc"):
+        $:mkdn(mod_doc.partition("\n\n")[0])
+    <small>
+    $for module in set(dict(_imports).keys()).difference(stdlib_module_names).difference(set(api_python["descendants"].keys())):
+        $module\
+        $if not loop.last:
+            ,
+    </small></p>
+
+    $ metrics = api_python["mod"]["metrics"]
+    <p><code>$metrics["lines"][1]</code> <abbr title="Logical Lines Of Code">LLOC</abbr>,
+    <abbr title=$round(metrics["maintainability"])>
+    $if metrics["maintainability"] >= 19:
+        highly maintainable
+    $elif metrics["maintainability"] >= 9:
+        moderately maintainable
+    $else:
+        difficult to maintain
+    </abbr>
+    </p>
+    $for func_name, func_details in _functions:
+        $if func_name not in api_python["mod"]["all"]:
+            $continue
+        <h4 style="margin-bottom:0;padding:0 2em;text-indent:-2em"><a
+        href=/projects/$project/api/$api_python["name"]#$func_name>$func_name</a>\
+        <em style=font-weight:normal>$func_details["sig"]</em></h4>
+        <div style=font-size:.8em>
+        $if func_doc := func_details.get("doc"):
+            $:mkdn(func_doc.partition("\n\n")[0])
+        </div>
+
+    <ul>
+    $for descendant, desc_details in api_python["descendants"].items():
+        $if descendant == "__main__":
+            $continue
+        <li>
+        <h5><a href=/projects/$project/api/$api_python["name"]/$descendant>$descendant</a></h5>
+        $if desc_doc := desc_details["mod"].get("doc"):
+            $:mkdn(desc_doc.partition("\n\n")[0])
+
+        $ metrics = desc_details["mod"]["metrics"]
+        <p><code>$metrics["lines"][1]</code> <abbr title="Logical Lines Of Code">LLOC</abbr>,
+        <abbr title=$round(metrics["maintainability"])>
+        $if metrics["maintainability"] >= 19:
+            highly maintainable
+        $elif metrics["maintainability"] >= 9:
+            moderately maintainable
+        $else:
+            difficult to maintain
+        </abbr>
+        <br>
+        <small><code>
+        $for obj_name, obj_complexity in metrics["complexity"].items():
+            $obj_name $obj_complexity
+        </code></small>
+        </p>
+        </li>
+    </ul>
+    <hr>
+
+$if pyproject:
+    <p><small><strong>Package:</strong> <code>$py_project.pop("name")</code>
+    $for source in py_project.pop("source", []):
+        $if source["name"] == "main":
+            <code>@<a href="$source['url']">$source["url"]</a></code>
+    </small></p>
+    $if py_deps := py_project.pop("dependencies", None):
+        <p><small><strong>Requires:</strong>
+        <code>python&thinsp;$py_deps.pop("python")</code>,
+        $for dep, version in sorted(py_deps.items()):
+            $ dep_nobreak = dep.replace("-", "&zwj;-&zwj;")
+            <code><a href=https://pypi.org/project/$dep>$:dep_nobreak</a></code>\
+            $if not loop.last:
+                ,
+        </small></p>
+    <h2>Releases</h2>
+    <ul class=h-feed>
+    $for release in list(reversed(sorted(package_releases, key=semver.parse_version_info)))[:1]:
+        <li class=h-entry><a href=/projects/$project/releases/$release>$release</a></li>
+    </ul>
+    <hr>
+
+$ git_clone = f"git clone {tx.origin}/code/projects/{project}.git"
+<script>
+copyText = () => {
+  navigator.clipboard.writeText('$git_clone')
+}
+</script>
+$ ignorable_files = (
+$   ".github",
+$   ".gitignore",
+$   "README",
+$   "README.md",
+$   "pyproject.toml",
+$   "pyrightconfig.json",
+$   "package.json",
+$   "tsconfig.json",
+$   "webpack.config.js",
+$ )
+
+$if repo.exists():
+    <div>
+    <pre><small><button onclick=copyText()>📋</button> \
+    $git_clone</small></pre>
+    <h2>Commit Log</h2>
+    <ul class="commits h-feed">
+    $for commit in list(repo.log.values())[:1]:
+        $ author_url = commit['author_email']
+        $if "@" in author_url:
+            $ author_url = f"mailto:{author_url}"
+        $else:
+            $ author_url = f"https://{author_url}"
+        <li class=h-entry>
+        $# <small><small><a class=u-url href=/projects/$project/commits/$commit["hash"]>\
+        $# <code>$commit["hash"][:7].upper()</code></a></small></small>
+        <span class=p-name>$:str(mkdn(commit["message"]))[3:-4]</span>
+        <small><small>
+        $# <a class=u-author href="$author_url">$commit["author_name"]</a>
+        <a class=u-url href=/projects/$project/commits/$commit["hash"]><time
+        class=dt-published datetime=$commit["timestamp"].isoformat()>\
+        $commit["timestamp"].diff_for_humans()</time></a>
+        </small></small>
+        </li>
+    </ul>
+    <h2>Files</h2>
+    $ files = sorted(repo.files)
+    $ prev_file = None
+    $ known_files = [f for f in files if f.name in ignorable_files]
+    <p style=font-size:.8em>\
+    $for file in known_files:
+        $ file, is_dir, _ = str(file).partition("/")
+        $if file == prev_file:
+            $continue
+        <a style=color:#888 href=/projects/$project/files/$file>$file</a>\
+        $if is_dir:
+            /
+        $ prev_file = file
+        $if not loop.last:
+            ,
+    </p>
+    $ prev_file = None
+    <ul class=files>
+    $ unique_files = [f for f in files if f.name not in ignorable_files]
+    $for file in unique_files:
+        $ file, is_dir, _ = str(file).partition("/")
+        $if file == prev_file:
+            $continue
+        <li><a href=/projects/$project/files/$file>$file</a>\
+        $if is_dir:
+            /
+        </li>
+        $ prev_file = file
+    </ul>
+
+$var title = title
