@@ -1,0 +1,2 @@
+from .model_registry import model_registry,RegistryObject,ModelAdmin,RELATIONAL_FIELDS
+from .url_registry import url_registry
