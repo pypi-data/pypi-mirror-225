@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  main:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    user: rs
+    command: sleep infinity
+    init: true
+    depends_on:
+      - postgres-{{ v.postgres }}
+      - redis
+    volumes:
+      - ..:/rs/project:cached
+
+  postgres-{{ v.postgres }}:
+    image: postgres:{{ v.postgres }}
+    hostname: postgres
+    environment:
+      POSTGRES_USER: rs
+      POSTGRES_PASSWORD: rs
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    restart: unless-stopped

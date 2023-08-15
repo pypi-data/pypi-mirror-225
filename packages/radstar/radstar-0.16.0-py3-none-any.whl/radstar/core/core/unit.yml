@@ -1,0 +1,21 @@
+apt:
+
+  packages:
+    - nginx-core
+    - postgresql-client-{{ v.postgres }}
+    - supervisor
+
+  dev_packages:
+    - fish
+    - iputils-ping
+    - less
+    - net-tools
+    - netcat-openbsd
+    - redis-tools
+    - sudo
+    - vim-tiny
+
+  repos:
+    - name: postgres
+      key: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+      entry: deb https://apt.postgresql.org/pub/repos/apt {{ v.codename }}-pgdg main

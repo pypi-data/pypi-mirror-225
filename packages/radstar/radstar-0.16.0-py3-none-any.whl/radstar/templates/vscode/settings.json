@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/*.bak": true,
+        "**/__pycache__": true,
+        "**/yarn-error.log": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "python.defaultInterpreterPath": "/rs/bin/python",
+    "python.analysis.extraPaths": [
+        "/rs/radstar"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=/rs/project/.vscode/.pylintrc"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "/rs/bin/pylint",
+    "search.exclude": {
+        "radstar/core/webix/jetapp/webroot": true
+    },
+    "search.useIgnoreFiles": false
+}
