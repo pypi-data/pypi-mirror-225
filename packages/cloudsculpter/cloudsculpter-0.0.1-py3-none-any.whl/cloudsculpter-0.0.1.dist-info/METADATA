@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: cloudsculpter
+Version: 0.0.1
+Summary: A package to deploy cloudformation resources with natural language instructions, automatically healing failed deployments with OpenAI troubleshooting
+Home-page: https://github.com/righteousgambit/cloudsculpter
+Author: Wes Ladd
+Author-email: wesladd@traingrc.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: boto3
+Requires-Dist: openai
+Requires-Dist: pyyaml
+Requires-Dist: termcolor
+
+# DevOps Guru
+DevOps Guru is a python package that provides a simple interface for creating and deploying cloudformation templates to AWS.
+
+## Installation
+```python
+pip install devops-guru
+```
+
+## Usage
+```python
+devops-guru --help
+```
+
+## Commands
+```python
+devops-guru create
+```
+
+```python
+devops-guru deploy
+```
+
+```python
+devops-guru delete
+```
+
+```python
+devops-guru list
+```
+
+```python
+devops-guru update
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
