@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: links-demo
+Version: 0.7
+Summary: Sample package for testing PyPI links.
+Author-email: Patrick Arminio <patrick.arminio@gmail.com>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Project-URL: AppVeyor, https://ci.appveyor.com/project/example
+Project-URL: Bitbucket, https://bitbucket.org/example
+Project-URL: Changelog, https://example.com/
+Project-URL: CircleCI, https://circleci.com/example
+Project-URL: Codecov, https://codecov.io/example
+Project-URL: Coveralls, https://coveralls.io/example
+Project-URL: Discord, https://discord.gg/example
+Project-URL: Documentation, https://example.com/
+Project-URL: Download, https://example.com/
+Project-URL: GitLab, https://gitlab.com/example
+Project-URL: Gitter, https://gitter.im/example
+Project-URL: Google, https://google.com/example
+Project-URL: Homepage, https://example.com/
+Project-URL: Issues, https://example.com/
+Project-URL: Mastodon, https://example.com/@example
+Project-URL: PyPI, https://pypi.org/project/links-demo
+Project-URL: Python, https://www.python.org/example
+Project-URL: Reddit, https://www.reddit.com/r/example
+Project-URL: Slack, https://something.slack.com/example
+Project-URL: Source, https://github.com/patrick91/links-demo
+Project-URL: Sponsor, https://example.com/
+Project-URL: Twitter, https://twitter.com/example
+Project-URL: YouTube, https://www.youtube.com/example
+
+# PyPI demo package for testing links
+
+PyPI allows to add custom links to projects and it has some special icons based
+on either the name or URL of the link:
+
+```
+[project.urls]
+# Name based
+Homepage = "https://example.com/"
+Changelog = "https://example.com/"
+Documentation = "https://example.com/"
+Download = "https://example.com/"
+Mastodon = "https://example.com/@example"
+Sponsor = "https://example.com/"
+Source = "https://github.com/patrick91/links-demo"
+Issues = "https://example.com/"
+
+# URL based
+AppVeyor = "https://ci.appveyor.com/project/example"
+Bitbucket = "https://bitbucket.org/example"
+CircleCI = "https://circleci.com/example"
+Codecov = "https://codecov.io/example"
+Discord = "https://discord.gg/example"
+Coveralls = "https://coveralls.io/example"
+GitLab = "https://gitlab.com/example"
+Gitter = "https://gitter.im/example"
+Google = "https://google.com/example"
+PyPI = "https://pypi.org/project/links-demo"
+Python = "https://www.python.org/example"
+Reddit = "https://www.reddit.com/r/example"
+Slack = "https://something.slack.com/example"
+Twitter = "https://twitter.com/example"
+YouTube = "https://www.youtube.com/example"
+```
+
+[Example on PyPI](https://pypi.org/project/links-demo/)
+
+![](https://github.com/patrick91/links-demo/raw/main/meta/screen.png)
+
