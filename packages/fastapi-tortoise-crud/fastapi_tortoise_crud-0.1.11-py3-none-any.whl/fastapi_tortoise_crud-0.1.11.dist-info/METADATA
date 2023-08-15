@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: fastapi-tortoise-crud
+Version: 0.1.11
+Summary: fastpi简单crud
+License: MIT
+Keywords: Fastapi-admin,Tortoise-orm,Crud
+Author-email: moxiaoying <768091671@qq.com>
+Requires-Python: >=3.9
+Requires-Dist: fastapi-pagination>=0.12.6
+Requires-Dist: fastapi<=0.99.1
+Requires-Dist: tortoise-orm<=0.19.3
+Description-Content-Type: text/markdown
+
+# fastapi-admin
+### 项目默认会安装
+ - fastapi_pagination
+ - fastapi
+ - tortoise-orm
+
+
