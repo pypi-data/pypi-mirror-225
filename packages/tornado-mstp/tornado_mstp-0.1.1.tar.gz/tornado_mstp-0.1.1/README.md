@@ -1,0 +1,155 @@
+# Tornado MSTP
+
+A tornado MSTP library, using WebSocket.
+
+# Installation
+`pip install tornado_mstp`
+
+# Easy Examples
+
+See repo's directory named 'examples'.
+
+# Usage
+
+## Server
+
+As a server-side application using `tornado_mstp`. You should first create a 
+handler class inherited from `MstpSocketHandler`.
+```python
+from tornado_mstp import MstpSocketHandler
+
+
+class MyMstpSocketHandler(MstpSocketHandler):
+    pass
+```
+
+There are two optional class attributes, `automatic_closing_time`(default to 10) and `ver`(default to "0.1"), that indicate MSTP server information 
+need to be set.
+```python
+from tornado_mstp import MstpSocketHandler
+
+
+class MyMstpSocketHandler(MstpSocketHandler):
+    automatic_closing_time = 15
+    ver = "0.1"
+```
+
+`login` method **MUST** be overridden to make an authorization, and returns a 
+`tornado_mstp.schema.LoginResponse`.
+```python
+from typing import Optional
+
+from tornado_mstp import MstpSocketHandler
+from tornado_mstp.schema import LoginResponse
+
+
+class MyMstpSocketHandler(MstpSocketHandler):
+    automatic_closing_time = 15
+    ver = "0.1"
+
+    async def login(
+        self,
+        *,
+        secret: Optional[str] = None
+    ) -> LoginResponse:
+        # your login processing
+        return LoginResponse(
+            status=True,
+            connection_interval=300,
+            session_alive_time=300,
+            session_id="ajsdkjalskdjlka"
+        )
+```
+
+So as `reconnect`, that returns a `tornado_mstp.schema.ReconnectResponse`.
+```python
+from typing import Optional
+
+from tornado_mstp import MstpSocketHandler
+from tornado_mstp.schema import ReconnectResponse
+
+
+class MyMstpSocketHandler(MstpSocketHandler):
+    automatic_closing_time = 15
+    ver = "0.1"
+
+    async def reconnect(
+        self,
+        *,
+        session_id: Optional[str] = None
+    ) -> ReconnectResponse:
+        # your reconnect logics
+        return ReconnectResponse(status=True)
+```
+
+There is no need to worry about tornado websocket handler's `on_message` method.
+Each MSTP package type of message has a callback function who needs to be 
+implemented. For example, for segment handling.
+```python
+from typing import Optional
+
+from tornado_mstp import MstpSocketHandler
+from tornado_mstp.schema import ContentType
+
+
+class MyMstpSocketHandler(MstpSocketHandler):
+    automatic_closing_time = 15
+    ver = "0.1"
+
+    async def handle_segment(
+        self,
+        package_id: Optional[str] = None,
+        message_index: Optional[int] = None,
+        segment_index: Optional[int] = None,
+        is_end: Optional[bool] = None,
+        content_type: Optional[ContentType] = None,
+        content: Optional[str] = None
+    ) -> None:
+        print(f"received content: {content}")
+```
+
+After implementing all callback functions, server can handle any MSTP packages 
+as you want.
+
+## Client
+
+As a client-side connection using tornado_mstp. You can just create an 
+`mstpsocket_connect` using `tornado_mstp.mstpsocket_connect`. It has the 
+same usage of `tornado.websocket.websocket_connect` with some extra arguments.
+
+```python
+import asyncio
+from typing import Optional
+
+from tornado_mstp import mstpsocket_connect
+from tornado_mstp import MstpSocketClientConnection
+
+
+class MyMstpSocketClientConnection(MstpSocketClientConnection):
+
+    async def handle_login_response(
+        self,
+        *,
+        status: Optional[bool] = None,
+        connection_interval: Optional[int] = None,
+        session_alive_time: Optional[int] = None,
+        session_id: Optional[str] = None,
+        reason: Optional[str] = None
+    ) -> None:
+        print(session_id)
+
+
+async def main():
+    await mstpsocket_connect(
+        url="mstp://localhost:8005/mstp",
+        secret="secret",
+        connection_class=MyMstpSocketClientConnection
+    )
+    f = asyncio.Future()
+    await f
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
+
+```

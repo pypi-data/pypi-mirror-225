@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "tornado-mstp"
+version = "0.1.1"
+description = "A tornado MSTP library, using WebSocket."
+authors = ["Jackson <jackson.zhang@mrs.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+tornado = "^6.3.2"
+pydantic = "^2.1.1"
+pyrate-limiter = "^2.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
