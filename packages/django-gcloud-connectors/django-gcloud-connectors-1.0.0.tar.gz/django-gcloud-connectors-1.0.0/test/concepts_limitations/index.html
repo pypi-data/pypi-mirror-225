@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/concepts_limitations/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Concepts & limitations - Django Gcloud Connectors Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Concepts \u0026 limitations";
+        var mkdocs_page_input_path = "concepts_limitations.md";
+        var mkdocs_page_url = "/google-cloud/django-gcloud-connectors/concepts_limitations/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Django Gcloud Connectors Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Concepts & limitations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#foreign-keys">Foreign Keys</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#many-to-many-relationships">Many-to-many relationships</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#migrations">Migrations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#deleting-fields">Deleting fields</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#making-new-fields-queryable">Making new fields queryable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#complex-queries">Complex queries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#inequalities">Inequalities</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#special-indexes">Special indexes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../caching/">Caching</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing & Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commercial_support/">Commercial Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../work_with_potato/">Work with us!</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Django Gcloud Connectors Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Concepts & limitations</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/edit/master/docs/concepts_limitations.md" class="icon icon-gitlab"> Edit on GitLab</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="concepts-limitations">Concepts &amp; Limitations</h1>
+<p>It is <em>strongly recommended</em> that you read the Cloud Datastore API documentation before using this ORM backend. Understanding of the Datastore
+vs SQL will help avoid unexpected surprises!</p>
+<p>The Google Cloud Datastore is <em>not</em> your traditional SQL database, and for that reason the Datastore backend doesn't support
+all of the functionality of the Django ORM (although it supports the majority). Also, some things don't always work the way
+you'd expect. As the Datastore is a No-SQL database, anything relying on cross-table queries or aggregates is basically unsupported.</p>
+<p>Here are some of the limitations and differences:</p>
+<ul>
+<li>We ship specialised atomic() decorators, including support for "independent" transactions. See <a href="../transactions/">Transactions</a>.</li>
+<li>There is no support for savepoints, nested atomic() blocks are effectively a no-op</li>
+<li>Django's atomic() decorators WILL NOT WORK</li>
+<li>No support for select_related(), although prefetch_related() works</li>
+<li>No support for cross-table ordering</li>
+<li>Only up-to 500 entities can be read or written inside an atomic() block</li>
+<li>No support for aggregate queries</li>
+<li>Queries can only contain a single inequality operation (gt, lt, lte, gte, isnull=False), and the resultset must be ordered by the field you're testing for inequality</li>
+</ul>
+<p>The advantage of course is that you can build your Django application for near-infinite scalability of data, and increased uptime.</p>
+<p>Further differences are discussed below.</p>
+<h2 id="foreign-keys">Foreign Keys</h2>
+<p>The Cloud Datastore doesn't have the concept of a foreign key <em>constraint</em>,
+so relations are not enforced at the database level in the same way that they would be on a classic SQL database,
+but the <code>ForeignKey</code> field is supported and generally works entirely as expected.</p>
+<h2 id="many-to-many-relationships">Many-to-many relationships</h2>
+<p>As the Cloud Datastore can't do <code>JOIN</code> queries between tables, Django's <code>ManyToManyField</code> is not supported,
+but gcloudc provides <code>RelatedSetField</code> and <code>RelatedListField</code> which provide functionality for many-to-many relationships.
+See <a href="../fields/">fields</a>.</p>
+<h2 id="migrations">Migrations</h2>
+<p>As the Cloud Datastore is schemaless, the concept of migrations doesn't really apply in the same way, as there's no schema to update.
+So in most cases, where you would normally need to run a migration on a SQL database (e.g. to add a new table or new column),
+you can generally do without a migration with gcloudc, because the required schema will just be applied to new rows as they are saved.</p>
+<p>There are however a few occasions when you might need to apply some form of "migration".
+gcloudc does not currently provide functionality for applying these changes, but it may do in the future.</p>
+<h3 id="deleting-fields">Deleting fields</h3>
+<p>If you delete a field but do not apply a migration to delete the "column" from the database, then as with a SQL database,
+Django will ignore any columns which are not defined in the model, and so the existing data for this deleted field will remain in the DB.
+If you want to delete the data from the old column, then you'll need to do this directly on the Datastore.</p>
+<p><em>Example:</em> you've committed crimes against the internet by storing users' plain-text passwords in your database and need to delete them.</p>
+<pre><code class="language-python">class User(models.Model):
+    name = CharField()
+    # raw_password = models.CharField(max_length=10)
+
+# You've removed the offending field, but the data is still in the entities in the Datastore.
+# Let's fix that...
+
+from google.cloud.datastore.client import Client
+
+client = Client(project=&quot;my-cloud-project-id&quot;, namespace=None)
+query = client.query(User._meta.db_table, namespace=None)
+results = query.Run(limit=None)
+for entity in results:
+    del entity[&quot;raw_password&quot;]
+    client.put(entity)
+</code></pre>
+<h3 id="making-new-fields-queryable">Making new fields queryable</h3>
+<p>If you add a new field to a model, then so long as you have provided a <code>default</code> for the field,
+you can immediately create/update model instances with this new field without the need to run any sort of migration.</p>
+<p>However, if you want to be able to query the existing objects on this new field,
+then you will first need to re-save the existing objects in order to populate the new value into the rows in the DB.
+Without doing this, rows in which the new field has not yet been saved will not be returned by the query.</p>
+<h2 id="complex-queries">Complex queries</h2>
+<p>The Cloud Datastore can only perform queries using an index. In other words, it won't do a table scan.
+As such, it can generally only perform queries which can be done by working its way through a single, ordered index.
+Therefore some types of queries are not possible, or can only be performed with additional trickery.</p>
+<h3 id="inequalities">Inequalities</h3>
+<p>Queries which contain multiple inequality filters, e.g. <code>.filter(field_a__gte=x, field_b__gte=y)</code> are not possible.
+Inequalities are any of <code>__gt</code>, <code>__lt</code>, <code>__lte</code>, <code>__gte</code>, <code>__isnull=False</code>.</p>
+<p>Additionally, if your query contains an inequality then it must be ordered by the field you're testing for inequality.</p>
+<h3 id="special-indexes">Special indexes</h3>
+<p>Queries which use the following filters cannot be performed directly on the Cloud Datastore:</p>
+<ul>
+<li><code>__iexact</code></li>
+<li><code>__contains</code></li>
+<li><code>__icontains</code></li>
+<li><code>__startswith</code></li>
+<li><code>__endswith</code></li>
+<li><code>__regex</code></li>
+<li><code>__iregex</code></li>
+<li><code>__date</code></li>
+<li><code>__iso_year</code></li>
+<li><code>__iso_week_day</code></li>
+<li><code>__quarter</code></li>
+<li><code>__year</code></li>
+<li><code>__month</code></li>
+<li><code>__day</code></li>
+<li><code>__week</code></li>
+<li><code>__week_day</code></li>
+<li><code>__hour</code></li>
+<li><code>__minute</code></li>
+<li><code>__second</code></li>
+<li><code>__time</code></li>
+</ul>
+<p>as they require inexact matching of field values (or parts of field values).
+But gcloudc <em>does</em> support many of them via its built-in "special indexes" system,
+which indexes the relevant parts/permutations of the field values to allow them to be queried directly via an index.</p>
+<p>To configure this you need to set the <code>"INDEXES_FILE"</code> in the <code>DATABASES</code> setting. See <a href="../installation/">Installation</a>.</p>
+<p>For queries of these types, you may also wish to explore the <a href="../fields/#computed-fields">computed fields</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fields/" class="btn btn-neutral float-right" title="Fields">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+        </span>
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fields/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/fields/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Fields - Django Gcloud Connectors Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fields";
+        var mkdocs_page_input_path = "fields.md";
+        var mkdocs_page_url = "/google-cloud/django-gcloud-connectors/fields/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Django Gcloud Connectors Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concepts_limitations/">Concepts & limitations</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Fields</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#listfield">ListField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setfield">SetField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#charornonefield">CharOrNoneField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#charfield">CharField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#relatedlistfield">RelatedListField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#relatedsetfield">RelatedSetField</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#computed-fields">Computed fields</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#querying-on-iterable-fields">Querying on iterable fields</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../caching/">Caching</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing & Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commercial_support/">Commercial Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../work_with_potato/">Work with us!</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Django Gcloud Connectors Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Fields</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/edit/master/docs/fields.md" class="icon icon-gitlab"> Edit on GitLab</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fields">Fields</h1>
+<p>gcloudc includes a collection of Django model fields which leverage aspects of the Google Cloud Datastore.</p>
+<h2 id="listfield">ListField</h2>
+<p>This field takes advantage of the Datastore's ability to store multiple values under a single field/property name.</p>
+<p>The field takes another field definition as its first argument, and will then store a list of values of the given field.</p>
+<p>Example usage:</p>
+<pre><code class="language-python">from gcloudc.db.models.fields.charfields import CharField
+from gcloudc.db.models.fields.iterable import ListField
+
+class MyModel(models.Model):
+    things = ListField(CharField(), choices=[('a', 'A'), ('b', 'B')])
+</code></pre>
+<p>Note that the <code>choices</code> are set on the outer <code>ListField</code>, not on the inner <code>Charfield</code>.</p>
+<p>See also <a href="#querying-on-iterable-fields">Querying on iterable fields</a></p>
+<h2 id="setfield">SetField</h2>
+<p>This is essentially the same as <code>ListField</code>, but removes duplicate values and the values are unordered.</p>
+<h2 id="charornonefield">CharOrNoneField</h2>
+<p>A field that stores only non-empty strings or None (it won't store empty strings).
+This is useful if you want values to be unique but also want to allow empty values.</p>
+<p>It is generally not good practice to put <code>null=True</code> on a Django <code>CharField</code>,
+and even if you do, when you edit such a field through a Django form,
+an empty value will be stored as an empty string rather than <code>None</code>.</p>
+<p>This field will instead store empty values as <code>None</code>, which then allows enforcement of uniqueness
+for non-empty values (because multiple empty string values will violate a unique constraint,
+whereas multiple <code>None</code> values will not).</p>
+<h2 id="charfield">CharField</h2>
+<p>On the Cloud Datastore, every <code>str</code> property has the same maximum length of 1500 <em>bytes</em> (not characters),
+so the required <code>max_length</code> argument of Django's <code>CharField</code> is both ignored and unreliable.</p>
+<p>gcloudc's <code>CharField</code> sets a default <code>max_length</code> of 1500 and enforces it in bytes, the same way as the Datastore does.</p>
+<p>This means you can omit the <code>max_length</code> argument from the field,
+and can rely on the field to correctly validate the values to the requirements of the database.</p>
+<h2 id="relatedlistfield">RelatedListField</h2>
+<p>This is a specific variation of <code>SetField</code> which essentially stores a list of <code>ForeignKey</code>s.</p>
+<p>This is a powerful and very useful alternative to Django's <code>ManyToManyField</code>.
+There is a limit to the number of related objects which can be stored in a single field,
+so you need to think about your architecture carefully in terms of how it will scale,
+but for many use cases it can be a great solution.</p>
+<p>For example, if you have an application in which each user can browse products and add products to a list of favourites,
+you could have a <code>User</code> model with a <code>RelatedListField</code> of <code>Product</code> objects,
+and so long as you restrict each use to a maximum of 500 favourited products,
+the application can scale to an unlimited number of users without any problems.</p>
+<pre><code class="language-python">RelatedListfield(to, limit_choices_to=None, related_name=None, on_delete=models.DO_NOTHING, **kwargs)
+</code></pre>
+<p>Example usage:</p>
+<pre><code>from gcloudc.db.models.fields.related import RelatedListField
+
+class Product(models.Model):
+    ...
+
+class User(models.Model):
+    favourites = RelatedListField(Product)
+
+user = User.objects.get(pk=1)
+product = Product.objects.get(name=&quot;kettle&quot;)
+user.favourites.append(product)
+user.save()
+</code></pre>
+<h2 id="relatedsetfield">RelatedSetField</h2>
+<p>This is essentially the same as <code>RelatedListField</code>, but removes duplicate values and the values are unordered.</p>
+<h2 id="computed-fields">Computed fields</h2>
+<p>In order to ensure that all queries are efficient, the Cloud Datastore does not allow queries which perform
+query-time calculations on the field values, such as <code>HOUR(field_name)</code> or <code>field_a &gt; field_b</code>.
+In some of these cases (such as the <code>HOUR</code> example), gcloudc's special indexes functionality can pre-compute
+these values for you and save them to an index.
+But sometimes you'll want to pre-compute values yourself in order to query on them.</p>
+<p><code>gcloudc.db.models.fields.computed</code> provides a set of fields which allow you to easily compute a
+value at save-time which can then be queried directly.</p>
+<p>Each computed field generally takes the same values as the standard version of the field,
+but the first argument must be either:</p>
+<ul>
+<li>A callable which will be passed the model instance and should return the computed value to be stored.</li>
+<li>A string giving the name of a method on the model class which will return the computed value to be stored.</li>
+</ul>
+<p>Example usage:</p>
+<pre><code class="language-python">class MyModel(models.Model):
+    wholesale_price = PositiveIntegerField()
+    retail_price = PositiveIntegerField()
+
+    profit = ComputedPositiveIntegerField(&quot;_calculate_profit&quot;)
+
+    def _calculate_profit(self):
+        return self.retail_price - self.wholesale_price
+</code></pre>
+<p>With all computed fields, the values are computed and saved during the execution of the <code>save</code> method.
+So if you're adding a computed field to an existing model, you'll need to re-save all existing objects
+before you can query on the computed values.</p>
+<p>The available computed fields are:</p>
+<ul>
+<li><code>ComputedCharField</code></li>
+<li><code>ComputedTextField</code></li>
+<li><code>ComputedIntegerField</code></li>
+<li><code>ComputedPositiveIntegerField</code></li>
+<li><code>ComputedBooleanField</code></li>
+<li><code>ComputedCollationField</code> (see below)</li>
+</ul>
+<p>If you need another type of computed field, you can easily make your own using <code>ComputedFieldMixin</code>, like this:</p>
+<pre><code class="language-python">from gcloudc.db.models.fields.computed import ComputedFieldMixin
+
+class ComputedDateField(ComputedFieldMixin, models.Datefield):
+    pass
+</code></pre>
+<p><code>ComputedCollationField</code> works slightly differently to the others.
+App Engine sorts strings based on the unicode codepoints that make them up.
+When you have strings from non-ASCII languages this makes the sort order incorrect
+(e.g. Ł will be sorted after Z).
+This field uses the pyuca library to calculate a sort key using the Unicode Collation Algorithm,
+which can then be used for ordering querysets correctly.</p>
+<p>Unlike the other computed fields, this field should be passed the name of the field whose collation it is storing as the first argument.</p>
+<p>Example usage:</p>
+<pre><code class="language-python">from gcloudc.db.models.fields.charfields import CharField
+from gcloudc.db.models.fields.computed import ComputedCollationField
+
+class Customer(models.Model):
+    name = CharField()
+    sortable_name = ComputedCollationField(&quot;name&quot;)
+
+Customer.objects.create(name=&quot;Ale&quot;)
+Customer.objects.create(name=&quot;Łukasz&quot;)
+Customer.objects.create(name=&quot;Rachel&quot;)
+
+Customer.objects.order_by(&quot;name&quot;)
+[&lt;Customer Ale&gt;, &lt;Customer Rachel&gt;, &lt;Customer Łukasz&gt;]
+
+Customer.objects.order_by(&quot;sortable_name&quot;)
+[&lt;Customer Ale&gt;, &lt;Customer Łukasz&gt;, &lt;Customer Rachel&gt;]
+</code></pre>
+<h2 id="querying-on-iterable-fields">Querying on iterable fields</h2>
+<p><code>ListField</code>, <code>SetField</code>, <code>RelatedListField</code> and <code>RelatedSetField</code> can all be queried using the
+<code>__contains</code> and <code>__overlap</code> filters that you can use on
+<a href="https://docs.djangoproject.com/en/dev/ref/contrib/postgres/fields/">the Postgres ArrayField</a>.
+The <code>__contained_by</code> filter is not currently supported.</p>
+<p>Note that for <code>__contains</code> filters, if you're only querying with a single value then you can simply do:
+<code>.filter(iterable_field__contains=value)</code> rather than <code>.filter(iterable_field__contains=[value])</code>.</p>
+<p>For the <code>RelatedListField</code> and <code>RelatedSetField</code> you can pass either model instances or primary
+keys as values to the filter.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../concepts_limitations/" class="btn btn-neutral float-left" title="Concepts & limitations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../transactions/" class="btn btn-neutral float-right" title="Transactions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+        </span>
+    
+    
+      <span><a href="../concepts_limitations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../transactions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

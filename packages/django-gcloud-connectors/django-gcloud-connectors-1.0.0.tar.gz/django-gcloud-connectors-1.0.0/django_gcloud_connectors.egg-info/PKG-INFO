@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: django-gcloud-connectors
+Version: 1.0.0
+Summary: A Django library for connecting to Google Cloud Datastore from Python 3 runtimes.
+Home-page: https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors
+Author: Potato London Ltd.
+Author-email: mail@p.ota.to
+License: UNKNOWN
+Keywords: Google Cloud Datastore,Google App Engine,Django
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown
+Provides-Extra: test
+License-File: LICENSE
+
+# Django GCloud Connectors (gcloudc)
+
+**Note: This project is now living in [GitLab](https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors)**
+
+The aim of this project is to create Django database connector / backend for Google Cloud.
+
+It currently provides support for Cloud Firestore in Datastore mode.
+Note: the `OPTIMISTIC_WITH_ENTITY_GROUPS` legacy concurrency mode is not supported.
+
+[Documentation](https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/)
+
+If you are interested in submitting a patch, please refer to the [Contributing](https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/contributing) page.
+
+---
+
+## Looking for Commercial Support?
+
+Potato offers Commercial Support for all its Open Source projects and we can tailor a support package to your needs.
+
+If you're interested in commercial support, training, or consultancy then go ahead and contact us at [opensource@potatolondon.com](mailto:opensource@potatolondon.com)
+
+

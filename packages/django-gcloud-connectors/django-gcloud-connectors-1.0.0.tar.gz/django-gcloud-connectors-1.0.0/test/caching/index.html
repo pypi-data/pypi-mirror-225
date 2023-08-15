@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/caching/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Caching - Django Gcloud Connectors Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Caching";
+        var mkdocs_page_input_path = "caching.md";
+        var mkdocs_page_url = "/google-cloud/django-gcloud-connectors/caching/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Django Gcloud Connectors Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concepts_limitations/">Concepts & limitations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Caching</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#refreshing-models">Refreshing Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inside-transactions">Inside transactions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#non-unique-queries">Non-unique queries</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing & Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commercial_support/">Commercial Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../work_with_potato/">Work with us!</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Django Gcloud Connectors Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Caching</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/edit/master/docs/caching.md" class="icon icon-gitlab"> Edit on GitLab</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="caching">Caching</h1>
+<p>All models handled via the connector are, by default, cached in memory by:</p>
+<ul>
+<li>Primary key</li>
+<li>Unique fields</li>
+</ul>
+<h2 id="refreshing-models">Refreshing Models</h2>
+<p>While in most scenario caching is good and you'll benefit from it, it does slightly
+change the semantics of <code>refresh_from_db</code>: this will effectively refresh from cache,
+not from the database.</p>
+<p>If you're using <code>refresh_from_db</code> simply to discard the unsaved changes you've made to
+a model and "reset" to the original state, that's ok.</p>
+<p>If instead, you need to absolutely make sure to get the latest value from the database
+then you can temporarily disable the cache with the <code>gcloudc.context_decorators.disable_cache</code>
+context manager:</p>
+<pre><code class="language-python">from gcloudc.context_decorators import disable_cache
+
+
+with disable_cache():
+    instance.refresh_from_db()
+</code></pre>
+<p>You can also disable the cache globally by setting <code>GCLOUDC_CACHE_ENABLED</code> to <code>False</code>.</p>
+<p><strong>Warning:</strong> if you disable the cache, you may have weird behaviour inside transactions.
+Read on!</p>
+<h2 id="inside-transactions">Inside transactions</h2>
+<p>The connectors cache is particularly useful inside transactions.
+In datastore transactions, any write done inside of it will note be "seen" until
+the transaction is committed, which would lead to scenario like this</p>
+<pre><code class="language-python">with transaction.atomic():
+    obj = Model.object.create(...)
+    ...
+    Model.object.get(pk=obj.pk) # &lt;-- raises Model.DoesNotExists
+</code></pre>
+<p>This is generally not what you want, but you'll only have to worry about it
+if you disable the cache.</p>
+<h2 id="non-unique-queries">Non-unique queries</h2>
+<p>Only "unique[^*]" queries are performed on the cache. Non-unique queries will
+still be performed on the underlying datastore instance.</p>
+<p>If, inside a transaction, you're performing a query on a kind that has been
+modified in that same transaction, the query won't see those changes.</p>
+<p>For example</p>
+<pre><code class="language-python">
+number = IntegerModel(value=1)
+number.save()
+
+with transaction.atomic():
+    number.value = 100
+    bigger_than_10 = IntegerModel.objects.filter(value__gt=10).count()
+    # bigger_than_10 == 0 here, the query didn't pick up the change outside the transaction
+</code></pre>
+<p>[^*]: By unique here we mean a query that will return either 1 or no result as a consequence
+of a unique constraint: this includes queries by primary key, query with an equality filter
+or a <code>unique=True</code> field or queries with equality filters on all fields for a <code>unique_together</code>
+constraint</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../transactions/" class="btn btn-neutral float-left" title="Transactions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Contributing & Testing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+        </span>
+    
+    
+      <span><a href="../transactions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

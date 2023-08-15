@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/transactions/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Transactions - Django Gcloud Connectors Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Transactions";
+        var mkdocs_page_input_path = "transactions.md";
+        var mkdocs_page_url = "/google-cloud/django-gcloud-connectors/transactions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Django Gcloud Connectors Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concepts_limitations/">Concepts & limitations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Transactions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#atomic">atomic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#non_atomic">non_atomic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#in_atomic_block">in_atomic_block</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#on_commit">on_commit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-objects">Transaction objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#refresh_if_unread">refresh_if_unread</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_already_been_read">has_already_been_read</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example usage</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../caching/">Caching</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing & Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commercial_support/">Commercial Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../work_with_potato/">Work with us!</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Django Gcloud Connectors Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Transactions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/edit/master/docs/transactions.md" class="icon icon-gitlab"> Edit on GitLab</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="transactions">Transactions</h1>
+<p>Transactions on the Cloud Datastore behave differently to those of a SQL database.
+It's worth reading the <a href="https://cloud.google.com/datastore/docs/concepts/transactions">Cloud Datastore transactions documentation</a>
+to familiarise yourself with their behaviour.
+Crucially:</p>
+<blockquote>
+<p>"queries and lookups inside a Datastore mode transaction do <em>not</em> see the results of previous writes inside that transaction".</p>
+</blockquote>
+<p>This is partially mitigated by our caching system. For more info on how querying and caching work
+when using <code>gcloudc.db.transaction</code> see the <a href="../caching#inside-transactions">caching</a> docs.</p>
+<p><em>Django's</em> <code>atomic</code> <em>decorator/context manager will have no effect on the Datastore.</em></p>
+<p>However, <code>gcloudc.db.transaction</code> provides a separate set of decorators/context managers for managing transactions.</p>
+<h2 id="atomic"><code>atomic</code></h2>
+<pre><code class="language-python">atomic(
+    independent=False,
+    mandatory=False,
+    using=&quot;default&quot;,
+    read_only=False,
+    enable_cache=True,
+) -&gt; Transaction
+</code></pre>
+<p>This can be used either as a decorator or a context manager to execute a block of code within a Datastore transaction.</p>
+<p>If used as a context manager, it will return the <code>Transaction</code> object.
+If used as a function decorator, you will need to call <code>current_transaction()</code> to get the <code>Transaction</code> object.</p>
+<p>See <a href="#transaction-objects">Transaction object</a>.</p>
+<p>The kwargs are:</p>
+<ul>
+<li><code>independent</code>: forces the start of a new, independent transaction, even if you are currently already in a transaction.</li>
+<li><code>mandatory</code>: forces a check to ensure that you are already within an outer transaction. Raises <code>TransactionFailedError</code> if not.</li>
+<li><code>using</code>: the database connection name to use (works the same as Django's <code>using</code> parameter for database operations).</li>
+<li><code>read_only</code>: for creating a read-only transaction. This functionality is not yet implemented.</li>
+<li><code>enable_cache</code>: enables gcloudc's caching of queries which can only return a singular, unique result.</li>
+</ul>
+<p>For more info on caching and transactions see the <a href="../caching#inside-transactions">caching</a> docs</p>
+<h2 id="non_atomic"><code>non_atomic</code></h2>
+<pre><code class="language-python">non_atomic(using=&quot;default&quot;)
+</code></pre>
+<p>This can be used either as a decorator or a context manager to break out and execute a block of code outside of the current transaction.</p>
+<h2 id="in_atomic_block"><code>in_atomic_block</code></h2>
+<pre><code class="language-python">in_atomic_block(using=&quot;default&quot;) -&gt; bool
+</code></pre>
+<p>This function tells you whether or not you are currently inside an atomic transaction.</p>
+<h2 id="on_commit"><code>on_commit</code></h2>
+<pre><code class="language-python">on_commit(func, using=None)
+</code></pre>
+<p>The same as Django's <code>on_commit</code>, this registers a function to be called when the current transaction is committed.
+If the current transaction is rolled back, <code>func</code> will not be called.</p>
+<h2 id="transaction-objects">Transaction objects</h2>
+<p>When using <code>atomic</code> as a context manager, or using <code>current_transaction()</code>, you will get a <code>Transaction</code> object.
+This can and should be used to perform operations within the transaction.</p>
+<p>A <code>Transaction</code> object has the following methods:</p>
+<h3 id="refresh_if_unread"><code>refresh_if_unread</code></h3>
+<pre><code class="language-python">refresh_if_unread(instance) -&gt; None
+</code></pre>
+<p>This method should be used to refresh instances of Django models from the database.</p>
+<p>Remember that "queries and lookups inside a Datastore mode transaction do <em>not</em> see the results of previous writes inside that transaction",
+therefore, if you query for an object inside a transaction, then modify it, save it and fetch it from the DB again,
+the object that you get back will be the original (unmodified) version, as it existed before the transaction started.
+So if you then modify and save the object again, you'll overwrite the changes which you made earlier in the transaction.
+Therefore, to avoid this problem, this method will only re-fetch the given object from the database if it has not yet been fetched within the current transaction.</p>
+<p>Note: the current implementation of caching should not require this method.
+We're investigating if it's still necessary or not. If not it might get deprecated soon.</p>
+<h3 id="has_already_been_read"><code>has_already_been_read</code></h3>
+<pre><code class="language-python">has_already_been_read(instance) -&gt; bool
+</code></pre>
+<p>This method tells you whether or not the given Django model instance has been read from the database within the current transaction.</p>
+<h2 id="example-usage">Example usage</h2>
+<pre><code class="language-python">from gclouc.db.transaction import atomic, current_transaction, on_commit
+
+# Using atomic() as a context manager
+counter = MyCounter.objects.get(pk=1)
+with atomic() as transaction:
+    on_commit(log_counter_increment)  # Will only happen if the transaction is successful
+    transaction.refresh_if_unread(counter)
+    counter.count = counter.count + 1
+    counter.save()
+
+# Using atomic() as a decorator
+@atomic()
+def increment_counter(counter):
+    transaction = current_transaction()
+    on_commit(log_counter_increment)  # Will only happen if the transaction is successful
+    transaction.refresh_if_unread(obj)
+    counter.count = counter.count + 1
+    counter.save()
+
+counter = MyCounter.objects.get(pk=1)
+increment_counter(counter)
+
+def log_counter_increment():
+    logging.info(&quot;Incremented counter!&quot;)
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fields/" class="btn btn-neutral float-left" title="Fields"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../caching/" class="btn btn-neutral float-right" title="Caching">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+        </span>
+    
+    
+      <span><a href="../fields/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../caching/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
