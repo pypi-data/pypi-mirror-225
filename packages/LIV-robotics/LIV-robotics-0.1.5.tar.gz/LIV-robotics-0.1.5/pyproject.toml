@@ -1,0 +1,22 @@
+[project]
+name = "LIV-robotics"
+version = "0.1.5"
+authors = [
+  { name="Jason Ma", email="jasonyma@seas.upenn.edu" },
+]
+description = "LIV: Language-Image Representations and Rewards for Robotic Control"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/penn-pal-lab/LIV"
+"Bug Tracker" = "https://github.com/penn-pal-lab/LIV/issues"
+
+[build-system]
+requires = ["setuptools>=63.1"]
+build-backend = "setuptools.build_meta"
