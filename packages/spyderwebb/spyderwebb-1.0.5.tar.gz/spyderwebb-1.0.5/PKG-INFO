@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: spyderwebb
+Version: 1.0.5
+Summary: JWST NIRSpec reduction software
+Home-page: https://github.com/dnidever/spyderwebb
+Author: David Nidever
+Author-email: dnidever@montana.edu
+License: MIT
+Requires: numpy
+Requires: astropy(>=4.0)
+Requires: scipy
+Requires: jwst
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Provides-Extra: test
+Provides-Extra: docs
+License-File: LICENSE
+
+
+Spyderwebb
+==================
+
+JWST NIRspec multi-object spectroscopy reduction software.
+
+Authors
+-------
+
+- **David Nidever** (Montana State University)
+  
+Installation
+------------
+
+To install the latest version::
+
+    pip install git+https://github.com/dnidever/spyderwebb
+
+    
+Documentation
+-------------
+
+.. image:: https://readthedocs.org/projects/spyderwebb/badge/?version=latest
+        :target: http://spyderwebb.readthedocs.io/
+
+See `the documentation <http://spyderwebb.readthedocs.io>`_ for information on how
+to install and use Spyderwebb.
+
+License
+-------
+
+.. image:: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+        :target: https://github.com/dnidever/spyderwebb/blob/main/LICENSE

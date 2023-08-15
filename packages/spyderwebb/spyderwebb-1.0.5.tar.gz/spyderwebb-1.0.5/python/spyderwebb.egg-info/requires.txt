@@ -1,0 +1,16 @@
+astropy
+scipy
+jwst
+
+[docs]
+sphinx
+sphinx-astropy
+nbsphinx
+nbconvert
+nbformat
+ipykernel
+
+[test]
+pytest
+pytest-astropy
+ipython
