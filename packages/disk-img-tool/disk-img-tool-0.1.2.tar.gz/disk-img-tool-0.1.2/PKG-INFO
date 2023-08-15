@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: disk-img-tool
+Version: 0.1.2
+Summary: Resize, list/get/put files and shell into raw disk images
+Home-page: http://github.com/lpenz/disk-img-tool
+Author: "Leandro Lisboa Penz"
+Author-email: "lpenz@lpenz.org"
+License: MIT
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: test
+License-File: LICENSE
+
+[![CI](https://github.com/lpenz/disk-img-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/lpenz/disk-img-tool/actions/workflows/ci.yml)
+[![coveralls](https://coveralls.io/repos/github/lpenz/disk-img-tool/badge.svg?branch=main)](https://coveralls.io/github/lpenz/disk-img-tool?branch=main)
+
+
+# disk-img-tool
+
+**disk-img-tool** can be used to resize, list/get/put files and shell
+into raw disk images, including Raspberry Pi OS release.
