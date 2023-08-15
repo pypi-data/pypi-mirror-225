@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: ECMpy2.0
+Version: 1.0.4
+Summary: Automated construction of enzyme constraint models using ECMpy workflow.
+Home-page: https://github.com/tibbdc/ECMpy2.0
+Author: Zhitao Mao
+Author-email: mao_zt@tib.cas.cn
+License: MIT
+Requires-Dist: cobra (==0.21.0)
+Requires-Dist: openpyxl
+Requires-Dist: requests
+Requires-Dist: pebble
+Requires-Dist: xlsxwriter
+Requires-Dist: Bio
+Requires-Dist: Require
+Requires-Dist: quest
+Requires-Dist: scikit-learn
+Requires-Dist: RDKit
+Requires-Dist: seaborn
+Requires-Dist: pubchempy
+Requires-Dist: torch
+Requires-Dist: ipykernel
+Requires-Dist: bioservices (==1.10.4)
+Requires-Dist: pyprobar
+Requires-Dist: xmltodict
+Requires-Dist: plotly
+Requires-Dist: kaleido
+Requires-Dist: nbformat
+
