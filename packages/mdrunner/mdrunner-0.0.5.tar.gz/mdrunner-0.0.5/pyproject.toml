@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mdrunner"
+version = "0.0.5"
+authors = [
+  { name="Peter Kanderholm", email="peter.kanderholm@gmail.com" },
+]
+description = "A framework for running user-defined calculations (here called models)"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+            "Intended Audience :: Developers",
+            "License :: OSI Approved :: MIT License",
+            "Programming Language :: Python",
+            "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3.7",
+            "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
+            "Programming Language :: Python :: 3.12",
+            "Operating System :: OS Independent"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/PeterKanderholm/mdrunner"
+"Bug Tracker" = "https://github.com/PeterKanderholm/mdrunner/issues"

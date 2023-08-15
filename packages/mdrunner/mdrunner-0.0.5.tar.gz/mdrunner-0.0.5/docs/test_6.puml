@@ -1,0 +1,25 @@
+@startuml
+
+[*] -[dashed]-> S3 : add(p1=2, p2=3, x=4)
+
+S3 --> A2 : get()
+S3 --> B3 : get()
+S3 --> C3 : get()
+S3 -[dashed]-> F1 : notify()
+
+A2 --> B3 : get()
+A2 --> C3 : get()
+A2 -[dashed]-> F1 : notify()
+
+B3 --> C3 : get()
+B3 -[dashed]-> F1 : notify()
+
+C3 -[dashed]-> F1 : notify()
+
+S3 : p1, p2, x
+A2 : x = S.input.p1 + S.input.p2
+B3 : x = S.output.x + A.output.x
+C3 : x = S.output.x + A.output.x + B.output.x
+F1: x = sum(notified.x)
+
+@enduml

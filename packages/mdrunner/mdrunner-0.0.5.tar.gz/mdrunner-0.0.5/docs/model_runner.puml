@@ -1,0 +1,25 @@
+@startuml
+actor User
+User --> Runner: models
+activate Runner
+Runner -> A: init()
+Runner -> B: init()
+activate B
+B -> B: get(A)
+B -> B: notify(N)
+B -> Runner
+deactivate B
+Runner -> N: init()
+deactivate Runner
+User -> A: add_input(x=100,y=3.5)
+User -> Runner: run()
+activate Runner
+Runner -> A: run()
+Runner -> B: run()
+activate B
+B -> B: add_input(z=A.input.x*A.input.y)
+B -> Runner
+deactivate B
+Runner -> N: run()
+deactivate Runner
+@enduml
