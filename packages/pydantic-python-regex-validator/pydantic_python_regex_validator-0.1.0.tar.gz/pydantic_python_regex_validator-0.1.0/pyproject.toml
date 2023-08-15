@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "pydantic-python-regex-validator"
+version = "0.1.0"
+description = "A regex validator for pydantic, using python regex."
+authors = ["Oli Parker <oliver.parker@gridedge.co.uk>"]
+readme = "README.md"
+packages = [{include = "pydantic_python_regex_validator"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydantic = "^2.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.284"
+pytest = "^7.4.0"
+black = "^23.7.0"
+coverage = "^7.3.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+select = ["ALL"]
+ignore = [
+    "ANN401",
+]
+
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.per-file-ignores]
+"tests/*" = [
+	"S101",  # Allow asserts in tests
+	"ANN",   # Don't care about type annotations in tests
+]
