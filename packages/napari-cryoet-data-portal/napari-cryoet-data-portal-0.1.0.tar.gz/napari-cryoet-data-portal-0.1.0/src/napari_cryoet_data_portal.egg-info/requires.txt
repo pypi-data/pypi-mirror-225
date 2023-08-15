@@ -1,0 +1,17 @@
+cryoet_data_portal
+fsspec[http,s3]
+npe2
+numpy
+napari_ome_zarr
+ndjson
+qtpy
+superqt
+
+[testing]
+tox
+pytest
+pytest-cov
+pytest-mock
+pytest-qt
+napari
+pyqt5
