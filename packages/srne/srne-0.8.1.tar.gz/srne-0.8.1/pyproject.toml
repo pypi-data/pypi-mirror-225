@@ -1,0 +1,20 @@
+[project]
+name = "srne"
+version = "0.8.1"
+authors = [
+  { name="adorjanw", email="adorjanw@outlook.com" },
+]
+description = "A library for SRNE compatible devices."
+readme = "README.md"
+requires-python = ">=3.7.3"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries"
+]
+dependencies = [
+    "pyserial==3.5",
+]
+[project.urls]
+"Homepage" = "https://github.com/adorjanw/srne-python"
