@@ -1,0 +1,160 @@
+.git-blame-ignore-revs
+.gitattributes
+.gitignore
+.readthedocs.yaml
+LICENSE.md
+README.md
+pyproject.toml
+.github/workflows/black.yml
+.github/workflows/python_publish.yml
+.github/workflows/test.yml
+Deprecated/Readme.txt
+Examples/Scotty_main.py
+Examples/Scotty_main_OMFIT.py
+Examples/Scotty_main_sweep.py
+Examples/Scotty_main_sweep_parallel.py
+Examples/Analytical circular flux surfaces/Continuous ne/Scotty_main_circularFluxSurfaces.py
+Examples/Analytical circular flux surfaces/Continuous ne/Scotty_main_sweep_circularFluxSurfaces.py
+Examples/Analytical circular flux surfaces/Discontinuous ne/Scotty_main_testBCs.py
+Examples/DIII-D - DBS240/Scotty_main_DIII-D_240.py
+Examples/DIII-D - DBS240/Scotty_main_DIII-D_240_170672.py
+Examples/DIII-D - DBS240/Scotty_main_DIII-D_240_188839.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240 (oxtpwtlap06's conflicted copy 2022-04-25).py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_1 (oxtpwtlap06's conflicted copy 2022-04-25).py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_1.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_170672.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_188839.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_188839_beam.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_188839_largerWidths.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_188839_smallerWidths.py
+Examples/DIII-D - DBS240/Scotty_main_sweep_DIII-D_240_196039.py
+Examples/JT60SA - CIEMAT DBS/Scotty_main_JT60SA.py
+Examples/JT60SA - CIEMAT DBS/Scotty_main_sweep_JT60SA.py
+Examples/JT60SA - CIEMAT DBS/Scotty_main_sweep_JT60SA_alt.py
+Examples/MAST - UCLA CPS/Scotty_main_sweep_CPS_Jon.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_Clive.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_O.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_O_data.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_X.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_X_data.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_polyfit.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup1_polyfit_beam.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup2_X.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup2_data.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup2_data_beam.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup2_data_ray.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup3.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup3_data.py
+Examples/MAST - UCLA DBS/Scotty_main_sweep_shotgroup3_data_ray.py
+Examples/MAST-U - SWIP DBS/Scotty_main_MAST-U_SWIP.py
+Examples/MAST-U - UCLA CPS/Scotty_main_sweep_CPS.py
+Examples/MAST-U - UCLA DBS/Scotty_main_MAST-U_UCLA.py
+Examples/MAST-U - UCLA DBS/Scotty_main_sweep_MAST-U_.py
+Examples/MAST-U - UCLA DBS/Scotty_main_sweep_MAST-U_45177.py
+Examples/MAST-U - UCLA DBS/Scotty_main_sweep_MAST-U_46617.py
+Examples/MAST-U - UCLA DBS/Scotty_main_sweep_shotgroup6_X_data.py
+Examples/MAST-U - UCLA DBS/Scotty_main_sweep_shotgroup6_X_data_ray.py
+Handbook/Mirror Angles.pdf
+Handbook/requirements.txt
+Preprocessing/ne_fit_radialcoord.py
+Preprocessing/ne_smoothing_radialcoord.py
+Preprocessing/ne_write_radialcoord.py
+Preprocessing/plotTopfile.py
+TestFunctions/CartesianConverter.py
+TestFunctions/Test2DInterp.py
+TestFunctions/TestArea.py
+TestFunctions/TestDeriv.py
+TestFunctions/TestFindEntry.py
+TestFunctions/TestInterface.py
+TestFunctions/TestMatmul.py
+TestFunctions/TestVacuumPropagation.py
+TestFunctions/carttest.py
+TestFunctions/compareBfield.py
+TestFunctions/data_input.npz
+TestFunctions/data_output.npz
+TestFunctions/data_output_alt.npz
+WorkInProgress/Scotty_beam_me_up2.py
+WorkInProgress/Scotty_beam_me_up_in_a_slab.py
+docs/Makefile
+docs/Notes for users.txt
+docs/conf.py
+docs/index.rst
+docs/input.rst
+docs/make.bat
+docs/output.rst
+docs/references.rst
+docs/api/modules.rst
+docs/api/scotty.FindPsiBeam4.rst
+docs/api/scotty.PlotAllLocalisationLog.rst
+docs/api/scotty.PlotInput.rst
+docs/api/scotty.PlotPsiBC2.rst
+docs/api/scotty.beam_me_up.rst
+docs/api/scotty.check_ModeConversion.rst
+docs/api/scotty.check_input.rst
+docs/api/scotty.check_output.rst
+docs/api/scotty.compare_plot.rst
+docs/api/scotty.density_fit.rst
+docs/api/scotty.derivatives.rst
+docs/api/scotty.fun_CFD.rst
+docs/api/scotty.fun_evolution.rst
+docs/api/scotty.fun_general.rst
+docs/api/scotty.geometry.rst
+docs/api/scotty.hamiltonian.rst
+docs/api/scotty.hornpy.rst
+docs/api/scotty.init_bruv.rst
+docs/api/scotty.launch.rst
+docs/api/scotty.lensalot.rst
+docs/api/scotty.plot3_Torbeam_benchmark.rst
+docs/api/scotty.plot3_pretty.rst
+docs/api/scotty.plot4.rst
+docs/api/scotty.postmortem2.rst
+docs/api/scotty.ray_solver.rst
+docs/api/scotty.rst
+docs/api/scotty.torbeam.rst
+docs/api/scotty.typing.rst
+scotty/FindPsiBeam4.py
+scotty/PlotAllLocalisationLog.py
+scotty/PlotInput.py
+scotty/PlotPsiBC2.py
+scotty/__init__.py
+scotty/_version.py
+scotty/beam_me_up.py
+scotty/check_ModeConversion.py
+scotty/check_input.py
+scotty/check_output.py
+scotty/compare_plot.py
+scotty/derivatives.py
+scotty/fun_evolution.py
+scotty/fun_general.py
+scotty/geometry.py
+scotty/hamiltonian.py
+scotty/hornpy.py
+scotty/init_bruv.py
+scotty/launch.py
+scotty/lensalot.py
+scotty/outplot.py
+scotty/plot3_Torbeam_benchmark.py
+scotty/plot3_pretty.py
+scotty/plot4.py
+scotty/postmortem2.py
+scotty/profile_fit.py
+scotty/ray_solver.py
+scotty/torbeam.py
+scotty/typing.py
+scotty_beam_tracing.egg-info/PKG-INFO
+scotty_beam_tracing.egg-info/SOURCES.txt
+scotty_beam_tracing.egg-info/dependency_links.txt
+scotty_beam_tracing.egg-info/requires.txt
+scotty_beam_tracing.egg-info/top_level.txt
+tests/Notes.txt
+tests/test_derivatives.py
+tests/test_fun_general.py
+tests/test_geometry.py
+tests/test_hamiltonian.py
+tests/test_hornpy.py
+tests/test_initial_parameters.py
+tests/test_lens.py
+tests/test_profile_fit.py
+tests/test_simple_golden.py
+tests/test_torbeam.py
