@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: pmap3.0.5
+Version: 1.0.0
+Summary: TEST PMAP
+Home-page: UNKNOWN
+Author: Nishant Thakur
+Author-email: nishantthakur7g@gmail.com
+License: GNU 3.0
+Platform: UNKNOWN
+Requires-Dist: scikit-image (==0.19.1)
+Requires-Dist: matplotlib (==3.5.1)
+Requires-Dist: pandas (==1.4.0)
+Requires-Dist: seaborn (==0.11.2)
+Requires-Dist: torch (==1.10.2)
+Requires-Dist: torchvision (==0.11.3)
+Requires-Dist: umap-learn (==0.5.2)
+Requires-Dist: PyQt5 (==5.15.2)
+Requires-Dist: qtpy (==2.0.1)
+Requires-Dist: zarr (==2.10.3)
+Requires-Dist: dask-image (==2021.12.0)
+Requires-Dist: psutil (==5.9.0)
+Requires-Dist: gputil (==1.4.0)
+Requires-Dist: tabulate (==0.8.9)
+Requires-Dist: vaex (==4.7.0)
+Requires-Dist: opencv-python-headless (==4.5.5.62)
+Requires-Dist: vispy (==0.9.4)
+Requires-Dist: napari (==0.4.13)
+Requires-Dist: loguru (==0.6.0)
+Requires-Dist: phenograph (==1.5.7)
+Requires-Dist: napari-bioformats
+Requires-Dist: PyWavelets (==1.1.1)
+Requires-Dist: Sphinx (==4.2.0)
+Requires-Dist: sphinx-rtd-theme
+Requires-Dist: m2r2
+Requires-Dist: nbsphinx
+Requires-Dist: nbsphinx-link
+Requires-Dist: blake3 (==0.2.1)
+Requires-Dist: numpy (==1.21.5)
+Requires-Dist: segmentation-models-pytorch (==0.2.1)
+Requires-Dist: imageio-ffmpeg
+Requires-Dist: gdown
+Requires-Dist: networkx (==2.8.7)
+Requires-Dist: lxml (==4.9.1)
+Requires-Dist: jupyter (==1.0.0)
+
+UNKNOWN
+
+
