@@ -1,0 +1,16 @@
+$def with (project, repo)
+$var breadcrumbs = ("projects", "Projects", project, (None, ["u-ragt.ag-change-of"], f"<b>{project}</b>"))
+$var title: Commit Log
+$var title_classes = ["p-name"]
+$var classes = ["h-feed"]
+
+$for commit_id, commit in repo.log.items():
+    $ title, _, description = commit["message"].partition("\n\n")
+    <div class=h-entry><a
+    href=/projects/$project/commits/$commit_id>$commit_id[:7]</a>
+    <span class=p-name>$title</span>
+    <time class=dt-published
+    datetime=$commit["timestamp"].isoformat()>$commit["timestamp"].diff_for_humans()</time>
+    $if description:
+        <p class=p-content>$description</p>
+    </div>
