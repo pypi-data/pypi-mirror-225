@@ -1,0 +1,23 @@
+[project]
+name = "risus-py"
+version = "0.0.8"
+authors = [{name="Preston M. Firestone", email="firestone.preston@gmail.com"}]
+description = "Compute outcome probabilities for Risus: The Anything RPG"
+license = {text = "GPLv3+"}
+readme = "README.md"
+dependencies = [
+  "numpy",
+  "pandas",
+  "icepool"
+]
+classifiers = [
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Development Status :: 2 - Pre-Alpha",
+  "Topic :: Games/Entertainment :: Role-Playing"
+]
+
+[project.urls]
+Repository = "https://git.sr.ht/~p0mf/risus-py"
+
+[build-system]
+requires = ["setuptools", "wheel"]
