@@ -1,0 +1,82 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attendance-dash' %}">PAINEL ABESENSIA</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+                    <center><h1>{{ div.name|upper }}</h1>
+                    <h3>Fulan {{ month.name }} Tinan {{ year }}</h3></center>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-0">
+                                        {{ form.date|as_crispy_field }}
+                                      </div>
+                                      <div class="form-group col-md-6 mb-0">
+                                        <div class="">
+                                        <button type="submit" class="btn btn-info">Kontinua <i class="fa fa-arrow-circle-right"></i></button>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <table class="table table-sm table-striped">
+                                        <tr><th>Nu.</th><th>Naran</th><th>Dader</th><th>Loro-Kraik</th></tr>
+                                    {% for obj in emp %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ obj }}<br/>
+                                                <input type="hidden" name="empid{{ forloop.counter }}" value="{{ obj.id }}" required>
+                                            </td>
+                                            <td><input type="text" name="amid{{ forloop.counter }}" id="am" required value="1"></td>
+                                            <td><input type="text" name="pmid{{ forloop.counter }}" id="pm" required value="1"></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </table>
+                                </div> <!--end form-row-->
+                            </form><!--end form-->
+                        </div>
+                        <div class="col-sm-4">
+                            <h6>Funcionariu nebe Lincensa</h6>
+                            <table class="table table-sm table-striped">
+                                <tr><th>Naran</th><th>Status</th></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+<script>
+    $("#am").keypress(function(event) {
+        var character = String.fromCharCode(event.keyCode);
+        return isValid(character);     
+    });
+    $("#pm").keypress(function(event) {
+        var character = String.fromCharCode(event.keyCode);
+        return isValid(character);     
+    });
+
+    function isValid(str) {
+        return /[0-9$]/g.test(str);
+    }
+</script>
+{% endblock %}

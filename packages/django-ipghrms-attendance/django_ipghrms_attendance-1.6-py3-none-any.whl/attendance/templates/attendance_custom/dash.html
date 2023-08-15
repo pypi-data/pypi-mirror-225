@@ -1,0 +1,108 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABESENSIA</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+                    <div class="row">
+						<div class="col-sm-3">
+							<!-- <h6 align="center">Ativa Tinan</h6> -->
+							<table class="table table-sm table-bordered">
+								<thead>
+									<tr align="center">
+										<th colspan="3">LISTA TINAN</th>
+									</tr>
+								</thead>
+								<tr align="center"><th>Year</th><th style="text-align: center;">Status</th><th>#</th></tr>
+							{% for y in years %}
+								<tr align="center">
+									<td>{{ y }}</td>
+									<td>
+										{% if y.is_active == True %}
+											<span class="text-success">Ativu <i class="fa-solid fa-star"></i></span>
+										{% endif %}
+									</td>
+									<td>
+										{% if y.is_active == False %}
+										<a class="btn btn-sm btn-info" href="{% url 'attend-custom-year' y.id %}"><i class="fa fa-check"></i></a>
+										{% else %}
+										<a class="btn btn-sm btn-info disabled" href="#"><i class="fa fa-ban"></i></a>
+										{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+							</table>
+							<hr class="border-primary"/>
+							<a class="btn btn-sm btn-success" href="{% url 'attend-custom-holiday-list' %}">Feriadu Nacional <i class="fa-solid fa-table-list"></i></a>
+						</div><!--end col-->
+						<div class="col-sm-3">
+							<table class="table table-sm table-striped table-bordered">
+								<thead>
+									<tr align="center">
+										<th colspan="3">LISTA FULAN</th>
+									</tr>
+								</thead>
+								<tr align="center"><th>Fulan</th><th>Status</th><th>#</th></tr>
+							{% for m in months %}
+								<tr align="center">
+									<td>{{ m }}</td>
+									<td>
+									{% if m.is_active == True %}
+									<span class="text-success">Ativu <i class="fa-solid fa-star"></i></span>
+									{% endif %}
+									</td>
+									<td>
+										{% if m.is_active == False %}
+											<a class="btn btn-sm btn-info" href="{% url 'attend-custom-month' m.id %}"><i class="fa fa-check"></i></a>
+										{% else %}
+											<a class="btn btn-sm btn-info disabled" href="#"><i class="fa fa-ban"></i></a>
+										{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+							</table>
+						</div><!--end col-->
+						<div class="col-sm-6">
+							<table class="table table-sm table-striped table-bordered">
+								<thead>
+									<tr align="center">
+										<th colspan="4">LISTA STATUS ABSENSIA <i class="fa fa-arrow-right"></i>
+										<a class="btn btn-sm btn-primary rounded" href="{% url 'attend-custom-status-add' %}"><i class="fa fa-plus"></i></a>
+										</th>
+									</tr>
+								</thead>
+								<tr align="center"><th>ID</th><th>Sigla</th><th>Naran</th><th>#</th></tr>
+							{% for s in status %}
+								<tr align="center">
+									<td>{{ s.id }}</td>
+									<td>{{ s.code }}</td>
+									<td>{{ s.name }}</td>
+									<td><a class="btn btn-sm btn-info" href="{% url 'attend-custom-status-update' s.id %}"><i class="fa fa-edit"></i></a></td>
+								</tr>
+							{% endfor %}
+							</table>
+						</div><!--end col-->
+					</div><!--end row-->
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

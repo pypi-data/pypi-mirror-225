@@ -1,0 +1,61 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+						<h5>ABSENSIA FULAN {{ month.name|upper }}, TINAN {{ year.year }}</h5>
+					</center>
+				</div>
+				<div class="card-body">
+					<center>
+
+						<a class="btn btn-sm btn-info mb-2" href="{% url 'r-att-dash' %}">Relatorio Absensia</a>
+						<a class="btn btn-sm btn-danger mb-2" href="{% url 'attend-custom-dash' %}">Konfigurasaun <i class="fa fa-gear"></i></a>
+						<a class="btn btn-sm btn-success mb-2" href="{% url 'attend-list' %}">Importa Absensia <i class="fa fa-file"></i></a>
+					</center>
+
+					<div class="row d-flex justify-content-center">
+						<div class="col-sm-12">
+							<table class="table table-sm table-bordered table-striped">
+								<thead>
+									<tr align="center">
+										<th>LISTA DIVIZAUN</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for obj in units %}
+									<tr align="center">
+										<td>
+											<a href="{% url 'attend-unit-list' obj.pk %}">
+												{{ obj.name }} ({{ obj.code }})</a>
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<div class="col-sm-0">
+							
+						</div>
+					</div>
+					
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

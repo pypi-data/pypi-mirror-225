@@ -1,0 +1,84 @@
+{% extends "attendance_print/layout.html" %}
+{% load static %}
+{% block content %}
+<table style="margin: 0 auto;">
+    <tr align="center">
+        <td>
+            <img src="{% static 'main/images/ipg.png' %}" style="height: 150px;  "  />
+        </td>
+        <td align="center">
+            <h4>INSTITUTO DO PETRÓLEO E GEOLOGIA, TIMOR LESTES - (IPG)</h4>
+            <h3 align="center">REKAPITULASAUN LISTA ABSENSIA FULAN {{ month.name|upper }} TINAN {{ year }}</h3>
+        </td>
+    </tr>
+    <tr align="center">
+    </tr>
+</table>
+<hr/>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+                <h4 align="center">Relatoriu Licenca no Faltas Funcionariu Tinan {{ year }}</h4>
+                <hr/>
+                <center>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">No.</th><th rowspan="2">Emp. ID</th><th rowspan="2">Naran</th><th rowspan="2">Sexu</th>
+                            <th rowspan="2">Kategoria</th><th rowspan="2">Grau</th><th rowspan="2">Esk.</th>
+                            <th rowspan="2">Divizaun</th><th rowspan="2">Pojisaun</th><th rowspan="2">Tipu Licenca</th>                            
+                            <th colspan="12"><center>Fulan</center></th><th rowspan="2">Total Loron</th>
+                        </tr>
+                        <tr>{% for m in months %}<th>{{ m.code }}</th>{% endfor %}</tr>
+                    </thead>
+                    <tbody>
+                    {% for obj in objects %}
+                        <tr>
+                            <td rowspan="{{tot_att_status}}">{{ forloop.counter }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.1.emp_id }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.0 }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.0.sex }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.3.category }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.3.grade }}</td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.3.echelon }}</td>
+                            <td rowspan="{{tot_att_status}}">
+                                {% if obj.4.unit %}{{ obj.4.unit.code }}
+                                {% elif obj.4.department %}{{ obj.4.department.unit.code }}{% endif %}
+                            </td>
+                            <td rowspan="{{tot_att_status}}">{{ obj.5.position }}</td>
+                        </tr>
+                        {% for obj2 in obj.6 %}
+                        <tr>
+                            <td>{{ obj2.0 }}</td><td>{{ obj2.2 }}</td><td>{{ obj2.3 }}</td><td>{{ obj2.4 }}</td>
+                            <td>{{ obj2.5 }}</td><td>{{ obj2.6 }}</td><td>{{ obj2.7 }}</td><td>{{ obj2.8 }}</td>
+                            <td>{{ obj2.9 }}</td><td>{{ obj2.10 }}</td><td>{{ obj2.11 }}</td><td>{{ obj2.12 }}</td>
+                            <td>{{ obj2.13 }}</td><td align="center">{{ obj2.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <hr/>
+                <table border="0" width="100%" align="left">
+                    <tr>
+                        <td align="left" width="50%">
+                            Dili, _____ Fulan _____________ 20_____<br/><br/><br/>
+                
+                            (____________________________________)</td>
+                        <td align="center"><br/><br/><br/>
+                            (____________________________________)</td>
+                    </tr>
+                    <tr>
+                        <td align="left" width="50%">CD de _____________________________</td>
+                        <td align="center" width="50%">Chefe Ekipa Recurso Humano</td>
+                    </tr>
+                </table>
+                </center>
+            </div> <!--end card-body-->
+        </div> <!--end card-->
+    </div> <!--end col-->
+</div> <!--end row-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

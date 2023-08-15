@@ -1,0 +1,38 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attendance-dash' %}">PAINEL ABESENSIA</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'attendance-div-list' div.hashed %}">{{ div.code|upper }}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+					<table class="table table-sm">
+						<tr><th>Naran</th><th>Sexu</th><th>Data</th><th>Status</th><th>Licensa</th></tr>
+						<tr>
+							<td>{{ emp }}</td>
+                            <td>{{ emp.sex }}</td>
+							<td>{{ day }} {{ month }} {{ year }}</td>
+							<td>{{ contract.status }}</td>
+							<td>{{ leave.status }}</td>
+						</tr>
+					</table>
+					<hr/>
+                    {% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

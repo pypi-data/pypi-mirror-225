@@ -1,0 +1,127 @@
+{% extends "attendance_print/layout.html" %}
+{% load static %}
+{% block content %}
+<div style="text-align: center;">
+
+
+<table style="margin: 0 auto;">
+        <tr align="center">
+            <td>
+                <img src="{% static 'main/images/ipg.png' %}" style="height: 150px;  "  />
+            </td>
+            <td align="center">
+                <h4>INSTITUTO DO PETRÓLEO E GEOLOGIA, TIMOR LESTES - (IPG)</h4>
+                <h3 align="center">REKAPITULASAUN LISTA ABSENSIA FULAN {{ month.name|upper }} TINAN {{ year }}</h3>
+            </td>
+        </tr>
+        <tr align="center">
+        </tr>
+</table>
+<div class="row" style="margin-top: 10px;"> 
+    <div class="col-sm-12">
+        <div class="card shadow-lg pt-1 border-primary rounded">
+            <div class="card-body">
+                <table border="1" class="" id="#" width="100%" cellspacing="0">
+                    <thead>
+                        <tr><th>Nu</th>
+                            <th>Pessoal</th>
+                            <th>Oras</th>
+                        {% for i in days %}
+                            {% if i.2 == 0 %}<!--weekend-->
+                                {% if i.3 == 0 %}<!--holiday-->
+                                    {% if i.1 == 0 %}
+                                    <th>{{ i.0 }}</th>
+                                    {% else %}
+                                    <th>{{ i.0 }}</th>
+                                    {% endif %}
+                                {% else %}
+                                    <th style="background-color: darkred; color: white;">{{ i.0 }}</th>
+                                {% endif %}
+                            {% else %}
+                                <th style="background-color: dimgray; color: white;">{{ i.0 }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                {% for obj in objects %}
+                    <tr>
+                        <td rowspan="2">{{ forloop.counter }}</td>
+                        <td rowspan="2">{{ obj.0 }}</td>
+                        <td>AM</td>
+                        {% for obj2 in obj.1 %}
+                          {% if obj2.3 == 0 %} <!--weekend-->
+                            {% if obj2.4 == 0 %} <!--holiday-->
+                            <td>{{ obj2.1.code }}</td>
+                            {% else %}
+                            <td style="background-color: darkred; color: white;"></td>
+                            {% endif %}
+                          {% else %}
+                            <td style="background-color: dimgray; color: white;"></td>
+                          {% endif %}
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <td>PM</td>
+                        {% for obj3 in obj.1 %} {{obj3.0.id}}
+                          {% if obj3.3 == 0 %} <!--weekend-->
+                            {% if obj3.4 == 0 %} <!--holiday-->
+                            <td>{{ obj3.2.code }}</td>							
+                            {% else %}
+                                <td style="background-color: darkred; color: white;"></td>
+                            {% endif %}
+                          {% else %}
+                            <td style="background-color: dimgray; color: white;"></td>
+                          {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </table>
+                <hr/>
+                <table border="1" width="100%">
+                    <tr>
+                        <th rowspan="7" width="5%" class="rotate" >Codico</th>
+                        <td width="30%">
+                        {% for i in att_status_1 %}
+                        {{ i.code }} = {{ i.name }}<br/>
+                        {% endfor %}
+                        </td>
+                        <td width="30%">
+                        {% for j in att_status_2 %}
+                        {{ j.code }} = {{ j.name }}<br/>
+                        {% endfor %}
+                        </td>
+                        <td width="35%" valign="top">
+                        {% for k in att_status_3 %}
+                        {{ k.code }} = {{ k.name }}<br/>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+                <hr/>
+                <br/><br/>
+                <table width="100%">
+                    <tr>
+                        <td width="40%">Certifika husi Chefe Ekipa</td>
+                        <td>Assinatura : ________________________________________</td>
+                        <td>Data: ________________________________________</td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <p style="font-size: small;">Aprovadu husi Diretor</p>
+                <br/><br/>
+                <table width="100%">
+                    <tr><td></td></tr>
+                    <tr>
+                        <td width="40%">{{ diretor_rh.employee }}</td>
+                        <td>Assinatura : ________________________________________</td>
+                        <td>Data: ________________________________________</td>
+                    </tr>
+                </table>
+                <hr/>
+            </div> <!--end card-body-->
+        </div> <!--end card-->
+    </div> <!--end col-->
+</div> <!--end row-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

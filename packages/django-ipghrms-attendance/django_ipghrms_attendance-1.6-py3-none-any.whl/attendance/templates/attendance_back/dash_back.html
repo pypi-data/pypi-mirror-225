@@ -1,0 +1,70 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header">{{ legend|upper }}</div>
+				<div class="card-body">
+					<a class="btn btn-sm btn-info" href="{% url 'r-att-dash' %}">Relatorio Absensia</a>
+					<a class="btn btn-sm btn-info" href="{% url 'attendance-custom-dash' %}">Konfigurasaun <i class="fa fa-gear"></i></a>
+					<hr/>
+					<h3 align="center">ABSENSIA FULAN {{ month.name|upper }} TINAN {{ year.year }}</h3>
+					<hr/>
+					<div class="row">
+						<div class="col-sm-6">
+							<table class="table table-sm table-striped">
+								<thead>
+									<tr align="center">
+										<th>DIRESAUN</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for obj in divs %}
+									<tr align="center">
+										<td>
+											<a href="{% url 'attendance-div-list' obj.hashed %}">
+												{{ obj.name }} ({{ obj.code }})</a>
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<div class="col-sm-6">
+							<table class="table table-sm table-striped">
+								<thead>
+									<tr align="center">
+										<th>DIRESAUN GERAL</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for obj2 in dgs %}
+									<tr align="center">
+										<td>
+											<a href="{% url 'attendance-dg-list' obj2.hashed %}">
+												{{ obj2.name }} ({{ obj2.code }})</a>
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

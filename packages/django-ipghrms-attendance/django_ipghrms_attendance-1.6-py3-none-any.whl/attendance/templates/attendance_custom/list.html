@@ -1,0 +1,47 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'attend-dash' %}">PAINEL ABESENSIA</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'attend-custom-dash' %}">KONFIGURASAUN</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">
+                    <center>
+                        <h2>
+                            {{ legend|upper }}
+                            <i class="fa fa-arrow-right"></i>
+                            <a class="btn btn-sm btn-primary" href="{% url 'attend-custom-holiday-add' %}">Aumenta <i class="fa fa-plus"></i></a>
+                        </h2>
+                    </center>
+                </div>
+				<div class="card-body">
+                   <table class="table table-sm table-striped">
+                        <tr><th>Nu.</th><th>Feriadu</th><th>Data</th><th>#</th></tr>
+                    {% for obj in objects %}
+                        <tr>
+                            <td data-title="Feriadu">{{ forloop.counter }}</td>
+                            <td data-title="Feriadu">{{ obj.name }}</td>
+                            <td data-title="Data">{{ obj.date }}</td>
+                            <td data-title="#">
+                                <a class="btn btn-sm btn-info" href="{% url 'attend-custom-holiday-update' obj.pk %}"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-sm btn-danger" href="{% url 'attend-custom-holiday-delete' obj.pk %}"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                   </table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}
