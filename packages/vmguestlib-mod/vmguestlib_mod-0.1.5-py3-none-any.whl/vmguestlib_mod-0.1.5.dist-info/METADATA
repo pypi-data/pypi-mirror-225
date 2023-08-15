@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: vmguestlib-mod
+Version: 0.1.5
+Summary: Python API for interacting with VMware's VMGuestLib SDK
+Home-page: https://github.com/leomermelstein/vmguestlib-mod
+Author: Leo Mermelstein
+Author-email: leomermelstein@gmail.com
+License: GPLv2
+Keywords: Virtual,vmware,ESX,ESXi,VMGuestLib,SDK,API
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: System :: Emulators
+Classifier: Topic :: System :: Hardware
+Classifier: Topic :: System :: Operating System
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
+License-File: LICENSE
+License-File: AUTHORS
+
+Python API for interacting with VMware's VMGuestLib SDK
+This software is (c) 2013-2014 Dag Wieers dag@wieers.com, modified 2023 by Leo Mermelstein
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
