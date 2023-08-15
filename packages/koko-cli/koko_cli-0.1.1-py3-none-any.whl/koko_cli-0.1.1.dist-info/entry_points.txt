@@ -1,0 +1,3 @@
+[console_scripts]
+initialize_koko = koko_pkg.initialize_koko:initialize_koko
+koko = koko_pkg.koko:main
