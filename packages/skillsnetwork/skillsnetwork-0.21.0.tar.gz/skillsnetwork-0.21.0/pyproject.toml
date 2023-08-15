@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "skillsnetwork"
+version = "0.21.0" # Set by GitHub Action
+description = "Library for working with Skills Network"
+readme="README.md"
+authors = ["Bradley Steinfeld <bs@ibm.com>", "Sam Prokopchuk <sam.prokopchuk@ibm.com", "James Reeve james.reeve@ibm.com"]
+license = "MIT"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.ibm.com/skills-network/labs/issues/new?assignees=&labels=bug%2C+labs&template=bug.md&title=Short+explanation+of+how+the+user+sees+the+bug+manifest"
+"Repository" = "https://github.com/ibm-skills-network/skillsnetwork-python-library"
+"Skills Network Labs" = "https://skills.network/lab-tools"
+
+
+[tool.poetry.dependencies]
+python = "3.7.17"
+requests = "~2"
+tqdm = "~4"
+ipywidgets = "~7"
+ipython = "*"
+ibm-cos-sdk = {version = "~2", optional = true}
+typing-extensions = {version = "*", python = "^3.7.17", optional = true}
+# Sphinx documentation dependencies
+Sphinx = { version = "~4", optional = true }
+sphinx-autodoc-typehints = { version = "~1", optional = true }
+pydata-sphinx-theme = { version = "~0.9", optional = true }
+
+[tool.poetry.extras]
+regular = ["ibm-cos-sdk", "typing-extensions"]
+docs = ["Sphinx", "sphinx-autodoc-typehints", "pydata-sphinx-theme"]
+
+[tool.poetry.dev-dependencies]
+jupyterlab = "~3"
+jupyterlite = "^0.1.0-beta.8"
+build = "^0.8.0"
+pytest = "~7"
+pytest-asyncio = "^0.18.3"
+pytest-httpserver = "^1.0.4"
+black = {version = "~22", allow-prereleases = true}
+
+[tool.pytest.ini_options]
+testpaths = [
+  "tests",
+]
+asyncio_mode = "auto"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
