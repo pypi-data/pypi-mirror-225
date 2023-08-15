@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: spark-jira-tools
+Version: 0.2.0
+Summary: spark_jira_tools
+Home-page: https://github.com/jonaqp/spark_jira_tools/
+Author: Jonathan Quiza
+Author-email: jony327@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/jonaqp/spark_jira_tools/archive/main.zip
+Keywords: spark,jira,bitbucket
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# spark_jira_tools
+
+[![Github License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Updates](https://pyup.io/repos/github/woctezuma/google-colab-transfer/shield.svg)](pyup)
+[![Python 3](https://pyup.io/repos/github/woctezuma/google-colab-transfer/python-3-shield.svg)](pyup)
+[![Code coverage](https://codecov.io/gh/woctezuma/google-colab-transfer/branch/master/graph/badge.svg)](codecov)
+
+spark_jira_tools is a Python library that implements jira task
+
+## Installation
+
+The code is packaged for PyPI, so that the installation consists in running:
+
+## Usage
+
+wrapper run jira task
+
+## Sandbox
+
+## Installation
+
+```sh
+!yes| pip uninstall spark-jira-tools
+```
+
+```sh
+pip install spark-jira-tools --user --upgrade
+```
+
+## IMPORTS
+
+```sh
+import os
+import pyspark
+from spark_jira_tools import dq_path_workspace
+from spark_jira_tools import dq_download_jar
+from spark_jira_tools import dq_spark_session
+
+```
+
+## Variables
+
+```sh
+project_sda="SDA_37036"
+url_conf = "http://artifactory-gdt.central-02.nextgen.igrupobbva/artifactory/gl-datio-spark-libs-maven-local/com/datiobd/cdd-hammurabi/4.0.9/DQ_LOCAL_CONFS/KCOG/KCOG_branch_MRField.conf"
+```
+
+## License
+
+[Apache License 2.0](https://www.dropbox.com/s/8t6xtgk06o3ij61/LICENSE?dl=0).
+
+## New features v1.0
+
+## BugFix
+
+- choco install visualcpp-build-tools
+
+## Reference
+
+- Jonathan Quiza [github](https://github.com/jonaqp).
+- Jonathan Quiza [RumiMLSpark](http://rumi-ml.herokuapp.com/).
+
+
