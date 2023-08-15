@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+.DS_Store
+my_settings.py
+*.orig
+.lazy_login
+.lazy_login*
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+flask_session/
+src/EagleEyev3.egg-info/
+dist/
