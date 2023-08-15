@@ -1,0 +1,46 @@
+report_name,column_list,bin_variables,exclude_geo_errors,primary_use_case,peril_fire,peril_wildfire,peril_weather,peril_non_weather_water,peril_crim,peril_other,peril_farm_crop,peril_eq,peril_casualty,peril_wc_el,peril_flood,peril_terrorism,peril_auto,peril_rcv,peril_pl_cl,use_case_UW,use_case_ops,use_case_pricing
+state,state,,,,,,,,,,,,,,,,,,,,,
+geocoding,"match_score,match_level,status",match_score,,ID,,,,,,,,,,,,,,,,X,X,
+wildfire_score,"enhanced_wildfire.risk_scores.composite,enhanced_wildfire.score,enhanced_wildfire.text",,X,Wildfire,,X,,,,,,,,,,,,,ALL,,,X
+wildfire_landcover_detail,"enhanced_wildfire.landcover_risk.detail.area_desc,enhanced_wildfire.landcover_risk.detail.site_desc",,X,Wildfire,,X,,,,,,,,,,,,,ALL,X,X,
+wildfire_katabatic,"enhanced_wildfire.katabatic_wind_risk.score,enhanced_wildfire.katabatic_wind_risk.name,enhanced_wildfire.katabatic_wind_risk.desc",,X,Katabatic Wind,,X,X,,,,X,,,,,,X,,ALL,,,X
+drought_score,"drought.score,drought.text",,X,Drought,,X,,,,,,,,,,,,,ALL,X,,
+drought_frequency,"drought_frequency_index.score,drought_frequency_index.text,drought_frequency_index.pct,drought_frequency_index.desc",,X,Drought,,X,,,,,,,,,,,,,ALL,,,X
+fire_suppression,"fire_suppression.score,fire_suppression.grade,fire_suppression.category,fire_suppression.text",,X,Fire Suppression,,,,,,,,,,,,,,,ALL,,,X
+urbanicity,"urbanicity.type,state,urbanicity.desc,urbanicity.name",,X,ID,,,,,,,,,,,,,,,ALL,,X,
+hydrants,hydrant_params.distance_from_nearest_hydrant,,X,Fire,X,,,,,,X,,,,,,,,ALL,X,,X
+fs1_type,fire_station_type.value,,X,Fire,X,,,,,,X,,,,,,,,ALL,X,,X
+fs1_linear_distance,nearest_fire_station.distance,nearest_fire_station.distance,X,Fire,X,,,,,,X,,,,,,,,ALL,X,,X
+fs1_drive_distance,drive_distance_fire_station.distance,drive_distance_fire_station.distance,X,Fire,X,,,,,,X,,,,,,,,ALL,,X,
+fs1_drive_mins,drive_time_fire_station.duration,,X,Fire,X,,,,,,X,,,,,,,,ALL,X,,X
+fs_density10,number_of_fire_stations_within_10_miles,,X,Wildfire,X,X,,,,,X,,,,,,,,ALL,X,,
+fs_density5,number_of_fire_stations_within_5_miles,,X,Wildfire,X,X,,,,,X,,,,,,,,ALL,X,,
+fault_earthquake,"fault_earthquake.score,fault_earthquake.text,fault_earthquake.name,fault_earthquake.distance",,X,EQ Fault,X,,,,,,X,X,,,,,,,ALL,X,,X
+fracking,"fracking_earthquake.score,fracking_earthquake.text",,X,EQ Fracking,X,,,,,,X,X,,,,,,,ALL,X,,X
+soil_shear_velocity,soil_shear_velocity.vs30,soil_shear_velocity.vs30,X,EQ,X,,,,,,X,X,,,,,,,ALL,X,X,
+hurricane,"enhanced_hurricane_params.score,enhanced_hurricane_params.scale,enhanced_hurricane_params.text",enhanced_hurricane_params.scale,X,Hurricane,,,X,,,,X,,,,X,,,,ALL,X,,
+sinkhole,"sinkhole.score,sinkhole.text,sinkhole.distance.value,sinkhole.distance.units",sinkhole.distance.value,X,Sinkhole,,,,,,X,X,,X,X,,,X,,ALL,X,,
+wind_score,"enhanced_wind_params.scale,enhanced_wind_params.score,enhanced_wind_params.text",,X,Wind,,,X,,,,X,,,,,,X,,ALL,,,X
+wind_radius,enhanced_wind_params.historical_wind_events.wind_rad,enhanced_wind_params.historical_wind_events.wind_rad,X,Wind,,,X,,,,X,,,,,,X,,ALL,,X,
+wind_waddrisk,enhanced_wind_params.waddrisk,enhanced_wind_params.waddrisk,X,Wind,,,X,,,,X,,,,,,X,,ALL,X,,X
+wind_wpctrisk,enhanced_wind_params.wpctrisk,enhanced_wind_params.wpctrisk,X,Wind,,,X,,,,X,,,,,,X,,ALL,X,,X
+hail_score,"enhanced_hail_params.scale,enhanced_hail_params.score,enhanced_hail_params.text",,X,Hail,,,X,,,,X,,,,,,,,ALL,,,X
+hail_radius,enhanced_hail_params.historical_hail_events.hail_rad,enhanced_hail_params.historical_hail_events.hail_rad,X,Hail,,,X,,,,X,,,,,,X,,ALL,,X,
+scs,"convection_storm_per_decade.value,convection_storm.score,convection_storm.text",,X,Convection Storm,,,X,,,,X,,,,,,X,,ALL,,,X
+tornado_score,"enhanced_tornado_params.scale,enhanced_tornado_params.score,enhanced_tornado_params.text",,X,Tornado,,,X,,,,X,,X,X,,,X,,ALL,,,X
+tornado_radius,enhanced_tornado_params.historical_tornado_events.tornado_rad,enhanced_tornado_params.historical_tornado_events.tornado_rad,X,Tornado,,,X,,,,X,,X,X,,,X,,ALL,,X,
+lighning_score,"enhanced_lightning_params.scale,enhanced_lightning_params.score,enhanced_lightning_params.text",,X,Lightning,X,X,X,,,,X,,X,X,,,X,,ALL,,,X
+mold_score,"mold_index.index,mold_index.score,mold_index.text",mold_index.index,X,Mold,,,,X,,,X,,X,X,,,,,ALL,,,X
+flood_score,"enhanced_hazardhub_flood.score,enhanced_hazardhub_flood.text,enhanced_hazardhub_flood_params.lines_name,state",,X,Flood,,,,,,,X,,,,X,,,,ALL,X,,X
+fema_sfha,fema_all_flood_params.sfha_tf,,X,FEMA Flood,,,,,,,,,,,X,,X,,ALL,X,X,
+fema_flood_distances,"distance_to_significant_flood_params.distance_to_100yr_floodplain,distance_to_significant_flood_params.elevation_difference_100,distance_to_significant_flood_params.elevation_in_feet.value,distance_to_significant_flood_params.elevation100",,X,Flood,,,,,,,X,,,,X,,,,ALL,X,,X
+coast_distance,"coast_distance.high_res_distance.value,coast_distance.high_res_distance.units,coast_distance.low_res_distance.value,coast_distance.low_res_distance.units,coast_distance.beach_distance.value,coast_distance.beach_distance.units",,X,Distance to Coast,,,,,,,,,X,X,X,,,,ALL,X,,X
+crime,"crime.value,crime.score,crime.text",,X,Crime,,,,,X,,,,X,X,,,,,ALL,,,X
+landslide,"landslide.score,landslide.text",,X,Landslide,,X,X,,,,,X,X,X,X,,,,ALL,X,,X
+ust_score,"ust.score,ust.text,ust_nearest.name.value,ust_nearest.address.value,state",,X,USTs,X,,,,,X,X,,X,X,,,,X,ALL,X,X,X
+ust_nearest,"ust_nearest.leaking.value,ust_nearest_leaking.text,ust_nearest_leaking.name.value,ust_nearest_leaking.address.value,state",,X,LUSTs,X,,,,,X,X,,,,,,,,ALL,X,X,X
+assessment_num_fixtures,assessment.N_of_Plumbing_Fixtures,,X,Water NW,,,,X,,,,,,,,,,X,ALL,,X,
+assessment_land_use_code,assessment.Standardized_Land_Use_Code,,X,Building Info,,,,,,,,,X,X,,,,X,ALL,X,X,
+mls_construction,"mls_listing_record_details.ex_construction_features,mls_listing_record_details.ex_exterior_wall_features,construction_uses_siding,construction_is_brick_stucco_concrete,construction_is_on_stilts_or_is_prefab",,X,Building Info,X,X,X,,,,X,X,,,,,,X,ALL,X,X,X
+mls_parking_ftrs,mls_listing_record_details.ex_parking_features,,X,Building Info,,,,,,,,,,,,,X,,ALL,X,,X
+mls_road,"mls_listing_record_details.ex_road_features,road_type_limited_access_ind,road_type_dirt_road_ind",,X,Parcel Info,X,X,,,,,,,,,,,,X,ALL,X,X,X
