@@ -1,0 +1,96 @@
+strategy_name: Bull Put Spread
+
+description:
+  short: Bullish credit spread strategy
+  long: The Bull Put Spread is a bullish strategy that involves selling a put option (usually in-the-money or at-the-money) and buying another put option with a lower strike price but the same expiration date. This creates a credit upon entry, and the goal is to retain this credit as profit.
+
+point_of_view:
+  market_outlook: bullish to neutral
+  time_horizon: short-term to medium-term
+  key_indicators:
+    - name: "Support Level"
+      type: "Technical Indicator"
+      observation: "Underlying asset approaching or above a support level"
+  macro_factors:
+    - "Anticipated positive news event"
+  sentiment_analysis:
+    general_sentiment: positive to neutral
+    data_source: "Technical analysis, financial news"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # short put
+        type: put
+        position: short
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg2:  # long put (lower strike)
+        type: put
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # action for the short put
+        action: buy_to_close
+      leg2:  # action for the long put
+        action: sell_to_close
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: false
+
+  conditional_orders:
+    type: null
+    conditions: []
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "One or both legs of the Bull Put Spread have reached predefined parameters."
+
+notes:
+  - "Maximum profit is limited to the credit received upon entry."
+  - "Maximum loss is the difference between the two strike prices minus the credit received."
+  - "Profit is realized when the underlying asset stays above the strike price of the sold put through expiration."
+  - "It benefits from time decay and a decrease in implied volatility."
+

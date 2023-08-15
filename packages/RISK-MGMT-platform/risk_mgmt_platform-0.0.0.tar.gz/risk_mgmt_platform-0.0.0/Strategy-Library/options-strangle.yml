@@ -1,0 +1,96 @@
+strategy_name: Strangle
+
+description:
+  short: Neutral strategy with potential for high profit
+  long: The Strangle strategy involves buying an out-of-the-money (OTM) call and an OTM put with the same expiration date but different strike prices. It is used when a trader believes the underlying asset will experience significant volatility in the near future but is uncertain of the direction.
+
+point_of_view:
+  market_outlook: volatile
+  time_horizon: short-term to medium-term
+  key_indicators:
+    - name: "Upcoming Event"
+      type: "Earnings, Product Launch, etc."
+      observation: "Potential for high volatility post-event"
+  macro_factors:
+    - "Pending regulatory decision"
+  sentiment_analysis:
+    general_sentiment: neutral
+    data_source: "Analyst predictions, financial news"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # long call (OTM)
+        type: call
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg2:  # long put (OTM)
+        type: put
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # action for the long call
+        action: sell_to_close
+      leg2:  # action for the long put
+        action: sell_to_close
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: false
+
+  conditional_orders:
+    type: null
+    conditions: []
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "One or both legs of the Strangle have reached predefined parameters."
+
+notes:
+  - "Profit potential is theoretically unlimited on the upside, while it is capped on the downside to the strike price of the put minus the combined premium paid."
+  - "Maximum loss is limited to the combined premiums paid for both options."
+  - "Profit is realized when there's a significant move in the underlying asset in either direction."
+  - "Strategy benefits from a sharp move in the underlying asset's price and an increase in implied volatility."
+

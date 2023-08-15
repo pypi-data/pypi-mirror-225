@@ -1,0 +1,111 @@
+strategy_name: Iron Condor Options Strategy
+
+description:
+  short: Neutral premium capture strategy
+  long: The Iron Condor is a neutral strategy designed to generate premium from options that are expected to expire worthless. It involves simultaneously selling an out-of-the-money put and call, and buying further out-of-the-money put and call options to protect against significant price movements.
+
+point_of_view:
+  market_outlook: neutral
+  time_horizon: short-term
+  key_indicators:
+    - name: "Implied Volatility"
+      type: "30-day"
+      observation: "Higher than historical average"
+  macro_factors:
+    - "Stable market conditions expected"
+  sentiment_analysis:
+    general_sentiment: neutral
+    data_source: "Options volume and Open Interest"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # short put
+        type: put
+        position: short
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg2:  # long put for protection
+        type: put
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg3:  # short call
+        type: call
+        position: short
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg4:  # long call for protection
+        type: call
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:  # action for the short put
+        action: buy_to_close
+      leg2:  # action for the long put
+        action: sell_to_close
+      leg3:  # action for the short call
+        action: buy_to_close
+      leg4:  # action for the long call
+        action: sell_to_close
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: false
+
+  conditional_orders:
+    type: null
+    conditions: []
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "One or more legs of the Iron Condor strategy have reached predefined parameters."
+
+notes:
+  - "Strategy capitalizes on non-volatile, range-bound markets."
+  - "Risk is defined by the difference between the short and long option strikes minus the credit received."
+  - "Profit is capped at the credit received when initiating the trade."
+

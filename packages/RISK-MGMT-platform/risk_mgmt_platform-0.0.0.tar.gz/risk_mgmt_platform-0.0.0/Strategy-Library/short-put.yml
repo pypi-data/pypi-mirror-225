@@ -1,0 +1,95 @@
+strategy_name: Short Put Options Strategy with 50% Profit Exit
+
+description:
+  short: Put option growth-based profit strategy
+  long: A strategy focused on selling a single put option with the hope of achieving a 50% profit as the option's value increases due to the underlying security rising or remaining stable.
+
+point_of_view:
+  market_outlook: bullish | neutral
+  time_horizon: short-term
+  key_indicators:
+    - name: "Implied Volatility"
+      type: "30-day"
+      observation: "Falling or lower than historical average"
+  macro_factors:
+    - "Anticipated positive economic or company-specific news"
+  sentiment_analysis:
+    general_sentiment: positive | neutral
+    data_source: "Financial news outlets and options volume data"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        type: put
+        position: short
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        action: buy_to_close
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: true
+    order_type: limit
+    reduction_position_size:
+      type: count
+      value: 1
+      risk_per_trade: 50%
+    trigger_difference:
+      type: percentage
+      value: 50
+
+  conditional_orders:
+    type: OCO
+    conditions:
+      - condition_name: "Profit target"
+        condition_value: "50% profit"
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "Short put option position has reached 50% profit target."
+
+notes:
+  - "Intention to profit from stable or bullish movements of the underlying asset by selling a put option."
+

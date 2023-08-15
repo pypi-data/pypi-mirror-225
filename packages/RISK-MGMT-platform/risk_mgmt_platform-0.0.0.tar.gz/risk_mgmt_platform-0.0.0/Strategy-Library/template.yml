@@ -1,0 +1,102 @@
+strategy_name: Long Straddle Options Strategy with 50% Profit Exit
+
+description:
+  short: Volatility-based profit strategy
+  long: A strategy involving buying both a call and a put option with the same strike price and expiration, aiming to profit from significant price movements in either direction, and exits once a 50% profit is achieved.
+
+point_of_view:
+  market_outlook: volatile
+  time_horizon: short-term
+  key_indicators:
+    - name: "Historical Volatility"
+      type: "20-day"
+      observation: "Higher than average"
+  macro_factors:
+    - "Upcoming earnings report"
+  sentiment_analysis:
+    general_sentiment: neutral
+    data_source: "Financial news outlets"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        type: call
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+      leg2:
+        type: put
+        position: long
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        action: sell
+      leg2:
+        action: sell
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: true
+    order_type: limit
+    reduction_position_size:
+      type: count
+      value: 1
+      risk_per_trade: 50%
+    trigger_difference:
+      type: percentage
+      value: 50
+
+  conditional_orders:
+    type: OCO
+    conditions:
+      - condition_name: "Profit target"
+        condition_value: "50% profit"
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "Position has reached 50% profit target."
+
+notes:
+  - "Strategy aims to exit once a 50% profit on the options position is achieved."

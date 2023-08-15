@@ -1,0 +1,95 @@
+strategy_name: Equity Short-Selling Strategy with 50% Profit Exit
+
+description:
+  short: Equity short-sell profit strategy
+  long: A strategy centered on short selling a stock with the intention of achieving a 50% profit as the stock's price decreases.
+
+point_of_view:
+  market_outlook: bearish
+  time_horizon: short-term
+  key_indicators:
+    - name: "Price Momentum"
+      type: "14-day"
+      observation: "Downtrend signal"
+  macro_factors:
+    - "Anticipated negative earnings report"
+  sentiment_analysis:
+    general_sentiment: negative
+    data_source: "Financial news outlets and trading volume data"
+
+actions:
+  enter_market:
+    stock:
+      order_type: 
+      shares: 
+      target_price: 
+      expiration: GTC
+
+    options:
+      leg1:
+        type: null
+        position: null
+        strike_price: null
+        expiration_date: null
+        contracts: null
+
+  exit_market:
+    stock:
+      order_type: 
+      shares: 
+      target_price: 
+      expiration: GTC
+
+    options:
+      leg1:
+        action: null
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: true
+    order_type: limit
+    reduction_position_size:
+      type: count
+      value: 
+      risk_per_trade: 50%
+    trigger_difference:
+      type: percentage
+      value: 50
+
+  conditional_orders:
+    type: OCO
+    conditions:
+      - condition_name: "Profit target"
+        condition_value: "50% profit"
+
+  risk_management:
+    max_position_size:
+      type: shares
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "Short equity position has reached 50% profit target."
+
+notes:
+  - "Aim to benefit from bearish movements of the stock by short selling it."
+

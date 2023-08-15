@@ -1,0 +1,95 @@
+strategy_name: Short Call Options Strategy with 50% Profit Exit
+
+description:
+  short: Call option contraction-based profit strategy
+  long: A strategy centered on selling a single call option with the intention of achieving a 50% profit as the option's value decreases.
+
+point_of_view:
+  market_outlook: bearish | neutral
+  time_horizon: short-term
+  key_indicators:
+    - name: "Implied Volatility"
+      type: "30-day"
+      observation: "Falling or lower than historical average"
+  macro_factors:
+    - "Expected lack of significant positive news for the underlying asset"
+  sentiment_analysis:
+    general_sentiment: negative | neutral
+    data_source: "Financial news outlets and options volume data"
+
+actions:
+  enter_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        type: call
+        position: short
+        strike_price: 
+        expiration_date: 
+        contracts: 
+
+  exit_market:
+    stock:
+      order_type: null
+      shares: null
+      target_price: null
+      expiration: null
+
+    options:
+      leg1:
+        action: buy_to_close
+
+  scaling_in:
+    active: false
+    order_type: null
+    additional_position_size:
+      type: null
+      value: null
+      risk_per_trade: null
+    trigger_difference:
+      type: null
+      value: null
+
+  scaling_out:
+    active: true
+    order_type: limit
+    reduction_position_size:
+      type: count
+      value: 1
+      risk_per_trade: 50%
+    trigger_difference:
+      type: percentage
+      value: 50
+
+  conditional_orders:
+    type: OCO
+    conditions:
+      - condition_name: "Profit target"
+        condition_value: "50% profit"
+
+  risk_management:
+    max_position_size:
+      type: contracts
+      value: 
+    max_daily_loss:
+      type: amount
+      value: 
+    max_drawdown:
+      type: amount
+      value: 
+    hedging_strategy:
+      active: false
+      details: null
+
+alerts:
+  platform: email | SMS | platform_notification
+  message_template: "Short call option position has reached 50% profit target."
+
+notes:
+  - "Goal is to benefit from stagnant or slightly bearish movements of the underlying asset by selling a call option."
+
