@@ -1,0 +1,12 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+.github/workflows/python-package.yml
+.github/workflows/python-publish.yml
+pygrype/grype.py
+pygrype/grype_db.py
+pygrype.egg-info/PKG-INFO
+pygrype.egg-info/SOURCES.txt
+pygrype.egg-info/dependency_links.txt
+pygrype.egg-info/top_level.txt
