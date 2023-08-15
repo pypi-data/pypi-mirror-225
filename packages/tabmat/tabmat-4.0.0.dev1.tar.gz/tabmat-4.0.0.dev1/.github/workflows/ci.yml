@@ -1,0 +1,65 @@
+name: CI
+on: [push]
+
+jobs:
+  linter:
+    name: "Linter (pre-commit)"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: true
+    steps:
+     - name: Pull image
+       run: docker pull condaforge/mambaforge:latest
+     - name: Checkout branch
+       uses: actions/checkout@v3
+       with:
+         ref: ${{ github.head_ref }}
+     - name: Run linter inside of container
+       uses: ./.github/actions/linter
+  linux:
+    name: "Linux - tests - Py${{ matrix.PYTHON_VERSION }}"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: true
+      matrix:
+        PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
+    steps:
+     - name: Pull image
+       run: docker pull condaforge/mambaforge:latest
+     - name: Checkout branch
+       uses: actions/checkout@v3
+       with:
+         ref: ${{ github.head_ref }}
+     - name: Run CI inside of container
+       uses: ./.github/actions/unittests
+       with:
+         python_version: ${{ matrix.PYTHON_VERSION }}
+  linux-conda-build:
+    name: "Linux - conda-build - Python ${{ matrix.CONDA_BUILD_YML }}"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: true
+      matrix:
+        CONDA_BUILD_YML:
+          - linux_64_python3.7_default.____cpython
+          - linux_aarch64_python3.10_default.____cpython
+          - linux_ppc64le_python3.10_default.____cpython
+    steps:
+      - name: Pull image
+        run: docker pull condaforge/mambaforge:latest
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Fetch full git history
+        run: git fetch --prune --unshallow
+      - name: Run CI inside of container
+        uses: ./.github/actions/conda-build
+        with:
+          conda_build_yml: ${{ matrix.CONDA_BUILD_YML }}
