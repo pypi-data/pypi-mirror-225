@@ -1,0 +1,8 @@
+$def with (project, release, files)
+$var breadcrumbs = ("projects", "Projects", project, f"<b>{project}</b>", "releases", "Releases")
+$var title: $project $release
+
+<ul>
+$for file in sorted(files):
+    <li><a href=/projects/$project/releases/$release/files/$file.name>$file.name</a></li>
+</ul>

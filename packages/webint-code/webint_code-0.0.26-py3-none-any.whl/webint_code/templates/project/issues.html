@@ -1,0 +1,25 @@
+$def with (mentions)
+
+$for mention in mentions:
+    <div>
+    $ data = mention["data"]
+    $if name := data.get("name", None):
+        <h3>$name</h3>
+    $if data:
+        $ a = data["author"]
+        $ comment_type = data["comment_type"][0]
+        $if comment_type == "like":
+            $emoji.emojize(":red_heart:")
+        $if content := data.get("content"):
+            <div>$:content</div>
+    $ published = data["published"][0]
+    <small>Opened <a href=$data["url"]><time class=dt-published
+    datetime="$published.isoformat()">$published.diff_for_humans()</time></a>
+    $if data:
+        by <a href=$a["url"]>$a.get("name", a["url"])</a>,
+        $if comment := data.get("comment"):
+            $ comment_count = len(comment)
+            $if comment_count:
+                💬 $comment_count comment$("s" if comment_count > 1 else "")
+    </small>
+    </div>
