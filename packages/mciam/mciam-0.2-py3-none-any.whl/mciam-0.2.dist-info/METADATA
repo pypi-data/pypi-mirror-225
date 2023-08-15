@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: mciam
+Version: 0.2
+Description-Content-Type: text/x-rst
+Requires-Dist: click
+Requires-Dist: tabulate
+Requires-Dist: wcwidth
+
+# mciam
+
+一个云 IAM 服务的检查工具，用于检测 IAM 是否存在安全风险。
