@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "wagtail-icomoon"
+version = "0.2.0"
+description = ""
+authors = ["Seb <seb@neonjungle.studio>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+wagtail = ">=2.16"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
