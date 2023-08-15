@@ -1,0 +1,125 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL FUNCIONARIU</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'emp-list' %}">LISTA FUNCIONARIU</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table id="example" class="table table-sm responsive" style="width:100%">
+						<thead>
+							<tr>
+								<th>Nu.</th>
+								<th>Naran</th>
+								<th>Sexu</th>
+								<th>Status</th>
+								{% if obj.country.code == TLS %}
+								<th>Municipality</th>
+								{% else %}
+								<th>City</th>
+								{% endif %}
+								<th>Data Termina</th>
+								<th class="text-center">Anekso</th>
+								<th>Razaun</th>
+								<th class="text-center">#</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for obj in objects %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td><a href="{% url 'emp-detail' obj.hashed %}">{{ obj.first_name }} {{ obj.last_name|upper }}</a></td>
+								<td>{{ obj.sex }}</td>
+								<td>{% if obj.is_new == True %}Foun{% else %}Tuan{% endif %}</td>
+								{% if obj.country.code == "TLS" %}
+								<td>{% if obj.locationtl.municipality %}{{ obj.locationtl.municipality }}{% endif %}</td>
+								{% else %}
+								<td>{% if obj.locationinter.city %}{{ obj.locationinter.city }}{% endif %}</td>
+								{% endif %}
+								<td>{{ obj.contract.last.terminate_date|date:"d/M/Y" }}</td>
+								<td class="text-center">
+									
+									{% if obj.contract.last.file_end %}
+									  <a href="{% url 'cont-view-end-file' obj.contract.last.hashed %}" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-file-pdf"></i> </a>
+									{% else %}
+										<div class="badge bg-danger text-white">Anekso Laiha</div>
+									{% endif %}
+								</td>
+								<td>
+									{{obj.contract.last.reason}}
+								</td>
+								<td class="text-center"><a href="{% url 'cont-renew' obj.contract.all.0.hashed %}" class="btn btn-sm btn-info"> <i class="fa fa-check"></i> Assign</a></td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+<style type="text/css">
+    .dtsb-searchBuilder{
+        background: #b9c7e6 !important;
+        padding: 5px
+    }
+    .dt-button, .dtsb-add {
+        background: white !important;
+    }
+</style>
+<script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/jszip.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.colVis.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            "scrollY": "50vh",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            searchBuilder: true,
+            buttons:[
+                {
+                    extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+                },
+                {
+                    extend: 'pdfHtml5', orientation: 'landscape', pageSize: 'LEGAL', messageTop: '',
+                },
+                {
+                    extend: 'print',
+                    exportOptions: { columns: ':visible' },
+                },
+                'colvis',
+            ],
+            dom: 'Bfrtip',
+            "deferRender": true
+        });
+        table.searchBuilder.container().prependTo(table.table().container());
+    } );
+</script>
+{% endblock %}

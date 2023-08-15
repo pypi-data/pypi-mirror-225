@@ -1,0 +1,79 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL FUNCIONARIU</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+  <div class="container-fluid"><br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="map" style="width: 100%; min-height: 70vh;"></div>
+      </div><!--end col-->
+    </div>
+
+  </div><!--end container-->
+{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoukaK1udD0Z4erUsxwkYzRKTOWmJid34"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoukaK1udD0Z4erUsxwkYzRKTOWmJid34&libraries=places">
+    </script>
+<script>
+  var addressPoints = [
+    {% for i in objects %}
+      [{{i.latitude|safe}},{{i.longitude|safe}},"{{i.employee|safe}}"],
+    {% endfor %}
+  ]
+  console.log(addressPoints)
+</script>
+
+<script>
+    var map = L.map('map', {
+      center: [-8.573701,125.47718],
+      zoom: 10,
+      maxZoom: 18,
+      minZoom: 8,
+      fullscreenControl: {
+        pseudoFullscreen: false
+      }
+    });
+
+    L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+        attribution: 'Google Maps',
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
+
+
+    var markers = L.markerClusterGroup();
+
+    for (var i = 0; i < addressPoints.length; i++) {
+      var a = addressPoints[i];
+      var title = a[2];
+      var marker = L.marker(new L.LatLng(a[0], a[1]), {
+        title: title
+      });
+      marker.bindPopup(title);
+      markers.addLayer(marker);
+    }
+
+    map.addLayer(markers);
+
+
+</script>
+{% endblock %}

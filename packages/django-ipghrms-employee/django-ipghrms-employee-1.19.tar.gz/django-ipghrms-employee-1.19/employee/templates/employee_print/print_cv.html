@@ -1,0 +1,29 @@
+{% extends "employee_print/layout.html" %}
+{% load static %}
+{% block content %}
+    <img class="img_pos" src="{% static 'main/images/rdtl.jpg' %}" width="50%">
+    <center>
+        <h3>Comissão da Função Pública</h3>
+        <h5>SIGAP (PMIS) – Sistema Integrado de Gestão da Administração Pública<br/>
+        Minitro de Estado, Coordenador dos Assuntos Económicos<br/>
+        Ministério do Turismo, Comercio e Industria</h5>
+    </center>
+    <br/>
+<hr style="height:5px;border-width:0;color:gray;background-color:gray">
+<table border="1">
+    <tr>
+        <th width="70%"><center><h5>{{ objects|upper }}</h5></center></th>
+        <th><small>{{ text_1 }}: {{ idnum.nrf }}</small></th>
+    </tr>
+</table>
+{% include "employee_print/cv_1_iden.html" %}
+{% include "employee_print/cv_2_nat_fam.html" %}
+{% include "employee_print/cv_3_hab_acc.html" %}
+{% include "employee_print/cv_4_col_fun.html" %}
+{% include "employee_print/cv_5_per_fal.html" %}
+{% include "employee_print/cv_6_pen_lov.html" %}
+<hr style="height:5px;border-width:0;color:gray;background-color:black;box-shadow: 2px 2px #888888;">
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}

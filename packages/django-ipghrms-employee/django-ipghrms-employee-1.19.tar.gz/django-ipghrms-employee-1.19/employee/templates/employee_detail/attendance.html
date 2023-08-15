@@ -1,0 +1,144 @@
+<div class="card-body">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+                <div class="card-header border-primary">
+                    <h2>{{ emp|upper }}</h2>
+
+                </div>
+				<div class="card-body">
+                    
+					<div class="row">
+                        <div class="col-4">
+                            <div class="card shadow-lg pt-1 rounded">
+                                <div class="card-header">SUMARIU GERAL</div>
+                                <div class="card-body">
+                                    <!-- <a class="btn btn-sm btn-info mb-2" href="{% url 'print-r-att-emp-gen' emp.hashed %}" target="_blank">Print <i class="fa fa-print"></i></a> -->
+                                    <table class="table table-sm table-striped">
+                                        <tr><th>TIPU</th><th>TOTAL</th></tr>
+                                    {% for att_obj in att_objs %} 
+                                        <tr><td>{{ att_obj.0.name }}</td><td>{{ att_obj.1 }}</td></tr>
+                                    {% endfor %}
+                                    <tfoot>
+                                        <tr>
+                                            <th>TOTAL HORAS SERVISU</th>
+                                            <th><strong>{{total_hours_all}}</strong></th>
+                                        </tr>
+                                    </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col">
+                            <div class="card shadow-lg pt-1 rounded">
+                                <div class="card-header">HARE BASEIA BA TINAN NO FULAN</div>
+                                <div class="card-body">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <select id="tinan" name="tinan" class="form-control" required>
+                                                    <option selected value="0">Tinan...</option>
+                                                    {% for y in years %}
+                                                    <option value="{{ y.year }}">{{ y.year }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <select id="fulan" name="fulan" class="form-control" required>
+                                                    <option selected value="0">Fulan...</option>
+                                                    {% for m in months %}
+                                                    <option value="{{ m.id }}">{{ m.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <button class="btn btn-info" type="submit" value="View">Hare <i class="fa fa-eye"></i></button>
+                                            </div>
+                                          </div>
+                                    </form>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h2>Sumariu  {% if year %}
+                                                {{ year }}
+                                            {% endif %} </h2>
+                                            <!-- <a class="btn btn-sm btn-info mb-2" href="{% url 'print-r-att-emp-gen-y' emp.hashed year %}" target="_blank">Print <i class="fa fa-print"></i></a> -->
+                                            <hr/>
+                                            <table class="table table-sm table-striped">
+                                                <tr><th>TIPU</th><th>TOTAL</th></tr>
+                                            {% for att_y in att_objs_y %} 
+                                                <tr><td>{{ att_y.0.name }}</td><td>{{ att_y.1 }}</td></tr>
+                                            {% endfor %}
+                                            <tfoot>
+                                                <tr>
+                                                    <th>TOTAL HORAS SERVISU</th>
+                                                    <th><strong>{{total_hours_year}}</strong></th>
+                                                </tr>
+                                            </tfoot>
+                                            </table>
+                                        </div>
+                                        <div class="col">
+                                            <h2>Sumariu {% if year or monthname %}
+                                                {{ monthname }} {{ year }}
+                                            {% endif %}  </h2>
+                                            <!-- <a class="btn btn-sm btn-info mb-2" href="{% url 'print-r-att-emp-gen-m' emp.hashed year month %}" target="_blank">Print <i class="fa fa-print"></i></a> -->
+                                            <hr/>
+                                            <table class="table table-sm table-striped">
+                                                <tr><th>TIPU</th><th>TOTAL</th></tr>
+                                            {% for att_m in att_objs_m %} 
+                                                <tr><td>{{ att_m.0.name }}</td><td>{{ att_m.1 }}</td></tr>
+                                            {% endfor %}
+                                            <tfoot>
+                                                <tr>
+                                                    <th>TOTAL HORAS SERVISU</th>
+                                                    <th><strong>{{total_hours_month}}</strong></th>
+                                                </tr>
+                                            </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    {% if data_for_weeks %}
+                                      
+                                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shadow-lg pt-1 rounded">
+                                <div class="card-body">
+                                    <h2>TOTAL HORAS SERVISU KADA SEMANA</h2>
+                                    <table class="table table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nu.</th>
+                                                <th>Semana</th>
+                                                <th class="text-center">Total Horas Servisu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for obj in  data_for_weeks %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{obj.0|date:"d/F/Y"}} - {{obj.1|date:"d/F/Y"}}</td>
+                                                <td align="center">{{obj.2}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    {% endif %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>

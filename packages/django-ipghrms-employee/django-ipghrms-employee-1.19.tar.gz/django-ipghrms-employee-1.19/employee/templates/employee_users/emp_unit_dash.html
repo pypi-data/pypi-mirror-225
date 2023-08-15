@@ -1,0 +1,87 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+	<!-- Page Header-->
+	<header> 
+		<h1 class="h3 display">{{ div }}</h1>
+	  </header>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary text-center">
+					<h2>{{ legend|upper }}
+						<i class="fa fa-arrow-right"></i>
+						<a class="btn btn-sm btn-warning" href="{% url 'emp-chart-dash' %}" target="_blank">GRAFIKU <i class="fa fa-bar-chart"></i></a>
+
+					</h2>
+				</div>
+				<div class="card-body">
+				    <!-- <a class="btn btn-sm btn-info" href="#">LISTA FUNCIONARIU <i class="fa fa-users"></i></a> -->
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="card shadow-lg rounded border-info">
+								<div class="card-header bg-info text-white"> <i class="fa fa-user"></i> {{ unit.code|upper }}</div>
+								<div class="card-body">
+									<center>
+										{% if img.image %}
+											{% if img.image == 'default.jpg' %}
+												{% if c_emp.sex == "Male" %}
+													<img src="{% static 'main/images/man.jpg' %}" class="rounded" width="120" />		
+												{% elif c_emp.sex == "Female" %}
+													<img src="{% static 'main/images/woman.jpg' %}" class="rounded" width="120" />		
+												{% endif %}
+											
+											{% else %}
+												<img src="{{ img.image.url }}" width="120" />
+											{% endif %}
+										{% endif %}
+										
+										<hr/>
+										<h1>{{ c_emp }}</h1>
+										<h5><small>{{ c_emp.curempposition.position }}</small></h5>
+									</center>
+								</div>
+							</div>
+							<hr/>
+							<div class="card shadow-lg rounded border-secondary">
+								<div class="card-header">
+									<a href="{% url 'adv-list' %}"># ASSESSOR ({{ totadv }})</a>
+								</div>					
+							</div> <!--end card-->
+						</div>
+						<div class="col-sm-8">
+							<div class="card shadow-lg rounded border-info">
+								<div class="card-header bg-info"><i class="fa fa-users text-white"></i> EKIPA</div>
+								<div class="card-body">
+									<table class="table table-sm table-bordered">
+										<thead>
+											<tr><th>NARAN EKIPA</th><th class="text-center">TOTAL</th></tr>
+										</thead>
+										<tbody>
+										{% for k in dep %}
+											<tr>
+												<td><a href="{% url 'u-emp-dep-list' k.0.id %}">{{ k.0.name }}</a></td>
+												<td align="center">{{ k.1 }}</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+										<tfoot>
+											<tr><th>Total<br/><small>(Chefe+Funcinariu)</small></th>
+												<th class="text-center">{{ totdep }}</th></tr>
+										</tfoot>
+									</table>
+								</div> <!--end card-body-->							
+							</div> <!--end card-->
+						</div> <!--end col-->
+					</div> <!--end row-->
+					<h4>TOTAL PESSOAS: {{total}}</h4>
+					<small>(Diretor+Chefe Ekipa+Funcinariu+Assessor)</small>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div> <!--end container-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

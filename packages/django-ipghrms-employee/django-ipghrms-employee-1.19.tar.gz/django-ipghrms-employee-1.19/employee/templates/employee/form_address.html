@@ -1,0 +1,89 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">LISTA FUNCIONARIU</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail' hashid=hashid %}">DETALHA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card shadow-lg border-info rounded">
+        <div class="card-header bg-steel">{{ legend|upper }}</div>
+        <div class="card-body">
+          <form method="POST" id="addressForm" data-posts-url="{% url 'ajax_load_posts' %}" data-villages-url="{% url 'ajax_load_villages' %}" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-0">
+                {{ form.address|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.latitude|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.longitude|as_crispy_field }}
+              </div>
+            </div> <!--end form-row-->
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-0">
+                {{ form.municipality|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.administrativepost|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.village|as_crispy_field }}
+              </div>
+            </div> <!--end form-row-->
+            <div class="button-row d-flex">
+              <button class="btn btn-primary ml-1" type="submit" title="Save">Save <i class="fa fa-save"></i></button>
+            </div> <!-- end button -->
+          </form>
+        </div> <!--end card-body-->
+      </div> <!--end card-->
+    </div> <!--end col-->
+  </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	
+  <script>
+    $("#id_municipality").change(function () {
+      var url = $("#addressForm").attr("data-posts-url");
+      var municipalityId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'municipality': municipalityId
+        },
+        success: function (data) {
+          $("#id_administrativepost").html(data);
+        }
+      });
+
+    });
+    // this one is for fetching village data
+    $("#id_administrativepost").change(function () {
+      var url = $("#addressForm").attr("data-posts-url");
+      var postId = $(this).val();
+
+      $.ajax({
+        url: '{% url 'ajax_load_villages' %}',
+        data: {
+          'post': postId
+        },
+        success: function (data) {
+          $("#id_village").html(data);
+        }
+      });
+
+    });
+  </script>
+{% endblock %}

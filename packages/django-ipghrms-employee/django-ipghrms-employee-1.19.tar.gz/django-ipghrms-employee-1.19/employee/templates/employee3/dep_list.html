@@ -1,0 +1,87 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+		{% if group == "dg" %}
+			<li class="breadcrumb-item"><a href="{% url 'emp-dg-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% elif group == "unit" %}
+			<li class="breadcrumb-item"><a href="{% url 'employee-div-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% else %}
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL FUNCIONARIU</a></li>
+		{% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+			{% if group == "hr" or group == "admin" %}
+				<div class="card-header">
+					
+				</div>
+			{% endif %}
+				<div class="card-body">
+					<h5 align="center"><u><h3>{{ dep.name|upper }}</h3></u></h5>
+                    {% if chief %}
+                    <table class="table">
+                        <tr>
+                            <td width="80%"><h3>
+							{% if group == "hr" or group == "admin" %}
+								<a href="{% url 'emp-detail' chief.employee.hashed %}">{{ chief.employee|upper }}</a>
+							{% else %}{{ chief.employee|upper }}{% endif %}
+							</h5>
+                                <h5>{{ chief.position }} {{ dep.code }}</h5>
+                            </td>
+                            <td>
+                            {% if img.image %}
+                                <img src="{{ img.image.url }}" width="100">
+                            {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+					<hr/>
+                    {% endif %}
+					<section id='no-more-tables'>
+						<table class="table table-sm" id="example" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Nu.</th>
+									<th>Naran</th>
+									<th>Sexu</th>
+									<th>Fatin & Data Moris</th>
+									<th>Pojisaun</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for obj in staffs %}
+								<tr>
+									<td>{{ forloop.counter }}</td>
+									<td>
+									{% if group == "hr" or group == "admin" %}
+										<a href="{% url 'emp-detail' obj.employee.hashed %}">{{ obj.employee.first_name }} {{ obj.last_name|upper }}</a>
+									{% else %}{{ obj.employee.first_name }} {{ obj.last_name|upper }}{% endif %}
+									</td>
+									<td>{{ obj.employee.sex }}</td>
+									<td>{{ obj.employee.pob }}, {{ obj.employee.dob|date:"d/m/Y" }}</td>
+									<td>{{ obj.employee.contract.all.0.category }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</section>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-->
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

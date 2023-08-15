@@ -1,0 +1,163 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+	<div class="breadcrumb-holder">
+    	<div class="container-fluid">
+            {% if group == 'hr' or group == 'hr_s' or group == 'de' or group == 'adjuntu'  %}
+              
+        	<ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">LISTA FUNCIONARIU</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'emp-detail' emp.hashed %}">DETALHA FUNCIONARIU</a></li>
+            </ul>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+	<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+				<div class="card-header border-primary">{{ legend|upper }}
+                    <i class="fa fa-long-arrow-right"></i>
+					{% include "employee_detail/header.html" %}
+                </div>
+				<div class="card-body">
+					<section id='no-more-tables'>
+						<table id="example" class="table table-sm table-bordered" style="width:100%">
+							<thead>
+								<tr>
+									<th>NARAN</th>
+									<th class="text-center">SEXU</th>
+									<th>FATIN & DATA MORIS</th>
+								</tr>
+								<tr>
+									<td data-title="Naran"><a href="{% url 's-emp-attach' emp.hashed %}">{{ emp }}</a></td>
+									<td data-title="Sexu" class="text-center">{{ emp.sex }}</td>
+									<td data-title="Fatin & Data Moris">{{ emp.pob }}, {{ emp.dob }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr align="center">
+                                <th>TIPU DOKUMENTOS</th>
+                                <th>ANEKSO</th>
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <tr>
+                                <td>Estado Civil</td>
+                                <td>
+                                    {% if emp.file %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed estado %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Certidaun RDTL</td>
+                                <td>
+                                    {% if lidnum.file_cert %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed cert %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Eleitoral</td>
+                                <td>
+                                    {% if lidnum.file_el %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed el %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>BI</td>
+                                <td>
+                                    {% if lidnum.file_bi %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed bi %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pasaporte</td>
+                                <td>
+                                    {% if lidnum.file_pas %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed pas %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Karta Kondusaun</td>
+                                <td>
+                                    {% if driver.file %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed driv %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Konta Bankaria</td>
+                                <td>
+                                    {% if idnum.file %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' emp.hashed bank %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ToR Kontrato</td>
+                                <td>
+                                    {% if empcontract.file %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' empcontract.hashed contract %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pozisaun</td>
+                                <td>
+                                    {% if empposition.file %}
+                                    <a class="btn btn-sm btn-info" href="{% url 'emp-lid-pdf' empposition.hashed position %}" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            <tr><th colspan="2">Dependencia</th></tr>
+                            {% for empdepend in empdepend %}                        
+                            <tr>
+                                <td>{{ empdepend.relation }}</td>
+                                <td>
+                                    {% if empdepend.file %}
+                                    <a class="btn btn-sm btn-info" href="#" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr><th colspan="2">Edukasaun Formal</th></tr>
+                            {% for fedu in formaledu %}                        
+                            <tr>
+                                <td>{{ fedu.educationlevel }}</td>
+                                <td>
+                                    {% if fedu.file %}
+                                    <a class="btn btn-sm btn-info" href="#" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr><th colspan="2">Non Edukasaun Formal</th></tr>
+                            {% for nonfedu in nonformaledu %}                        
+                            <tr>
+                                <td>{{ nonfedu.title }}</td>
+                                <td>
+                                    {% if nonfedu.file %}
+                                    <a class="btn btn-sm btn-info" href="#" target="_blank">Hare Anexu <i class="fa fa-file-pdf"></i></a>
+                                    {% else %}Anexa seidauk iha{% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-fluid-->
+{% endblock %}
+{% block scripts %}
+{% endblock %}

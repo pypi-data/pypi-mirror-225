@@ -1,0 +1,36 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">LISTA FUNCIONARIU</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail' emp.hashed %}">DETALHA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>FORMULARIO {{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table class="table table-sm table-bordered">
+						<tr><th>Naran</th><th>Sexu</th><th>Fatin no Data Moris</th></tr>
+						<tr><td>{{ emp }}</td><td>{{ emp.sex }}</td><td>{{ emp.pob }}, {{ emp.dob|date:"d/m/Y" }}</td></tr>
+					</table>
+					<hr class="border-primary">
+					{% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

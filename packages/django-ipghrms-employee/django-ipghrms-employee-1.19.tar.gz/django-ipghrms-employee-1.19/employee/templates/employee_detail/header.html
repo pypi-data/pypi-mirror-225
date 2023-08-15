@@ -1,0 +1,8 @@
+<a class="btn btn-sm {% if page == 'basic' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail' employee.hashed %}">Pessoal <i class="fa fa-user"></i></a>
+<a class="btn btn-sm {% if page == 'onboarding' or page == 'error' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-onboarding' employee.hashed %}">Onboarding <i class="fa fa-user-check"></i></a>
+<a class="btn btn-sm {% if page == 'leave'  %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-leave' employee.hashed %}">Licensa <i class="fa fa-person-walking-arrow-right"></i></a>
+<a class="btn btn-sm {% if page == 'perform'  %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-evaluation' employee.hashed %}">Avaliasaun <i class="fa fa-clipboard-user"></i></a>
+<a class="btn btn-sm {% if page == 'attendance' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-attendance' employee.hashed %}">Absensia <i class="fa fa-file"></i></a>
+<a class="btn btn-sm {% if page == 'trip' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-trip' employee.hashed %}">Trip <i class="fa fa-person-walking-luggage"></i></a>
+<a class="btn btn-sm {% if page == 'training' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-detail-training' employee.hashed %}">Formasaun <i class="fa fa-user-graduate"></i></a>
+<a class="btn btn-sm {% if page == 'attach' %} btn-info disabled {% else %} btn-secondary{% endif %} pt-1" href="{% url 'emp-attach' employee.hashed %}">Attachments <i class="fa fa-vcard"></i></a>

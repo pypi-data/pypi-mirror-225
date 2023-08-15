@@ -1,0 +1,249 @@
+<div class="card-body">
+    <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header border-primary">
+                            <center>
+                                <h4>{{ legend|upper }}</h4>
+                                <h5>Periode : 
+                                    {% if period %}
+                                    {{period}}
+                                    
+                                    {% else %}
+                                    <span class="badge bg-danger text-white">SEIDAUK IHA PERIODO</span>
+                                    {% endif %}
+                                </h5>
+                            </center>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 13px;" class="p-0 mb-1">Name of Staff:  <b>{{employee|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Position:  <b>{{employee.curempposition.position.name|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Contract Start Date:  <b>{{contract.start_date|date:"d F Y"}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 ">Contract End Date:  <b> 
+                                {% if contract.end_date %}
+                                    {{contract.end_date|date:"d F Y"}}
+                                {% else %}
+                                    <span class="bg-warning p-1" style="color: rgb(31, 31, 31);"> Indeterminable</span>
+                                {% endif %}
+                            </b> </p>
+                            <hr>
+                            <table class="table table-sm table-striped table-responsive table-bordered" id="example" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr align="center">
+                                        <th width="7%">Month</th>
+        
+                                        <th>Annual Leave Earn (days) = 20 Days/Year</th>
+                                        <th>Taken (Days)</th>
+                                        <th>Balance</th>
+                                        
+                                        <th>Special Leave = 3 Days/Year</th>
+                                        <th>Taken (Days)</th>
+                                        <th >Balance</th>
+                                        
+                                        <th>Sick Leave = 12 Days/Year</th>
+                                        <th>Taken (days)</th>
+                                        <th >Balance</th>
+                                        
+                                        <th>Maternity Leave = 12 Weeks/Year</th>
+                                        <th>Taken (days)</th>
+                                        <th >Balance</th>
+        
+                                        <th>Paternity Leave = 5 Days/Year</th>
+                                        <th>Taken (days)</th>
+                                        <th >Balance</th>
+        
+                                        <th>Childcare Leave = 5 Days/Year</th>
+                                        <th>Taken (days)</th>
+                                        <th >Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in  objects %}
+                                        {% if last_count_period %}
+                                            <tr align="center">
+                                                <td colspan="3"  class="text-center">Balance Carry Forward {{last_count_period.period.start_year}} - {{last_count_period.period.end_year}}</td>
+                                                <td class="text-danger" class="text-center">{{last_count_period.total_balance}}</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% for obj1 in data  %}
+                                            <tr>
+                                                <td class="text-center">{{obj1.0}}</td>
+                                                <td class="text-center">
+                                                    {% if obj1.1.update_date <= today %}
+                                                        {{obj1.1.leave_earn}}
+                                                    {% else %}
+                                                        0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">
+                                                {% if obj1.1.taken != 0.00 %}
+        
+                                                    <span class="text-danger"> {{obj1.1.taken}} </span>
+                                                {% else %}
+                                                0.00
+                                                {% endif %}
+                                                </td>
+                                                <td class="text-center">
+                                                    {% if obj1.1.update_date <= today %}
+                                                        {{obj1.1.balance}}
+                                                    {% else %}
+                                                        {% if obj1.7 %}
+                                                            {{obj1.1.balance_month}}
+                                                        
+                                                        {% else %}
+                                                            0.00
+                                                        {% endif %}
+                                                        
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.3.month}}-{{obj1.3.year}}</td>
+                                                <td class="text-center">{% if obj1.3.taken != 0.00 %}
+                                                    <span class="text-danger"> {{obj1.3.taken}} </span>
+                                                    {% else %}
+                                                    0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.3.total_balance}}</td>
+                                                <td class="text-center">{{obj1.2.month}}-{{obj1.2.year}}</td>
+                                                <td class="text-center">{% if obj1.2.taken != 0.00 %}
+                                                    <span class="text-danger"> {{obj1.2.taken}} </span>
+                                                    {% else %}
+                                                    0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.2.total_balance}}</td>
+                                                <td class="text-center">{{obj1.4.month}}-{{obj1.4.year}}</td>
+                                                <td class="text-center">{% if obj1.4.taken != 0.00 %}
+                                                    <span class="text-danger"> {{obj1.4.taken}} </span>
+                                                    {% else %}
+                                                    0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.4.total_balance}}</td>
+                                                <td class="text-center">{{obj1.5.month}}-{{obj1.5.year}}</td>
+                                                <td class="text-center">{% if obj1.5.taken != 0.00 %}
+                                                    <span class="text-danger"> {{obj1.5.taken}} </span>
+                                                    {% else %}
+                                                    0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.5.total_balance}}</td>
+                                                <td class="text-center">{{obj1.6.month}}-{{obj1.6.year}}</td>
+                                                <td class="text-center">{% if obj1.6.taken != 0.00 %}
+                                                    <span class="text-danger"> {{obj1.6.taken}} </span>
+                                                    {% else %}
+                                                    0.00
+                                                    {% endif %}
+                                                </td>
+                                                <td class="text-center">{{obj1.6.total_balance}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    {% for obj2  in objects  %}
+                                        <tr>
+                                            <th class="text-center">TOTAL</th>
+                                            <th class="text-center">
+                                                {% if obj2.1.update_date <= today %}
+                                                        {{obj2.0.total_earn}}
+                                                {% elif obj2.7 %}
+                                                    {{obj2.8.total_earn}} 
+                                                    
+                                                {% else %}
+                                                    {{obj2.0.total_earn}}
+                                                        
+                                                {% endif %}
+                                                
+                                            </th>
+                                            <th class="text-center">{{obj2.0.total_taken}}</th>
+                                            <th class="text-center">
+                                                {% if obj2.1.update_date <= today %}
+                                                        {{obj2.0.total_balance}}
+                                                {% elif obj2.7 %}
+                                                        {{obj2.9.balance_month}}
+                                                {% else %}
+                                                
+                                                    {{obj2.0.total_balance}}
+                                                        
+                                                {% endif %}
+                                            </th>
+                                            <th class="text-center">-</th>
+                                            <th class="text-center">{{obj2.1.last.total_taken}}</th>
+                                            <th class="text-center">{{obj2.1.last.total_balance}}</th>
+                                            <th class="text-center">-</th>
+                                            <th class="text-center">{{obj2.2.last.total_taken}}</th>
+                                            <th class="text-center">{{obj2.2.last.total_balance}}</th>
+                                            <th class="text-center">-</th>
+                                            <th class="text-center">{{obj2.3.last.total_taken}}</th>
+                                            <th class="text-center">{{obj2.3.last.total_balance}}</th>
+                                            <th class="text-center">-</th>
+                                            <th class="text-center">{{obj2.4.last.total_taken}}</th>
+                                            <th class="text-center">{{obj2.4.last.total_balance}}</th>
+                                            <th class="text-center">-</th>
+                                            <th class="text-center">{{obj2.5.last.total_taken}}</th>
+                                            <th class="text-center">{{obj2.5.last.total_balance}}</th>
+                                        </tr>
+                                    {% endfor %}
+                                </tfoot>
+                            </table>
+                            <ol class="breadcrumb p-1">
+                            {% for y in all_period %}
+                                <li class="breadcrumb-item"><a href="{% url 'leave-hr-leave-per-record' employee.hashed y.pk %}">{{ y.start_year }} - {{y.end_year}}</a></li>
+                            {% endfor %}
+                            </ol>
+                            <!-- History -->
+                            
+                        </div> <!--end card-body-->
+        
+                    </div> <!--end card-->
+                </div> <!--end col-->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <h4>Historia Licensa</h4>
+                                <h5>Periode : {{period}}</h5>
+                            </center>
+                            <hr>
+                            
+                            <table class="table table-md table-striped table-bordered" id="example2">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Nu.</th>
+                                        <th>Deskrisaun Licensa</th>
+                                        <th>Data Aplika</th>
+                                        <th>Tipu Licensa</th>
+                                        <th>Data Hahu</th>
+                                        <th>Data Remata</th>
+                                        <th>Loron</th>
+                                        <th>File</th>
+                                        <th>Kria Husi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in  leave %}
+                                    <tr class="text-center">
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{obj.description}}</td>
+                                        <td>{{obj.date}}</td>
+                                        <td>{{obj.leave_type}}</td>
+                                        <td>{{obj.start_date|date:"d-F-Y"}}</td>
+                                        <td>{{obj.end_date|date:"d-F-Y"}}</td>
+                                        <td>{{obj.days}}</td>
+                                        <td>
+                                            {% if obj.file %}
+                                            <a href="{{obj.file.url}}" target="_blank" class="btn btn-sm btn-info"> <i class="fa fa-file"></i> </a>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{obj.user.employeeuser.employee}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end row-->
+</div>

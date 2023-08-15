@@ -1,0 +1,78 @@
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="4"><h6><strong>DEPENDENCIA</strong> 
+			<a href="{% url 'dependency' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>NARAN</th>
+		<th>FATIN & DATA MORIS</th>
+		<th>SEXU</th>
+		<th>RELASAUN</th>
+	</tr>
+	{% for obj in empdependency %}
+	<tr>
+		<td>{{ obj }}</td>
+		<td>{{ obj.place_of_birth }}, {{ obj.date_of_birth }}</td>
+		<td>{{ obj.sex }}</td>
+		<td>{{ obj.relation }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="4"><h6><strong>EDUKASUAN FORMAL IKUS</strong> 
+			<a href="{% url 'formal-education' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>NIVEL EDUKASUAN</th>
+		<th>UNIVERSIDADE</th>
+		<th>PROGRAMA ESTUDU</th>
+		<th>AREA PROFESSIONAL</th>
+		<th>TINAN</th>
+	</tr>
+	<tr>
+		<td>{{ formaleducation.educationlevel }}</td>
+		<td>{% if formaleducation.university %}{{ formaleducation.university }}{% endif %}</td>
+		<td>{% if formaleducation.studyprogram %}{{ formaleducation.studyprogram }}{% endif %}</td>
+		<td>{% if formaleducation.area %}{{ formaleducation.area }}{% endif %}</td>
+		<td>{{ formaleducation.graduation_year|date:"Y" }}</td>
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="5"><h6><strong>EDUKASUAN NON FORMAL IKUS</strong> 
+			<a href="{% url 'nonformal-education' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>TITULU</th>
+		<th>FATIN</th>
+		<th>PERIODU</th>
+		<th>HORAS</th>
+	</tr>
+	<tr>
+		<td>{{ nonformaleducation.title }}</td>
+		<td>{{ nonformaleducation.tutelary_entity }}</td>
+		<td>{{ nonformaleducation.start_date|date:"d/m/Y" }} - {{ nonformaleducation.end_date|date:"d/m/Y" }}</td>
+		<td>{{ nonformaleducation.hours }}</td>
+	</tr>
+</table>
+<table class="table table-sm">
+	<tr class="bg-light" align="center">
+		<th colspan="4"><h6><strong>ESPERENCIA SERVISU IKUS</strong> 
+			<a href="{% url 'work-experience' objects.hashed %}"><i class="fa fa-file-text-o"></i></a></h6>
+		</th>
+	</tr>
+	<tr>
+		<th>INSTITUISAUN</th>
+		<th>POJISAUN</th>
+		<th>PERIODU</th>
+	</tr>
+	<tr>
+		<td>{{ workexperience.instituisaun }}</td>
+		<td>{{ workexperience.pojisaun }}</td>
+		<td>{{ workexperience.start_date|date:"d/m/Y" }} - {{ workexperience.end_date|date:"d/m/Y" }}</td>
+	</tr>
+</table>

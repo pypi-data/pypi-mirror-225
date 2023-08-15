@@ -1,0 +1,71 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block head %}
+	<link rel="stylesheet" href="{% static 'admin/plugins/select2/css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'emp-detail' emp.hashed %}">EMPLOYEE DETAILS</a></li>
+			{% if page == "formal" %}
+			<li class="breadcrumb-item"><a href="{% url 'formal-edu-list' emp.hashed %}">FORMAL EDUCATION</a></li>
+			{% elif page == "nonformal" %}
+			<li class="breadcrumb-item"><a href="{% url 'nonformal-edu-list' emp.hashed %}">NON-FORMAL EDUCATION</a></li>
+			{% elif page == "workex" %}
+			<li class="breadcrumb-item"><a href="{% url 'work-exp-list' emp.hashed %}">WORK EXPERIENCE</a></li>
+			{% endif %}
+			<li class="breadcrumb-item active" aria-current="page">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<h2>
+						{{ legend|upper }}
+					</h2>
+					{% if page == 'edu-formal' %}
+							<i class="fa fa-arrow-right"></i>
+							<a href="{% url 'custom-uni-list' emp.hashed %}" class="btn btn-sm btn-info">Lista Universidade <i class="fa fa-list"></i></a>
+							<a href="{% url 'custom-edu-list' emp.hashed %}" class="btn btn-sm btn-secondary">Lista <i>Education Level</i> <i class="fa fa-list"></i></a>
+							<a href="{% url 'custom-area-list' emp.hashed %}" class="btn btn-sm btn-warning">Lista Area <i class="fa fa-list"></i></a>
+					{% endif %}
+				</div>
+				<div class="card-body">
+					<table class="table table-sm">
+						<tr>
+							<th>Employee Name</th><th>Place & Date of birth</th><th>Sex</th><th>Country</th>
+						</tr>
+						<tr>
+							<td>{{ emp }}</td><td>{{ emp.pob }}, {{ emp.dob }}</td><td>{{ emp.sex }}</td><td>{{ emp.country }}</td>
+						</tr>
+					</table>
+					<hr/>
+					{% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'admin/plugins/select2/js/select2.full.min.js' %}"></script>
+<script>
+	$(function () {
+	  //Initialize Select2 Elements
+	  $('.select').select2()
+  
+	  //Initialize Select2 Elements
+	  $('.select2bs4').select2({
+		theme: 'bootstrap4'
+	  })
+  
+	})
+	
+  </script>
+{% endblock %}

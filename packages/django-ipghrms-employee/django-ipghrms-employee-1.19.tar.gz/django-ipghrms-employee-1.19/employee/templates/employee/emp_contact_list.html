@@ -1,0 +1,157 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block head %}
+
+
+{% endblock head %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+      {% if user_group == 'hr' %}      
+  			<li class="breadcrumb-item"><a href="{% url 'emp-dash' %}">PAINEL FUNCIONARIU</a></li>
+      {% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table id="example" class="table table-bordered table-sm responsive" style="width:100%">
+						<thead>
+							<tr align="center">
+								<th class="text-center">Nu.</th>
+								<th class="text-left">Naran</th>
+								<th>Telefone. (1)</th>
+								<th>Telefone. (2)</th>
+								<th>Official Email</th>
+							</tr>
+						</thead>
+						<tbody>
+              {% for obj in  employee %}
+                <tr align="center">
+                  <td>{{forloop.counter}}</td>
+                  <td class="text-left">{{obj.employee}}</td>
+                  <td>
+                    {% if obj.phone1 %}                    
+                      {{obj.phone1}}
+                    {% else %}
+                      -
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if obj.phone2 %}
+                      {{obj.phone2}}
+                    {% else %}
+                      -
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if obj.o_email %}                    
+                      {{obj.o_email}}
+                    {% else %}
+                      -  
+                    {% endif %}  
+                  </td>
+                </tr>
+              {% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+  {% if user_group == 'hr' or user_group == 'de' or user_group == 'deputy' %}
+    
+
+    <link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .dtsb-searchBuilder{
+            background: #b9c7e6 !important;
+            padding: 5px
+        }
+        .dt-button, .dtsb-add {
+            background: white !important;
+        }
+    </style>
+    <script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/jszip.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'main/vendor/datatables/js/buttons.colVis.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            var table = $('#example').removeAttr('width').DataTable( {
+                "scrollY": "50vh",
+                "scrollX": true,
+                "scrollCollapse": true,
+                "paging": true,
+                buttons:[
+                    {
+                        extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+                    },
+                    {
+                        extend: 'pdfHtml5', orientation: 'landscape', pageSize: 'LEGAL', messageTop: '',
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: { columns: ':visible' },
+                    },
+                    'colvis',
+                ],
+                dom: 'Bfrtip',
+                "deferRender": true
+            });
+            table.searchBuilder.container().prependTo(table.table().container());
+        } );
+    </script>
+
+{% else %}
+    <link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .dtsb-searchBuilder{
+            background: #b9c7e6 !important;
+            padding: 5px
+        }
+        .dt-button, .dtsb-add {
+            background: white !important;
+        }
+    </style>
+    <script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            var table = $('#example').removeAttr('width').DataTable( {
+                "scrollY": "50vh",
+                "scrollX": true,
+                "scrollCollapse": true,
+                "paging": true,
+                dom: 'Bfrtip',
+            });
+            table.searchBuilder.container().prependTo(table.table().container());
+        } );
+    </script>
+
+
+{% endif %}
+{% endblock %}

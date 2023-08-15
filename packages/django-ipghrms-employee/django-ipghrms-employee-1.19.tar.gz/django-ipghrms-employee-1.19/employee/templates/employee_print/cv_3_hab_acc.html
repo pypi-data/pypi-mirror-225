@@ -1,0 +1,38 @@
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px">Habilidade Lingua</p></div>
+<table border="1">
+    <tr><th>Lingua</th><th>Koalia</th><th>Lee</th><th>Hakerek</th></tr>
+    {% for lg in emplang %}
+    <tr align="center">
+        <td>{{ lg.language }}</td>
+        <td>{{ lg.koalia }}</td>
+        <td>{{ lg.lee }}</td>
+        <td>{{ lg.hakerek }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px">Habilitações</p></div>
+<table border="1">
+    <tr><th>Data</th><th>Nivel habilitacional</th><th>Curso</th><th>Entidade</th></tr>
+    {% for fedu in formaleducation %}
+    <tr align="center">
+        <td>{{ fedu.graduation_year|date:"d/m/Y" }}</td>
+        <td>{{ fedu.educationlevel }}</td>
+        <td>{{ fedu.studyprogram }}</td>
+        <td>{{ fedu.university }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Acções de formação</p></div>
+<table border="1">
+    <tr><th>Data de início</th><th>Data de fim</th><th>Horas</th><th>Curso</th><th>Entidade</th><th>Area de formação</th></tr>
+    {% for nonfedu in nonformaleducation %}
+    <tr align="center">
+        <td>{{ nonfedu.start_date|date:"d/m/Y" }}</td>
+        <td>{{ nonfedu.end_date|date:"d/m/Y" }}</td>
+        <td>{{ nonfedu.hours }}</td>
+        <td>{{ nonfedu.title }}</td>
+        <td>{{ nonfedu.tutelary_entity }}</td>
+        <td>{{ nonfedu.area }}</td>
+    </tr>
+    {% endfor %}
+</table>

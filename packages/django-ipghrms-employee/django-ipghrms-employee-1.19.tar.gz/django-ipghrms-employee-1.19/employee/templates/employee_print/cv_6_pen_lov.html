@@ -1,0 +1,22 @@
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Penas</p></div>
+<table border="1">
+    <tr>
+        <td>Tipo de Penas</td><td>Data de Penas</td><td>Instituição</td><td>Estado</td>
+    </tr>
+    {% for pena in penas %}
+    <tr>
+        <td>{{ pena.penas_type }}</td><td>{{ pena.start_date|date:"d/m/Y" }} até {{ pena.end_date|date:"d/m/Y" }}</td>
+        <td>{{ pena.institute }}</td><td>{% if pena.is_active == True %}Ativu{% else %}Remata{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div style="width: 24%; background-color: grey;"><p style="margin-bottom: 1px;">Louvores</p></div>
+<table border="1">
+    <tr><td>Títulu de Louvores</td><th>Data de Louvores</th><th>Instituição</th></tr>
+    {% for louvor in louvores %}    
+    <tr>
+        <td>{{ louvor.title }}</td><td>{{ louvor.date|date:"d/m/Y" }}</td>
+        <td>{{ louvor.institute }}</td>
+    </tr>
+    {% endfor %}
+</table>

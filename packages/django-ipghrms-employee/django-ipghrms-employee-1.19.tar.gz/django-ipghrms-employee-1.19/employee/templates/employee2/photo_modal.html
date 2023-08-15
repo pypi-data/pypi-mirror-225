@@ -1,0 +1,38 @@
+{% load crispy_forms_tags %}
+<!-- Photo Modal -->
+	<div class="modal fade" id="takephoto" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content shadow-lg pt-3 rounded">
+				<div class="modal-header">
+					<h5 class="modal-title" id="photoModalLabel">TAKE PHOTO</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form method="POST">
+				{% csrf_token %}
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+							<video id="video" width="330" height="250" autoplay></video>
+							<br/>
+							<button type="button" id="snap" class="btn btn-danger">Snap Photo</button>
+						</div>
+						<div class="col-md-6">
+							{{ a_form.image|as_crispy_field }}
+							<center><canvas id="canvas" width="330" height="250"></canvas></center>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-icon-split" data-dismiss="modal">
+						<span class="icon text-white-50"><i class="fa fa-window-close"></i></span>
+						<span class="text">No</span>
+					</button> | 
+					<button type="submit" class="btn btn-primary">Save <i class="fa fa-save"></i></button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>

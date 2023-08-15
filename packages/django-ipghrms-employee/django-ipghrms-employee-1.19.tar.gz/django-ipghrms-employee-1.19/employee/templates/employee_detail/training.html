@@ -1,0 +1,82 @@
+<div class="card-body">
+    <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card shadow-lg border-info rounded">
+                        <div class="card-header border-primary">
+                            <center>
+                                <h4>LISTA FORMASAUN</h4>
+                            </center>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 13px;" class="p-0 mb-1">Name of Staff:  <b>{{employee|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Position:  <b>{{employee.curempposition.position.name|upper}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 mb-1">Contract Start Date:  <b>{{contract.start_date|date:"d F Y"}}</b> </p>
+                            <p style="font-size: 13px;" class="p-0 ">Contract End Date:  <b> 
+                                {% if contract.end_date %}
+                                    {{contract.end_date|date:"d F Y"}}
+                                {% else %}
+                                    <span class="bg-warning p-1" style="color: rgb(31, 31, 31);"> Indeterminable</span>
+                                {% endif %}
+                            </b> </p>
+                            
+                        </div> <!--end card-body-->
+        
+                    </div> <!--end card-->
+                </div> <!--end col-->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-md table-striped table-bordered" id="example2">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Nu.</th>
+                                        <th>Plano Treinamento</th>
+                                        <th>Fatin </th>
+                                        <th>Durasaun</th>
+                                        <th>Data Hahu</th>
+                                        <th>Data Remata</th>
+                                        <th class="text-center">Materia</th>
+                                        <th class="text-center">Pareser</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in objects  %}
+                                      <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{obj.plan.subject|title}}</td>
+                                        <td>{{obj.plan.place|title}}</td>
+                                        <td>
+                                            {% if obj.plan.duration %}
+                                            {{obj.plan.duration}}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {{obj.plan.start_date|date:"d-M-Y"}}
+                                        </td>
+                                        <td>
+                                            {{obj.plan.end_date|date:"d-M-Y"}}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if obj.subject %}
+                                                <a href="{% url 'train-hr-view-subject' obj.pk %}" target="_blank" class="btn btn-sm btn-info"> <i class="fa fa-file-pdf"></i> </a>
+                                            {% else %}
+                                                <span class="badge bg-danger text-white">Materia Laiha!</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if obj.plan.file %}
+                                                <a href="{{obj.plan.file.url}}" target="_blank" class="btn btn-sm btn-info"> <i class="fa fa-file-pdf"></i> </a>
+                                            {% else %}
+                                                <span class="badge bg-danger text-white">Pareser Laiha!</span>
+                                            {% endif %}
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!--end row-->
+</div>

@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+recursive-include employee/templates *
+recursive-include employee/reports *
+recursive-include employee/migrations *
+recursive-include employee/views *
+recursive-include employee/api *

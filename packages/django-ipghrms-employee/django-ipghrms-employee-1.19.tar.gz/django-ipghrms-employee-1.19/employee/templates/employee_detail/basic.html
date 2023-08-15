@@ -1,0 +1,91 @@
+<div class="card-body">
+    {% if objects.status.pk == 1 %}
+    <div class="row  ">
+        
+        <div class="col-md-6 d-flext justify-content-start align-self-center">
+            {% if group == "admin" or group == "hr" or group == "hr_s" %}
+                {% if objects.is_new == False %}
+                    <a class="btn btn-sm btn-success " href="{% url 'emp-new' objects.hashed %}">Muda ba Foun <i class="fa fa-refresh"></i></a>
+                {% else %}
+                    <a class="btn btn-sm btn-danger" href="{% url 'emp-old' objects.hashed %}">Muda ba Tuan <i class="fa fa-refresh"></i></a>
+                {% endif %}
+            {% endif %}
+        
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+                {% if objects.is_new == True %}
+                    <span class="alert alert-info"> <i class="fa fa-circle-info"></i> STATUS: <span class="text-success" style="font-weight: bold;" >FOUN</span></span>
+                {% else %}
+                    <span class="alert alert-success"><i class="fa fa-circle-info"></i> STATUS: <span class="text-danger " style="font-weight: bold;">TUAN</span></span>
+                {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <!-- <hr/> -->
+    <div class="row">
+        <div class="col-sm-6">
+            {% include 'employee/emp_detail_left.html' %}
+        </div> <!--end col-->
+        <div class="col-sm-6">
+            {% include 'employee/emp_detail_right.html' %}
+            <hr/>
+            <div id="mapid" style="width: 100%; height: 250px;"></div>
+            <hr/>
+            <table class="table table-sm">
+                <tr class="bg-light">
+                    <th colspan="5"><h6>SPECIALIDADE
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+                        <a class="btn btn-sm btn-info" href="{% url 'emp-spec-add' objects.hashed %}"><i class="fa fa-plus"></i></a></h6>
+                    {% endif %}
+                    </th>
+                </tr>
+                <tr><th>Especialidade</th>
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}<th>#</th>{% endif %}
+                </tr>
+                {% for spec in empspecs %}
+                <tr>
+                    <td>{{ spec.name }}</td>
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+                    <td><a href="{% url 'emp-spec-delete' objects.hashed spec.pk %}"><i class="fa fa-trash"></i></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            <hr/>
+            <table class="table table-sm">
+                <tr class="bg-light">
+                    <th colspan="6"><h6>ABILIDADE LINGUA
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+                        <a class="btn btn-sm btn-info" href="{% url 'emp-lang-add' objects.hashed %}"><i class="fa fa-plus"></i></a></h6>
+                    {% endif %}
+                    </th>
+                </tr>
+                <tr><th>Lingua</th><th>Koalia</th><th>Lee</th><th>Hakerek</th><th>Anekso</th>
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}<th>#</th>{% endif %}
+                </tr>
+                {% for lg in emplang %}
+                <tr>
+                    <td>{{ lg.language }}</td>
+                    <td>{{ lg.speak }}</td>
+                    <td>{{ lg.read }}</td>
+                    <td>{{ lg.write }}</td>
+                    <td>
+                        {% if lg.file_language %}                      
+                            <a href="{{lg.file_language.url}}" class="btn btn-sm btn-info" target="_blank"> <i class="fa fa-file"></i> </a>
+                        {% endif %}
+                    </td>
+                    {% if group == 'hr' or group == 'admin' or group == "hr_s" %}
+                    <td><a href="{% url 'emp-lang-update' objects.hashed lg.hashed %}"><i class="fa fa-edit"></i></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div> <!--end col-->
+    </div> <!--end row-->
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            {% include 'employee/emp_detail_bottom.html' %}
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div> <!--end card-body-->

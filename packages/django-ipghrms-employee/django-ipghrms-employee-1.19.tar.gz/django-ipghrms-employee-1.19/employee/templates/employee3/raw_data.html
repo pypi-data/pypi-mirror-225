@@ -1,0 +1,186 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'employee-dash' %}">PAINEL FUNCIONARIU</a></li>
+            <li class="breadcrumb-item active">{{ legend|upper }}</li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg pt-1 border-primary rounded">
+
+                <div class="card-body">
+                    <h5 align="center">{{ legend|upper }}</h5>
+                    <hr/>
+                    <section id='no-more-tables'>
+                        <table id="example" class="table table-sm table-bordered responsive" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nu.</th>
+                                    <th>Status</th>
+                                    <th>Naran</th>
+                                    <th>Sexu</th>
+                                    <th>Nu.Payroll</th>
+                                    <th>Nu.PMIS</th>
+                                    <th>Entrada no FP</th>
+                                    <th>Fatin no Data Moris</th>
+                                    <th>Grau</th>
+                                    <th>Esc.</th>
+                                    <th>Salariu Atual</th>
+                                    <th>Cargo</th>
+                                    <th>Diresaun</th>
+                                    <th>Nivel Habilitacional</th>
+                                    <th>Curso</th>
+                                    <th>RJS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in objects %}
+                                <tr>
+                                    <td data-title="Nu.">{{ forloop.counter }}</td>
+                                    <td data-title="Status">{{ obj.0.status }}</td>
+                                    <td data-title="Naran">
+                                    <a href="{% url 'employee-detail' obj.0.hashed %}">{{ obj.0 }}</a>
+                                    </td>
+                                    <td data-title="Sexu">{{ obj.0.sex }}</td>
+                                    <td data-title="Nu.Payroll">{{ obj.1.payrol_number }}</td>
+                                    <td data-title="Nu.PMIS">{{ obj.1.nrf }}</td>
+                                    <td data-title="Entrada no FP">{{ obj.3.date_start|date:"d/m/Y" }}</td>
+                                    <td data-title="Fatin & Data Moris">{{ obj.0.place_of_birth }}, {{ obj.0.date_of_birth|date:"d/m/Y" }}</td>
+									<td data-title="Grau">{{ obj.3.grade }}</td>
+                                    <td data-title="Eskalaun">{{ obj.3.echelon }}</td>
+                                    <td data-title="Salariu Atual">$ {{ obj.4.total }}</td>
+                                    <td data-title="Cargo">{{ obj.5.position }}</td>
+                                    <td data-title="Diresaun">
+                                        {% if obj.6.dg %}{{ obj.6.dg.code }}{% elif obj.6.division %}{{ obj.6.division.code }}
+                                        {% elif obj.6.department %}{{ obj.6.department.division.code }}{% else %}{{ obj.6.section.department.division.code }}{% endif %}
+                                    </td>
+                                    <td data-title="Nivel Habilitacional">{{ obj.7.educationlevel }}</td>
+                                    <td data-title="Curso">{{ obj.7.area }}</td>
+                                    <td data-title="RJS">{{ obj.8.contract_type }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                </div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div><!--end container-->
+{% endblock %}
+{% block scripts %}
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.dataTables.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/searchBuilder.bootstrap4.min.css' %}" rel="stylesheet">
+<link href="{% static 'main/vendor/datatables/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+<style type="text/css">
+    .dtsb-searchBuilder{
+        background: #b9c7e6 !important;
+        padding: 5px
+    }
+    .dt-button, .dtsb-add {
+        background: white !important;
+    }
+</style>
+<script src="{% static 'main/vendor/datatables/js/dataTables.searchBuilder.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/searchBuilder.bootstrap4.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/jszip.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'main/vendor/datatables/js/buttons.colVis.min.js' %}"></script>
+<script>
+    var doc = {
+    pageSize: config.pageSize,
+    pageOrientation: config.orientation,
+    content: [
+        {
+            table: {
+                headerRows: 1,
+                body: rows
+            },
+            layout: 'Borders'
+        }
+    ],
+    styles: {
+        tableHeader: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154',
+            alignment: 'center'
+        },
+        tableBodyEven: {},
+        tableBodyOdd: {
+            fillColor: '#f3f3f3'
+        },
+        tableFooter: {
+            bold: true,
+            fontSize: 10,
+            color: 'white',
+            fillColor: '#2d4154'
+        },
+        title: {
+            alignment: 'center',
+            fontSize: 12
+        },
+        message: {}
+    },
+    defaultStyle: {
+        fontSize: 9
+    }
+};
+</script>
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            "scrollY": "50vh",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            searchBuilder: true,
+            buttons:[
+                {
+                    extend: 'excelHtml5', autoFilter: true, sheetName: 'Exported data'
+                },
+                {
+                    extend: 'pdfHtml5', orientation: 'landscape', pageSize: 'A4', messageTop: '',
+                    title: "REPÚBLICA DEMOCRÁTICA DE TIMOR-LESTE" + "\n" + "MINISTÉRIO DO TURISMO,COMÉRCIO E INDÚSTRIA" +"\n"+ "DIREÇÃO NACIONAL DE RECURSO HUMANO",
+                    customize: function(doc) {
+                        doc.defaultStyle.fontSize = 9; //<-- set fontsize to 16 instead of 10 
+                    }
+                },
+                {
+                    extend: 'print', orientation: 'landscape', pageSize: 'LEGAL',
+                    exportOptions: { columns: ':visible' },
+                    title: '<center><h5>REPÚBLICA DEMOCRÁTICA DE TIMOR-LESTE <br/>\
+                        MINISTÉRIO DO TURISMO, COMÉRCIO E INDÚSTRIA<br/>\
+                        DIREÇÃO NACIONAL DE RECURSO HUMANO</h5></center><hr/>',
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .prepend(
+                                '<center><img src="http://sibadft.herokuapp.com/static/main/images/rdtl.jpg" style="width:80px;" /></center><br/>'
+                            );
+ 
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                },
+                'colvis',
+            ],
+            dom: 'Bfrtip',
+            "deferRender": true
+        });
+        table.searchBuilder.container().prependTo(table.table().container());
+    } );
+</script>
+{% endblock %}
