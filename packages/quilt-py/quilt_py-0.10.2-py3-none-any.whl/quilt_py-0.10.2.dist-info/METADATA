@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: quilt-py
+Version: 0.10.2
+Summary: 
+Author: Jeremy Berman
+Author-email: jerber@sas.upenn.edu
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: devtools
+Requires-Dist: firebase-admin
+Requires-Dist: httpx
+Requires-Dist: phonenumbers
+Requires-Dist: pydantic[email] (>=1,<2)
+Requires-Dist: sentry-sdk[httpx,pure-eval]
+Requires-Dist: strawberry-graphql
+Description-Content-Type: text/markdown
+
+hello!
