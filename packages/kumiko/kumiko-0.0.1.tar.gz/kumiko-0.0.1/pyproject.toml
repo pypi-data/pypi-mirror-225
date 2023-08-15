@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "kumiko"
+version = "0.0.1"
+description = "A fast ipc lib for discord.py"
+authors = ["No767 <73260931+No767@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{"include" = "kumiko"}]
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
