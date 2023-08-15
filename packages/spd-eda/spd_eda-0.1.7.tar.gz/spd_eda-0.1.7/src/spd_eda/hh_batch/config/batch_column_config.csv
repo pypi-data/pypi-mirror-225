@@ -1,0 +1,908 @@
+column,primary_use_case,AnalysisHandling,alt_use_cases,peril_fire,peril_wildfire,peril_weather,peril_nw_water,peril_crime,peril_other,peril_farm_crop,peril_eq,peril_casualty,peril_wc_el,peril_flood,peril_terrorism,peril_auto,peril_rcv,peril_pl_cl,usage_uw,usage_ops,usage_pricing,calculate_stats
+location_type,Location Info,Keep,,,,,,,,,,,,,,,,,,,,Yes
+match_level,ID,Exceptions,"GeoID Match Level: House (1398), Address issue (12)",,,,,,,,,,,,,,,,X,X,,Yes
+match_score,ID,Exceptions,Score < 1.00 indicates imperfect match (78),,,,,,,,,,,,,,,,X,X,,Yes
+google_maps_url,ID,Supp ID,link to google image,,,,,,,,,,,,,,,,X,X,,No
+enhanced_wildfire.score,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.text,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.risk_scores.base,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,,,X,Yes
+enhanced_wildfire.risk_scores.composite,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,,X,Yes
+enhanced_wildfire.landcover_risk.score,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,,,X,Yes
+enhanced_wildfire.landcover_risk.desc,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,,,Yes
+enhanced_wildfire.landcover_risk.detail.area_desc,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+enhanced_wildfire.landcover_risk.detail.site_desc,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.0.distance_to,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.0.pct_wildland,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.0.risk_category,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.1.distance_to,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.1.pct_wildland,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.1.risk_category,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.2.distance_to,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.2.pct_wildland,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.landcover_risk.proximate_landcover_areas.2.risk_category,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.katabatic_wind_risk.score,Katabatic Wind,Distribution,,,X,X,,,,X,,,,,,X,,ALL,,,X,Yes
+enhanced_wildfire.katabatic_wind_risk.name,Katabatic Wind,Combine,,,X,X,,,,X,,,,,,X,,ALL,X,,,Yes
+enhanced_wildfire.katabatic_wind_risk.desc,Katabatic Wind,Combine,,,X,X,,,,X,,,,,,X,,ALL,,X,,Yes
+enhanced_wildfire.fire_season_precip_risk.score,Wildfire,Keep,,,X,,,,,,,,,,,,,,,,,Yes
+enhanced_wildfire.fire_season_precip_risk.monthly_avg_precip,Wildfire,Keep,,,X,,,,,,,,,,,,,,,,,Yes
+enhanced_wildfire.fire_season_precip_risk.desc,Wildfire,Keep,,,X,,,,,,,,,,,,,,,,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.score,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,,,X,Yes
+enhanced_wildfire.wildfire_perimeter_risk.desc,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.0.name,Wildfire,Exceptions,,,X,,,,,,,,,,,,,ALL,,X,,No
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.0.year,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.0.relationship,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.1.name,Wildfire,Exceptions,,,X,,,,,,,,,,,,,ALL,,X,,No
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.1.year,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.1.relationship,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.2.name,Wildfire,Exceptions,,,X,,,,,,,,,,,,,ALL,,X,,No
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.2.year,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.wildfire_perimeter_risk.proximate_wildfire_perimeters.2.relationship,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.vegetation_burn_site_risk.score,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,X,Yes
+enhanced_wildfire.vegetation_burn_site_risk.within_half_mile,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.vegetation_burn_site_risk.within_one_mile,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+enhanced_wildfire.vegetation_burn_site_risk.desc,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,X,X,Yes
+wildfire.score,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire.text,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_description.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_risk_score.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_risk_score.composite,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_risk.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_distance_to_high_area.units,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_distance_to_high_area.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wildfire_housing_density.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+drought.score,Drought,Distribution,,,X,,,,,,,,,,,,,ALL,X,,,Yes
+drought.text,Drought,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+drought_frequency_index.score,Drought,Distribution,,,X,,,,,,,,,,,,,ALL,,,X,Yes
+drought_frequency_index.text,Drought,Combine,,,X,,,,,,,,,,,,,ALL,,,,Yes
+drought_frequency_index.pct,Drought,Combine,,,X,,,,,,,,,,,,,ALL,,,,Yes
+drought_frequency_index.desc,,,,,,,,,,,,,,,,,,,,,,No
+wildfire_history_params.risk,Wildfire,Distribution,,,X,,,,,,,,,,,,,ALL,X,,X,Yes
+wildfire_history_params.year_name,Wildfire,Exceptions,,,X,,,,,,,,,,,,,ALL,,X,,No
+wildfire_history_params.year_name_distance,Wildfire,Exceptions,,,X,,,,,,,,,,,,,ALL,,X,,No
+wildfire_history_params.number_of_wildfires,Wildfire,Distribution,# of wildfire perimeters involving insured location,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+wildfire_history_params.number_of_wildfires_near,Wildfire,Combine,# of wildfires near insured location,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+distance_to_significant_wf_risk_params.risk,,,,,,,,,,,,,,,,,,,,,,Yes
+distance_to_significant_wf_risk_params.very_high,Wildfire,Bucket,,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+distance_to_significant_wf_risk_params.high,Wildfire,Bucket,,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+distance_to_significant_wf_risk_params.moderate,Wildfire,Bucket,,,X,,,,,,,,,,,,,ALL,X,X,,Yes
+fire_season_precipitation_params.risk,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_season_precipitation_params.scale,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_season_precipitation_params.fire_season_precipitation,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+vegetation_burn_points.# of vegetation burn points within 1/2 mile,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+vegetation_burn_points.# of vegetation burn points within 1 mile,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wind_region.score,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wind_region.text,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+wind_region.text2,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_protection.score,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_protection.text,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_protection.aais_proxy,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+hh_fpc_code.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+enhanced_hh_pfs.value,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+enhanced_hh_pfs.average_pct_loss,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+enhanced_hh_pfs.estimated_loss_amt,,,Delete Prior Versions,,,,,,,,,,,,,,,,,,,No
+fire_suppression.score,Fire Suppression,Distribution,,,,,,,,,,,,,,,,ALL,,,X,Yes
+fire_suppression.grade,Fire Suppression,Combine,,,,,,,,,,,,,,,,ALL,X,X,,Yes
+fire_suppression.category,Fire Suppression,Combine,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+fire_suppression.text,Fire Suppression,Combine,,,,,,,,,,,,,,,,ALL,,X,,Yes
+aais_fire_protection_class_params.class,,,AAIS - Delete,,,,,,,,,,,,,,,,,,,No
+aais_fire_protection_class_params.hydrant_fire_station_distance,,,AAIS - Delete,,,,,,,,,,,,,,,,,,,No
+aais_fire_protection_class_params.available_water_type,,,AAIS - Delete,,,,,,,,,,,,,,,,,,,No
+perennial_water.text,Flood,Distribution,Potential for overflow from nearby perennial water,,,,,,,,,,,,,,,ALL,,X,,Yes
+perennial_water.answer,Flood,Combine,,,,,,,,,,,,,,,,ALL,X,,,Yes
+perennial_water.name,Flood,Exceptions,Alternate water source / Potential accidental drowning,,,,,,,X,,X,X,,,,,ALL,,X,,No
+municipal_boundary.gid,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+municipal_boundary.placefp,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+municipal_boundary.namelsad,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+municipal_boundary.type,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+urbanicity.type,ID,Distribution,,,,,,,,,,,,,,,,ALL,,X,,Yes
+urbanicity.name,ID,Distribution,,,,,,,,,,,,,,,,ALL,,X,,Yes
+urbanicity.desc,ID,Combine,,,,,,,,,,,,,,,,ALL,,X,,Yes
+census_block.geoid,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+census_block.state_fips_code,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+census_block.county_fips_code,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+census_block.tract,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+census_block.block,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+census_block.block_group,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+state_county.state,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+state_county.jurisdiction,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+state_county.state_and_county_FIPS_code,ID,Supp ID,,,,,,,,,,,,,,,,ALL,,X,,No
+school_district.name,ID,Supp ID,,,,,,,,,,,,,,,,ALL,X,,,No
+water_type.value,Fire,Exceptions,Known Hydrant Database; Missing (220),,,,,,,,,,,,,,,ALL,,X,,Yes
+hydrant.score,,,,,,,,,,,,,,,,,,,,,,Yes
+hydrant.text,,,,,,,,,,,,,,,,,,,,,,Yes
+hydrant_params.distance_from_nearest_hydrant,Fire,Distribution,"For ISO PPC, use to identify split classes",,,,,,,,,,,,,,,ALL,X,,X,Yes
+hydrant_params.hydrants_within_1000_ft,,,,,,,,,,,,,,,,,,,,,,Yes
+cal_fire.haz_code_state,Wildfire,Distribution,"Cal Fire State Hazard Zones 1,2,3 (41)",,X,,,,,,,,,,,,,ALL,X,,,Yes
+cal_fire.haz_class_state,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+cal_fire.haz_code_local,Wildfire,Distribution,"Cal Fire Local Hazard Zones 1,2,3 (55)",,X,,,,,,,,,,,,,ALL,X,,,Yes
+cal_fire.haz_class_local,Wildfire,Combine,,,X,,,,,,,,,,,,,ALL,,X,,Yes
+drive_distance_fire_station.distance,Fire,Bucket,"For ISO PPC, when address lookup fails",,,,,,,,,,,,,,,ALL,,X,,Yes
+drive_distance_fire_station.units,Fire,,,,,,,,,,,,,,,,,ALL,,,,No
+drive_time_fire_station.duration,Fire,Bucket,Supplement ISO PPC w actual drive times,,,,,,,,,,,,,,,ALL,X,,X,Yes
+drive_time_fire_station.units,Fire,,,,,,,,,,,,,,,,,ALL,,,,No
+fire_station_type.value,Fire,Distribution,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+number_of_fire_stations_within_10_miles,Wildfire,Bucket,Identify areas that are unprotected,X,X,,,,,,,,,,,,,ALL,X,,,Yes
+number_of_fire_stations_within_5_miles,Wildfire,Bucket,,X,X,,,,,,,,,,,,,ALL,X,,,Yes
+nearest_fire_station.title,Fire,Keep,"For ISO PPC, when address lookup fails",,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station.lat,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station.lng,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station.type,Fire,Distribution,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station.response_area,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station.units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station.distance,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_2.title,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_2.lat,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_2.lng,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_2.type,Fire,Distribution,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_2.response_area,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_2.units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station_2.distance,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_2.drive_distance_fire_station.units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station_2.drive_distance_fire_station.distance,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_2.drive_duration_value,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_2.drive_duration_units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station_3.title,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_3.lat,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_3.lng,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_3.type,Fire,Distribution,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_3.response_area,Fire,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+nearest_fire_station_3.units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station_3.distance,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_3.drive_distance_fire_station.units,,,,,,,,,,,,,,,,,,,,,,No
+nearest_fire_station_3.drive_distance_fire_station.distance,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_3.drive_duration_value,Fire,Bucket,,,,,,,,,,,,,,,,ALL,X,,X,Yes
+nearest_fire_station_3.drive_duration_units,,,,,,,,,,,,,,,,,,,,,,No
+fault_earthquake.score,EQ Fault,Distribution,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+fault_earthquake.text,EQ Fault,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+fault_earthquake.name,EQ Fault,Exceptions,,X,,,,,,,X,,,,,,,ALL,,X,,No
+fault_earthquake.distance,EQ Fracking,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+fracking_earthquake.score,EQ Fracking,Exceptions,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+fracking_earthquake.text,EQ Fracking,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+designated_fault.score,Designated Fault,Exceptions,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+designated_fault.text,Designated Fault,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+earthquake.score,EQ,Distribution,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+earthquake.text,EQ,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+earthquake.MMI,EQ,Distribution,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+earthquake.shake,EQ,Combine,,X,,,,,,,X,,,,,,,ALL,,X,,Yes
+earthquake.richter_scale,EQ,Distribution,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+earthquake.peak_ground_acceleration,EQ,Bucket,,X,,,,,,,X,,,,,,,ALL,X,,X,Yes
+soil_shear_velocity.vs30,EQ,Bucket,,X,,,,,,,X,,,,,,,ALL,X,X,,Yes
+soil_shear_velocity.units,,,,,,,,,,,,,,,,,,,,,,No
+mudslide_risk.score,Mudslide,Distribution,,,X,X,,,,,X,,,X,,,,ALL,X,,X,Yes
+mudslide_risk.text,Mudslide,Combine,,,X,X,,,,,X,,,X,,,,ALL,,X,,Yes
+mudslide_risk.PCL,Mudslide,Exceptions,,,X,,,,,X,X,X,X,X,,X,,ALL,X,X,,No
+lava_flow.score,Lava Flow,Exceptions,,X,X,,,,,X,X,,X,,,X,,ALL,,,X,No
+lava_flow.text,Lava Flow,Combine,,X,X,,,,,X,X,,X,,,X,,ALL,,X,,Yes
+lava_flow.zone,Lava Flow,Exceptions,,X,X,,,,,X,X,,X,,,X,,ALL,X,,,No
+lava_flow.desc,Lava Flow,Combine,,X,X,,,,,X,X,,X,,,X,,ALL,,X,,Yes
+tsunami.score,Tsunami,Exceptions,,,,X,,,,X,,X,X,X,,X,,ALL,X,,,Yes
+tsunami.text,Tsunami,Combine,,,,X,,,,X,,X,X,X,,X,,ALL,,X,,Yes
+enhanced_hurricane_params.score,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,,Yes
+enhanced_hurricane_params.scale,Hurricane,Combine,,,,X,,,,X,,,,X,,,,ALL,,,X,Yes
+enhanced_hurricane_params.text,Hurricane,Combine,,,,X,,,,X,,,,X,,,,ALL,,X,,Yes
+enhanced_hurricane_params.total_events_since_1980,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,,Yes
+enhanced_hurricane_params.avg_wind_speed_knots,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.max_wind_speed_knots,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.avg_barometric_press_mb,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hurricane_params.min_barometric_press_mb,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hurricane_params.num_events_gt_50_knots,Hurricane,Bucket,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_events_press_lt_950_mb,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_tropical_waves,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hurricane_params.num_disturbances,Hurricane,Exceptions,,,,X,,,,X,,,,X,,,,ALL,X,X,,Yes
+enhanced_hurricane_params.num_extratropical_systems,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_lows,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_subtropical_depressions,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_subtropical_storms,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_tropical_depressions,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_tropical_storms,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_hurricanes,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_cat_0_hurricanes,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_cat_1_hurricanes,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.num_cat_2_hurricanes,Hurricane,Exceptions,,,,X,,,,X,,,,X,,,,ALL,X,X,,Yes
+enhanced_hurricane_params.num_cat_3_hurricanes,Hurricane,Exceptions,,,,X,,,,X,,,,X,,,,ALL,X,X,,Yes
+enhanced_hurricane_params.num_cat_4_hurricanes,Hurricane,Exceptions,,,,X,,,,X,,,,X,,,,ALL,X,X,,Yes
+enhanced_hurricane_params.num_cat_5_hurricanes,Hurricane,Exceptions,,,,X,,,,X,,,,X,,,,ALL,X,X,,Yes
+enhanced_hurricane_params.name_year_max_wind,Hurricane,Exceptions,Identify locations in path of prior hurricanes,,,X,,,,X,,,,X,,,,ALL,,X,,Yes
+enhanced_hurricane_params.name_year_min_press,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hurricane_params.annual_chance_event_more_than_50_knots,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hurricane_params.annual_chance_event_less_than_950_mb,Hurricane,Distribution,,,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+superfund.score,Superfunds,Exceptions,Pollution,,,,,,X,,,X,X,,,,,CL,X,,X,Yes
+superfund.text,Superfunds,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,Yes
+superfund.site_name,Superfunds,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+superfund.address,Superfunds,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+superfund.registry_number,Superfunds,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+brownfield.score,Brownfields,Exceptions,Pollution,,,,,,X,,,X,X,,,,,CL,X,,X,Yes
+brownfield.text,Brownfields,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,Yes
+brownfield.site_name,Brownfields,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+brownfield.address,Brownfields,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+brownfield.registry_number,Brownfields,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,X,,No
+pfa.score,PFA Sites,Exceptions,Pollution,,,,,,X,,,X,X,,,,,CL,X,,,Yes
+pfa.text,PFA Sites,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,,,No
+pfa.site_name,PFA Sites,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,,,No
+pfa.type,PFA Sites,Combine,Pollution,,,,,,X,,,X,X,,,,,CL,,,,Yes
+sinkhole.score,Sinkhole,Exceptions,C (4); D (2),,,,,,X,,,X,X,,,X,,ALL,X,,,Yes
+sinkhole.text,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,Yes
+sinkhole.distance.value,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,Yes
+sinkhole.distance.units,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,No
+sinkhole_ring_params.ring_0_1_mile,Sinkhole,Exceptions,Collapse,,,,,,X,,,X,X,,,,,ALL,X,X,,Yes
+sinkhole_ring_params.cummulative_0_1_mile,Sinkhole,Distribution,Collapse,,,,,,X,,,X,X,,,,,ALL,X,X,,Yes
+sinkhole_ring_params.ring_1_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_ring_params.cummulative_0_2_mile,Sinkhole,Distribution,Collapse,,,,,,X,,,X,X,,,,,ALL,X,X,,Yes
+sinkhole_ring_params.ring_2_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_ring_params.cummulative_0_3_mile,Sinkhole,Distribution,Collapse,,,,,,X,,,X,X,,,,,ALL,X,X,,Yes
+sinkhole_ring_params.ring_3_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_ring_params.cummulative_0_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_ring_params.ring_4_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_ring_params.cummulative_0_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_risk_params.sinkhole_susceptibility_grade,Sinkhole,Distribution,Collapse,,,,,,X,,,X,X,,,,,ALL,X,,X,Yes
+sinkhole_risk_params.sinkhole_susceptibility_risk,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,X,,,Yes
+sinkhole_risk_params.karst_type,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,Yes
+sinkhole_risk_params.climate,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,Yes
+sinkhole_risk_params.rocktype,Sinkhole,Combine,Collapse,,,,,,X,,,X,X,,,,,ALL,,X,,Yes
+sinkhole_risk_params.closed_depression_grade,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_risk_params.closed_depression_risk,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_risk_params.sinkhole_point_grade,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_risk_params.sinkhole_distance.value,,,,,,,,,,,,,,,,,,,,,,Yes
+sinkhole_risk_params.sinkhole_distance.units,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.score,Wind,Distribution,,,X,X,,,,X,,,,,,X,,ALL,X,,,Yes
+enhanced_wind_params.text,Wind,Combine,,,X,X,,,,X,,,,,,X,,ALL,,X,,Yes
+enhanced_wind_params.scale,Wind,Distribution,,,X,X,,,,X,,,,,,X,,ALL,,,X,Yes
+enhanced_wind_params.historical_wind_events.wind_rad,Wind,Exceptions,95% likelihood of damaging wind event within 1.5 miles,,,X,,,,X,,,,,,X,,ALL,,X,,Yes
+enhanced_wind_params.num_of_damaging_wind_incidents_within_25_miles_since_1996,Wind,Distribution,,,,X,,,,X,,,,,,X,,ALL,X,,X,Yes
+enhanced_wind_params.count_within_25_miles_for_last_decade,Wind,Distribution,,,,X,,,,X,,,,,,X,,ALL,,,,Yes
+enhanced_wind_params.nearest_wind_incident.year,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.nearest_wind_incident.type,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.nearest_wind_incident.injuries,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.nearest_wind_incident.deaths,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.nearest_wind_incident.prop_dam,Wind,Distribution,,,,X,,,,X,,,,,,X,,ALL,,,,Yes
+enhanced_wind_params.nearest_wind_incident.crop_dam,Wind,Distribution,,,,X,,,,X,,,,,,X,,ALL,,,,Yes
+enhanced_wind_params.nearest_wind_incident.wind_spd,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.nearest_wind_incident.distance_miles,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_wind_params.waddrisk,Wind,Distribution,,,,X,,,,X,,,,,,X,,ALL,X,,X,Yes
+enhanced_wind_params.wpctrisk,Wind,Bucket,,,,X,,,,X,,,,,,X,,ALL,X,,X,Yes
+wind_ring_params.ring_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.cummulative_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.ring_1_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.cummulative_0_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.ring_2_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.cummulative_0_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.ring_3_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.cummulative_0_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.ring_4_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+wind_ring_params.cummulative_0_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.score,Hail,Distribution,,,,X,,,,X,,,,,,,,ALL,X,,,Yes
+enhanced_hail_params.text,Hail,Combine,,,,X,,,,X,,,,,,,,ALL,,X,,Yes
+enhanced_hail_params.scale,Hail,Distribution,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+enhanced_hail_params.historical_hail_events.hail_rad,,,,,,,,,,,,,,,,,,,,,,No
+enhanced_hail_params.num_of_damaging_hail_incidents_within_25_miles_since_1996,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.count_within_25_miles_for_last_decade,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.year,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.type,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.injuries,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.deaths,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.prop_dam,Hail,Distribution,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+enhanced_hail_params.nearest_hail_incident.crop_dam,Hail,Distribution,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+enhanced_hail_params.nearest_hail_incident.inches,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.nearest_hail_incident.distance_miles,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hail_params.haddrisk,Hail,Distribution,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+enhanced_hail_params.hpctrisk,Hail,Bucket,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+hail_ring_params.ring_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.cummulative_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.ring_1_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.cummulative_0_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.ring_2_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.cummulative_0_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.ring_3_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.cummulative_0_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.ring_4_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+hail_ring_params.cummulative_0_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+convection_storm.score,Convection Storm,Distribution,,,,X,,,,X,,,,,,X,,ALL,X,,,Yes
+convection_storm.text,Convection Storm,Combine,,,,X,,,,X,,,,,,X,,ALL,,X,,Yes
+convection_storm_per_decade.value,Convection Storm,Distribution,,,,X,,,,X,,,,,,X,,ALL,,,X,Yes
+enhanced_tornado_params.score,Tornado,Distribution,,,,X,,,,X,,X,X,,,X,,ALL,X,,,Yes
+enhanced_tornado_params.text,Tornado,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+enhanced_tornado_params.scale,Tornado,Distribution,,,,X,,,,X,,X,X,,,X,,ALL,,,X,Yes
+enhanced_tornado_params.historical_tornado_events.tornado_rad,,,,,,,,,,,,,,,,,,,,,,No
+enhanced_tornado_params.num_of_damaging_tornado_incidents_within_25_miles_since_1996,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.count_within_25_miles_for_last_decade,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.year,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.type,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.injuries,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.deaths,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.prop_dam,Tornado,Distribution,,,,X,,,,X,,X,X,,,X,,ALL,,,,No
+enhanced_tornado_params.nearest_tornado_incident.crop_dam,Tornado,Distribution,,,,X,,,,X,,X,X,,,X,,ALL,,,,No
+enhanced_tornado_params.nearest_tornado_incident.fscale,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.nearest_tornado_incident.distance_miles,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_tornado_params.taddrisk,Tornado,Distribution,,,,X,,,,X,,X,X,,,X,,ALL,,,,Yes
+enhanced_tornado_params.tpctrisk,Tornado,Bucket,,,,X,,,,X,,X,X,,,X,,ALL,,,,Yes
+tornado_ring_params.ring_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.cummulative_0_1_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.ring_1_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.cummulative_0_2_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.ring_2_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.cummulative_0_3_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.ring_3_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.cummulative_0_4_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.ring_4_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+tornado_ring_params.cummulative_0_5_mile,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_lightning_params.score,Lightning,Distribution,,X,X,X,,,,X,,X,X,,,X,,ALL,X,,,Yes
+enhanced_lightning_params.text,Lightning,Combine,,X,X,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+enhanced_lightning_params.scale,Lightning,Distribution,,X,X,X,,,,X,,X,X,,,X,,ALL,,,X,Yes
+enhanced_lightning_params.lsqmi,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_lightning_params.laddrisk,Lightning,Distribution,,X,X,X,,,,X,,X,X,,,X,,ALL,X,,X,Yes
+enhanced_lightning_params.lpctrisk,Lightning,Bucket,,X,X,X,,,,X,,X,X,,,X,,ALL,X,,X,Yes
+enhanced_lightning_params.strikes_yr,Lightning,Distribution,,X,X,X,,,,X,,X,X,,,X,,ALL,X,,X,Yes
+weather_params.annual_average_days_less_than_0,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_average_days_less_than_10,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_average_days_less_than_20,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_average_days_more_than_40,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_average_days_more_than_50,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_fall_days_less_than_0,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_fall_days_less_than_10,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_fall_days_less_than_20,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.avg_num_days_below_32_degrees,Freeze,Distribution,More than 1 day (68),,,X,,,,X,,,,,,,,ALL,X,,,Yes
+weather_params.annual_fall_days_less_than_32,Freeze,Combine,,,,X,,,,X,,,,,,,,ALL,X,,X,Yes
+weather_params.annual_spring_days_less_than_32,Freeze,Combine,,,,X,,,,X,,,,,,,,ALL,X,,X,Yes
+weather_params.avg_num_winter_days_below_32_degrees,Freeze,Combine,,,,X,,,,X,,,,,,,,ALL,X,,,Yes
+weather_params.annual_spring_days_less_than_0,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_spring_days_less_than_10,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_spring_days_less_than_20,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_winter_days_less_than_0,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_winter_days_less_than_10,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_winter_days_less_than_20,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.annual_winter_days_less_than_40,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_annual_precipitation,Rainfall,Distribution,Greater than 20 inches (162),,,X,,,,X,,,,X,,,,ALL,X,,X,Yes
+weather_params.average_annual_snowfall,Snowfall,Distribution,Greater than 1 inch (66),,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.average_annual_temperature_max,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_annual_temperature_min,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_days_snowfall_greater_than_10_inches,Snowfall,Distribution,More than 1 day (178),,,X,,,X,,,X,X,,,X,,ALL,X,,X,Yes
+weather_params.average_days_snowfall_greater_than_1_inch,Snowfall,Distribution,,,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.avg_days_snowfall_above_1_in,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_fall_snowfall,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_spring_snowfall,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.average_winter_snowfall,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.avg_days_snow_depth_above_10_in,Snowfall,Distribution,More than 1 day (178),,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.fall_days_snow_depth_greater_than_10_inches,Snowfall,Combine,,,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.spring_days_snow_depth_greater_than_10_inches,Snowfall,Combine,,,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.winter_days_snow_depth_greater_than_10_inches,Snowfall,Combine,,,,X,,,X,X,,,,X,,X,,ALL,X,,X,Yes
+weather_params.cooling_degree_days,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.fall_days_snow_depth_greater_than_1_inch,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.fall_days_snow_depth_greater_than_3_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.fall_days_snow_depth_greater_than_5_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.fall_diurnal_range,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.fall_days_with_max_temp_less_than_32,Freeze,Distribution,,,,X,,,,X,,,,,,,,ALL,X,,X,Yes
+weather_params.winter_days_with_max_temp_less_than_32,Freeze,Combine,,,,X,,,,X,,,,,,,,ALL,X,,X,Yes
+weather_params.spring_days_with_max_temp_less_than_32,Freeze,Combine,,,,X,,,,X,,,,,,,,ALL,X,,X,Yes
+weather_params.heating_degree_days,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.spring_days_snow_depth_greater_than_1_inch,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.spring_days_snow_depth_greater_than_3_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.spring_days_snow_depth_greater_than_5_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.spring_diurnal_range,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.winter_days_snow_depth_greater_than_1_inch,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.winter_days_snow_depth_greater_than_3_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.winter_days_snow_depth_greater_than_5_inches,,,,,,,,,,,,,,,,,,,,,,Yes
+weather_params.winter_diurnal_range,,,,,,,,,,,,,,,,,,,,,,Yes
+hardiness.avextmin,,,,,,,,,,,,,,,,,,,,,,Yes
+hardiness.zone,Hardiness Zone,Distribution,,,,,,,,X,,,,,,,,CL,X,,X,Yes
+hardiness.avextmin5,Hardiness Zone,Combine,,,,,,,,X,,,,,,,,CL,X,,X,Yes
+hardiness.zoneseg,,,,,,,,,,,,,,,,,,,,,,Yes
+mold_index.index,Mold,Distribution,,,,,X,,,X,,X,X,,,,,ALL,,,X,Yes
+mold_index.score,Mold,Combine,F (58),,,,X,,,X,,X,X,,,,,ALL,X,,,Yes
+mold_index.text,Mold,Combine,,,,,X,,,X,,X,X,,,,,ALL,,X,,Yes
+ice_dam_index.index,Ice Dams,Distribution,,,,X,,,,X,,,,,,,,ALL,,,X,Yes
+ice_dam_index.score,Ice Dams,Combine,outliers by state,,,X,,,,X,,,,,,,,ALL,X,,,Yes
+ice_dam_index.text,Ice Dams,Combine,,,,X,,,,X,,,,,,,,ALL,,X,,Yes
+frozen_pipe_index.index,Frozen Pipes,Distribution,,,,X,,,,,,,,,,,,ALL,,,X,Yes
+frozen_pipe_index.score,Frozen Pipes,Combine,outliers by state,,,X,,,,,,,,,,,,ALL,X,,,Yes
+frozen_pipe_index.text,Frozen Pipes,Combine,,,,X,,,,,,,,,,,,ALL,,X,,Yes
+hh_snow_load.score,Snow Load,Distribution,D - F (100),,,X,,,X,X,,,,,,X,,ALL,X,,,Yes
+hh_snow_load.text,Frozen Pipes,Combine,,,,X,,,,,,,,,,,,ALL,,X,,Yes
+hh_snow_load.desc,Frozen Pipes,Combine,,,,X,,,,,,,,,,,,ALL,,X,,Yes
+hh_snow_load.scale,Snow Load,Combine,,,,X,,,X,X,,,,,,,,ALL,,,X,Yes
+ground_snow_load.score,Freeze,Distribution,C - F (164),,,X,,,,X,,,,,,X,,ALL,X,,,Yes
+ground_snow_load.text,Snow Load,Combine,,,,X,,,X,X,,,,,,,,ALL,,X,,Yes
+ground_snow_load.desc,Snow Load,Combine,,,,X,,,,X,,,,,,,,ALL,,X,,No
+potential_maximum_precipitation,Rainfall,Distribution,More than 5 inches (170),,,X,,,,X,,,,X,,,,ALL,X,,,Yes
+enhanced_hazardhub_flood.score,Flood,Distribution,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hazardhub_flood.text,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,Yes
+enhanced_hazardhub_flood_params.dist,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.elevnff,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.elev_pt,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.diff,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.lines_distance,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.lines_diff,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.lines_score,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.lines_name,Flood,Exceptions,,,,,,,,X,,,,X,,,,ALL,X,X,,No
+enhanced_hazardhub_flood_params.lines_descrip,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.polygons_distance,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.polygons_diff,,,,,,,,,,,,,,,,,,,,,,Yes
+enhanced_hazardhub_flood_params.polygons_score,Flood,Distribution,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+enhanced_hazardhub_flood_params.polygon_type,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,Yes
+enhanced_hazardhub_flood_params.polygon_name,Flood,Exceptions,,,,,,,,X,,,,X,,,,ALL,X,X,,No
+enhanced_hazardhub_flood_params.polygon_descrip,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,Yes
+potential_catastrophic_precipitation,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood.score,Flood,Distribution,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+hazardhub_catastrophic_flood.text,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,Yes
+hazardhub_catastrophic_flood_params.cat_dist,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_elevnff,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_elev_pt,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_diff,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_lines_distance,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_lines_diff,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_lines_score,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_lines_name,,,,,,,,,,,,,,,,,,,,,,No
+hazardhub_catastrophic_flood_params.cat_lines_descrip,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_polygons_distance,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_polygons_diff,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_polygons_score,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_polygon_type,,,,,,,,,,,,,,,,,,,,,,Yes
+hazardhub_catastrophic_flood_params.cat_polygon_name,,,,,,,,,,,,,,,,,,,,,,No
+hazardhub_catastrophic_flood_params.cat_polygon_descrip,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood.score,FEMA Flood,Distribution,D-F (122),,,,,,,,,,,X,,X,,ALL,X,,X,Yes
+fema_all_flood.text,FEMA Flood,Combine,,,,,,,,X,,,,X,,X,,ALL,X,X,,Yes
+fema_all_flood_params.dfirm_id,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,No
+fema_all_flood_params.version_id,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,No
+fema_all_flood_params.fld_ar_id,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,No
+fema_all_flood_params.study_typ,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,Yes
+fema_all_flood_params.fld_zone,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,Yes
+fema_all_flood_params.zone_subty,FEMA Flood,Distribution,,,,,,,,X,,,,X,,X,,ALL,X,,X,Yes
+fema_all_flood_params.sfha_tf,FEMA Flood,Exceptions,True (45),,,,,,,,,,,X,,X,,ALL,X,X,,Yes
+fema_all_flood_params.static_bfe,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.v_datum,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.depth,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.len_unit,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.velocity,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.vel_unit,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.ar_revert,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.ar_subtrv,,,,,,,,,,,,,,,,,,,,,,No
+fema_all_flood_params.bfe_revert,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.dep_revert,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.dual_zone,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_all_flood_params.source_cit,,,,,,,,,,,,,,,,,,,,,,No
+distance_to_significant_flood_params.distance_to_100yr_floodplain,Flood,Distribution,Less than 1000 ft (32),,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+distance_to_significant_flood_params.elevation_in_feet.value,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+distance_to_significant_flood_params.elevation100,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+distance_to_significant_flood_params.elevation_difference_100,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+fema_firm_date.cid,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.name,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.type,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.initial_flood_hazard_bounday_map_id_date,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.initial_firm_id_date,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.current_effective_date_flood_map,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.date_entered_program,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.community_name,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.crs_entry_date,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.current_effective_date,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_date.current_class,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_firm_date.percent_discount_for_sfha,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_firm_date.percent_discount_for_non_sfha,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_firm_date.status,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_firm_panels.firm_panel,,,,,,,,,,,,,,,,,,,,,,No
+fema_firm_panels.effective_date,,,,,,,,,,,,,,,,,,,,,,No
+base_flood_elevation.text,Flood,Exceptions,,,,,,,,X,,,,X,,,,ALL,,X,,No
+base_flood_elevation.meter,,,,,,,,,,,,,,,,,,,,,,Yes
+base_flood_elevation.distance.value,Flood,Xtab 539,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+base_flood_elevation.distance.units,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,No
+base_flood_elevation.elevation.value,Flood,Combine,,,,,,,,X,,,,X,,,,ALL,X,,X,Yes
+base_flood_elevation.elevation.units,,,,,,,,,,,,,,,,,,,,,,No
+fema_map_params.fema_flood_map_url,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.designation,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.unit,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.cbrs_type,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.fi_date,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.su_date,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.name,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.fast_acres,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.wet_acres,,,,,,,,,,,,,,,,,,,,,,No
+cbrs_params.shore_mile,,,,,,,,,,,,,,,,,,,,,,No
+fema_claims.total,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.1999,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2000,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2001,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2002,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2003,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2004,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2005,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2006,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2007,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2008,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2009,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2010,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2011,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2012,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2013,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2014,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2015,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2016,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2017,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2018,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2019,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2020,,,,,,,,,,,,,,,,,,,,,,Yes
+fema_claims.2021,,,,,,,,,,,,,,,,,,,,,,Yes
+hh_elevation.slope,Landslide,Exceptions,Replacements costs are higher on a slope,,X,X,,,,,X,,,X,,,,ALL,,,X,Yes
+hh_elevation.aspect,,,,,,,,,,,,,,,,,,,,,,Yes
+hh_elevation.elevation,Elevation,xtab 499,,,X,X,X,,,X,,,,X,,,,ALL,X,X,X,Yes
+aspect_risk.aspect,,,,,,,,,,,,,,,,,,,,,,Yes
+aspect_risk.score,,,,,,,,,,,,,,,,,,,,,,Yes
+aspect_risk.direction,Wildfire,Crosstab w wildfire,Wildfire (south-facing slopes have higher risk),,X,X,,,,,,,,X,,,,ALL,X,X,X,Yes
+slope_risk.slope,Slope,Distribution,,,X,X,,,,X,X,,,X,,,X,ALL,X,,X,Yes
+slope_risk.score,Wildfire,Crosstab w wildfire,Wildfire ( risk is  higher on a slope),,X,,,,,,,,,,,,X,ALL,X,,X,Yes
+slope_risk.description,Slope,Combine,,,X,X,,,,X,X,,,X,,,X,ALL,,X,,Yes
+wind_pool.score,Wind,Exceptions,D (23),,,X,,,,X,,,,,,X,,ALL,X,,X,Yes
+wind_pool.text,Wind,Combine,,,,X,,,,X,,,,,,X,,ALL,,X,,Yes
+wind_pool.name,Wind,Combine,Identify wind pools for operational reporting,,,X,,,,X,,,,,,X,,ALL,,X,,Yes
+wind_born_debris.score,Wind,Exceptions,D-F (16),,,X,,,,X,,X,X,,,X,,ALL,X,X,,Yes
+wind_born_debris.text,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+wind_born_debris.terrain,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+wind_born_debris.year_2001.score,Wind,Exceptions,,,,X,,,,X,,X,X,,,X,,ALL,X,X,,Yes
+wind_born_debris.year_2001.text,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+wind_born_debris.year_2007.score,Wind,Exceptions,,,,X,,,,X,,X,X,,,X,,ALL,X,X,,Yes
+wind_born_debris.year_2007.text,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+wind_born_debris.year_2010.score,Wind,Exceptions,,,,X,,,,X,,X,X,,,X,,ALL,X,X,,Yes
+wind_born_debris.year_2010.text,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+wind_born_debris.year_2014.score,Wind,Exceptions,,,,X,,,,X,,X,X,,,X,,ALL,X,X,,Yes
+wind_born_debris.year_2014.text,Wind,Combine,,,,X,,,,X,,X,X,,,X,,ALL,,X,,Yes
+mine_subsidence.score,Mine Subsidence,Exceptions,C (17); D (50),,,,,,X,,X,X,X,,,,,ALL,X,,X,Yes
+mine_subsidence.text,Mine Subsidence,Combine,,,,,,,X,,X,X,X,,,,,ALL,,X,,Yes
+surge_max.score,Coastal Surge,Exceptions,F (57),,,,,,,,,X,X,X,,,,ALL,X,X,,Yes
+surge_max.text,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.category,Coastal Surge,Distribution,,,,,,,,,,X,X,X,,,,ALL,X,,X,Yes
+surge_max.potential_inundation_level,Coastal Surge,Bucket,"Inundation level > 1ft (14), Protected by levee (8)",,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.desc,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.category_4,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,X,,X,Yes
+surge_max.potential_inundation_level_4,Coastal Surge,Bucket,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.desc_4,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,No
+surge_max.category_3,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,X,,X,Yes
+surge_max.potential_inundation_level_3,Coastal Surge,Bucket,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.desc_3,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,No
+surge_max.category_2,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,X,,X,Yes
+surge_max.potential_inundation_level_2,Coastal Surge,Bucket,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.desc_2,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,No
+surge_max.category_1,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.potential_inundation_level_1,Coastal Surge,Bucket,,,,,,,,,,X,X,X,,,,ALL,,X,,Yes
+surge_max.desc_1,Coastal Surge,Combine,,,,,,,,,,X,X,X,,,,ALL,,X,,No
+surge_max.category_L,,,,,,,,,,,,,,,,,,,,,,No
+surge_max.potential_inundation_level_L,,,,,,,,,,,,,,,,,,,,,,No
+surge_max.score_L,,,,,,,,,,,,,,,,,,,,,,No
+surge_max.text_L,,,,,,,,,,,,,,,,,,,,,,No
+coast_distance.distance,Distance to Coast,Distribution,,,,,,,,,,X,X,X,,,,ALL,X,,X,Yes
+coast_distance.units,Distance to Coast,Exceptions,Exceptions: Less than 1 mile from Coast (32),,,,,,,,,X,X,X,,,,ALL,X,X,,No
+coast_distance.high_res_distance.value,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,Yes
+coast_distance.high_res_distance.units,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,No
+coast_distance.low_res_distance.value,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,Yes
+coast_distance.low_res_distance.units,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,No
+coast_distance.beach_distance.value,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,Yes
+coast_distance.beach_distance.units,Distance to Coast,Combine,,,,,,,,,,X,X,X,,,,ALL,X,X,,No
+sea_level_rise.flood_at,SeaLevel Rise,Exceptions,,,,,,,,X,,,,X,,,,ALL,X,X,,Yes
+sea_level_rise.text,SeaLevel Rise,Combine,,,,,,,,X,,,,X,,,,ALL,,X,,No
+murder.score,Murder,Distribution,"Premises liability only, e.g. failure to provide security",,,,,X,,,,X,X,,,,,CL,X,,X,Yes
+murder.text,Murder,Combine,,,,,,X,,,,X,X,,,,,CL,,X,,Yes
+murder.value,Murder,Combine,,,,,,X,,,,X,X,,,,,CL,,X,,Yes
+forcible_rape.score,Rape,Distribution,"Premises liability only, e.g. failure to provide security",,,,,X,,,,X,X,,,,,CL,X,,X,Yes
+forcible_rape.text,Rape,Combine,,,,,,X,,,,X,X,,,,,CL,,X,,Yes
+forcible_rape.value,Rape,Combine,,,,,,X,,,,X,X,,,,,CL,,X,,Yes
+forcible_robbery.score,Theft,Distribution,,,,,,X,,,,X,X,,,X,,ALL,X,,,Yes
+forcible_robbery.text,Theft,Combine,,,,,,X,,,,X,X,,,X,,ALL,,X,,Yes
+forcible_robbery.value,Theft,Combine,,,,,,X,,,,X,X,,,X,,ALL,,,X,Yes
+aggravated_assault.score,Assault,Distribution,,,,,,X,,,,X,X,,,,,ALL,X,,,Yes
+aggravated_assault.text,Assault,Combine,,,,,,X,,,,X,X,,,,,ALL,,X,,Yes
+aggravated_assault.value,Assault,Combine,,,,,,X,,,,X,X,,,,,ALL,,,X,Yes
+burglary.score,Burglary,Distribution,,,,,,X,,,,X,X,,,,,ALL,X,,,Yes
+burglary.text,Burglary,Combine,,,,,,X,,,,X,X,,,,,ALL,,X,,Yes
+burglary.value,Burglary,Combine,,,,,,X,,,,X,X,,,,,ALL,,,X,Yes
+larceny.score,Theft,Distribution,,,,,,X,,,,X,X,,,X,,ALL,X,,,Yes
+larceny.text,Theft,Combine,,,,,,X,,,,X,X,,,X,,ALL,,X,,Yes
+larceny.value,Theft,Combine,,,,,,X,,,,X,X,,,X,,ALL,,,X,Yes
+motor_vehicle_theft.score,Vandalism,Distribution,,,,,,X,,,,X,X,,,X,,ALL,X,,,Yes
+motor_vehicle_theft.text,Vandalism,Combine,,,,,,X,,,,X,X,,,X,,ALL,,X,,Yes
+motor_vehicle_theft.value,Vandalism,Combine,,,,,,X,,,,X,X,,,X,,ALL,,,X,Yes
+crime.score,Crime,Distribution,,,,,,X,,,,X,X,,,,,ALL,X,,,Yes
+crime.text,Crime,Combine,,,,,,X,,,,X,X,,,,,ALL,,X,,Yes
+crime.value,Crime,Combine,,,,,,X,,,,X,X,,,,,ALL,,,X,Yes
+airport_noise.decibels,Airport,Distribution,"50 or higher (29); falling objects, broken windows",,,,,,X,,,X,X,,X,X,,ALL,,,X,Yes
+airport_noise.score,Airport,Combine,,,,,,,X,,,X,X,,X,X,,ALL,X,,,Yes
+airport_noise.text,Airport,Combine,,,,,,,X,,,X,X,,X,X,,ALL,,X,,Yes
+radon.score,Radon,Distribution,DF (Landlords) and Commercial Residential Liability,,,,,,,,,X,X,,,,,ALL,X,,X,Yes
+radon.text,Radon,Combine,,,,,,,,,,X,X,,,,,ALL,,X,,Yes
+landslide.score,Landslide,Distribution,wildfire-related risk / ADJACENT Steep Slopes (Future Mudslide potential),,X,X,,,,,X,X,X,X,,,,ALL,X,,X,Yes
+landslide.text,Landslide,Combine,,,X,X,,,,,X,X,X,X,,,,ALL,,X,,Yes
+re_tier_counties.value,Hurricane,Exceptions,Hurricane Reinsurance Tier 2 (19) Tier 1 (174),,,X,,,,X,,,,X,,,,ALL,X,X,X,Yes
+premium_tax.value,Premium Tax,Distribution,,,,,,,,,,,,,,,,ALL,,X,,Yes
+premium_tax.text,,,,,,,,,,,,,,,,,,,,,,No
+premium_tax_params.prem_hh_id.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.fips.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.county.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.city.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.city_des.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.auth_ta.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.fips_ta.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.fire_zone.value,Premium Tax,Combine,Fire District Determination for some regions,X,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.tax_cd_1.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.tax_cd_2.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.dt_vint.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_params.gnis.value,Premium Tax,Combine,,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky.value,Premium Tax,Distribution,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,Yes
+premium_tax_ky.text,,,,,,,,,,,,,,,,,,,,,,No
+premium_tax_ky_params.county_prem_hh_id.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_name.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_fips.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_state.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_auth_ta.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_fips_ta.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_tax_cd_1.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_tax_cd_2.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_fire_per.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_cas_li_onl.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_vehicle.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_in_marine.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_health.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_life.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_all_others.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_min_tax.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_dt_vint.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.county_gnis.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_prem_hh_id.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_name.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_notes.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_state.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_county.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_fips.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_auth_ta.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_fips_ta.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_tax_cd_1.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_tax_cd_2.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_fire_per.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_cas_li_onl.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_vehicle.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_in_marine.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_health.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_life.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_all_others.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_min_tax.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_dt_vint.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+premium_tax_ky_params.municipal_gnis.value,Premium Tax,Combine,Kentucky Premium Tax,,,,,,,,,,,,,,,ALL,,X,,No
+ust.score,USTs,Distribution,,X,,,,,X,X,,X,X,,,,X,ALL,X,X,X,Yes
+ust.text,USTs,Combine,,X,,,,,X,X,,X,X,,,,X,ALL,,X,,Yes
+ust_nearest.fac_id.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest.name.value,USTs,Combine,,X,,,,,X,X,,X,X,,,,X,ALL,,X,,No
+ust_nearest.address.value,USTs,Combine,,X,,,,,X,X,,X,X,,,,X,ALL,,X,,No
+ust_nearest.state.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest.city.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest.zipcode.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest.num_tanks.value,,,,,,,,,,,,,,,,,,,,,,Yes
+ust_nearest.leaking.value,LUSTs,Distribution,,X,,,,,X,X,,,,,,,,ALL,X,X,X,No
+ust_nearest.residential.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_tanks_num_in_quarter_mile_radius.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_tanks_num_in_half_mile_radius.value,,,,,,,,,,,,,,,,,,,,,,Yes
+ust_tanks_num_in_1_mile_radius.value,,,,,,,,,,,,,,,,,,,,,,Yes
+ust_nearest_leaking.text,LUSTs,Combine,,X,,,,,X,X,,X,X,,,,,ALL,,X,,No
+ust_nearest_leaking.fac_id.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest_leaking.name.value,LUSTs,Combine,,X,,,,,X,X,,X,X,,,,,ALL,,X,,No
+ust_nearest_leaking.address.value,LUSTs,Combine,,X,,,,,X,X,,X,X,,,,,ALL,,X,,No
+ust_nearest_leaking.state.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest_leaking.city.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest_leaking.zipcode.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_nearest_leaking.num_tanks.value,,,,,,,,,,,,,,,,,,,,,,Yes
+ust_nearest_leaking.leaking.value,,,,,,,,,,,,,,,,,,,,,,No
+ust_facilities_leaking_quarter_mile_radius.value,,,,,,,,,,,,,,,,,,,,,,Yes
+nuclear_site.score,Pollution,Distribution,Nuclear Site,,,,,,X,X,X,X,X,,X,,,CL,X,X,X,Yes
+nuclear_site.text,Pollution,Combine,Nuclear Site,,,,,,X,X,X,X,X,,X,,,CL,,X,,Yes
+nuclear_site_nearest.distance.value,,,,,,,,,,,,,,,,,,,,,,Yes
+nuclear_site_nearest.distance.units,,,,,,,,,,,,,,,,,,,,,,No
+nuclear_site_nearest.name.value,Pollution,Combine,,,,,,,X,X,X,X,X,,X,,,CL,,,,Yes
+nuclear_site_nearest.type.value,,,,,,,,,,,,,,,,,,,,,,Yes
+nuclear_site_nearest.reactors.value,,,,,,,,,,,,,,,,,,,,,,Yes
+asbestos_sources_params.score,Pollution,Distribution,,X,X,X,,,X,,X,X,X,,,,X,CL,X,,X,Yes
+asbestos_sources_params.desc,Pollution,Combine,,X,X,X,,,X,,X,X,X,,,,X,CL,,X,,Yes
+asbestos_sources_params.site_name,Pollution,Combine,,X,X,X,,,X,,X,X,X,,,,X,CL,,X,,No
+volcano.score,Volcano,Distribution,,,X,,,,,X,X,X,X,,,X,,ALL,X,,X,Yes
+volcano.text,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+volcano_nearest.volcano_distance.units,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+volcano_nearest.volcano_distance.value,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+volcano_nearest.volcano_elev.value,Volcano,Xtab 539,,,X,,,,,X,X,X,X,,,X,,ALL,X,,X,Yes
+volcano_nearest.volcano_name.value,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+volcano_nearest.volcano_status.value,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+volcano_nearest.volcano_type.value,Volcano,Combine,,,X,,,,,X,X,X,X,,,X,,ALL,,X,,Yes
+drug_alcohol_deaths.score,Drug Alcohol Dth,Distribution,"Drug Alcohol Deaths - Crime, Fire, Vandalism?",,,,,X,,,,,,,,X,,CL,X,,X,Yes
+drug_alcohol_deaths.text,Drug Alcohol Dth,Combine,,,,,,X,,,,,,,,X,,CL,,X,,Yes
+drug_alcohol_deaths_deaths.value,,,,,,,,,,,,,,,,,,,,,,Yes
+drug_alcohol_deaths_score.value,,,,,,,,,,,,,,,,,,,,,,Yes
+drug_alcohol_deaths_rate100k.value,,,,,,,,,,,,,,,,,,,,,,Yes
+toxic_release_facilities.score,Pollution,Distribution,Farms - Air Toxins,,,,,,X,X,,X,X,,,,,CL,X,X,X,Yes
+toxic_release_facilities.text,Pollution,Combine,,,,,,,X,X,,X,X,,,,,CL,,X,,Yes
+toxic_release_facilities_params.fac_id.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.fed_id.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.name.value,Pollution,Combine,,,,,,,X,X,,X,X,,,,,CL,,X,,No
+toxic_release_facilities_params.address.value,Pollution,Combine,,,,,,,X,X,,X,X,,,,,CL,,X,,No
+toxic_release_facilities_params.city.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.state.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.zipcode.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.industry.value,,,,,,,,,,,,,,,,,,,,,,Yes
+toxic_release_facilities_params.chemical.value,,,,,,,,,,,,,,,,,,,,,,No
+toxic_release_facilities_params.carcinogen.value,,,,,,,,,,,,,,,,,,,,,,Yes
+toxic_release_facilities_params.distance.units,,,,,,,,,,,,,,,,,,,,,,Yes
+toxic_release_facilities_params.distance.value,,,,,,,,,,,,,,,,,,,,,,Yes
+clandestine_lab.address,Explosion,Distribution,Proximate to illegal drug labs,X,,,,,,,,,,,,,,ALL,X,X,X,No
+clandestine_lab.city,Explosion,Combine,,X,,,,,,,,,,,,,,ALL,,X,,No
+clandestine_lab.state,Explosion,Combine,,X,,,,,,,,,,,,,,ALL,,X,,No
+clandestine_lab.zip,Explosion,Combine,,X,,,,,,,,,,,,,,ALL,,X,,No
+clandestine_lab.date,,,,,,,,,,,,,,,,,,,,,,No
+clandestine_lab.distance,Explosion,Combine,,X,,,,,,,,,,,,,,ALL,,X,,Yes
+clandestine_lab.number_within_5_miles,Illegal Drug Labs,Distribution,,X,,,,X,,,,X,X,,,X,,ALL,X,X,X,Yes
+police_stations.name,,,,,,,,,,,,,,,,,,,,,,No
+police_stations.distance,,,,,,,,,,,,,,,,,,,,,,Yes
+police_stations.number_within_5_miles,Crime,Distribution,No police stations within 5 miles,,,,,X,,,,X,X,,,,,ALL,,,,Yes
+tx_codes.com,TX Defined Zones,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+tx_codes.code,TX Defined Zones,Distribution,,,,,,,,,,,,,,,,ALL,X,X,X,No
+tx_codes.county,TX Defined Zones,Combine,Texas County Codes,,,,,,,,,,,,,,,ALL,,X,,No
+fl_codes.name,TX Defined Zones,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+fl_codes.terr,FL Defined Zones,Distribution,Florida Territories,,,,,,,,,,,,,,,ALL,X,X,X,No
+fl_construction_line,FL Construction Line,Keep,,,,,,,,,,,,X,,,,ALL,,,,No
+hospital.name,,,,,,,,,,,,,,,,,,,,,,No
+hospital.address,,,,,,,,,,,,,,,,,,,,,,No
+hospital.state,,,,,,,,,,,,,,,,,,,,,,No
+hospital.type,,,,,,,,,,,,,,,,,,,,,,Yes
+hospital.helipad,,,,,,,,,,,,,,,,,,,,,,Yes
+hospital.distance,,,,,,,,,,,,,,,,,,,,,,Yes
+hospital.number_of_hospitals_within_5_miles,,,,,,,,,,,,,,,,,,,,,,Yes
+hospital.number_of_hospitals_within_10_miles,,,,,,,,,,,,,,,,,,,,,,Yes
+urgent_care.name,,,,,,,,,,,,,,,,,,,,,,No
+urgent_care.address,,,,,,,,,,,,,,,,,,,,,,No
+urgent_care.state,,,,,,,,,,,,,,,,,,,,,,No
+urgent_care.type,,,,,,,,,,,,,,,,,,,,,,No
+urgent_care.distance,,,,,,,,,,,,,,,,,,,,,,Yes
+property.address,,,,,,,,,,,,,,,,,,,,,,No
+property.apn,,,,,,,,,,,,,,,,,,,,,,No
+property.id,,,,,,,,,,,,,,,,,,,,,,No
+property.owner,Owner Info,Compare w 796,Check against Named Insured /Identify Deceased Owners,,,,,,,,,,,,,,,ALL,,X,,No
+property.street_address,,,,,,,,,,,,,,,,,,,,,,No
+property.use_code,Parcel Info,Distribution,Expedite processing of non-standard use codes,X,X,X,,,,X,X,X,X,,,,X,ALL,X,X,X,Yes
+property.zip,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Air_Conditioning,Building Info,Keep,,,,,,,,,,,,,,,,ALL,,,,Yes
+assessment.Air_Conditioning_Type,Building Info,Keep,,,,,,,,,,,,,,,,ALL,,,,Yes
+assessment.Amenities,Building Info,Keep,,,,,,,,,,,,,,,,ALL,,,,No
+assessment.Amenities_2,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Assessed_Improvement_Value,Property Value,Keep,Assessed Improvement Value,,,,,,,,,,,,,,,ALL,,X,,Yes
+assessment.Assessed_Land_Value,Property Value,Keep,Compare Sum of Land/Improves to Market Value / Mortgage,,,,,,,,,,,,,,,ALL,,X,,Yes
+assessment.Assessment_Year,Property Value,Keep,Assessment Year,,,,,,,,,,,,,,,ALL,,X,,Yes
+assessment.Assessors_Parcel_Number,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Basement,Building Info,Keep,,,,X,X,,,,,,,X,,,X,ALL,X,X,X,Yes
+assessment.Building_Area,Building Info,Keep,,,,,,,,,,X,X,,,,X,ALL,X,X,X,Yes
+assessment.Building_Area_1,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+assessment.Building_Condition,Building Info,Keep,,,,,,,,,,X,X,,,,X,ALL,X,X,X,Yes
+assessment.Building_Quality,Building Info,Keep,,,,,,,,,,X,X,,,,X,ALL,X,X,X,Yes
+assessment.Current_Owner_Name,Owner Info,Compare w 772,Check for Owner-Occupied Tenancy,,,,,,,,,,,,,,,ALL,X,X,,No
+assessment.Fireplace,Building Info,Keep,# Fireplaces,X,X,,,,,,,,,,,,X,PL,,X,,Yes
+assessment.Garage_Cars,Building Info,Keep,# Parking Spaces  (theft from vehicles not garaged),,,,,,,,,,,,,X,X,PL,,X,,Yes
+assessment.Garage_Type,Building Info,Keep,,,,,,,,,,X,X,,,,X,PL,X,X,X,Yes
+assessment.Heating,Building Info,Keep,,X,,,,,,,,,,,,,X,ALL,X,X,X,Yes
+assessment.Legal_Brief_Description_FULL,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Legal_Subdivision_Name,,,,,,,,,,,,,,,,,,,,,,No
+assessment.LotSize_Acres,Parcel Info,Keep,,,X,X,,,,X,X,X,X,,,,,ALL,X,,X,Yes
+assessment.LotSize_Depth_Feet,Parcel Info,Keep,,,X,X,,,,X,X,X,X,,,,,ALL,X,,X,Yes
+assessment.LotSize_Frontage_Feet,Parcel Info,Keep,,,X,X,,,,X,X,X,X,,,,,ALL,X,,X,Yes
+assessment.LotSize_Square_Feet,,,,,,,,,,,,,,,,,,,,,,Yes
+assessment.LSale_Document_Number,,,,,,,,,,,,,,,,,,,,,,No
+assessment.LSale_Price,Property Value,Keep,Last Sale Price (compare with assessed value & Mortgage),,,,,,,,,,,,,,X,ALL,,X,,No
+assessment.LSale_Price_Code,,,,,,,,,,,,,,,,,,,,,,No
+assessment.LSale_Recording_Date,Property Value,Keep,,,,,,,,,,,,,,,X,ALL,,X,,No
+assessment.LValid_Price,Property Value,Keep,Last Valid Price,,,,,,,,,,,,,,X,ALL,,X,,Yes
+assessment.Main_Building_Area_Indicator,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+assessment.N_of_Plumbing_Fixtures,Water NW,Distribution,,,,,X,,,,,,,,,,X,ALL,,X,,Yes
+assessment.Neighborhood_Code,,,,,,,,,,,,,,,,,,,,,,No
+assessment.No_of_Buildings,Building Info,Keep,,,X,X,,,,,X,,,,,,X,ALL,X,X,X,Yes
+assessment.No_of_Stories,Building Info,Keep,,,,X,,,,,X,,,,,,X,ALL,X,X,X,Yes
+assessment.Number_of_Baths,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+assessment.Number_of_Bedrooms,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+assessment.Number_of_Partial_Baths,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+assessment.Number_of_Units,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+assessment.Owner1FirstName,Owner Info,Keep,,,,,,,,,,,,,,,,ALL,,,,No
+assessment.Owner1LastName,Owner Info,Keep,,,,,,,,,,,,,,,,ALL,,,,No
+assessment.Owner2Firstname,Owner Info,Keep,,,,,,,,,,,,,,,,ALL,,,,No
+assessment.Owner2LastName,Owner Info,Keep,,,,,,,,,,,,,,,,ALL,,,,No
+assessment.Owner_Occupied,Owner Info,Keep,,,,,,,,,,,,,,,,ALL,,,,Yes
+assessment.Pool,Parcel Info,Keep,,,,,X,,,,X,X,,,,,X,ALL,,X,,Yes
+assessment.PSale_Price,Property Value,Keep,Prior Sale Price,,,,,,,,,,,,,,X,ALL,,X,,Yes
+assessment.Roof_Cover,Building Info,Keep,,,X,X,,,,,,,,,,,X,ALL,X,X,X,Yes
+assessment.Roof_Type,Building Info,Keep,,,X,X,,,,,,,,,,,X,ALL,X,X,X,Yes
+assessment.School_Tax_District_1,,,,,,,,,,,,,,,,,,,,,,No
+assessment.School_Tax_District_1_Indicator,,,,,,,,,,,,,,,,,,,,,,No
+assessment.School_Tax_District_2,,,,,,,,,,,,,,,,,,,,,,No
+assessment.School_Tax_District_2_Indicator,,,,,,,,,,,,,,,,,,,,,,No
+assessment.School_Tax_District_3,,,,,,,,,,,,,,,,,,,,,,No
+assessment.School_Tax_District_3_Indicator,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Site_Influence,,,,,,,,,,,,,,,,,,,,,,Yes
+assessment.Standardized_Land_Use_Code,Building Info,Keep,Land-Use Codes,,,,,,,,,X,X,,,,X,ALL,,X,,Yes
+assessment.Tax_Amount,,,,,,,,,,,,,,,,,,,,,,Yes
+assessment.Tax_Delinquent_Year,,,,,,,,,,,,,,,,,,,,,,Yes
+assessment.tax_marketvalue,,,,,,,,,,,,,,,,,,,,,,Yes
+assessment.Tax_Rate_Code_Area,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Topography,Topography,Keep,,X,X,X,X,,X,X,,X,X,X,,,X,ALL,X,X,X,Yes
+assessment.Total_Assessed_Value,Property Value,Keep,Assessed Value,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+assessment.Total_Market_Value,Property Value,Keep,Market Value (Compare w Sale Price & Mortgage),,,,,,,,,,,,,,X,ALL,X,X,,Yes
+assessment.Total_Number_of_Rooms,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+assessment.Condo_Project_Bldg_Name,,,,,,,,,,,,,,,,,,,,,,No
+assessment.Building_Class,Building Info,Keep,,,,,,,,,,,,,,,X,CL,X,X,,Yes
+assessment.Type_Construction,Building Info,Keep,,X,X,X,,,,X,,,,,,,X,ALL,X,X,X,Yes
+assessment.Year_Built,Building Info,Keep,,X,X,X,,,,X,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.Ad_geo_altitude,,,,,,,,,,,,,,,,,,,,,,No
+mls_listing_record_details.ad_zone_features,,,,,,,,,,,,,,,,,,,,,,No
+mls_listing_record_details.ex_construction_features,Building Info,Distribution,,X,X,X,,,,X,X,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_exterior_wall_features,Building Info,Combine,,X,X,X,,,,X,X,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_fence_features,Building Info,Distribution,,X,X,X,,,,X,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_foundation_features,Building Info,Distribution,,,,,,,X,,X,X,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_garage_features,Building Info,Distribution,,,,,,,,,,,,,,X,X,PL,,X,,Yes
+mls_listing_record_details.ex_garage_spaces,Building Info,Combine,,,,,,,,,,,,,,X,X,PL,,X,,Yes
+mls_listing_record_details.ex_general_features,Building Info,Distribution,"General Features (ID outbuildings, workshops)",X,X,X,,,,X,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_location_features,Wildfire,Distribution,"Location Features (identify dead-end roads, culdesacs,etc)",,X,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_lot_size_acres,Parcel Info,Distribution,,,X,X,,,,X,,X,X,,,,,ALL,X,,X,Yes
+mls_listing_record_details.ex_lot_size_square_feet,Parcel Info,Combine,,,X,X,,,,X,,X,X,,,,,ALL,X,,X,Yes
+mls_listing_record_details.ex_lot_size_features,Parcel Info,Distribution,,,X,X,X,,,X,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_parking_features,Building Info,Distribution,Parking Features (CAT risk from ungaraged vehicles),,,,,,,,,,,,,X,,ALL,X,,X,Yes
+mls_listing_record_details.ex_parking_spaces,Building Info,Distribution,# Parking Spaces  (theft from vehicles not garaged),,,,,X,,,,X,X,,,X,,ALL,X,,X,Yes
+mls_listing_record_details.ex_patio_features,Building Info,Distribution,,X,X,X,,,,,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_patio_yn,Building Info,Combine,,X,X,X,,,,,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_pool_features,Parcel Info,Distribution,,,,,X,,,,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_pool_yn,Parcel Info,Combine,,,,,X,,,,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_road_features,Parcel Info,Exceptions,"Road Features ( identify dead-ends, dirt roads, etc)",X,X,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_roof_features,Building Info,Distribution,,,X,X,,,,X,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_sewer_features,Parcel Info,Distribution,"ID Septic Tanks, Public/Private Sewage, etc.",,,X,X,,,,,,,X,,,,ALL,X,,X,Yes
+mls_listing_record_details.ex_spa_yn,Parcel Info,Distribution,,,,,X,,,,X,X,X,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.ex_style_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.ex_view_features,Building Info,Keep,,,X,X,,,,,,,,X,,,,ALL,X,,,Yes
+mls_listing_record_details.ex_wateraccess_features,Building Info,Keep,,,,X,X,,,X,,X,X,X,,,X,ALL,X,X,,Yes
+mls_listing_record_details.ex_waterfront_features,Building Info,Keep,,,,,X,,,X,,,X,X,,,,ALL,X,,,Yes
+mls_listing_record_details.if_appliance_features,Building Info,Keep,,,,,X,,,,,,,,,,,PL,X,,,Yes
+mls_listing_record_details.if_basement_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_basement_yn,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_cooling_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_cooling_yn,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_fireplace_features,Building Info,Keep,,X,,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.if_fireplace_number,Building Info,Keep,Fireplace Count,X,,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.if_fireplace_yn,Building Info,Keep,,X,,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.if_floor_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_general_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_heating_features,Building Info,Keep,,X,,,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.if_levels_features,Building Info,Keep,Number of Stories,,,X,X,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.if_security_features,Building Info,Keep,,,,,,X,,,,,,,,,,ALL,X,,X,Yes
+mls_listing_record_details.if_security_system_yn,Building Info,Keep,Security System,,,,,X,,,,,,,,,,ALL,X,,X,Yes
+mls_listing_record_details.if_utilities_features,Building Info,Keep,,X,,,X,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.if_water_features,Building Info,Keep,"Private wells,",X,X,,,,,,,,,,,,,ALL,X,X,X,Yes
+mls_listing_record_details.if_window_features,Building Info,Keep,,,X,X,,,,,,,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.in_association_dues1,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.in_living_square_feet,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mls_listing_record_details.in_property_type,Parcel Info,Keep,,,,,,,,X,,,,,,,X,ALL,X,X,,Yes
+mls_listing_record_details.in_public_remarks,Remarks,Exceptions,,,X,X,,,X,,,X,,X,,,X,ALL,X,X,,Yes
+mls_listing_record_details.in_sold_date,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.in_sold_price,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.in_subtype,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.in_year_built,Building Info,Keep,Year built,X,X,X,X,,,,X,,X,X,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.in_association_features,Parcel Info,Keep,Association Features,,X,,,X,,,,X,,,,,,ALL,X,,X,No
+mls_listing_record_details.in_association_yn,Parcel Info,Keep,,,X,,,X,,,,X,,,,,,ALL,X,,X,Yes
+mls_listing_record_details.rm_baths_full,Building Info,Keep,,,,,X,,,,,,,,,,X,ALL,,X,X,Yes
+mls_listing_record_details.rm_baths_half,Building Info,Keep,,,,,X,,,,,,,,,,X,ALL,,X,X,Yes
+mls_listing_record_details.rm_baths_total,Building Info,Keep,,,,,X,,,,,,,,,,X,ALL,,X,X,Yes
+mls_listing_record_details.rm_bedrooms_total,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+mls_listing_record_details.rm_dining_features,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,,Yes
+mls_listing_record_details.rm_family_yn,Building Info,Keep,,,,,,,,,,,,,,,X,PL,,X,X,Yes
+mls_listing_record_details.rm_general_features,Building Info,Keep,,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mls_listing_record_details.rm_kitchen_features,Building Info,Keep,,,,,X,,,,,,,,,,X,ALL,,X,,Yes
+mls_listing_record_details.rm_laundry_features,Building Info,Keep,,,,,X,,,,,,,,,,X,PL,,X,X,Yes
+mls_listing_record_details.rm_room11_features,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.rm_room11_type,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.rm_room13_features,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.rm_room13_type,,,,,,,,,,,,,,,,,,,,,,Yes
+mls_listing_record_details.rm_rooms_total,Building Info,Keep,,X,,,X,,X,,,X,,,,,X,ALL,X,X,X,Yes
+mls_listing_record_details.sc_school_district,,,,,,,,,,,,,,,,,,,,,,No
+listing_record.list_date,Property Value,Keep,,,,,,,,,,,,,,,X,ALL,X,X,,No
+listing_record.list_price,Property Value,Keep,,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+listing_record.status,Property for Sale,Keep,,,,X,X,X,,,,X,,,,,,ALL,X,,,Yes
+mortgage_info.Current_Est_LTV_Combined,Property Value,Keep,Mortgage 1 - Loan to Value,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mortgage_info.Mtg01_Curr_Est_Bal,Property Value,Keep,Mortgage 1 - Balance,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mortgage_info.Mtg01_lender_name_beneficiary,Lender Name,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+mortgage_info.Mtg01_Loan_Amount,Property Value,Keep,Mortgage 1 - Loan Amount,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mortgage_info.Mtg01_loan_type,Property Value,Keep,Mortgage 1 - Loan Type,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+mortgage_info.Mtg01_Title_Company_Name,Title Company,Keep,,,,,,,,,,,,,,,,ALL,,X,,No
+mortgage_info.Total_Open_Lien_Balance,Property Value,Keep,Mortgage 1 - Lien Balance,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+valuation.price_range_max,Property Value,Keep,Max Valuation,,,,,,,,,,,,,,X,ALL,X,X,,Yes
+valuation.price_range_min,Property Value,Keep,Min Valuation,,,,,,,,,,,,,,X,ALL,X,X,,Yes
