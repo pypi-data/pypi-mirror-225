@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: zelus-route-manager
+Version: 0.1.0
+Summary: Monitor and enforce routes.
+Author-email: Mark Farrell <mark.andrew.farrell@gmail.com>
+Maintainer-email: Mark Farrell <mark.andrew.farrell@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2023 markafarrell
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/markafarrell/zelus/
+Project-URL: Bug Reports, https://github.com/markafarrell/zelus/issues
+Project-URL: Source, https://github.com/markafarrell/zelus
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+License-File: LICENSE
+
+# zelus
+
+## Requrements
+
+```
+python >= 3.8
+iproute2
+```
+
+## Initialize build environment
+
+```
+python -m pip install -U setuptools wheel build
+```
+
+## Build python package
+
+```
+python -m build .
+```
+
+## Building docker image
+
+```
+docker build -t markfarrell/zelus .
+```
+
+## Running docker container
+
+```
+docker build -t markfarrell/zelus . && \
+docker run --rm -it --name zelus --cap-add NET_ADMIN markfarrell/zelus
+```
+
+### Exec into container
+
+```
+docker exec -it zelus /bin/sh
+```
+
+## Testing
+
+### Lint
+
+```
+tox -e lint
+```
+

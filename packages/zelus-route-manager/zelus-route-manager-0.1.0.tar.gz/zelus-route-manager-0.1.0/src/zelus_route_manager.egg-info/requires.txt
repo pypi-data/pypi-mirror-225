@@ -1,0 +1,11 @@
+pyroute2
+argparse
+pyaml
+watchdog
+jinja2
+
+[dev]
+check-manifest
+
+[test]
+coverage
