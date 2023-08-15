@@ -1,0 +1,72 @@
+{% extends "main/layout.html" %}
+{% load humanize %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-default rounded">
+                <div class="card-header border-primary">
+                    <h2>{{legend|upper}}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fa fa-info-circle"></i>
+                        Tabela refere fo sai lista funsionario sira ne'ebe <strong>Kontrato Remata Ona</strong>
+                        <i>ou</i> <strong>Kontrato Sei Remata Iha Tempo Oin Mai</strong>
+                    </div>
+                    <table class="table table-sm table-bordered" id="example">
+                        <thead>
+                            <tr>
+                                <th>Nu.</th>
+                                <th>ID IPG</th>
+                                <th>Naran</th>
+                                <th>Data Hahu</th>
+                                <th>Data Remata</th>
+                                <th>Loron</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for obj in objects  %}
+                                <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{obj.0.employee.emp_id}}</td>
+                                <td>{{obj.0.employee}}</td>
+                                <td>{{obj.0.start_date|date:"d-m-Y"}}</td>
+                                <td>{{obj.0.end_date|date:"d-m-Y"}}</td>
+                                <td>
+                                    {% if obj.1 <= 0  %}
+                                    <span class="badge bg-success text-white">{{obj.1}}</span>
+                                    {% else %}
+                                    <span class="badge bg-danger text-white">+ {{obj.1}}</span>
+                                    
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'cont-detail' obj.0.hashed %}" class="btn btn-sm btn-info"> Detalha <i class="fa fa-eye"></i> </a>
+                                </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!--end card-body-->
+            </div><!--end card-->
+
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

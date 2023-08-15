@@ -1,0 +1,66 @@
+{% extends "main/layout.html" %}
+{% load humanize %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-default rounded">
+                <div class="card-body">
+                    <h4 align="center"> <i class="fa fa-person-walking-arrow-right"></i> {{legend|upper}}</h4>
+                    <hr/>
+
+                    <table class="table table-sm" id="example">
+                        <thead>
+                            <tr>
+                                <th>Nu.</th>
+                                <th>Naran</th>
+                                <th>Data Pedido</th>
+                                <th>Data Hahu</th>
+                                <th>Data Remata</th>
+                                <th>Loron</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for obj in objects  %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{obj.employee}}</td>
+                                    <td>{{obj.date|date:'d-M-Y'}}</td>
+                                    <td>{{obj.start_date|date:'d-M-Y'}}</td>
+                                    <td>{{obj.end_date|date:'d-M-Y'}}</td>
+                                    <td>{{obj.days}}</td>
+                                    {% if obj.pr_send %}
+                                    <td>
+                                        <a href="{% url 'leave-c-detail'  obj.hashed %}" class="btn btn-sm btn-info">Detalha <i class="fa fa-eye"></i></a>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <a href="{% url 'leave-c-ver-detail'  obj.hashed %}" class="btn btn-sm btn-info">Detalha <i class="fa fa-eye"></i></a>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!--end card-body-->
+            </div><!--end card-->
+
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}
