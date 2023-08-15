@@ -1,0 +1,16 @@
+pysofar>=0.1.13
+numpy
+pandas
+scipy
+numba
+xarray
+requests
+numba
+numba_progress
+
+[full]
+qpsolvers
+cvxopt
+
+[optimization]
+cvxopt
