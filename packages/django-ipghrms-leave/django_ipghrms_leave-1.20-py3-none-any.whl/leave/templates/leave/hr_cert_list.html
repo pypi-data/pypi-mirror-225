@@ -1,0 +1,73 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+						{% if period != None  %}
+						
+						<h5>Periode {{period.start_month.name}}, {{period.start_year}} - {{period.end_month.name}}, {{period.end_year}}</h5>
+						{% else  %}
+						<span class="badge bg-danger text-white">Halo Favor Kria Uluk Periode Licensa !</span>
+						{% endif  %}
+					</center>
+				</div>
+				<div class="card-body">
+
+					{% if period != None  %}
+						<a class="btn btn-sm btn-info mb-1" href="{% url 'leave-add' %}">Aplika <i class="fa fa-plus"></i></a>
+						<a class="btn btn-sm btn-primary mb-1" href="{% url 'leave-bal-check' %}">Balansu Licenca <i class="fa fa-list"></i></a>
+					{% else  %}
+						<span class="badge bg-danger text-white">Halo Favor Kria Uluk Periode Licensa !</span>
+					{% endif  %}
+					<table class="table table-sm table-striped table-bordered" id="example" width="100%" cellspacing="0">
+						<thead>
+							<tr align="center">
+								<th>Nu.</th>
+								<th>Tipu Licenca</th>
+								<th>Data Hahu</th>
+								<th>Data Termina</th>
+								<th>Loron</th>
+								<th class="text-left">Husi</th>
+								<th>#</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for obj in objects %}
+							<tr align="center">
+								<td>{{ forloop.counter }}</td>
+								<td>{{ obj.leave_type }}</td>
+								<td>{{ obj.start_date|date:"d/m/Y" }}</td>
+								<td>{{ obj.end_date|date:"d/m/Y" }}</td>
+								<td>{{ obj.days }}</td>
+								<td class="text-left">{{ obj.employee }}</td>
+								<td>
+									<a class="btn btn-sm btn-info" href="{% url 'leave-s-detail' obj.hashed %}" title="Detalha">Detalha <i class="fa fa-eye"></i></a>
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+{% endblock %}

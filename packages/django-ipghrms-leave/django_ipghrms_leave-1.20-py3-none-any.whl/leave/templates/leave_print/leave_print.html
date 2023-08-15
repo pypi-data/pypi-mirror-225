@@ -1,0 +1,134 @@
+{% extends "leave_print/layout.html" %}
+{% load static %}
+{% block content %}
+<table>
+    <tr>
+        <th align="left"  width="25%" height="90%">
+            <img src="{% static 'main/images/mpm.png' %}" width="100%">
+        </th>
+        <th align="center" width="50%">
+            <span><strong>MINIST&#201;RIO DO PLANO E ORDENAMENTO</strong></span> <br>
+            <span>AG&#202;N&#199;IA DE DEZENVOLVIMENTO NACIONAL, INSTITUTO P&#218;BLICO (ADN,IP)</span> 
+        </th >
+        <th align="right" width="250%">
+            <img src="{% static 'main/images/ipg.png' %}" width="100%">
+        </th>
+    </tr>
+</table>
+<hr style="height:5px;border-width:0;color:gray;background-color:rgb(49, 4, 4);box-shadow: 2px 2px #888888;">
+<center>
+    <div class="box4"><h5>FORMULARIU REKEZITU (HUSU)<br/>FERIADU NIAN</h5></div>
+    <hr/>
+    <div class="box2">
+        <h4 align="left">APLIKANTE</h4>
+        <table border="1">
+            <tr align="left">
+                <th width="20%">Naran</th>
+                <td width="25%">{{ leave.employee }}</td>
+                <th width="20%" rowspan="2">Data Aplikasaun</th>
+                <td rowspan="2">{{ leave.date|date:"d-m-Y" }}</td>
+            </tr>
+            <tr align="left">
+                <th>ID#</th>
+                <td>{{ leave.employee.emp_id }}</td>
+            </tr>
+            <tr align="left">
+                <th>Pozisaun/Local Servisu</th>
+                <td>{{ leave.employee.curempposition.position }}</td>
+                <th rowspan="2">Unidade/Seksaun</th>
+                <td rowspan="2">
+                {% if leave.employee.curempdivision.department %}
+                    {{ leave.employee.curempdivision.department }}<br/>
+                    {{ leave.employee.curempdivision.department.unit.code }}
+                {% elif leave.employee.curempdivision.unit %}
+                    {{ leave.employee.curempdivision.unit }}
+                {% endif %}
+                </td>
+            </tr>
+            <tr align="left">
+                <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+            </tr>
+        </table>
+        <br/>
+        <table border="1">
+            <tr>
+                <th rowspan="2" width="30%">Tipu Licensa</th>
+                <th colspan="2">Loron</th>
+                <th rowspan="2" width="15%">Total loron ne'ebe foti</th>
+                <th rowspan="2" width="15%">Total loron nebe foti ona</th>
+            </tr>
+            <tr>
+                <th>Husi</th><th>To'o</th>
+            </tr>
+            <tr align="center">
+                <td>{{ leave.leave_type }}</td>
+                <td>{{ leave.start_date|date:"d-m-Y" }}</td>
+                <td>{{ leave.end_date|date:"d-m-Y" }}</td>
+                <td>{{ leave.days }}</td>
+                <td>{{ leavecount.total }}</td>
+            </tr>
+        </table>
+    </div><!--end box2-->
+    <br/>
+    <div class="box2">
+        <h4 align="left">DELEGASAUN</h4>
+        <table border="1">
+            <tr>
+                <td width="60%">Servisu Delega ba:</td>
+                <td>{{ leavedel.employee }}</td>
+            </tr>
+            <tr>
+                <td>Pozisaun</td>
+                <td>{{ leavedel.employee.curempposition.position }}</td>
+            </tr>
+            <tr>
+                <td>Hela Fatin</td>
+                <td>{{ leavedel.employee.addresstl.address }}</td>
+            </tr>
+            <tr>
+                <td>No. Telemovel</td>
+                <td>{{ leavedel.employee.contactinfo.phone }}</td>
+            </tr>
+            <tr>
+                <td>Kosiente ba Delegasaun Servisu<br/>
+                {% if leavedel.obs == "Sim" %}SIM / <strike>LAE</strike>
+                {% elif leavedel.obs == "Lae" %}<strike>SIM</strike> / LAE
+                {% else %}SIM / LAE{% endif %}                        
+                </td>
+                <td rowspan="2">Assinatura Delega Servisu: &nbsp;<br/>&nbsp;<br/>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Se responde lae favor deskreve razaun<br/>
+                    {% if leavedel.obs == "Lae" %}<strong><i>{{ leavedel.reason }}</i></strong>{% endif %}
+                </td>
+            </tr>
+        </table>
+    </div><!--end box2-->
+    <br/>
+    <div class="box4">
+        <table border="1">
+            <tr>
+                <th width="25%">Aplikante</th>
+                <th width="25%">Rekomenda Husi</th>
+                <th width="25%">Verifika Husi</th>
+                <th width="25%">Aprova Husi</th>
+            </tr>
+            <tr>
+                <th>&nbsp;<br/>&nbsp;<br/>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td><strong>{{ leave.employee }}</strong><br/>&nbsp;</td>
+                <td><strong>{{ dep.employee }}</strong><br/>{{ dep.position }} {{ dep.department.code }}</td>
+                <td><strong>{{ unit.employee }}</strong><br/>{{ unit.position }} {{ unit.unit.code }}</td>
+                <td><strong>{{ de.employee }}</strong><br/>{{ de.position.name }}</td>
+            </tr>
+        </table>
+    </div><!--end box2-->
+    <br/>
+</center>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'leave-de-appr-list' %}">LISTA APLIKASAUN</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow-lg border-info rounded">
+                <div class="card-body">
+                    <center>
+                        <h4>INFORMASAUN LICENSA</h4>
+                    </center>
+                    <hr/>
+                    <center>
+                        <h4>APLIKANTE</h4>
+                    </center>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <th width="20%">Naran</th>
+                            <td width="25%"><a href="{% url 'emp-detail' leave.employee.hashed %}">{{ leave.employee }}</a></td>
+                            <th width="20%" rowspan="2">Data Kria Aplikasaun</th>
+                            <td rowspan="2">{{ leave.datetime|date:"d-m-Y, H:i A" }}</td>
+                        </tr>
+                        <tr>
+                            <th>ID#</th>
+                            <td>{{ leave.employee.emp_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pozisaun/Local Servisu</th>
+                            <td>{{ leave.employee.curempposition.position }}</td>
+                            <th rowspan="2">Divizaun/Ekipa</th>
+                            <td rowspan="2">
+                            {% if leave.employee.curempdivision.department %}
+                                {{ leave.employee.curempdivision.department }}<br/>
+                                {{ leave.employee.curempdivision.department.unit.code }}
+                            {% elif leave.employee.curempdivision.unit %}
+                                {{ leave.employee.curempdivision.unit }}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>No. Telemovel</th><td>{{ leave.employee.contactinfo.phone }}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tr align="center">
+                            <th rowspan="2" width="25%">Asuntu licensa</th>
+                            <th rowspan="2" width="25%">Tipu Licensa</th>
+                            <th colspan="2">Loron</th>
+                            <td rowspan="2" width="25%">Total loron ne'ebe foti</td>
+                        </tr>
+                        <tr align="center">
+                            <th>Husi</th><th>To'o</th>
+                        </tr>
+                        <tr align="center">
+                            <td>{{ leave.description }}</td>
+                            <td>{{ leave.leave_type }}</td>
+                            <td>{{ leave.start_date|date:"d-m-Y" }} <i>Horas</i> {{leave.start_time_status}} OTL</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }} <i>Horas</i> {{leave.end_time_status}} OTL</td>
+                            <td>{{ leave.days }}</td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    {% if cgroup != 'unit' %}
+                      
+                    
+                    <h4>APROVASAUN CHEFE EKIPA</h4>                    
+                    {% if leavedep.obs == "Sim" %}
+                    <div class="alert alert-info">Decijaun <strong>APROVA</strong></div>
+                    {% elif leavedep.obs == "Lae" %}
+                    <div class="alert alert-danger">Decijaun <strong>LA APROVA</strong><hr/><i>Rajaun: {{ leaveunit.reason }}</i></div>
+                    {% endif %}
+                    
+                    <hr/>
+                    {% endif %}
+
+                    <h4 class="text-center">KOMENTARIO HUSI RECURSO HUMANO</h4>
+                    {% if leavehr.comment %}
+                    <table class="table table-comment table-sm  w-100">
+                        <thead>
+                            <tr>
+                                <th colspan="2">{{leavehr.user.employeeuser.employee}}  ({{leavehr.user.employeeuser.employee.curempdivision.department.name}})</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    {{leavehr.comment|safe}}
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <div class="alert alert-danger">Seidauk Iha Komentario <i class="fa-regular fa-face-frown-open"></i></div>
+                    {% endif %}
+                    
+                    <center>
+
+                        <h4>DESIZAUN PRESIDENTE 
+                            <i class="fa fa-arrow-right"></i>
+                            {% if leave.is_finish == False %}
+                            <a href="{% url 'leave-de-appr-update' leave.hashed %}" class="btn btn-sm btn-success" title="Certifika">
+                                Fo Desizaun <i class="fa fa-plus"></i></a>{% endif %}
+                                
+                                
+                            {% if leavede.obs and leave.is_finish == False %}
+                                <a class="btn btn-sm btn-info" href="{% url 'leave-de-appr-finish' leave.hashed %}" title="Finaliza">FINALIZA <i class="fa fa-check"></i></a>
+                            {% elif leave.is_finish == True and leave.pr_send == False %}
+                                <a class="btn btn-sm btn-warning" href="{% url 'leave-de-notify-send' leave.hashed %}" title="Finaliza">Notifika Aplikante <i class="fa fa-bell"></i></a>
+                                <!-- <h3><i class="fa fa-info text-success"></i> Notifika Aplikante</h3> -->
+                            {% elif leave.pr_send  %}
+                                {% if group != 'de' %}
+                                    <a class="btn btn-sm btn-warning disabled" href="#" title="Finaliza">Notifika Ona Aplikante <i class="fa fa-check"></i></a>
+                                {% else %}
+                                    {% if leave.pr_notify == False and cgroup == 'de' %}
+                                      
+                                        <a class="btn btn-sm btn-warning" href="{% url 'leave-de-notify-hr' leave.hashed %}" title="Finaliza">Notifika RH no Vice Presidente <i class="fa fa-bell"></i></a>
+                                    {% elif leave.pr_notify and cgroup == 'de' %}
+                                        <a class="btn btn-sm btn-warning disabled" href="#" title="Finaliza">Notifika Ona RH no Vice Presidente <i class="fa fa-check"></i></a>
+                                    {% endif %}
+
+                                {% endif %}
+                            {% endif %}
+                        </h4>   
+                                             
+                    </center>
+                    {% if leavede.obs == "Sim" %}
+                    <center>
+                        <div class="alert alert-info alert-md w-50">Decizaun <strong>APROVA</strong></div>
+                    </center>
+                    {% elif leavede.obs == "Lae" %}
+                    <center>
+                        <div class="alert alert-md w-50 alert-danger">Decizaun <strong>LA APROVA</strong><hr/><i>Rajaun: {{ leavede.reason }}</i></div>
+                    </center>
+                    {% else %}
+                        {% if cgroup != 'de' %}
+                            <center>
+                                <i> <small class="text-danger">Seidauk Iha Desizaun</small> </i>
+                            </center>
+                        {% else %}
+                            <center>
+                                <i> <small class="text-success">Susesu Kria ona Licensa</small> </i>
+                            </center>
+                        {% endif %}
+                    {% endif %}
+                    <hr/>
+
+
+                    
+                </div> <!--end card-body-->
+            </div> <!--end card-->
+        </div> <!--end col-->
+    </div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

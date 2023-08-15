@@ -1,0 +1,84 @@
+{% extends "main/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+		{% if page == "apply" %}
+			{% if group == "staff" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-s-list' %}">LISTA LISENSA</a></li>
+			{% elif group == "unit" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-c-list' %}">LISTA LISENSA</a></li>
+			{% elif group == "hr" %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-list' %}">LISTA LISENSA</a></li>
+			{% endif %}
+		{%  elif page == 'add-emp-record' %}
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-leave-record' hashid %}">LEAVE RECORD</a></li>
+		{% endif %}
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+					<center>
+						<h2>{{ legend|upper }}</h2>
+					</center>
+				</div>
+				<div class="card-body">
+					<table class="table table-sm table-bordered" style="margin: auto; width: 50%;">
+						<thead>
+							<tr align="center">
+								<th colspan="2">PERIODE LICENSA NE'EBE IHA ONA</th>
+							</tr>
+							<tr align="center">
+								<th width="40%">NU.</th>
+								<th>PERIODE</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for obj in  period %}
+							  <tr align="center">
+								<td>{{forloop.counter}}</td>
+								<td>{{obj.start_year}} - {{obj.end_year}}</td>
+							  </tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-info">
+								<i class="fa fa-circle-info"> </i> 
+								<small>  <i>Koluna sira ne'ebe iha <strong class="text-danger">*</strong> signifika Itaboot tenke prienche</i> </small>
+								{% if page == 'add-emp-record' %}
+								<br>
+								<small>  <i>Koluna <strong>Balance Carry Forward </strong> aplika deit ba Licensa Anterior nebe <strong>Lakonsege</strong> Kria  </i> </small>
+								  
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% crispy form %}
+				</div> <!--end card-body-->
+			</div> <!--end card-->
+		</div> <!--end col-->
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+<style>
+	#id_employee {
+		width: 100%;
+	}
+</style>
+<script>
+	$(document).ready(function() {
+    $('#id_employee').select2();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,366 @@
+{% extends "main/layout.html" %}
+{% load orderby %}
+{% block content %}
+<div class="breadcrumb-holder">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-app-list' %}">LISTA APLIKASAUN</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'leave-hr-app-raw-list' %}">RAW DATA LICENSA</a></li>
+			<li class="breadcrumb-item active">{{ legend|upper }}</li>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid"><br/>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card shadow-lg border-info rounded">
+				<div class="card-header border-primary">
+
+					<center>
+						<h2>{{ legend|upper }}</h2>
+						<h5> 
+							{% if period %}
+							{{period}}
+							{% else %}
+							<span class="badge bg-danger text-white">SEIDAUK IHA PERIODO</span>
+							{% endif %}
+						</h5>
+					</center>
+				</div>
+				<div class="card-body">
+					<div class="alert alert-info">
+						<i class="fa fa-info-circle"></i> Nota: 
+						<br>
+						<small>Molok Kria Periode Licensa, halo favor hare uluk Funsionariu/a nia <strong>Data Kontratu Hahu</strong></small> <br>
+						<small>Butaun <strong>Aumenta Licensa Tuir Prosesu</strong>; Aplika dei ba Funsionariu/a <strong>La Inklui</strong> Chefe Ekipa no Diretor</small>
+						<br>
+						<small>Wainhira Ita kria ona <strong>Licensa Tuir Prosesu</strong> ba Funsionariu Ida; Etapa tuir mai mak Iha parte okos Historia Licensa, klik butaun <strong>Manda</strong></small>
+					</div>
+					<p style="font-size: 13px;" class="p-0 mb-1">Name of Staff:  <b>{{employee|upper}}</b> </p>
+					<p style="font-size: 13px;" class="p-0 mb-1">Position:  <b>{{employee.curempposition.position.name|upper}}</b> </p>
+					<p style="font-size: 13px;" class="p-0 mb-1">Contract Start Date:  <b>{{contract.start_date|date:"d F Y"}}</b> </p>
+					<p style="font-size: 13px;" class="p-0 ">Contract End Date:  <b> 
+						{% if contract.end_date %}
+							{{contract.end_date|date:"d F Y"}}
+						{% else %}
+							<span class="bg-warning p-1" style="color: rgb(31, 31, 31);"> Indeterminable</span>
+						{% endif %}
+					</b> </p>
+					<hr>
+					{% if period %}
+							{% if today >= period.end_date and lc %}
+								{% if page != 'list-year' %}							
+									<a href="{% url 'leave-hr-leave-create-emp-record' employee.hashed %}" class="btn btn-info btn-sm mb-2">Kria Periode Licensa <i class="fa fa-plus"></i></a>
+								{% endif %}
+
+
+							{% endif %}
+							{% if leavecheck and today <= period.end_date %}
+								<!-- <a href="{% url 'leave-hr-add' employee.hashed %}" class="btn btn-sm btn-info mb-2">Aumenta Licensa <i class="fa fa-plus"></i></a> -->
+								
+							{% elif today <= period.end_date and leavecheck %}
+								<!-- <a href="{% url 'leave-hr-leave-update-emp-record' employee.hashed  %}" class="btn btn-sm btn-info mb-2">Kria Record <i class="fa fa-gear"></i></a> -->
+							{% endif %}
+							{% if lc == False %}
+								<a href="{% url 'leave-hr-leave-update-emp-record' employee.hashed  %}" id="create-record" class="btn btn-sm btn-danger mb-2">Kria Record <i class="fa fa-gear"></i></a>
+							
+							{% endif %}
+							{% if leavecheck %}
+									<a href="{% url 'leave-hr-add' employee.hashed %}" class="btn btn-sm btn-success mb-2">Aumenta Licensa <i class="fa fa-plus"></i></a>						  
+									<a href="{% url 'leave-hr-add-special' employee.hashed %}" class="btn btn-sm btn-danger mb-2">Aumenta Licensa Special <i class="fa fa-plus"></i></a>						  
+									<a href="{% url 'leave-hr-add-process' employee.hashed %}" class="btn btn-sm btn-warning mb-2">Aumenta Licensa Tuir Prosesu <i class="fa fa-plus"></i></a>						  
+							{% endif %}
+					{% else %}
+					
+					<a href="{% url 'leave-hr-leave-create-emp-record' employee.hashed %}" class="btn btn-info btn-sm mb-2">Kria Periode Licensa <i class="fa fa-plus"></i></a>
+					{% endif %}
+					<table class="table table-sm table-striped table-responsive table-bordered" id="example" width="100%" cellspacing="0">
+						<thead>
+							<tr align="center">
+								<th width="7%">Month</th>
+
+								<th>Annual Leave Earn (days) = 20 Days/Year</th>
+								<th>Taken (Days)</th>
+								<th>Balance</th>
+                                
+								<th>Special Leave = 3 Days/Year</th>
+								<th>Taken (Days)</th>
+								<th >Balance</th>
+                                
+                                <th>Sick Leave = 12 Days/Year</th>
+                                <th>Taken (days)</th>
+								<th >Balance</th>
+                                
+                                <th>Maternity Leave = 12 Weeks/Year</th>
+                                <th>Taken (days)</th>
+								<th >Balance</th>
+
+                                <th>Paternity Leave = 5 Days/Year</th>
+                                <th>Taken (days)</th>
+								<th >Balance</th>
+
+                                <th>Childcare Leave = 5 Days/Year</th>
+                                <th>Taken (days)</th>
+								<th >Balance</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for obj in  objects %}
+								{% if last_count_period %}
+									<tr align="center">
+										<td colspan="3"  class="text-center">Balance Carry Forward {{last_count_period.period.start_year}} - {{last_count_period.period.end_year}}</td>
+										<td class="text-danger" class="text-center">{{last_count_period.total_balance}}</td>
+									</tr>
+								{% elif period.balance_carry %}
+									<tr align="center">
+										<td colspan="3"  class="text-center">Balance Carry Forward (Last Period)</td>
+										<td class="text-danger" class="text-center">{{period.balance_carry}}</td>
+									</tr>
+								{% endif %}
+							  	{% for obj1 in data  %}
+									<tr>
+										<td class="text-center"><small>{{obj1.0|date:"d-M-"}}</small></td>
+										<td class="text-center">
+											{% if obj1.1.update_date <= today %}
+												{{obj1.1.leave_earn}}
+											{% else %}
+												0.00
+											{% endif %}
+										</td>
+										<td class="text-center">
+										{% if obj1.1.taken != 0.00 %}
+
+											<span class="text-danger"> {{obj1.1.taken}} </span>
+										{% else %}
+										0.00
+										{% endif %}
+										</td>
+										<td class="text-center">
+											{% if obj1.1.update_date <= today %}
+												{{obj1.1.balance}}
+											{% else %}
+												{% if obj1.7 %}
+													{{obj1.1.balance_month}}
+												  
+												{% else %}
+													0.00
+												{% endif %}
+												
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.3.month}}-{{obj1.3.year}}</td>
+										<td class="text-center">{% if obj1.3.taken != 0.00 %}
+											<span class="text-danger"> {{obj1.3.taken}} </span>
+											{% else %}
+											0.00
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.3.total_balance}}</td>
+										<td class="text-center">{{obj1.2.month}}-{{obj1.2.year}}</td>
+										<td class="text-center">{% if obj1.2.taken != 0.00 %}
+											<span class="text-danger"> {{obj1.2.taken}} </span>
+											{% else %}
+											0.00
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.2.total_balance}}</td>
+										<td class="text-center">{{obj1.4.month}}-{{obj1.4.year}}</td>
+										<td class="text-center">{% if obj1.4.taken != 0.00 %}
+											<span class="text-danger"> {{obj1.4.taken}} </span>
+											{% else %}
+											0.00
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.4.total_balance}}</td>
+										<td class="text-center">{{obj1.5.month}}-{{obj1.5.year}}</td>
+										<td class="text-center">{% if obj1.5.taken != 0.00 %}
+											<span class="text-danger"> {{obj1.5.taken}} </span>
+											{% else %}
+											0.00
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.5.total_balance}}</td>
+										<td class="text-center">{{obj1.6.month}}-{{obj1.6.year}}</td>
+										<td class="text-center">{% if obj1.6.taken != 0.00 %}
+											<span class="text-danger"> {{obj1.6.taken}} </span>
+											{% else %}
+											0.00
+											{% endif %}
+										</td>
+										<td class="text-center">{{obj1.6.total_balance}}</td>
+									</tr>
+								{% endfor %}
+							{% endfor %}
+						</tbody>
+						<tfoot>
+							{% for obj2  in objects  %}
+								<tr>
+									<th class="text-center">TOTAL</th>
+									<th class="text-center">
+										<!-- leave ih fulan ida ne -->
+										{% if obj2.7 %}
+											{% if today >= obj2.10.update_date  %}
+												{{obj2.10.total_earn}}
+											{% elif today < obj2.10.update_date %}
+												{{obj2.8.total_earn}}
+											{% else %}
+												{{obj2.0.total_earn}}
+											{% endif %}
+										{% else %}
+											{% if today >= obj2.10.update_date  %}
+												{{obj2.10.total_earn}}
+											{% elif today < obj2.10.update_date %}
+												{{obj2.8.total_earn}}
+											{% else %}
+												{{obj2.0.total_earn}}
+											{% endif %}
+
+										{% endif %}
+
+										
+									</th>
+									<th class="text-center">{{obj2.0.total_taken}}</th>
+									<th class="text-center">
+										
+										{% if today <= obj2.0.update_date %}
+												{{obj2.9.balance_month}}
+										{% elif obj2.7 and   today  >=  obj2.10.update_date  %}
+												<!-- {{obj2.10.total_earn}}  -->
+												{{obj2.0.total_balance}}
+										{% elif obj2.7 %}
+												{{obj2.9.balance_month}}
+										{% else %}
+										
+											{{obj2.0.total_balance}}
+												
+										{% endif %}
+									</th>
+									<th class="text-center">-</th>
+									<th class="text-center">{{obj2.1.last.total_taken}}</th>
+									<th class="text-center">{{obj2.1.last.total_balance}}</th>
+									<th class="text-center">-</th>
+									<th class="text-center">{{obj2.2.last.total_taken}}</th>
+									<th class="text-center">{{obj2.2.last.total_balance}}</th>
+									<th class="text-center">-</th>
+									<th class="text-center">{{obj2.3.last.total_taken}}</th>
+									<th class="text-center">{{obj2.3.last.total_balance}}</th>
+									<th class="text-center">-</th>
+									<th class="text-center">{{obj2.4.last.total_taken}}</th>
+									<th class="text-center">{{obj2.4.last.total_balance}}</th>
+									<th class="text-center">-</th>
+									<th class="text-center">{{obj2.5.last.total_taken}}</th>
+									<th class="text-center">{{obj2.5.last.total_balance}}</th>
+								</tr>
+							{% endfor %}
+						</tfoot>
+					</table>
+					<ol class="breadcrumb p-1">
+					{% for y in all_period %}
+						<li class="breadcrumb-item"><a href="{% url 'leave-hr-leave-per-record' employee.hashed y.pk %}">{{ y.start_year }} - {{y.end_year}}</a></li>
+					{% endfor %}
+					</ol>
+					<!-- History -->
+					
+				</div> <!--end card-body-->
+
+			</div> <!--end card-->
+		</div> <!--end col-->
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header border-primary">
+
+					<center>
+						<h2>HISTORIA LICENSA</h2>
+						<h5> {{period}}</h5>
+					</center>
+				</div>
+				<div class="card-body">
+					
+					<table class="table table-md table-striped table-bordered" id="example2">
+						<thead>
+							<tr class="text-center">
+								<th>Nu.</th>
+								<th>Deskrisaun Licensa</th>
+								<th>Data Aplika</th>
+								<th>Tipu Licensa</th>
+								<th>Data Hahu</th>
+								<th>Data Remata</th>
+								<th>Loron</th>
+								<th>Status</th>
+								<th>File</th>
+								<th>Kria Husi</th>
+								<th class="text-center">#</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for obj in  leave %}
+							  <tr class="text-center">
+								<td>{{forloop.counter}}</td>
+								<td>{{obj.description}}</td>
+								<td>{{obj.date}}</td>
+								<td>{{obj.leave_type}}</td>
+								<td>{{obj.start_date|date:"d-F-Y"}}</td>
+								<td>{{obj.end_date|date:"d-F-Y"}}</td>
+								<td>{{obj.days}}</td>
+								<td>{% if obj.is_special %}
+								  <span class="badge bg-primary text-white">Special <i class="fa fa-warning"></i></span>
+								{% else %}
+								  <span class="badge bg-secondary text-white">Regular <i class="fa fa-warning"></i></span>
+								{% endif %}
+								</td>
+								<td>
+									{% if obj.file %}
+									  <a href="{{obj.file.url}}" target="_blank" class="btn btn-sm btn-info"> <i class="fa fa-file"></i> </a>
+									{% endif %}
+								</td>
+								<td>{{obj.user.employeeuser.employee}}</td>
+								<td>
+									{% if obj.is_create_by_hr and obj.is_lock == False and obj.is_send == False and obj.is_special == False %}
+									  	<a href="{% url 'leave-hr-send-process' obj.employee.hashed obj.hashed %}" class="btn btn-sm btn-primary">Manda <i class="fa fa-send"></i></a>
+									{% endif %}
+								</td>
+							  </tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div> <!--end row-->
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				pageLength: 13,
+				"ordering": false
+			});
+
+		} );
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example2').DataTable({
+				pageLength: 13,
+				"ordering": false
+			});
+
+		} );
+	</script>
+	<script>
+		var submitLink = document.getElementById('create-record');
+		submitLink.addEventListener('click', function(e) {
+		  e.preventDefault(); 
+		  submitLink.disabled = true;
+		  submitLink.innerHTML = 'Please wait...';
+	  
+		  var href = submitLink.href;
+		  setTimeout(function() {
+			window.location.href = href;
+		  }, 500); 
+		});
+	  </script>
+	  
+	  
+{% endblock %}
