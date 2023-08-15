@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+_version.py
+/build/
+/dist/
+/.python-version
+
+# Testing
+/.coverage
+.pytest_cache/
+
+# Docs
+/docs/_build/
+/docs/scanpydoc.*.rst
+
+# IDEs
+/.idea/

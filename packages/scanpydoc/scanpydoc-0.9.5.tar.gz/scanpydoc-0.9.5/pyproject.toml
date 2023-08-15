@@ -1,0 +1,89 @@
+[project]
+name = 'scanpydoc'
+dynamic = ['version']
+description = 'A series of Sphinx extensions to get maintainable numpydoc style documentation.'
+authors = [
+    { name = 'Philipp Angerer', email = 'phil.angerer@gmail.com' },
+]
+urls.Source = 'https://github.com/theislab/scanpydoc/'
+urls.Documentation = 'https://icb-scanpydoc.readthedocs-hosted.com/'
+readme = 'README.rst'
+license = 'GPL-3.0-or-later'
+classifiers = [
+    'Intended Audience :: Developers',
+    'Programming Language :: Python :: 3',
+    'Topic :: Documentation :: Sphinx',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Framework :: Sphinx :: Extension',
+]
+requires-python = '>=3.8.1'
+dependencies = [
+    'sphinx>=3.0',
+    'get-annotations; python_version < "3.10"',
+]
+
+[project.optional-dependencies]
+dev = [
+    'pre-commit',
+]
+test = [
+    'pytest',
+    'pytest-cov',
+]
+doc = [
+    'scanpydoc[typehints,theme]',
+    'sphinx',
+]
+typehints = ['sphinx-autodoc-typehints>=1.15.2']
+theme = [
+    'sphinx-book-theme>=1.0.1',
+    'docutils>=0.8,!=0.18.*,!=0.19.*',
+]
+
+[project.entry-points.'sphinx.html_themes']
+scanpydoc = 'scanpydoc.theme'
+
+[tool.ruff]
+select = [
+    'E', 'W', # Pycodestyle
+    'F', # Pyflakes
+    'I', # isort
+    'UP', # Pyupgrade
+    'RUF', # Ruff’s own rules
+]
+allowed-confusables = ['’', '×', 'l']
+ignore = [
+    'E741', # Ambiguous variable name
+]
+
+[tool.ruff.isort]
+lines-after-imports = 2
+known-first-party = ['scanpydoc']
+
+[tool.hatch.version]
+source = 'vcs'
+[tool.hatch.build.hooks.vcs]
+version-file = 'src/scanpydoc/_version.py'
+
+[tool.hatch.envs.docs]
+python = '3.11'
+features = ['doc']
+[tool.hatch.envs.docs.scripts]
+build = 'sphinx-build -M html docs docs/_build'
+
+[[tool.hatch.envs.test.matrix]]
+python = ['3.8', '3.9', '3.10', '3.11']
+[tool.hatch.envs.test]
+features = ['test', 'typehints']
+[tool.hatch.envs.test.scripts]
+run = 'pytest -vv {args}'
+
+[tool.pytest.ini_options]
+addopts = [
+    '--import-mode=importlib',
+    '-psphinx.testing.fixtures',
+]
+
+[build-system]
+requires = ['hatchling', 'hatch-vcs']
+build-backend = 'hatchling.build'
