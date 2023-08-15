@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: xputer
+Version: 0.2.0
+Summary: An XGBoost powered robust imputer
+Home-page: https://www.kazilab.se
+Author: Julhash Kazi
+Author-email: xputer@kazilab.se
+License: Apache-2.0
+Platform: any
+License-File: LICENSE
+Requires-Dist: IPython
+Requires-Dist: matplotlib
+Requires-Dist: nimfa
+Requires-Dist: optuna
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: seaborn
+Requires-Dist: torch
+Requires-Dist: tqdm
+Requires-Dist: xgboost
+Provides-Extra: gui
+Requires-Dist: PyQt5 ; extra == 'gui'
+
