@@ -1,0 +1,9 @@
+Gymnasium==0.29.0
+Pillow>=9.0.0
+selenium>=4.5.0
+numpy>=1.18.0
+farama-notifications>=0.0.1
+
+[testing]
+pytest>=7.0.0
+pytest-timeout>=2.1.0
