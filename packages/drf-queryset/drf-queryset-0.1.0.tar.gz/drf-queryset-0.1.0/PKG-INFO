@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: drf-queryset
+Version: 0.1.0
+Summary: DRF Queryset Mixin
+Home-page: https://github.com/hamzaijaz-dev/drf-queryset
+Author: Hamza Ijaz
+Author-email: chhamzaijaz@gmail.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.0
+Classifier: Framework :: Django :: 3.1
+Classifier: Framework :: Django :: 3.2
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Introduction
+=========================
+The DRF Queryset Mixin is a utility for optimizing database queries in Django REST Framework (DRF) viewsets. It provides a mixin called `QuerysetMixin` that allows you to easily optimize your queries by specifying deferred, selected related, and prefetched related fields.
+
+Installation
+------------
+pip install drf-queryset
+
+Usage
+-----
+Please follow the steps:
+
+1. Import the `QuerysetMixin` from `drf_queryset.mixins`.
+2. In your viewset class, inherit from `QuerysetMixin`.
+3. `only_fields`: List of fields to be only fetched in the query.
+4. `defer_fields`: List of fields to be deferred in the query.
+5. `select_related_fields`: List of fields to be select_related in the query.
+6. `prefetch_related_fields`: List of fields to be prefetch_related in the query.
+
+Note: These fields are optional, you can use them depending upon your requirements of queryset and structure of the model fields.
+
+Example
+-------
+Here's a basic example of how you can use this package in your django rest framework application:
+
+```
+from drf_queryset.mixins import QuerysetMixin
+from rest_framework.viewsets import ModelViewSet
+from .models import YourModel
+from .serializers import YourSerializer
+
+class MyViewSet(QuerysetMixin, ModelViewSet):
+    queryset = YourModel.objects.all()  # Replace with your queryset
+    serializer_class = YourSerializer  # Replace with your serializer
+
+    defer_fields = ['field1', 'field2']  # Add your defer fields here
+    only_fields = ['field3', 'field4']  # Add your only fields here
+    select_related_fields = ['related_field1', 'related_field2']  # Add your select_related fields here
+    prefetch_related_fields = ['m2m_field', 'reverse_fk_field']  # Add your prefetch_related fields here
+```
+
+License
+-------
+MIT License
