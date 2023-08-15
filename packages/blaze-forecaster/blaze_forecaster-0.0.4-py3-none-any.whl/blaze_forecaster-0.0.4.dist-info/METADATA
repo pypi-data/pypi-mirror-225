@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: blaze-forecaster
+Version: 0.0.4
+Summary: Forecaster that combines the strengths of SARIMA and Prophet.
+Author: Ysabel Chen
+Keywords: python,forecaster
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+
+The package employs a combination of time series models: SARIMA and Prophet. Required installations to run the package: Stats models, Prophet.
