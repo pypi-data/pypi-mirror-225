@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "sapientml-core"
+version = "0.1.4"
+description = "A SapientML plugin of SapientMLGenerator"
+authors = ["Kosaku Kimura <kimura.kosaku@fujitsu.com>"]
+license = "Apache-2.0"
+include = ["core/**/*.py", "templates/**/*.py.jinja"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+sapientml = "^0.1.4"
+sapientml-loaddata = "^0.1.2"
+sapientml-preprocess = "^0.1.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-xdist = "^3.3.1"
+black = "^23.7.0"
+flake8 = "^6.1.0"
+isort = "^5.12.0"
+pysen = "^0.10.5"
+pre-commit = "^3.3.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."pipeline_generator"]
+sapientml_core = "sapientml_core:SapientMLGenerator"
+
+[tool.pysen]
+version = "0.1.4"
+
+[tool.pysen-cli]
+settings_dir = ".pysen"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = false
+line_length = 120
+py_version = "0.1.4"
+
+[tool.pysen.lint.source]
+includes = ["sapientml/", "tests/"]
+[pytest]
+addopts = "-p no:cacheprovider -s"
