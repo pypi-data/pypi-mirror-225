@@ -1,0 +1,24 @@
+[project]
+name = "libCAF"
+version = "0.1.0-beta"
+description="Parser and Builder classes related to Apple's Core Audio Format (.caf)."
+authors = [
+  { name="MatrixEditor", email="not@supported.com" },
+]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta"
+]
+
+[project.urls]
+homepage = "https://github.com/JustHexData/CAF"
+repository = "https://github.com/JustHexData/CAF"
+documentation = "https://justhexdata.github.io/CAF"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["libcaf*"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

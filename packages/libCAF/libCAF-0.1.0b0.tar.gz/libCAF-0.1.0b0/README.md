@@ -1,0 +1,76 @@
+# Core Audio Format Parser
+
+[![PyPI](https://img.shields.io/pypi/v/libCAF.svg)][pypi status]
+[![Status](https://img.shields.io/pypi/status/libCAF.svg)][pypi status]
+[![Python Version](https://img.shields.io/pypi/pyversions/libCAF)][pypi status]
+[![License](https://img.shields.io/pypi/l/libCAF)][license]
+
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
+[![Build and Deploy Sphinx Documentation](https://github.com/JustHexData/CAF/actions/workflows/python-sphinx.yml/badge.svg)](https://justhexdata.github.io/CAF)
+
+
+[pypi status]: https://pypi.org/project/libCAF/
+[black]: https://github.com/psf/black
+
+Parser and Builder classes related to Apple's Core Audio Format (.caf).
+
+_**NOTE: This is a work in progress**_
+
+## Core Audio Format
+
+> _"Apple’s Core Audio Format (CAF) is a file format for storing and transporting digital audio data. It simplifies the management and manipulation of many types of audio data without the file-size limitations of other audio file formats."_
+
+* [MusicAudio/Reference/CAFSpec](https://developer.apple.com/library/archive/documentation/MusicAudio/Reference/CAFSpec/CAF_intro/CAF_intro.html)
+
+## Installation
+
+You can install _libCAF_ via [pip] from [PyPI]:
+
+```console
+$ pip install libcaf
+```
+
+and to build the docs you need `make` to be installed:
+```console
+$ pip install -r docs/requirements.txt
+$ cd docs && make html
+```
+
+## Usage
+
+The python package provided within this repository supports parsing ``caf`` archives into an object model. More detailed information about the implementation and fields of each class, please refer to the documentation available on [Github-Pages].
+
+### Parsing CAF Files
+
+```python
+>>> from libcaf import *
+>>> data = caf.parse_file("file.caf")
+>>> data
+caf_t(m_header=caf__header_t(m_file_type=b'caff', m_file_version=1, m_file_flags=0), ...
+```
+
+## Contributing
+
+Contributions are very welcome.
+To learn more, see the [Contributor Guide].
+
+## License
+
+Distributed under the terms of the [MIT license][license],
+_Core Audio Format Parser_ is free and open source software.
+
+## Issues
+
+If you encounter any problems,
+please [file an issue] along with a detailed description.
+
+[pypi]: https://pypi.org/
+[file an issue]: https://github.com/JustHexData/CAF/issues
+[pip]: https://pip.pypa.io/
+
+
+<!-- github-only -->
+
+[Github-Pages]: https://justhexdata.github.io/CAF
+[license]: https://github.com/JustHexData/CAF/blob/main/LICENSE
+[contributor guide]: https://github.com/JustHexData/blob/main/CONTRIBUTING.md
