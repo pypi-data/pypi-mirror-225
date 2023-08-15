@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: small_calc
+Version: 0.0.1
+Summary: Testing the creation of packages in Pypi with a small calculator package
+Home-page: https://github.com/on-ferreira/simple-package-test
+Author: Orlando Nascimento
+Author-email: on_ferreira@id.uff.br
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# package_name
+
+Description. 
+The package small_calc is used to:
+
+	- Sum
+	- Subtraction
+	- Multiplication
+	- Division
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install small_calc
+
+```bash
+pip install small_calc
+```
+
+## Usage
+
+```python
+from small_calc import small_calc
+small_calc.my_function()
+```
+
+## Author
+Orlando Nascimento
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
