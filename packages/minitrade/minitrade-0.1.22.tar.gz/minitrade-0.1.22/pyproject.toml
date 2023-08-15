@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "minitrade"
+version = "0.1.22"
+description = "A personal automated trading system"
+authors = ["Wei Wu <dodid@outlook.com>"]
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/dodid/minitrade"
+homepage = "https://dodid.github.io/minitrade/"
+keywords = ["finance", "investing", "trading", "algorithmic-trading", "backtesting", "backtesting-frameworks", "interactive-brokers"]
+
+
+[tool.poetry.dependencies]
+python = "~3.10"
+streamlit = "^1.15.2"
+pandas = "^1.5.2"
+numpy = "^1.23.5"
+apscheduler = "^3.9.1.post1"
+watchdog = "^2.2.0"
+pandas-ta = "^0.3.14b0"
+bokeh = "^2.4.3"
+yfinance = "^0.1.93"
+matplotlib = "^3.6.2"
+seaborn = "^0.12.1"
+tqdm = "^4.64.1"
+pydantic = "^1.10.2"
+nanoid = "^2.0.0"
+fastapi = {extras = ["all"], version = "^0.92.0"}
+requests = "^2.28.1"
+selenium = "^4.7.2"
+psutil = "^5.9.4"
+pyyaml = "^6.0"
+pypika = "^0.48.9"
+click = "^8.1.3"
+mailjet-rest = "^1.3.4"
+scikit-learn = "^1.2.1"
+scipy = "^1.10.1"
+minitrade-scikit-optimize = "^0.9.1"
+python-telegram-bot = {extras = ["socks"], version = "^20.1"}
+akshare = "^1.9.21"
+
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.0"
+pytest = "^7.2.0"
+jupyter = "^1.0.0"
+notebook = "^6.5.2"
+vprof = "^0.38"
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.20.0"}
+mkdocs-material = "^8.5.11"
+mkdocs-click = "^0.8.0"
+mkdocs-jupyter = "^0.22.0"
+pytest-cov = "^4.0.0"
+jupyterlab = "^3.6.3"
+
+
+[tool.poetry.scripts]
+minitrade = 'minitrade.cli:mtcli'
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
