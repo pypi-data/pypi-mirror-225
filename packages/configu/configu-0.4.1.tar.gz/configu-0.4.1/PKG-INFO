@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: configu
+Version: 0.4.1
+Summary: Configu Python SDK
+Home-page: https://configu.com/
+License: Apache-2.0
+Keywords: cfgu,configu,configu-sdk,configu-python-sdk
+Author: Configu
+Author-email: info@configu.com
+Maintainer: Ron Roditi
+Maintainer-email: ron@configu.com
+Requires-Python: >=3.9,<3.12
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Requires-Dist: azure-identity (>=1.13.0,<2.0.0)
+Requires-Dist: azure-keyvault-secrets (>=4.7.0,<5.0.0)
+Requires-Dist: boto3 (>=1.26.155,<2.0.0)
+Requires-Dist: boto3-stubs[secretsmanager] (>=1.26.155,<2.0.0)
+Requires-Dist: chevron (>=0.14.0,<0.15.0)
+Requires-Dist: google-cloud-secret-manager (>=2.16.1,<3.0.0)
+Requires-Dist: kubernetes (>=26.1.0,<27.0.0)
+Requires-Dist: py-validator (>=0.17.0,<0.18.0)
+Requires-Dist: requests (>=2.28.1,<3.0.0)
+Project-URL: Documentation, https://configu.com/docs/
+Project-URL: Repository, https://github.com/configu/configu
+Description-Content-Type: text/markdown
+
+# @configu/py
+
+Configu SDK for Python
+
+## Install
+
+To install the this package, simply type install [configu](https://pypi.org/project/configu/) using pip:
+
+```bash
+pip install configu
+```
+
+## Usage
+
+```py
+import os
+
+import configu
+
+config_store = configu.InMemoryConfigStore()
+test_set = configu.ConfigSet("test")
+schema = configu.ConfigSchema("get-started.cfgu.json")
+
+configu.UpsertCommand(
+  store=config_store,
+  set=test_set,
+  schema=schema,
+  configs={
+    "GREETING": "hello",
+    "SUBJECT": "configu python sdk",
+  },
+).run()
+
+data = configu.EvalCommand(
+  store=config_store, set=test_set, schema=schema
+).run()
+
+configuration_data = configu.ExportCommand(data=data).run()
+
+print(os.environ["MESSAGE"])
+# hey, configu python sdk!
+print(configuration_data)
+# {'GREETING': 'hey', 'SUBJECT': 'configu python sdk', 'MESSAGE': 'hey, configu python sdk!'}
+```
+
+## Reference
+
+See [oss.configu.com/py](https://oss.configu.com/py/configu.html)
+
+## Contributing
+
+### Requirements
+
+1. Follow the [Development](https://github.com/configu/configu/blob/main/CONTRIBUTING.md#development) section from the `CONTRIBUTING.md`.
+2. Install [pyenv](https://github.com/pyenv/pyenv) | [Homebrew](https://formulae.brew.sh/formula/pyenv)
+3. Install [poetry](https://python-poetry.org/) | [Homebrew](https://formulae.brew.sh/formula/poetry)
+
+### Setup
+
+Run these commands in order:
+
+```bash
+cd py
+```
+
+```bash
+pyenv install
+```
+
+```bash
+pyenv local 3.9.16
+```
+
+```bash
+poetry env use $(pyenv which python)
+```
+
+```bash
+poetry install
+```
+
+### Contribute
+
+Follow the [Sending a Pull Request](https://github.com/configu/configu/blob/main/CONTRIBUTING.md#sending-a-pull-request) section from the `CONTRIBUTING.md`.
+
