@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyImageJGui"
+version = '0.0.21'
+description = "Python for ImageJ GUI"
+authors = [{name = "sdb", email = "sdb20200101@gmail.com"}]
+readme = "README.md"
+keywords = ["imagej", "GUI", "PySide6"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+
+requires-python = ">=3.8"
+dependencies = [
+    "PySide6",
+    "shapely",
+    "opencv-python",
+    "numpy",
+    "matplotlib",
+    "qtawesome",
+]
+
+[project.urls]
+homepage = "https://github.com/aghb123/pyImageJGui"
