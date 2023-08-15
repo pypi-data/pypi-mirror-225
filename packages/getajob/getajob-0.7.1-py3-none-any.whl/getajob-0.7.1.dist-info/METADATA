@@ -1,0 +1,108 @@
+Metadata-Version: 2.1
+Name: getajob
+Version: 0.7.1
+Summary: 
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: aiocron (>=1.8,<2.0)
+Requires-Dist: aiohttp (==3.8.4)
+Requires-Dist: aiosignal (==1.3.1)
+Requires-Dist: algoliasearch (==3.0.0)
+Requires-Dist: anyio (==3.7.0)
+Requires-Dist: async-timeout (==4.0.2)
+Requires-Dist: attrs (==23.1.0)
+Requires-Dist: cachecontrol (==0.12.11)
+Requires-Dist: cachetools (==5.3.1)
+Requires-Dist: certifi (==2023.5.7)
+Requires-Dist: cffi (==1.15.1)
+Requires-Dist: charset-normalizer (==3.1.0)
+Requires-Dist: colorama (==0.4.6)
+Requires-Dist: cryptography (==40.0.2)
+Requires-Dist: deprecated (==1.2.14)
+Requires-Dist: exceptiongroup (==1.1.1)
+Requires-Dist: fastapi (==0.95.2)
+Requires-Dist: firebase (==4.0.1)
+Requires-Dist: firebase-admin (==6.1.0)
+Requires-Dist: frozenlist (==1.3.3)
+Requires-Dist: google-api-core (==2.11.0)
+Requires-Dist: google-api-python-client (==2.88.0)
+Requires-Dist: google-auth (==2.19.0)
+Requires-Dist: google-auth-httplib2 (==0.1.0)
+Requires-Dist: google-cloud-core (==2.3.2)
+Requires-Dist: google-cloud-firestore (==2.11.1)
+Requires-Dist: google-cloud-storage (==2.9.0)
+Requires-Dist: google-crc32c (==1.5.0)
+Requires-Dist: google-resumable-media (==2.5.0)
+Requires-Dist: googleapis-common-protos (==1.59.0)
+Requires-Dist: grpcio (==1.54.2)
+Requires-Dist: grpcio-status (==1.54.2)
+Requires-Dist: h11 (==0.14.0)
+Requires-Dist: httpcore (==0.17.2)
+Requires-Dist: httplib2 (==0.22.0)
+Requires-Dist: httpx (==0.24.1)
+Requires-Dist: idna (==3.4)
+Requires-Dist: influxdb3-python (>=0.2.1,<0.3.0)
+Requires-Dist: kafka-python (==2.0.2)
+Requires-Dist: mock-firestore (>=0.11.0,<0.12.0)
+Requires-Dist: msgpack (==1.0.5)
+Requires-Dist: multidict (==6.0.4)
+Requires-Dist: openai (==0.27.7)
+Requires-Dist: pdfplumber (>=0.10.2,<0.11.0)
+Requires-Dist: proto-plus (==1.22.2)
+Requires-Dist: protobuf (==4.23.2)
+Requires-Dist: pyasn1 (==0.5.0)
+Requires-Dist: pyasn1-modules (==0.3.0)
+Requires-Dist: pycparser (==2.21)
+Requires-Dist: pydantic (==1.10.8)
+Requires-Dist: pyjwt (==2.7.0)
+Requires-Dist: pyparsing (==3.0.9)
+Requires-Dist: python-dateutil (==2.8.2)
+Requires-Dist: python-dotenv (==1.0.0)
+Requires-Dist: redis (>=4.6.0,<5.0.0)
+Requires-Dist: requests (==2.31.0)
+Requires-Dist: rsa (==4.9)
+Requires-Dist: sendgrid (==6.10.0)
+Requires-Dist: sentry-sdk[fastapi] (>=1.25.0,<2.0.0)
+Requires-Dist: six (==1.16.0)
+Requires-Dist: sniffio (==1.3.0)
+Requires-Dist: svix (==0.85.1)
+Requires-Dist: tqdm (==4.65.0)
+Requires-Dist: types-deprecated (==1.2.9.2)
+Requires-Dist: types-python-dateutil (==2.8.19.13)
+Requires-Dist: typing-extensions (==4.6.2)
+Requires-Dist: uritemplate (==4.1.1)
+Requires-Dist: urllib3 (==1.26.16)
+Requires-Dist: wrapt (==1.15.0)
+Requires-Dist: yarl (==1.9.2)
+Description-Content-Type: text/markdown
+
+# shared
+Stores All Business Logic for the Angies Job Board Backend
+
+
+
+Patterns of this repository
+
+
+You'll see some common file names in each of the contexts in this repo
+
+The contexts may be embedded into each other if they are expected to be stored as children
+For instance, you'll find the Resume context under a user because it is a direct relationship
+
+BUT, you'll find the Application context at the "Parent" level because it is a 
+shared entity between a user and a company/job.
+
+
+Each context will have files matching this pattern, some may have all of these and 
+others may only have a portion of these files depending on what is needed
+
+models
+enumerations
+search
+repository
+unit_of_work
+async_service
+
