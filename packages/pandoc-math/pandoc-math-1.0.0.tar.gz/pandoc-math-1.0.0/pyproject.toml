@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+#py-modules = ["pandocmath"]
+package-dir = {"" = "src"}
+
+[project]
+name = "pandoc-math"
+version = "1.0.0"
+authors = [
+  { name="Gavin McWhinnie", email="gmcwhinn@ed.ac.uk" },
+]
+license = {file = "LICENSE.txt"}
+description = "A pandoc filter for converting LaTeX to html for mathematics teaching"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "panflute >=2.3.0",
+  "pylatexenc >= 2.10"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+"Homepage" = "https://github.com/GavinMcWhinnie/pandoc-math"
+"Bug Tracker" = "https://github.com/GavinMcWhinnie/pandoc-math/issues"
+
+[project.scripts]
+pandoc-math = "pandocmath.pandocmath:main"
