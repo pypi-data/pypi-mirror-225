@@ -1,0 +1,57 @@
+{
+    "hostname": "MyHost",
+
+    "notify_methods":
+    {
+        "http_post":
+        {
+            "active":       false,
+            "webhook_url":  ""
+        },
+
+        "mail":
+        {
+            "active":   false,
+            "host":     "mail.example.com",
+            "port":     465,
+            "starttls": false,
+            "user":     "foo@example.com",
+            "password": "",
+            "mail_from": "foo@example.com",
+            "mail_to":   "bar@example.com"
+        }
+    },
+
+    "tasks_include_dirs": [ "/home/myuser/mystasks", "/home/myuser/myothertasks"],
+
+    "tasks":
+    [
+        {
+            "name":                "Query hostname",
+            "cmd":                 "hostname",
+            "args":                [""],
+            "cwd":                 ".",
+            "expected_return_val": [0],
+            "tags":                ["tag1", "tag2"],
+            "timeout_s":           5
+        },
+        {
+            "name":                "Free disk space",
+            "cmd":                 "df",
+            "args":                ["-h", "--exclude", "tmpfs"],
+            "cwd":                 ".",
+            "expected_return_val": [0],
+            "force_notify":        false,
+            "tags":                [ "informational" ]
+        },
+        {
+            "name":                "System uptime",
+            "cmd":                 "uptime",
+            "args":                [],
+            "cwd":                 ".",
+            "expected_return_val": [0, 127],
+            "force_notify":        false,
+            "tags":                [ "informational" ]
+        }
+    ]
+}

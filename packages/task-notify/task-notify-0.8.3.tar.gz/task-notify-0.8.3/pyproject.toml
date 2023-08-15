@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "task-notify"
+description = "Run tasks and send notifications if they fail."
+authors = [
+    {name = "Christoph Stein" }
+]
+requires-python = ">=3.9"
+version = "0.8.3"
+#dependencies = [
+#    "requests",
+#    "urllib3",
+#]
+keywords = ["Tasks", "Email", "Notifications"]
+readme = "README.md"
+#license = {file = "LICENSE.txt"}
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console"
+]
+
+[project.scripts]
+tasknotify = "tasknotify.main:run_program"
+
+[project.urls]
+homepage = "https://gitlab.com/s7one/task-notify"
+documentation = "https://gitlab.com/s7one/task-notify"
+repository = "https://gitlab.com/s7one/task-notify"
