@@ -1,0 +1,41 @@
+study_prefix = "core"
+
+[table_builder_config]
+file_names = [
+    "builder_condition_codeableconcept.py",
+    "builder_encounter_coding.py",
+    "builder_core_medication.py",
+    "builder_patient_extension.py",
+]
+
+[sql_config]
+file_names = [
+    "version.sql",
+    "setup.sql",
+    "fhir_define.sql",
+    "patient.sql",
+    "encounter.sql",
+    "encounter_type.sql",
+    "documentreference.sql",
+    "condition.sql",
+    "observation.sql",
+    "observation_lab.sql",
+    "observation_vital_signs.sql",
+    "medication_request.sql",
+    "study_period.sql",
+    "count_core.sql"
+]
+
+[export_config]
+export_list = [
+    "core__count_patient",
+    "core__count_encounter_month",
+    "core__count_encounter_type",
+    "core__count_encounter_type_month",
+    "core__count_documentreference_month",
+    "core__count_observation_lab_month",
+    "core__count_condition_month",
+    "core__count_medicationrequest_month",
+    "core__meta_date",
+    "core__meta_version",
+]
