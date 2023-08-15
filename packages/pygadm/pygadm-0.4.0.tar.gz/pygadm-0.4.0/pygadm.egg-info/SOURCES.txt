@@ -1,0 +1,14 @@
+LICENSE
+README.rst
+pyproject.toml
+pygadm/__init__.py
+pygadm.egg-info/PKG-INFO
+pygadm.egg-info/SOURCES.txt
+pygadm.egg-info/dependency_links.txt
+pygadm.egg-info/requires.txt
+pygadm.egg-info/top_level.txt
+pygadm/data/gadm_continent.json
+pygadm/data/gadm_database.parquet
+tests/test_continent.py
+tests/test_get_items.py
+tests/test_get_names.py
