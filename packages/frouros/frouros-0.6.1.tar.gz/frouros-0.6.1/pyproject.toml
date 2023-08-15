@@ -1,0 +1,74 @@
+[project]
+name = "frouros"
+version = "0.6.1"
+description = "An open-source Python library for drift detection in machine learning systems"
+authors = [
+    {name = "Jaime Céspedes Sisniega", email = "cespedes@ifca.unican.es"}
+]
+maintainers = [
+    {name = "Jaime Céspedes Sisniega", email = "cespedes@ifca.unican.es"}
+]
+readme = "README.md"
+keywords = [
+    "drift-detection",
+    "concept-drift",
+    "data-drift",
+    "machine-learning",
+    "data-science",
+    "machine-learning-operations",
+    "machine-learning-systems",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "matplotlib>=3.6.0,<3.8",
+    "numpy>=1.24.0,<1.26",
+    "requests>=2.31.0,<2.32",
+    "scipy>=1.10.0,<1.11",
+    "tqdm>=4.65,<5",
+]
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=5.3.0,<7.2",
+    "sphinx-book-theme>=1.0.0,<1.1",
+    "sphinxcontrib-bibtex>=2.5.0,<2.6",
+    "myst-parser>=0.18.0,<2.1",
+    "myst-nb>=0.17.0,<0.18",
+]
+notebooks = [
+    "scikit-learn>=1.2.0,<1.4",
+    "torch>=1.13.0,<2.1",
+    "torchvision>=0.14.0,<0.16",
+    "ipywidgets>=8.0.0,<8.2",
+]
+
+[project.urls]
+homepage = "https://frouros.readthedocs.io"
+repository = "https://github.com/IFCA/frouros"
+documentation = "https://frouros.readthedocs.io"
+download = "https://pypi.org/project/frouros/"
+
+[build-system]
+requires = [
+    "setuptools>=60.10,<61.0",
+    "wheel>=0.37.1<0.38",
+    "toml>=0.10.2,<0.11",
+    "build>=0.7.0,<0.8",
+]
+build-backend = "setuptools.build_meta"
