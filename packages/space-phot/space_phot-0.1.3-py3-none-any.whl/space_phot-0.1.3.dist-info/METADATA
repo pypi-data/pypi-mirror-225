@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: space-phot
+Version: 0.1.3
+Author: Justin Pierel
+Author-email: jpierel@stsci.edu
+License: BSD
+Requires-Dist: numpy
+Requires-Dist: astropy
+Requires-Dist: jwst
+Requires-Dist: sncosmo
+Requires-Dist: webbpsf
+Requires-Dist: corner
+Requires-Dist: nestle
+Requires-Dist: stsci.skypac
+Requires-Dist: photutils
+Requires-Dist: pytest
+Requires-Dist: drizzlepac
+
