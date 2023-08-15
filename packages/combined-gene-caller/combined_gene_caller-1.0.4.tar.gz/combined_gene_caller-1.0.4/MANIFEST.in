@@ -1,0 +1,17 @@
+graft docs
+graft combined_gene_caller
+
+include .coveragerc
+include .editorconfig
+include .github/workflows/github-actions.yml
+include .pre-commit-config.yaml
+include pytest.ini
+
+include AUTHORS.md
+include CHANGELOG.md
+include LICENSE
+include README.md
+
+exclude tests
+
+global-exclude *.py[cod] __pycache__/* *.so *.dylib
