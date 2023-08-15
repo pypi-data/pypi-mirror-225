@@ -1,0 +1,28 @@
+[project]
+name = "pyo3-branchwater"
+description = "fast search and gather extensions for sourmash"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+[build-system]
+requires = ["maturin>=1.1.0,<2"]
+build-backend = "maturin"
+
+[project.scripts]
+"pyo3_branchwater" = "pyo3_branchwater.__main__:main"
+
+[project.entry-points."sourmash.cli_script"]
+manysearch = "pyo3_branchwater.sourmash_plugin:Branchwater_Manysearch"
+fastgather = "pyo3_branchwater.sourmash_plugin:Branchwater_Fastgather"
+fastmultigather = "pyo3_branchwater.sourmash_plugin:Branchwater_Fastmultigather"
+
+[tool.maturin]
+python-source = "python"
+
+[metadata]
+license = { text = "BSD 3-Clause License" }
