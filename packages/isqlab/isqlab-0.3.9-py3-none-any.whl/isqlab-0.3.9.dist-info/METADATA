@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: isqlab
+Version: 0.3.9
+Summary: application modules for isq
+Author: Yusheng Yang
+Author-email: yangys@arclightquantum.com
+License: MIT
+Platform: python 3.8+
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: isqopen
+
+Isqlab is a Python library for isQ.
+
+## Key Features
+
+- *isQ backend.*
+
+- *Quantum Machine Learning*. Connect to quantum device using **PyTorch**.
+
+- *Gradient support*.
+
+- *Quantum chemistry*.
+
+## Installation
+
+Isqlab requires Python version 3.8 and above. Installation of isqlab can be done using:
+
+```console
+pip install isqlab
+```
+
+## Getting started
+
+See examples.
+
+## Authors
+
+Yusheng Yang
+
+## License
+
+Isqlab is **free** and **open source**, released under the MIT License.
