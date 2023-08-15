@@ -1,0 +1,6 @@
+[console_scripts]
+RAPID = RAPID.Impressionist.runRAPIDzarr:run_rapid
+RAPIDD = RAPID.util.denoise:run_denoise
+RAPIDG = RAPID.GUI.RAPIDGUI:run_rapid_gui
+RAPIDO = RAPID.pointillist.predictobject:RAPIDObject
+
