@@ -1,0 +1,35 @@
+[project]
+name = "ScanDocs"
+description = "Automatically generate documentation for Python projects"
+readme = "README.md"
+version = "0.1.2"
+authors = [
+    { name = "Kieran Lock", email = "kieran.lock@outlook.com" }
+]
+keywords = ["python", "documentation", "automation", "automatic-documentation", "sveltekit"]
+classifiers = [
+    "Development Status :: 3 - Alpha", 
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)", 
+    "Programming Language :: Python :: 3.8", 
+    "Intended Audience :: Developers"
+]
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+dependencies = [
+    "docstring-parser==0.15"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+GitHub = "https://github.com/Kieran-Lock/ScanDocs"
+Documentation = "https://scandocs-documentation.vercel.app/"
+License = "https://github.com/Kieran-Lock/ScanDocs/blob/main/LICENSE"
+
+[tool.setuptools.packages.find]
+where = ["scandocs"]
+
+[tool.setuptools.package-data]
+"*" = ["**/*"]
