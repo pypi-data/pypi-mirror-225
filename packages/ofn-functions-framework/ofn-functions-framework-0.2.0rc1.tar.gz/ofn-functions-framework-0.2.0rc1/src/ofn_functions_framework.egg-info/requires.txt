@@ -1,0 +1,12 @@
+grpcio==1.54.2
+flask<3.0,>=1.0
+click<9.0,>=7.0
+uvicorn>=0.22.0
+cloudevents<2.0.0,>=1.2.0
+dapr>=1.10.0
+aiohttp==3.8.5
+dapr-ext-grpc>=1.10.0
+dapr-ext-fastapi>=1.10.0
+
+[:platform_system != "Windows"]
+gunicorn<21.0,>=19.2.0
