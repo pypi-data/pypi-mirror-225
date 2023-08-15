@@ -1,0 +1,130 @@
+Metadata-Version: 2.1
+Name: lassen
+Version: 0.2.13
+Summary: Common webapp scaffolding.
+Author: Pierce Freeman
+Author-email: pierce@freeman.vc
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Provides-Extra: database
+Provides-Extra: datasets
+Requires-Dist: Jinja2 (>=3.1.2,<4.0.0)
+Requires-Dist: SQLAlchemy (>=2.0.15,<3.0.0); extra == "database"
+Requires-Dist: alembic (>=1.11.1,<2.0.0)
+Requires-Dist: alembic-autogenerate-enums (>=0.1.1,<0.2.0)
+Requires-Dist: click (>=8.1.3,<9.0.0)
+Requires-Dist: datasets (>=2.13.0,<3.0.0); extra == "datasets"
+Requires-Dist: fastapi (>=0.99.0,<0.100.0)
+Requires-Dist: inflection (>=0.5.1,<0.6.0)
+Requires-Dist: numpy (>=1.24.3,<2.0.0); extra == "datasets"
+Requires-Dist: pandas (>=2.0.2,<3.0.0); extra == "datasets"
+Requires-Dist: psycopg2 (>=2.9.6,<3.0.0); extra == "database"
+Requires-Dist: pydantic (>=1.10.2,<2.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+# lassen
+
+**40.4881° N, 121.5049° W**
+
+Core utilities for MonkeySee web applications.
+
+Not guaranteed to be backwards compatible, use at your own risk.
+
+## Structure
+
+**Stores:** Each datamodel is expected to have its own store. Base classes that provide standard logic are provided by `lassen.store`
+- StoreBase: Base class for all stores
+- StoreFilterMixin: Mixin for filtering stores that specify an additional schema to use to filter
+
+**Schemas:** Each datamodel should define a Model class (SQLAlchemy base object) and a series of Schema objects (Pydantic) that allow the Store to serialize the models. These schemas are also often used for direct CRUD referencing in the API layer.
+
+We use a base `Stub` file to generate these schemas from a centralized definition. When defining generators you should use a path that can be fully managed by lassen, since we will remove and regenerate these files on each run.
+
+```python
+STORE_GENERATOR = StoreGenerator("models/auto")
+SCHEMA_GENERATOR = SchemaGenerator("schemas/auto")
+```
+
+```bash
+poetry run generate-lassen
+```
+
+**Datasets:** Optional huggingface `datasets` processing utilities. Only installed under the `lassen[datasets]` extra. These provide support for:
+
+- batch_to_examples: Iterate and manipulate each example separately, versus over nested key-based lists.
+- examples_to_batch: Takes the output of a typehinted element-wise batch and converts into the format needed for dataset insertion. If datasets can't automatically interpret the type of the fields, also provide automatic casting based on the typehinted dataclass.
+
+```python
+from lassen.datasets import batch_to_examples, examples_to_batch
+import pandas as pd
+
+@dataclass
+class BatchInsertion:
+    texts: list[str]
+
+def batch_process(examples):
+    new_examples : list[BatchInsertion] = []
+    for example in batch_to_examples(examples):
+        new_examples.append(
+            BatchInsertion(
+                example["raw_text"].split()
+            )
+        )
+
+    # datasets won't be able to typehint a dataset that starts with an empty example, so we use our explicit schema to cast the data
+    return examples_to_batch(new_examples, BatchInsertion, explicit_schema=True)
+
+df = pd.DataFrame(
+    [
+        {"raw_text": ""},
+        {"raw_text": "This is a test"},
+        {"raw_text": "This is another test"},
+    ]
+)
+
+dataset = Dataset.from_pandas(df)
+
+dataset = dataset.map(
+    batch_process,
+    batched=True,
+    batch_size=1,
+    num_proc=1,
+    remove_columns=dataset.column_names,
+)
+```
+
+**Migrations:** Lassen includes a templated alembic.init and env.py file. Client applications just need to have a `migrations` folder within their project root. After this you can swap `poetry run alembic` with `poetry run migrate`.
+
+```sh
+poetry run migrate upgrade head
+```
+
+**Settings:** Application settings should subclass our core settings. This provides a standard way to load settings from environment variables and includes common database keys.
+
+```python
+from lassen.core.config import CoreSettings, register_settings
+
+@register_settings
+class ClientSettings(CoreSettings):
+    pass
+```
+
+**Schemas:** For helper schemas when returning results via API, see [lassen.schema](./lassen/schema.py).
+
+## Development
+
+```sh
+poetry install --extras "datasets"
+
+createuser lassen
+createdb -O lassen lassen_db
+createdb -O lassen lassen_test_db
+```
+
+Unit Tests:
+
+```sh
+poetry run pytest
+```
+
