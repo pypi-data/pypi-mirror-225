@@ -1,0 +1,10 @@
+click
+httpx
+sqlite-utils>=3.28
+openai
+tiktoken
+
+[test]
+pytest
+pytest-httpx
+pytest-mock
