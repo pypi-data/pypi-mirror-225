@@ -1,0 +1,61 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.commitizen]
+version = "4.0.0"
+version_files = ["pyproject.toml:^version", "pytest_cache_assert/__init__.py:^__version"]
+
+[tool.poetry]
+authors = ["Kyle King <dev.act.kyle@gmail.com>"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Pytest",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: Software Development :: Testing",
+] # https://pypi.org/classifiers/
+description = "Cache assertion data to simplify regression testing of complex serializable data"
+documentation = "https://pytest_cache_assert.kyleking.me"
+include = ["LICENSE"]
+keywords = []
+license = "MIT"
+maintainers = []
+name = "pytest_cache_assert"
+readme = "docs/README.md"
+repository = "https://github.com/kyleking/pytest_cache_assert"
+version = "4.0.0"
+
+[tool.poetry.dependencies]
+python = "^3.8.12"
+arrow = ">=1.2.3"
+corallium = ">=0.3.3"
+deepdiff6 = ">=6.2.0" # FYI: Only temporarily named deepdiff6 (was deepdiff)
+pytest = ">=6.0.0"
+
+[tool.poetry.group.dev.dependencies]
+botocore = ">=1.29.134"
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.6.3"}
+hypothesis = ">=6.75.3"
+moto = ">=3.0.0"
+pendulum = ">=2.1.2"
+pytest-benchmark = ">=4.0.0"
+pytest-flask = ">=1.2.0"
+
+[tool.poetry.plugins."pytest11"]
+# Register as a Pytest Plugin
+# Docs: https://docs.pytest.org/en/latest/how-to/writing_plugins.html#making-your-plugin-installable-by-others
+pytest_cache_assert = "pytest_cache_assert.plugin"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/kyleking/pytest_cache_assert/issues"
+"Changelog" = "https://github.com/kyleking/pytest_cache_assert/blob/main/docs/docs/CHANGELOG.md"
+
+[tool.pyright]
+include = ["pytest_cache_assert"]
+pythonVersion = "3.8"
