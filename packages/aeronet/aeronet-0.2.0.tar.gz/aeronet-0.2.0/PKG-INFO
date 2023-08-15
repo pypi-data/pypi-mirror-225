@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: aeronet
+Version: 0.2.0
+Summary: Deep learning with remote sensing data.
+Home-page: 
+Author: Geoalert
+Author-email: hello@geoalert.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Provides-Extra: raster
+Provides-Extra: vector
+Provides-Extra: convert
+Provides-Extra: all
+License-File: LICENSE
+
+Deep learning with remote sensing data.

@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+aeronet/__init__.py
+aeronet/__version__.py
+aeronet.egg-info/PKG-INFO
+aeronet.egg-info/SOURCES.txt
+aeronet.egg-info/dependency_links.txt
+aeronet.egg-info/requires.txt
+aeronet.egg-info/top_level.txt
+aeronet/converters/__init__.py
+aeronet/converters/split.py
+aeronet/dataset/__init__.py
+aeronet/dataset/coords.py
+aeronet/dataset/utils.py
+aeronet/dataset/io/__init__.py
