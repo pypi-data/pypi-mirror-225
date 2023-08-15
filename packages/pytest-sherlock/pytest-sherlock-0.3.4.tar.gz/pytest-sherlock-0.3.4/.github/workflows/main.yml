@@ -1,0 +1,94 @@
+name: CI
+
+on: [push]
+
+jobs:
+  Linters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+
+      - name: Black
+        run: black pytest_sherlock --check --diff
+
+      - name: Pylint
+        run: pylint pytest_sherlock
+
+      - name: Isort
+        run: isort pytest_sherlock --check
+
+  Tests:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        python-version: [ "3.7", "3.8", "3.10" ]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: "x64"
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements-dev.txt
+        pip install -e .
+
+    - name: Testing
+      run: pytest -lvv tests/ --ignore="tests/exmaple" --junitxml ./results.xml --cov-report xml --cov=pytest_sherlock
+
+  Tests-with-latest-pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -U pytest pytest-cov coverage
+          pip install -e .
+
+      - name: Testing
+        run: pytest -lvv tests/ --ignore="tests/exmaple" --junitxml ./results.xml --cov-report xml --cov=pytest_sherlock
+
+  Tests-with-master-pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -U git+https://github.com/pytest-dev/pytest.git
+          pip install -U pytest-cov coverage
+          pip install -e .
+
+      - name: Testing
+        run: pytest -lvv tests/ --ignore="tests/exmaple" --junitxml ./results.xml --cov-report xml --cov=pytest_sherlock
