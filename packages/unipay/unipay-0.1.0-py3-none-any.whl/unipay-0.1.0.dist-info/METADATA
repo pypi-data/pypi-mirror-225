@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: unipay
+Version: 0.1.0
+Author-Email: djkcyl <cyl@cyllive.cn>
+License: MIT
+Requires-Python: >=3.10
+Requires-Dist: fastapi>=0.101.1
+Requires-Dist: qrcode[pil]>=7.4.2
+Requires-Dist: peewee>=3.16.2
+Requires-Dist: uvicorn>=0.23.2
+Requires-Dist: jinja2>=3.1.2
+Description-Content-Type: text/markdown
+
+# unipay
