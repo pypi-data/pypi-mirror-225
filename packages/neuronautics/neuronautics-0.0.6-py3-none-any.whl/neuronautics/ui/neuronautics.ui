@@ -1,0 +1,2362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>895</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Neuronautics</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources/resources.qrc">
+    <normaloff>:/resources/logo.svg</normaloff>:/resources/logo.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+QPushButton {
+	text-align: left;
+  	padding: 10px 2px;
+   border: 2px;
+   text-decoration: none;
+}
+
+#nav QPushButton:hover{
+  background: rgb(249, 240, 107)
+}
+
+QPushButton:pressed {
+  border-radius: 5px;
+  border: 1px solid #3291a8; 
+
+}
+
+QComboBox {
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 1px 18px 1px 3px;
+                min-width: 6em;
+            }
+
+            QComboBox::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: top right;
+                width: 20px;
+                border-left-width: 1px;
+                border-left-color: darkgray;
+                border-left-style: solid;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+
+            QComboBox::down-arrow {
+                image: url(:/resources/icons/chevron-down.svg);
+
+            }
+
+QTableWidget {
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  gridline-color: #c0c0c0;
+  selection-background-color: #a6c9e2;
+  selection-color: #000000;
+}
+
+QTableWidget::item {
+  padding: 5px;
+}
+
+QTableWidget::item:selected {
+  background-color: #a6c9e2;
+}
+
+QHeaderView::section {
+  background-color: #e0e0e0;
+  color: #000000;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+QTableWidget QScrollBar:vertical {
+  border: none;
+  background: #f0f0f0;
+  width: 12px;
+  margin: 0px;
+}
+
+QTableWidget QScrollBar::handle:vertical {
+  background: #c0c0c0;
+  min-height: 20px;
+}
+
+QTableWidget QScrollBar::add-line:vertical,
+QTableWidget QScrollBar::sub-line:vertical {
+  height: 0px;
+}
+
+QTableWidget QScrollBar::add-page:vertical,
+QTableWidget QScrollBar::sub-page:vertical {
+  background: none;
+}
+
+QSpinBox, QDoubleSpinBox {
+  padding: 4px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  min-width: 60px;
+  min-height:30px;
+}
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button {
+  subcontrol-origin: border;
+  subcontrol-position: top right;
+  border-left: 1px solid #c0c0c0;
+  border-top-right-radius: 4px;
+  image: url(:/resources/icons/chevron-up.svg);
+
+}
+
+QSpinBox::up-button:hover,
+QSpinBox::up-button:pressed,
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::up-button:pressed {
+  background-color: #e0e0e0;
+}
+
+QSpinBox::down-button,
+QDoubleSpinBox::down-button {
+  subcontrol-origin: border;
+  subcontrol-position: bottom right;
+  border-left: 1px solid #c0c0c0;
+  border-bottom-right-radius: 4px;
+  image: url(:/resources/icons/chevron-down.svg);
+}
+
+QSpinBox::down-button:hover,
+QSpinBox::down-button:pressed ,
+QDoubleSpinBox::down-button:hover,
+QDoubleSpinBox::down-button:pressed {
+  background-color: #e0e0e0;
+}
+QSlider {
+  background-color: transparent;
+  height: 10px;
+}
+
+QSlider::groove:horizontal {
+  background-color: #c0c0c0;
+  border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  width: 16px;
+  height: 16px;
+  margin-top: -3px;
+  border-radius: 8px;
+  subcontrol-origin: margin;
+  subcontrol-position: center;
+}
+
+QSlider::handle:horizontal:hover {
+  background-color: #e0e0e0;
+  border-color: #a0a0a0;
+}
+
+QSlider::sub-page:horizontal {
+  background-color: #a6c9e2;
+  border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+  background-color: #c0c0c0;
+  border-radius: 5px;
+}
+
+/* This style is for the QProgressBar */
+QProgressBar {
+    border: 1px solid #b2b2b2;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* This style is for the chunk that fills the progress */
+QProgressBar::chunk {
+    background-color: #007BFF;
+    width: 10px; /* Change the width to control the chunk's thickness */
+}
+
+/* Style the QTabWidget */
+QTabWidget {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the QTabBar (the tabs) */
+QTabBar::tab {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+QTabBar::tab:selected {
+    background-color: #fff;
+    border-bottom-color: #fff;
+}
+
+/* Style the content area */
+QTabWidget::pane {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+            QTreeWidget {
+                background-color: #f2f2f2;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            
+            QTreeWidget::item {
+                height: 30px;
+            }
+            
+            QTreeWidget::item:selected {
+                background-color: #0078d4;
+                color: white;
+            }
+
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/resources/icons/circle.svg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/resources/icons/check-circle.svg);
+}
+
+QCheckBox::indicator:hover {
+    background-color: #f0f0f0;
+}
+
+QCheckBox::indicator:checked:hover {
+    background-color: #c0c0c0;
+}
+
+QLineEdit {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333;
+}
+
+QLineEdit:focus {
+    border-color: #0078d4;
+    outline: none;
+}
+
+QLineEdit::placeholder {
+    color: #aaa;
+}
+
+QLineEdit:hover {
+    background-color: #e0e0e0;
+}
+</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>16</width>
+    <height>16</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item alignment="Qt::AlignLeft">
+     <widget class="QWidget" name="leftContainer" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="leftSubContainer" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="nav">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QPushButton" name="rawBtn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Raw</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/finger-print-outline.svg</normaloff>:/resources/icons_2/finger-print-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="spikeBtn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Spike</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/pulse-outline.svg</normaloff>:/resources/icons_2/pulse-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="analysisBtn">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Analysis</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/bar-chart-outline.svg</normaloff>:/resources/icons_2/bar-chart-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="configBtn">
+               <property name="text">
+                <string>Config</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons/tool.svg</normaloff>:/resources/icons/tool.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignTop">
+           <widget class="QStackedWidget" name="stackedWidget_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="buttonPages">
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item alignment="Qt::AlignTop">
+               <widget class="QWidget" name="widget_8" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <item alignment="Qt::AlignLeft">
+                  <widget class="QWidget" name="widget_9" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>Speed</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSpinBox" name="speedSelector">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>70</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>60</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="minimum">
+                       <number>1</number>
+                      </property>
+                      <property name="maximum">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignLeft">
+                  <widget class="QWidget" name="widget_10" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <item>
+                     <widget class="QPushButton" name="backwardBtn">
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/arrow-left-circle.svg</normaloff>:/resources/icons/arrow-left-circle.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="stopBtn">
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/stop-circle.svg</normaloff>:/resources/icons/stop-circle.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="playBtn">
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/play-circle.svg</normaloff>:/resources/icons/play-circle.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="forwardBtn">
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/arrow-right-circle.svg</normaloff>:/resources/icons/arrow-right-circle.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_2"/>
+           </widget>
+          </item>
+          <item>
+           <widget class="QStackedWidget" name="optionStck">
+            <property name="currentIndex">
+             <number>2</number>
+            </property>
+            <widget class="QWidget" name="rawOptPage">
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <widget class="QFrame" name="frame">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QWidget" name="widget_6" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>sigma</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="horizontalSlider">
+                      <property name="minimum">
+                       <number>1</number>
+                      </property>
+                      <property name="maximum">
+                       <number>20</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="sigmaValue">
+                   <property name="minimumSize">
+                    <size>
+                     <width>70</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="minimum">
+                    <number>1</number>
+                   </property>
+                   <property name="maximum">
+                    <number>20</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_7" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                    <item>
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>window (ms)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="horizontalSlider_2">
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="windowValue">
+                   <property name="minimumSize">
+                    <size>
+                     <width>70</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximum">
+                    <number>10000</number>
+                   </property>
+                   <property name="singleStep">
+                    <number>10</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="currentBtn">
+                   <property name="text">
+                    <string>Process CURRENT file</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources/resources.qrc">
+                     <normaloff>:/resources/icons/save.svg</normaloff>:/resources/icons/save.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="batchBtn">
+                   <property name="text">
+                    <string>Process ALL files</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources/resources.qrc">
+                     <normaloff>:/resources/icons/archive.svg</normaloff>:/resources/icons/archive.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="spikeOptPage">
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QGroupBox" name="groupBox_2">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="title">
+                 <string>Viewer</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <item>
+                  <widget class="QCheckBox" name="chkSpikeStacked">
+                   <property name="text">
+                    <string>stacked</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_5" native="true">
+                <layout class="QGridLayout" name="gridLayout">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0" alignment="Qt::AlignTop">
+                  <widget class="QGroupBox" name="groupBox">
+                   <property name="font">
+                    <font>
+                     <weight>50</weight>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="title">
+                    <string>Sorting</string>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_2">
+                    <property name="topMargin">
+                     <number>20</number>
+                    </property>
+                    <item row="2" column="0">
+                     <widget class="QPushButton" name="pushButton_2">
+                      <property name="text">
+                       <string>Run</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons_2/pricetag-outline.svg</normaloff>:/resources/icons_2/pricetag-outline.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QPushButton" name="pushButton_4">
+                      <property name="text">
+                       <string>Reset</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/rotate-ccw.svg</normaloff>:/resources/icons/rotate-ccw.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QSpinBox" name="pcaValue">
+                      <property name="minimumSize">
+                       <size>
+                        <width>70</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>K-value</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QSpinBox" name="kValue">
+                      <property name="minimumSize">
+                       <size>
+                        <width>70</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="minimum">
+                       <number>1</number>
+                      </property>
+                      <property name="maximum">
+                       <number>10</number>
+                      </property>
+                      <property name="value">
+                       <number>3</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QPushButton" name="pushButton_3">
+                      <property name="text">
+                       <string>Run ALL</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons_2/pricetags-outline.svg</normaloff>:/resources/icons_2/pricetags-outline.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QPushButton" name="pushButton_5">
+                      <property name="text">
+                       <string>Save</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/save.svg</normaloff>:/resources/icons/save.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>PCA</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="emptyOptPage"/>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_2">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QProgressBar" name="progressBar">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="value">
+                <number>0</number>
+               </property>
+               <property name="textVisible">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="progressLabel">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="openBtn">
+               <property name="text">
+                <string>Open</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/folder-open-outline.svg</normaloff>:/resources/icons_2/folder-open-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="exitBtn">
+               <property name="text">
+                <string>Exit</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/close-circle-outline.svg</normaloff>:/resources/icons_2/close-circle-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="centralContainer" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignTop">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignLeft">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources/resources.qrc">
+              <normaloff>:/resources/icons_2/chevron-back-outline.svg</normaloff>:/resources/icons_2/chevron-back-outline.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="fileSelector">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QWidget" name="widget_3" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QPushButton" name="infoBtn">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/information-circle-outline.svg</normaloff>:/resources/icons_2/information-circle-outline.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="QPushButton" name="singleViewBtn">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/square.svg</normaloff>:/resources/icons_2/square.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="QPushButton" name="gridViewBtn">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/grid.svg</normaloff>:/resources/icons_2/grid.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="listViewBtn">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/resources.qrc">
+                 <normaloff>:/resources/icons_2/reorder-four-sharp.svg</normaloff>:/resources/icons_2/reorder-four-sharp.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>6</number>
+         </property>
+         <widget class="QWidget" name="infoView">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QTableWidget" name="infoTable">
+             <column>
+              <property name="text">
+               <string>Key</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Value</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="singleView">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item alignment="Qt::AlignTop">
+            <widget class="QWidget" name="widget_4" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Channel Id</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="channelSelector"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="singleChartContainer" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QWidget" name="singleChart" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="gridView">
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <widget class="QWidget" name="multipleChartContainer" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QWidget" name="multipleChart" native="true"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="listView">
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item alignment="Qt::AlignTop">
+            <widget class="QWidget" name="widget_2" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Channel Id</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="channelSelector2"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="listChartContainer" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_17">
+              <item>
+               <widget class="QWidget" name="listChart" native="true"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="configView">
+          <layout class="QVBoxLayout" name="verticalLayout_18">
+           <item>
+            <widget class="QTabWidget" name="tabWidget">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="tabLayout">
+              <attribute name="icon">
+               <iconset resource="../resources/resources.qrc">
+                <normaloff>:/resources/icons_2/apps-outline.svg</normaloff>:/resources/icons_2/apps-outline.svg</iconset>
+              </attribute>
+              <attribute name="title">
+               <string>Layout</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_19">
+               <item>
+                <widget class="QWidget" name="widget_11" native="true">
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <item>
+                   <widget class="QComboBox" name="layoutSelector">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignRight">
+                   <widget class="QPushButton" name="newLayoutBtn">
+                    <property name="toolTip">
+                     <string>new</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resources/resources.qrc">
+                      <normaloff>:/resources/icons_2/add-circle-outline.svg</normaloff>:/resources/icons_2/add-circle-outline.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>24</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignRight">
+                   <widget class="QPushButton" name="removeLayoutBtn">
+                    <property name="toolTip">
+                     <string>remove</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resources/resources.qrc">
+                      <normaloff>:/resources/icons_2/remove-circle-outline.svg</normaloff>:/resources/icons_2/remove-circle-outline.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>24</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QTableWidget" name="layoutTbl"/>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="currentLayoutCheck">
+                 <property name="text">
+                  <string>current layout</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tabSources">
+              <attribute name="icon">
+               <iconset resource="../resources/resources.qrc">
+                <normaloff>:/resources/icons/activity.svg</normaloff>:/resources/icons/activity.svg</iconset>
+              </attribute>
+              <attribute name="title">
+               <string>Sources</string>
+              </attribute>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="analysisView">
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QWidget" name="widget_12" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>310</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_20">
+              <item>
+               <widget class="QTreeWidget" name="analysisTree">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <attribute name="headerVisible">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>analysis</string>
+                 </property>
+                </column>
+                <item>
+                 <property name="text">
+                  <string>line</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../resources/resources.qrc">
+                   <normaloff>:/resources/icons_2/analytics-outline.svg</normaloff>:/resources/icons_2/analytics-outline.svg</iconset>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>bar</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../resources/resources.qrc">
+                   <normaloff>:/resources/icons_2/bar-chart-outline.svg</normaloff>:/resources/icons_2/bar-chart-outline.svg</iconset>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>graph</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../resources/resources.qrc">
+                   <normaloff>:/resources/icons_2/git-network-outline.svg</normaloff>:/resources/icons_2/git-network-outline.svg</iconset>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>image</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../resources/resources.qrc">
+                   <normaloff>:/resources/icons_2/image-outline.svg</normaloff>:/resources/icons_2/image-outline.svg</iconset>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>misc</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../resources/resources.qrc">
+                   <normaloff>:/resources/icons_2/balloon-outline.svg</normaloff>:/resources/icons_2/balloon-outline.svg</iconset>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_13" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <item>
+                  <widget class="QPushButton" name="analysisEditBtn">
+                   <property name="toolTip">
+                    <string>edit analysis</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources/resources.qrc">
+                     <normaloff>:/resources/icons/edit-3.svg</normaloff>:/resources/icons/edit-3.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item alignment="Qt::AlignRight">
+                  <widget class="QPushButton" name="addAnalysisBtn">
+                   <property name="toolTip">
+                    <string>add new analysis</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources/resources.qrc">
+                     <normaloff>:/resources/icons_2/add-circle-outline.svg</normaloff>:/resources/icons_2/add-circle-outline.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="removeAnalysisBtn">
+                   <property name="toolTip">
+                    <string>remove analysis</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../resources/resources.qrc">
+                     <normaloff>:/resources/icons_2/remove-circle-outline.svg</normaloff>:/resources/icons_2/remove-circle-outline.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_14" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_21">
+              <item alignment="Qt::AlignTop">
+               <widget class="QWidget" name="inputAnalysis" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_15">
+                 <item>
+                  <layout class="QFormLayout" name="inputAnalysisLyt"/>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_15" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_22">
+                    <item alignment="Qt::AlignRight">
+                     <widget class="QPushButton" name="analysisRunBtn">
+                      <property name="toolTip">
+                       <string>run analysis</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/play.svg</normaloff>:/resources/icons/play.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignRight">
+                     <widget class="QPushButton" name="analysisExportBtn">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="toolTip">
+                       <string>export figure</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../resources/resources.qrc">
+                        <normaloff>:/resources/icons/save.svg</normaloff>:/resources/icons/save.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="outputAnalysis" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_23">
+                 <item>
+                  <layout class="QVBoxLayout" name="outputAnalysisLyt"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="frontView">
+          <layout class="QVBoxLayout" name="verticalLayout_24">
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../resources/resources.qrc">
+               <normaloff>:/resources/logo.svg</normaloff>:/resources/logo.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>500</width>
+               <height>500</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="open_project">
+   <property name="text">
+    <string>Open Project</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>openBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_folder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>802</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>774</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSelector</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>load_file(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>infoBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_info_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>873</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>918</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>singleViewBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_single_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>906</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>896</x>
+     <y>1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gridViewBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_grid_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>944</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1023</x>
+     <y>27</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>channelSelector</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_single_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1023</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>timer_start()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1022</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stopBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>timer_stop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1023</x>
+     <y>527</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>windowValue</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>96</x>
+     <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>windowValue</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>443</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>sigmaValue</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>96</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sigmaValue</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>441</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>409</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sigmaValue</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>96</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>currentBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>extract_spikes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>batchBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>extract_all_spikes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>513</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rawBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>raw_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>35</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spikeBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>spike_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>29</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>run_kmeans()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_spike_classes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>435</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>run_all_kmeans()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save_spikes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>482</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkSpikeStacked</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>spike_stacked_or_ts(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>400</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>forwardBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>step_forward()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>backwardBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>step_backward()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>220</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listViewBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_list_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>984</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1018</x>
+     <y>54</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>channelSelector</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>channelSelector2</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>779</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>channelSelector2</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>channelSelector</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>779</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>454</x>
+     <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>newLayoutBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>new_layout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>948</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1023</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removeLayoutBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>delete_layout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>973</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1022</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layoutSelector</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_layout(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>configBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>config_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-3</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analysisBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>analysis_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>54</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analysisTree</sender>
+   <signal>itemDoubleClicked(QTreeWidgetItem*,int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>analysis_selected(QTreeWidgetItem*,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>-40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analysisRunBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>run_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>976</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1040</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>currentLayoutCheck</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_current_layout(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>839</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>337</x>
+     <y>908</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addAnalysisBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>new_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>510</x>
+     <y>821</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>507</x>
+     <y>903</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removeAnalysisBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>delete_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>542</x>
+     <y>817</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>555</x>
+     <y>902</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analysisEditBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>edit_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>305</x>
+     <y>814</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>304</x>
+     <y>895</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analysisExportBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>export_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>961</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1054</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exitBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>839</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>912</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>open_folder()</slot>
+  <slot>load_file(QString)</slot>
+  <slot>select_info_view()</slot>
+  <slot>select_single_view()</slot>
+  <slot>select_grid_view()</slot>
+  <slot>timer_start()</slot>
+  <slot>timer_stop()</slot>
+  <slot>extract_spikes()</slot>
+  <slot>extract_all_spikes()</slot>
+  <slot>raw_view()</slot>
+  <slot>spike_view()</slot>
+  <slot>run_kmeans()</slot>
+  <slot>reset_spike_classes()</slot>
+  <slot>run_all_kmeans()</slot>
+  <slot>save_spikes()</slot>
+  <slot>spike_stacked_or_ts(int)</slot>
+  <slot>step_forward()</slot>
+  <slot>step_backward()</slot>
+  <slot>select_list_view()</slot>
+  <slot>new_layout()</slot>
+  <slot>delete_layout()</slot>
+  <slot>select_layout(QString)</slot>
+  <slot>config_view()</slot>
+  <slot>analysis_view()</slot>
+  <slot>analysis_selected(QTreeWidgetItem*,int)</slot>
+  <slot>run_analysis()</slot>
+  <slot>set_current_layout(int)</slot>
+  <slot>new_analysis()</slot>
+  <slot>delete_analysis()</slot>
+  <slot>edit_analysis()</slot>
+  <slot>export_analysis()</slot>
+ </slots>
+</ui>
