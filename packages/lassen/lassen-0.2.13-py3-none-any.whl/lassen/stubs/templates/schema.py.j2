@@ -1,0 +1,48 @@
+from pydantic import BaseModel, Field, Extra
+{% for dependency in dependencies -%}
+{{ dependency }}
+{% endfor %}
+{% for import in clone_imports -%}
+{{ import }}
+{% endfor %}
+{% if clone_typechecking_imports -%}
+if TYPE_CHECKING:{% for import in clone_typechecking_imports%}
+    {{ import }}
+{%- endfor %}
+{% endif %}
+
+# Shared properties
+class {{ model_name }}Base(BaseModel):
+    class Config:
+        extra = Extra.forbid
+
+
+# STORE: SEARCH FILTER PROPERTIES
+class {{ model_name }}Filter({{ model_name }}Base):
+{% for field in filter_fields %}
+    {{ field }}
+{% endfor %}
+
+
+# API/STORE: CREATE PROPERTIES
+class {{ model_name }}Create({{ model_name }}Base):
+{% for field in create_fields %}
+    {{ field }}
+{% endfor %}
+
+
+# API/STORE: UPDATE PROPERTIES
+class {{ model_name }}Update({{ model_name }}Base):
+{% for field in update_fields %}
+    {{ field }}
+{% endfor %}
+
+
+# API/STORE: RETRIEVE PROPERTIES
+class {{ model_name }}({{ model_name }}Base):
+{% for field in read_fields %}
+    {{ field }}
+{% endfor %}
+
+    class Config:
+        orm_mode = True
