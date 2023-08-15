@@ -1,0 +1,2 @@
+task_name: ${oc.select:..task_name,__test__}
+task_root: ${oc.select:..task_root,workspace}
