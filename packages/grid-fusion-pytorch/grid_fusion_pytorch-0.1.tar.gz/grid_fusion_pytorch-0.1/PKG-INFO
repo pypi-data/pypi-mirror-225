@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: grid_fusion_pytorch
+Version: 0.1
+Summary: Efficient operations for fusing semantically annotated RGB-D measurements in a 3D voxel grid in pytorch.
+Author-email: Jan Nogga <nogga@ais.uni-bonn.de>
+License: GNU General Public License v3 (GPLv3)
+Project-URL: Homepage, https://github.com/JanNogga/grid_fusion_pytorch
+Project-URL: Bug Tracker, https://github.com/JanNogga/grid_fusion_pytorch/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# grid_fusion_pytorch
+Efficient operations for fusing semantically annotated RGB-D measurements in a 3D voxel grid in pytorch. 
+Uses [TORCH.UTILS.CPP_EXTENSION](https://pytorch.org/docs/stable/cpp_extension.html#torch-utils-cpp-extension) following the structure of [DirectVoxGO](https://github.com/sunset1995/DirectVoxGO).
+
+## Setup
+
+1. Clone this repository.
+```console
+git clone https://github.com/JanNogga/grid_fusion_pytorch.git
+```
+2. Build the docker image.
+```console
+cd grid_fusion_pytorch/docker && chmod +x build.sh && chmod +x run.sh && ./build.sh
+```
+3. Run a container.
+```console
+./run.sh
+```
+4. In the container, switch to this repository.
+```console
+cd grid_fusion_pytorch/
+```
+5. Finally use the custom cuda kernels. The cuda kernel defined in *lib/cuda* is compiled just-in-time.
+```console
+python run.py
+```
