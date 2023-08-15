@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "gpt4docs"
+version = "0.1.2"
+description = "Python package using AI to generate documentation for your codebase"
+authors = ["Simon Moe Sørensen <sso@2021.ai>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.9.0"
+pydantic = "^1.10.8"
+python-dotenv = "^1.0.0"
+openai = "^0.27.8"
+chromadb = "0.4.5"
+tiktoken = "^0.4.0"
+langchain = "0.0.261"
+black = "^23.7.0"
+pdoc = "^14.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+pytest = "^7.3.1"
+bump2version = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
