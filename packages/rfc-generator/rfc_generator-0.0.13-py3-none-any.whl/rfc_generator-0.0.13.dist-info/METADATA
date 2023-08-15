@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: rfc-generator
+Version: 0.0.13
+Summary: Generate RFC for PF and PM given input information
+Home-page: https://github.com/dimitrj89/rfc_generator
+Author: Dimitrj Bonansea
+Author-email: dimitrj22@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+Requires-Dist: Unidecode (>=1.3.6)
+Requires-Dist: num2words (>=0.5.12)
+Provides-Extra: dev
+Requires-Dist: pytest (>=7.0) ; extra == 'dev'
+Requires-Dist: twine (>=4.0.2) ; extra == 'dev'
+
+# RFC Generator
+A package used to generate rfc for PF and PM given input information.
+
+## How to use
+_After installing the package use following import:_ <br>
+
+**from rfc_generator import RFC_PF, RFC_PM**
+
+_Then use following commands:_
+
+**rfc_pf = RFC_PF(<br>**
+    **&emsp;nombres='firstname and/or secondname', <br>**
+    **&emsp;apellido_paterno='paternal_last_name', <br>**
+    **&emsp;apellido_materno='maternal_last_name', [Optional] <br>** 
+    **&emsp;fecha_nacimiento='birthdate' [format='YYYY-MM-DD'] <br>**
+**)<br>**
+**rfc = rfc_pf.generate()<br>**
+
+_Or:_
+
+**rfc_pm = RFC_PM(<br>**
+    **&emsp;nombre_empresa='company name', <br>**
+    **&emsp;fecha_constitucion='foundation date' [format='YYYY-MM-DD'] <br>**
+**)<br>**
+**rfc = rfc_pm.generate()<br>**
+
