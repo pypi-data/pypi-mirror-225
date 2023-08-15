@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: aica_api
+Version: 0.0.7
+Summary: A client utility for the AICA API
+Project-URL: Homepage, https://github.com/aica-technology/api
+Project-URL: Bug Tracker, https://github.com/aica-technology/api/issues
+Author-email: Enrico Eberhard <enrico@aica.tech>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: requests>=2.28.1
+Requires-Dist: websocket-client>=1.4.2
+Description-Content-Type: text/markdown
+
+# Python AICA API Client
+
+The AICA API client module provides simple functions for interacting with the AICA API.
+
+```shell
+pip install aica-api
+```
+
+The client can be used to easily make API calls as shown below:
+
+```python
+from aica_api.client import AICA
+aica = AICA()
+
+aica.set_application('my_application.yaml')
+aica.start_application()
+
+aica.load_component('my_component')
+aica.unload_component('my_component')
+
+aica.stop_application()
+```
+
+To check the status of component predicates and conditions, the following blocking methods can be employed:
+
+```python
+from aica_api.client import AICA
+aica = AICA()
+
+if aica.wait_for_condition('timer_1_active', timeout=10.0):
+    print('Condition is true!')
+else:
+    print('Timed out before condition was true')
+
+if aica.wait_for_predicate('timer_1', 'is_timed_out', timeout=10.0):
+    print('Predicate is true!')
+else:
+    print('Timed out before predicate was true')
+```
+
+## Upcoming features
+
+- Better API documentation
+- Helper functions to handle API response objects
