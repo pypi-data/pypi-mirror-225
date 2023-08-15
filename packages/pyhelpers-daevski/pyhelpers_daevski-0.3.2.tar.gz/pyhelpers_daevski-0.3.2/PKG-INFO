@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: pyhelpers-daevski
+Version: 0.3.2
+Summary: helper functions for personal use
+Author: David Mckee
+Author-email: daevski@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: cryptography (>=39.0.0,<40.0.0)
+Requires-Dist: pwinput (>=1.0.2,<2.0.0)
+Requires-Dist: pyyaml (>=6.0,<7.0)
+Description-Content-Type: text/markdown
+
+# pyhelpers
+
+Personal python package for helper functions.
+
