@@ -1,0 +1,15 @@
+numpy
+torch
+torchmetrics[detection]~=1.0.1
+opencv-python-headless
+Pillow>=6.2.2
+
+[caption]
+pycocoevalcap
+pycocotools
+
+[dev]
+pre-commit
+flake8
+isort
+pytest
