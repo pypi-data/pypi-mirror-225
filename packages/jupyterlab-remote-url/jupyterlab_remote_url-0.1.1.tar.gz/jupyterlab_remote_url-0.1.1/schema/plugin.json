@@ -1,0 +1,22 @@
+{
+  "title": "Remote URL",
+  "description": "Remote URL settings.",
+  "jupyter.lab.menus": {
+    "main": [
+      {
+        "id": "jupyterlab_remote_url-main-menu",
+        "label": "Remote URL",
+        "items": [
+          {
+            "command": "jupyterlab_remote_url:copy"
+          },
+          {
+            "command": "jupyterlab_remote_url:show"
+          }
+        ]
+      }
+    ]
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
