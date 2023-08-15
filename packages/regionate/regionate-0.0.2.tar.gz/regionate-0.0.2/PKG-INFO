@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: regionate
+Version: 0.0.2
+Summary: A package for creating xgcm-grid consistent regional masks and boundaries.
+Project-URL: Homepage, https://github.com/hdrake/regionate
+Project-URL: Bugs/Issues/Features, https://github.com/hdrake/regionate/issues
+Project-URL: Sibling package, https://github.com/hdrake/sectionate
+Author-email: "Henri F. Drake" <hfdrake@uci.edu>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Requires-Dist: regionmask
+Requires-Dist: xgcm
+Description-Content-Type: text/markdown
+
+# Grid-consistent region masks and boundary indices for ocean models
+
+Leverages sibling package [`sectionate`](https://github.com/raphaeldussin/sectionate).
