@@ -1,0 +1,109 @@
+Metadata-Version: 2.1
+Name: clera
+Version: 0.2.1
+Summary: Write Simple and Quick Python GUI Application
+Author: Erasmus A. Junior
+Author-email: eirasmx@pm.me
+License: GNU LGPLv3
+Keywords: gui,clera,simple,simplegui,pyside,pyside6,python,easy
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+Requires-Dist: PySide6
+
+## **DEDICATION**
+
+---
+
+_"This project is dedicated to my cousin who was like a mother to me. Though you are no longer with us, you will never be forgotten. May your memory be forever held in this project."_  
+-- **Bridget Trinity Vedjesu** --
+
+<br>
+
+<div align="center">
+<img src="https://github.com/cleragui/pypi/blob/main/image/logo-with-name.png?raw=true">
+</div>
+
+## **Clera - GUI Development with Python**
+
+---
+
+Clera provides platform for developing python GUI quickly and simply with low learning curve.
+
+<br>
+
+> **NOTE:** Clera is still in the **alpha** stage which means development is not complete its undergoing internal tests and development. To help with the testing process, please send me an email eirasmx@pm.me
+
+<br>
+
+## **THE BASICS**
+
+### **Installation**
+
+```bash
+pip install clera
+```
+
+Your first application and Skeleton of every GUI developed using clera.
+
+**Code:**
+
+```python
+from clera import *
+window = Window()
+# window widgets and layouts goes here!
+window.run()
+```
+
+**Output:**
+
+![Window](https://github.com/cleragui/pypi/blob/main/image/window.png?raw=true)
+
+> **" Why Complicate Simplicity? "**
+
+<br>
+
+## **PLATFORMS**
+
+> Clera runs on multiple platforms and has a native interface on each.
+
+### **Hardware Support**
+
+- Runs on Desktop and Laptops
+
+### **OS Support**
+
+- Windows
+- Mac
+- Linux
+
+<br>
+
+To run the clera style editor, run "**clera-editor**" in the terminal or command prompt. Also to see a sample of what clera is capable of, check out the editor. Its developed with clera!
+
+<br>
+
+> **INFO:** Visit https://cleragui.github.io/ for documentation and more information.
+
+<br>
+
+---
+
+<br>
+
+### **RELEASE NOTES**
+
+**v0.2.1 (2023-08-15) - Various fixes and additions**
+
+- Library Download Incompatibility (**fixed**)
+- Base64 Image format load (**added**)
+
+<br>
+
+---
