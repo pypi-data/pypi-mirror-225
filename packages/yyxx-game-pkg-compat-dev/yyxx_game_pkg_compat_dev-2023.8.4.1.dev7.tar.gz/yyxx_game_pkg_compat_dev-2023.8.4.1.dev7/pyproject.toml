@@ -1,0 +1,40 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "yyxx-game-pkg-compat-dev"
+version = "v2023.08.04.001dev7"
+description = "yyxx game custom module on compat"
+authors = [ "yyxx-game",]
+license = "MIT"
+homepage = "https://github.com/yyxxgame/yyxxgame-pkg"
+repository = "https://github.com/yyxxgame/yyxxgame-pkg"
+readme = "README.md"
+classifiers = [ "Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent",]
+[[tool.poetry.packages]]
+include = "yyxx_game_pkg"
+
+[[tool.poetry.packages]]
+include = "tests"
+
+[tool.poetry.dependencies]
+python = "^3.6.0"
+toml = "^0.10.2"
+opentelemetry-api = "^1.12.0"
+opentelemetry-sdk = "^1.12.0"
+opentelemetry-exporter-jaeger = "^1.12.0"
+opentelemetry-instrumentation-requests = "^0.33b0"
+opentelemetry-instrumentation-fastapi = "0.33b.0"
+opentelemetry-instrumentation-celery = "0.33b0"
+opentelemetry-instrumentation-flask = "^0.33b0"
+opentelemetry-instrumentation-django = "^0.33b0"
+line-profiler = "^4.0.3"
+
+[tool.poetry.extras]
+
+[tool.poetry.dependencies.flask]
+version = "^2.0.3"
+optional = true
+
+[tool.poetry.group.dev.dependencies]
