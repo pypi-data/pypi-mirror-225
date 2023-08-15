@@ -1,0 +1,14 @@
+{% extends "email_verify/base.html" %}
+{% block email_verify_content %}
+<div class="message-container">
+    <div class="message">
+        <h1>E-mail verification failed!</h1>
+        {% if error %}
+            <p> {{ error.message }} </p>
+        {% endif %}
+        {% if resend_token %}
+            <button onclick="location.href='{% url 'email_verify:resend_verification_email' %}'">Resend Verification Email</button>
+        {% endif %}
+    </div>
+</div>
+{% endblock email_verify_content %}
