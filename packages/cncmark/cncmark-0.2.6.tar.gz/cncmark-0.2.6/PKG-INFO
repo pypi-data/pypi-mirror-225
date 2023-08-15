@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: cncmark
+Version: 0.2.6
+Summary: 
+Author: yuichiroaoki
+Author-email: 45054071+yuichiroaoki@users.noreply.github.com
+Requires-Python: >=3.9.2,<3.10
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: mysql-connector-python (>=8.1.0,<9.0.0)
+Requires-Dist: numpy-stl (>=3.0.1,<4.0.0)
+Description-Content-Type: text/markdown
+
+# Mark
+
+Mark is a tool for indentifying the vertices and their coordinates of a 3D model. It is used to move the camera to the right position for taking pictures.
