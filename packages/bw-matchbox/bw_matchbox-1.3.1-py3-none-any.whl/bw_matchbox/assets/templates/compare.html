@@ -1,0 +1,122 @@
+{% include 'header.html' %}
+
+{# Common dependencies... #}
+
+{% include 'common-modal.html' %}
+{% include 'common-notify.html' %}
+
+{# Module-specific dependencies... #}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/compare.css') }}">
+
+<script src="{{ url_for('static', filename='js/Compare/CompareRowsHelpers.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Compare/CompareProxyDialogModal.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Compare/CompareRowClick.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Compare/CompareCore.js') }}"></script>
+
+{# Core js module:
+  - `CompareCore` (from `bw_matchbox/assets/js/Compare/CompareCore.js`)
+#}
+
+<div id="compare-root" class="container compare">
+  {% include 'navigation.html' %}
+  <div class="row">
+    <div class="four columns">
+      <h4>Location: {% if source_node.location == target_node.location %}Same{% else %}{{ source_node.location }}
+        | {{ target_node.location }}{% endif %}</h4>
+    </div>
+    <div class="three columns">
+      <h4>Unit: {% if source_node.unit == target_node.unit %}Same{% else %}{{ source_node.unit }}
+        | {{ target_node.unit }}{% endif %}</h4>
+    </div>
+    <div class="five columns">
+    {% if config.role == 'editors' %}
+    <button class="button-primary" id="save-mapping-button">{% if proxy and proxy != "None" %}Create Proxy</button>
+    <button class="button-primary" id="one-to-one">1-to-1 Proxy</button>{% else %}Save{% endif %}</button>
+    {% endif %}
+    </div>
+  </div>
+  <div class="row collapsed-tools">
+    <button class="button-primary" id="expand-all-collapsed">Expand all collapsed rows</button>
+  </div>
+  <div class="row compare-tables">
+    <div class="column one-half">
+      <div class="common-page-header">
+        <h3 class="title">
+          <a href="{{ url_for('process_detail', id=source_node.id) }}" title="Go to process #{{ source_node.id }} page">
+            {{ source_node.name }}
+          </a>
+          <div class="tools">
+            <div class="tools-wrapper">
+              <a class="tools-icon theme-primary" onClick="CompareCore.copyToClipboardHandler(this)" data-node-type="source" title="Copy markdown link to clipboard"><i class="fa-solid fa-copy"></i></a>
+            </div>
+          </div>
+        </h3>
+      </div>
+      <table class="fixed-table fixed-table-active compare-table" id="source-table" width="100%">
+      </table>
+      <p>{{ source_biosphere_number }} biosphere exchanges</p>
+    </div>
+    <div class="column one-half">
+      <div class="common-page-header">
+        <h3 class="title">
+          <a href="{{ url_for('process_detail', id=target_node.id) }}" title="Go to process #{{ target_node.id }} page">
+            {{ target_node.name }}
+          </a>
+          <div class="tools">
+            <div class="tools-wrapper">
+              <a class="tools-icon theme-primary" onClick="CompareCore.copyToClipboardHandler(this)" data-node-type="target" title="Copy markdown link to clipboard"><i class="fa-solid fa-copy"></i></a>
+              <a class="tools-icon theme-primary" onClick="CompareCore.replaceWithTargetHandler(this)" id="replace-with-target-arrow" title="Collapse process inputs"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+          </div>
+        </h3>
+      </div>
+      <table class="fixed-table fixed-table-active compare-table" id="target-table" width="100%">
+      </table>
+      <p>{{ target_biosphere_number }} biosphere exchanges</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  modules.require('CompareCore', (CompareCore) => {
+    // Global variables for compare tables feature (via global variable `sharedData`)...
+    const sharedData = {
+      // Data for clipboard copy feature...
+      source_node_name: '{{ source_node.name }}',
+      source_node_url: '{{ base_url}}{{ url_for('process_detail', id=source_node.id) }}',
+      target_node_name: '{{ target_node.name }}',
+      target_node_url: '{{ base_url}}{{ url_for('process_detail', id=target_node.id) }}',
+      // Generic data...
+      source_data: {{ source_data_json|safe }}, // TDataRecord[]
+      target_data: {{ target_data_json|safe }}, // TDataRecord[]
+      target_node: {{ target_json|safe}},
+      source_id: {{ source_node.id }},
+      target_id: {{ target_node.id }},
+      target_name: '{{ target_node.name|safe }}',
+      source_node_unit: '{{source_node.unit}}',
+      source_node_location: '{{source_node.location}}',
+      match_types: {{ match_types|safe }},
+      match_type_default: '3',
+      comment: '', // Shared comments accumulator
+      /* // Issue #52: match_types sample:
+       * {
+       *   '1': 'No direct match available',
+       *   '2': 'Direct match with near-identical data',
+       *   '3': 'Match with updated data',
+       *   '4': 'Match with updated data and adding source transport',
+       *   '5': 'Match with market and replace or remove transport',
+       *   '6': 'Match with market and replace or remove transport and loss factor',
+       *   '7': 'Equivalent datasets after modification',
+       * }
+       */
+    };
+
+    // Export to global scope (to access from generated html code handlers).
+    window.CompareCore = CompareCore;
+
+    // Start core module...
+    CompareCore.start(sharedData);
+  });
+</script>
+{% include 'footer.html' %}
