@@ -1,0 +1,20 @@
+defaults:
+- /path@path: __batch__
+- /batch@batch: __init__
+- /run@data_load: load_dataframe
+- /stopwords@stopwords: __init__
+- /ngrams@ngrams: tp_ngrams
+_target_: thematos.datasets.corpus.Corpus
+_config_name_: topic_corpus
+_config_group_: /dataset
+verbose: false
+task_name: topic
+task_root: workspace
+version: 0.0.0
+module: null
+pipelines: []
+batch_name: corpus
+id_col: id
+text_col: text
+timestamp_col: null
+ngramize: true
