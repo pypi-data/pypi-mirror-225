@@ -1,0 +1,52 @@
+.main *:not(select, input), .replies *:not(select, input){
+    color: #f3f3f3;
+}
+body:not(.commentBody){
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("/wallpaper") no-repeat fixed center center;
+    background-size: cover;
+    /*background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 100%), url('/wallpaper');*/
+    /*filter: brightness(1);*/
+}
+.menu{
+    /*background-color: rgba(0, 97, 115, 0.5);*/
+    background-color: rgba(80, 80, 80, 0.5);
+}
+input[type="text"],input[type="password"]{
+    background-color: #cacaca;
+    color: black;
+}
+input[type="submit"]{
+    background-color: #606060;
+}
+.area{
+    background-color: #0090cf;
+}
+.content .ql-editor{
+    background-color: rgba(175, 158, 128, 0.7);
+    padding: 5%;
+    border-radius: 10px;
+}
+button{
+    background-color: #606060;
+}
+span, p{
+    mix-blend-mode: hard-light;
+}
+.card-title, .link-button span{
+    color: #000;
+}
+.setting select{
+    background-color: #696969;
+}
+.tag{
+    background-color: #3f3f3f;
+}
+.setting{
+    background-color: rgba(0, 104, 190, 0.5);
+}
+.userBig, .noPosts{
+    background-color: rgba(44, 106, 176, 0.5);
+}
+.postCard, .article, .reply, .pageControl, .comments{
+    background-color: rgba(80, 80, 80, 0.5);
+}

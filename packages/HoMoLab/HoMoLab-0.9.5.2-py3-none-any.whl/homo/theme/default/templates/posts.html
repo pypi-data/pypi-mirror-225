@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="menu side">
+        <form action="/{{ game }}/search" class="search">
+            <input type="text" name="keyword" id="keyword" value="{{ search }}">
+            <input type="submit" value="搜索" onclick="hidePostCards(null)">
+        </form>
+        <div class="areas">
+            <a onclick="hidePostCards('/{{ game }}')">
+                <div class="area {{ 'selected' if select == 'recommend' else '' }}">
+                推荐
+                </div>
+            </a>
+            <div class="blank"></div>
+            <a onclick="hidePostCards('/{{ game }}/news?type=announce')">
+                <div class="area {{ 'selected' if select == 'announce' else '' }}">
+                    公告
+                </div>
+            </a>
+            <a onclick="hidePostCards('/{{ game }}/news?type=activity')">
+                <div class="area {{ 'selected' if select == 'activity' else '' }}">
+                    活动
+                </div>
+            </a>
+            <a onclick="hidePostCards('/{{ game }}/news?type=information')">
+                <div class="area {{ 'selected' if select == 'information' else '' }}">
+                    资讯
+                </div>
+            </a>
+        </div>
+        <div class="autoFit"></div>
+        <a onclick="hidePostCards('{{ "/user" if account.isLogin else "/login" }}')">
+            <div class="account">
+                <div class="user fix">
+                    <img class="avatar" src="{{ account.getAvatar() }}"/>
+                    <div class="userinfo">
+                        <div class="nickname">{{ account.getNickname() }}</div>
+                        <div class="describe"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="rights">
+    <div class="banner"></div>
+    {% for i in range(articles | length) %}
+        <div class="postCard fix">
+            <div class="user" onclick="hidePostCards('/user?uid={{ articles[i]["uid"] }}')" style="cursor: pointer">
+                <img class="avatar" src="{{ articles[i]['authorAvatar'] }}"/>
+                <div class="userinfo">
+                    <div class="nickname">{{ articles[i]['authorName'] }}</div>
+                    <div class="describe">{{ articles[i]['authorDescribe'] }}</div>
+                </div>
+            </div>
+            <div class="articleInfo"  onclick="hidePostCards('/article?id={{ articles[i]['post_id'] }}')" style="cursor: pointer">
+                {% if articles[i]['cover'] != '' %}
+                    <div class="image">
+                        <div class="articleCover" style="background-image: url({{ articles[i]['cover'] }})"></div>
+                    </div>
+                {% else %}
+                    <div class="image">
+                        <div class="articleCover" style="background-color: #868585"></div>
+                    </div>
+                {% endif %}
+                <div class="info">
+                    <div class="articleTitle">{{ articles[i]['title'] }}</div>
+                    <div class="articleDescribe">{{ articles[i]['describe'] }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <div class="postCard fix control">
+        {% if select == 'search' %}
+            <div class="mainPageControl">
+                {% if page > 1 %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}/search?content={{ search }}&page={{ page - 1 }}')">
+                            <button class="pageButton">上一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+                <p><h2>当前为第 {{ page }} 页</h2>
+                {% if not isLast %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}/search?content={{ search }}&page={{ page + 1 }}')">
+                            <button class="pageButton">下一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        {% elif select == 'history' %}
+            <div class="mainPageControl">
+                {% if page > 1 %}
+                    <p>
+                        <a onclick="hidePostCards('/history?page={{ page - 1 }}')">
+                            <button class="pageButton">上一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+                <p><h2>当前为第 {{ page }} 页</h2>
+                {% if not isLast %}
+                    <p>
+                        <a onclick="hidePostCards('/history?page={{ page + 1 }}')">
+                            <button class="pageButton">下一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        {% elif select in ['announce', 'activity', 'information'] %}
+            <div class="mainPageControl">
+                {% if page > 1 %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}/news?type={{ select }}&page={{ page - 1 }}')">
+                            <button class="pageButton">上一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+                <p><h2>当前为第 {{ page }} 页</h2>
+                {% if not isLast %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}/news?type={{ select }}&page={{ page + 1 }}')">
+                            <button class="pageButton">下一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="mainPageControl">
+                {% if page > 1 %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}?page={{ page - 1 }}')">
+                            <button class="pageButton">上一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+                <p><h2>当前为第 {{ page }} 页</h2>
+                {% if not isLast %}
+                    <p>
+                        <a onclick="hidePostCards('/{{ game }}?page={{ page + 1 }}')">
+                            <button class="pageButton">下一页</button>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
