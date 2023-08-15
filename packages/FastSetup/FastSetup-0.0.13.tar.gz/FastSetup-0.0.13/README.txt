@@ -1,0 +1,1 @@
+This is a library for a static code that get frequently used in python scripts.
