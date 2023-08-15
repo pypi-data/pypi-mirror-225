@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rf95modem"
+version = "0.2.0"
+authors = [
+  { name="Alvar Penning", email="post@0x21.biz" },
+]
+description = "Python library to send and receive data over LoRa via a rf95modem"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Terminals :: Serial",
+]
+dependencies = [
+    "pyserial==3.5",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/oxzi/rf95modem-py"
+"Bug Tracker" = "https://github.com/oxzi/rf95modem-py/issues"
