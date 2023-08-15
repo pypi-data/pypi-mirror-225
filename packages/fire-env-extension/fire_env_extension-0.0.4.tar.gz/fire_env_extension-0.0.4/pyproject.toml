@@ -1,0 +1,24 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fire_env_extension"
+version = "0.0.4"
+authors = [
+    { name = "Erich Muellermann", email = "emuel@rocketmail.com" },
+]
+description = "support for env.variables in fire cli interfaces"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://example.com/"
+"Bug Tracker" = "https://example.com/"

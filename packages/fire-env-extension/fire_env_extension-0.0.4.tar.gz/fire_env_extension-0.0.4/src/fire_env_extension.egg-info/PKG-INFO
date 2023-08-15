@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: fire-env-extension
+Version: 0.0.4
+Summary: support for env.variables in fire cli interfaces
+Author-email: Erich Muellermann <emuel@rocketmail.com>
+Project-URL: Homepage, https://example.com/
+Project-URL: Bug Tracker, https://example.com/
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# fire-env-extension Package
+
+provides support for env.variables in the fire command line interface (CLI)
+
