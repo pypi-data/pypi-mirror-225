@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: redactive
+Version: 0.0.2
+Home-page: https://github.com/redactive/python-sdk
+Author: redactive ai
+Project-URL: Bug Tracker, https://github.com/redactive/python-sdk/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: cloud-mappings
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+
+# Redactive
+
+>Focus on building your AI enabled app, and let redactive open the door into enterprises for you
