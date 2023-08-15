@@ -1,0 +1,17 @@
+beautifulsoup4
+frictionless[pandas,visidata,zenodo]==5.15.1
+lxml
+pandas>=1.5.3
+pathos
+webcolors
+tqdm
+pytablewriter==1.0.0
+GitPython
+typing_extensions
+
+[dev]
+ms3[testing]
+
+[testing]
+pytest
+pytest-cov
