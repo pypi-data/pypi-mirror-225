@@ -1,0 +1,24 @@
+from sqlalchemy.orm import Mapped, mapped_column
+{% for dependency in dependencies -%}
+{{ dependency }}
+{% endfor %}
+{% for import in clone_imports -%}
+{{ import }}
+{% endfor %}
+{% if clone_typechecking_imports -%}
+if TYPE_CHECKING:{% for import in clone_typechecking_imports%}
+    {{ import }}
+{%- endfor %}
+{% endif %}
+
+class {{ model_name }}({{model_superclasses}}):
+    __tablename__ = '{{ table_name }}'
+{% for field in fields %}
+    {{ field }}
+{% endfor %}{% if table_args %}
+    __table_args__ = (
+    {% for arg in table_args%}
+        {{ arg }},
+    {%- endfor %}
+    )
+{% endif %}
