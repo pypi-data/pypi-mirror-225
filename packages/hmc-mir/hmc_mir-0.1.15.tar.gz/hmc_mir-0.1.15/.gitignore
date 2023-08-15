@@ -1,0 +1,12 @@
+.DS_Store
+
+build
+_autosummary
+dist
+
+*.pyc
+*.egg-info
+
+*.so
+*.c
+src/hmc_mir/_version.py

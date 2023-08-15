@@ -1,0 +1,15 @@
+# for documentation
+sphinx==7.0.1
+furo==2023.5.20
+recommonmark==0.7.1
+
+# for development (these packages should stay up to date with setup.cfg)
+numpy
+librosa
+scipy
+matplotlib
+scikit-learn
+scikit-image
+opencv-python
+pillow
+numba
