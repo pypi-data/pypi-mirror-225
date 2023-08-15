@@ -1,0 +1,19 @@
+name: $NAME$SUFFIX
+on:
+  issues:
+    types: [assigned, unassigned]
+
+jobs:
+  $NAME:
+    runs-on: ubuntu-latest
+    name: Add GMail Label
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install ticgithub
+        run: $INSTALL_CMD
+      - name: Run ticgithub script
+        run: $RUN_CMD $DRY --loglevel INFO $$ISSUE_NUM
+        env: 
+          ISSUE_NUM: $${{ github.event.issue.number }}
+          $PAT: $${{ secrets.$PAT }}
+          $INBOX: $${{ secrets.$INBOX }}
