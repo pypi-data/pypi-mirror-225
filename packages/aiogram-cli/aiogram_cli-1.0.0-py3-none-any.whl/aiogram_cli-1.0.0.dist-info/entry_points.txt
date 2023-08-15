@@ -1,0 +1,7 @@
+[console_scripts]
+aiogram = aiogram_cli.main:cli
+
+[aiogram_cli.plugins]
+builtin-develop = aiogram_cli.develop.plugin:develop_runner
+builtin-plugins = aiogram_cli.plugins:command_plugins
+builtin-version = aiogram_cli.version:command_version
