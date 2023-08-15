@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: stream-valve
+Version: 0.1.0
+Summary: 
+License: Apache-2.0 license
+Author: Allen Chou
+Author-email: f1470891079@gmail.com
+Requires-Python: >=3.7.0,<4.0.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pytz
+Requires-Dist: rich
+Description-Content-Type: text/markdown
+
+# stream-valve
+
+A throughput valve util.
+
+
+# Installation
+
+```shell
+pip install stream-valve
+```
+# Quick Started
+
+```python
+from stream_valve.valve import FileValve
+
+filepath = <THE_FILEPATH>
+
+file_size = os.path.getsize(dummy_file)
+size_accumulator = 0
+
+valve = FileValve(filepath=filepath)
+with valve:
+    for chunk in valve:
+        size_accumulator += len(chunk)
+
+assert size_accumulator == file_size
+```
+
