@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "onshape-variables"
+version = "0.1.0"
+description = "A python class to easily interact with Onshape's Variables API"
+authors = ["seasam <samidceb@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/csamid/onshape-variables"
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
