@@ -1,0 +1,85 @@
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          cache: pip
+          python-version: ${{ matrix.python-version }}
+      - run: env | sort
+      - run: make dev-lint
+      - run: make lint-check
+    strategy:
+      matrix:
+        python-version:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          cache: pip
+          python-version: ${{ matrix.python-version }}
+      - run: env | sort
+      - run: make dev-tests
+      - run: make tests
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          flags: ${{ matrix.python-version }}
+    strategy:
+      matrix:
+        python-version:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+  consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          cache: pip
+          python-version: ${{ matrix.python-version }}
+      - run: env | sort
+      - name: Install copier for template rendering
+        run: python -m pip install --user copier
+      - name: Generate the project with the default value
+        run: |
+          rm -rf src/serious_scaffold
+          copier copy -x '!src/serious_scaffold' -r HEAD -f . .
+      - run: git diff
+      - run: git status --porcelain
+      - run: |
+          if [[ -n `git status --porcelain` ]]; then
+            exit 1
+          fi
+    strategy:
+      matrix:
+        python-version:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+name: CI
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - main
