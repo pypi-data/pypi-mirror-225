@@ -1,0 +1,57 @@
+[tool]
+[tool.poetry]
+name = "duniterpy"
+version = "1.1.1"
+description = "Python library for developers of Duniter clients"
+authors = ["inso <insomniak.fr@gmail.com>", "canercandan", "s_b"]
+maintainers = ["vit <vit@free.fr>", "Moul <moul@moul.re>"]
+readme = "README.md"
+license = "GPL-3.0-or-later"
+homepage =  ""
+repository = "https://git.duniter.org/clients/python/duniterpy"
+documentation = "https://clients.duniter.io/python/duniterpy/index.html"
+urls = { Changelog = "https://git.duniter.org/clients/python/duniterpy/-/blob/main/CHANGELOG.md" }
+keywords = ["g1", "duniter", "cryptocurrency", "librecurrency", "library"]
+include = ["examples/*.py"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Intended Audience :: Developers",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.7.0"
+graphql-core = "^3.1.2"
+websocket-client = "^1.1.0"
+jsonschema = "^3.2.0"
+pypeg2 = "^2.15.2"
+attrs = "^21.2.0"
+base58 = "^2.1.0"
+libnacl = "1.8.0"
+pyaes = "^1.6.1"
+mnemonic = "^0.19"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pytest-cov = "^2.12.0"
+pytest-sugar = "^0.9.4"
+sphinx = "^4.3.0"
+sphinx_rtd_theme = "^0.5.0"
+
+[tool.isort]
+profile = "black"
+src_paths = ["duniterpy", "tests", "examples"]
+
+[tool.pylint.messages_control]
+disable = "C,E0401,R0801,R0902,R0903,R0912,R0913,R0914,R0915,W0613"
+enable = "C0121,C0202,C0321"
+jobs = 0
+
+[tool.mypy]
+ignore_missing_imports = true
