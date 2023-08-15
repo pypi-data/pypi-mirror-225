@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: PyNewDisk
+Version: 0.0.1
+Summary: A small Linux library for working with disks.
+Home-page: https://github.com/fora1ds/newdisk
+Author: William Waterson
+Author-email: <dank.txt@gmail.com>
+License: MIT
+Description: A small Linux library for working with disks.
+        
+Keywords: ata,disk,sata,scsi,smart
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Cython
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
