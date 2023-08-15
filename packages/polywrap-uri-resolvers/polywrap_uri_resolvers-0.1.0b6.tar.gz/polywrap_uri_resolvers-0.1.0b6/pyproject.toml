@@ -1,0 +1,64 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "polywrap-uri-resolvers"
+version = "0.1.0b6"
+description = ""
+authors = ["Cesar <cesar@polywrap.io>", "Niraj <niraj@polywrap.io>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+polywrap-wasm = "^0.1.0b6"
+polywrap-core = "^0.1.0b6"
+
+[tool.poetry.group.dev.dependencies]
+polywrap-client = {path = "../polywrap-client", develop = true}
+polywrap-plugin = {path = "../polywrap-plugin", develop = true}
+polywrap-test-cases = {path = "../polywrap-test-cases", develop = true}
+pytest = "^7.1.2"
+pylint = "^2.15.4"
+black = "^22.10.0"
+bandit = { version = "^1.7.4", extras = ["toml"]}
+tox = "^3.26.0"
+tox-poetry = "^0.4.1"
+isort = "^5.10.1"
+pyright = "^1.1.275"
+pydocstyle = "^6.1.1"
+pytest-html = "^3.2.0"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B113"]  # False positive, we aren't using requests
+
+[tool.black]
+target-version = ["py310"]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportShadowedImports = false
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+[tool.pylint]
+disable = [
+    "too-many-return-statements",
+    "invalid-name",
+    "too-few-public-methods",
+    "duplicate-code",
+]
+ignore = [
+    "tests/"
+]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pydocstyle]
+# default
