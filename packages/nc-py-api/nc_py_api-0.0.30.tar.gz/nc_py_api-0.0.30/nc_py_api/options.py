@@ -1,0 +1,34 @@
+"""Options to change nc_py_api's runtime behavior.
+
+Each setting only affects newly created instances of Nextcloud or NextcloudApp class, unless otherwise specified.
+Specifying options in **kwargs** has higher priority than this.
+"""
+import typing
+from os import environ
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+XDEBUG_SESSION = environ.get("XDEBUG_SESSION", "")
+"""Dev option, for debugging PHP code."""
+
+NPA_TIMEOUT: typing.Optional[int]
+"""Default timeout for OCS API calls. Set to ``None`` to disable timeouts for development."""
+try:
+    NPA_TIMEOUT = int(environ.get("NPA_TIMEOUT", 30))
+except (TypeError, ValueError):
+    NPA_TIMEOUT = None
+
+NPA_TIMEOUT_DAV: typing.Optional[int]
+"""File operations timeout, usually it is OCS timeout multiplied by 3."""
+try:
+    NPA_TIMEOUT_DAV = int(environ.get("NPA_TIMEOUT_DAV", 30 * 3))
+except (TypeError, ValueError):
+    NPA_TIMEOUT_DAV = None
+
+NPA_NC_CERT = environ.get("NPA_NC_CERT", True)
+"""Option to enable/disable Nextcloud certificate verification.
+
+SSL certificates (a.k.a CA bundle) used to  verify the identity of requested hosts. Either **True** (default CA bundle),
+a path to an SSL certificate file, or **False** (which will disable verification)."""
