@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: netclam-common
+Version: 0.1.1
+Summary: Common utilizies for the NetClam OSS project.
+Author: Dana Garcia
+Author-email: dana_sean_garcia@live.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: mysql-connector-python (>=8.1.0,<9.0.0)
+Description-Content-Type: text/markdown
+
+# NetClam Common
+Common utilities used by the NetClam OSS project.
