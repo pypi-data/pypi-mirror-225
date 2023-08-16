@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: xframe
+Version: 0.1.0
+Summary: Python framework for the creation of scientific algorithms targeting X-ray science.
+Keywords: Scientific algorithms
+Author-Email: Unknown <tim.berberich@xfel.eu>
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Classifier: Programming Language :: Python :: 3
+Project-URL: Homepage, https://github.com/TimBerberich/xframe
+Requires-Python: >=3.8
+Requires-Dist: h5py
+Requires-Dist: numpy
+Requires-Dist: ruamel.yaml
+Requires-Dist: scipy
+Requires-Dist: matplotlib; extra == "fxs"
+Requires-Dist: pysofft; extra == "fxs"
+Requires-Dist: pyopencl; extra == "fxs"
+Requires-Dist: shtns; extra == "fxs"
+Requires-Dist: vtk; extra == "fxs"
+Requires-Dist: pygsl; extra == "fxs"
+Requires-Dist: flt; extra == "fxs"
+Requires-Dist: psutil; extra == "fxs"
+Requires-Dist: opencv-python; extra == "fxs"
+Requires-Dist: SharedArray; extra == "fxs"
+Provides-Extra: fxs
+Description-Content-Type: text/markdown
+
+# xFrame
+Framwork for scientific computing targeting data analysis of x-ray scattering experiments. 
+# Installation
+```
+pip install xframe
+```
+# Usage
+Will be updated shortly.

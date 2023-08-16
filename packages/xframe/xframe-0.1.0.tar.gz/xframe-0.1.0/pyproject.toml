@@ -1,0 +1,51 @@
+[project]
+name = "xframe"
+version = "0.1.0"
+description = "Python framework for the creation of scientific algorithms targeting X-ray science."
+keywords = [
+    "Scientific algorithms",
+]
+readme = "README.md"
+authors = [
+    { email = "tim.berberich@xfel.eu" },
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "h5py",
+    "numpy",
+    "ruamel.yaml",
+    "scipy",
+]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+fxs = [
+    "matplotlib",
+    "pysofft",
+    "pyopencl",
+    "shtns",
+    "vtk",
+    "pygsl",
+    "flt",
+    "psutil",
+    "opencv-python",
+    "SharedArray",
+]
+
+[project.scripts]
+xframe = "xframe.main:start_routine_cmd"
+
+[project.urls]
+Homepage = "https://github.com/TimBerberich/xframe"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool]
