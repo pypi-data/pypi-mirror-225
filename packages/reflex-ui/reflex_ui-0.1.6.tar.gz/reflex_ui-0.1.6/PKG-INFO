@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: reflex-ui
+Version: 0.1.6
+Summary: 
+Author: Jakob Pinterits
+Author-email: jakob.pinterits@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: window
+Requires-Dist: aiohttp (>=3.8.4,<4.0.0)
+Requires-Dist: cefpython3 (>=66.1,<67.0) ; (sys_platform == "windows") and (extra == "window")
+Requires-Dist: fastapi (>=0.95.1,<0.96.0)
+Requires-Dist: introspection (>=1.5.2,<2.0.0)
+Requires-Dist: pillow (>=9.5.0,<10.0.0)
+Requires-Dist: pygobject (>=3.44.1,<4.0.0) ; (sys_platform == "linux") and (extra == "window")
+Requires-Dist: pytest (>=7.3.1,<8.0.0)
+Requires-Dist: python-multipart (>=0.0.6,<0.0.7)
+Requires-Dist: pywebview (>=4.2.2,<5.0.0) ; extra == "window"
+Requires-Dist: timer-dict (>=1.0.0,<2.0.0)
+Requires-Dist: typing-extensions (>=4.5.0,<5.0.0)
+Requires-Dist: unicall (>=0.1.2,<0.2.0)
+Requires-Dist: uniserde (>=0.3.0,<0.4.0)
+Requires-Dist: uvicorn (>=0.22.0,<0.23.0)
+Requires-Dist: websockets (>=11.0.3,<12.0.0)
+Description-Content-Type: text/markdown
+
+
