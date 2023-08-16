@@ -1,0 +1,21 @@
+{% extends "allianceauth/base.html" %}
+
+{% load i18n %}
+
+{% block page_title %}{% translate "Discord Announcements" %}{% endblock %}
+
+{% block content %}
+    <div class="aa-discord-announcements">
+        <div class="aa-discord-announcements-header">
+            {% block aa_discord_announcements_header %}{% endblock %}
+        </div>
+
+        <div class="aa-discord-announcements-body">
+            {% block aa_discord_announcements_body %}{% endblock %}
+        </div>
+
+        <div class="aa-discord-announcements-footer">
+            {% include "aa_discord_announcements/partials/footer/app-translation-footer.html" %}
+        </div>
+    </div>
+{% endblock %}
