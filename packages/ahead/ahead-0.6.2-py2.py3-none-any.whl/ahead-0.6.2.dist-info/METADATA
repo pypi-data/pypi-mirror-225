@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: ahead
+Version: 0.6.2
+Summary: Time series forecasting
+Author: T. Moudiki
+Author-email: thierry.moudiki@gmail.com
+License: BSD3 Clause Clear
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: rpy2 (==3.4.5)
+
+A package for time series forecasting
