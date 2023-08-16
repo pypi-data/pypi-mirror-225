@@ -1,0 +1,92 @@
+[project.urls]
+
+"Bug Tracker" = "https://github.com/OCXStandard/ocx-schema-parser/issues"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "ocx_schema_parser"
+version = "0.8.0"
+description = ""
+authors = ["ocastrup <ole.christain.astrup@dnv.com>"]
+readme = "README.md"
+packages = [{include = "ocx_schema_parser"}]
+homepage = "https://github.com/OCXStandard/ocx-schema-parser"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+xsdata = "23.6"
+lxml = "*"
+ocx = "3.0.0a0"
+pyspellchecker ="*"
+inflection = "*"
+loguru = "*"
+sphinx = "<=6.2.1"
+fuzzywuzzy = "^0.18.0"
+pyyaml = "*"
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-regressions ="*"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "*"
+sphinx-autodoc-typehints = "*"
+sphinx_rtd_theme= "*"
+sphinx-click= "*"
+sphinx_automodapi = "*"
+
+[tool.tbump]
+# Uncomment this if your project is hosted on GitHub:
+github_url = "https://github.com/OCXStandard/ocx-schema-parser"
+
+[tool.tbump.version]
+current = "0.8.0"
+
+# Example of a semver regexp.
+# Make sure this matches current_version before
+# using tbump
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  (\-
+    (?P<extra>.+)
+  )?
+  '''
+
+[[tool.tbump.field]]
+# the name of the field
+name = "extra"
+# the default value to use, if there is no match
+default = ""
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+# For each file to patch, add a [[tool.tbump.file]] config
+# section containing the path of the file, relative to the
+# tbump.toml location.
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+
+[[tool.tbump.file]]
+src = "./ocx_schema_parser/__init__.py"
+
+# You can specify a list of commands to
+# run after the files have been patched
+# and before the git commit is made
+
+
+# Or run some commands after the git tag and the branch
+# have been pushed:
+#  [[tool.tbump.after_push]]
+#  name = "publish"
+#  cmd = "./publish.sh"
