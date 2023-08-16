@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: kodict-core
+Version: 1.0.0.4
+Summary: A Korean Dictionary bot for searching language and vocabulary information from Krdict and DeepL.
+Home-page: https://github.com/coffeebank/kodict_core
+Author: coffeebank
+Project-URL: Source Code, https://github.com/coffeebank/kodict_core
+Project-URL: Bug Tracker, https://github.com/coffeebank/kodict_core/issues
+Project-URL: Documentation, https://github.com/coffeebank/kodict_core
+Keywords: korean dictionary api
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+License-File: LICENSE
+Requires-Dist: aiohttp
+Requires-Dist: asyncio
+Requires-Dist: cssselect >=1.1.0
+Requires-Dist: korean-romanizer
+Requires-Dist: lxml >=4.9.1
+
+# kodict_core
+
+A Korean Dictionary bot for searching language and vocabulary information from Krdict and DeepL.
+
+```
+pip install kodict-core
+```
+
+## kodict_core
+
+- fetch_all(text)
+  - Searches National Institute of Korean Language's Korean-English Learners' Dictionary (한국어기초사전)
+  - Uses API for Hangul/Hanja and Scraper for English
+  - Searches DeepL Translate for fallback
