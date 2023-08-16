@@ -1,0 +1,266 @@
+Metadata-Version: 2.1
+Name: kedro-datasets
+Version: 1.5.2
+Summary: Kedro-Datasets is where you can find all of Kedro's data connectors.
+Author: Kedro
+License: Apache Software License (Apache 2.0)
+Project-URL: Source, https://github.com/kedro-org/kedro-plugins/tree/main/kedro-datasets
+Project-URL: Documentation, https://docs.kedro.org
+Project-URL: Tracker, https://github.com/kedro-org/kedro-plugins/issues
+Requires-Python: <3.11,>=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: kedro >=0.16
+Requires-Dist: lazy-loader
+Provides-Extra: all
+Requires-Dist: kedro-datasets[api,biosequence,dask,databricks,geopandas,holoviews,matplotlib,networkx,pickle,pillow,plotly,polars,redis,snowflake,spark,svmlight,tensorflow,video,yaml] ; extra == 'all'
+Provides-Extra: api
+Requires-Dist: kedro-datasets[api.apidataset] ; extra == 'api'
+Provides-Extra: api.apidataset
+Requires-Dist: requests ~=2.20 ; extra == 'api.apidataset'
+Provides-Extra: biosequence
+Requires-Dist: kedro-datasets[biosequence.biosequencedataset] ; extra == 'biosequence'
+Provides-Extra: biosequence.biosequencedataset
+Requires-Dist: biopython ~=1.73 ; extra == 'biosequence.biosequencedataset'
+Provides-Extra: dask
+Requires-Dist: kedro-datasets[dask.parquetdataset] ; extra == 'dask'
+Provides-Extra: dask.parquetdataset
+Requires-Dist: dask[complete] >=2021.10 ; extra == 'dask.parquetdataset'
+Requires-Dist: triad <1.0,>=0.6.7 ; extra == 'dask.parquetdataset'
+Provides-Extra: databricks
+Requires-Dist: kedro-datasets[databricks.managedtabledataset] ; extra == 'databricks'
+Provides-Extra: databricks.managedtabledataset
+Requires-Dist: kedro-datasets[pandas-base,spark-base] ; extra == 'databricks.managedtabledataset'
+Requires-Dist: delta-spark ~=1.2.1 ; extra == 'databricks.managedtabledataset'
+Provides-Extra: docs
+Requires-Dist: docutils ==0.16 ; extra == 'docs'
+Requires-Dist: sphinx ~=5.3.0 ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ==1.2.0 ; extra == 'docs'
+Requires-Dist: sphinx-autodoc-typehints ==1.20.2 ; extra == 'docs'
+Requires-Dist: sphinx-copybutton ==0.3.1 ; extra == 'docs'
+Requires-Dist: sphinx-notfound-page ; extra == 'docs'
+Requires-Dist: ipykernel <7.0,>=5.3 ; extra == 'docs'
+Requires-Dist: sphinxcontrib-mermaid ~=0.7.1 ; extra == 'docs'
+Requires-Dist: myst-parser ~=1.0.0 ; extra == 'docs'
+Requires-Dist: Jinja2 <3.1.0 ; extra == 'docs'
+Provides-Extra: geopandas
+Requires-Dist: kedro-datasets[geopandas.geojsondataset] ; extra == 'geopandas'
+Provides-Extra: geopandas.geojsondataset
+Requires-Dist: geopandas <1.0,>=0.6.0 ; extra == 'geopandas.geojsondataset'
+Requires-Dist: pyproj ~=3.0 ; extra == 'geopandas.geojsondataset'
+Provides-Extra: hdfs-base
+Requires-Dist: hdfs <3.0,>=2.5.8 ; extra == 'hdfs-base'
+Provides-Extra: holoviews
+Requires-Dist: kedro-datasets[holoviews.holoviewswriter] ; extra == 'holoviews'
+Provides-Extra: holoviews.holoviewswriter
+Requires-Dist: holoviews ~=1.13.0 ; extra == 'holoviews.holoviewswriter'
+Provides-Extra: matplotlib
+Requires-Dist: kedro-datasets[matplotlib.matplotlibwriter] ; extra == 'matplotlib'
+Provides-Extra: matplotlib.matplotlibwriter
+Requires-Dist: matplotlib <4.0,>=3.0.3 ; extra == 'matplotlib.matplotlibwriter'
+Provides-Extra: networkx
+Requires-Dist: kedro-datasets[networkx.networkxdataset] ; extra == 'networkx'
+Provides-Extra: networkx.networkxdataset
+Requires-Dist: networkx ~=2.4 ; extra == 'networkx.networkxdataset'
+Provides-Extra: pandas
+Requires-Dist: kedro-datasets[pandas.csvdataset,pandas.deltatabledataset,pandas.exceldataset,pandas.featherdataset,pandas.gbqquerydataset,pandas.gbqtabledataset,pandas.genericdataset,pandas.hdfdataset,pandas.jsondataset,pandas.parquetdataset,pandas.sqlquerydataset,pandas.sqltabledataset,pandas.xmldataset] ; extra == 'pandas'
+Provides-Extra: pandas-base
+Requires-Dist: pandas <3.0,>=1.3 ; extra == 'pandas-base'
+Provides-Extra: pandas.csvdataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.csvdataset'
+Provides-Extra: pandas.deltatabledataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.deltatabledataset'
+Requires-Dist: deltalake >=0.10.0 ; extra == 'pandas.deltatabledataset'
+Provides-Extra: pandas.exceldataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.exceldataset'
+Requires-Dist: openpyxl <4.0,>=3.0.6 ; extra == 'pandas.exceldataset'
+Provides-Extra: pandas.featherdataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.featherdataset'
+Provides-Extra: pandas.gbqquerydataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.gbqquerydataset'
+Requires-Dist: pandas-gbq <0.18.0,>=0.12.0 ; extra == 'pandas.gbqquerydataset'
+Provides-Extra: pandas.gbqtabledataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.gbqtabledataset'
+Requires-Dist: pandas-gbq <0.18.0,>=0.12.0 ; extra == 'pandas.gbqtabledataset'
+Provides-Extra: pandas.genericdataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.genericdataset'
+Provides-Extra: pandas.hdfdataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.hdfdataset'
+Requires-Dist: tables ~=3.6 ; (platform_system != "Windows") and extra == 'pandas.hdfdataset'
+Requires-Dist: tables ~=3.6.0 ; (platform_system == "Windows") and extra == 'pandas.hdfdataset'
+Provides-Extra: pandas.jsondataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.jsondataset'
+Provides-Extra: pandas.parquetdataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.parquetdataset'
+Requires-Dist: pyarrow >=6.0 ; extra == 'pandas.parquetdataset'
+Provides-Extra: pandas.sqlquerydataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.sqlquerydataset'
+Requires-Dist: SQLAlchemy <3.0,>=1.4 ; extra == 'pandas.sqlquerydataset'
+Requires-Dist: pyodbc ~=4.0 ; extra == 'pandas.sqlquerydataset'
+Provides-Extra: pandas.sqltabledataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.sqltabledataset'
+Requires-Dist: SQLAlchemy <3.0,>=1.4 ; extra == 'pandas.sqltabledataset'
+Provides-Extra: pandas.xmldataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'pandas.xmldataset'
+Requires-Dist: lxml ~=4.6 ; extra == 'pandas.xmldataset'
+Provides-Extra: pickle
+Requires-Dist: kedro-datasets[pickle.pickledataset] ; extra == 'pickle'
+Provides-Extra: pickle.pickledataset
+Requires-Dist: compress-pickle[lz4] ~=2.1.0 ; extra == 'pickle.pickledataset'
+Provides-Extra: pillow
+Requires-Dist: kedro-datasets[pillow.imagedataset] ; extra == 'pillow'
+Provides-Extra: pillow.imagedataset
+Requires-Dist: Pillow ~=9.0 ; extra == 'pillow.imagedataset'
+Provides-Extra: plotly
+Requires-Dist: kedro-datasets[plotly.jsondataset,plotly.plotlydataset] ; extra == 'plotly'
+Provides-Extra: plotly-base
+Requires-Dist: plotly <6.0,>=4.8.0 ; extra == 'plotly-base'
+Provides-Extra: plotly.jsondataset
+Requires-Dist: kedro-datasets[plotly-base] ; extra == 'plotly.jsondataset'
+Provides-Extra: plotly.plotlydataset
+Requires-Dist: kedro-datasets[pandas-base,plotly-base] ; extra == 'plotly.plotlydataset'
+Provides-Extra: polars
+Requires-Dist: kedro-datasets[polars.csvdataset] ; extra == 'polars'
+Provides-Extra: polars.csvdataset
+Requires-Dist: polars ~=0.17.0 ; extra == 'polars.csvdataset'
+Provides-Extra: redis
+Requires-Dist: kedro-datasets[redis.pickledataset] ; extra == 'redis'
+Provides-Extra: redis.pickledataset
+Requires-Dist: redis ~=4.1 ; extra == 'redis.pickledataset'
+Provides-Extra: s3fs-base
+Requires-Dist: s3fs <0.5,>=0.3.0 ; extra == 's3fs-base'
+Provides-Extra: snowflake
+Requires-Dist: kedro-datasets[snowflake.snowparktabledataset] ; extra == 'snowflake'
+Provides-Extra: snowflake.snowparktabledataset
+Requires-Dist: pyarrow ~=8.0 ; extra == 'snowflake.snowparktabledataset'
+Requires-Dist: snowflake-snowpark-python ~=1.0.0 ; (python_version == "3.8") and extra == 'snowflake.snowparktabledataset'
+Provides-Extra: spark
+Requires-Dist: kedro-datasets[spark.deltatabledataset,spark.sparkdataset,spark.sparkhivedataset,spark.sparkjdbcdataset] ; extra == 'spark'
+Provides-Extra: spark-base
+Requires-Dist: pyspark <4.0,>=2.2 ; extra == 'spark-base'
+Provides-Extra: spark.deltatabledataset
+Requires-Dist: kedro-datasets[hdfs-base,s3fs-base,spark-base] ; extra == 'spark.deltatabledataset'
+Requires-Dist: delta-spark <3.0,>=1.0 ; extra == 'spark.deltatabledataset'
+Provides-Extra: spark.sparkdataset
+Requires-Dist: kedro-datasets[hdfs-base,s3fs-base,spark-base] ; extra == 'spark.sparkdataset'
+Provides-Extra: spark.sparkhivedataset
+Requires-Dist: kedro-datasets[hdfs-base,s3fs-base,spark-base] ; extra == 'spark.sparkhivedataset'
+Provides-Extra: spark.sparkjdbcdataset
+Requires-Dist: kedro-datasets[hdfs-base,s3fs-base,spark-base] ; extra == 'spark.sparkjdbcdataset'
+Provides-Extra: svmlight
+Requires-Dist: kedro-datasets[svmlight.svmlightdataset] ; extra == 'svmlight'
+Provides-Extra: svmlight.svmlightdataset
+Requires-Dist: scikit-learn ~=1.0.2 ; extra == 'svmlight.svmlightdataset'
+Requires-Dist: scipy ~=1.7.3 ; extra == 'svmlight.svmlightdataset'
+Provides-Extra: tensorflow
+Requires-Dist: kedro-datasets[tensorflow.tensorflowmodeldataset] ; extra == 'tensorflow'
+Provides-Extra: tensorflow.tensorflowmodeldataset
+Requires-Dist: tensorflow ~=2.0 ; (platform_system != "Darwin" or platform_machine != "arm64") and extra == 'tensorflow.tensorflowmodeldataset'
+Requires-Dist: tensorflow-macos ~=2.0 ; (platform_system == "Darwin" and platform_machine == "arm64") and extra == 'tensorflow.tensorflowmodeldataset'
+Provides-Extra: test
+Requires-Dist: adlfs <=2022.2,>=2021.7.1 ; extra == 'test'
+Requires-Dist: bandit <2.0,>=1.6.2 ; extra == 'test'
+Requires-Dist: behave ==1.2.6 ; extra == 'test'
+Requires-Dist: biopython ~=1.73 ; extra == 'test'
+Requires-Dist: blacken-docs ==1.9.2 ; extra == 'test'
+Requires-Dist: black ~=22.0 ; extra == 'test'
+Requires-Dist: compress-pickle[lz4] ~=1.2.0 ; extra == 'test'
+Requires-Dist: coverage[toml] ; extra == 'test'
+Requires-Dist: dask[complete] ; extra == 'test'
+Requires-Dist: delta-spark ~=1.2.1 ; extra == 'test'
+Requires-Dist: deltalake >=0.10.0 ; extra == 'test'
+Requires-Dist: dill ~=0.3.1 ; extra == 'test'
+Requires-Dist: filelock <4.0,>=3.4.0 ; extra == 'test'
+Requires-Dist: gcsfs <=2022.1,>=2021.4 ; extra == 'test'
+Requires-Dist: geopandas <1.0,>=0.6.0 ; extra == 'test'
+Requires-Dist: hdfs <3.0,>=2.5.8 ; extra == 'test'
+Requires-Dist: holoviews ~=1.13.0 ; extra == 'test'
+Requires-Dist: import-linter[toml] ==1.2.6 ; extra == 'test'
+Requires-Dist: ipython <8.0,>=7.31.1 ; extra == 'test'
+Requires-Dist: Jinja2 <3.1.0 ; extra == 'test'
+Requires-Dist: joblib >=0.14 ; extra == 'test'
+Requires-Dist: jupyterlab ~=3.0 ; extra == 'test'
+Requires-Dist: jupyter ~=1.0 ; extra == 'test'
+Requires-Dist: lxml ~=4.6 ; extra == 'test'
+Requires-Dist: memory-profiler <1.0,>=0.50.0 ; extra == 'test'
+Requires-Dist: networkx ~=2.4 ; extra == 'test'
+Requires-Dist: opencv-python ~=4.5.5.64 ; extra == 'test'
+Requires-Dist: openpyxl <4.0,>=3.0.3 ; extra == 'test'
+Requires-Dist: pandas-gbq <0.18.0,>=0.12.0 ; extra == 'test'
+Requires-Dist: pandas <2,>=1.3 ; extra == 'test'
+Requires-Dist: Pillow ~=9.0 ; extra == 'test'
+Requires-Dist: plotly <6.0,>=4.8.0 ; extra == 'test'
+Requires-Dist: polars ~=0.15.13 ; extra == 'test'
+Requires-Dist: pre-commit <3.0,>=2.9.2 ; extra == 'test'
+Requires-Dist: psutil ==5.8.0 ; extra == 'test'
+Requires-Dist: pyarrow ~=8.0 ; extra == 'test'
+Requires-Dist: pylint <3.0,>=2.5.2 ; extra == 'test'
+Requires-Dist: pyodbc ~=4.0.35 ; extra == 'test'
+Requires-Dist: pyproj ~=3.0 ; extra == 'test'
+Requires-Dist: pyspark <4.0,>=2.2 ; extra == 'test'
+Requires-Dist: pytest-cov ~=3.0 ; extra == 'test'
+Requires-Dist: pytest-mock <2.0,>=1.7.1 ; extra == 'test'
+Requires-Dist: pytest-xdist[psutil] ~=2.2.1 ; extra == 'test'
+Requires-Dist: pytest ~=7.2 ; extra == 'test'
+Requires-Dist: redis ~=4.1 ; extra == 'test'
+Requires-Dist: requests-mock ~=1.6 ; extra == 'test'
+Requires-Dist: requests ~=2.20 ; extra == 'test'
+Requires-Dist: s3fs <0.5,>=0.3.0 ; extra == 'test'
+Requires-Dist: scikit-learn ~=1.0.2 ; extra == 'test'
+Requires-Dist: scipy ~=1.7.3 ; extra == 'test'
+Requires-Dist: SQLAlchemy <3.0,>=1.4 ; extra == 'test'
+Requires-Dist: tables ~=3.7 ; extra == 'test'
+Requires-Dist: triad <1.0,>=0.6.7 ; extra == 'test'
+Requires-Dist: trufflehog ~=2.1 ; extra == 'test'
+Requires-Dist: xlsxwriter ~=1.0 ; extra == 'test'
+Requires-Dist: tensorflow ~=2.0 ; (platform_system != "Darwin" or platform_machine != "arm64") and extra == 'test'
+Requires-Dist: tensorflow-macos ~=2.0 ; (platform_system == "Darwin" and platform_machine == "arm64") and extra == 'test'
+Requires-Dist: matplotlib <3.4,>=3.0.3 ; (python_version < "3.10") and extra == 'test'
+Requires-Dist: moto ==1.3.7 ; (python_version < "3.10") and extra == 'test'
+Requires-Dist: matplotlib <3.6,>=3.5 ; (python_version == "3.10") and extra == 'test'
+Requires-Dist: moto ==3.0.4 ; (python_version == "3.10") and extra == 'test'
+Requires-Dist: snowflake-snowpark-python ~=1.0.0 ; (python_version == "3.8") and extra == 'test'
+Provides-Extra: video
+Requires-Dist: kedro-datasets[video.videodataset] ; extra == 'video'
+Provides-Extra: video.videodataset
+Requires-Dist: opencv-python ~=4.5.5.64 ; extra == 'video.videodataset'
+Provides-Extra: yaml
+Requires-Dist: kedro-datasets[yaml.yamldataset] ; extra == 'yaml'
+Provides-Extra: yaml.yamldataset
+Requires-Dist: kedro-datasets[pandas-base] ; extra == 'yaml.yamldataset'
+Requires-Dist: PyYAML <7.0,>=4.2 ; extra == 'yaml.yamldataset'
+
+# Kedro-Datasets
+
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue.svg)](https://pypi.org/project/kedro-datasets/)
+[![PyPI Version](https://badge.fury.io/py/kedro-datasets.svg)](https://pypi.org/project/kedro-datasets/)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/ambv/black)
+
+A Kedro plugin that powers Kedro's DataCatalog.
+
+## Installation
+
+`kedro-datasets` is a Python plugin. To install it:
+
+```bash
+pip install kedro-datasets
+```
+
+# Datasets
+
+Welcome to `kedro_datasets`, the home of Kedro's data connectors. Here you will find `AbstractDataSet` implementations created by QuantumBlack and external contributors.
+
+## What `AbstractDataSet` implementations are supported?
+
+We support a range of data connectors, including CSV, Excel, Parquet, Feather, HDF5, JSON, Pickle, SQL Tables, SQL Queries, Spark DataFrames and more. We even allow support for working with images.
+
+These data connectors are supported with the APIs of `pandas`, `spark`, `networkx`, `matplotlib`, `yaml` and more.
+
+[The Data Catalog](https://kedro.readthedocs.io/en/stable/data/data_catalog.html) allows you to work with a range of file formats on local file systems, network file systems, cloud object stores, and Hadoop.
+
+Here is a full list of [supported data connectors and APIs](https://docs.kedro.org/en/stable/kedro_datasets.html).
+
+## How can I create my own `AbstractDataSet` implementation?
+
+
+Take a look at our [instructions on how to create your own `AbstractDataSet` implementation](https://kedro.readthedocs.io/en/stable/extend_kedro/custom_datasets.html).
