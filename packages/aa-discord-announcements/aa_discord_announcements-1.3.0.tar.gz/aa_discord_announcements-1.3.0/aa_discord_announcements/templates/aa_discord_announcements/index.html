@@ -1,0 +1,63 @@
+{% extends "aa_discord_announcements/base.html" %}
+
+{% load i18n %}
+
+{% block aa_discord_announcements_header %}
+    {% translate "Discord Announcements" as translated_header %}
+    {% include "aa_discord_announcements/partials/header/page-header.html" with header_text=translated_header %}
+{% endblock %}
+
+{% block aa_discord_announcements_body %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="panel-title">{% translate "Announcement Details" %}</span>
+                </div>
+                <div class="panel-body">
+                    {% include "aa_discord_announcements/partials/form/form.html" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 aa-discord-announcements-announcementtext">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="panel-title">{% translate "Formatted Announcement Text" %}</span>
+                </div>
+                <div class="panel-body">
+                    {% include "aa_discord_announcements/partials/announcement/announcement.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const discordAnnouncementsSettings = {
+            url: {
+                createAnnouncement: '{% url "aa_discord_announcements:ajax_create_announcement" %}',
+                getAnnouncementTargets: '{% url "aa_discord_announcements:ajax_get_announcement_targets" %}',
+                getAnnouncementWebhooks: '{% url "aa_discord_announcements:ajax_get_webhooks" %}'
+            }
+        };
+
+        const discordAnnouncementsTranslations = {
+            error: {
+                missingFields: '{% translate "Mandatory information is missing.<br>To create an announcement, you need to fill out the following fields:<br>» Announcement Text" %}'
+            },
+            copyToClipboard: {
+                error: '{% translate "Error! Your announcement was not copied to your clipboard. Maybe your browser doesn&apos;t support this feature." %}',
+                success: '{% translate "Success! Your announcement text has been copied to your clipboard." %}'
+            }
+        };
+    </script>
+{% endblock %}
+
+{% block extra_javascript %}
+    {% include "bundles/clipboard-js.html" %}
+    {% include "aa_discord_announcements/bundles/discord-announcements-js.html" %}
+{% endblock %}
+
+{% block extra_css %}
+    {% include "aa_discord_announcements/bundles/discord-announcements-css.html" %}
+{% endblock %}

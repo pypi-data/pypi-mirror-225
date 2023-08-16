@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aa-discord-announcements"
+version = "1.3.0"
+description = "Discord Announcements via Alliance Auth. Write announcements and manage who can write announcements on your corporation or alliance Discord through Alliance Auth."
+readme = "README.md"
+license = "GPL-3.0"
+requires-python = "~=3.8"
+authors = [
+    { name = "Peter Pfeufer", email = "develop@ppfeufer.de" },
+]
+keywords = [
+    "allianceauth",
+    "announcements",
+    "discord",
+    "eveonline",
+]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dependencies = [
+    "allianceauth-app-utils>=1.13.0",
+    "allianceauth>=3.0.0",
+    "dhooks-lite>=0.6.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/ppfeufer/aa-discord-announcements"
+Documentation = "https://github.com/ppfeufer/aa-discord-announcements/blob/master/README.md"
+Source = "https://github.com/ppfeufer/aa-discord-announcements.git"
+Changelog = "https://github.com/ppfeufer/aa-discord-announcements/blob/master/CHANGELOG.md"
+Tracker = "https://github.com/ppfeufer/aa-discord-announcements/issues"
+
+[tool.hatch.build]
+include = [
+    "/aa_discord_announcements",
+]
