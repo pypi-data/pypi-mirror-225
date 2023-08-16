@@ -1,0 +1,12 @@
+/.coverage
+/.pytest_cache
+/dist
+*.pyc
+.snakemake
+reads
+Note.md
+tests/data/pipeline/bin/pipeline
+hello.txt
+__pycache__
+tests/data/pipeline/.conda
+.DS_Store
