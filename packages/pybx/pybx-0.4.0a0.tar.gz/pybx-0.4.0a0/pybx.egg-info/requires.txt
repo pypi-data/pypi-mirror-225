@@ -1,0 +1,13 @@
+fastcore>=1.5.27
+numpy>=1.21.6
+matplotlib>=3.5
+opencv-python>=4.0
+
+[dev]
+build
+twine
+ipykernel
+pytest
+python-build
+nbdev==2.3.7
+pre-commit
