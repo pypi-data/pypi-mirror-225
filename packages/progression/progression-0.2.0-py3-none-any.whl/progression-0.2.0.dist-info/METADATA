@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: progression
+Version: 0.2.0
+Summary: advanced progress bar in ASCII art
+Home-page: https://github.com/cimatosa/progression
+License: BSD (3 clause)
+Keywords: progress bar,ascii art,multiprocess
+Author: Richard Hartmann
+Author-email: richard.hartmann@tu-dresden.de
+Requires-Python: >=3.4,<4.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Utilities
+Requires-Dist: ipython (>=8.14.0,<9.0.0)
+Requires-Dist: ipywidgets (>=8.1.0,<9.0.0)
+Project-URL: Repository, https://github.com/cimatosa/progression
+Description-Content-Type: text/x-rst
+
+progression
+===========
+
+|PyPi version| |Build Status| |codecov|
+
+
+An advanced progress bar in ASCII art which features
+  * speed and estimated time of arrival
+  * multiple bars
+  * auto adjustment to the available terminal width
+  * IPython notebook html output available
+
+If you have one or more time consuming processes running and want to 
+keep track of the current state, get an estimate on when the process 
+is going to finish or if you just like statistics this package does the job.
+
+|progExample|
+
+It is pure python. It runs with python version 2 and 3. 
+If you have IPython (and ipywidgets) installed and enable the widgets extension
+an html variant of the ASCII art progress is available.
+
+
+`Further reading (install, examples and co) in the docs <https://cimatosa.github.io/progression/>`__
+
+.. |progExample| image:: https://cimatosa.github.io/progression/prog.svg
+.. |PyPi version| image:: https://badge.fury.io/py/progression.svg 
+   :target: https://badge.fury.io/py/progression
+.. |Build Status| image:: https://travis-ci.org/cimatosa/progression.svg?branch=master 
+   :target: https://travis-ci.org/cimatosa/progression
+.. |codecov| image:: https://codecov.io/gh/cimatosa/progression/branch/master/graph/badge.svg 
+   :target: https://codecov.io/gh/cimatosa/progression
+
+
