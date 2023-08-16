@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: geometrout
+Version: 0.1.0.9
+Summary: A collection of geometric methods and concepts tailored to machine learning for robotics
+Download-URL: https://github.com/fishbotics/geometrout/archive/refs/tags/v0.1.0.9.tar.gz
+License: MIT
+Requires-Python: >=3.6
+License-File: LICENSE
+
+This is a high-performance set of tools used for CPU-based geometric processing in Python. By-in-large, these are simple methods, written with Numpy and Numba. These tools were designed for Machine Learning and Robotics, but could feasibly be used for any 3D processing task.
