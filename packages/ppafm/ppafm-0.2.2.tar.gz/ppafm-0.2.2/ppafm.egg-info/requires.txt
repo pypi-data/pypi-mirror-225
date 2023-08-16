@@ -1,0 +1,16 @@
+matplotlib
+numpy
+
+[dev]
+bumpver==2023.1124
+pre-commit
+pytest
+pytest-cov
+
+[opencl]
+pyopencl
+reikna
+ase
+
+[opencl:platform_system == "Windows"]
+PyQt5
