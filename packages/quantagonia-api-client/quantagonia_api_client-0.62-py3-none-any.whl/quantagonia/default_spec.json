@@ -1,0 +1,75 @@
+{
+    "version": 3,
+    "absolute_gap": 1e-09,
+    "relative_gap": 1e-4,
+    "time_limit": 3600,
+    "epsilon": 1e-9,
+    "seed": 36848232890347,
+    "heuristics_only" : false,
+    "presolve": {
+	"enabled": true,
+	"coeff_strengthening": false,
+	"decompose": false,
+	"maxiter": 100000
+    },
+    "node_presolve": true,
+    "node_implications" : true,
+    "branching_rule": "MAX_CONTRIBUTION",
+    "branching_scoring" : true,
+    "enumerate": {
+	"enabled": true,
+	"enumeration_algorithm": "CPU_GRAY",
+	"enumeration_threshold": 16
+    },
+    "primal_solver" : {
+	"type" : "THROW_DICE",
+	"runs" : 1,
+	"composition" : [
+	    {
+		"probability" : 0.999,
+		"solver" : {
+		    "type" : "NO_SOLVER"
+		}
+	    },
+	    {
+		"probability" : 0.001,
+		"solver" : {
+		    "runs" : 1,
+		    "type" : "HASAN2000",
+                    "restarts": 2
+		}
+	    }
+
+	]
+    },
+    "dual_solver": {
+	"runs": 1,
+	"type": "FRANK_WOLFE",
+	"exec_prob": 0.2,
+	"maxiter": 500000,
+	"max_dual_gap": 1e-02,
+	"max_rel_dual_gap": 1e-05,
+	"smasher_step": false,
+	"smasher_eps": 0.1,
+	"dual_root_node_SDP": true,
+	"dual_fixings": false,
+	"dual_implications": false,
+	"convexification": {
+	    "type": "SDP_SHIFT",
+	    "variant": "RECONVEXIFICATION",
+	    "convexification_step": 1,
+	    "shift_solver": {
+		"type": "FRANK_WOLFE_SDP",
+		"eig_tol": 1e-07,
+		"maxiter": 25,
+		"ncv_coeff": 0.05,
+		"naive_fw": false,
+		"eig_method": "LANCZOS",
+		"gep_operation_module": "EIGEN",
+		"root_node_solver" : {
+		    "type": "DSDP"
+		}
+	    }
+	}
+    }
+}
