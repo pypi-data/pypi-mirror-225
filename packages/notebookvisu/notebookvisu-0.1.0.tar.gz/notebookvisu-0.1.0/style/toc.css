@@ -1,0 +1,17 @@
+.toc-react-component-container {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 5px;
+  margin-left: 8px;
+  height: 60px;
+  min-width: 65px;
+}
+
+.toc-react-component {
+  border-radius: 3px;
+  width: 65px;
+  font-size: small;
+  text-align: center;
+}
