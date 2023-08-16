@@ -1,0 +1,57 @@
+*.pickle
+
+# Microsoft lock files
+~$*
+
+# LibreOffice lock files
+*.~lock.*#
+
+# PTC Creo versions
+*.asm.*
+*.prt.*
+*.drw.*
+*.rwd.*
+*.rwt.*
+
+# OSX
+*.DS_Store
+*Thumbs.db
+*.bak
+
+# Emacs temp files
+*~
+
+# Latex files
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.bbl
+*.blg
+*.toc
+
+# Python files
+*.pyc
+
+# C objects
+*.o
+
+# Pycharm files
+.idea/
+
+# Pytest files
+.pytest_cache/
+.cache/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Mac OSX aliases
+*alias
+
+# Pip
+*.egg-info/
+
+# Sphinx
+docs/_build/
+docs/_autosummary/
