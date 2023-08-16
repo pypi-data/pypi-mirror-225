@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat &mdash; WORC 3.4.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../../index.html" class="icon icon-home" alt="Documentation Home"> WORC
+          
+
+          
+            
+            <img src="../../../../../../../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/features.html">Radiomics Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/additionalfunctionality.html">Additional functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/file_description.html">Resource File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../static/changelog.html">Changelog</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../autogen/WORC.html">WORC Package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Originally written by Nick Cullen</span>
+<span class="c1"># Extended and currently maintained by JP Fortin</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<div class="viewcode-block" id="neuroCombat"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.neuroCombat">[docs]</a><span class="k">def</span> <span class="nf">neuroCombat</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span>
+           <span class="n">covars</span><span class="p">,</span>
+           <span class="n">batch_col</span><span class="p">,</span>
+           <span class="n">categorical_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">continuous_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">eb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">parametric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">mean_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run ComBat to remove scanner effects in multi-site imaging data</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    dat : a pandas data frame or numpy array</span>
+<span class="sd">        neuroimaging data to correct with shape = (features, samples)</span>
+<span class="sd">        e.g. cortical thickness measurements, image voxels, etc</span>
+
+<span class="sd">    covars : a pandas data frame w/ shape = (samples, features)</span>
+<span class="sd">        demographic/phenotypic/behavioral/batch data </span>
+<span class="sd">        </span>
+<span class="sd">    batch_col : string indicating batch (scanner) variable in covars</span>
+
+<span class="sd">    categorical_cols : string or list of strings indicating categorical variables to adjust for</span>
+<span class="sd">        - e.g. male or female</span>
+
+<span class="sd">    continuous_cols : string or list of strings indicating continuous variables to adjust for</span>
+<span class="sd">        - e.g. age</span>
+
+<span class="sd">    eb : should Empirical Bayes be performed?</span>
+<span class="sd">        - True by default</span>
+
+<span class="sd">    parametric : should parametric adjustements be performed?</span>
+<span class="sd">        - True by default</span>
+
+<span class="sd">    mean_only : should only be the mean adjusted (no scaling)?</span>
+<span class="sd">        - False by default</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    - A numpy array with the same shape as `dat` which has now been ComBat-harmonized</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">##############################</span>
+    <span class="c1">### CLEANING UP INPUT DATA ###</span>
+    <span class="c1">##############################</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">covars</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;covars must be pandas datafraae -&gt; try: covars = pandas.DataFrame(covars)&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">categorical_cols</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">categorical_cols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">categorical_cols</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">continuous_cols</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">continuous_cols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">continuous_cols</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">continuous_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">continuous_cols</span><span class="p">]</span>
+
+    <span class="n">covar_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covars</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">covars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">covars</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">covars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">covars</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">covars</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">dat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="c1">#dat = dat.T # transpose data to make it (features, samples)... a weird genetics convention..</span>
+
+    <span class="c1">##############################</span>
+
+    <span class="c1"># get column indices for relevant variables</span>
+    <span class="n">batch_col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">covar_labels</span><span class="o">==</span><span class="n">batch_col</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">covar_labels</span><span class="o">==</span><span class="n">c_var</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c_var</span> <span class="ow">in</span> <span class="n">categorical_cols</span><span class="p">]</span>
+    <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">covar_labels</span><span class="o">==</span><span class="n">n_var</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">n_var</span> <span class="ow">in</span> <span class="n">continuous_cols</span><span class="p">]</span>
+
+    <span class="c1"># conver batch col to integer</span>
+    <span class="n">covars</span><span class="p">[:,</span><span class="n">batch_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">covars</span><span class="p">[:,</span><span class="n">batch_col</span><span class="p">],</span><span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># create dictionary that stores batch info</span>
+    <span class="p">(</span><span class="n">batch_levels</span><span class="p">,</span> <span class="n">sample_per_batch</span><span class="p">)</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">covars</span><span class="p">[:,</span><span class="n">batch_col</span><span class="p">],</span><span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">info_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;batch_levels&#39;</span><span class="p">:</span> <span class="n">batch_levels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;n_batch&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch_levels</span><span class="p">),</span>
+        <span class="s1">&#39;n_sample&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">covars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="s1">&#39;sample_per_batch&#39;</span><span class="p">:</span> <span class="n">sample_per_batch</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;batch_info&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">covars</span><span class="p">[:,</span><span class="n">batch_col</span><span class="p">]</span><span class="o">==</span><span class="n">idx</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">batch_levels</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># create design matrix</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Creating design matrix&#39;</span><span class="p">)</span>
+    <span class="n">design</span> <span class="o">=</span> <span class="n">make_design_matrix</span><span class="p">(</span><span class="n">covars</span><span class="p">,</span> <span class="n">batch_col</span><span class="p">,</span> <span class="n">cat_cols</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">)</span>
+    
+    <span class="c1"># standardize data across features</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Standardizing data across features&#39;</span><span class="p">)</span>
+    <span class="n">s_data</span><span class="p">,</span> <span class="n">s_mean</span><span class="p">,</span> <span class="n">v_pool</span> <span class="o">=</span> <span class="n">standardize_across_features</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">)</span>
+    
+    <span class="c1"># fit L/S models and find priors</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Fitting L/S model and finding priors&#39;</span><span class="p">)</span>
+    <span class="n">LS_dict</span> <span class="o">=</span> <span class="n">fit_LS_model_and_find_priors</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">)</span>
+
+    <span class="c1"># find parametric adjustments</span>
+    <span class="k">if</span> <span class="n">eb</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">parametric</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Finding parametric adjustments&#39;</span><span class="p">)</span>
+            <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="n">find_parametric_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS_dict</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Finding non-parametric adjustments&#39;</span><span class="p">)</span>
+            <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="n">find_non_parametric_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS_dict</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Finding L/S adjustments without Empirical Bayes&#39;</span><span class="p">)</span>
+        <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="n">find_non_eb_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS_dict</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">)</span>
+
+    <span class="c1"># adjust data</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[neuroCombat] Final adjustment of data&#39;</span><span class="p">)</span>
+    <span class="n">bayes_data</span> <span class="o">=</span> <span class="n">adjust_data_final</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> 
+                                                <span class="n">s_mean</span><span class="p">,</span> <span class="n">v_pool</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">)</span>
+
+    <span class="n">bayes_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bayes_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bayes_data</span></div>
+
+
+
+
+<div class="viewcode-block" id="make_design_matrix"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.make_design_matrix">[docs]</a><span class="k">def</span> <span class="nf">make_design_matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">batch_col</span><span class="p">,</span> <span class="n">cat_cols</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return Matrix containing the following parts:</span>
+<span class="sd">        - one-hot matrix of batch variable (full)</span>
+<span class="sd">        - one-hot matrix for each categorical_cols (removing the first column)</span>
+<span class="sd">        - column for each continuous_cols</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">to_categorical</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">nb_classes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nb_classes</span><span class="p">:</span>
+            <span class="n">nb_classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">nb_classes</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+            <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1.</span>
+        <span class="k">return</span> <span class="n">Y</span>
+    
+    <span class="n">hstack_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1">### batch one-hot ###</span>
+    <span class="c1"># convert batch column to integer in case it&#39;s string</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="n">batch_col</span><span class="p">],</span><span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">batch_onehot</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">batch</span><span class="p">)))</span>
+    <span class="n">hstack_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch_onehot</span><span class="p">)</span>
+
+    <span class="c1">### categorical one-hots ###</span>
+    <span class="k">for</span> <span class="n">cat_col</span> <span class="ow">in</span> <span class="n">cat_cols</span><span class="p">:</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="n">cat_col</span><span class="p">]),</span><span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">cat_onehot</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">cat</span><span class="p">)))[:,</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">hstack_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cat_onehot</span><span class="p">)</span>
+
+    <span class="c1">### numerical vectors ###</span>
+    <span class="k">for</span> <span class="n">num_col</span> <span class="ow">in</span> <span class="n">num_cols</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="n">num_col</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">hstack_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+    <span class="n">design</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">hstack_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">design</span></div>
+
+<div class="viewcode-block" id="standardize_across_features"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.standardize_across_features">[docs]</a><span class="k">def</span> <span class="nf">standardize_across_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">):</span>
+    <span class="n">n_batch</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;n_batch&#39;</span><span class="p">]</span>
+    <span class="n">n_sample</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;n_sample&#39;</span><span class="p">]</span>
+    <span class="n">sample_per_batch</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;sample_per_batch&#39;</span><span class="p">]</span>
+
+    <span class="n">B_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">design</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">design</span><span class="p">)),</span> <span class="n">design</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">grand_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">sample_per_batch</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_sample</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B_hat</span><span class="p">[:</span><span class="n">n_batch</span><span class="p">,:])</span>
+    <span class="n">var_pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(((</span><span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">design</span><span class="p">,</span> <span class="n">B_hat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n_sample</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_sample</span><span class="p">))</span>
+
+    <span class="n">stand_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">grand_mean</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">grand_mean</span><span class="p">),</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_sample</span><span class="p">)))</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">design</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">tmp</span><span class="p">[:,:</span><span class="n">n_batch</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">stand_mean</span>  <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">B_hat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="n">s_data</span> <span class="o">=</span> <span class="p">((</span><span class="n">X</span><span class="o">-</span> <span class="n">stand_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_pooled</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_sample</span><span class="p">))))</span>
+
+    <span class="k">return</span> <span class="n">s_data</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">var_pooled</span></div>
+
+<div class="viewcode-block" id="aprior"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.aprior">[docs]</a><span class="k">def</span> <span class="nf">aprior</span><span class="p">(</span><span class="n">delta_hat</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delta_hat</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">delta_hat</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s2</span> <span class="o">+</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="bprior"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.bprior">[docs]</a><span class="k">def</span> <span class="nf">bprior</span><span class="p">(</span><span class="n">delta_hat</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">delta_hat</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">delta_hat</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">s2</span><span class="o">+</span><span class="n">m</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">s2</span></div>
+
+<div class="viewcode-block" id="postmean"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.postmean">[docs]</a><span class="k">def</span> <span class="nf">postmean</span><span class="p">(</span><span class="n">g_hat</span><span class="p">,</span> <span class="n">g_bar</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d_star</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">t2</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">g_hat</span><span class="o">+</span><span class="n">d_star</span> <span class="o">*</span> <span class="n">g_bar</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="n">d_star</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="postvar"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.postvar">[docs]</a><span class="k">def</span> <span class="nf">postvar</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">sum2</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="n">a</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="fit_LS_model_and_find_priors"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.fit_LS_model_and_find_priors">[docs]</a><span class="k">def</span> <span class="nf">fit_LS_model_and_find_priors</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">):</span>
+    <span class="n">n_batch</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;n_batch&#39;</span><span class="p">]</span>
+    <span class="n">batch_info</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;batch_info&#39;</span><span class="p">]</span> 
+    
+    <span class="n">batch_design</span> <span class="o">=</span> <span class="n">design</span><span class="p">[:,:</span><span class="n">n_batch</span><span class="p">]</span>
+    <span class="n">gamma_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">la</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">batch_design</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">batch_design</span><span class="p">)),</span> <span class="n">batch_design</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">s_data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="n">delta_hat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">batch_idxs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_info</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mean_only</span><span class="p">:</span>
+            <span class="n">delta_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">delta_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">s_data</span><span class="p">[:,</span><span class="n">batch_idxs</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">gamma_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">gamma_hat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">gamma_hat</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">mean_only</span><span class="p">:</span>
+        <span class="n">a_prior</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">b_prior</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a_prior</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">aprior</span><span class="p">,</span> <span class="n">delta_hat</span><span class="p">))</span>
+        <span class="n">b_prior</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">bprior</span><span class="p">,</span> <span class="n">delta_hat</span><span class="p">))</span>
+
+    <span class="n">LS_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;gamma_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gamma_hat</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;delta_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta_hat</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;gamma_bar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gamma_bar</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;t2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;a_prior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_prior</span>
+    <span class="n">LS_dict</span><span class="p">[</span><span class="s1">&#39;b_prior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_prior</span>
+    <span class="k">return</span> <span class="n">LS_dict</span></div>
+
+<span class="c1">#Helper function for parametric adjustements:</span>
+<div class="viewcode-block" id="it_sol"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.it_sol">[docs]</a><span class="k">def</span> <span class="nf">it_sol</span><span class="p">(</span><span class="n">sdat</span><span class="p">,</span> <span class="n">g_hat</span><span class="p">,</span> <span class="n">d_hat</span><span class="p">,</span> <span class="n">g_bar</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sdat</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">g_old</span> <span class="o">=</span> <span class="n">g_hat</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">d_old</span> <span class="o">=</span> <span class="n">d_hat</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">change</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">change</span> <span class="o">&gt;</span> <span class="n">conv</span><span class="p">:</span>
+        <span class="n">g_new</span> <span class="o">=</span> <span class="n">postmean</span><span class="p">(</span><span class="n">g_hat</span><span class="p">,</span> <span class="n">g_bar</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d_old</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+        <span class="n">sum2</span> <span class="o">=</span> <span class="p">((</span><span class="n">sdat</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">g_new</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">g_new</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">sdat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">d_new</span> <span class="o">=</span> <span class="n">postvar</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="n">change</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">abs</span><span class="p">(</span><span class="n">g_new</span> <span class="o">-</span> <span class="n">g_old</span><span class="p">)</span> <span class="o">/</span> <span class="n">g_old</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">d_new</span> <span class="o">-</span> <span class="n">d_old</span><span class="p">)</span> <span class="o">/</span> <span class="n">d_old</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+        <span class="n">g_old</span> <span class="o">=</span> <span class="n">g_new</span> <span class="c1">#.copy()</span>
+        <span class="n">d_old</span> <span class="o">=</span> <span class="n">d_new</span> <span class="c1">#.copy()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">adjust</span> <span class="o">=</span> <span class="p">(</span><span class="n">g_new</span><span class="p">,</span> <span class="n">d_new</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adjust</span> </div>
+
+
+
+<span class="c1">#Helper function for non-parametric adjustements:</span>
+<div class="viewcode-block" id="int_eprior"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.int_eprior">[docs]</a><span class="k">def</span> <span class="nf">int_eprior</span><span class="p">(</span><span class="n">sdat</span><span class="p">,</span> <span class="n">g_hat</span><span class="p">,</span> <span class="n">d_hat</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">sdat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">g_hat</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">d_hat</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">sdat</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">resid2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">A</span><span class="o">-</span><span class="n">B</span><span class="p">)</span>
+        <span class="n">sum2</span> <span class="o">=</span> <span class="n">resid2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">LH</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sum2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">))</span>
+        <span class="n">LH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">LH</span><span class="p">)</span>
+        <span class="n">gamma_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">LH</span><span class="p">)</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">LH</span><span class="p">))</span>
+        <span class="n">delta_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">LH</span><span class="p">)</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">LH</span><span class="p">))</span>
+    <span class="n">adjust</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adjust</span></div>
+
+
+<div class="viewcode-block" id="find_parametric_adjustments"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.find_parametric_adjustments">[docs]</a><span class="k">def</span> <span class="nf">find_parametric_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">):</span>
+    <span class="n">batch_info</span>  <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;batch_info&#39;</span><span class="p">]</span> 
+
+    <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">batch_idxs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_info</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mean_only</span><span class="p">:</span>
+            <span class="n">gamma_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">postmean</span><span class="p">(</span><span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_bar&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;t2&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+            <span class="n">delta_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">it_sol</span><span class="p">(</span><span class="n">s_data</span><span class="p">[:,</span><span class="n">batch_idxs</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                        <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;delta_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_bar&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;t2&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> 
+                        <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;a_prior&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;b_prior&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">gamma_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">delta_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gamma_star</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delta_star</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="find_non_parametric_adjustments"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.find_non_parametric_adjustments">[docs]</a><span class="k">def</span> <span class="nf">find_non_parametric_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">):</span>
+    <span class="n">batch_info</span>  <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;batch_info&#39;</span><span class="p">]</span> 
+
+    <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">batch_idxs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_info</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mean_only</span><span class="p">:</span>
+            <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;delta_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">int_eprior</span><span class="p">(</span><span class="n">s_data</span><span class="p">[:,</span><span class="n">batch_idxs</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                    <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;delta_hat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="n">gamma_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">delta_star</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gamma_star</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delta_star</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="find_non_eb_adjustments"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.find_non_eb_adjustments">[docs]</a><span class="k">def</span> <span class="nf">find_non_eb_adjustments</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">LS</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;gamma_hat&#39;</span><span class="p">],</span> <span class="n">LS</span><span class="p">[</span><span class="s1">&#39;delta_hat&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="adjust_data_final"><a class="viewcode-back" href="../../../../../../../autogen/WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.html#WORC.external.ComBatHarmonization.Python.neuroCombat.neuroCombat.neuroCombat.adjust_data_final">[docs]</a><span class="k">def</span> <span class="nf">adjust_data_final</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">info_dict</span><span class="p">):</span>
+    <span class="n">sample_per_batch</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;sample_per_batch&#39;</span><span class="p">]</span>
+    <span class="n">n_batch</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;n_batch&#39;</span><span class="p">]</span>
+    <span class="n">n_sample</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;n_sample&#39;</span><span class="p">]</span>
+    <span class="n">batch_info</span> <span class="o">=</span> <span class="n">info_dict</span><span class="p">[</span><span class="s1">&#39;batch_info&#39;</span><span class="p">]</span>
+
+    <span class="n">batch_design</span> <span class="o">=</span> <span class="n">design</span><span class="p">[:,:</span><span class="n">n_batch</span><span class="p">]</span>
+
+    <span class="n">bayesdata</span> <span class="o">=</span> <span class="n">s_data</span>
+    <span class="n">gamma_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gamma_star</span><span class="p">)</span>
+    <span class="n">delta_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">delta_star</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">batch_idxs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_info</span><span class="p">):</span>
+        <span class="n">dsq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">delta_star</span><span class="p">[</span><span class="n">j</span><span class="p">,:])</span>
+        <span class="n">dsq</span> <span class="o">=</span> <span class="n">dsq</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">dsq</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dsq</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">sample_per_batch</span><span class="p">[</span><span class="n">j</span><span class="p">])))</span>
+        <span class="n">numer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bayesdata</span><span class="p">[:,</span><span class="n">batch_idxs</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">batch_design</span><span class="p">[</span><span class="n">batch_idxs</span><span class="p">,:],</span> <span class="n">gamma_star</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+        <span class="n">bayesdata</span><span class="p">[:,</span><span class="n">batch_idxs</span><span class="p">]</span> <span class="o">=</span> <span class="n">numer</span> <span class="o">/</span> <span class="n">denom</span>
+
+    <span class="n">vpsq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_pooled</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">var_pooled</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">bayesdata</span> <span class="o">=</span> <span class="n">bayesdata</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vpsq</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_sample</span><span class="p">)))</span> <span class="o">+</span> <span class="n">stand_mean</span>
+
+    <span class="k">return</span> <span class="n">bayesdata</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016 -- 2020, Biomedical Imaging Group Rotterdam, Departments of Medical Informatics and Radiology, Erasmus MC, Rotterdam, The Netherlands
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+{
+  "config_classification_sink": {
+    "all": {
+      "status": "JobState.finished",
+      "sample_status": "VALID",
+      "errors": []
+    }
+  },
+  "BoxplotsFeatures_Zip": {
+    "all": {
+      "status": "JobState.finished",
+      "sample_status": "VALID",
+      "errors": []
+    }
+  },
+  "performance": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "RankedPosteriors_Zip": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "RankedPosteriors_CSV": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "Barchart_PNG": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "Barchart_Tex": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "Hyperparameters_CSV": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  },
+  "classification": {
+    "all": {
+      "status": "JobState.cancelled",
+      "sample_status": "FAILED",
+      "errors": [
+        [
+          "WORC_Example_STWStrategyHN_Regression___classify___all",
+          "JobState.failed",
+          "Encountered error: [FastrOutputValidationError] Output value [HDF5] \"vfs://home/documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5\" not valid for datatype \"'HDF5'\" (C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\job.py:1155)",
+          "./classify/all/__fastr_result__.yaml"
+        ]
+      ]
+    }
+  }
+}

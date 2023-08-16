@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>facade Package &mdash; WORC 3.6.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="helpers Package" href="WORC.facade.helpers.html" />
+    <link rel="prev" title="export Package" href="WORC.export.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WORC
+          
+
+          
+            
+            <img src="../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../static/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/features.html">Radiomics Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/additionalfunctionality.html">Additional functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/changelog.html">Changelog</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="WORC.html">WORC Package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#id1"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC</span></code> Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#module-WORC.WORC"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#module-WORC.addexceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">addexceptions</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="WORC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="WORC.IOparser.html">IOparser Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.classification.html">classification Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.detectors.html">detectors Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.exampledata.html">exampledata Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.export.html">export Package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">facade Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="xref py py-mod docutils literal notranslate"><span class="pre">facade</span></code> Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-WORC.facade.basicworc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">basicworc</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-WORC.facade.simpleworc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simpleworc</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.fastrconfig.html">fastrconfig Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.featureprocessing.html">featureprocessing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.plotting.html">plotting Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.processing.html">processing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.resources.html">resources Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.statistics.html">statistics Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.tests.html">tests Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.tools.html">tools Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.validators.html">validators Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="WORC.html">WORC Package</a> &raquo;</li>
+        
+      <li>facade Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/autogen/WORC.facade.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="facade-package">
+<h1>facade Package<a class="headerlink" href="#facade-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">facade</span></code> Package<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-WORC.facade"></span></div>
+<div class="section" id="module-WORC.facade.basicworc">
+<span id="basicworc-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">basicworc</span></code> Module<a class="headerlink" href="#module-WORC.facade.basicworc" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="WORC.facade.basicworc.BasicWORC">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.basicworc.</span></code><code class="sig-name descname"><span class="pre">BasicWORC</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/basicworc.html#BasicWORC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.basicworc.BasicWORC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#WORC.facade.simpleworc.SimpleWORC" title="WORC.facade.simpleworc.SimpleWORC"><code class="xref py py-class docutils literal notranslate"><span class="pre">WORC.facade.simpleworc.SimpleWORC</span></code></a></p>
+<p>Facade around the main WORC object for simple interaction.</p>
+<p>Based upon the SimpleWORC object, but with additional functionality:
+- Sources of WORC (e.g. images_train, segmentations_train, …)</p>
+<blockquote>
+<div><p>can be directly assessed.</p>
+</div></blockquote>
+<p>Please also see the <a class="reference external" href="https://github.com/MStarmans91/WORCTutorial/">WORCTutorial Github</a>.</p>
+<dl class="py method">
+<dt id="WORC.facade.basicworc.BasicWORC.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/basicworc.html#BasicWORC.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.basicworc.BasicWORC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize SimpleWORC object.</p>
+<dl class="simple">
+<dt>name: string, default WORC</dt><dd><p>String to identify name of experiments. Will be used in the temporary files and outputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.basicworc.BasicWORC.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.basicworc'</span></em><a class="headerlink" href="#WORC.facade.basicworc.BasicWORC.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.basicworc.BasicWORC.execute">
+<code class="sig-name descname"><span class="pre">execute</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/basicworc.html#BasicWORC.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.basicworc.BasicWORC.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the experiment.</p>
+<p>Before executing the actual experiment, this function will first run several validators
+and check the provided setup to make sure some of the most common
+made error are caught before running the experiment.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-WORC.facade.simpleworc">
+<span id="simpleworc-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">simpleworc</span></code> Module<a class="headerlink" href="#module-WORC.facade.simpleworc" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="WORC.facade.simpleworc.SimpleWORC">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.simpleworc.</span></code><code class="sig-name descname"><span class="pre">SimpleWORC</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Facade around the main WORC object for simple interaction.</p>
+<p>Please also see the <a class="reference external" href="https://github.com/MStarmans91/WORCTutorial/">WORCTutorial Github</a>.</p>
+<dl class="py attribute">
+<dt id="WORC.facade.simpleworc.SimpleWORC.__dict__">
+<code class="sig-name descname"><span class="pre">__dict__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">mappingproxy({'__module__':</span> <span class="pre">'WORC.facade.simpleworc',</span> <span class="pre">'__doc__':</span> <span class="pre">'Facade</span> <span class="pre">around</span> <span class="pre">the</span> <span class="pre">main</span> <span class="pre">WORC</span> <span class="pre">object</span> <span class="pre">for</span> <span class="pre">simple</span> <span class="pre">interaction.\n\n</span>&#160;&#160;&#160; <span class="pre">Please</span> <span class="pre">also</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">`WORCTutorial</span> <span class="pre">Github</span> <span class="pre">&lt;https://github.com/MStarmans91/WORCTutorial/&gt;`_.\n</span>&#160;&#160;&#160; <span class="pre">',</span> <span class="pre">'__init__':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.__init__&gt;,</span> <span class="pre">'set_fixed_splits':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.set_fixed_splits&gt;,</span> <span class="pre">'set_image_types':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.set_image_types&gt;,</span> <span class="pre">'features_from_this_directory':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.features_from_this_directory&gt;,</span> <span class="pre">'images_from_this_directory':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.images_from_this_directory&gt;,</span> <span class="pre">'segmentations_from_this_directory':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.segmentations_from_this_directory&gt;,</span> <span class="pre">'masks_from_this_directory':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.masks_from_this_directory&gt;,</span> <span class="pre">'labels_from_this_file':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.labels_from_this_file&gt;,</span> <span class="pre">'semantics_from_this_file':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.semantics_from_this_file&gt;,</span> <span class="pre">'set_registration_parameterfile':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.set_registration_parameterfile&gt;,</span> <span class="pre">'run_inference':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.run_inference&gt;,</span> <span class="pre">'predict_labels':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.predict_labels&gt;,</span> <span class="pre">'_set_and_validate_estimators':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC._set_and_validate_estimators&gt;,</span> <span class="pre">'count_num_subjects':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.count_num_subjects&gt;,</span> <span class="pre">'_validate':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC._validate&gt;,</span> <span class="pre">'binary_classification':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.binary_classification&gt;,</span> <span class="pre">'multiclass_classification':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.multiclass_classification&gt;,</span> <span class="pre">'regression':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.regression&gt;,</span> <span class="pre">'survival':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.survival&gt;,</span> <span class="pre">'add_config_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.add_config_overrides&gt;,</span> <span class="pre">'add_evaluation':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.add_evaluation&gt;,</span> <span class="pre">'set_tmpdir':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.set_tmpdir&gt;,</span> <span class="pre">'set_multicore_execution':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.set_multicore_execution&gt;,</span> <span class="pre">'features_from_radiomix_xlsx':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.features_from_radiomix_xlsx&gt;,</span> <span class="pre">'_check_traintest':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC._check_traintest&gt;,</span> <span class="pre">'execute':</span> <span class="pre">&lt;function</span> <span class="pre">SimpleWORC.execute&gt;,</span> <span class="pre">'__dict__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__dict__'</span> <span class="pre">of</span> <span class="pre">'SimpleWORC'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__weakref__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__weakref__'</span> <span class="pre">of</span> <span class="pre">'SimpleWORC'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__annotations__':</span> <span class="pre">{}})</span></em><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize SimpleWORC object.</p>
+<dl class="simple">
+<dt>name: string, default WORC</dt><dd><p>String to identify name of experiments. Will be used in the temporary files and outputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.simpleworc.SimpleWORC.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.simpleworc'</span></em><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.simpleworc.SimpleWORC.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.add_config_overrides">
+<code class="sig-name descname"><span class="pre">add_config_overrides</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.add_config_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.add_config_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add manual overrides for the WORC configuration.</p>
+<p>For a full list of options, see the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+<p>Example usage:</p>
+<dl>
+<dt>overrides = {</dt><dd><dl class="simple">
+<dt>‘Classification’: {</dt><dd><p>‘classifiers’: ‘SVM’,</p>
+</dd>
+</dl>
+<p>},
+‘Featsel’: {</p>
+<blockquote>
+<div><p># Other estimators do not support multiclass
+‘SelectFromModel_estimator’: ‘RF’</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>}
+self.add_config_overrides(overrides)</p>
+<dl class="simple">
+<dt>config: dictionary</dt><dd><p>Determine which options to override with which values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.add_evaluation">
+<code class="sig-name descname"><span class="pre">add_evaluation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.add_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.add_evaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the evaluation workflow to the standard WORC workflow.</p>
+<p>Adds several evaluation measures, including:</p>
+<ul class="simple">
+<li><p>Computation of 95% confidence intervals for performance</p></li>
+<li><p>Univariate testing of features</p></li>
+<li><p>ROC curve with confidence bands construction</p></li>
+<li><p>Ranking of patients based on percentage / posterior</p></li>
+<li><p>Decompositions (e.g. PCA, t-SNE)</p></li>
+</ul>
+<p>See the <a class="reference internal" href="../static/additionalfunctionality.html#additonalfunctionality-chapter"><span class="std std-ref">WORC documentation</span></a> for additional info.</p>
+<dl class="simple">
+<dt>selected_label: integer, default 0</dt><dd><p>Determine for which of the labels to be predicted the evaluate workflow
+should be executed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.binary_classification">
+<code class="sig-name descname"><span class="pre">binary_classification</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f1_weighted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.binary_classification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.binary_classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell WORC do to a binary classification experiment.</p>
+<dl>
+<dt>estimators: list</dt><dd><p>List of strings with names of valid estimators. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+<p>If coarse, only an SVM will be used. If not, the default full
+config will be used.</p>
+</dd>
+<dt>scoring_method: string, default f1</dt><dd><p>Name of the scoring method used to rank the workflows. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+</dd>
+<dt>coarse: boolean, default True</dt><dd><p>Determine whether to do a coarse or full experiment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.count_num_subjects">
+<code class="sig-name descname"><span class="pre">count_num_subjects</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.count_num_subjects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.count_num_subjects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the number of subjects in the experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.execute">
+<code class="sig-name descname"><span class="pre">execute</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the experiment.</p>
+<p>Before executing the actual experiment, this function will first run several validators
+and check the provided setup to make sure some of the most common
+made error are caught before running the experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.features_from_radiomix_xlsx">
+<code class="sig-name descname"><span class="pre">features_from_radiomix_xlsx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.features_from_radiomix_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.features_from_radiomix_xlsx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a feature file which is generated by the OncoRadiomics Radiomix tool.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.features_from_this_directory">
+<code class="sig-name descname"><span class="pre">features_from_this_directory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'features.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.features_from_this_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.features_from_this_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use features from a directory as sources in WORC.</p>
+<p>SimpleWORC uses a directory glob to look for files meeting
+the requirements to include, based on the input parameters.</p>
+<p>Example:
+When using “directory = C:UsersMyNameFeatureFolder”,
+features_from_this_directory will include all features.hdf5 files from all subfolders in the directory.</p>
+<dl class="simple">
+<dt>directory: string</dt><dd><p>Identifies the root directory in which to search for feature files.</p>
+</dd>
+<dt>feature_file_name: string, default features.hdf5</dt><dd><p>Name of the files which will be included. Can include wildcards (*).</p>
+</dd>
+<dt>glob: string, default <a href="#id3"><span class="problematic" id="id4">*</span></a>/</dt><dd><p>Identify the search string to be used in the glob. Can include wildcards (*).</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether these features should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.images_from_this_directory">
+<code class="sig-name descname"><span class="pre">images_from_this_directory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image.nii.gz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.images_from_this_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.images_from_this_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use images from a directory as sources in WORC.</p>
+<p>SimpleWORC uses a directory glob to look for files meeting
+the requirements to include, based on the input parameters.</p>
+<p>Example:
+When using “directory = C:UsersMyNameImageFolder”,
+images_from_this_directory will include all image.nii.gz files from all subfolders in the directory.</p>
+<dl class="simple">
+<dt>directory: string</dt><dd><p>Identifies the root directory in which to search for image files.</p>
+</dd>
+<dt>image_file_name: string, default image.nii.gz</dt><dd><p>Name of the files which will be included. Can include wildcards (*).</p>
+</dd>
+<dt>glob: string, default <a href="#id5"><span class="problematic" id="id6">*</span></a>/</dt><dd><p>Identify the search string to be used in the glob. Can include wildcards (*).</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether these images should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.labels_from_this_file">
+<code class="sig-name descname"><span class="pre">labels_from_this_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.labels_from_this_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.labels_from_this_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define which file should be used by WORC to extract the object labels.</p>
+<p>Should be a .csv or .txt file: see
+<span class="xref std std-ref">the WORC user manual</span> for more details on
+the formatting of this file.</p>
+<dl class="simple">
+<dt>file_path: basestring</dt><dd><p>Location of the file to be used as label file. Can be a .csv or .txt file.</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether this label file should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.masks_from_this_directory">
+<code class="sig-name descname"><span class="pre">masks_from_this_directory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mask.nii.gz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.masks_from_this_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.masks_from_this_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use masks from a directory as sources in WORC.</p>
+<p>Masks are used in a variety of tools to <a href="#id7"><span class="problematic" id="id8">``</span></a>mask’’ certain parts
+of the image, e.g. in the normalization. Masks are fully
+optional.</p>
+<p>SimpleWORC uses a directory glob to look for files meeting
+the requirements to include, based on the input parameters.</p>
+<p>Example:
+When using “directory = C:UsersMyNameMaskFolder”,
+masks_from_this_directory will include all mask.nii.gz files from all subfolders in the directory.</p>
+<dl class="simple">
+<dt>directory: string</dt><dd><p>Identifies the root directory in which to search for mask files.</p>
+</dd>
+<dt>mask_file_name: string, default mask.nii.gz</dt><dd><p>Name of the files which will be included. Can include wildcards (*).</p>
+</dd>
+<dt>glob: string, default <a href="#id9"><span class="problematic" id="id10">*</span></a>/</dt><dd><p>Identify the search string to be used in the glob. Can include wildcards (*).</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether these masks should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.multiclass_classification">
+<code class="sig-name descname"><span class="pre">multiclass_classification</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'f1_weighted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.multiclass_classification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.multiclass_classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell WORC do to a multiclass classification experiment.</p>
+<dl>
+<dt>estimators: list</dt><dd><p>List of strings with names of valid estimators. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+<p>If coarse, only an SVM will be used. If not, the default full
+config will be used.</p>
+</dd>
+<dt>scoring_method: string, default f1</dt><dd><p>Name of the scoring method used to rank the workflows. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+</dd>
+<dt>coarse: boolean, default True</dt><dd><p>Determine whether to do a coarse or full experiment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.predict_labels">
+<code class="sig-name descname"><span class="pre">predict_labels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.predict_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.predict_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine which label(s) to predict in your experiments.</p>
+<p>The labels(s) you want to predict should be given in strings and
+should be included in the header of your labels_from_this_file csv.
+Note that you therefore first need to use that function to determine
+which label file to use, and afterwards use this function
+to select one of the headers / columns containing the actual label.</p>
+<dl class="simple">
+<dt>label_names: list</dt><dd><p>List of strings containing the label name(s) to predict. For each
+label, a separate (classification) model will be created, or,
+if a multilabel experiment is run, a singel multiclass / multilabel
+classification model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.regression">
+<code class="sig-name descname"><span class="pre">regression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.regression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell WORC do to a regression experiment.</p>
+<dl>
+<dt>estimators: list</dt><dd><p>List of strings with names of valid estimators. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+<p>If coarse, only SVR will be used. If not, the default full
+config will be used.</p>
+</dd>
+<dt>scoring_method: string, default r2</dt><dd><p>Name of the scoring method used to rank the workflows. See the
+<a class="reference internal" href="../static/configuration.html#config-chapter"><span class="std std-ref">WORC Config chapter</span></a> for allowed options.</p>
+</dd>
+<dt>coarse: boolean, default True</dt><dd><p>Determine whether to do a coarse or full experiment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.run_inference">
+<code class="sig-name descname"><span class="pre">run_inference</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trained_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.run_inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.run_inference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run inference on a dataset using a previously trained WORC model.</p>
+<dl>
+<dt>trained_model: basestring</dt><dd><blockquote>
+<div><p>Location of the HDF5 file of the trained model from WORC, commonly named “estimator_all_0.hdf5”.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>config_files: basestring</dt><dd><p>List of location of the .ini file of the configurations of the trained model from WORC, commonly named like “config_CT_0_all_0.ini”.
+Note: these are the config files for the feature extraction, not the model training itself, which is embedded in the trained model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.segmentations_from_this_directory">
+<code class="sig-name descname"><span class="pre">segmentations_from_this_directory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segmentation_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'segmentation.nii.gz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.segmentations_from_this_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.segmentations_from_this_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use segmentations from a directory as sources in WORC.</p>
+<p>Segmentations define the region of interest from which the features
+are extracted.</p>
+<blockquote>
+<div><p>SimpleWORC uses a directory glob to look for files meeting
+the requirements to include, based on the input parameters.</p>
+<p>Example:
+When using “directory = C:UsersMyNameSegmentationFolder”,
+segmentations_from_this_directory will include all segmentation.nii.gz files from all subfolders in the directory.</p>
+<dl class="simple">
+<dt>directory: string</dt><dd><p>Identifies the root directory in which to search for segmentation files.</p>
+</dd>
+<dt>segmentation_file_name: string, default segmentation.nii.gz</dt><dd><p>Name of the files which will be included. Can include wildcards (*).</p>
+</dd>
+<dt>glob: string, default <a href="#id11"><span class="problematic" id="id12">*</span></a>/</dt><dd><p>Identify the search string to be used in the glob. Can include wildcards (*).</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether these segmentations should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.semantics_from_this_file">
+<code class="sig-name descname"><span class="pre">semantics_from_this_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_training</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.semantics_from_this_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.semantics_from_this_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define which file should be used by WORC to extract the semantic features.</p>
+<p>The values in these file can be used as semantic, i.e. non-computational,
+features in WORC. Should be a .csv file: see
+<span class="xref std std-ref">the WORC user manual</span> for more details on
+the formatting of this file.</p>
+<dl class="simple">
+<dt>file_path: basestring</dt><dd><p>Location of the file to be used as semantics file. Can be a .csv or .txt file.</p>
+</dd>
+<dt>is_training: Boolean, default True</dt><dd><p>Identify whether this semantics  file should be used in the training or test dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.set_fixed_splits">
+<code class="sig-name descname"><span class="pre">set_fixed_splits</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fixed_splits_csv</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.set_fixed_splits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.set_fixed_splits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide CSV with fixed splits for cross-validation.</p>
+<dl class="simple">
+<dt>fixed_splits_csv: string</dt><dd><p>Path of CSV file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.set_image_types">
+<code class="sig-name descname"><span class="pre">set_image_types</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_types</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.set_image_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.set_image_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the type of images to be processed.</p>
+<dl class="simple">
+<dt>image_types: list of strings</dt><dd><p>Names of types of images that are provided to WORC.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.set_multicore_execution">
+<code class="sig-name descname"><span class="pre">set_multicore_execution</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.set_multicore_execution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.set_multicore_execution" title="Permalink to this definition">¶</a></dt>
+<dd><p>“Execute experiment in multicore mode.</p>
+<p>By default, SimpleWORC executes experiments in LinearExecution mode, meaning that
+only a single core will be used and jobs are executed in series. When multicore mode
+is enabled, jobs are parallellized over all available cores, which majorly speeds
+up the computation.</p>
+<p>Note: SimpleWORC has an automatic detector for the BIGR and Snellius cluster. Hence,
+on those clusters, do not use the multicore execution, as this will overwrite
+the changes applied by the detectors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.set_registration_parameterfile">
+<code class="sig-name descname"><span class="pre">set_registration_parameterfile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.set_registration_parameterfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.set_registration_parameterfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define which elastix parameter file(s) should be used by WORC to perform the registration.</p>
+<p>More information can be found in the elastix documentation on the format and settings:
+<a class="reference external" href="https://github.com/SuperElastix/elastix/wiki">https://github.com/SuperElastix/elastix/wiki</a>. Examples of parameter files can be found in
+the elastix model zoo github repo:
+<a class="reference external" href="https://github.com/SuperElastix/ElastixModelZoo/tree/master/models/default">https://github.com/SuperElastix/ElastixModelZoo/tree/master/models/default</a>.</p>
+<p>If you want to use multiple parameter files sequentially in the registration,
+simply use this function multiple times.</p>
+<dl class="simple">
+<dt>file_path: basestring</dt><dd><p>Location of the file to be used, should be a .txt file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.set_tmpdir">
+<code class="sig-name descname"><span class="pre">set_tmpdir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tmpdir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.set_tmpdir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.set_tmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a directory for storing temporary files from the experiment.</p>
+<p>If not specified, the default fastr tmpdir is used, see <code class="docutils literal notranslate"><span class="pre">fastr.config.mounts['tmp']</span></code> .</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.simpleworc.SimpleWORC.survival">
+<code class="sig-name descname"><span class="pre">survival</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coarse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/simpleworc.html#SimpleWORC.survival"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.simpleworc.SimpleWORC.survival" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell WORC do to a regression experiment. Not implemented yet.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="WORC.facade.helpers.html">helpers Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="WORC.facade.helpers.html#module-WORC.facade.helpers.configbuilder"><code class="xref py py-mod docutils literal notranslate"><span class="pre">configbuilder</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.facade.helpers.html#module-WORC.facade.helpers.exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exceptions</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.facade.helpers.html#module-WORC.facade.helpers.processing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">processing</span></code> Module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="WORC.facade.helpers.html" class="btn btn-neutral float-right" title="helpers Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="WORC.export.html" class="btn btn-neutral float-left" title="export Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016 -- 2023, Biomedical Imaging Group Rotterdam, Department of Radiology and Nuclear Medicine, Erasmus University Medical Center, Rotterdam, The Netherlands.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

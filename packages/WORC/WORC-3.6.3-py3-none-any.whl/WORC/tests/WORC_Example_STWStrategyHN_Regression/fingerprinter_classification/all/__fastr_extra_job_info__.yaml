@@ -1,0 +1,287 @@
+{
+  "id": "WORC_Example_STWStrategyHN_Regression___fingerprinter_classification___all",
+  "hostinfo": {
+    "os": {
+      "system": "Windows",
+      "is64bits": 1,
+      "maxsize": 9223372036854775807,
+      "version": {
+        "release": "10",
+        "version": "10.0.22621",
+        "servicepack": "SP0",
+        "ptype": ""
+      }
+    },
+    "uname": [
+      "Windows",
+      "DESKTOP-PTS4VQ4",
+      "10",
+      "10.0.22621",
+      "AMD64",
+      "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel"
+    ],
+    "username": "Martijn Starmans",
+    "cwd": "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORC\\WORC\\tests",
+    "python": {
+      "version": "3.7.6",
+      "branch": "",
+      "compiler": "MSC v.1916 64 bit (AMD64)",
+      "implementation": "CPython",
+      "revision": ""
+    },
+    "envvar": {
+      "ALLUSERSPROFILE": "C:\\ProgramData",
+      "APPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Roaming",
+      "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+      "COMMONPROGRAMFILES(X86)": "C:\\Program Files (x86)\\Common Files",
+      "COMMONPROGRAMW6432": "C:\\Program Files\\Common Files",
+      "COMPUTERNAME": "DESKTOP-PTS4VQ4",
+      "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+      "CONDA_DEFAULT_ENV": "VEWORC",
+      "CONDA_EXE": "C:\\ProgramData\\Anaconda3\\Scripts\\conda.exe",
+      "CONDA_PREFIX": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC",
+      "CONDA_PREFIX_1": "C:\\ProgramData\\Anaconda3",
+      "CONDA_PROMPT_MODIFIER": "(VEWORC) ",
+      "CONDA_PYTHON_EXE": "C:\\ProgramData\\Anaconda3\\python.exe",
+      "CONDA_SHLVL": "2",
+      "DRIVERDATA": "C:\\Windows\\System32\\Drivers\\DriverData",
+      "EFC_32500": "1",
+      "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+      "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+      "GOPATH": "C:\\Users\\Martijn Starmans\\go",
+      "GOROOT": "C:\\Users\\Martijn Starmans\\scoop\\apps\\go\\current",
+      "HOMEDRIVE": "C:",
+      "HOMEPATH": "\\Users\\Martijn Starmans",
+      "KMP_DUPLICATE_LIB_OK": "True",
+      "KMP_INIT_AT_FORK": "FALSE",
+      "LOCALAPPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Local",
+      "LOGONSERVER": "\\\\DESKTOP-PTS4VQ4",
+      "MOZ_PLUGIN_PATH": "C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+      "NUMBER_OF_PROCESSORS": "12",
+      "ONEDRIVE": "C:\\Users\\Martijn Starmans\\OneDrive",
+      "ONLINESERVICES": "Online Services",
+      "OS": "Windows_NT",
+      "PATH": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pywin32_system32;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\mingw-w64\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\usr\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Scripts;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\bin;C:\\ProgramData\\Anaconda3\\condabin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;.;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\Intel\\WiFi\\bin;C:\\Program Files\\Common Files\\Intel\\WirelessCommon;C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64;C:\\Program Files\\MATLAB\\R2015b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2015b\\bin;C:\\Program Files\\Pandoc;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Go\\bin;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Users\\Martijn Starmans\\go\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;C:\\Hugo\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;.;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs",
+      "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+      "PLATFORMCODE": "AN",
+      "PROCESSOR_ARCHITECTURE": "AMD64",
+      "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+      "PROCESSOR_LEVEL": "6",
+      "PROCESSOR_REVISION": "9e0a",
+      "PROGRAMDATA": "C:\\ProgramData",
+      "PROGRAMFILES": "C:\\Program Files",
+      "PROGRAMFILES(X86)": "C:\\Program Files (x86)",
+      "PROGRAMW6432": "C:\\Program Files",
+      "PROMPT": "(VEWORC) $P$G",
+      "PSMODULEPATH": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+      "PTSMINSTALLPATH": "C:\\Program Files\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PTSMINSTALLPATH_X86": "C:\\Program Files (x86)\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PUBLIC": "C:\\Users\\Public",
+      "REGIONCODE": "EMEA",
+      "SESSIONNAME": "Console",
+      "SYSTEMDRIVE": "C:",
+      "SYSTEMROOT": "C:\\WINDOWS",
+      "TEMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "TMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "USERDOMAIN": "DESKTOP-PTS4VQ4",
+      "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-PTS4VQ4",
+      "USERNAME": "Martijn Starmans",
+      "USERPROFILE": "C:\\Users\\Martijn Starmans",
+      "WINDIR": "C:\\WINDOWS"
+    },
+    "drmaa": {
+      "jobid": null,
+      "taskid": null,
+      "jobname": null
+    }
+  },
+  "sysinfo_start": {
+    "cpu_usage": {
+      "user": 33830.359375,
+      "system": 29604.390625,
+      "idle": 1889195.9687499998,
+      "interrupt": 927.453125,
+      "dpc": 588.515625,
+      "percent": 7.9
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2846691328,
+        "percent": 83.2,
+        "used": 14130302976,
+        "free": 2846691328
+      },
+      "swap": {
+        "total": 34904313856,
+        "used": 29421424640,
+        "free": 5482889216,
+        "percent": 84.3,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 397236625408,
+        "disk_free": 113587654656,
+        "disk_use_percent": 77.8
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 402916012032,
+        "disk_free": 107908268032,
+        "disk_use_percent": 78.9
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  },
+  "process": {
+    "return_code": 0,
+    "stdout": " [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\n",
+    "stderr": "",
+    "command": [
+      "python",
+      "c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\Fingerprinter.py",
+      "--conf_out",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini",
+      "--features_train",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1004_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1077_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1088_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1146_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1159_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1192_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1259_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1260_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1323_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1331_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1339_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1342_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1372_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1491_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1501_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1519_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1524_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1554_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1560_0.hdf5",
+      "C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1748_0.hdf5",
+      "--pc_train",
+      "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORCTutorial\\Data\\Examplefiles\\pinfo_HN.csv",
+      "--conf_in",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\config_classification_source\\id_0\\result\\config_worc_example_stwstrategyhn_regression_0.ini",
+      "--type",
+      "classification"
+    ],
+    "resource_usage": [
+      {
+        "timestamp": "2023-04-20T07:33:06.300418",
+        "cpu_percent": 69.2,
+        "vmem": 45887488,
+        "rmem": 56258560,
+        "read_bytes": 10370889,
+        "write_bytes": 4
+      },
+      {
+        "timestamp": "2023-04-20T07:33:07.301416",
+        "cpu_percent": 93.8,
+        "vmem": 1730428928,
+        "rmem": 133382144,
+        "read_bytes": 25462643,
+        "write_bytes": 117
+      },
+      {
+        "timestamp": "2023-04-20T07:33:08.302365",
+        "cpu_percent": 90.6,
+        "vmem": 2525675520,
+        "rmem": 203874304,
+        "read_bytes": 41066014,
+        "write_bytes": 6722
+      }
+    ],
+    "time_elapsed": 3.119281768798828
+  },
+  "sysinfo_end": {
+    "cpu_usage": {
+      "user": 33832.328125,
+      "system": 29605.625,
+      "idle": 1889246.1093749998,
+      "interrupt": 927.453125,
+      "dpc": 588.515625,
+      "percent": 6.0
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2911797248,
+        "percent": 82.8,
+        "used": 14065197056,
+        "free": 2911797248
+      },
+      "swap": {
+        "total": 35996082176,
+        "used": 29329092608,
+        "free": 6666989568,
+        "percent": 81.5,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 398871064576,
+        "disk_free": 111953215488,
+        "disk_use_percent": 78.1
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 404468727808,
+        "disk_free": 106355552256,
+        "disk_use_percent": 79.2
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  }
+}

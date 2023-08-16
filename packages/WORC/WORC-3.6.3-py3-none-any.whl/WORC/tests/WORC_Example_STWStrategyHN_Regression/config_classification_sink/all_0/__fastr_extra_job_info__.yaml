@@ -1,0 +1,267 @@
+{
+  "id": "WORC_Example_STWStrategyHN_Regression___config_classification_sink___all___0",
+  "hostinfo": {
+    "os": {
+      "system": "Windows",
+      "is64bits": 1,
+      "maxsize": 9223372036854775807,
+      "version": {
+        "release": "10",
+        "version": "10.0.22621",
+        "servicepack": "SP0",
+        "ptype": ""
+      }
+    },
+    "uname": [
+      "Windows",
+      "DESKTOP-PTS4VQ4",
+      "10",
+      "10.0.22621",
+      "AMD64",
+      "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel"
+    ],
+    "username": "Martijn Starmans",
+    "cwd": "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORC\\WORC\\tests",
+    "python": {
+      "version": "3.7.6",
+      "branch": "",
+      "compiler": "MSC v.1916 64 bit (AMD64)",
+      "implementation": "CPython",
+      "revision": ""
+    },
+    "envvar": {
+      "ALLUSERSPROFILE": "C:\\ProgramData",
+      "APPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Roaming",
+      "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+      "COMMONPROGRAMFILES(X86)": "C:\\Program Files (x86)\\Common Files",
+      "COMMONPROGRAMW6432": "C:\\Program Files\\Common Files",
+      "COMPUTERNAME": "DESKTOP-PTS4VQ4",
+      "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+      "CONDA_DEFAULT_ENV": "VEWORC",
+      "CONDA_EXE": "C:\\ProgramData\\Anaconda3\\Scripts\\conda.exe",
+      "CONDA_PREFIX": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC",
+      "CONDA_PREFIX_1": "C:\\ProgramData\\Anaconda3",
+      "CONDA_PROMPT_MODIFIER": "(VEWORC) ",
+      "CONDA_PYTHON_EXE": "C:\\ProgramData\\Anaconda3\\python.exe",
+      "CONDA_SHLVL": "2",
+      "DRIVERDATA": "C:\\Windows\\System32\\Drivers\\DriverData",
+      "EFC_32500": "1",
+      "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+      "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+      "GOPATH": "C:\\Users\\Martijn Starmans\\go",
+      "GOROOT": "C:\\Users\\Martijn Starmans\\scoop\\apps\\go\\current",
+      "HOMEDRIVE": "C:",
+      "HOMEPATH": "\\Users\\Martijn Starmans",
+      "KMP_DUPLICATE_LIB_OK": "True",
+      "KMP_INIT_AT_FORK": "FALSE",
+      "LOCALAPPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Local",
+      "LOGONSERVER": "\\\\DESKTOP-PTS4VQ4",
+      "MOZ_PLUGIN_PATH": "C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+      "NUMBER_OF_PROCESSORS": "12",
+      "ONEDRIVE": "C:\\Users\\Martijn Starmans\\OneDrive",
+      "ONLINESERVICES": "Online Services",
+      "OS": "Windows_NT",
+      "PATH": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pywin32_system32;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\mingw-w64\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\usr\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Scripts;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\bin;C:\\ProgramData\\Anaconda3\\condabin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;.;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\Intel\\WiFi\\bin;C:\\Program Files\\Common Files\\Intel\\WirelessCommon;C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64;C:\\Program Files\\MATLAB\\R2015b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2015b\\bin;C:\\Program Files\\Pandoc;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Go\\bin;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Users\\Martijn Starmans\\go\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;C:\\Hugo\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;.;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs",
+      "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+      "PLATFORMCODE": "AN",
+      "PROCESSOR_ARCHITECTURE": "AMD64",
+      "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+      "PROCESSOR_LEVEL": "6",
+      "PROCESSOR_REVISION": "9e0a",
+      "PROGRAMDATA": "C:\\ProgramData",
+      "PROGRAMFILES": "C:\\Program Files",
+      "PROGRAMFILES(X86)": "C:\\Program Files (x86)",
+      "PROGRAMW6432": "C:\\Program Files",
+      "PROMPT": "(VEWORC) $P$G",
+      "PSMODULEPATH": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+      "PTSMINSTALLPATH": "C:\\Program Files\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PTSMINSTALLPATH_X86": "C:\\Program Files (x86)\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PUBLIC": "C:\\Users\\Public",
+      "REGIONCODE": "EMEA",
+      "SESSIONNAME": "Console",
+      "SYSTEMDRIVE": "C:",
+      "SYSTEMROOT": "C:\\WINDOWS",
+      "TEMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "TMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "USERDOMAIN": "DESKTOP-PTS4VQ4",
+      "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-PTS4VQ4",
+      "USERNAME": "Martijn Starmans",
+      "USERPROFILE": "C:\\Users\\Martijn Starmans",
+      "WINDIR": "C:\\WINDOWS"
+    },
+    "drmaa": {
+      "jobid": null,
+      "taskid": null,
+      "jobname": null
+    }
+  },
+  "sysinfo_start": {
+    "cpu_usage": {
+      "user": 33837.25,
+      "system": 29608.15625,
+      "idle": 1889285.5937499998,
+      "interrupt": 927.46875,
+      "dpc": 588.515625,
+      "percent": 18.2
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2728935424,
+        "percent": 83.9,
+        "used": 14248058880,
+        "free": 2728935424
+      },
+      "swap": {
+        "total": 36931239936,
+        "used": 32756006912,
+        "free": 4175233024,
+        "percent": 88.7,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 399800832000,
+        "disk_free": 111023448064,
+        "disk_use_percent": 78.3
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 405352005632,
+        "disk_free": 105472274432,
+        "disk_use_percent": 79.4
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  },
+  "process": {
+    "return_code": 0,
+    "stdout": " [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n [INFO]      sink:0045 >> Using Python version 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)] loaded from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\python.exe\n [INFO]      sink:0049 >> Arguments:\ninput: ['C:\\\\Users\\\\Martijn Starmans\\\\documents\\\\github\\\\worc\\\\worc\\\\tests\\\\worc_example_stwstrategyhn_regression\\\\fingerprinter_classification\\\\all\\\\config_0.ini', 'C:\\\\Users\\\\Martijn Starmans\\\\documents\\\\github\\\\worc\\\\worc\\\\tests\\\\worc_example_stwstrategyhn_regression\\\\fingerprinter_classification\\\\all\\\\__fastr_prov__.json']\noutput: ['vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0.ini', 'vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0_ini.prov.json']\ndatatype: ['ParameterFile', 'JsonFile']\n [INFO]      sink:0060 >> Processing C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini --> vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0.ini [ParameterFile]\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\ioplugins\\s3filesystem.py\nFastrImportError from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\ioplugins\\s3filesystem.py line 59: Could not import the required boto3/botocore modules for this plugin\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\reportingplugins\\elasticsearchreporter.py\nFastrOptionalModuleNotAvailableError from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\reportingplugins\\elasticsearchreporter.py line 46: Could not import the required elasticsearch for this plugin\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\executionplugins\\slurmexecution.py\nCould not find executable \"sbatch\" on PATH: ['C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\pywin32_system32', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\fastr\\\\utils\\\\cmd', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\mingw-w64\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\usr\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Scripts', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\bin', 'C:\\\\ProgramData\\\\Anaconda3\\\\condabin', 'C:\\\\Program Files (x86)\\\\Common Files\\\\Oracle\\\\Java\\\\javapath', '.', 'C:\\\\Program Files (x86)\\\\NVIDIA Corporation\\\\PhysX\\\\Common', 'C:\\\\WINDOWS\\\\system32', 'C:\\\\WINDOWS', 'C:\\\\WINDOWS\\\\System32\\\\Wbem', 'C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0', 'C:\\\\WINDOWS\\\\System32\\\\OpenSSH', 'C:\\\\Program Files\\\\Intel\\\\WiFi\\\\bin', 'C:\\\\Program Files\\\\Common Files\\\\Intel\\\\WirelessCommon', 'C:\\\\Program Files\\\\MiKTeX 2.9\\\\miktex\\\\bin\\\\x64', 'C:\\\\Program Files\\\\MATLAB\\\\R2015b\\\\runtime\\\\win64', 'C:\\\\Program Files\\\\MATLAB\\\\R2015b\\\\bin', 'C:\\\\Program Files\\\\Pandoc', 'C:\\\\Program Files\\\\Git\\\\cmd', 'C:\\\\Program Files\\\\Go\\\\bin', 'C:\\\\Program Files (x86)\\\\Intel\\\\Intel(R) Management Engine Components\\\\DAL', 'C:\\\\Program Files\\\\Intel\\\\Intel(R) Management Engine Components\\\\DAL', 'C:\\\\Users\\\\Martijn Starmans\\\\go\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\GitHubDesktop\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\atom\\\\bin', 'C:\\\\Program Files (x86)\\\\Graphviz2.38\\\\bin', 'C:\\\\Hugo\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\bin', '.', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\scipy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\scipy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs']\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\targetplugins\\singularitytarget.py\nCould not find executable \"singularity\" on PATH: ['C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\pywin32_system32', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\fastr\\\\utils\\\\cmd', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\mingw-w64\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\usr\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Library\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\Scripts', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\bin', 'C:\\\\ProgramData\\\\Anaconda3\\\\condabin', 'C:\\\\Program Files (x86)\\\\Common Files\\\\Oracle\\\\Java\\\\javapath', '.', 'C:\\\\Program Files (x86)\\\\NVIDIA Corporation\\\\PhysX\\\\Common', 'C:\\\\WINDOWS\\\\system32', 'C:\\\\WINDOWS', 'C:\\\\WINDOWS\\\\System32\\\\Wbem', 'C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0', 'C:\\\\WINDOWS\\\\System32\\\\OpenSSH', 'C:\\\\Program Files\\\\Intel\\\\WiFi\\\\bin', 'C:\\\\Program Files\\\\Common Files\\\\Intel\\\\WirelessCommon', 'C:\\\\Program Files\\\\MiKTeX 2.9\\\\miktex\\\\bin\\\\x64', 'C:\\\\Program Files\\\\MATLAB\\\\R2015b\\\\runtime\\\\win64', 'C:\\\\Program Files\\\\MATLAB\\\\R2015b\\\\bin', 'C:\\\\Program Files\\\\Pandoc', 'C:\\\\Program Files\\\\Git\\\\cmd', 'C:\\\\Program Files\\\\Go\\\\bin', 'C:\\\\Program Files (x86)\\\\Intel\\\\Intel(R) Management Engine Components\\\\DAL', 'C:\\\\Program Files\\\\Intel\\\\Intel(R) Management Engine Components\\\\DAL', 'C:\\\\Users\\\\Martijn Starmans\\\\go\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\GitHubDesktop\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\atom\\\\bin', 'C:\\\\Program Files (x86)\\\\Graphviz2.38\\\\bin', 'C:\\\\Hugo\\\\bin', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\bin', '.', 'C:\\\\Users\\\\Martijn Starmans\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\scipy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\scipy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs', 'C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\numpy\\\\.libs']\n [INFO]  ioplugin:0330 >> Push sink called with: C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini, vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0.ini\n [INFO]  ioplugin:0340 >> Found URL contents: [('C:\\\\Users\\\\Martijn Starmans\\\\documents\\\\github\\\\worc\\\\worc\\\\tests\\\\worc_example_stwstrategyhn_regression\\\\fingerprinter_classification\\\\all\\\\config_0.ini', 'vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0.ini')]\n [INFO]      sink:0060 >> Processing C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\__fastr_prov__.json --> vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0_ini.prov.json [JsonFile]\n [INFO]  ioplugin:0330 >> Push sink called with: C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\__fastr_prov__.json, vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0_ini.prov.json\n [INFO]  ioplugin:0340 >> Found URL contents: [('C:\\\\Users\\\\Martijn Starmans\\\\documents\\\\github\\\\worc\\\\worc\\\\tests\\\\worc_example_stwstrategyhn_regression\\\\fingerprinter_classification\\\\all\\\\__fastr_prov__.json', 'vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0_ini.prov.json')]\n",
+    "stderr": "",
+    "command": [
+      "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\python.exe",
+      "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\utils\\cmd\\sink.py",
+      "--input",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\__fastr_prov__.json",
+      "--output",
+      "vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0.ini",
+      "vfs://output/WORC_Example_STWStrategyHN_Regression/config_all_0_ini.prov.json",
+      "--datatype",
+      "ParameterFile",
+      "JsonFile"
+    ],
+    "resource_usage": [
+      {
+        "timestamp": "2023-04-20T07:33:14.354537",
+        "cpu_percent": 50.0,
+        "vmem": 33693696,
+        "rmem": 43249664,
+        "read_bytes": 6807080,
+        "write_bytes": 4
+      },
+      {
+        "timestamp": "2023-04-20T07:33:15.356276",
+        "cpu_percent": 82.8,
+        "vmem": 1684406272,
+        "rmem": 84692992,
+        "read_bytes": 17002413,
+        "write_bytes": 1140
+      },
+      {
+        "timestamp": "2023-04-20T07:33:16.358666",
+        "cpu_percent": 68.8,
+        "vmem": 1718906880,
+        "rmem": 121860096,
+        "read_bytes": 25277691,
+        "write_bytes": 1961
+      }
+    ],
+    "time_elapsed": 3.337346076965332
+  },
+  "sysinfo_end": {
+    "cpu_usage": {
+      "user": 33842.734375,
+      "system": 29611.46875,
+      "idle": 1889326.8749999998,
+      "interrupt": 927.515625,
+      "dpc": 588.546875,
+      "percent": 17.7
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2385166336,
+        "percent": 86.0,
+        "used": 14591827968,
+        "free": 2385166336
+      },
+      "swap": {
+        "total": 43480887296,
+        "used": 37825347584,
+        "free": 5655539712,
+        "percent": 87.0,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 406353567744,
+        "disk_free": 104470712320,
+        "disk_use_percent": 79.5
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 411577106432,
+        "disk_free": 99247173632,
+        "disk_use_percent": 80.6
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  }
+}

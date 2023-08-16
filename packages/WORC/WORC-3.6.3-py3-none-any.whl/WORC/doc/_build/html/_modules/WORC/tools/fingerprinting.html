@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>WORC.tools.fingerprinting &mdash; WORC 3.6.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> WORC
+          
+
+          
+            
+            <img src="../../../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/features.html">Radiomics Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/additionalfunctionality.html">Additional functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/changelog.html">Changelog</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../autogen/WORC.html">WORC Package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>WORC.tools.fingerprinting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for WORC.tools.fingerprinting</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># Copyright 2016-2022 Biomedical Imaging Group Rotterdam, Departments of</span>
+<span class="c1"># Medical Informatics and Radiology, Erasmus MC, Rotterdam, The Netherlands</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="k">as</span> <span class="nn">sitk</span>
+<span class="kn">from</span> <span class="nn">WORC.addexceptions</span> <span class="kn">import</span> <span class="n">WORCKeyError</span><span class="p">,</span> <span class="n">WORCValueError</span>
+<span class="kn">from</span> <span class="nn">WORC.processing.label_processing</span> <span class="kn">import</span> <span class="n">findlabeldata</span>
+
+<span class="n">quantitative_modalities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CT&#39;</span><span class="p">,</span> <span class="s1">&#39;PET&#39;</span><span class="p">,</span> <span class="s1">&#39;Thermography&#39;</span><span class="p">,</span> <span class="s1">&#39;ADC&#39;</span><span class="p">,</span> <span class="s1">&#39;MG&#39;</span><span class="p">]</span>
+<span class="n">qualitative_modalities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MRI&#39;</span><span class="p">,</span> <span class="s1">&#39;MR&#39;</span><span class="p">,</span> <span class="s1">&#39;DWI&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="n">all_modalities</span> <span class="o">=</span> <span class="n">quantitative_modalities</span> <span class="o">+</span> <span class="n">qualitative_modalities</span>
+
+
+<div class="viewcode-block" id="Fingerprinter"><a class="viewcode-back" href="../../../autogen/WORC.tools.html#WORC.tools.fingerprinting.Fingerprinter">[docs]</a><span class="k">class</span> <span class="nc">Fingerprinter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fingerprinting object for WORC configuration.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Fingerprinter.__init__"><a class="viewcode-back" href="../../../autogen/WORC.tools.html#WORC.tools.fingerprinting.Fingerprinter.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Fingerprinter.execute"><a class="viewcode-back" href="../../../autogen/WORC.tools.html#WORC.tools.fingerprinting.Fingerprinter.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determine fingerprint of dataset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        worcobject: WORC object</span>
+<span class="sd">            WORC object to fingerprint</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Read the config file</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;classification&#39;</span><span class="p">:</span>
+            <span class="c1"># Check class balance</span>
+            <span class="n">label_type</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Labels&#39;</span><span class="p">][</span><span class="s1">&#39;label_names&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_type</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># multiclass pass</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">:</span>
+                    <span class="n">label_data</span><span class="p">,</span> <span class="n">objects_out</span> <span class="o">=</span>\
+                        <span class="n">findlabeldata</span><span class="p">(</span><span class="n">patientinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
+                                      <span class="n">label_type</span><span class="o">=</span><span class="n">label_type</span><span class="p">,</span>
+                                      <span class="n">filenames</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+                    <span class="n">label_data</span><span class="p">,</span> <span class="n">objects_out</span> <span class="o">=</span>\
+                        <span class="n">findlabeldata</span><span class="p">(</span><span class="n">patientinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
+                                      <span class="n">label_type</span><span class="o">=</span><span class="n">label_type</span><span class="p">,</span>
+                                      <span class="n">filenames</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">WORCValueError</span><span class="p">(</span><span class="s1">&#39;Either need images or features for classification fingerprinting, neither provided.&#39;</span><span class="p">)</span>
+
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">label_data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="c1"># Binary classification, check class balance</span>
+                    <span class="n">total</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+                    <span class="n">positives</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+                    <span class="n">negatives</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">positives</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">positives</span><span class="p">,</span> <span class="n">negatives</span><span class="p">,</span> <span class="n">positives</span><span class="o">/</span><span class="n">total</span><span class="p">,</span> <span class="n">negatives</span><span class="o">/</span><span class="n">total</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">negatives</span><span class="o">/</span><span class="n">total</span> <span class="o">&gt;</span> <span class="mf">0.60</span> <span class="ow">or</span> <span class="n">positives</span><span class="o">/</span><span class="n">total</span> <span class="o">&gt;</span> <span class="mf">0.60</span><span class="p">:</span>
+                        <span class="c1"># Class imbalance, keep resampling</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Class imbalance, keep default Resampling usage of 0.20.&#39;</span><span class="p">)</span>
+                        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Resampling&#39;</span><span class="p">][</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.20&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># No class imbalance, turn resampling off</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No class imbalance, setting Resampling usage to 0.0.&#39;</span><span class="p">)</span>
+                        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Resampling&#39;</span><span class="p">][</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.00&#39;</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;images&#39;</span><span class="p">:</span>
+            <span class="c1"># Determine modality</span>
+            <span class="n">modality</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;image_type&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">modality</span> <span class="ow">in</span> <span class="n">qualitative_modalities</span><span class="p">:</span>
+                <span class="c1"># Apply image normalization and use fixed bin count</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Qualitative modality: Apply image normalization and use fixed bin count.&#39;</span><span class="p">)</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Preprocessing&#39;</span><span class="p">][</span><span class="s1">&#39;Normalize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;PyRadiomics&#39;</span><span class="p">][</span><span class="s1">&#39;binCount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;GLCM_levels&#39;</span><span class="p">]</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;PyRadiomics&#39;</span><span class="p">][</span><span class="s1">&#39;binWidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+
+            <span class="k">elif</span> <span class="n">modality</span> <span class="ow">in</span> <span class="n">quantitative_modalities</span><span class="p">:</span>
+                <span class="c1"># Apply no image normalization and use fixed bin width</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Quantitative modality: Apply no image normalization and use fixed bin width.&#39;</span><span class="p">)</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Preprocessing&#39;</span><span class="p">][</span><span class="s1">&#39;Normalize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;PyRadiomics&#39;</span><span class="p">][</span><span class="s1">&#39;binCount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;PyRadiomics&#39;</span><span class="p">][</span><span class="s1">&#39;binWidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;25&#39;</span>  <span class="c1"># Default of PyRadiomics</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">WORCKeyError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">modality</span><span class="si">}</span><span class="s1"> is not a known modality, should be one of </span><span class="si">{</span><span class="n">all_modalities</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Determine if we are dealing with 2D, 2.5D, or 3D images and segmentations</span>
+            <span class="n">spacings_x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="n">spacings_y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="n">spacings_z</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+            <span class="n">max_num_images</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Fingerprinting&#39;</span><span class="p">][</span><span class="s1">&#39;max_num_image&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_num_images</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">max_num_images</span><span class="p">]</span>
+                <span class="c1"># FIXME</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;FIXME: segmentations is None&#39;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">max_num_images</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">imagefile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">:</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">ReadImage</span><span class="p">(</span><span class="n">imagefile</span><span class="p">)</span>
+                <span class="n">spacings_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">spacings_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">spacings_z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
+
+            <span class="n">mean_spacings</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spacings_x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spacings_y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spacings_z</span><span class="p">)]</span>
+
+            <span class="c1"># Assume x and y spacing are the same, so we just compare x with z</span>
+            <span class="k">if</span> <span class="n">mean_spacings</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">mean_spacings</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="c1"># 2.5D images, use standard feature extraction</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean spacing </span><span class="si">{</span><span class="n">mean_spacings</span><span class="si">}</span><span class="s1">, thus 2.5D images, use standard feature extraction.&#39;</span><span class="p">)</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;extraction_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2.5D&#39;</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 3D images, thus compute 3D shape features</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean spacing </span><span class="si">{</span><span class="n">mean_spacings</span><span class="si">}</span><span class="s1">, thus 3D images, use 3D feature extraction.&#39;</span><span class="p">)</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;extraction_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3D&#39;</span>
+
+                <span class="c1"># We keep all the default 2.5D features, as most of them are only defined in 2D</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;texture_Gabor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;texture_LBP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;texture_GLCM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;texture_GLCMMS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;vessel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+
+            <span class="c1"># Check if segmentations are 2D or 3D</span>
+            <span class="c1"># FIXME ugly solution</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">num_masked_slices_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">segmentationfile</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">segmentations</span><span class="p">:</span>
+                    <span class="n">segmentation</span> <span class="o">=</span> <span class="n">sitk</span><span class="o">.</span><span class="n">GetArrayFromImage</span><span class="p">(</span><span class="n">sitk</span><span class="o">.</span><span class="n">ReadImage</span><span class="p">(</span><span class="n">segmentationfile</span><span class="p">))</span>
+                    <span class="n">segmentation</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+                    <span class="n">num_masked_slices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">segmentation</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))))</span>
+                    <span class="n">num_masked_slices_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_masked_slices</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">elem</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">num_masked_slices_all</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All masks only contain one slice, so turn of 3D features.&#39;</span><span class="p">)</span>
+                    <span class="c1"># NOTE: PREDICT will mostly switch itself between these features by looking at the masks</span>
+                    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;extraction_mode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2D&#39;</span>
+
+                    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;orientation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+                    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ImageFeatures&#39;</span><span class="p">][</span><span class="s1">&#39;texture_GLCMMS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+
+                    <span class="c1"># For PyRadiomics, only this parameter needs to be changed</span>
+                    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;PyRadiomics&#39;</span><span class="p">][</span><span class="s1">&#39;force2D&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">WORCValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Type </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1"> is not valid for fingeprinting. Should be one of [&quot;classification&quot;, &quot;images&quot;].&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016 -- 2023, Biomedical Imaging Group Rotterdam, Department of Radiology and Nuclear Medicine, Erasmus University Medical Center, Rotterdam, The Netherlands.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

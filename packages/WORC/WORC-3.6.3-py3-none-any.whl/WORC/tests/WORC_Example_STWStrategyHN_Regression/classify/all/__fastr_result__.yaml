@@ -1,0 +1,553 @@
+network_id: WORC_Example_STWStrategyHN_Regression
+network_version: '0.0'
+network_scope: vfs://home/documents\github\worc\worc
+run_id: WORC_Example_STWStrategyHN_Regression_2023-04-20T09-32-47
+node_id: classify
+node_global_id: fastr:///networks/WORC_Example_STWStrategyHN_Regression/0.0/runs/WORC_Example_STWStrategyHN_Regression_2023-04-20T09-32-47/nodelist/classify
+tool_id: worc/TrainClassifier:1.0
+tool_version: '1.0'
+sample_id:
+- all
+sample_index:
+- 0
+fastr_version: 3.3.1_unknown_unknown
+network_tmpurl: vfs://home/documents\github\worc\worc\tests\worc_example_stwstrategyhn_regression
+hold_jobs:
+- WORC_Example_STWStrategyHN_Regression___fingerprinter_classification___all
+timestamp: '2023-04-20T07:33:01.604445'
+preferred_types:
+  classification:
+  - NiftiImageFileCompressed
+  smac_results:
+  - NiftiImageFileCompressed
+errors:
+- - FastrOutputValidationError
+  - Output value [HDF5] "vfs://home/documents\github\worc\worc\tests\worc_example_stwstrategyhn_regression\classify\all\classification_0.hdf5"
+    not valid for datatype "'HDF5'"
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py
+  - 1155
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 89 in execute_job\n  job.execute()\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 833 in execute\n  if not self.validate_results(payload):\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 1101 in validate_results\n  if not self._validate_result(output,\
+    \ output_value, payload):\nFile C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\fastr\\execution\\job.py, line 1155 in _validate_result\n\
+    \  self.errors.append(exceptions.FastrOutputValidationError(message).excerpt())"
+- - FastrOutputValidationError
+  - The output "classification" is invalid!
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py
+  - 1103
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 89 in execute_job\n  job.execute()\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 833 in execute\n  if not self.validate_results(payload):\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 1103 in validate_results\n  self.errors.append(exceptions.FastrOutputValidationError(message).excerpt())"
+- - FastrOutputValidationError
+  - Cardinality mismatch for smac_results (found 0, expected <IntCardinalitySpec 1>)
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py
+  - 1146
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 89 in execute_job\n  job.execute()\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 833 in execute\n  if not self.validate_results(payload):\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 1101 in validate_results\n  if not self._validate_result(output,\
+    \ output_value, payload):\nFile C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\fastr\\execution\\job.py, line 1146 in _validate_result\n\
+    \  self.errors.append(exceptions.FastrOutputValidationError(message).excerpt())"
+- - FastrOutputValidationError
+  - The output "smac_results" is invalid!
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py
+  - 1103
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 89 in execute_job\n  job.execute()\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 833 in execute\n  if not self.validate_results(payload):\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 1103 in validate_results\n  self.errors.append(exceptions.FastrOutputValidationError(message).excerpt())"
+- - FastrErrorInSubprocess
+  - "--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 1025,\
+    \ in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return\
+    \ fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 580, in formatMessage\n    return self._style.format(record)\n  File \"\
+    C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\n\
+    Call stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n\
+    \    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n  \
+    \  fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\\
+    worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n\
+    \    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n\
+    \    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n\
+    \    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\\
+    github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n\
+    \    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n\
+    \    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn\
+    \ starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line\
+    \ 1643, in _fit\n    source_data.to_hdf(sourcename, sourcelabel)\n  File \"C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\\
+    generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\"\
+    , line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n\
+    \    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1725, in _write_to_group\n    group = self._identify_group(key,\
+    \ append)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1780, in _identify_group\n    group = self._create_nodes_and_group(key)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group =\
+    \ self._handle.create_group(path, p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\site-packages\\tables\\file.py\", line 940, in create_group\n\
+    \    title=title, new=True, filters=filters)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 235, in __init__\n\
+    \    super(Group, self).__init__(parentnode, name, _log)\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\node.py\"\
+    , line 255, in __init__\n    parentnode._g_refnode(self, name, validate)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\\
+    group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\\
+    path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning,\
+    \ stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage:\
+    \ '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\
+    \\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name\
+    \ is not a valid Python identifier: 'Source Data Iteration 0'; it does not match\
+    \ the pattern ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural\
+    \ naming to access this object; using ``getattr()`` will still work, though\\\
+    n  check_attribute_name(name)\\n\",)\n--- Logging error ---\nTraceback (most recent\
+    \ call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\\
+    logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn\
+    \ Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n\
+    \    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return\
+    \ self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\\
+    VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt\
+    \ % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\\
+    martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\\
+    bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\\
+    martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\\
+    bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File\
+    \ \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features,\
+    \ labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups,\
+    \ sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\\
+    WORC\\classification\\SearchCV.py\", line 1643, in _fit\n    source_data.to_hdf(sourcename,\
+    \ sourcelabel)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\\
+    site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\"\
+    , line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106,\
+    \ in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\\
+    VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1755, in _write_to_group\n\
+    \    track_times=track_times,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 3085, in write\n\
+    \    self.write_array(\"values\", obj)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 3030,\
+    \ in write_array\n    warnings.warn(ws, PerformanceWarning, stacklevel=7)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\warnings.py\", line\
+    \ 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage: '%s'\nArguments: ('C:\\\
+    \\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\
+    \\pandas\\\\core\\\\generic.py:2621: PerformanceWarning: \\nyour performance may\
+    \ suffer as PyTables will pickle object types that it cannot\\nmap directly to\
+    \ c-types [inferred_type->mixed,key->values] [items->None]\\n\\n  encoding=encoding,\\\
+    n',)\n--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line\
+    \ 1025, in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return\
+    \ fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 580, in formatMessage\n    return self._style.format(record)\n  File \"\
+    C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\n\
+    Call stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n\
+    \    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n  \
+    \  fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\\
+    worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n\
+    \    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n\
+    \    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n\
+    \    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\\
+    github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n\
+    \    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n\
+    \    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn\
+    \ starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line\
+    \ 1643, in _fit\n    source_data.to_hdf(sourcename, sourcelabel)\n  File \"C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\\
+    generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\"\
+    , line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n\
+    \    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1725, in _write_to_group\n    group = self._identify_group(key,\
+    \ append)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1780, in _identify_group\n    group = self._create_nodes_and_group(key)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group =\
+    \ self._handle.create_group(path, p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\site-packages\\tables\\file.py\", line 940, in create_group\n\
+    \    title=title, new=True, filters=filters)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 235, in __init__\n\
+    \    super(Group, self).__init__(parentnode, name, _log)\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\node.py\"\
+    , line 255, in __init__\n    parentnode._g_refnode(self, name, validate)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\\
+    group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\\
+    path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning,\
+    \ stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage:\
+    \ '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\
+    \\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name\
+    \ is not a valid Python identifier: 'Source Data Iteration 1'; it does not match\
+    \ the pattern ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural\
+    \ naming to access this object; using ``getattr()`` will still work, though\\\
+    n  check_attribute_name(name)\\n\",)\n--- Logging error ---\nTraceback (most recent\
+    \ call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\\
+    logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File\
+    \ \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\"\
+    , line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn\
+    \ Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n\
+    \    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\\
+    envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return\
+    \ self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\\
+    VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt\
+    \ % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\\
+    martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\\
+    bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\\
+    martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\\
+    bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File\
+    \ \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features,\
+    \ labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups,\
+    \ sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\\
+    WORC\\classification\\SearchCV.py\", line 1675, in _fit\n    estimator_data.to_hdf(estimatorname,\
+    \ 'Estimator Data')\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\"\
+    , line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106,\
+    \ in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\\
+    VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1725, in _write_to_group\n\
+    \    group = self._identify_group(key, append)\n  File \"C:\\Users\\Martijn Starmans\\\
+    .conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1780,\
+    \ in _identify_group\n    group = self._create_nodes_and_group(key)\n  File \"\
+    C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\\
+    io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group = self._handle.create_group(path,\
+    \ p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\file.py\", line 940, in create_group\n    title=title, new=True, filters=filters)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\group.py\", line 235, in __init__\n    super(Group, self).__init__(parentnode,\
+    \ name, _log)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\\
+    site-packages\\tables\\node.py\", line 255, in __init__\n    parentnode._g_refnode(self,\
+    \ name, validate)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\site-packages\\tables\\group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n\
+    \  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning,\
+    \ stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\\
+    lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage:\
+    \ '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\
+    \\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name\
+    \ is not a valid Python identifier: 'Estimator Data'; it does not match the pattern\
+    \ ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural naming to\
+    \ access this object; using ``getattr()`` will still work, though\\n  check_attribute_name(name)\\\
+    n\",)\nTraceback (most recent call last):\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\"\
+    , line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\\
+    github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line\
+    \ 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\\
+    documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170,\
+    \ in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\\
+    martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\"\
+    , line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\\
+    users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\"\
+    , line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n\
+    \  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\\
+    parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features,\
+    \ labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\\
+    classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups,\
+    \ sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\\
+    WORC\\classification\\SearchCV.py\", line 1724, in _fit\n    raise WORCexceptions.WORCValueError(message)\n\
+    WORC.addexceptions.WORCValueError: Fitting classifiers has failed for 4 / 4 files.\
+    \ The temporary results where not deleted and can be found in C:\\Users\\MARTIJ~1\\\
+    AppData\\Local\\Temp\\GS\\C030EN1J7J. Probably your fitting and scoring failed:\
+    \ check out the tmp/fitandscore folder within the tempfolder for the fastr job\
+    \ temporary results or run: fastr trace \"C:\\Users\\MARTIJ~1\\AppData\\Local\\\
+    Temp\\GS\\C030EN1J7J\\tmp\\__sink_data__.json\" --samples.\n"
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\executionscript.py
+  - 111
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 111 in execute_job\n  job.errors.append(exceptions.FastrErrorInSubprocess(job.info_store['process']['stderr']).excerpt())"
+- - FastrValueError
+  - Output values are not valid!
+  - C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py
+  - 834
+  - "File C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\\
+    fastr\\execution\\executionscript.py, line 187 in <module>\n  main()\nFile C:\\\
+    Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 182 in main\n  execute_job(joblist)\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    executionscript.py, line 89 in execute_job\n  job.execute()\nFile C:\\Users\\\
+    Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\execution\\\
+    job.py, line 834 in execute\n  raise exceptions.FastrValueError('Output values\
+    \ are not valid!')"
+input_hash:
+  features_train:
+    CT0:
+    - a43ae9ee005975290c8241424ccd5572
+    - c8795c88eff913127dbc9e7504c3a865
+    - 47a03bcec647bfe2d548335b6966bf86
+    - a9316b13f09cf1af6ff0f854667db416
+    - a990cece9a3b510f811e1f86fa376acb
+    - aa57cd409255d38b836dd3878d2d0873
+    - 2c2a64880043a55a8635f0ba65c26365
+    - b961a29fd1a671119d0e06d040c2256c
+    - 544b682fcaf84e87dfebccc226103a25
+    - b378af9050575170199c00f9a6195b37
+    - b17321b5f6060e7c09af0a1e0c759342
+    - 736d023c43c39ef3b9b4c6de805bb107
+    - 6ee46818f12bac5dd249c4e294b7a57f
+    - cf817f2ff68d38e6cd4ec9b39961c1ec
+    - 94fda9e738d6f56834e8e7ad539bfc41
+    - 60cacaf003a8cad07fff25479f439f3c
+    - 7306556aa9d0c590d892671d12b91bc4
+    - 2dc3a1aeb8cc788d1357803d2b758bb6
+    - b9d4c896e1f08b85d77eb1aef1193d45
+    - acfda6048a7df884ca8a854d6207509d
+  features_test: []
+  patientclass_train:
+  - 15c702376ec793c920263229a0011712
+  patientclass_test: []
+  config:
+  - fbe341b3a9dd218bbe4a5f5baba58264
+  fixedsplits: []
+output_hash: {}
+status_list:
+- timestamp: '2023-04-20T07:33:01.604445'
+  status: created
+- timestamp: '2023-04-20T07:33:01.623356'
+  status: hold
+- timestamp: '2023-04-20T07:33:09.750522'
+  status: queued
+- timestamp: '2023-04-20T07:33:11.998354'
+  status: running
+- timestamp: '2023-04-20T07:34:19.799245'
+  status: execution_failed
+output_data:
+  classification:
+  - id: HDF5
+    format: null
+    value: vfs://home/documents\github\worc\worc\tests\worc_example_stwstrategyhn_regression\classify\all\classification_0.hdf5
+  smac_results: []
+input_arguments:
+  features_train:
+    index:
+    - 0
+    id:
+    - all
+    data:
+    - SampleValue
+    - CT0:
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1004_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1077_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1088_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1146_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1159_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1192_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1259_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1260_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1323_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1331_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1339_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1342_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1372_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1491_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1501_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1519_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1524_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1554_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1560_0.hdf5
+      - id: HDF5
+        format: null
+        value: C:\Users\Martijn Starmans\WORC\output\WORC_Example_STWStrategyHN\Features\features_predict_CT_0_HN1748_0.hdf5
+    jobs: []
+    failed_annotations: []
+    status: VALID
+  features_test:
+    index:
+    - 0
+    id:
+    - __EMPTY__
+    data:
+    - SampleValue
+    - {}
+    jobs: []
+    failed_annotations: []
+    status: VALID
+  patientclass_train:
+    index:
+    - 0
+    id:
+    - all
+    data:
+    - SampleValue
+    - 0:
+      - id: PatientInfoFile
+        format: null
+        value: C:\Users\Martijn Starmans\Documents\GitHub\WORCTutorial\Data\Examplefiles\pinfo_HN.csv
+    jobs: []
+    failed_annotations: []
+    status: VALID
+  patientclass_test:
+    index:
+    - 0
+    id:
+    - __EMPTY__
+    data:
+    - SampleValue
+    - {}
+    jobs: []
+    failed_annotations: []
+    status: VALID
+  config:
+    index:
+    - 0
+    id:
+    - all
+    data:
+    - SampleValue
+    - 0:
+      - id: Deferred
+        format: null
+        value: val://home/documents\github\worc\worc\tests\worc_example_stwstrategyhn_regression/fingerprinter_classification/all/__fastr_result__.yaml?outputname=config&nr=0
+    jobs:
+    - WORC_Example_STWStrategyHN_Regression___fingerprinter_classification___all
+    failed_annotations: []
+    status: VALID
+  fixedsplits:
+    index:
+    - 0
+    id:
+    - __EMPTY__
+    data:
+    - SampleValue
+    - {}
+    jobs: []
+    failed_annotations: []
+    status: VALID
+output_arguments:
+  classification:
+    id: classification
+    cardinality: 1
+    datatype: HDF5
+    requested: true
+  smac_results:
+    id: smac_results
+    cardinality: 1
+    datatype: JsonFile
+    requested: false
+__class__: fastr.execution.job.Job
+__fastr_version__: 3.3.1_unknown_unknown

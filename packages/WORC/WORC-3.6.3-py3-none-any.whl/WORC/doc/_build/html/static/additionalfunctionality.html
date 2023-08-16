@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Additional functionality &mdash; WORC 3.6.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="Radiomics Features" href="features.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WORC
+          
+
+          
+            
+            <img src="../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Radiomics Features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Additional functionality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#image-preprocessing">Image Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-scaling">Feature scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-registration">Image Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combat">ComBat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bayesian-optimization-with-smac-instead-of-random-search">Bayesian optimization with SMAC instead of random search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multilabel-classification-and-regression">Multilabel classification and regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../autogen/WORC.html">WORC Package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Additional functionality</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/static/additionalfunctionality.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="additional-functionality">
+<span id="additonalfunctionality-chapter"></span><h1>Additional functionality<a class="headerlink" href="#additional-functionality" title="Permalink to this headline">¶</a></h1>
+<p>When using <code class="docutils literal notranslate"><span class="pre">SimpleWORC</span></code>, or WORC with similar simple configuration settings, you can
+already benefit from the main functionality of WORC, i.e. the automatic algorithm
+optimization. However, several additional functionalities are provided, which are discussed in
+this chapter.</p>
+<p>For a description of the radiomics features, please see
+<span class="xref std std-ref">the radiomics features chapter</span>. For a description of
+the data mining components, see
+<span class="xref std std-ref">the data mining chapter</span>. All other components
+are discussed here.</p>
+<p>For a comprehensive overview of all functions and parameters, please look at
+<a class="reference internal" href="configuration.html#config-chapter"><span class="std std-ref">the config chapter</span></a>.</p>
+<div class="section" id="image-preprocessing">
+<h2>Image Preprocessing<a class="headerlink" href="#image-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Preprocessing of the image, and accordingly the mask, is done in respectively
+the <a class="reference internal" href="../autogen/WORC.processing.html#module-WORC.processing.preprocessing" title="WORC.processing.preprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC.processing.preprocessing</span></code></a> and the
+<a class="reference internal" href="../autogen/WORC.processing.html#module-WORC.processing.segmentix" title="WORC.processing.segmentix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC.processing.segmentix</span></code></a> scripts. Options for preprocessing
+the image include, in the following order:</p>
+<ol class="arabic simple">
+<li><p>N4 Bias field correction, see also <a class="reference external" href="https://simpleitk.readthedocs.io/en/master/link_N4BiasFieldCorrection_docs.html">https://simpleitk.readthedocs.io/en/master/link_N4BiasFieldCorrection_docs.html</a>.</p></li>
+<li><p>Checking and optionally correcting the spacing if it’s 1x1x1 and the DICOM metadata says otherwise.</p></li>
+<li><p>Clipping of the image intensities above and below a certain value.</p></li>
+<li><p>Normalization, see <a class="reference internal" href="../autogen/WORC.processing.html#WORC.processing.preprocessing.normalize_image" title="WORC.processing.preprocessing.normalize_image"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC.processing.preprocessing.normalize_image</span></code></a> for all options.</p></li>
+<li><p>Transposing the image to another ‘’main’’ orientation, e.g. axial.</p></li>
+<li><p>Resampling the image to a different spacing.</p></li>
+</ol>
+<p>Options for preprocessing the segmentation include:</p>
+<ol class="arabic simple">
+<li><p>Hole filling. Many feature computations cannot deal with holes.</p></li>
+<li><p>Removing small objects. Many feature computations cannot deal with multiple</p></li>
+</ol>
+<blockquote>
+<div><p>objects in a single segmentation.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Extracing the largest blob. Many feature computations cannot deal with</p></li>
+</ol>
+<blockquote>
+<div><p>multiple objects in a single segmentation.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Instead of using the full segmentation, extracting a ring around the border</p></li>
+</ol>
+<blockquote>
+<div><p>of the image to compute the features on. Ring captures both the inner and
+outer border.</p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Dilating the contour.</p></li>
+<li><p>Masking the contour with another contour.</p></li>
+<li><p>When assuming the same image and metadata, copy the metadata of the image</p></li>
+</ol>
+<blockquote>
+<div><p>to the segmentation.</p>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><p>Checking and optionally correcting the spacing if it’s 1x1x1 and the</p></li>
+</ol>
+<blockquote>
+<div><p>DICOM metadata says otherwise. Same as image preprocessing step 2.</p>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><p>Transposing the segmentation to another ‘’main’’ orientation, e.g. axial.</p></li>
+</ol>
+<blockquote>
+<div><p>Same as image preprocessing step 5.</p>
+</div></blockquote>
+<ol class="arabic simple" start="10">
+<li><p>Resampling the segmentation <strong>and the segmentation</strong> to a different spacing.</p></li>
+</ol>
+<blockquote>
+<div><p>Same as image preprocessing step 10.</p>
+</div></blockquote>
+</div>
+<div class="section" id="feature-scaling">
+<h2>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h2>
+<p>The default method for feature scaling in <code class="docutils literal notranslate"><span class="pre">WORC</span></code> is a robust version
+of z-scoring. Additional options include:</p>
+<ol class="arabic simple">
+<li><p>regular z-scoring</p></li>
+<li><p>MinMax scaling, i.e., scaling to a range between 0 and 1</p></li>
+<li><p>Scaling by centering using the median and IQR</p></li>
+<li><p>A combination of z-scoring with a logarithmic transform and a correction
+term to better cope with outliers and non-normally distributed features <a class="reference internal" href="#cit1" id="id1"><span>[CIT1]</span></a>.</p></li>
+</ol>
+</div>
+<div class="section" id="image-registration">
+<h2>Image Registration<a class="headerlink" href="#image-registration" title="Permalink to this headline">¶</a></h2>
+<p>When using multiple modalities or sequences, and there is only a segmentation
+on a single image, image registration is applied to spatially align all
+sequences and warp the segmentation to the other images through
+<code class="docutils literal notranslate"><span class="pre">elastix</span></code> <a class="reference internal" href="#cit2" id="id2"><span>[CIT2]</span></a>. Usage of <code class="docutils literal notranslate"><span class="pre">elastix</span></code> is automatically included in <code class="docutils literal notranslate"><span class="pre">WORC</span></code>
+when only a single segmentation and multiple modalities are supplied.
+The image on which the segmentation is provided is used as the moving image,
+the others as the fixed image, as the segmentations will be moved from the
+segmented image to the others.</p>
+<p>Registration is by default performed using a
+rigid transformation model, based on a mutual information using the adaptive
+stochastic gradient descent optimizer. Manual
+overrides of these defaults are included in the <code class="docutils literal notranslate"><span class="pre">WORC</span></code> configuration.</p>
+<p>When using Elastix, parameter files have to be provided in the
+<code class="docutils literal notranslate"><span class="pre">network.Elastix_Para</span></code> object, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="o">.</span><span class="n">Elastix_Para</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Parameters_Rigid.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Parameters_BSpline.txt&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>The outer list defines the parameter files used per modality. If only one
+element is provided, the same will be applied for all modalities. Each element
+of the list should be a list of its own, including the filenames
+of <code class="docutils literal notranslate"><span class="pre">elastix</span></code>. In the example, we provided two files, resulting
+in first a rigid registration being performed, followed by a bspline registration.
+Examples of <code class="docutils literal notranslate"><span class="pre">elastix</span></code> parameter files can be found at <a class="reference external" href="https://github.com/SuperElastix/ElastixModelZoo/tree/master/models/default">https://github.com/SuperElastix/ElastixModelZoo/tree/master/models/default</a></p>
+</div>
+<div class="section" id="combat">
+<h2>ComBat<a class="headerlink" href="#combat" title="Permalink to this headline">¶</a></h2>
+<p>Commonly, radiomics studies include multicenter data,
+resulting in heterogeneity in the acquisition protocols. As radiomics features
+are generally sensitive to these variations, this limits the repeatability and
+reproducibility. To compensate for the differences in acquisition, feature
+harmonization techniques may be used, one of the most frequently used
+is ComBat. In ComBat, feature distributions are harmonized for variations in
+the imaging acquisition, e.g. due to differences in hospitals, manufacturers,
+or acquisition parameters. The dataset is divided in groups based on these
+differences, and a correction of the error caused by these differences
+is estimated using empirical Bayes.</p>
+<p>ComBat is included in <code class="docutils literal notranslate"><span class="pre">WORC</span></code> and can be turned on in the configuration,
+including options to use empirical Bayes or not, a parametric or
+non-parametric approach, and a moderation variable.</p>
+<p>ComBat feature harmonization is embedded in WORC. A wrapper around the
+original <a class="reference external" href="https://github.com/Jfortin1/ComBatHarmonization/">ComBat code</a>,
+compatible with the other tools provided by <code class="docutils literal notranslate"><span class="pre">WORC</span></code>, is included in the
+<code class="docutils literal notranslate"><span class="pre">WORC</span></code> installation.</p>
+<p>When using ComBat, the following configurations should be done:</p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">config['General']['ComBat']</span></code> to <code class="docutils literal notranslate"><span class="pre">'True'</span></code>.</p></li>
+<li><p>To change the ComBat parameters (i.e. which batch and moderation variable to use),
+change the relevant config fields, see the <a class="reference internal" href="configuration.html#config-chapter"><span class="std std-ref">Config chapter</span></a>.</p></li>
+<li><p>WORC extracts the batch and moderation variables from the label file which you also
+use to give WORC the actual label you want to predict. The same format therefore applies, see
+the <span class="xref std std-ref">User manual</span> for more details..</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In line with current literature, ComBat is applied once on the full dataset
+straight after the feature extraction, thus before the actual hyperoptimization.
+Hence, to avoid serious overfitting, we advice to <strong>NEVER</strong> use the variable
+you are trying to predict as the moderation variable.</p>
+</div>
+</div>
+<div class="section" id="bayesian-optimization-with-smac-instead-of-random-search">
+<h2>Bayesian optimization with SMAC instead of random search<a class="headerlink" href="#bayesian-optimization-with-smac-instead-of-random-search" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SMAC algorithm only works on Linux, because of its random forest surrogate model
+implementation. Make sure to use <code class="docutils literal notranslate"><span class="pre">swig3.0</span></code>. To circumvent <code class="docutils literal notranslate"><span class="pre">pyrfr</span></code> issues
+with SMAC, we use a custom fork of the original SMAC package that needs to be installed separately.</p>
+</div>
+<p>Steps to take in order to use SMAC within WORC:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">remove</span> <span class="pre">swig</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">swig3.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/bin/swig3.0</span> <span class="pre">/usr/bin/swig</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyrfr==0.8.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/mitchelldeen/SMAC3.git</span></code></p></li>
+</ol>
+<p>The SMAC algorithm, using Bayesian optimization, can be used for the hyperparameter optimization by
+setting the <code class="docutils literal notranslate"><span class="pre">config['SMAC']['use']</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">'True'</span></code>. For details on which SMAC parameters
+can be modified, see <a class="reference internal" href="configuration.html#config-chapter"><span class="std std-ref">Config chapter</span></a>.</p>
+<p>The core functionality of SMAC within WORC is implemented in
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC.resources.fastr_tools.worc.bin.smac_tool</span></code>. The configuration space of SMAC is specified
+in <a class="reference internal" href="../autogen/WORC.classification.html#module-WORC.classification.smac" title="WORC.classification.smac"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC.classification.smac</span></code></a>, which is also where new methods can be added to the search space.</p>
+<p>There is additional output when using SMAC. The final output file <code class="docutils literal notranslate"><span class="pre">smac_results_all_0.json</span></code>
+is added along with the regular performance file in the output folder. It contains information on the
+optimization procedure for each cross-validation split, with statistics on the performance and all
+intermediate best found configurations.The end of the file contains a summary of the average statistics
+over all train-test cross-validations.</p>
+</div>
+<div class="section" id="multilabel-classification-and-regression">
+<h2>Multilabel classification and regression<a class="headerlink" href="#multilabel-classification-and-regression" title="Permalink to this headline">¶</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">WORC</span></code> was primarily designed for binary classification, as also
+demonstrated in the main manuscript, various other types of machine
+learning workflows have been included as well.</p>
+<p>In multilabel classification, several mutually exclusive classes are
+predicted at the same time. This is a special form of multiclass classification,
+in which the classes do not have to be mutually exclusive. When using
+multilabel classification in <code class="docutils literal notranslate"><span class="pre">WORC</span></code>, the only differences with binary
+classification in the workflows is in the machine learning component.
+For the other components, e.g. feature selection and resampling, when not
+supporting multiclass classification, the methods are performed per
+class in a one-vs-rest approach. Some of the binary classifiers naturally
+support multilabel classification (i.e., random forest,  AdaBoost,
+and extreme gradient boosting) and are thus normally used. Others only
+support binary classification (i.e., LDA, QDA, Naive Bayes, SVM, logistic
+regression), and are therefore also performed per class in a one-vs-rest
+approach and combined in a single multilabel model. In the evaluation,
+the same metrics as in the binary classification are evaluated per class.
+Additionally, the multiclass AUC <a class="reference internal" href="#cit3" id="id3"><span>[CIT3]</span></a>. and multiclass BCR are computed.</p>
+<p>In regression, a continuous label is predicted. As there are no classes,
+all class-based feature and sample preprocessing methods
+(RELIEF, univariate testing, and all resampling methods) cannot be used.
+In the machine learning component, <code class="docutils literal notranslate"><span class="pre">WORC</span></code> includes the following regressors:</p>
+<ol class="arabic simple">
+<li><p>linear regression;</p></li>
+<li><p>support vector machines;</p></li>
+<li><p>random forest;</p></li>
+<li><p>elastic net;</p></li>
+<li><p>LASSO;</p></li>
+<li><p>ridge regression;</p></li>
+<li><p>AdaBoost;</p></li>
+<li><p>extreme gradient boosting (XGBoost).</p></li>
+</ol>
+<p>The optimization is by default based on the R2-score. Performance metrics
+computed are the rw-score, mean squared error, inter-class correlation
+coefficient, Pearson coefficient and p-value, and Spearman coefficient
+and p-value.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="citation">
+<dt class="label" id="cit1"><span class="brackets"><a class="fn-backref" href="#id1">CIT1</a></span></dt>
+<dd><p>Chen, Jianan, et al. <em>AMINN: Autoencoder-based Multiple Instance
+Neural Network for Outcome Prediction of Multifocal Liver Metastases.</em>
+arXiv preprint arXiv:2012.06875 (2020).</p>
+</dd>
+<dt class="label" id="cit2"><span class="brackets"><a class="fn-backref" href="#id2">CIT2</a></span></dt>
+<dd><p>Klein, Stefan, et al. <em>Elastix: a toolbox for intensity-based medical
+image registration.</em> IEEE transactions on medical imaging 29.1 (2009): 196-205.</p>
+</dd>
+<dt class="label" id="cit3"><span class="brackets"><a class="fn-backref" href="#id3">CIT3</a></span></dt>
+<dd><p>Hand, David J., and Robert J. Till. <em>A simple generalisation
+of the area under the ROC curve for multiple class classification problems.</em>
+Machine learning 45.2 (2001): 171-186.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="features.html" class="btn btn-neutral float-left" title="Radiomics Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016 -- 2023, Biomedical Imaging Group Rotterdam, Department of Radiology and Nuclear Medicine, Erasmus University Medical Center, Rotterdam, The Netherlands.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+    "Mean training F1-score RS 10 try 00 top 100": [
+        0.9178839678839679,
+        1.0,
+        0.4644522144522144,
+        0.8680409663865546,
+        1.0,
+        0.7103729603729604,
+        1.0,
+        0.5297270955165692,
+        1.0,
+        1.0
+    ],
+    "Mean validation F1-score RS 10 try 00 top 100": [
+        0.8833333333333333,
+        0.75,
+        0.65,
+        0.6166666666666667,
+        0.6166666666666667,
+        0.55,
+        0.488095238095238,
+        0.488095238095238,
+        0.488095238095238,
+        0.488095238095238
+    ],
+    "Test AUC Ensemble 1 RS 10 try 00": 0.5,
+    "Test AUC Ensemble 10 RS 10 try 00": 1.0,
+    "Test AUC Ensemble Bagging RS 10 try 00": 0.5,
+    "Test AUC Ensemble FitNumber RS 10 try 00": 0.5,
+    "Test F1-score Ensemble 1 RS 10 try 00": 0.3333333333333333,
+    "Test F1-score Ensemble 10 RS 10 try 00": 0.3333333333333333,
+    "Test F1-score Ensemble Bagging RS 10 try 00": 0.3333333333333333,
+    "Test F1-score Ensemble FitNumber RS 10 try 00": 0.3333333333333333,
+    "Train AUC Ensemble 1 RS 10 try 00": 1.0,
+    "Train AUC Ensemble 10 RS 10 try 00": 0.0,
+    "Train AUC Ensemble Bagging RS 10 try 00": 0.7166666666666667,
+    "Train AUC Ensemble FitNumber RS 10 try 00": 0.5333333333333333,
+    "Train F1-score Ensemble 1 RS 10 try 00": 0.6071428571428571,
+    "Train F1-score Ensemble 10 RS 10 try 00": 0.0,
+    "Train F1-score Ensemble Bagging RS 10 try 00": 0.6071428571428571,
+    "Train F1-score Ensemble FitNumber RS 10 try 00": 0.4807692307692308
+}

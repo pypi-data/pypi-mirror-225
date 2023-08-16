@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>helpers Package &mdash; WORC 3.6.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fastrconfig Package" href="WORC.fastrconfig.html" />
+    <link rel="prev" title="facade Package" href="WORC.facade.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WORC
+          
+
+          
+            
+            <img src="../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../static/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/features.html">Radiomics Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/additionalfunctionality.html">Additional functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../static/changelog.html">Changelog</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="WORC.html">WORC Package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#id1"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC</span></code> Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#module-WORC.WORC"><code class="xref py py-mod docutils literal notranslate"><span class="pre">WORC</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WORC.html#module-WORC.addexceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">addexceptions</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="WORC.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="WORC.IOparser.html">IOparser Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.classification.html">classification Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.detectors.html">detectors Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.exampledata.html">exampledata Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.export.html">export Package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="WORC.facade.html">facade Package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="WORC.facade.html#id1"><code class="xref py py-mod docutils literal notranslate"><span class="pre">facade</span></code> Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="WORC.facade.html#module-WORC.facade.basicworc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">basicworc</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="WORC.facade.html#module-WORC.facade.simpleworc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simpleworc</span></code> Module</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="WORC.facade.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.fastrconfig.html">fastrconfig Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.featureprocessing.html">featureprocessing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.plotting.html">plotting Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.processing.html">processing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.resources.html">resources Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.statistics.html">statistics Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.tests.html">tests Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.tools.html">tools Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="WORC.validators.html">validators Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="WORC.html">WORC Package</a> &raquo;</li>
+        
+          <li><a href="WORC.facade.html">facade Package</a> &raquo;</li>
+        
+      <li>helpers Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/autogen/WORC.facade.helpers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="helpers-package">
+<h1>helpers Package<a class="headerlink" href="#helpers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-WORC.facade.helpers.configbuilder">
+<span id="configbuilder-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">configbuilder</span></code> Module<a class="headerlink" href="#module-WORC.facade.helpers.configbuilder" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.configbuilder.</span></code><code class="sig-name descname"><span class="pre">ConfigBuilder</span></code><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.__dict__">
+<code class="sig-name descname"><span class="pre">__dict__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">mappingproxy({'__module__':</span> <span class="pre">'WORC.facade.helpers.configbuilder',</span> <span class="pre">'__init__':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.__init__&gt;,</span> <span class="pre">'build_config':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.build_config&gt;,</span> <span class="pre">'custom_config_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.custom_config_overrides&gt;,</span> <span class="pre">'_cluster_config_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder._cluster_config_overrides&gt;,</span> <span class="pre">'estimator_scoring_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.estimator_scoring_overrides&gt;,</span> <span class="pre">'coarse_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.coarse_overrides&gt;,</span> <span class="pre">'fullprint':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder.fullprint&gt;,</span> <span class="pre">'_debug_config_overrides':</span> <span class="pre">&lt;function</span> <span class="pre">ConfigBuilder._debug_config_overrides&gt;,</span> <span class="pre">'__dict__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__dict__'</span> <span class="pre">of</span> <span class="pre">'ConfigBuilder'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__weakref__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__weakref__'</span> <span class="pre">of</span> <span class="pre">'ConfigBuilder'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__doc__':</span> <span class="pre">None,</span> <span class="pre">'__annotations__':</span> <span class="pre">{}})</span></em><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.configbuilder'</span></em><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.build_config">
+<code class="sig-name descname"><span class="pre">build_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">defaultconfig</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.build_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.build_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.coarse_overrides">
+<code class="sig-name descname"><span class="pre">coarse_overrides</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.coarse_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.coarse_overrides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.custom_config_overrides">
+<code class="sig-name descname"><span class="pre">custom_config_overrides</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.custom_config_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.custom_config_overrides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.estimator_scoring_overrides">
+<code class="sig-name descname"><span class="pre">estimator_scoring_overrides</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.estimator_scoring_overrides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.estimator_scoring_overrides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="WORC.facade.helpers.configbuilder.ConfigBuilder.fullprint">
+<code class="sig-name descname"><span class="pre">fullprint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/configbuilder.html#ConfigBuilder.fullprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.configbuilder.ConfigBuilder.fullprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the full contents of the config to the console.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-WORC.facade.helpers.exceptions">
+<span id="exceptions-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">exceptions</span></code> Module<a class="headerlink" href="#module-WORC.facade.helpers.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.InvalidCsvFileException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">InvalidCsvFileException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#InvalidCsvFileException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidCsvFileException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.InvalidCsvFileException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#InvalidCsvFileException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidCsvFileException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.InvalidCsvFileException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidCsvFileException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.InvalidCsvFileException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidCsvFileException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.InvalidOrderException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">InvalidOrderException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_first</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#InvalidOrderException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidOrderException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.InvalidOrderException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_first</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#InvalidOrderException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidOrderException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.InvalidOrderException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidOrderException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.InvalidOrderException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.InvalidOrderException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.NoFeaturesFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoFeaturesFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoFeaturesFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoFeaturesFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.NoFeaturesFoundException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoFeaturesFoundException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoFeaturesFoundException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoFeaturesFoundException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoFeaturesFoundException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoFeaturesFoundException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoFeaturesFoundException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.NoImagesFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoImagesFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoImagesFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoImagesFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.NoImagesFoundException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoImagesFoundException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoImagesFoundException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoImagesFoundException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoImagesFoundException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoImagesFoundException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoImagesFoundException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.NoMasksFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoMasksFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoMasksFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoMasksFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.NoMasksFoundException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoMasksFoundException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoMasksFoundException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoMasksFoundException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoMasksFoundException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoMasksFoundException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoMasksFoundException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.NoSegmentationsFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoSegmentationsFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoSegmentationsFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoSegmentationsFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#NoSegmentationsFoundException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.NoSegmentationsFoundException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="WORC.facade.helpers.exceptions.PathNotFoundException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.exceptions.</span></code><code class="sig-name descname"><span class="pre">PathNotFoundException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#PathNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.PathNotFoundException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dl class="py method">
+<dt id="WORC.facade.helpers.exceptions.PathNotFoundException.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/exceptions.html#PathNotFoundException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.exceptions.PathNotFoundException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.PathNotFoundException.__module__">
+<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'WORC.facade.helpers.exceptions'</span></em><a class="headerlink" href="#WORC.facade.helpers.exceptions.PathNotFoundException.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="WORC.facade.helpers.exceptions.PathNotFoundException.__weakref__">
+<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#WORC.facade.helpers.exceptions.PathNotFoundException.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-WORC.facade.helpers.processing">
+<span id="processing-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">processing</span></code> Module<a class="headerlink" href="#module-WORC.facade.helpers.processing" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="WORC.facade.helpers.processing.convert_radiomix_features">
+<code class="sig-prename descclassname"><span class="pre">WORC.facade.helpers.processing.</span></code><code class="sig-name descname"><span class="pre">convert_radiomix_features</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/WORC/facade/helpers/processing.html#convert_radiomix_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#WORC.facade.helpers.processing.convert_radiomix_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert .xlsx from RadiomiX to WORC compatible .hdf5 format</p>
+<p>input_file: .xlsx in which the feature are stored.
+output_folder: folder in which features are stored</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="WORC.fastrconfig.html" class="btn btn-neutral float-right" title="fastrconfig Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="WORC.facade.html" class="btn btn-neutral float-left" title="facade Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016 -- 2023, Biomedical Imaging Group Rotterdam, Department of Radiology and Nuclear Medicine, Erasmus University Medical Center, Rotterdam, The Netherlands.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

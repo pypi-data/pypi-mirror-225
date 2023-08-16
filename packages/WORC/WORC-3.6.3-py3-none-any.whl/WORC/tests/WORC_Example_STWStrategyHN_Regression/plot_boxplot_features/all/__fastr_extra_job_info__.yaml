@@ -1,0 +1,634 @@
+{
+  "id": "WORC_Example_STWStrategyHN_Regression___plot_boxplot_features___all",
+  "hostinfo": {
+    "os": {
+      "system": "Windows",
+      "is64bits": 1,
+      "maxsize": 9223372036854775807,
+      "version": {
+        "release": "10",
+        "version": "10.0.22621",
+        "servicepack": "SP0",
+        "ptype": ""
+      }
+    },
+    "uname": [
+      "Windows",
+      "DESKTOP-PTS4VQ4",
+      "10",
+      "10.0.22621",
+      "AMD64",
+      "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel"
+    ],
+    "username": "Martijn Starmans",
+    "cwd": "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORC\\WORC\\tests",
+    "python": {
+      "version": "3.7.6",
+      "branch": "",
+      "compiler": "MSC v.1916 64 bit (AMD64)",
+      "implementation": "CPython",
+      "revision": ""
+    },
+    "envvar": {
+      "ALLUSERSPROFILE": "C:\\ProgramData",
+      "APPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Roaming",
+      "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+      "COMMONPROGRAMFILES(X86)": "C:\\Program Files (x86)\\Common Files",
+      "COMMONPROGRAMW6432": "C:\\Program Files\\Common Files",
+      "COMPUTERNAME": "DESKTOP-PTS4VQ4",
+      "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+      "CONDA_DEFAULT_ENV": "VEWORC",
+      "CONDA_EXE": "C:\\ProgramData\\Anaconda3\\Scripts\\conda.exe",
+      "CONDA_PREFIX": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC",
+      "CONDA_PREFIX_1": "C:\\ProgramData\\Anaconda3",
+      "CONDA_PROMPT_MODIFIER": "(VEWORC) ",
+      "CONDA_PYTHON_EXE": "C:\\ProgramData\\Anaconda3\\python.exe",
+      "CONDA_SHLVL": "2",
+      "DRIVERDATA": "C:\\Windows\\System32\\Drivers\\DriverData",
+      "EFC_32500": "1",
+      "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+      "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+      "GOPATH": "C:\\Users\\Martijn Starmans\\go",
+      "GOROOT": "C:\\Users\\Martijn Starmans\\scoop\\apps\\go\\current",
+      "HOMEDRIVE": "C:",
+      "HOMEPATH": "\\Users\\Martijn Starmans",
+      "KMP_DUPLICATE_LIB_OK": "True",
+      "KMP_INIT_AT_FORK": "FALSE",
+      "LOCALAPPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Local",
+      "LOGONSERVER": "\\\\DESKTOP-PTS4VQ4",
+      "MOZ_PLUGIN_PATH": "C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+      "NUMBER_OF_PROCESSORS": "12",
+      "ONEDRIVE": "C:\\Users\\Martijn Starmans\\OneDrive",
+      "ONLINESERVICES": "Online Services",
+      "OS": "Windows_NT",
+      "PATH": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pywin32_system32;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\mingw-w64\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\usr\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Scripts;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\bin;C:\\ProgramData\\Anaconda3\\condabin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;.;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\Intel\\WiFi\\bin;C:\\Program Files\\Common Files\\Intel\\WirelessCommon;C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64;C:\\Program Files\\MATLAB\\R2015b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2015b\\bin;C:\\Program Files\\Pandoc;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Go\\bin;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Users\\Martijn Starmans\\go\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;C:\\Hugo\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;.;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs",
+      "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+      "PLATFORMCODE": "AN",
+      "PROCESSOR_ARCHITECTURE": "AMD64",
+      "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+      "PROCESSOR_LEVEL": "6",
+      "PROCESSOR_REVISION": "9e0a",
+      "PROGRAMDATA": "C:\\ProgramData",
+      "PROGRAMFILES": "C:\\Program Files",
+      "PROGRAMFILES(X86)": "C:\\Program Files (x86)",
+      "PROGRAMW6432": "C:\\Program Files",
+      "PROMPT": "(VEWORC) $P$G",
+      "PSMODULEPATH": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+      "PTSMINSTALLPATH": "C:\\Program Files\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PTSMINSTALLPATH_X86": "C:\\Program Files (x86)\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PUBLIC": "C:\\Users\\Public",
+      "REGIONCODE": "EMEA",
+      "SESSIONNAME": "Console",
+      "SYSTEMDRIVE": "C:",
+      "SYSTEMROOT": "C:\\WINDOWS",
+      "TEMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "TMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "USERDOMAIN": "DESKTOP-PTS4VQ4",
+      "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-PTS4VQ4",
+      "USERNAME": "Martijn Starmans",
+      "USERPROFILE": "C:\\Users\\Martijn Starmans",
+      "WINDIR": "C:\\WINDOWS"
+    },
+    "drmaa": {
+      "jobid": null,
+      "taskid": null,
+      "jobname": null
+    }
+  },
+  "sysinfo_start": {
+    "cpu_usage": {
+      "user": 33837.296875,
+      "system": 29608.15625,
+      "idle": 1889285.7499999998,
+      "interrupt": 927.46875,
+      "dpc": 588.515625,
+      "percent": 18.3
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2727227392,
+        "percent": 83.9,
+        "used": 14249766912,
+        "free": 2727227392
+      },
+      "swap": {
+        "total": 36931239936,
+        "used": 32756006912,
+        "free": 4175233024,
+        "percent": 88.7,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 399800832000,
+        "disk_free": 111023448064,
+        "disk_use_percent": 78.3
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 405352005632,
+        "disk_free": 105472274432,
+        "disk_use_percent": 79.4
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  },
+  "process": {
+    "return_code": 0,
+    "stdout": " [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\nLabel names to extract: ['Age']\nLabels:\n[[[99.]\n  [29.]\n  [25.]\n  [77.]\n  [ 5.]\n  [47.]\n  [44.]\n  [22.]\n  [52.]\n  [71.]\n  [29.]\n  [ 9.]\n  [13.]\n  [92.]\n  [68.]\n  [74.]\n  [23.]\n  [74.]\n  [37.]\n  [ 9.]]]\nTotal of 20 patients\n899.0 positives, -879.0 negatives\n",
+    "stderr": "",
+    "command": [
+      "python",
+      "c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\PlotBoxplotFeatures_tool.py",
+      "--feat",
+      "features_train_CT0=C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1004_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1077_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1088_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1146_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1159_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1192_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1259_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1260_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1323_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1331_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1339_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1342_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1372_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1491_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1501_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1519_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1524_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1554_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1560_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1748_0.hdf5",
+      "--output_zip",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\plot_boxplot_features\\all\\output_zip_0.zip",
+      "--pc",
+      "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORCTutorial\\Data\\Examplefiles\\pinfo_HN.csv",
+      "--conf",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini"
+    ],
+    "resource_usage": [
+      {
+        "timestamp": "2023-04-20T07:33:14.578735",
+        "cpu_percent": 48.4,
+        "vmem": 33488896,
+        "rmem": 43331584,
+        "read_bytes": 6397363,
+        "write_bytes": 4
+      },
+      {
+        "timestamp": "2023-04-20T07:33:15.579604",
+        "cpu_percent": 56.2,
+        "vmem": 59576320,
+        "rmem": 70369280,
+        "read_bytes": 14607251,
+        "write_bytes": 4
+      },
+      {
+        "timestamp": "2023-04-20T07:33:16.581420",
+        "cpu_percent": 69.3,
+        "vmem": 2123153408,
+        "rmem": 158519296,
+        "read_bytes": 30406968,
+        "write_bytes": 117
+      },
+      {
+        "timestamp": "2023-04-20T07:33:17.582440",
+        "cpu_percent": 70.3,
+        "vmem": 2539114496,
+        "rmem": 220786688,
+        "read_bytes": 63119660,
+        "write_bytes": 566
+      },
+      {
+        "timestamp": "2023-04-20T07:33:18.584320",
+        "cpu_percent": 87.5,
+        "vmem": 2687758336,
+        "rmem": 354459648,
+        "read_bytes": 63119660,
+        "write_bytes": 566
+      },
+      {
+        "timestamp": "2023-04-20T07:33:19.586354",
+        "cpu_percent": 90.6,
+        "vmem": 2692038656,
+        "rmem": 372424704,
+        "read_bytes": 126994068,
+        "write_bytes": 566
+      },
+      {
+        "timestamp": "2023-04-20T07:33:20.588341",
+        "cpu_percent": 84.4,
+        "vmem": 2860326912,
+        "rmem": 539721728,
+        "read_bytes": 174259114,
+        "write_bytes": 131781
+      },
+      {
+        "timestamp": "2023-04-20T07:33:21.589061",
+        "cpu_percent": 76.6,
+        "vmem": 2649624576,
+        "rmem": 329940992,
+        "read_bytes": 174898423,
+        "write_bytes": 1152885
+      },
+      {
+        "timestamp": "2023-04-20T07:33:22.590327",
+        "cpu_percent": 54.7,
+        "vmem": 2565144576,
+        "rmem": 247238656,
+        "read_bytes": 174898423,
+        "write_bytes": 1152885
+      },
+      {
+        "timestamp": "2023-04-20T07:33:23.591986",
+        "cpu_percent": 54.7,
+        "vmem": 2697445376,
+        "rmem": 377913344,
+        "read_bytes": 207174903,
+        "write_bytes": 1152885
+      },
+      {
+        "timestamp": "2023-04-20T07:33:24.594604",
+        "cpu_percent": 71.9,
+        "vmem": 2783444992,
+        "rmem": 462893056,
+        "read_bytes": 265092343,
+        "write_bytes": 1152885
+      },
+      {
+        "timestamp": "2023-04-20T07:33:25.595512",
+        "cpu_percent": 70.3,
+        "vmem": 2869096448,
+        "rmem": 548278272,
+        "read_bytes": 301710583,
+        "write_bytes": 1349648
+      },
+      {
+        "timestamp": "2023-04-20T07:33:26.597766",
+        "cpu_percent": 58.4,
+        "vmem": 2655248384,
+        "rmem": 334753792,
+        "read_bytes": 302354619,
+        "write_bytes": 2301186
+      },
+      {
+        "timestamp": "2023-04-20T07:33:27.599494",
+        "cpu_percent": 62.5,
+        "vmem": 2564681728,
+        "rmem": 246181888,
+        "read_bytes": 302354619,
+        "write_bytes": 2301186
+      },
+      {
+        "timestamp": "2023-04-20T07:33:28.602277",
+        "cpu_percent": 78.1,
+        "vmem": 2696740864,
+        "rmem": 376991744,
+        "read_bytes": 329633979,
+        "write_bytes": 2301186
+      },
+      {
+        "timestamp": "2023-04-20T07:33:29.604860",
+        "cpu_percent": 57.8,
+        "vmem": 2784026624,
+        "rmem": 463269888,
+        "read_bytes": 337105083,
+        "write_bytes": 2301186
+      },
+      {
+        "timestamp": "2023-04-20T07:33:30.605276",
+        "cpu_percent": 50.0,
+        "vmem": 2870435840,
+        "rmem": 549646336,
+        "read_bytes": 385585339,
+        "write_bytes": 2301186
+      },
+      {
+        "timestamp": "2023-04-20T07:33:31.606742",
+        "cpu_percent": 31.3,
+        "vmem": 2870435840,
+        "rmem": 549711872,
+        "read_bytes": 385585339,
+        "write_bytes": 2694593
+      },
+      {
+        "timestamp": "2023-04-20T07:33:32.609102",
+        "cpu_percent": 48.4,
+        "vmem": 2655703040,
+        "rmem": 335396864,
+        "read_bytes": 386224149,
+        "write_bytes": 3439696
+      },
+      {
+        "timestamp": "2023-04-20T07:33:33.610588",
+        "cpu_percent": 56.2,
+        "vmem": 2663075840,
+        "rmem": 343633920,
+        "read_bytes": 386224149,
+        "write_bytes": 3439696
+      },
+      {
+        "timestamp": "2023-04-20T07:33:34.612618",
+        "cpu_percent": 44.6,
+        "vmem": 2707210240,
+        "rmem": 264048640,
+        "read_bytes": 386224149,
+        "write_bytes": 3439696
+      },
+      {
+        "timestamp": "2023-04-20T07:33:35.614180",
+        "cpu_percent": 53.1,
+        "vmem": 2707210240,
+        "rmem": 387743744,
+        "read_bytes": 415289365,
+        "write_bytes": 3439696
+      },
+      {
+        "timestamp": "2023-04-20T07:33:36.614577",
+        "cpu_percent": 68.8,
+        "vmem": 2795245568,
+        "rmem": 474681344,
+        "read_bytes": 419205141,
+        "write_bytes": 3439696
+      },
+      {
+        "timestamp": "2023-04-20T07:33:37.615113",
+        "cpu_percent": 71.9,
+        "vmem": 2882281472,
+        "rmem": 561696768,
+        "read_bytes": 474697749,
+        "write_bytes": 3570911
+      },
+      {
+        "timestamp": "2023-04-20T07:33:38.616397",
+        "cpu_percent": 70.3,
+        "vmem": 2664988672,
+        "rmem": 344842240,
+        "read_bytes": 475317451,
+        "write_bytes": 4540964
+      },
+      {
+        "timestamp": "2023-04-20T07:33:39.618520",
+        "cpu_percent": 43.8,
+        "vmem": 2664988672,
+        "rmem": 345374720,
+        "read_bytes": 475317451,
+        "write_bytes": 4540964
+      },
+      {
+        "timestamp": "2023-04-20T07:33:40.620284",
+        "cpu_percent": 67.2,
+        "vmem": 2703769600,
+        "rmem": 384077824,
+        "read_bytes": 486311115,
+        "write_bytes": 4540964
+      },
+      {
+        "timestamp": "2023-04-20T07:33:41.622043",
+        "cpu_percent": 70.3,
+        "vmem": 2703773696,
+        "rmem": 384081920,
+        "read_bytes": 502023371,
+        "write_bytes": 4540964
+      },
+      {
+        "timestamp": "2023-04-20T07:33:42.623718",
+        "cpu_percent": 79.7,
+        "vmem": 2792169472,
+        "rmem": 471150592,
+        "read_bytes": 552797387,
+        "write_bytes": 4540964
+      },
+      {
+        "timestamp": "2023-04-20T07:33:43.624259",
+        "cpu_percent": 76.6,
+        "vmem": 2880094208,
+        "rmem": 558964736,
+        "read_bytes": 558597323,
+        "write_bytes": 5065467
+      },
+      {
+        "timestamp": "2023-04-20T07:33:44.624520",
+        "cpu_percent": 82.8,
+        "vmem": 2567774208,
+        "rmem": 248561664,
+        "read_bytes": 559277454,
+        "write_bytes": 5753616
+      },
+      {
+        "timestamp": "2023-04-20T07:33:45.626724",
+        "cpu_percent": 76.6,
+        "vmem": 2700824576,
+        "rmem": 380551168,
+        "read_bytes": 575841678,
+        "write_bytes": 5753616
+      },
+      {
+        "timestamp": "2023-04-20T07:33:46.628446",
+        "cpu_percent": 87.7,
+        "vmem": 2789498880,
+        "rmem": 468008960,
+        "read_bytes": 600614286,
+        "write_bytes": 5753616
+      },
+      {
+        "timestamp": "2023-04-20T07:33:47.629280",
+        "cpu_percent": 82.8,
+        "vmem": 2876993536,
+        "rmem": 555458560,
+        "read_bytes": 638051726,
+        "write_bytes": 6015927
+      },
+      {
+        "timestamp": "2023-04-20T07:33:48.630335",
+        "cpu_percent": 73.4,
+        "vmem": 2660356096,
+        "rmem": 339013632,
+        "read_bytes": 638688405,
+        "write_bytes": 6883722
+      },
+      {
+        "timestamp": "2023-04-20T07:33:49.633056",
+        "cpu_percent": 78.1,
+        "vmem": 2668023808,
+        "rmem": 348381184,
+        "read_bytes": 638688405,
+        "write_bytes": 6883722
+      },
+      {
+        "timestamp": "2023-04-20T07:33:50.634699",
+        "cpu_percent": 68.8,
+        "vmem": 2711121920,
+        "rmem": 391401472,
+        "read_bytes": 664296597,
+        "write_bytes": 6883722
+      },
+      {
+        "timestamp": "2023-04-20T07:33:51.635015",
+        "cpu_percent": 79.7,
+        "vmem": 2796994560,
+        "rmem": 476213248,
+        "read_bytes": 696245397,
+        "write_bytes": 6883722
+      },
+      {
+        "timestamp": "2023-04-20T07:33:52.636052",
+        "cpu_percent": 82.8,
+        "vmem": 2882142208,
+        "rmem": 561082368,
+        "read_bytes": 717413525,
+        "write_bytes": 7277129
+      },
+      {
+        "timestamp": "2023-04-20T07:33:53.636987",
+        "cpu_percent": 79.7,
+        "vmem": 2667872256,
+        "rmem": 347365376,
+        "read_bytes": 718043433,
+        "write_bytes": 7995063
+      },
+      {
+        "timestamp": "2023-04-20T07:33:54.637992",
+        "cpu_percent": 50.0,
+        "vmem": 2705432576,
+        "rmem": 385982464,
+        "read_bytes": 723417385,
+        "write_bytes": 7995063
+      },
+      {
+        "timestamp": "2023-04-20T07:33:55.638410",
+        "cpu_percent": 73.4,
+        "vmem": 2705170432,
+        "rmem": 385720320,
+        "read_bytes": 770193705,
+        "write_bytes": 7995063
+      },
+      {
+        "timestamp": "2023-04-20T07:33:56.639203",
+        "cpu_percent": 62.5,
+        "vmem": 2791288832,
+        "rmem": 470589440,
+        "read_bytes": 819247401,
+        "write_bytes": 7995063
+      },
+      {
+        "timestamp": "2023-04-20T07:33:57.641162",
+        "cpu_percent": 75.0,
+        "vmem": 2876981248,
+        "rmem": 555982848,
+        "read_bytes": 846625065,
+        "write_bytes": 8257374
+      },
+      {
+        "timestamp": "2023-04-20T07:33:58.643236",
+        "cpu_percent": 45.3,
+        "vmem": 2662772736,
+        "rmem": 342204416,
+        "read_bytes": 847240084,
+        "write_bytes": 9098267
+      },
+      {
+        "timestamp": "2023-04-20T07:33:59.643905",
+        "cpu_percent": 60.0,
+        "vmem": 2570985472,
+        "rmem": 252866560,
+        "read_bytes": 847240084,
+        "write_bytes": 9098267
+      },
+      {
+        "timestamp": "2023-04-20T07:34:00.645923",
+        "cpu_percent": 59.4,
+        "vmem": 2702516224,
+        "rmem": 383148032,
+        "read_bytes": 888511380,
+        "write_bytes": 9098267
+      },
+      {
+        "timestamp": "2023-04-20T07:34:01.648048",
+        "cpu_percent": 64.1,
+        "vmem": 2771185664,
+        "rmem": 450658304,
+        "read_bytes": 933698452,
+        "write_bytes": 9098267
+      },
+      {
+        "timestamp": "2023-04-20T07:34:02.648931",
+        "cpu_percent": 57.8,
+        "vmem": 2839429120,
+        "rmem": 518651904,
+        "read_bytes": 949918612,
+        "write_bytes": 9360578
+      }
+    ],
+    "time_elapsed": 50.10469198226929
+  },
+  "sysinfo_end": {
+    "cpu_usage": {
+      "user": 33930.93749999999,
+      "system": 29639.390625,
+      "idle": 1889766.2968749998,
+      "interrupt": 927.6875,
+      "dpc": 588.640625,
+      "percent": 20.7
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 1720860672,
+        "percent": 89.9,
+        "used": 15256133632,
+        "free": 1720860672
+      },
+      "swap": {
+        "total": 63116836864,
+        "used": 50409111552,
+        "free": 12707725312,
+        "percent": 79.9,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 425563176960,
+        "disk_free": 85261103104,
+        "disk_use_percent": 83.3
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 429826232320,
+        "disk_free": 80998047744,
+        "disk_use_percent": 84.1
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  }
+}

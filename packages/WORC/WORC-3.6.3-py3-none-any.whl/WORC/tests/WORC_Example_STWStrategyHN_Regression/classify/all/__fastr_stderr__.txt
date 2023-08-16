@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\executionscript.py", line 89, in execute_job
+    job.execute()
+  File "C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py", line 834, in execute
+    raise exceptions.FastrValueError('Output values are not valid!')
+fastr.exceptions.FastrValueError: [WORC_Example_STWStrategyHN_Regression___classify___all] FastrValueError from C:\Users\Martijn Starmans\.conda\envs\VEWORC\lib\site-packages\fastr\execution\job.py line 834: Output values are not valid!

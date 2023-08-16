@@ -1,0 +1,700 @@
+{
+  "id": "WORC_Example_STWStrategyHN_Regression___classify___all",
+  "hostinfo": {
+    "os": {
+      "system": "Windows",
+      "is64bits": 1,
+      "maxsize": 9223372036854775807,
+      "version": {
+        "release": "10",
+        "version": "10.0.22621",
+        "servicepack": "SP0",
+        "ptype": ""
+      }
+    },
+    "uname": [
+      "Windows",
+      "DESKTOP-PTS4VQ4",
+      "10",
+      "10.0.22621",
+      "AMD64",
+      "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel"
+    ],
+    "username": "Martijn Starmans",
+    "cwd": "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORC\\WORC\\tests",
+    "python": {
+      "version": "3.7.6",
+      "branch": "",
+      "compiler": "MSC v.1916 64 bit (AMD64)",
+      "implementation": "CPython",
+      "revision": ""
+    },
+    "envvar": {
+      "ALLUSERSPROFILE": "C:\\ProgramData",
+      "APPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Roaming",
+      "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+      "COMMONPROGRAMFILES(X86)": "C:\\Program Files (x86)\\Common Files",
+      "COMMONPROGRAMW6432": "C:\\Program Files\\Common Files",
+      "COMPUTERNAME": "DESKTOP-PTS4VQ4",
+      "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+      "CONDA_DEFAULT_ENV": "VEWORC",
+      "CONDA_EXE": "C:\\ProgramData\\Anaconda3\\Scripts\\conda.exe",
+      "CONDA_PREFIX": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC",
+      "CONDA_PREFIX_1": "C:\\ProgramData\\Anaconda3",
+      "CONDA_PROMPT_MODIFIER": "(VEWORC) ",
+      "CONDA_PYTHON_EXE": "C:\\ProgramData\\Anaconda3\\python.exe",
+      "CONDA_SHLVL": "2",
+      "DRIVERDATA": "C:\\Windows\\System32\\Drivers\\DriverData",
+      "EFC_32500": "1",
+      "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+      "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+      "GOPATH": "C:\\Users\\Martijn Starmans\\go",
+      "GOROOT": "C:\\Users\\Martijn Starmans\\scoop\\apps\\go\\current",
+      "HOMEDRIVE": "C:",
+      "HOMEPATH": "\\Users\\Martijn Starmans",
+      "KMP_DUPLICATE_LIB_OK": "True",
+      "KMP_INIT_AT_FORK": "FALSE",
+      "LOCALAPPDATA": "C:\\Users\\Martijn Starmans\\AppData\\Local",
+      "LOGONSERVER": "\\\\DESKTOP-PTS4VQ4",
+      "MOZ_PLUGIN_PATH": "C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\plugins\\",
+      "NUMBER_OF_PROCESSORS": "12",
+      "ONEDRIVE": "C:\\Users\\Martijn Starmans\\OneDrive",
+      "ONLINESERVICES": "Online Services",
+      "OS": "Windows_NT",
+      "PATH": "C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pywin32_system32;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\mingw-w64\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\usr\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Library\\bin;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\Scripts;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\bin;C:\\ProgramData\\Anaconda3\\condabin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;.;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\Intel\\WiFi\\bin;C:\\Program Files\\Common Files\\Intel\\WirelessCommon;C:\\Program Files\\MiKTeX 2.9\\miktex\\bin\\x64;C:\\Program Files\\MATLAB\\R2015b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2015b\\bin;C:\\Program Files\\Pandoc;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Go\\bin;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Users\\Martijn Starmans\\go\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\atom\\bin;C:\\Program Files (x86)\\Graphviz2.38\\bin;C:\\Hugo\\bin;C:\\Users\\Martijn Starmans\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;.;C:\\Users\\Martijn Starmans\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\scipy\\.libs;C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\numpy\\.libs",
+      "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+      "PLATFORMCODE": "AN",
+      "PROCESSOR_ARCHITECTURE": "AMD64",
+      "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+      "PROCESSOR_LEVEL": "6",
+      "PROCESSOR_REVISION": "9e0a",
+      "PROGRAMDATA": "C:\\ProgramData",
+      "PROGRAMFILES": "C:\\Program Files",
+      "PROGRAMFILES(X86)": "C:\\Program Files (x86)",
+      "PROGRAMW6432": "C:\\Program Files",
+      "PROMPT": "(VEWORC) $P$G",
+      "PSMODULEPATH": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+      "PTSMINSTALLPATH": "C:\\Program Files\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PTSMINSTALLPATH_X86": "C:\\Program Files (x86)\\HP\\HP ProtectTools Security Manager\\Bin\\",
+      "PUBLIC": "C:\\Users\\Public",
+      "REGIONCODE": "EMEA",
+      "SESSIONNAME": "Console",
+      "SYSTEMDRIVE": "C:",
+      "SYSTEMROOT": "C:\\WINDOWS",
+      "TEMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "TMP": "C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp",
+      "USERDOMAIN": "DESKTOP-PTS4VQ4",
+      "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-PTS4VQ4",
+      "USERNAME": "Martijn Starmans",
+      "USERPROFILE": "C:\\Users\\Martijn Starmans",
+      "WINDIR": "C:\\WINDOWS"
+    },
+    "drmaa": {
+      "jobid": null,
+      "taskid": null,
+      "jobname": null
+    }
+  },
+  "sysinfo_start": {
+    "cpu_usage": {
+      "user": 33837.328125,
+      "system": 29608.1875,
+      "idle": 1889286.0781249998,
+      "interrupt": 927.46875,
+      "dpc": 588.515625,
+      "percent": 18.3
+    },
+    "memory_usage": {
+      "virtual": {
+        "total": 16976994304,
+        "available": 2723598336,
+        "percent": 84.0,
+        "used": 14253395968,
+        "free": 2723598336
+      },
+      "swap": {
+        "total": 36931239936,
+        "used": 32759447552,
+        "free": 4171792384,
+        "percent": 88.7,
+        "sin": 0,
+        "sout": 0
+      }
+    },
+    "mounts": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "fstype": "NTFS",
+        "opts": "rw,fixed",
+        "maxfile": 255,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 399800848384,
+        "disk_free": 111023431680,
+        "disk_use_percent": 78.3
+      },
+      {
+        "device": "G:\\",
+        "mountpoint": "G:\\",
+        "fstype": "FAT32",
+        "opts": "rw,fixed",
+        "maxfile": 256,
+        "maxpath": 260,
+        "disk_total": 510824280064,
+        "disk_used": 405352022016,
+        "disk_free": 105472258048,
+        "disk_use_percent": 79.4
+      }
+    ],
+    "users": [
+      {
+        "name": "Martijn Starmans",
+        "terminal": null,
+        "host": null,
+        "started": 1681934159.1907175,
+        "pid": null
+      }
+    ]
+  },
+  "process": {
+    "return_code": 1,
+    "stdout": " [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\nLabel names to extract: ['Age']\nLabels:\n[[[99.]\n  [29.]\n  [25.]\n  [77.]\n  [ 5.]\n  [47.]\n  [44.]\n  [22.]\n  [52.]\n  [71.]\n  [29.]\n  [ 9.]\n  [13.]\n  [92.]\n  [68.]\n  [74.]\n  [23.]\n  [74.]\n  [37.]\n  [ 9.]]]\nTotal of 20 patients\n899.0 positives, -879.0 negatives\nLogging to file C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classifier.log\nPerforming single-class classification.\nPerforming random-split cross-validations.\nStarting random-split cross-validation.\nCross-validation iteration 1 / 3 .\n\t Time: 2023-04-20 07:33:17.\nFit: 1000\nFitting 2 folds for each of 1000 candidates, totalling 2000 fits.\nDebug detected: False.\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\ioplugins\\s3filesystem.py\nFastrImportError from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\ioplugins\\s3filesystem.py line 59: Could not import the required boto3/botocore modules for this plugin\n [INFO] basepluginmanager:0081 >> Could not load plugin file C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\reportingplugins\\elasticsearchreporter.py\nFastrOptionalModuleNotAvailableError from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\\resources\\plugins\\reportingplugins\\elasticsearchreporter.py line 46: Could not import the required elasticsearch for this plugin\n [INFO] networkrun:0103 >> Detected network scope: vfs://home/documents\\github\\worc\\worc\\classification\n [INFO] networkrun:0553 >> ####################################\n [INFO] networkrun:0554 >> #     network execution STARTED    #\n [INFO] networkrun:0555 >> ####################################\n [INFO] networkrun:0580 >> Running network via c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py (last modified Thu Apr  6 19:37:30 2023)\n [INFO] networkrun:0581 >> FASTR loaded from C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\fastr\n [INFO] networkrun:0597 >> Network run tmpdir: C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp\\GS\\C030EN1J7J\\tmp\n [INFO] networkrun:0629 >> Selecting ProcessPoolExecution as executor plugin\n [INFO] networkchunker:0146 >> Adding output to candidates (blocking False)\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/estimator_source sample id <SampleId ('id_0',)>, index <SampleIndex (0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___estimator_source___id_0\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/traintest sample id <SampleId ('0000',)>, index <SampleIndex (0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___traintest___0000\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/traintest sample id <SampleId ('0001',)>, index <SampleIndex (1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___traintest___0001\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/parameters sample id <SampleId ('0000',)>, index <SampleIndex (0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___parameters___0000\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/parameters sample id <SampleId ('0001',)>, index <SampleIndex (1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___parameters___0001\n [INFO] networkrun:0657 >> Waiting for execution to finish...\n [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n [WARNING]  __init__:0084 >> Not running in a production installation (branch \"unknown\" from installed package)\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\n[INFO] Bayesian optimization through SMAC functionality currently not available. Please see https://worc.readthedocs.io/en/latest/static/additionalfunctionality.html.\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___estimator_source___id_0 with status JobState.finished\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___traintest___0000 with status JobState.finished\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___traintest___0001 with status JobState.finished\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___parameters___0000 with status JobState.finished\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___parameters___0001 with status JobState.finished\n [INFO] networkrun:0686 >> Chunk execution finished!\n [INFO]   noderun:0470 >> Generating jobs for node \"fitandscore\" with dimensions: [estimator_source: 1], [traintest: 2], [parameters: 2]\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/fitandscore sample id <SampleId ('id_0', '0000', '0000')>, index <SampleIndex (0, 0, 0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0000__0000\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/fitandscore sample id <SampleId ('id_0', '0000', '0001')>, index <SampleIndex (0, 0, 1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0000__0001\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/fitandscore sample id <SampleId ('id_0', '0001', '0000')>, index <SampleIndex (0, 1, 0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0001__0000\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/fitandscore sample id <SampleId ('id_0', '0001', '0001')>, index <SampleIndex (0, 1, 1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0001__0001\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/output sample id <SampleId ('id_0', '0000', '0000')>, index <SampleIndex (0, 0, 0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___output___id_0__0000__0000___0\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/output sample id <SampleId ('id_0', '0000', '0001')>, index <SampleIndex (0, 0, 1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___output___id_0__0000__0001___0\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/output sample id <SampleId ('id_0', '0001', '0000')>, index <SampleIndex (0, 1, 0)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___output___id_0__0001__0000___0\n [INFO]   noderun:0592 >> Creating job for node fastr:///networks/WORC_CASHOptimization_C030EN1J7J/0.0/runs/WORC_CASHOptimization_C030EN1J7J_2023-04-20T09-33-21/nodelist/output sample id <SampleId ('id_0', '0001', '0001')>, index <SampleIndex (0, 1, 1)>\n [INFO] networkrun:0654 >> Queueing job WORC_CASHOptimization_C030EN1J7J___output___id_0__0001__0001___0\n [INFO] networkrun:0657 >> Waiting for execution to finish...\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0000__0001 with status JobState.failed\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___output___id_0__0000__0001___0 with status JobState.cancelled\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0001__0000 with status JobState.failed\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___output___id_0__0001__0000___0 with status JobState.cancelled\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0000__0000 with status JobState.failed\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___output___id_0__0000__0000___0 with status JobState.cancelled\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___fitandscore___id_0__0001__0001 with status JobState.failed\n [INFO] networkrun:0806 >> Finished job WORC_CASHOptimization_C030EN1J7J___output___id_0__0001__0001___0 with status JobState.cancelled\n [INFO] networkrun:0686 >> Chunk execution finished!\n [INFO] processpoolexecution:0094 >> Stopping ProcessPool\n [INFO] executionplugin:0523 >> Callback processing thread for ProcessPoolExecution ended!\n [INFO] processpoolexecution:0101 >> Terminating worker processes...\n [INFO] processpoolexecution:0104 >> ProcessPool stopped!\n [INFO] networkrun:0688 >> ####################################\n [INFO] networkrun:0689 >> #    network execution FINISHED    #\n [INFO] networkrun:0690 >> ####################################\n [INFO] simplereport:0026 >> ===== RESULTS =====\n [INFO] simplereport:0036 >> output: 0 success / 0 missing / 4 failed\n [INFO] simplereport:0037 >> ===================\n [WARNING] simplereport:0049 >> There were failed samples in the run, to start debugging you can run:\n\n    fastr trace C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp\\GS\\C030EN1J7J\\tmp\\__sink_data__.json --sinks\n\nsee the debug section in the manual at https://fastr.readthedocs.io/en/develop/static/user_manual.html#debugging for more information.\n [INFO] processpoolexecution:0094 >> Stopping ProcessPool\n [INFO] processpoolexecution:0101 >> Terminating worker processes...\n [INFO] processpoolexecution:0104 >> ProcessPool stopped!\n",
+    "stderr": "--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 1643, in _fit\n    source_data.to_hdf(sourcename, sourcelabel)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1725, in _write_to_group\n    group = self._identify_group(key, append)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1780, in _identify_group\n    group = self._create_nodes_and_group(key)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group = self._handle.create_group(path, p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\file.py\", line 940, in create_group\n    title=title, new=True, filters=filters)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 235, in __init__\n    super(Group, self).__init__(parentnode, name, _log)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\node.py\", line 255, in __init__\n    parentnode._g_refnode(self, name, validate)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning, stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage: '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name is not a valid Python identifier: 'Source Data Iteration 0'; it does not match the pattern ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural naming to access this object; using ``getattr()`` will still work, though\\n  check_attribute_name(name)\\n\",)\n--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 1643, in _fit\n    source_data.to_hdf(sourcename, sourcelabel)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1755, in _write_to_group\n    track_times=track_times,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 3085, in write\n    self.write_array(\"values\", obj)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 3030, in write_array\n    warnings.warn(ws, PerformanceWarning, stacklevel=7)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage: '%s'\nArguments: ('C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\pandas\\\\core\\\\generic.py:2621: PerformanceWarning: \\nyour performance may suffer as PyTables will pickle object types that it cannot\\nmap directly to c-types [inferred_type->mixed,key->values] [items->None]\\n\\n  encoding=encoding,\\n',)\n--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 1643, in _fit\n    source_data.to_hdf(sourcename, sourcelabel)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1725, in _write_to_group\n    group = self._identify_group(key, append)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1780, in _identify_group\n    group = self._create_nodes_and_group(key)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group = self._handle.create_group(path, p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\file.py\", line 940, in create_group\n    title=title, new=True, filters=filters)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 235, in __init__\n    super(Group, self).__init__(parentnode, name, _log)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\node.py\", line 255, in __init__\n    parentnode._g_refnode(self, name, validate)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning, stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage: '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name is not a valid Python identifier: 'Source Data Iteration 1'; it does not match the pattern ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural naming to access this object; using ``getattr()`` will still work, though\\n  check_attribute_name(name)\\n\",)\n--- Logging error ---\nTraceback (most recent call last):\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 1025, in emit\n    msg = self.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 869, in format\n    return fmt.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 611, in format\n    s = self.formatMessage(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 580, in formatMessage\n    return self._style.format(record)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\logging\\__init__.py\", line 422, in format\n    return self._fmt % record.__dict__\nKeyError: 'tracking_id'\nCall stack:\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 1675, in _fit\n    estimator_data.to_hdf(estimatorname, 'Estimator Data')\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\core\\generic.py\", line 2621, in to_hdf\n    encoding=encoding,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 280, in to_hdf\n    f(store)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 272, in <lambda>\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1106, in put\n    dropna=dropna,\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1725, in _write_to_group\n    group = self._identify_group(key, append)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1780, in _identify_group\n    group = self._create_nodes_and_group(key)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\pandas\\io\\pytables.py\", line 1801, in _create_nodes_and_group\n    group = self._handle.create_group(path, p)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\file.py\", line 940, in create_group\n    title=title, new=True, filters=filters)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 235, in __init__\n    super(Group, self).__init__(parentnode, name, _log)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\node.py\", line 255, in __init__\n    parentnode._g_refnode(self, name, validate)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\group.py\", line 515, in _g_refnode\n    check_name_validity(childname)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 155, in check_name_validity\n    check_attribute_name(name)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\site-packages\\tables\\path.py\", line 110, in check_attribute_name\n    NaturalNameWarning, stacklevel=2)\n  File \"C:\\Users\\Martijn Starmans\\.conda\\envs\\VEWORC\\lib\\warnings.py\", line 110, in _showwarnmsg\n    msg.file, msg.line)\nMessage: '%s'\nArguments: (\"C:\\\\Users\\\\Martijn Starmans\\\\.conda\\\\envs\\\\VEWORC\\\\lib\\\\site-packages\\\\tables\\\\path.py:155: NaturalNameWarning: object name is not a valid Python identifier: 'Estimator Data'; it does not match the pattern ``^[a-zA-Z_][a-zA-Z0-9_]*$``; you will not be able to use natural naming to access this object; using ``getattr()`` will still work, though\\n  check_attribute_name(name)\\n\",)\nTraceback (most recent call last):\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 65, in <module>\n    main()\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py\", line 61, in main\n    fixedsplits=args.fs)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\trainclassifier.py\", line 170, in trainclassifier\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 596, in crossval\n    smac_result_file=smac_result_file)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\crossval.py\", line 231, in random_split_cross_validation\n    **config['HyperOptimization'])\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\parameter_optimization.py\", line 98, in random_search_parameters\n    random_search.fit(features, labels)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 2048, in fit\n    return self._fit(X, y, groups, sampled_params)\n  File \"c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\classification\\SearchCV.py\", line 1724, in _fit\n    raise WORCexceptions.WORCValueError(message)\nWORC.addexceptions.WORCValueError: Fitting classifiers has failed for 4 / 4 files. The temporary results where not deleted and can be found in C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp\\GS\\C030EN1J7J. Probably your fitting and scoring failed: check out the tmp/fitandscore folder within the tempfolder for the fastr job temporary results or run: fastr trace \"C:\\Users\\MARTIJ~1\\AppData\\Local\\Temp\\GS\\C030EN1J7J\\tmp\\__sink_data__.json\" --samples.\n",
+    "command": [
+      "python",
+      "c:\\users\\martijn starmans\\documents\\github\\worc\\WORC\\resources\\fastr_tools\\worc\\bin\\TrainClassifier.py",
+      "--feat_train",
+      "CT0=C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1004_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1077_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1088_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1146_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1159_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1192_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1259_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1260_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1323_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1331_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1339_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1342_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1372_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1491_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1501_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1519_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1524_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1554_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1560_0.hdf5,C:\\Users\\Martijn Starmans\\WORC\\output\\WORC_Example_STWStrategyHN\\Features\\features_predict_CT_0_HN1748_0.hdf5",
+      "--class",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\classify\\all\\classification_0.hdf5",
+      "--pc_train",
+      "C:\\Users\\Martijn Starmans\\Documents\\GitHub\\WORCTutorial\\Data\\Examplefiles\\pinfo_HN.csv",
+      "--conf",
+      "C:\\Users\\Martijn Starmans\\documents\\github\\worc\\worc\\tests\\worc_example_stwstrategyhn_regression\\fingerprinter_classification\\all\\config_0.ini"
+    ],
+    "resource_usage": [
+      {
+        "timestamp": "2023-04-20T07:33:14.624680",
+        "cpu_percent": 48.4,
+        "vmem": 34291712,
+        "rmem": 44064768,
+        "read_bytes": 7072605,
+        "write_bytes": 4
+      },
+      {
+        "timestamp": "2023-04-20T07:33:15.626521",
+        "cpu_percent": 60.9,
+        "vmem": 1541255168,
+        "rmem": 72036352,
+        "read_bytes": 15051041,
+        "write_bytes": 117
+      },
+      {
+        "timestamp": "2023-04-20T07:33:16.628359",
+        "cpu_percent": 53.8,
+        "vmem": 2124300288,
+        "rmem": 159899648,
+        "read_bytes": 30433196,
+        "write_bytes": 117
+      },
+      {
+        "timestamp": "2023-04-20T07:33:17.630446",
+        "cpu_percent": 73.4,
+        "vmem": 2538229760,
+        "rmem": 219770880,
+        "read_bytes": 63122123,
+        "write_bytes": 1293
+      },
+      {
+        "timestamp": "2023-04-20T07:33:18.632314",
+        "cpu_percent": 84.4,
+        "vmem": 2541494272,
+        "rmem": 222945280,
+        "read_bytes": 63122123,
+        "write_bytes": 1293
+      },
+      {
+        "timestamp": "2023-04-20T07:33:19.633091",
+        "cpu_percent": 90.6,
+        "vmem": 2545086464,
+        "rmem": 226287616,
+        "read_bytes": 63122123,
+        "write_bytes": 427709
+      },
+      {
+        "timestamp": "2023-04-20T07:33:20.635061",
+        "cpu_percent": 75.0,
+        "vmem": 2549989376,
+        "rmem": 231800832,
+        "read_bytes": 64966074,
+        "write_bytes": 7427475
+      },
+      {
+        "timestamp": "2023-04-20T07:33:21.635663",
+        "cpu_percent": 75.0,
+        "vmem": 2552422400,
+        "rmem": 234270720,
+        "read_bytes": 65360929,
+        "write_bytes": 7427580
+      },
+      {
+        "timestamp": "2023-04-20T07:33:22.637152",
+        "cpu_percent": 1.6,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7471729
+      },
+      {
+        "timestamp": "2023-04-20T07:33:23.639241",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7471729
+      },
+      {
+        "timestamp": "2023-04-20T07:33:24.639766",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7471729
+      },
+      {
+        "timestamp": "2023-04-20T07:33:25.641279",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7471729
+      },
+      {
+        "timestamp": "2023-04-20T07:33:26.643107",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:27.643624",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:28.645577",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:29.646298",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:30.648093",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:31.649440",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:32.651207",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:33.653445",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:34.655828",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:35.657590",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:36.658878",
+        "cpu_percent": 0.0,
+        "vmem": 2553044992,
+        "rmem": 234971136,
+        "read_bytes": 65362981,
+        "write_bytes": 7476314
+      },
+      {
+        "timestamp": "2023-04-20T07:33:37.660791",
+        "cpu_percent": 3.1,
+        "vmem": 2553593856,
+        "rmem": 235376640,
+        "read_bytes": 65450473,
+        "write_bytes": 7476444
+      },
+      {
+        "timestamp": "2023-04-20T07:33:38.663579",
+        "cpu_percent": 3.1,
+        "vmem": 2553593856,
+        "rmem": 235442176,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:39.665109",
+        "cpu_percent": 0.0,
+        "vmem": 2553593856,
+        "rmem": 235442176,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:40.666898",
+        "cpu_percent": 0.0,
+        "vmem": 2553593856,
+        "rmem": 235442176,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:41.668691",
+        "cpu_percent": 0.0,
+        "vmem": 2553593856,
+        "rmem": 235442176,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:42.669175",
+        "cpu_percent": 0.0,
+        "vmem": 2553593856,
+        "rmem": 235442176,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:43.670294",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235483136,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:44.672039",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235483136,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:45.672361",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235483136,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:46.674377",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235483136,
+        "read_bytes": 65460897,
+        "write_bytes": 7476690
+      },
+      {
+        "timestamp": "2023-04-20T07:33:47.675548",
+        "cpu_percent": 3.1,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:48.676334",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:49.678675",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:50.680530",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:51.682177",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:52.683223",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:53.684199",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:54.685274",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:55.686203",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:56.687149",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:57.688254",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:58.689944",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:33:59.691913",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:34:00.693612",
+        "cpu_percent": 0.0,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65471399,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:34:01.693907",
+        "cpu_percent": 3.1,
+        "vmem": 2553659392,
+        "rmem": 235638784,
+        "read_bytes": 65482507,
+        "write_bytes": 7508548
+      },
+      {
+        "timestamp": "2023-04-20T07:34:02.694183",
+        "cpu_percent": 3.1,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:03.694884",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:04.696996",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:05.699110",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:06.699641",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:07.701329",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:08.703443",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:09.705459",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:10.707673",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:11.709565",
+        "cpu_percent": 0.0,
+        "vmem": 2555604992,
+        "rmem": 238317568,
+        "read_bytes": 65792030,
+        "write_bytes": 7513914
+      },
+      {
+        "timestamp": "2023-04-20T07:34:12.710947",
+        "cpu_percent": 1.6,
+        "vmem": 2555604992,
+        "rmem": 238383104,
+        "read_bytes": 65803138,
+        "write_bytes": 7519244
+      },
+      {
+        "timestamp": "2023-04-20T07:34:13.713146",
+        "cpu_percent": 3.1,
+        "vmem": 2555764736,
+        "rmem": 238346240,
+        "read_bytes": 65814246,
+        "write_bytes": 7524574
+      },
+      {
+        "timestamp": "2023-04-20T07:34:14.714239",
+        "cpu_percent": 0.0,
+        "vmem": 2555764736,
+        "rmem": 238346240,
+        "read_bytes": 65814246,
+        "write_bytes": 7524574
+      },
+      {
+        "timestamp": "2023-04-20T07:34:15.715540",
+        "cpu_percent": 0.0,
+        "vmem": 2555764736,
+        "rmem": 238346240,
+        "read_bytes": 65814246,
+        "write_bytes": 7524574
+      },
+      {
+        "timestamp": "2023-04-20T07:34:16.717383",
+        "cpu_percent": 4.7,
+        "vmem": 2555650048,
+        "rmem": 238309376,
+        "read_bytes": 65825358,
+        "write_bytes": 7530033
+      },
+      {
+        "timestamp": "2023-04-20T07:34:17.717936",
+        "cpu_percent": 0.0,
+        "vmem": 2555650048,
+        "rmem": 238309376,
+        "read_bytes": 65825358,
+        "write_bytes": 7530033
+      },
+      {
+        "timestamp": "2023-04-20T07:34:18.719513",
+        "cpu_percent": 21.9,
+        "vmem": 2543697920,
+        "rmem": 226078720,
+        "read_bytes": 66108471,
+        "write_bytes": 7535519
+      }
+    ],
+    "time_elapsed": 65.27077507972717
+  }
+}

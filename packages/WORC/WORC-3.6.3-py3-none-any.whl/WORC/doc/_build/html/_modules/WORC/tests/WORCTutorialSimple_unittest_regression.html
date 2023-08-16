@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>WORC.tests.WORCTutorialSimple_unittest_regression &mdash; WORC 3.6.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> WORC
+          
+
+          
+            
+            <img src="../../../_static/WORC_Logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.6.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/quick_start.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/user_manual.html">User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/features.html">Radiomics Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/additionalfunctionality.html">Additional functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/developerdocumentation.html">Developer documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../static/changelog.html">Changelog</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../autogen/WORC.html">WORC Package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">WORC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>WORC.tests.WORCTutorialSimple_unittest_regression</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for WORC.tests.WORCTutorialSimple_unittest_regression</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Welcome to the tutorial of WORC: a Workflow for Optimal Radiomics</span>
+<span class="c1"># Classification! It will provide you with basis knowledge and practical</span>
+<span class="c1"># skills on how to run the WORC. For advanced topics and WORCflows, please see</span>
+<span class="c1"># the other notebooks provided with this tutorial. For installation details,</span>
+<span class="c1"># see the ReadMe.md provided with this tutorial.</span>
+
+<span class="c1"># This tutorial interacts with WORC through SimpleWORC and is especially</span>
+<span class="c1"># suitable for first time usage.</span>
+
+<span class="c1"># import neccesary packages</span>
+<span class="kn">from</span> <span class="nn">WORC</span> <span class="kn">import</span> <span class="n">BasicWORC</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># These packages are only used in analysing the results</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">fastr</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="c1"># If you don&#39;t want to use your own data, we use the following example set,</span>
+<span class="c1"># see also the next code block in this example.</span>
+<span class="kn">from</span> <span class="nn">WORC.exampledata.datadownloader</span> <span class="kn">import</span> <span class="n">download_HeadAndNeck</span>
+
+<span class="c1"># Define the folder this script is in, so we can easily find the example data</span>
+<span class="n">script_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="c1"># Determine whether you would like to use WORC for classification or regression</span>
+<span class="n">modus</span> <span class="o">=</span> <span class="s1">&#39;regression&#39;</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../autogen/WORC.tests.html#WORC.tests.WORCTutorialSimple_unittest_regression.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Execute WORC Tutorial experiment.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running in folder: </span><span class="si">{</span><span class="n">script_path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+    <span class="c1"># Input</span>
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+    <span class="c1"># The minimal inputs to WORC are:</span>
+    <span class="c1">#   - Images</span>
+    <span class="c1">#   - Segmentations</span>
+    <span class="c1">#   - Labels</span>
+    <span class="c1">#</span>
+    <span class="c1"># In SimpleWORC, we assume you have a folder &quot;datadir&quot;, in which there is a</span>
+    <span class="c1"># folder for each patient, where in each folder there is a image.nii.gz and a mask.nii.gz:</span>
+    <span class="c1">#           Datadir</span>
+    <span class="c1">#               Patient_001</span>
+    <span class="c1">#                   image.nii.gz</span>
+    <span class="c1">#                   mask.nii.gz</span>
+    <span class="c1">#               Patient_002</span>
+    <span class="c1">#                   image.nii.gz</span>
+    <span class="c1">#                   mask.nii.gz</span>
+    <span class="c1">#               ...</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># You can skip this part if you use your own data.</span>
+    <span class="c1"># In the example, We will use open source data from the online XNAT platform</span>
+    <span class="c1"># at https://xnat.bmia.nl/data/archive/projects/stwstrategyhn1. This dataset</span>
+    <span class="c1"># consists of CT scans of patients with Head and Neck tumors. We will download</span>
+    <span class="c1"># a subset of 20 patients in this folder. You can change this settings if you</span>
+    <span class="c1"># like</span>
+
+    <span class="n">nsubjects</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># use &quot;all&quot; to download all patients</span>
+    <span class="c1"># NOTE: already downloaded for classification, so simply set the data path</span>
+    <span class="k">if</span> <span class="s1">&#39;runner&#39;</span> <span class="ow">in</span> <span class="n">script_path</span><span class="p">:</span>
+        <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;/home/runner/work/WORC/WORC/WORCTutorial/Data&#39;</span>
+    <span class="k">elif</span> <span class="s1">&#39;/home/martijn&#39;</span> <span class="ow">in</span> <span class="n">script_path</span><span class="p">:</span>
+        <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;/home/martijn/git/WORCTutorial/Data&#39;</span>
+    <span class="k">elif</span> <span class="s1">&#39;Martijn Starmans&#39;</span> <span class="ow">in</span> <span class="n">script_path</span><span class="p">:</span>
+        <span class="n">data_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\Martijn Starmans\Documents\GitHub\WORCTutorial\Data&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;System not recognized&quot;</span><span class="p">)</span>
+    <span class="c1"># download_HeadAndNeck(datafolder=data_path, nsubjects=nsubjects)</span>
+
+    <span class="c1"># Identify our data structure: change the fields below accordingly</span>
+    <span class="c1"># if you use your own data.</span>
+    <span class="n">imagedatadir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;stwstrategyhn1&#39;</span><span class="p">)</span>
+    <span class="n">image_file_name</span> <span class="o">=</span> <span class="s1">&#39;image.nii.gz&#39;</span>
+    <span class="n">segmentation_file_name</span> <span class="o">=</span> <span class="s1">&#39;mask.nii.gz&#39;</span>
+
+    <span class="c1"># File in which the labels (i.e. outcome you want to predict) is stated</span>
+    <span class="c1"># Again, change this accordingly if you use your own data.</span>
+    <span class="n">label_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;Examplefiles&#39;</span><span class="p">,</span> <span class="s1">&#39;pinfo_HN.csv&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Name of the label you want to predict</span>
+    <span class="k">if</span> <span class="n">modus</span> <span class="o">==</span> <span class="s1">&#39;binary_classification&#39;</span><span class="p">:</span>
+        <span class="c1"># Classification: predict a binary (0 or 1) label</span>
+        <span class="n">label_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;imaginary_label_1&#39;</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">modus</span> <span class="o">==</span> <span class="s1">&#39;regression&#39;</span><span class="p">:</span>
+        <span class="c1"># Regression: predict a continuous label</span>
+        <span class="n">label_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">modus</span> <span class="o">==</span> <span class="s1">&#39;multiclass_classification&#39;</span><span class="p">:</span>
+        <span class="c1"># Multiclass classification: predict several mutually exclusive binaru labels together</span>
+        <span class="n">label_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;imaginary_label_1&#39;</span><span class="p">,</span> <span class="s1">&#39;complement_label_1&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Determine whether we want to do a coarse quick experiment, or a full lengthy</span>
+    <span class="c1"># one. Again, change this accordingly if you use your own data.</span>
+    <span class="n">coarse</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Give your experiment a name</span>
+    <span class="n">experiment_name</span> <span class="o">=</span> <span class="s1">&#39;Example_STWStrategyHN_Regression&#39;</span>
+
+    <span class="c1"># Instead of the default tempdir, let&#39;s but the temporary output in a subfolder</span>
+    <span class="c1"># in the same folder as this script</span>
+    <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="s1">&#39;WORC_&#39;</span> <span class="o">+</span> <span class="n">experiment_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temporary folder: </span><span class="si">{</span><span class="n">tmpdir</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Remove temp and output folders</span>
+    <span class="n">outputfolder</span> <span class="o">=</span> <span class="n">fastr</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">mounts</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span>
+    <span class="n">experiment_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outputfolder</span><span class="p">,</span> <span class="s1">&#39;WORC_&#39;</span> <span class="o">+</span> <span class="n">experiment_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">experiment_folder</span><span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">experiment_folder</span><span class="p">)</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+    <span class="c1"># The actual experiment</span>
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+
+    <span class="c1"># Create a Basic WORC object to be able to set features ourselves</span>
+    <span class="n">experiment</span> <span class="o">=</span> <span class="n">BasicWORC</span><span class="p">(</span><span class="n">experiment_name</span><span class="p">)</span>
+
+    <span class="c1"># Set the input data according to the variables we defined earlier</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">images_from_this_directory</span><span class="p">(</span><span class="n">imagedatadir</span><span class="p">,</span>
+                                          <span class="n">image_file_name</span><span class="o">=</span><span class="n">image_file_name</span><span class="p">)</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">segmentations_from_this_directory</span><span class="p">(</span><span class="n">imagedatadir</span><span class="p">,</span>
+                                                 <span class="n">segmentation_file_name</span><span class="o">=</span><span class="n">segmentation_file_name</span><span class="p">)</span>
+
+    <span class="c1"># Use features from classification to be quicker</span>
+    <span class="c1"># Locate output folder</span>
+    <span class="n">classification_experiment_folder</span> <span class="o">=</span>\
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outputfolder</span><span class="p">,</span> <span class="s1">&#39;WORC_Example_STWStrategyHN&#39;</span><span class="p">)</span>
+    <span class="n">feature_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">classification_experiment_folder</span><span class="p">,</span>
+                                           <span class="s1">&#39;Features&#39;</span><span class="p">,</span>
+                                           <span class="s1">&#39;features_*.hdf5&#39;</span><span class="p">))</span>
+    <span class="n">features_train</span> <span class="o">=</span> <span class="p">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;CT_0_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature_files</span><span class="p">}</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">features_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features_train</span><span class="p">)</span>
+
+    <span class="c1"># Labels</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">labels_from_this_file</span><span class="p">(</span><span class="n">label_file</span><span class="p">)</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">predict_labels</span><span class="p">(</span><span class="n">label_name</span><span class="p">)</span>
+
+    <span class="c1"># Set the types of images WORC has to process. Used in fingerprinting</span>
+    <span class="c1"># Valid quantitative types are [&#39;CT&#39;, &#39;PET&#39;, &#39;Thermography&#39;, &#39;ADC&#39;]</span>
+    <span class="c1"># Valid qualitative types are [&#39;MRI&#39;, &#39;DWI&#39;, &#39;US&#39;]</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">set_image_types</span><span class="p">([</span><span class="s1">&#39;CT&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Use the standard workflow for binary classification</span>
+    <span class="k">if</span> <span class="n">modus</span> <span class="o">==</span> <span class="s1">&#39;classification&#39;</span><span class="p">:</span>
+        <span class="n">experiment</span><span class="o">.</span><span class="n">binary_classification</span><span class="p">(</span><span class="n">coarse</span><span class="o">=</span><span class="n">coarse</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">modus</span> <span class="o">==</span> <span class="s1">&#39;regression&#39;</span><span class="p">:</span>
+        <span class="n">experiment</span><span class="o">.</span><span class="n">regression</span><span class="p">(</span><span class="n">coarse</span><span class="o">=</span><span class="n">coarse</span><span class="p">)</span>
+
+    <span class="c1"># Set the temporary directory</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">set_tmpdir</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span>
+
+    <span class="c1"># Extra&#39;s</span>
+    <span class="n">semantics_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;Examplefiles&#39;</span><span class="p">,</span> <span class="s1">&#39;semantics_HN.csv&#39;</span><span class="p">)</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">semantics_from_this_file</span><span class="p">(</span><span class="n">semantics_file</span><span class="p">)</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">add_evaluation</span><span class="p">()</span>
+    <span class="c1"># experiment.add_config_overrides({&#39;General&#39;:</span>
+    <span class="c1">#                                   {&#39;FeatureCalculators&#39;: &#39;[predict/CalcFeatures:1.0, pyradiomics/Pyradiomics:1.0]&#39;}</span>
+    <span class="c1">#                                  })</span>
+
+    <span class="n">experiment</span><span class="o">.</span><span class="n">set_multicore_execution</span><span class="p">()</span>
+
+    <span class="c1"># Run the experiment!</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="c1"># NOTE:  Precomputed features can be used instead of images and masks</span>
+    <span class="c1"># by instead using ``experiment.features_from_this_directory(featuresdatadir)`` in a similar fashion.</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+    <span class="c1"># Analysis of results</span>
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+
+    <span class="c1"># There are two main outputs: the features for each patient/object, and the overall</span>
+    <span class="c1"># performance. These are stored as .hdf5 and .json files, respectively. By</span>
+    <span class="c1"># default, they are saved in the so-called &quot;fastr output mount&quot;, in a subfolder</span>
+    <span class="c1"># named after your experiment name.</span>
+
+    <span class="c1"># Read the overall peformance</span>
+    <span class="n">performance_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">experiment_folder</span><span class="p">,</span> <span class="s1">&#39;performance_all_0.json&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">performance_file</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No performance file found: your network has failed.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">performance_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">performance</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+
+        <span class="c1"># Print the output performance</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Performance:&quot;</span><span class="p">)</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">performance</span><span class="p">[</span><span class="s1">&#39;Statistics&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+    <span class="c1"># NOTE: the performance is probably horrible, which is expected as we ran</span>
+    <span class="c1"># the experiment on coarse settings. These settings are recommended to only</span>
+    <span class="c1"># use for testing: see also below.</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+    <span class="c1"># Tips and Tricks</span>
+    <span class="c1"># ---------------------------------------------------------------------------</span>
+
+    <span class="c1"># For tips and tricks on running a full experiment instead of this simple</span>
+    <span class="c1"># example, adding more evaluation options, debuggin a crashed network etcetera,</span>
+    <span class="c1"># please go to https://worc.readthedocs.io/en/latest/static/user_manual.html</span>
+
+    <span class="c1"># Some things we would advice to always do:</span>
+    <span class="c1">#   - Run actual experiments on the full settings (coarse=False):</span>
+    <span class="c1">#       coarse = False</span>
+    <span class="c1">#       experiment.binary_classification(coarse=coarse)</span>
+    <span class="c1">#   Note: this will result in more computation time. We therefore recommmend</span>
+    <span class="c1">#   to run this script on either a cluster or high performance PC. If so,</span>
+    <span class="c1">#   you may change the execution to use multiple cores to speed up computation</span>
+    <span class="c1">#   just before before experiment.execute():</span>
+    <span class="c1">#       experiment.set_multicore_execution()</span>
+    <span class="c1">#</span>
+    <span class="c1">#   - Add extensive evaluation: experiment.add_evaluation() before experiment.execute():</span>
+    <span class="c1">#       experiment.add_evaluation()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016 -- 2023, Biomedical Imaging Group Rotterdam, Department of Radiology and Nuclear Medicine, Erasmus University Medical Center, Rotterdam, The Netherlands.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
