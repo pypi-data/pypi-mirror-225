@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: fastlbp_imbg
+Version: 0.0.3
+Summary: A small example package
+Author-email: Ben Woodhams <benwoodhams@outlook.com>, Mykhailo Koreshkov <koreshov.m@gmail.com>
+Project-URL: Homepage, https://github.com/imbg-ua/ImageTextureFinder
+Project-URL: Bug Tracker, https://github.com/imbg-ua/ImageTextureFinder/issues
+Keywords: lbp,texture,features,image
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# ImageTextureFinder
+A project to create an easy-to-use way of finding areas of common patterns and structures within an image. Should work on any image, designed for use on any biological images including DAPI, IMC and H&E.
+
+See `sample_run.sh` for details.
+
+- Branch `pip` is the latest. It contains a pip packagable version of this project.
+- Branch `baseline` is the most stable. It is not ready for pip tho.
+- Branch `dev` is unstable and for dev purpuses only.
