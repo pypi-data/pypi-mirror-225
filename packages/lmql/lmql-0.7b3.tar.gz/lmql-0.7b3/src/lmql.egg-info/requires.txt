@@ -1,0 +1,11 @@
+aiohttp<4.0.0
+astunparse==1.6.3
+openai
+termcolor
+numpy
+tiktoken
+psutil
+
+[hf]
+transformers>=4.28.1
+accelerate

@@ -1,0 +1,26 @@
+{
+    "scopeName": "lmql.qstring.injection",
+    "injectionSelector": "L:source.lmql string, source.python comment.inline-lmql",
+    "patterns": [
+        {
+            "begin": "\\[",
+            "end": "\\]",
+            "name": "keyword.control.lmql",
+            "patterns": [
+                {
+                    "include": "source.python#expression"
+                }
+            ]
+        },
+        {
+            "begin": "\\{",
+            "end": "\\}",
+            "contentName": "keyword.control.lmql",
+            "patterns": [
+                {
+                    "include": "source.python#f-expression"
+                }
+            ]
+        }
+    ]
+}
