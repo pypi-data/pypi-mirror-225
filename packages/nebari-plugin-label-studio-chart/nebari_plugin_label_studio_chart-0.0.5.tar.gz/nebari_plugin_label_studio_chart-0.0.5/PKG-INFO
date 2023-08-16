@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: nebari-plugin-label-studio-chart
+Version: 0.0.5
+Summary: MetroStar Onyx - Label Studio plugin for Nebari platform
+Project-URL: Documentation, https://github.com/MetroStar/nebari-label-studio#readme
+Project-URL: Issues, https://github.com/MetroStar/nebari-label-studio/issues
+Project-URL: Source, https://github.com/MetroStar/nebari-label-studio
+Author-email: Scott Blair <sblair@metrostar.com>
+License-Expression: Apache-2.0
+License-File: LICENSE.md
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: nebari
+Description-Content-Type: text/markdown
+
+# Nebari Plugin Label-Studio Chart
+
+[![PyPI - Version](https://img.shields.io/pypi/v/nebari-plugin-label-studio-chart.svg)](https://pypi.org/project/nebari-plugin-label-studio-chart)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nebari-plugin-label-studio-chart.svg)](https://pypi.org/project/nebari-plugin-label-studio-chart)
+
+-----
+
+**Table of Contents**
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install nebari-plugin-label-studio-chart
+```
+
+## License
+
+`nebari-plugin-label-studio-chart` is distributed under the terms of the [Apache](./LICENSE.md) license.
