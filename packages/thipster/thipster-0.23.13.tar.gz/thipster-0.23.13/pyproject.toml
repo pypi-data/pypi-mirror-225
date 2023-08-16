@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+
+testpaths = [
+    "tests",
+    "integration",
+]
+
+[tool.semantic_release]
+version_variables = [
+    "setup.py:__version__"
+]
+commit_parser = "emoji"
+
+commit_message = ":bookmark: {version} [skip ci]"
+major_on_zero = false
+
+[tool.semantic_release.commit_parser_options]
+major_tags = [":boom:"]
+minor_tags = [
+    ":sparkles:",
+]
+patch_tags = [
+    ":ambulance:",
+    ":bug:",
+    ":adhesive_bandage:",
+    ":lock:",
+    ":arrow_up:",
+    ":arrow_down:",
+    ":heavy_plus_sign:",
+    ":heavy_minus_sign:",
+    ":rotating_light:",
+    ":zap:",
+    ":recycle:",
+    ":wrench:",
+    ":loud_sound:",
+    ":mute:",
+    ":goal_net:",
+    ":wastebasket:",
+    ":coffin:",
+    ":chart_with_upwards_trend:",
+    ":globe_with_meridians:",
+    ":alien:",
+    ":wheelchair:",
+    ":children_crossing:",
+    ":bricks:",
+]
+
+[pytest]
+mock_use_standalone_module = true
+
+[tool.ruff]
+exclude = ["__init__.py"]
+select = [
+    "F",
+    "E",
+    "W",
+    "I",
+    "UP",
+    "C90",
+    "N",
+    "D",
+    "A",
+    "C4",
+    "EM",
+    "EXE",
+    "ISC",
+    "ICN",
+    "INP",
+    "PYI",
+    "PTH",
+    "Q",
+    "RSE",
+    "RET",
+    "SIM",
+    "TID",
+    "ARG",
+    "RUF",
+]
+
+[tool.ruff.pydocstyle]
+# Use Google-style docstrings.
+convention = "numpy"
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "double"
