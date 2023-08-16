@@ -1,0 +1,63 @@
+from __future__ import annotations
+
+import datetime
+from typing import Dict, List, Optional, TypeVar
+
+import discord
+
+EmbedT = TypeVar("EmbedT", bound="Embed")
+
+
+class Embed(discord.Embed):
+    def __init__(
+        self,
+        *,
+        title: Optional[str] = None,
+        description: Optional[str] = None,
+        colour: Optional[int] = None,
+        timestamp: Optional[datetime.datetime] = None,
+        author: Optional[Dict[str, str]] = None,
+        footer: Optional[Dict[str, str]] = None,
+        thumbnail: Optional[str] = None,
+        image: Optional[str] = None,
+        fields: List[Dict[str, bool]] = [],
+        url: Optional[str] = None,
+        _id: Optional[int] = None,
+    ) -> None:
+        self._id = _id
+        super().__init__(
+            colour=colour,
+            title=title,
+            url=url,
+            description=description,
+            timestamp=timestamp,
+        )
+        if author:
+            if not author.get("name"):
+                raise ValueError("missing author name")
+            self.set_author(name=author["name"], icon_url=author.get("icon_url"))
+        if footer:
+            if not footer.get("text"):
+                raise ValueError("missing footer text")
+            self.set_footer(text=footer["text"], icon_url=footer.get("icon_url"))
+        self.set_thumbnail(url=thumbnail)
+        self.set_image(url=image)
+        for pos, field in enumerate(fields):
+            if not field.get("name"):
+                raise ValueError(f"missing name in field {pos}")
+            elif not field.get("value"):
+                raise ValueError(f"missing value in field {pos}")
+            if field.get("inline"):
+                if not isinstance(field["inline"], bool):
+                    raise TypeError(f"inline value must be of type bool in field {pos}")
+            self.add_field(
+                name=field["name"],
+                value=field["value"],
+                inline=field.get("inline", True) if isinstance(field.get("inline"), bool) else True,
+            )
+
+    def add_named_field(self, name: str, *, inline: bool = True) -> None:
+        self.add_field(name=name, value="\u200b", inline=inline)
+
+    def add_invisible_field(self, *, inline: bool = True) -> None:
+        self.add_field(name="\u200b", value="\u200b", inline=inline)
