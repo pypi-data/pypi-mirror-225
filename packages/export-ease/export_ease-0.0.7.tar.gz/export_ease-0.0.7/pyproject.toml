@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "export_ease"
+version = "0.0.7"
+authors = [
+  { name="Paul Dilly", email="paul.dilly@duke.edu" },
+]
+description = "A package that facilitates API calls to UN Comtrade and the International Monetary Fund to gather macroeconomic export data"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pcd15/export_pkg"
