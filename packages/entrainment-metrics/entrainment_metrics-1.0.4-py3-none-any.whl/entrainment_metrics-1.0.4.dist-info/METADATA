@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: entrainment-metrics
+Version: 1.0.4
+Summary: Measure acoustic-prosodic entrainment in speech
+Home-page: https://github.com/erikernst4/entrainment-metrics
+License: Apache-2.0
+Keywords: speech,prosody,speech-analysis,entrainment,prosodic-analysis
+Author: E. Ernst, A. Gravano, R. Gálvez
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: allosaurus (>=1.0.2,<2.0.0)
+Requires-Dist: click (==8.0.2)
+Requires-Dist: coverage (>=6.4.4,<7.0.0)
+Requires-Dist: matplotlib (>=3.6.3,<4.0.0)
+Requires-Dist: opensmile (>=2.4.1,<3.0.0)
+Requires-Dist: praat-parselmouth (>=0.4.3,<0.5.0)
+Requires-Dist: scipy (>=1.8.1,<2.0.0)
+Requires-Dist: sklearn (>=0.0,<0.1)
+Project-URL: Documentation, https://entrainment-metrics.readthedocs.io/en/latest/
+Project-URL: Repository, https://github.com/erikernst4/entrainment-metrics
+Description-Content-Type: text/markdown
+
+# entrainment-metrics
+[![Documentation Status](https://readthedocs.org/projects/entrainment-metrics/badge/?version=latest)](https://entrainment-metrics.readthedocs.io/en/latest/?badge=latest)
+
+entrainment-metrics is all about being able to measure entrainment. Entrainment in spoken dialogue is commonly defined as a tendency of a speaker to adapt some properties of her speech to match her interlocutor’s. With this library you’ll be able to measure entrainment along one dimension: acoustic-prosodic (a/p) features.
+
+Checkout [the docs](https://entrainment-metrics.readthedocs.io/en/latest/) and the [Getting started](https://entrainment-metrics.readthedocs.io/en/latest/usage/getting_started.html#getting-started) page for a deeper dive into the library!
+
+## Installation
+- To use entrainment_metrics, first install it using pip:
+
+```bash
+pip install entrainment_metrics
+```
+- Speech feature extraction
+If you'll be using praat for feature extraction it's also required the command-line tool ffmpeg to be installed on your system, which is available from most package managers:
+
+```bash
+# on Ubuntu or Debian
+sudo apt update && sudo apt install ffmpeg
+
+# on Arch Linux
+sudo pacman -S ffmpeg
+
+# on MacOS using Homebrew (https://brew.sh/)
+brew install ffmpeg
+
+# on Windows using Chocolatey (https://chocolatey.org/)
+choco install ffmpeg
+
+# on Windows using Scoop (https://scoop.sh/)
+scoop install ffmpeg
+```
+And for installing praat on Ubuntu or Debian:
+
+```bash
+sudo apt update && sudo apt install praat
+```
+
