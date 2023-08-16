@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: phasellm
+Version: 0.0.16
+Summary: Wrappers for common large language models (LLMs) with support for evaluation.
+Home-page: UNKNOWN
+Author: Wojciech Gryc
+Author-email: hello@phaseai.com
+License: MIT
+Keywords: llm,nlp,evaluation,ai
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8.0
+License-File: LICENSE
+Requires-Dist: Flask (>=2.0.0)
+Requires-Dist: azure-identity (>=1.14.0)
+Requires-Dist: beautifulsoup4 (>=4.12.2)
+Requires-Dist: cohere (>=4.0.0)
+Requires-Dist: docker (>=6.1.3)
+Requires-Dist: fake-useragent (>=1.2.1)
+Requires-Dist: feedparser (>=6.0.10)
+Requires-Dist: lxml (>=4.9.2)
+Requires-Dist: openai (>=0.26.0)
+Requires-Dist: openpyxl (>=3.1.0)
+Requires-Dist: pandas (>=2.0.0)
+Requires-Dist: playwright (>=1.35.0)
+Requires-Dist: python-dotenv
+Requires-Dist: requests (>=2.24.0)
+Requires-Dist: sseclient-py (>=1.7.2)
+Requires-Dist: typing-extensions (>=4.6.3)
+Requires-Dist: urllib3 (==1.26.6)
+Provides-Extra: complete
+Requires-Dist: accelerate (>=0.16.0) ; extra == 'complete'
+Requires-Dist: torch (>=1.0.0) ; extra == 'complete'
+Requires-Dist: transformers (>=4.25.0) ; extra == 'complete'
+Provides-Extra: docs
+Requires-Dist: furo ; extra == 'docs'
+Requires-Dist: myst-parser (>=2.0.0) ; extra == 'docs'
+Requires-Dist: sphinx-autoapi (>=2.1.1) ; extra == 'docs'
+Requires-Dist: sphinx-autobuild (>=2021.3.14) ; extra == 'docs'
+Requires-Dist: sphinx (>=7.1.2) ; extra == 'docs'
+
+PhaseLLM provides wrappers for common large language models and use cases. This makes it easy to swap models in and out as needed. We also provide support for evaluation of models so you can choose which models are better to use.
+
