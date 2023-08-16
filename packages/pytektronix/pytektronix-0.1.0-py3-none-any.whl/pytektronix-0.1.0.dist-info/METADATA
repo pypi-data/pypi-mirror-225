@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: pytektronix
+Version: 0.1.0
+Summary: A python package for controlling tektronix scopes
+Project-URL: Homepage, https://github.com/matteovidali/pytektronix
+Project-URL: Bug Tracker, https://github.com/matteovidali/pytektronix/issues
+Project-URL: Documentation, https://github.com/matteovidali/pytektronix/wiki
+Author-email: Matteo Vidali <mmvidali@gmail.com>, Barrett Tieman <mmvidali@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.0
+Requires-Dist: aenum==3.1.11
+Requires-Dist: python-vxi11==0.9
+Requires-Dist: pyvisa-py==0.5.3
+Description-Content-Type: text/markdown
+
+# pytronix
+a VISA/VXI11 based library to control tektronix scopes
