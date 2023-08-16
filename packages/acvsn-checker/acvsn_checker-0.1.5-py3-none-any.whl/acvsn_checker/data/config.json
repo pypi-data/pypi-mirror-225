@@ -1,0 +1,23 @@
+{
+  "MeasurementCategory": {
+    "Gas": 2,
+    "AerMP": 4,
+    "AerComp": 3,
+    "AerOpt": 4,
+    "CldComp": 3,
+    "CldMicro": 3,
+    "CldMacro": 0,
+    "CldOpt": 1,
+    "Met": 0,
+    "GasJvalue": 3,
+    "AquJvalue": 3,
+    "Platform": 0,
+    "Rad": 1
+  },
+  "AcquisitionMethod": [
+    "InSitu",
+    "VertCol",
+    "SlantCol",
+    "Profile"
+  ]
+}
