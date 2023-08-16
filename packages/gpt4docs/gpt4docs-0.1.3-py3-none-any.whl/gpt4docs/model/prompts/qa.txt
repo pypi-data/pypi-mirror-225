@@ -1,0 +1,24 @@
+Given the following extracted parts of a codebase and a python definition.
+Write useful documentation for the definition based on the extracted parts of a codebase.
+The documentation should be in the form of a docstring and follow Google's recommended docstring style.
+Your response must only be the Google format docstring, NOT the definition itself and WITHOUT quotation marks.
+Remember to use the correct indentation.
+Use the following examples to guide you:
+______________________
+class File: """This class will scan a Python file and return all the functions and classes in it""" original_documentation: Dict[str, PyDefinition] = () documentation: Dict[str, PyDefinition] = () def __init__(self, file_path: str | Path) -> None: """Initializes the Scanner with the file path""" if isinstance(file_path, str): file_path = Path(file_path) self.content = self._read_file(file_path) self.file_path = file_path self.original_documentation = self._scan_for_documentation() self.documentation = self.original_documentation
+
+def _scan_for_documentation(self) -> None: """Scans the file for functions and classes and their documentation""" # Regex for finding functions or classes, and docstrings re_definitions = r"""(?P<definition>\S?\b(?P<type>def|class)\b (?P<name>\w*) *\(?.*?\)?:)\n\s*(\"(3)(?P<docstring>[\s\S]*?)\"(3)\n?)?"""  # noqa: E501 defs = () # Create definitions from all matches for match in re.finditer(re_definitions, self.content): defs[match.group("name")] = PyDefinition( type=match.group("type"), name=match.group("name"), docstring=match.group("docstring"),) return defs
+
+def save(self, overwrite: bool = False) -> None: """Writes the new documentation to the file""" lines = self.content for definition in self.documentation.values(): lines = self._write_docstring(lines, definition) if overwrite: file_path = self.file_path else: # Add .new to the file name file_path = self.file_path.parent / ( self.file_path.name.removesuffix(".py") + ".new.py") with open(file_path, "w") as f: f.writelines(lines)
+______________________
+Write a docstring for the following definition: `def save(self, overwrite: bool = False) -> None:`
+Generated Docstring: Writes the updated documentation to the Python file. If the overwrite parameter is set to True, the original file is overwritten with the updated content. Otherwise, a new file with a .new.py extension is created, containing the updated documentation.
+
+Args:
+    overwrite (bool, optional): Whether to overwrite the original file with the updated documentation. Defaults to False.
+
+Returns:
+    None
+______________________
+{context}
+______________________
