@@ -1,0 +1,123 @@
+[tool.poetry]
+name = "ecs_files_composer"
+version = "1.4.0"
+description = "Files and configuration handler to inject configuration files into volumes for ECS containers"
+authors = ["John Preston <john@compose-x.io>"]
+license = "MPL-2.0"
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+]
+readme = "README.rst"
+keywords=["aws", "ecs", "k8s", "secrets"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = ">=1.27,<2.0"
+pydantic = {extras = ["email"], version = "^1.9"}
+pyOpenSSL = "^22"
+requests = "^2.27.1"
+PyYAML = "^6.0"
+Jinja2 = "^3.1.2"
+jsonschema = "^4.17"
+compose-x-common = "^1.2"
+flatdict = "^4.0.1"
+pyjks = "^20.0.0"
+certbot-aws-store = "^0.4.2.post0"
+aws-cfn-custom-resource-resolve-parser = "^0.3.0"
+
+[tool.poetry.group.dev.dependencies]
+placebo = "^0.10"
+datamodel-code-generator = {extras = ["http"], version = "^0.21"}
+black = "^23.1"
+isort = "^5.10.1"
+coverage = "^7.1"
+behave = "^1.2.6"
+pytest = "^7"
+watchdog = "^3.0"
+pre-commit = "^3.3"
+tbump = "^6.9.0"
+
+
+[tool.poetry.scripts]
+files_composer = "ecs_files_composer.cli:main"
+ecs_files_composer = "ecs_files_composer.cli:main"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^5.3.0"
+sphinx-material = "^0.0.35"
+sphinx-jsonschema = "^1.19.1"
+
+[tool.datamodel-codegen]
+input = "ecs-files-input.json"
+input-file-type = "jsonschema"
+output = "ecs_files_composer/input.py"
+field-constraints = true
+snake-case-field = true
+strip-default-none = false
+target-python-version = "3.8"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+known_first_party = "kelvin"
+
+[tool.coverage.run]
+source = ["ecs_files_composer"]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_lines = [
+    "if self.debug:",
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:"
+    ]
+
+omit = ["ecs_files_composer/cli.py"]
+
+[tool.tbump]
+github_url = "https://github.com/compose-x/ecs-files-composer"
+
+[tool.tbump.version]
+current = "1.4.0"
+
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  (?:(?P<rc>[\S]+))?
+  '''
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+# For each file to patch, add a [[tool.tbump.file]] config
+# section containing the path of the file, relative to the
+# tbump.toml location.
+[[tool.tbump.file]]
+src = "pyproject.toml"
+
+[[tool.tbump.file]]
+src = "ecs_files_composer/__init__.py"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
