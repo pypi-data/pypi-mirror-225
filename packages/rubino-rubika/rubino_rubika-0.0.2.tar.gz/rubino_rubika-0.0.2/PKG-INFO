@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: rubino_rubika
+Version: 0.0.2
+Summary: The most complete Rubino rubika library
+Author-email: AmirErshadi <ershadia317@gmail.com>
+Project-URL: Homepage, https://rubika.ir/amir_ershadi_2
+Project-URL: Bug Tracker, https://rubika.ir/amir_ershadi_2
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+A complete library for Rubino(Rubika)
+
+## Install
+``` bash
+pip install rubino_rubika
+```
+
+<hr>
+
+## Example
+``` python
+from rubino_rubika import Rubino
+
+bot = Rubino("Auth", "Profile_id")
+
+print(bot.get_my_profile_info())
+
+bot.add_comment("post_id", "post_profile_id", "text")
+```
+
+<hr>
+
+## Do you have a problem?
+### <a href='https://rubika.ir/amir_ershadi_2'>click</a>

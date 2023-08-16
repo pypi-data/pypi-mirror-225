@@ -1,0 +1,18 @@
+[project]
+name = "rubino_rubika"
+version = "0.0.2"
+authors = [
+  { name="AmirErshadi", email="ershadia317@gmail.com" },
+]
+description = "The most complete Rubino rubika library"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://rubika.ir/amir_ershadi_2"
+"Bug Tracker" = "https://rubika.ir/amir_ershadi_2"
