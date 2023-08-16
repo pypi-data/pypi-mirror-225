@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "respy"
+version = "0.1.1"
+authors = [
+  { name="Finn Upham", email="finn.upham@gmail.com" },
+]
+description = "A set of function for analysis of single belt respiration measurements"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/finn42/respy_demo"
