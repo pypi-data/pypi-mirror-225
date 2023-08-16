@@ -1,0 +1,13 @@
+junos_system_commit_table:
+  rpc: get-commit-information
+  item: commit-history
+  key: date-time
+  view: junos_system_commit_view
+
+
+junos_system_commit_view:
+  fields:
+    seq: sequence-number
+    user: user
+    log: log
+    comment: comment

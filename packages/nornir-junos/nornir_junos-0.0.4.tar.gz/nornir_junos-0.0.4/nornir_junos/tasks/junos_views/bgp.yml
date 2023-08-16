@@ -1,0 +1,15 @@
+junos_bgp_peer_summary_table:
+  rpc: get-bgp-summary-information
+  args:
+    instance: ''
+  item: bgp-peer
+  key: peer-address
+  view: junos_bgp_peer_summary_view
+
+junos_bgp_peer_summary_view:
+  fields:
+    elapsed_time: elapsed-time
+    peer_as: peer-as
+    flap_count: flap-count
+    description: description
+    peer_state: peer-state

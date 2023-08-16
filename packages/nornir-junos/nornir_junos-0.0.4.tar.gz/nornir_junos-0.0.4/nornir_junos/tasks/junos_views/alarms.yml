@@ -1,0 +1,11 @@
+junos_sys_alarms_table:
+  rpc: get-system-alarm-information
+  item: alarm-detail
+  key: alarm-time 
+  view: junos_sys_alarms_view
+
+junos_sys_alarms_view:
+  fields:
+    class: alarm-class
+    description: alarm-description
+    type: alarm-type

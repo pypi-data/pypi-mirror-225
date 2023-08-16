@@ -1,0 +1,29 @@
+junos_routing_engine_table:
+  rpc: get-route-engine-information
+  item: route-engine
+  key: memory-buffer-utilization
+  view: junos_routing_engine_view
+
+junos_routing_engine_view:
+  fields:
+    mem_util: memory-buffer-utilization
+    cpu_idle: { cpu-idle: int }
+    memory_dram_size: memory-dram-size | memory-system-total
+    memory_buffer_utilization: { memory-buffer-utilization: int }
+    memory_system_total_used: { memory-system-total-used: int }
+
+
+ModuleTable:
+  rpc: get-chassis-inventory
+  item: .//chassis-sub-module|.//chassis-module|.//chassis-sub-sub-module
+  key:
+    - name
+  view: ModuleTableView
+
+ModuleTableView:
+  fields:
+    jname: name
+    sn: serial-number
+    pn: part-number
+    ver: version
+    type: description

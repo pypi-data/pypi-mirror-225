@@ -1,0 +1,17 @@
+junos_rsvp_ingress_table:
+  rpc: get-rsvp-session-information
+  args:
+    ingress: True
+    detail: True
+  item: .//name/parent::*
+  key: name
+  view: junos_rsvp_ingress_view
+
+junos_rsvp_ingress_view:
+  fields:
+    destination-address: destination-address
+    source-address: source-address
+    lsp-state: lsp-state
+    lsp-path-type: lsp-path-type
+    sender-tspec: sender-tspec
+    explicit-route: explicit-route/explicit-route-element/address
