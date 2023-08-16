@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: gpt4docs
+Version: 0.2.0
+Summary: Python package using AI to generate documentation for your codebase
+Author: Simon Moe Sørensen
+Author-email: sso@2021.ai
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: black (>=23.7.0,<24.0.0)
+Requires-Dist: chromadb (==0.4.5)
+Requires-Dist: langchain (==0.0.261)
+Requires-Dist: openai (>=0.27.8,<0.28.0)
+Requires-Dist: pdoc (>=14.0.0,<15.0.0)
+Requires-Dist: pydantic (>=1.10.8,<2.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Requires-Dist: tiktoken (>=0.4.0,<0.5.0)
+Requires-Dist: typer (>=0.9.0,<0.10.0)
