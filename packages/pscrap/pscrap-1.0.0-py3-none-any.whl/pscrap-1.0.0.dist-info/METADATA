@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: pscrap
+Version: 1.0.0
+Summary: multi processed parameter scrapper
+Home-page: https://github.com/root-tanishq/pscrap
+Author: Tanishq Rathore
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+<div align="center">
+  
+# [P]scra[P]
+
+`[P]scra[P] | Coded with <3 by Tanishq Rathore`  
+
+
+multi processed parameter scrapper, works on `windows`,`linux` and `macos`
+
+<div align="left">
+  
+## INSTALLATION
+- with `pip`
+```
+sudo pip install pscrap
+```
+- with `setup.py`
+```
+sudo python3 setup.py install
+```
+
+## USAGE
+- Collect all the `urls` list and pass the list from stdin to the tool as shown below
+```
+cat urls.txt | pscrap | tee params.txt
+```
+
+> For any contribution either contact me through [Linkedin](https://www.linkedin.com/in/tanishq-rathore-115033202) or [Twitter](https://twitter.com/root_tanishq)
