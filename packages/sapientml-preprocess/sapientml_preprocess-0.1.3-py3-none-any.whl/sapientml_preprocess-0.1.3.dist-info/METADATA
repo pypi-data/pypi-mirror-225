@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: sapientml-preprocess
+Version: 0.1.3
+Summary: A SapientML plugin of preprocess CodeBlockGenerator
+License: Apache-2.0
+Author: Kosaku Kimura
+Author-email: kimura.kosaku@fujitsu.com
+Requires-Python: >=3.9,<3.13
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: sapientml (>=0.1.4,<0.2.0)
