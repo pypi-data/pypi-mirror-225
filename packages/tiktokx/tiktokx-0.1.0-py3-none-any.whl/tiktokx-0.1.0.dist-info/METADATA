@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: tiktokx
+Version: 0.1.0
+Summary: The rhythm of algorithms, dancing through recommendation streams.
+Author: Kye Gomez
+Author-email: kye@apac.ai
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.21,<2.0)
+Requires-Dist: scipy (>=1.7,<2.0)
+Requires-Dist: torch (>=1.10,<2.0)
