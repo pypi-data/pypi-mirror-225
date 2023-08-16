@@ -1,0 +1,17 @@
+beautifulsoup4
+brotli
+cssutils
+cryptography
+defusedxml
+Flask
+python-dotenv
+requests
+stem
+waitress
+
+[dev]
+pycodestyle
+
+[test]
+pytest
+python-dateutil
