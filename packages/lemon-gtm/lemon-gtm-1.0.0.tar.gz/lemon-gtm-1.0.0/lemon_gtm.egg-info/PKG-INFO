@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: lemon-gtm
+Version: 1.0.0
+Summary: A Global Tracking Model for Python
+Home-page: https://github.com/lemonorangeapple/lemon-gtm
+Author: lemonorangeapple
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+# LemonGTM
+
+Lemon Global Tracking Model
+
+
+## Install
+
+```shell
+pip install lemon-gtm
+```
+
+
+## Usage
+
+```python
+from lemonGTM import *
+c = core("<Data-Filename>")
+print(c.analysis("<Word>")[0])
+```
+
+
+## Data Format
+
+```plain
+data1
+data2
+data3
+data4
+...
+```
+    
