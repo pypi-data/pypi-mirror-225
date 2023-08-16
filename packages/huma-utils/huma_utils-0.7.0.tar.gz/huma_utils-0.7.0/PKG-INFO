@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: huma-utils
+Version: 0.7.0
+Summary: Huma Python utilities library
+Author: Flora Huang
+Author-email: flora@huma.finance
+Requires-Python: >=3.11,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: cryptography (>=41.0.3,<42.0.0)
+Requires-Dist: fastapi (>=0.101.1,<0.102.0)
+Requires-Dist: httpx (>=0.24.1,<0.25.0)
+Requires-Dist: orjson (>=3.9.1,<4.0.0)
+Requires-Dist: pydantic (>=1.10.9,<2.0.0)
+Requires-Dist: pyjwt (>=2.8.0,<3.0.0)
+Requires-Dist: web3 (>=6.4.0,<7.0.0)
+Description-Content-Type: text/markdown
+
+# huma-utils
+Huma Python utilities
+
