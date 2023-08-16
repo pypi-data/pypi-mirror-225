@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: Active-Erroring
+Version: 1.1.2
+Summary: This package can be used to raise custom errors and have fun.
+Home-page: https://github.com/Armen-Jean-Andreasian/Active-Erroring
+Author: Armen-Jean Andreasian
+Author-email: armen.andreasian77@gmail.com
+License: MIT
+Keywords: error,raising,custom,python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+
+# Active Erroring
+
+Active Erroring is a Python package that provides a simple way to raise custom errors with customizable error names and messages.
+
+## Installation
+
+You can install Active Erroring using pip.
+```bash
+pip install active-erroring
+```
+## Usage
+
+To use Active Erroring in your Python code, follow these steps:
+
+1. Import the `CustomError` class from the `active_erroring` module.
+
+2. Create an instance of `CustomError` and provide the error message. You can also specify a custom error name.
+
+3. Raise the custom error.
+
+## Example
+
+Here's a complete example of using Active Erroring in a Python script.
+
+## Demo
+
+![Demo](https://i.ibb.co/61nDwVh/demo.png)
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
