@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "syncedlyrics_aio"
+version = "0.5.4"
+description = "Get an LRC format (synchronized) lyrics for your music with aiohttp"
+repository = "https://github.com/xizeyoupan/syncedlyrics_aio"
+urls = { "Bug Tracker" = "https://github.com/xizeyoupan/syncedlyrics_aio/issues" }
+authors = ["Momo <lo3me@proton.me>"]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Sound/Audio :: Players",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+rapidfuzz = "^2.13.2"
+beautifulsoup4 = "^4.11.1"
+aiohttp = "^3.8.5"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+
+[tool.poetry.scripts]
+syncedlyrics_aio = "syncedlyrics_aio.cli:cli_handler"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+pytest = "^7.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
