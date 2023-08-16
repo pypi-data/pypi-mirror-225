@@ -1,0 +1,452 @@
+Metadata-Version: 2.1
+Name: module-utilities
+Version: 0.7.0
+Summary: Collection of utilities to aid working with python modules.
+Author-email: "William P. Krekelberg" <wpk@nist.gov>
+License: NIST-PD
+Project-URL: homepage, https://github.com/usnistgov/module-utilities
+Project-URL: documentation, https://pages.nist.gov/module-utilities/
+Keywords: module-utilities
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: Public Domain
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typing-extensions
+Provides-Extra: dev
+Requires-Dist: module-utilities[test] ; extra == 'dev'
+Requires-Dist: module-utilities[typing-extras] ; extra == 'dev'
+Requires-Dist: module-utilities[dev-extras] ; extra == 'dev'
+Provides-Extra: dev-complete
+Requires-Dist: module-utilities[dev] ; extra == 'dev-complete'
+Requires-Dist: module-utilities[tools] ; extra == 'dev-complete'
+Requires-Dist: module-utilities[nox] ; extra == 'dev-complete'
+Provides-Extra: dev-extras
+Requires-Dist: setuptools-scm ; extra == 'dev-extras'
+Requires-Dist: pytest-accept ; extra == 'dev-extras'
+Requires-Dist: ipython ; extra == 'dev-extras'
+Requires-Dist: ipykernel ; extra == 'dev-extras'
+Provides-Extra: dist-conda
+Requires-Dist: anaconda-client ; extra == 'dist-conda'
+Requires-Dist: grayskull ; extra == 'dist-conda'
+Requires-Dist: conda-build ; extra == 'dist-conda'
+Requires-Dist: conda-verify ; extra == 'dist-conda'
+Requires-Dist: boa ; extra == 'dist-conda'
+Provides-Extra: dist-pypi
+Requires-Dist: twine ; extra == 'dist-pypi'
+Requires-Dist: build ; extra == 'dist-pypi'
+Provides-Extra: docs
+Requires-Dist: ipython ; extra == 'docs'
+Requires-Dist: pyenchant ; extra == 'docs'
+Requires-Dist: ghp-import ; extra == 'docs'
+Requires-Dist: sphinx >=5.3.0 ; extra == 'docs'
+Requires-Dist: sphinx-copybutton ; extra == 'docs'
+Requires-Dist: sphinxcontrib-spelling ; extra == 'docs'
+Requires-Dist: sphinx-autobuild ; extra == 'docs'
+Requires-Dist: myst-nb ; extra == 'docs'
+Requires-Dist: sphinx-book-theme ; extra == 'docs'
+Requires-Dist: autodocsumm ; extra == 'docs'
+Requires-Dist: module-utilities[opt-all] ; extra == 'docs'
+Provides-Extra: inherit
+Requires-Dist: docstring-inheritance ; extra == 'inherit'
+Provides-Extra: nox
+Requires-Dist: nox ; extra == 'nox'
+Requires-Dist: noxopt ; extra == 'nox'
+Requires-Dist: ruamel.yaml ; extra == 'nox'
+Provides-Extra: opt-all
+Requires-Dist: module-utilities[inherit] ; extra == 'opt-all'
+Provides-Extra: test
+Requires-Dist: module-utilities[test-extras] ; extra == 'test'
+Requires-Dist: module-utilities[opt-all] ; extra == 'test'
+Provides-Extra: test-extras
+Requires-Dist: pytest ; extra == 'test-extras'
+Requires-Dist: pytest-xdist ; extra == 'test-extras'
+Requires-Dist: pytest-cov ; extra == 'test-extras'
+Requires-Dist: pytest-sugar ; extra == 'test-extras'
+Provides-Extra: test-noopt
+Requires-Dist: module-utilities[test-extras] ; extra == 'test-noopt'
+Provides-Extra: tools
+Requires-Dist: pre-commit ; extra == 'tools'
+Requires-Dist: cruft ; extra == 'tools'
+Requires-Dist: scriv ; extra == 'tools'
+Provides-Extra: typing
+Requires-Dist: module-utilities[typing-extras] ; extra == 'typing'
+Requires-Dist: module-utilities[test] ; extra == 'typing'
+Provides-Extra: typing-extras
+Requires-Dist: mypy >=1.4.1 ; extra == 'typing-extras'
+Requires-Dist: pytype ; (python_version < "3.11") and extra == 'typing-extras'
+
+<!-- markdownlint-disable MD041 -->
+
+[![Repo][repo-badge]][repo-link] [![Docs][docs-badge]][docs-link]
+[![PyPI license][license-badge]][license-link]
+[![PyPI version][pypi-badge]][pypi-link]
+[![Conda (channel only)][conda-badge]][conda-link]
+[![Code style: black][black-badge]][black-link]
+
+<!--
+  For more badges, see
+  https://shields.io/category/other
+  https://naereen.github.io/badges/
+  [pypi-badge]: https://badge.fury.io/py/module-utilities
+-->
+
+[black-badge]: https://img.shields.io/badge/code%20style-black-000000.svg
+[black-link]: https://github.com/psf/black
+[pypi-badge]: https://img.shields.io/pypi/v/module-utilities
+[pypi-link]: https://pypi.org/project/module-utilities
+[docs-badge]: https://img.shields.io/badge/docs-sphinx-informational
+[docs-link]: https://pages.nist.gov/module-utilities/
+[repo-badge]: https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff
+[repo-link]: https://github.com/usnistgov/module-utilities
+[conda-badge]: https://img.shields.io/conda/v/conda-forge/module-utilities
+[conda-link]: https://anaconda.org/conda-forge/module-utilities
+[license-badge]: https://img.shields.io/pypi/l/cmomy?color=informational
+[license-link]: https://github.com/usnistgov/module-utilities/blob/main/LICENSE
+
+<!-- other links -->
+
+[cachetools]: https://github.com/tkem/cachetools/
+
+# `module-utilities`
+
+A Python package for creating python modules.
+
+## Overview
+
+I was using the same code snippets over and over, so decided to put them in one
+place.
+
+## Features
+
+- `cached`: A module to cache class attributes and methods. Right now, this uses
+  a standard python dictionary for storage. Future versions will hopefully
+  integrate with something like [cachetools].
+
+- `docfiller`: A module to share documentation. This is addapted from the
+  [pandas `doc` decorator](https://github.com/pandas-dev/pandas/blob/main/pandas/util/_decorators.py).
+  There are some convenience functions and classes for sharing documentation.
+
+- `docinhert`: An interface to [docstring-inheritance] module. This can be
+  combined with `docfiller` to make creating related function/class
+  documentation easy.
+
+[docstring-inheritance]: https://github.com/AntoineD/docstring-inheritance
+
+## Status
+
+This package is actively used by the author. Please feel free to create a pull
+request for wanted features and suggestions!
+
+## Quick start
+
+Use one of the following
+
+```bash
+pip install module-utilities
+```
+
+or
+
+```bash
+conda install -c conda-forge module-utilities
+```
+
+Optionally, you can install [docstring-inheritance] to use the `docinherit`
+module:
+
+```base
+pip install docstring-inheritance
+# or
+conda install -c conda-forge docstring-inheritance
+```
+
+## Example usage
+
+Simple example of using `cached` module.
+
+```pycon
+>>> from module_utilities import cached
+>>>
+>>> class Example:
+...     @cached.prop
+...     def aprop(self):
+...         print("setting prop")
+...         return ["aprop"]
+...     @cached.meth
+...     def ameth(self, x=1):
+...         print("setting ameth")
+...         return [x]
+...     @cached.clear
+...     def method_that_clears(self):
+...         pass
+...
+>>> x = Example()
+>>> x.aprop
+setting prop
+['aprop']
+>>> x.aprop
+['aprop']
+
+>>> x.ameth(1)
+setting ameth
+[1]
+>>> x.ameth(x=1)
+[1]
+
+>>> x.method_that_clears()
+
+>>> x.aprop
+setting prop
+['aprop']
+>>> x.ameth(1)
+setting ameth
+[1]
+
+```
+
+Simple example of using `DocFiller`.
+
+```pycon
+>>> from module_utilities.docfiller import DocFiller, indent_docstring
+>>> d = DocFiller.from_docstring(
+...     """
+...     Parameters
+...     ----------
+...     x : int
+...         x param
+...     y : int
+...         y param
+...     z0 | z : int
+...         z int param
+...     z1 | z : float
+...         z float param
+...
+...     Returns
+...     -------
+...     output0 | output : int
+...         Integer output.
+...     output1 | output : float
+...         Float output
+...     """,
+...     combine_keys='parameters'
+... )
+...
+>>> @d.decorate
+... def func(x, y, z):
+...     """
+...     Parameters
+...     ----------
+...     {x}
+...     {y}
+...     {z0}
+...     Returns
+...     --------
+...     {returns.output0}
+...     """
+...     return x + y + z
+...
+>>> print(indent_docstring(func))
++  Parameters
++  ----------
++  x : int
++      x param
++  y : int
++      y param
++  z : int
++      z int param
++  Returns
++  --------
++  output : int
++      Integer output.
+
+# Note that for python version <= 3.8 that method chaining
+# in decorators doesn't work, so have to do the following.
+# For newer python, you can inline this.
+>>> dd = d.assign_keys(z='z0', out='returns.output0')
+>>> @dd.decorate
+... def func1(x, y, z):
+...     """
+...     Parameters
+...     ----------
+...     {x}
+...     {y}
+...     {z}
+...     Returns
+...     -------
+...     {out}
+...     """
+...     pass
+...
+>>> print(indent_docstring(func1))
++  Parameters
++  ----------
++  x : int
++      x param
++  y : int
++      y param
++  z : int
++      z int param
++  Returns
++  -------
++  output : int
++      Integer output.
+
+>>> dd = d.assign_keys(z='z1', out='returns.output1')
+>>> @dd(func1)
+... def func2(x, y, z):
+...     pass
+
+>>> print(indent_docstring(func2))
++  Parameters
++  ----------
++  x : int
++      x param
++  y : int
++      y param
++  z : float
++      z float param
++  Returns
++  -------
++  output : float
++      Float output
+
+
+```
+
+<!-- end-docs -->
+
+## Documentation
+
+See the [documentation][docs-link] for a look at `module-utilities` in action.
+
+## License
+
+This is free software. See [LICENSE][license-link].
+
+## Related work
+
+`module-utilities` is used in the following packages
+
+- [cmomy]
+- [analphipy]
+- [tmmc-lnpy]
+- [thermoextrap]
+
+[cmomy]: https://github.com/usnistgov/cmomy
+[analphipy]: https://github.com/usnistgov/analphipy
+[tmmc-lnpy]: https://github.com/usnistgov/tmmc-lnpy
+[thermoextrap]: https://github.com/usnistgov/thermoextrap
+
+## Contact
+
+The author can be reached at <wpk@nist.gov>.
+
+## Credits
+
+This package was created with
+[Cookiecutter](https://github.com/audreyr/cookiecutter) and the
+[wpk-nist-gov/cookiecutter-pypackage](https://github.com/wpk-nist-gov/cookiecutter-pypackage)
+Project template forked from
+[audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
+
+<!-- markdownlint-disable MD024 -->
+
+# Changelog
+
+Changelog for `module-utilities`
+
+## Unreleased
+
+See the fragment files in
+[changelog.d](https://github.com/usnistgov/module-utilities)
+
+<!-- scriv-insert-here -->
+
+## v0.7.0 — 2023-08-15
+
+### Changed
+
+- Simplified cached.prop by using (new) CachedProperty class.
+
+## v0.6.0 — 2023-08-01
+
+### Added
+
+- Now include module `docinhert` to interface with
+  [docstring-inheritance](https://github.com/AntoineD/docstring-inheritance)
+- Fully support mypy and pyright type checking.
+
+## v0.5.0 — 2023-07-10
+
+### Added
+
+- Add `_prepend` option to docfiller. Default behavior is now to append current
+  docstring to templates.
+
+## v0.4.0 — 2023-06-14
+
+### Added
+
+- Package now available on conda-forge
+
+### Changed
+
+- Properly vendor numpydocs and include pointer to license
+
+## v0.3.0 — 2023-05-03
+
+### Added
+
+- Added `DocFiller.assign_param` to more easily add a new parameter.
+
+## v0.2.0 — 2023-05-02
+
+### Added
+
+- Added method `assign_keys` to `DocFiller`.
+
+## v0.1.0 — 2023-05-01
+
+### Added
+
+- Add typing support. Passing mypy, pyright, pytype.
+
+This software was developed by employees of the National Institute of Standards
+and Technology (NIST), an agency of the Federal Government. Pursuant to title 17
+United States Code Section 105, works of NIST employees are not subject to
+copyright protection in the United States and are considered to be in the public
+domain. Permission to freely use, copy, modify, and distribute this software and
+its documentation without fee is hereby granted, provided that this notice and
+disclaimer of warranty appears in all copies.
+
+THE SOFTWARE IS PROVIDED 'AS IS' WITHOUT ANY WARRANTY OF ANY KIND, EITHER
+EXPRESSED, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTY
+THAT THE SOFTWARE WILL CONFORM TO SPECIFICATIONS, ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND FREEDOM FROM
+INFRINGEMENT, AND ANY WARRANTY THAT THE DOCUMENTATION WILL CONFORM TO THE
+SOFTWARE, OR ANY WARRANTY THAT THE SOFTWARE WILL BE ERROR FREE. IN NO EVENT
+SHALL NIST BE LIABLE FOR ANY DAMAGES, INCLUDING, BUT NOT LIMITED TO, DIRECT,
+INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES, ARISING OUT OF, RESULTING FROM, OR
+IN ANY WAY CONNECTED WITH THIS SOFTWARE, WHETHER OR NOT BASED UPON WARRANTY,
+CONTRACT, TORT, OR OTHERWISE, WHETHER OR NOT INJURY WAS SUSTAINED BY PERSONS OR
+PROPERTY OR OTHERWISE, AND WHETHER OR NOT LOSS WAS SUSTAINED FROM, OR AROSE OUT
+OF THE RESULTS OF, OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
+
+Distributions of NIST software should also include copyright and licensing
+statements of any third-party software that are legally bundled with the code in
+compliance with the conditions of those licenses.
+
+---
+
+module-utilities vendors a copy of docscrape.py from numpydoc.
+The license is BSD and include at "module_utilities/vendored/LICENSE.txt".
