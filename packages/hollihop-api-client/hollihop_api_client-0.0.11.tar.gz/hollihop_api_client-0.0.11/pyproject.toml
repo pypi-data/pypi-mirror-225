@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hollihop_api_client"
+version = "0.0.11"
+authors = [
+  { name="Nicholas Maltseb", email="nmmaltsev@outlook.com" },
+]
+description = "This library helps you easily create a python application with Hollihop API"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    'phonenumbers >= 8.3.11',
+    'requests >= 2.30.0',
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/nicholasChieftain/hollihop_api_client/"
+"Bug Tracker" = "https://github.com/nicholasChieftain/hollihop_api_client/issues"
