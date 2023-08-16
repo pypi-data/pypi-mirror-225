@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: st-newsapi-connector
+Version: 0.1.1
+Summary: A Python package to query data from NewsAPI in Streamlit apps
+Home-page: https://st-newsapi-connector.streamlit.app/
+License: MIT
+Author: D. Carpintero
+Requires-Python: >=3.8,<3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: pandas (==1.5.1)
+Requires-Dist: pycountry (==22.3.5)
+Requires-Dist: requests (==2.31.0)
+Requires-Dist: streamlit (==1.25.0)
+Project-URL: Repository, https://github.com/dcarpintero/st-newsapi-connector
