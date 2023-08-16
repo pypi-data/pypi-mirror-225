@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: wattrex_driver_db
+Version: 0.0.1
+Summary: A simple database connector for SQLAlchemy. It is used to 
+Author-email: Marius Crisan <mariuscrsn+pypi@gmail.com>, Pablo Pastor <pastorpflores+pypi@gmail.com>, Javier Sanz <javiersanzmoline@gmail.com>, Roberto Aldea <r.aldea.csic+pypi@gmail.com>, Luis Roche <luis.roche@hotmail.com>
+Project-URL: Homepage, https://github.com/WattRex/Battery-Cycler-Drivers
+Project-URL: Bug Reports, https://github.com/WattRex/Battery-Cycler-Drivers/issues
+Project-URL: Bug Tracker, https://github.com/WattRex/Battery-Cycler-Drivers/issues
+Project-URL: Source, https://github.com/WattRex/Battery-Cycler-Drivers
+Project-URL: Funding, https://donate.pypi.org
+Keywords: ORM,database,connector,mysql,sqlite,SQLAlchemy,Database abstraction
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Software Development :: Embedded Systems
+Classifier: Topic :: Database :: Front-Ends
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: SQL
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Battery cycler database abstraction
+Module used to provide an abstraction for a relational database used to store info 
+related with battery cyclers.
+It encapsulates crucial data concerning enqueued and executed experiments, as well
+as compatible and employed devices within individual cycler stations. Battery details
+and associated experiment profiles are also housed. Additionally, it contains generic 
+power metrics captured during experiment runs, complemented by custom measures confgiured 
+by the user.
+
