@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: arcle
+Version: 0.1.0
+Summary: An ARC Learning Environment built on Gymnasium
+License: Apache-2.0
+Author: Hosung Lee
+Author-email: confeitohs@gmail.com
+Requires-Python: >=3.10
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Dist: gymnasium (>=0.29.0,<0.30.0)
+Requires-Dist: pygame (>=2.5.1,<3.0.0)
+Description-Content-Type: text/markdown
+
+# Arcle - ARC Learning Environment
+Run Example: `python3 examples.py`
+
+![image](images/ss.png)
