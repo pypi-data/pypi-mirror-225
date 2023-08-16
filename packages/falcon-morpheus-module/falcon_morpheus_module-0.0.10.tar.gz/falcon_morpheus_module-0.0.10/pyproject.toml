@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "falcon_morpheus_module"
+version = "0.0.10"
+description = ""
+authors = ["NG.CASH"]
+readme = "README.md"
+packages = [{include = "falcon_morpheus_module"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
