@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: boxhed_shap
+Version: 1.0.1
+Summary: A unified approach to explain the output of any machine learning model.
+Author: Arash Pakbin
+Author-email: a.pakbin@tamu.edu
+License: MIT
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+Provides-Extra: plots
+Provides-Extra: others
+Provides-Extra: docs
+Provides-Extra: test
+Provides-Extra: all
+License-File: LICENSE
+
+This is a redistribution of the Python package boxhed_shap with small changes to work with the package BoXHED.
