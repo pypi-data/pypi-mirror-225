@@ -1,0 +1,78 @@
+a = {
+    'question': 'What is CIBC?', 
+    'chat_history': [
+        HumanMessage(content='What is EPS according to the AIF?',
+                     additional_kwargs={}, 
+                     example=False), 
+        AIMessage(content="""\nEarnings per share (EPS) is a financial measure used to 
+evaluate the profitability of a company. It is the amount of money that a company has available to pay its shareholders. 
+It is calculated by dividing the company's earnings by the number of outstanding shares of its common stock. The earnings 
+per share can be thought of as the earnings available to each share of the company's common stock.""", 
+                    additional_kwargs={},
+                    example=False), 
+        HumanMessage(content='What is EPS according to the AIF?', additional_kwargs={}, example=False),
+        AIMessage(content=""" \nEarnings per share (EPS) is a financial metric used to measure a company's profitability. It is the 
+amount of money that a company has left after all of its expenses have been taken care of. It is calculated by dividing a 
+company's net income by the number of outstanding shares of its common stock.""", 
+                    additional_kwargs={}, 
+                    example=False), 
+        HumanMessage(content='What is CIBC?', additional_kwargs={}, example=False), 
+        AIMessage(content=""" \n1. What is CIBC's head 
+office in Toronto?\nAnswer: \nCIBC's head office in Toronto is located at 81 Bay Street, CIBC SQUARE, Toronto, Ontario, 
+Canada, M5J 0E7.""", 
+                    additional_kwargs={}, 
+                    example=False), 
+        HumanMessage(content='What is CIBC?', additional_kwargs={}, example=False), 
+        AIMessage(content='''\nCIBC is a Canadian bank that provides various financial services such as personal and
+business banking, investment management, and wealth management.''', 
+                    additional_kwargs={}, 
+                    example=False)], 
+    'answer': '''\nCIBC
+is a Canadian bank that provides various financial services such as personal and business banking, investment management, 
+and wealth management.''', 
+    'source_documents': [Document(page_content='''to The Canadian Bank of Commerce and it opened for 
+business under that name in 1867. Imperial Bank of Canada was incorporated in 1875 by special \nact of the Parliament of 
+Canada and commenced operations in that year. The address of the registered and head office of CIBC is 81 Bay Street, CIBC
+\nSQUARE, Toronto, Ontario, Canada, M5J 0E7. \n \nIntercorporate Relationships \nInformation about the intercorporate 
+relationships among CIBC and its significant subsidiaries is provided in Note 26 to the consolidated financial 
+\nstatements included in the 2022 Annual Report. \n \nDESCRIPTION OF THE BUSINESS  \n \nThe CIBC Organization \nCIBC is a 
+leading North American financial institution. CIBC serves its clients through four main strategic business units: Canadian
+Personal and \nBusiness Banking, Canadian Commercial Banking and Wealth Management, U.S. Commercial Banking and Wealth 
+Management and Capital Markets.''', metadata={'source': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 'file_path': 
+'./docs/pdf/CIBC_AIF_2022_ENG.pdf', 'page': 3, 'total_pages': 20, 'format': 'PDF 1.6', 'title': 'Microsoft Word - 2022 
+CIBC Annual Information Form_Final.docx', 'author': 'JenkinsS', 'subject': '', 'keywords': '', 'creator': 'PScript5.dll 
+Version 5.2.2', 'producer': 'Acrobat Distiller 17.0 (Windows)', 'creationDate': "D:20221130173052-05'00'", 'modDate': 
+"D:20221130181419-05'00'", 'trapped': ''}), Document(page_content='GLOSSARY \n \n \n \n188 \n \n \n1–100 \n55, 84 \n47–86 
+\n \n4, 14 \n \n166–170 \n \n166–171 \n \n \n201 \n \n182–185 \n \n200 \n \n100 \n \n101–107 \n \nUnless otherwise 
+specified, this AIF presents information as at October 31, 2022. \n \nCORPORATE STRUCTURE \n \nName, Address and 
+Incorporation \nCanadian Imperial Bank of Commerce (CIBC) is a diversified financial institution governed by the Bank Act 
+(Canada), which constitutes its charter. CIBC \nwas formed through the amalgamation of The Canadian Bank of Commerce and 
+Imperial Bank of Canada in 1961. The Canadian Bank of Commerce \nwas originally incorporated as Bank of Canada by special 
+act of the legislature of the Province of Canada in 1858. Subsequently, the name was changed \nto The Canadian Bank of 
+Commerce and it opened for business under that name in 1867. Imperial Bank of Canada was incorporated in 1875 by special',
+metadata={'source': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 'file_path': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 'page': 3, 
+'total_pages': 20, 'format': 'PDF 1.6', 'title': 'Microsoft Word - 2022 CIBC Annual Information Form_Final.docx', 
+'author': 'JenkinsS', 'subject': '', 'keywords': '', 'creator': 'PScript5.dll Version 5.2.2', 'producer': 'Acrobat 
+Distiller 17.0 (Windows)', 'creationDate': "D:20221130173052-05'00'", 'modDate': "D:20221130181419-05'00'", 'trapped': 
+''}), Document(page_content='CIBC 2022 Annual Information Form  4 \nCIBC’s four main strategic business units are 
+supported by the following functional groups: Technology, Infrastructure and Innovation, Risk \nManagement, People, 
+Culture and Brand, Finance and Enterprise Strategy, as well as other support groups, which all form part of Corporate and 
+Other. \nInformation about CIBC’s business lines and functional groups is provided in the 2022 Annual Report on pages 1 to
+100. \n \nA more complete description of services provided by Canadian Personal and Business Banking, Canadian Commercial 
+Banking and Wealth \nManagement, U.S. Commercial Banking and Wealth Management and Capital Markets can be found in the 
+2022 Annual Report on pages 22 to 32. \n \nCompetitive Conditions \nCIBC was the fifth largest Canadian chartered bank in 
+terms of market capitalization as at October 31, 2022.', metadata={'source': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 
+'file_path': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 'page': 4, 'total_pages': 20, 'format': 'PDF 1.6', 'title': 'Microsoft 
+Word - 2022 CIBC Annual Information Form_Final.docx', 'author': 'JenkinsS', 'subject': '', 'keywords': '', 'creator': 
+'PScript5.dll Version 5.2.2', 'producer': 'Acrobat Distiller 17.0 (Windows)', 'creationDate': "D:20221130173052-05'00'", 
+'modDate': "D:20221130181419-05'00'", 'trapped': ''}), Document(page_content='U.S., focused on middle-market and 
+mid-corporate companies, entrepreneurs, high-net-worth individuals and families, as well as personal and small \nbusiness 
+banking services in four U.S. Midwestern markets. \n \nCapital Markets provides integrated global markets products and 
+services, investment banking advisory and execution, corporate banking solutions and \ntop-ranked research to our clients 
+around the world. It includes Direct Financial Services which focuses on expanding CIBC’s digital capabilities to 
+\nprovide a cohesive set of direct banking, direct investing and innovative multi-currency payment solutions for CIBC’s 
+clients.', metadata={'source': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 'file_path': './docs/pdf/CIBC_AIF_2022_ENG.pdf', 
+'page': 3, 'total_pages': 20, 'format': 'PDF 1.6', 'title': 'Microsoft Word - 2022 CIBC Annual Information 
+Form_Final.docx', 'author': 'JenkinsS', 'subject': '', 'keywords': '', 'creator': 'PScript5.dll Version 5.2.2', 
+'producer': 'Acrobat Distiller 17.0 (Windows)', 'creationDate': "D:20221130173052-05'00'", 'modDate': 
+"D:20221130181419-05'00'", 'trapped': ''})]}
