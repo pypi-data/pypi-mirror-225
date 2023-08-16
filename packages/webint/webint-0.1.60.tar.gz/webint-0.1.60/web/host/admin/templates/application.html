@@ -1,0 +1,14 @@
+$def with (application)
+$var title: Application Settings
+<form>
+<p><label><input type=radio name=pypi value=pypi.org checked> pypi.org</label></p>
+<label><input name=application value=understory></label>
+<button>Check</button>
+</div>
+<div>
+<label><select name=application>
+$for app in []:
+    <option value=$app>$app</option>
+</select></label>
+<button name=action value=install>Install</button>
+</form>

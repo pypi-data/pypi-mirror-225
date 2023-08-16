@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "webint"
+version = "0.1.60"
+description = "an opinionated web framework that stays out of your way"
+readme = "README.md"
+homepage = "https://ragt.ag/code/projects/webint"
+repository = "https://ragt.ag/code/projects/webint.git"
+documentation = "https://ragt.ag/code/projects/webint/api"
+authors = ["Angelo Gladding <angelo@ragt.ag>"]
+license = "AGPL-3.0-or-later"
+packages = [{include="web"}]
+
+# [tool.poetry.plugins."webapps"]
+# admin = "web.host.admin:app"
+
+[tool.poetry.scripts]
+web = "web.__main__:main"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+bgq = "^0.1.3"
+txtint = "^0.1.2"
+sqlyte = "^0.1.1"
+easyuri = "^0.1.2"
+newmath = "^0.2.1"
+webagt = "^0.1.1"
+microformats = "^0.3.5"
+pendulum = "^2.1.2"
+emoji = "^2.2.0"
+restrictedpython = "^6.0"
+gevent = ">=23.7.0"
+gunicorn = "^20.1.0"
+waitress = "^2.1.2"
+watchdog = "^2.2.1"
+regex = "^2022.10.31"
+Unidecode = "^1.3.6"
+acme-tiny = "^5.0.1"
+dnspython = "2.3.0"
+Pygments = "^2.14.0"
+toml = "^0.10.2"
+pycryptodome = "^3.16.0"
+semver = "^2.13.0"
+jsonpatch = "^1.32"
+PySide6 = "^6.4.2"
+python-dotenv = "^0.21.1"
+python-whois = "^0.8.0"
+cryptography = "<39"
+pynacl = "^1.5.0"
+
+[tool.poetry.group.dev.dependencies]
+nuitka = "^1.3.8"
+zstandard = "^0.19.0"
+ordered-set = "^4.1.0"
+pillow = "^9.2.0"
+gmpg = {path="../gmpg", develop=true}
+bgq = {path="../bgq", develop=true}
+txtint = {path="../txtint", develop=true}
+sqlyte = {path="../sqlyte", develop=true}
+easyuri = {path="../easyuri", develop=true}
+newmath = {path="../newmath", develop=true}
+webagt = {path="../webagt", develop=true}
+microformats = {path="../python-microformats", develop=true}
+
+# [[tool.poetry.source]]
+# name = "main"
+# url = "https://ragt.ag/code/pypi"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

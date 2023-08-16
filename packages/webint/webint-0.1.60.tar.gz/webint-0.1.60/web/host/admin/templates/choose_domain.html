@@ -1,0 +1,9 @@
+$def with (onion,  name, local_ip, domain, domain_whois, domain_host, domain_ns, domain_ip, www_domain_ip)
+<h3>Addresses</h3>
+$if onion:
+    <p>This website will be immediately accessible using the <a
+        href=https://www.torproject.org/download target=_blank>Tor browser</a>
+        at the following address:</p>
+    <p><code>$onion</code></p>
+$else:
+    <p>No onion address could be found. Tor must not be configured properly.</p>
