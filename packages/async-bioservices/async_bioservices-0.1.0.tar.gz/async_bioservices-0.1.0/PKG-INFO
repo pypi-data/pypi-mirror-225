@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: async-bioservices
+Version: 0.1.0
+Summary: This is an asynchronous method of accessing bioservice's db2db function
+Author: Josh Loecker
+Author-email: joshloecker@icloud.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: bioservices (>=1.11.2,<2.0.0)
+Requires-Dist: pandas (>=1.5.3,<2.0.0)
+Description-Content-Type: text/markdown
+
+Async Bioservices
+
