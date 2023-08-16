@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: pydantic-sarif
+Version: 0.1.0
+Summary: A pydantic binding library for the sarif standard
+License: MIT
+Author: JoranHonig
+Author-email: JoranHonig@users.noreply.github.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pydantic (>=2.1.1,<3.0.0)
+Description-Content-Type: text/markdown
+
+# PySarif 
+
+This is a simple pydantic model for the SARIF format, generated with datamodel-codegen.
+
+## Installation
+
+```bash
+pip install pysarif
+```
+
