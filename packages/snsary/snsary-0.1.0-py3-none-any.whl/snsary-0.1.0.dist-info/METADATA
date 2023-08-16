@@ -1,0 +1,105 @@
+Metadata-Version: 2.1
+Name: snsary
+Version: 0.1.0
+Summary: A framework for sensor metrics
+Home-page: https://github.com/benthorner/snsary
+Author: Ben Thorner
+Author-email: benthorner@users.noreply.github.com
+Project-URL: Bug Tracker, https://github.com/benthorner/snsary/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: cachetools >=5.3.0
+Requires-Dist: wrapt >=1.14.1
+Provides-Extra: adafruit
+Provides-Extra: all
+Requires-Dist: requests >=2.28.2 ; extra == 'all'
+Requires-Dist: pyrfc3339 >=1.1 ; extra == 'all'
+Requires-Dist: gql[requests] >=3.4.0 ; extra == 'all'
+Requires-Dist: google-cloud-bigquery-storage >=2.18.1 ; extra == 'all'
+Requires-Dist: influxdb-client >=1.36.0 ; extra == 'all'
+Requires-Dist: psutil >=5.9.4 ; extra == 'all'
+Requires-Dist: pypms >=0.7.1 ; extra == 'all'
+Provides-Extra: awair
+Requires-Dist: requests >=2.28.2 ; extra == 'awair'
+Requires-Dist: pyrfc3339 >=1.1 ; extra == 'awair'
+Provides-Extra: datastax
+Requires-Dist: gql[requests] >=3.4.0 ; extra == 'datastax'
+Provides-Extra: google
+Requires-Dist: google-cloud-bigquery-storage >=2.18.1 ; extra == 'google'
+Provides-Extra: grafana
+Requires-Dist: requests >=2.28.2 ; extra == 'grafana'
+Provides-Extra: influxdb
+Requires-Dist: influxdb-client >=1.36.0 ; extra == 'influxdb'
+Provides-Extra: octopus
+Requires-Dist: requests >=2.28.2 ; extra == 'octopus'
+Requires-Dist: pyrfc3339 >=1.1 ; extra == 'octopus'
+Provides-Extra: pimoroni
+Provides-Extra: psutil
+Requires-Dist: psutil >=5.9.4 ; extra == 'psutil'
+Provides-Extra: pypms
+Requires-Dist: pypms >=0.7.1 ; extra == 'pypms'
+
+# Snsary
+
+A framework for sensor metrics.
+
+## Installation
+
+```bash
+pip3 install snsary
+```
+
+## Getting started
+
+Create a new file called example.py and paste:
+
+```python
+from snsary import system
+from snsary.outputs import MockOutput
+from snsary.sources import MockSensor
+from snsary.utils import logging
+
+MockSensor().subscribe(MockOutput())
+logging.configure_logging()
+system.start_and_wait()
+```
+
+This is a minimal Snsary program. To run it:
+
+```bash
+python3 example.py
+```
+
+At this point you should see some INFO logs e.g.
+
+```bash
+2021-11-13 19:07:17,144 - INFO - [mocksensor-4382645216] Collected 1 readings.
+2021-11-13 19:07:17,144 - INFO - [mockoutput-4383959840] Reading: <zero 1636830437 0>
+```
+
+Use Ctrl+C to quit the program.
+
+## Building an app
+
+Snsary makes it easy to build large sensing apps:
+
+- [In-built processing tools (API docs)](https://snsary.readthedocs.io/en/latest/).
+- [Extra pre-built Sensors and Outputs](docs/extras/README.md).
+
+[docs/examples/contrib.py](docs/examples/contrib.py) shows many of them working together.
+
+## How to deploy it
+
+[See the tutorial for how to setup and run a Snsary app as a service on a Raspberry Pi](docs/tutorial/README.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence
+
+See [LICENCE](LICENCE).
