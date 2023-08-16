@@ -1,0 +1,3 @@
+[console_scripts]
+bottle-suite = scripts.app:main
+bottle-suite-create = scripts.create:main
