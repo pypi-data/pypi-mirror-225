@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tooltils"
+version = "1.4.3"
+authors = [
+            {name="feetbots", email="pheetbots@gmail.com"},
+          ]
+description = "An optimised python utility package built on the standard library"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file="LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/feetbots/tooltils"
+"Issues" = "https://github.com/feetbots/tooltils/issues"
