@@ -1,0 +1,78 @@
+[build-system]
+requires = [
+  'setuptools', 
+  'setuptools-scm', 
+  'wheel',
+  'mako',
+  'oldest-supported-numpy',
+  'Cython',
+]
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+ensure_newline_before_comments = true
+line_length = 88
+known_first_party = "tabmat"
+skip_glob = '\.eggs/*,\.git/*,\.venv/*,build/*,dist/*'
+default_section = 'THIRDPARTY'
+
+[tool.cibuildwheel]
+skip = [
+  "*-win32",
+  "*-manylinux_i686",
+  "pp*", 
+  "*-musllinux_*"
+]
+test-requires = ["pytest", "pytest-xdist"]
+test-command = "pytest {package}/tests/test_matrices.py"
+# note: ARCHS_LINUX defined in build_wheels.yml file.
+
+[tool.cibuildwheel.macos]
+before-build = [
+  "bash build_tools/prepare_macos_wheel.sh",
+]
+
+[tool.cibuildwheel.macos.environment]
+LDFLAGS="-Wl,-rpath,$CONDA/envs/build/lib -L$CONDA/envs/build/lib"
+CFLAGS="-I$CONDA/envs/build/include"
+CXXFLAGS="-I$CONDA/envs/build/include"
+CXX="/usr/bin/clang++"
+CC="/usr/bin/clang"
+JE_INSTALL_SUFFIX="local"
+
+[tool.cibuildwheel.windows]
+before-all = [
+  "C:\\Miniconda\\condabin\\conda install -c conda-forge xsimd",
+]
+
+[tool.cibuildwheel.windows.environment]
+INCLUDE="C:\\\\Miniconda\\\\Library\\\\include"
+
+[tool.cibuildwheel.linux]
+before-all = [
+  "cd ~/",
+  "git clone --branch 5.2.1 https://github.com/jemalloc/jemalloc.git",
+  "cd jemalloc",
+  "./autogen.sh --disable-cxx --with-jemalloc-prefix=local --with-install-suffix=local --disable-tls --disable-initial-exec-tls",
+  "make",
+  "make install_bin install_include install_lib",
+  "cd ~/",
+  "git clone --branch 7.6.0 https://github.com/xtensor-stack/xsimd.git",
+  "cd xsimd",
+  "mkdir build",
+  "cd build",
+  "cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..",
+  "make install"
+]
