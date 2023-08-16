@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: mop-utils
+Version: 1.8.1rc1
+Summary: Utilities for MOP
+Requires-Python: >=3.8.0
+Requires-Dist: pyraisdk (~=0.2)
+Requires-Dist: PyYAML (>=6.0)
+Requires-Dist: numpy (>=1.22.0)
+
