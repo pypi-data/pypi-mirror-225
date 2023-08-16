@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: scwidgets
+Version: 0.0.0.dev0
+Summary: ipywidgets for the creation of interactive code demos and educational notebooks
+License: BSD-3-Clause
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: POSIX
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: ipywidgets >=8.0.0
+
+Important
+=========
+
+So far scicode-widget has been created by prototyping without much concern about the code quality. This resulted in faster development time but in cost of readability and maintanability of the code. Since we finished now the prototype phase and have converged on a set of functionalities we are satisfied with, we are in the process of refactoring the resulting code in this branch. While we are refactoring we recommend the usage of the `vertical-slice branch <https://github.com/osscar-org/scicode-widgets/tree/vertical-slice>`_ till all features have been implemented in the refactor.
+
+
+scicode-widgets
+===============
+
+.. marker-package-description
+
+A collection of ipywidgets for the creation of interactive code demos and educational notebooks with exercises that can be checked and exported.
+
+Installation
+------------
+
+.. code-block:: bash
+
+  pip install .

@@ -1,0 +1,12 @@
+.scwidgets {
+    border-right : 0px solid;
+    &__cue-box {
+        border-right : 0px solid;
+    }
+
+    &__cue-box--out-of-date {
+      border-right : 5px solid;
+      border-right-color: #77216F;
+    }
+}
+
