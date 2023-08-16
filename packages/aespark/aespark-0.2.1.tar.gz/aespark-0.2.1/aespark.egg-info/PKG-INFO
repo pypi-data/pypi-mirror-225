@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: aespark
+Version: 0.2.1
+Summary: Generate a QR code that can adapt to the cylinder
+Home-page: https://pypi.org/project/aespark/
+Author: wtianxin
+Author-email: 1007582510@qq.com
+License: MIT
+Keywords: aespark
+Classifier: Natural Language :: Chinese (Simplified)
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Utilities
+
+2023.08.16 v0.2.0
+
+1. 整理了代码编写方式，将所有代码按照功能分类拆分成了多个py文件，现在init里不再存放功能代码；
+
+2023.08.14 v0.1.5
+
+1. 修改了重大错误；
+2. 统一了IP地址文件中的省一级名称；
+
+2023.08.11 v0.1.4
+
+1. 增加了docx文档脱敏功能；
+1. 整合了一切需要读取文件匹配的类，名为Broken；
+1. 完成了部分数据本地查询，减小了库依赖，便于后续数据更新；
+
+2023.08.11
+
+1. 还原了基础数据存储方式，由于计费原因，还是选择随包下载；
+2. 银行卡板块新增了银行简称转换；
+
+2023.08.10
+
+1. 解决了ipv4 ipv6返回结构不统一的问题；
+2. 将附件存储改为了COS，极大减小了库大小，下载更快了；
+3. 优化了class中的变量名称，不需外露的变量名均使用下划线方式命名；
+4. 优化了金额书写的函数，现在能接收更多格式输入了；
+
+2023.08.08
+
+增加诸多功能，完善诸多细节，极大简化了代码名称
+
+1. 增加了ipv6的解析查询；
+2. 优化了Palette函数，现在可以传入列表参数，一次性记录多条信息了；
+3. 简化了函数名称；
+
+2023.08.07
+
+1. 新增银行卡归属行查询功能，与IP查询类似，需要先实例化，具体查看说明；
+
+2023.08.04
+
+1. 新增交易金额清洗：DataClean_amontCleaning；
+2. doc模块新增插入图片函数，支持图片缩放；
+3. 优化了快速资金透视表功能，加入了事前清洗，降低了调用该函数的参数要求；
+4. 其他细节优化；
+
+2023.08.02
+
+1. 新增快速计算资金透视表功能；
+2. 多sheet合并新增参数save，用于设置是否保存合并文件，默认保存；
+3. 单sheet合并提取合并文件名称改进，现在能够产出语序正确的文件名称了；
+4. doc模块的插表函数，现在表格能够自动调整到合适的宽度了；
