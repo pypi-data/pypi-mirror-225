@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: intent-inference
+Version: 0.1.2
+Summary: Predicts selection intent
+Author: Jake Wagoner, Kiran Gadhave
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.24.3,<2.0.0)
+Requires-Dist: pandas (>=2.0.2,<3.0.0)
+Requires-Dist: paretoset (>=1.2.3,<2.0.0)
+Requires-Dist: scikit-learn (>=1.2.2,<2.0.0)
+Requires-Dist: vega-datasets (>=0.9.0,<0.10.0)
+Description-Content-Type: text/markdown
+
+# Intent Inference
+
+Infer the intent of a selection for a given database.
+
