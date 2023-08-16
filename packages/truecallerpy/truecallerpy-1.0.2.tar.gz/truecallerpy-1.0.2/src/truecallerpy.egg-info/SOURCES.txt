@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/truecallerpy/__init__.py
+src/truecallerpy/cli.py
+src/truecallerpy/login.py
+src/truecallerpy/search.py
+src/truecallerpy/verify_otp.py
+src/truecallerpy.egg-info/PKG-INFO
+src/truecallerpy.egg-info/SOURCES.txt
+src/truecallerpy.egg-info/dependency_links.txt
+src/truecallerpy.egg-info/entry_points.txt
+src/truecallerpy.egg-info/requires.txt
+src/truecallerpy.egg-info/top_level.txt
+src/truecallerpy/data/__init__.py
+src/truecallerpy/data/phones_list.py
+tests/test_truecallerpy.py
