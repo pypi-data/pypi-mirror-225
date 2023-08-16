@@ -1,0 +1,30 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dlogz"
+version = "0.0.3"
+description = "package to ship dlogz"
+readme = "README.md"
+authors = [{ name = "m4st3rm1nd", email = "tech@dlogz.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["dlogz"]
+dependencies = []
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["black"]
+
+[project.urls]
+Homepage = "https://github.com/abhijeetkr93/dlogz_sdk"
+
+[project.scripts]
+dlogz = "dlogz.__main__:main"
