@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hmta"
+version = "1.0.0"
+authors = [
+  { name="rooyca", email="rooyca@gmail.com" },
+]
+description = "Do you wanna know how much time would take you to watch an anime? Well, this is your tool."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+homepage = "https://github.com/rooyca/hmta"
+issues = "https://github.com/rooyca/hmta/issues"
+
+[project.scripts]
+hmta = "src.hmta:main"
