@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: arcle
+Version: 0.1.1
+Summary: An ARC Learning Environment built on Gymnasium
+Home-page: https://github.com/ConfeitoHS/arcle
+License: Apache-2.0
+Author: Hosung Lee
+Author-email: confeitohs@gmail.com
+Requires-Python: >=3.10
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Dist: gymnasium (>=0.29.0,<0.30.0)
+Requires-Dist: pygame (>=2.5.1,<3.0.0)
+Project-URL: Bug Tracker, https://github.com/ConfeitoHS/arcle/issues
+Project-URL: Repository, https://github.com/ConfeitoHS/arcle
+Description-Content-Type: text/markdown
+
+# ARCLE - ARC Learning Environment
+
+ARCLE is a lightweight Gymnasium (previously OpenAI Gym) environment for training on ARC(Abstraction and Reasoning Corpus) and ARC-like datasets.
+
+## Installation
+`pip install arcle`
+
