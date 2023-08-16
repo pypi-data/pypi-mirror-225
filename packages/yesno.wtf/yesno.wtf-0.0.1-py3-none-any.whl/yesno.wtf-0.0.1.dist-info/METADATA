@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: yesno.wtf
+Version: 0.0.1
+Summary: Wrapper for yesno.wtf
+Home-page: https://github.com/Nemupy/yesno.wtf
+Author: Nemupy
+Author-email: nemu.otoyume@gmail.com
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# yesno.wtf
+Wrapper for [yesno.wtf](https://yesno.wtf/)
+
+# Install
+Python 3 or higher is required.    
+```cmd
+# Linux/OS X
+$ python -m pip install -U yesno.wtf
+
+# Windows
+> py -3 -m pip install -U yesno.wtf
+```    
+
+# Example 
+```py
+from yesno import YesNo
+
+yesno = YesNo()
+
+print(yesno.answer)
+```
+
+# Method
+- `answer`
+- `forced`
+- `image`
