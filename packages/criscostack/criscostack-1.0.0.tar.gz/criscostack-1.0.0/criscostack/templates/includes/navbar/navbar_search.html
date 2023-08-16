@@ -1,0 +1,9 @@
+{% if navbar_search %}
+	<li>
+		<form action='/search'>
+		<input name='q' class='form-control navbar-search' type='text'
+			value='{{ criscostack.form_dict.q|e if criscostack.form_dict.q else ''}}'
+			{% if not criscostack.form_dict.q%}placeholder="{{ _("Search...") }}"{% endif %}>
+		</form>
+	</li>
+{% endif %}
