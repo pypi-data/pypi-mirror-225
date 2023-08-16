@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytektronix"
+version = "0.0.3"
+authors = [
+  { name="Matteo Vidali", email="mmvidali@gmail.com" },
+  { name="Barrett Tieman", email="mmvidali@gmail.com" }, 
+]
+description = "A python package for controlling tektronix scopes"
+readme = "README.md"
+requires-python = ">=3.0"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+    "pyvisa-py==0.5.3",
+    "aenum==3.1.11",
+    "python-vxi11==0.9",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/matteovidali/pytektronix"
+"Bug Tracker" = "https://github.com/matteovidali/pytektronix/issues"
+"Documentation" = "https://github.com/matteovidali/pytektronix/wiki"
+ 
