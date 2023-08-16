@@ -1,0 +1,9 @@
+exclude *.cpp
+include LICENSE
+graft wasmpy/arch
+include wasmpy/nativelib.cpp
+recursive-include wasmpy *.hpp
+recursive-exclude wasmpy/arch *.o
+recursive-exclude wasmpy/arch *.cpp
+recursive-exclude wasmpy/arch *.tmp
+recursive-include wasmpy/arch lib.cpp
