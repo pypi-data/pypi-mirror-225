@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: frbb
+Version: 1.0.0
+Summary: This module contains FastRealBoostBins class representing an ensemble classifier for fast predictions implemented using numba.jit and numba.cuda.
+Home-page: https://github.com/pklesk/fast_rboost_bins
+Author: Przemysław Klęsk
+Author-email: pklesk@zut.edu.pl
+License: GNU Affero General Public License v3
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: numpy
+Requires-Dist: numba
+Requires-Dist: scikit-learn
+
