@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: ophyd-basler
+Version: 0.2.3
+Summary: Basler camera API integration with ophyd
+Home-page: https://github.com/BNL-ATF/ophyd-basler
+Author: Brookhaven National Lab
+Author-email: tmorris@bnl.gov
+License: BSD (3-clause)
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: area-detector-handlers
+Requires-Dist: bluesky
+Requires-Dist: databroker
+Requires-Dist: event-model
+Requires-Dist: h5py
+Requires-Dist: ipython
+Requires-Dist: matplotlib
+Requires-Dist: napari[all]
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: ophyd
+Requires-Dist: pypylon
+
+# ophyd-basler
+
+[![Tests](https://github.com/BNL-ATF/ophyd-basler/actions/workflows/testing.yml/badge.svg)](https://github.com/BNL-ATF/ophyd-basler/actions/workflows/testing.yml)
+[![PyPI](https://img.shields.io/pypi/v/ophyd-basler.svg?logo=pypi&logoColor=white&label=PyPI)](https://pypi.python.org/pypi/ophyd-basler)
+
+Basler camera API integration with ophyd
+
+* Free software: BSD-3-Clause license
