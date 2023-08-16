@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "unicall"
+version = "0.1.2"
+description = "Easy to use RPC library based on uniserde"
+authors = ["Jakob Pinterits <jakob.pinterits@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+uniserde = "^0.3.6"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+isort = "^5.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
