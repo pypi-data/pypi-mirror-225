@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: deepeval
+Version: 0.2.1
+Summary: Deep eval provides evaluation platform to accelerate development of LLMs and Agents
+Home-page: https://github.com/mr-gpt/deepeval
+Author: Confident AI
+Author-email: jacky@twilix.io
+Requires-Dist: requests
+Requires-Dist: tqdm
+Requires-Dist: transformers
+Requires-Dist: pytest
+Requires-Dist: tabulate
+Requires-Dist: sentence-transformers
+
