@@ -1,0 +1,12 @@
+prefix=/project/build/lib.linux-x86_64-cpython-310/opensees
+exec_prefix=${prefix}
+libdir=/project/build/lib.linux-x86_64-cpython-310/opensees/lib64
+includedir=/project/build/lib.linux-x86_64-cpython-310/opensees/include/arpack
+
+Name: OpenSeesNumPack
+Description: Collection of Fortran77 subroutines designed to solve large scale eigenvalue problems
+Version: 3.9.0
+URL: https://github.com/opencollab/arpack-ng/
+Libs: -L${libdir} -larpack
+Libs.private: -lopenblas -l-lpthread -l-lm -l-ldl
+Cflags: -I${includedir}
