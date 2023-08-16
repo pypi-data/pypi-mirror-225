@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: s3UpManager
+Version: 0.0.1
+Summary: Module that will facilitate the interaction with s3 buckets
+Author-email: Arkneid <chaminejoao@gmail.com>
+Project-URL: Homepage, https://bitbucket.org/JoaoChamine/s3_upload
+Project-URL: Bug Tracker, https://bitbucket.org/JoaoChamine/s3_upload/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+## s3Upload
+
+This is to facilitate the interation with s3 buckets (aws or other)
