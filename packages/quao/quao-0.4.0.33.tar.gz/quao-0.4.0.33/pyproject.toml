@@ -1,0 +1,38 @@
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quao"
+version = "0.4.0.33"
+description = "Quao Library supporting Quao Platform for Quantum Computing"
+readme = "README.md"
+authors = [{ name = "CITYNOW Co. Ltd. ", email = "corp@citynow.vn" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["quao", "quantum"]
+dependencies = [
+    "qiskit==0.42.1",
+    "qiskit-aer-gpu==0.11.2",
+#    "qiskit-aer-gpu-cu11==0.12.2",
+    "qbraid==0.4.0",
+    "amazon-braket-sdk==1.38.1",
+    "qiskit-ibm-runtime",
+    "qiskit-ibm-provider",
+    "matplotlib",
+    "pylatexenc",
+    "loguru"
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://citynow.vn/"
+
