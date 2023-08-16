@@ -1,0 +1,49 @@
+##################################
+#           PRODUCTION           #
+##################################
+
+##### Frameworks #####
+
+Flask 
+
+##### Configuration and Documentation #####
+
+
+##### System #####
+
+setuptools
+python-dotenv
+
+##### Versioning and Storage #####
+PyGithub
+pygit2
+boto3
+tinyDB
+cloudinary
+
+##### Frontend #####
+
+jsmin
+
+##### Network #####
+
+requests
+gunicorn
+
+##### Security #####
+
+
+##### Async ##### 
+celery
+pyamqp
+
+##### AI #####
+
+openai
+
+##### Parsing #####
+
+validators
+dateparser
+python-slugify
+markdown
