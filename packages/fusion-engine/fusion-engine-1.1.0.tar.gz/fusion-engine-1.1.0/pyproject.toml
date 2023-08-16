@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fusion-engine"
+description = "A custom open-source game engine on Python and PySDL2, it's written in pure Python! It's easy and fast!"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [{name = "Dimkauzh", email = "uzhdimka@gmail.com"}]
+keywords = ["game", "python", "gamedev", "game-engine", "pygame",
+    "game-development", "pure-python", "pygame-mixer", "pygame-ttf", "pygame-image",
+    "python-game", "pygame-library", "python-game-library",
+    "python-game-engine", "python-games"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Video",
+]
+dynamic = ["version", "readme", "dependencies"]
+
+[tool.setuptools.dynamic]
+version = {attr = "fusionengine.__version__"}
+readme = {file = ["README.md"], content-type = "text/markdown"}
+dependencies = {file = "requirements.txt"}
+
+[tool.setuptools.package-data]
+fusionengine = ["**/*.png"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
