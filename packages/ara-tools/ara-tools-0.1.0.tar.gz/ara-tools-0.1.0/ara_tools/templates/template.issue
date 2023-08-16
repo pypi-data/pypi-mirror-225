@@ -1,0 +1,16 @@
+@tag_name_1 @tag_name_n < optional >    
+Issue: < descriptive issue >  
+
+Contributes to: < name of the artefact|rule to which the value is
+contributed and the bug is fixed >  
+
+*Optional descriptions of the issue in Gherkin style*
+
+Given < descriptive text of the starting conditions where the issue occurs >  
+When < action under which the issues occurs >  
+Then < resulting behavior in contrast to the expected behavior >  
+
+*or optional free text description*
+
+Description: < further free text description to understand the
+issue, no format defined >
