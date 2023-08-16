@@ -1,0 +1,421 @@
+.. _whatsnew-5.0:
+
+**************************
+What's New in Astropy 5.0?
+**************************
+
+Overview
+========
+
+Astropy 5.0 is a major release that adds significant new functionality since
+the 4.3.x series of releases.  In addition, it is a long-term support release
+(LTS) which will be supported with bug fixes for two years.
+
+In particular, this release includes:
+
+* :ref:`whatsnew-5.0-cosmology-io`
+* :ref:`whatsnew-5.0-cosmology-units`
+* :ref:`whatsnew-5.0-modeling-new-models`
+* :ref:`whatsnew-5.0-dask-in-table`
+* :ref:`whatsnew-5.0-mixin-registry`
+* :ref:`whatsnew-5.0-parquet-tables`
+* :ref:`whatsnew-5.0-mrt-format-tables`
+* :ref:`whatsnew-5.0-masked-quantity-columns`
+* :ref:`whatsnew-5.0-skycoord-to-table`
+* :ref:`whatsnew-5.0-io-unified`
+
+In addition to these major changes, Astropy v5.0 includes a large number of
+smaller improvements and bug fixes, which are described in the
+:ref:`changelog`. By the numbers:
+
+* 1323 commits have been added since 4.3
+* 146 issues have been closed since 4.3
+* 258 pull requests have been merged since 4.3
+* 54 people have contributed since 4.3
+* 18 of which are new contributors
+
+.. _whatsnew-5.0-cosmology-io:
+
+Support for reading, writing, and converting ``Cosmology``
+==========================================================
+
+Four new methods --
+:meth:`~astropy.cosmology.Cosmology.read`,
+:meth:`~astropy.cosmology.Cosmology.write`,
+:meth:`~astropy.cosmology.Cosmology.from_format`,
+:meth:`~astropy.cosmology.Cosmology.to_format`
+-- have
+been added to the :class:`~astropy.cosmology.Cosmology` class,
+enabling reading from and writing to
+files and converting between different Python objects.
+The methods use Astropy's Unified I/O registry so custom formats can be
+registered. For further details see :ref:`cosmology_io`.
+
+For writing the representation of a :class:`~astropy.cosmology.Cosmology` to a file, the
+`ECSV <https://github.com/astropy/astropy-APEs/blob/main/APE6.rst>`_ table
+format is available. Astropy is encouraging the use of this format as a
+standard interoperable way of storing and communicating cosmology parameters.
+For example, to write out cosmological parameters:
+
+    >>> from astropy.cosmology import Cosmology, Planck18
+    >>> Planck18.write('planck18.ecsv', format="ascii.ecsv")
+
+and to read them back in:
+
+    >>> cosmo = Cosmology.read('planck18.ecsv', format="ascii.ecsv")
+    >>> cosmo == Planck18
+    True
+
+The :meth:`~astropy.cosmology.Cosmology.to_format` method can be
+used to convert cosmologies to other types such as `dict`,
+:class:`~astropy.table.QTable`, and :class:`~astropy.modeling.Model`.
+For example:
+
+    >>> ct = Planck18.to_format("astropy.table")
+    >>> ct
+    <QTable length=1>
+      name        H0        Om0    Tcmb0    Neff    m_nu [3]    Ob0
+             km / (Mpc s)            K                 eV
+      str8     float64    float64 float64 float64   float64   float64
+    -------- ------------ ------- ------- ------- ----------- -------
+    Planck18        67.66 0.30966  2.7255   3.046 0.0 .. 0.06 0.04897
+
+Models can be created from any redshift method of a Cosmology:
+
+    >>> model = Planck18.to_format("astropy.model", method="lookback_time")
+    >>> model
+    <FlatLambdaCDMCosmologyLookbackTimeModel(H0=67.66 km / (Mpc s), Om0=0.30966,
+        Tcmb0=2.7255 K, Neff=3.046, m_nu=[0.  , 0.  , 0.06] eV, Ob0=0.04897,
+        name='Planck18')>
+
+For details, e.g. how to parse a :class:`~astropy.table.QTable` to a
+:class:`~astropy.cosmology.Cosmology`, see :ref:`cosmology_io`.
+
+.. _whatsnew-5.0-cosmology-units:
+
+``Cosmology`` units module
+==========================
+
+A new module -- :mod:`astropy.cosmology.units` -- has been added to the cosmology subpackage for
+defining and collecting cosmological units and equivalencies.
+The unit ``littleh`` and equivalency ``with_H0`` are deprecated from the main
+``astropy.units`` subpackage and moved to ``cosmology.units``.
+A new unit, ``redshift``, is added for tracking factors of cosmological redshift.
+As this is a pseudo-unit an equivalency ``dimensionless_redshift`` is added
+(and enabled by default) to allow for redshift - dimensionless conversions.
+To convert between redshift and other cosmological distance measures, e.g.
+CMB temperature or comoving distance, the equivalency ``with_redshift`` is
+also added.
+
+    >>> import astropy.units as u
+    >>> import astropy.cosmology.units as cu
+    >>> z = 1100 * cu.redshift
+
+    >>> z.to(u.dimensionless_unscaled)
+    <Quantity 1100.>
+
+    >>> from astropy.cosmology import WMAP9
+    >>> equivalency = cu.with_redshift(WMAP9)  # construct equivalency
+
+    >>> z.to(u.K, equivalency)
+    <Quantity 3000.225 K>
+
+    >>> z.to(u.km / u.s / u.Mpc, equivalency)
+    <Quantity 1565637.40154275 km / (Mpc s)>
+
+    >>> z.to(cu.littleh, equivalency)
+    <Quantity 15656.37401543 littleh>
+
+.. doctest-requires:: scipy
+
+      >>> z.to(u.Mpc, equivalency)
+      <Quantity 14004.03157418 Mpc>
+
+:func:`~astropy.cosmology.units.with_redshift` is actually a composite
+of other equivalencies: :func:`~astropy.cosmology.units.redshift_distance`,
+:func:`~astropy.cosmology.units.redshift_hubble`,
+and :func:`~astropy.cosmology.units.redshift_temperature`,
+which may be used separately.
+
+.. _whatsnew-5.0-modeling-new-models:
+
+New Models
+==========
+
+The following models have now been added:
+
+* :class:`~astropy.modeling.functional_models.Cosine1D`: a one-dimensional
+  cosine model.
+* :class:`~astropy.modeling.functional_models.Tangent1D`: a one-dimensional
+  Tangent model.
+* :class:`~astropy.modeling.functional_models.ArcSine1D`: a one-dimensional
+  inverse sine model.
+* :class:`~astropy.modeling.functional_models.ArcCosine1D`: a one-dimensional
+  inverse cosine model.
+* :class:`~astropy.modeling.functional_models.ArcTangent1D`: a one-dimensional
+  inverse tangent model.
+
+A new module -- :mod:`astropy.modeling.spline` -- has been added to the modeling subpackage
+for defining spline models for astropy. Currently this only contains a one-dimensional
+spline model: :class:`~astropy.modeling.spline.Spline1D`. Since splines have
+unique fitting requirements four fitters have been introduced:
+
+* :class:`~astropy.modeling.spline.SplineInterpolateFitter`: fits an interpolating
+  spline to data.
+* :class:`~astropy.modeling.spline.SplineSmoothingFitter`: fits a smoothing spline
+  to data.
+* :class:`~astropy.modeling.spline.SplineExactKnotsFitter`: fits a spline to data
+  using the knots specified.
+* :class:`~astropy.modeling.spline.SplineSplrepFitter`: provides an interface
+  to fit a spline using the `scipy.interpolate.splrep` function.
+
+.. plot::
+   :include-source:
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from astropy.modeling.models import Spline1D
+    from astropy.modeling.fitting import (SplineInterpolateFitter,
+                                          SplineSmoothingFitter,
+                                          SplineExactKnotsFitter)
+
+    x = np.linspace(-3, 3, 50)
+    y = np.exp(-x**2) + 0.1 * np.random.randn(50)
+    xs = np.linspace(-3, 3, 1000)
+    t = [-1, 0, 1]
+    spl = Spline1D()
+
+    fitter = SplineInterpolateFitter()
+    spl1 = fitter(spl, x, y)
+
+    fitter = SplineSmoothingFitter()
+    spl2 = fitter(spl, x, y, s=0.5)
+
+    fitter = SplineExactKnotsFitter()
+    spl3 = fitter(spl, x, y, t=t)
+
+    plt.plot(x, y, 'ro', label="Data")
+    plt.plot(xs, spl1(xs), 'b-', label="Interpolating")
+    plt.plot(xs, spl2(xs), 'g-', label="Smoothing")
+    plt.plot(xs, spl3(xs), 'k-', label="Exact Knots [-1, 0, 1]")
+    plt.legend()
+    plt.show()
+
+
+.. _whatsnew-5.0-dask-in-table:
+
+Added support for dask arrays in tables
+=======================================
+
+`Dask arrays <https://docs.dask.org/en/stable/>`_ are now preserved instead
+of being converted to Numpy arrays when added to tables:
+
+.. doctest-requires:: dask
+
+    >>> from astropy.table import Table
+    >>> import dask.array as da
+    >>> t = Table()
+    >>> t['a'] = da.arange(1_000_000_000_000)
+    >>> t
+    <Table length=1000000000000>
+         a
+       int64
+    ------------
+               0
+               1
+               2
+               3
+               4
+             ...
+    999999999995
+    999999999996
+    999999999997
+    999999999998
+    999999999999
+    >>> t['a'][100:200].compute()
+    array([100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112,
+           113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125,
+           126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138,
+           139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151,
+           152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164,
+           165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177,
+           178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190,
+           191, 192, 193, 194, 195, 196, 197, 198, 199]...)
+
+.. _whatsnew-5.0-mixin-registry:
+
+Added support for registering array-like objects as mixin columns
+=================================================================
+
+It is now possible to register functions (which we call mixin 'handlers') which
+can be used by astropy tables to convert, on-the-fly, any array-like object into
+a 'mixin' column that can be used in a table. As an example, this is used
+internally to provide the seamless integration of dask arrays into tables, as
+shown in :ref:`whatsnew-5.0-dask-in-table`.
+
+For more information about how to write your own handlers and register them,
+see :ref:`table_mixin_registry`.
+
+.. _whatsnew-5.0-parquet-tables:
+
+Support for reading and writing tables to Parquet format
+========================================================
+
+.. _Parquet: https://parquet.apache.org/
+.. _pyarrow: https://arrow.apache.org/docs/python/
+
+The :ref:`table_io` now supports reading and writing files in the Parquet_ format if the pyarrow_ package is installed.
+Apache Parquet is a columnar storage format related to the Hadoop ecosystem which supports a wide variety of data processing frameworks and programming languages.
+A key benefit of Parquet files is that each column is stored independently, and thus reading a subset of columns is fast and efficient.
+For more details see the :ref:`table_io_parquet` section.
+
+.. _whatsnew-5.0-mrt-format-tables:
+
+Support for reading and writing tables to MRT format
+=====================================================
+
+Astropy now supports reading and writing tables in the American Astronomical
+Society Journals' `Machine-Readable Table (MRT)
+<https://journals.aas.org/mrt-standards/>`_ format. This ASCII table format
+consists of single file with the table description header and the table data
+itself. MRT is similar to the `CDS <http://vizier.u-strasbg.fr/doc/catstd.htx>`_
+format standard, but differs in the table description sections and the lack of a
+separate ``ReadMe`` file.
+
+The writing functionality applies special handling to the first ``SkyCoord``
+column in the table to adhere to the MRT recommendations for presenting
+coordinate data. It also ensures that columns with units are written with the
+correct unit convention.
+
+For details see the :ref:`cds_mrt_format` section.
+
+.. _whatsnew-5.0-masked-quantity-columns:
+
+Support for masked quantity columns, including masked FITS columns with units
+=============================================================================
+
+Masked quantities are now fully supported in tables.  This includes :class:`~astropy.table.QTable`
+automatically converting :class:`~astropy.table.MaskedColumn` instances to
+``MaskedQuantity``,
+and :class:`~astropy.table.Table` doing the reverse.
+
+A consequence of this is that when FITS tables are read into a :class:`~astropy.table.QTable`, any
+missing entries will be masked. Hence, when such columns have units, all ``NaN``
+values will now be masked.
+
+.. _whatsnew-5.0-skycoord-to-table:
+
+Converting |SkyCoord| to |QTable|
+=================================
+
+Astropy v5.0 adds the :meth:`~astropy.coordinates.SkyCoord.to_table` method to
+|SkyCoord| objects, which creates a |QTable| from the |SkyCoord|::
+
+    >>> from astropy import units as u
+    >>> from astropy.coordinates import SkyCoord
+    >>> from astropy.time import Time
+    >>> sc = SkyCoord(ra=[40, 70]*u.deg, dec=[0, -20]*u.deg,
+    ...               obstime=Time([2000, 2010], format='jyear'))
+    >>> t =  sc.to_table()
+    >>> t
+    <QTable length=2>
+       ra     dec   obstime
+      deg     deg
+    float64 float64   Time
+    ------- ------- -------
+       40.0     0.0  2000.0
+       70.0   -20.0  2010.0
+
+Information about the coordinate frame is stored in the metadata of the table::
+
+    >>> t.meta
+    {'representation_type': 'spherical', 'frame': 'icrs'}
+
+For more details see :ref:`skycoord-table-conversion`.
+
+.. _whatsnew-5.0-io-unified:
+
+New Unified I/O architecture
+============================
+
+The :mod:`~astropy.io.registry` submodule has switched to a class-based architecture, allowing for
+the creation of custom registries. The three supported registry types are:
+
+* read-only : :class:`~astropy.io.registry.UnifiedInputRegistry`
+* write-only : :class:`~astropy.io.registry.UnifiedOutputRegistry`
+* read/write : :class:`~astropy.io.registry.UnifiedIORegistry`
+
+For backward compatibility all the methods on the read/write have corresponding
+module-level functions, which work with a default global read/write registry.
+
+Full change log
+===============
+
+To see a detailed list of all changes in version v5.0, including changes in
+API, please see the :ref:`changelog`.
+
+Contributors to the v5.0 release
+================================
+
+The people who have contributed to the code for this release are:
+
+.. hlist::
+  :columns: 4
+
+  *  Aarya Patil
+  *  Adam Ginsburg
+  *  Adrian Price-Whelan
+  *  Akeem  *
+  *  Akshat Dixit  *
+  *  Akshat1Nar  *
+  *  Albert Y. Shih
+  *  Brett Morris
+  *  Brigitta Sipőcz
+  *  Christoph Gohlke
+  *  Conor MacBride  *
+  *  Daniel Ryan
+  *  Daria Cara
+  *  David Stansby
+  *  Derek Homeier
+  *  Diego Asterio de Zaballa  *
+  *  E\. Madison Bray
+  *  E\. Rykoff  *
+  *  Ed Slavich
+  *  Eero Vaher
+  *  Emir  *
+  *  Erik Tollerud
+  *  Gabriel Perren
+  *  Hans Moritz Günther
+  *  James Tocknell
+  *  Jason Segnini  *
+  *  Jero Bado
+  *  Larry Bradley
+  *  Laurie Stephey  *
+  *  Leo Singer
+  *  Markus Demleitner  *
+  *  Marten van Kerkwijk
+  *  Matteo Bachetti
+  *  Maximilian Nöthe
+  *  Michael Brewer  *
+  *  Mihai Cara
+  *  Nadia Dencheva
+  *  Nathaniel Starkman
+  *  Ole Streicher
+  *  Pey Lian Lim
+  *  Roy Smart  *
+  *  Sam Van Kooten  *
+  *  Simon Conseil
+  *  Stuart Mumford
+  *  Suyog Garg
+  *  Thomas Robitaille
+  *  Tom Aldcroft
+  *  Volodymyr Savchenko  *
+  *  William Jamieson
+  *  Zé Vinicius
+  *  athul  *
+  *  iamsoto  *
+  *  luz paz  *
+  *  odidev  *
+
+Where a * indicates that this release contains their first contribution to
+Astropy.
