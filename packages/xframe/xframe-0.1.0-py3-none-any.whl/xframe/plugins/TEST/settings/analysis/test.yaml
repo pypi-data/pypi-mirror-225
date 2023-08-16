@@ -1,0 +1,149 @@
+name: '3d_model_0'
+dimensions: 3
+particle_radius: 300 # in Angstom
+pre_init_only: False
+grid:
+  n_radial_points: 128
+  #    n_angular_points: 1000
+  max_order: 99
+  oversampling:
+    use: True # if True n_radial_points setting will be ignored.
+    value: 4 # maxR/particle_radius
+  anti_aliazing_degree: 2 # controlls number of angular nodes N_theta > (anti_aliazing_degree + 1)*max_order/2 and N_phi > 2*N_theta
+harmonic_transform:
+  data_type: 'complex'
+fourier_transform:
+  type: 'Zernike'
+  data_type: 'complex'
+  pos_orders:
+    command: 'np.arange(100)'
+  pi_in_q: True
+  weights:
+    automatic_calculation: True
+    save: True
+  
+projections:
+  real:
+    initial_support:
+      type: 'max_radius'
+      max_r: 300 #700
+    shrink_wrap:
+      #sigma: 0.01
+      sigma: 1  #4,8
+      threshold: 0.1 #0.1
+      sigma_refinement: 1
+      threshold_refinement: 0.1
+    non_support_projections:
+      positivity:
+        threshold_rel_to_max: 0
+    HIO:
+      beta: 0.5
+  reciprocal:
+    pre_init:
+      bl_extraction_method: 'svd' #'QR','LU','svd'
+      b_abs_tolerance: 1e-10
+      get_mode:
+        value: 'from_file' # 'from_ccd' 'from_pdb' 'from_file' 
+        from_pdb:
+          pdb_id: '2X53' # only works for pdb entries with 2fo-fc map (i.e.: Most x-Ray crystallography entries)
+          save_ccd: True          
+      #get_mode: 'from_ccd'
+      save: True
+      allow_regridding: True # Allows regridding of the calculated or loaded projection matrices to the grid defined in above settings.
+      max_order: 99
+    used_order_ids: #must be subset of fourier_transform: pos_orders
+      command: 'np.arange(100)'
+    SO_freedom: #not implemented
+      use: False
+      radial_high_pass: 60
+    input_is_halfcomplex: False
+    odd_orders_to_0: True
+    use_q_window: False
+    q_window: [0.,0.25]
+    use_averaged_intensity: False
+    rescale_projection_to_1: False
+      
+orientation_fixing:
+  shift_center : True
+  point_inversion : False
+  fix_orientation : False #Not implemented for 3D
+
+GPU:
+  use: True
+multi_process:
+  use: True
+  #type: 'phasing'
+  type: 'routine_construction_and_phasing'
+  arg_dict: {}
+  n_args: 2 #40
+  n_evals: 1
+density_guess:
+  type: 'ball'
+  radius: 300
+  amplitude_function: 'random'
+  coord_sys: 'spherical'
+
+main_loop:
+  error:
+    methods:
+      command: "('real_rel_mean_square','cauchy_real','cauchy_reciprocal')"
+    limits:
+      command: '(8.5e-4,1e-5,1e-5)'
+    rel_error_limits:
+      HIO:
+        command: '(False,False,False)'
+      ER:
+        #command: '(False,False,False)'
+        command: '(2e-2,False,False)'
+        
+  methods:
+    HIO:
+      loop_iterations: 15 #15
+      refinement_iterations: 0
+    ER:
+      loop_iterations: 15 #15
+      refinement_iterations: 50
+    SW:
+      loop_iterations: 1
+      refinement_iterations: 1
+  loop_order:
+    command: "('HIO','SW','ER')"
+  refinement_order:
+    command: "('SW','ER')"
+  max_loop_iterations: 1 #4 #8
+  max_refinement_iterations: 0 #2
+  history_length: 10
+        
+
+IO:
+  folders:
+    root: ''
+    maxwell_base: '/gpfs/exfel/theory_group/user/berberic/MTIP/'
+    results_maxwell:
+      maxwell_base: 'reconstructions/{time}/run_{run}/'
+    ccd:
+      maxwell_base: "ccd/"
+    reciprocal_proj_data:
+      maxwell_base: 'reciprocal_proj_data/'
+    ft_weights:
+      maxwell_base: 'ft_weights/'
+    results_default: './fxs_test_3d/{time}/run_{run}/'
+  files:
+    ccd:
+      name: '3d_model_0.h5'
+      folder: 'ccd'
+      options:
+        type: 'Ruslan_2D'
+    reciprocal_proj_data:
+      #name: 'r_proj_data_{name}_mO{max_order}_tetrahedron_600.h5'
+      #name: 'r_proj_data_{name}_mO{max_order}_cube_400_bcoeff.h5'
+      name: '{name}_mO{max_order}.h5'
+      folder: 'reciprocal_proj_data'
+    ft_weights:
+      name: 'weights{postfix}_{type}.h5'
+      folder: 'ft_weights'
+    reconstructions:
+      name: 'reconstruction_data.h5'
+      folder: 'results_maxwell'
+      options:
+        generate_vtk_files: True        
