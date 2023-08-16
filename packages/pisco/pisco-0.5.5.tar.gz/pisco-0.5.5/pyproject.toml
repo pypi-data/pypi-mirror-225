@@ -1,0 +1,61 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ["py39", "py310", "py311"]
+
+[tool.flakeheaven]
+max-complexity = 10
+max-line-length = 88
+
+[tool.flakeheaven.exceptions."tests/"]
+flake8-bandit = ["-S101"]
+
+[tool.flakeheaven.plugins]
+flake8-bandit = ["+*"]
+flake8-bugbear = ["+*"]
+mccabe = ["+*"]
+pep8-naming = ["+*"]
+pycodestyle = ["+*", "-E203"] # https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html?highlight=flake#flake8
+pyflakes = ["+*"]
+
+[tool.isort]
+profile = "black"
+verbose = true
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = "soco.*"
+ignore_missing_imports = true
+
+[tool.poetry]
+name = "pisco"
+version = "0.5.5"   # Version will be set by CI workflow based on git tag.
+description = "Keyboard only controller for Sonos speakers"
+authors = ["Christoph Gietl <christophgietl@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/christophgietl/pisco"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+click = "^8.1"
+Pillow = "^10.0"
+python-json-logger = "^2.0"
+requests = "^2.28"
+soco = "^0.29.0"
+xdg = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.1"
+pre-commit = "^3.0"
+pytest = "^7.2"
+pytest-cov = "^4.0"
+types-Pillow = "^10.0"
+types-requests = "^2.28"
+
+[tool.poetry.scripts]
+pisco = "pisco:main"
