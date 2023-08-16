@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: agora_redis_client
+Version: 1.1.44
+Summary: Redis Client for the Agora Edge Apps SDK 2.0 (Python)
+Author-email: AgoraIoT <agoraiot@slb.com>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Dist: agora_logging == 1.1.44
+Requires-Dist: agora_config == 1.1.44
+Requires-Dist: redis
+Project-URL: Home, https://slb-edge.github.io
+
+
+# agora_redisclient
+
+This package is the Redis Client for the Agora Edge Apps SDK (Python) developed by SLB.
+
+Use this SDK to construct an edge application, and then containerize it for the running on the edge with AgoraIoT.  Documentation on using the entire SDK can be found at: [AgoraIoT SDK Documentation](https://slb-edge.github.io).
+
+## Release Notes
+
+### v1.0.26
+
+- Initial Version of Redis Client
+
+
