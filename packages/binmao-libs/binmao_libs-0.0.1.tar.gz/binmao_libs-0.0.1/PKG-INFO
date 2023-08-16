@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: binmao_libs
+Version: 0.0.1
+Summary: binmao linbs
+Author-email: chishijie <chishijie85@gmail.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# py脚手架
+
+## 安装
+### python版本号
+测试可用版本号: ```3.10.0```
+
+## 发布
+```
+python3 -m pip install --upgrade build
+
+```
