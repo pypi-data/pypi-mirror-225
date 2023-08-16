@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: scTM
+Version: 0.1.0
+Summary: A toolbox for single cell topic models
+Author-Email: chengwei94 <chengwei8@gmail.com>
+License: MIT
+Requires-Python: >=3.8
+Requires-Dist: scanpy>=1.9.3
+Requires-Dist: anndata>=0.9.1
+Requires-Dist: gseapy>=1.0.4
+Requires-Dist: pyro-ppl>=1.8.4
+Requires-Dist: torch-geometric>=2.3.1
+Requires-Dist: squidpy>=1.2.2
+Requires-Dist: torch>=2.0.1
+Requires-Dist: torchinfo>=1.8.0
+Description-Content-Type: text/x-rst
+
+===========================================================
+scTM: A pacakge for topic modelling in transcriptomics data 
+===========================================================
+
+.. image:: https://img.shields.io/pypi/v/sctm.svg
+        :target: https://pypi.python.org/pypi/sctm
+
+
+.. image:: https://readthedocs.org/projects/sctm/badge/?version=latest
+        :target: https://JinmiaoChenLab.github.io/scTM/
+        :alt: Documentation Status
+
+
+
+scTM is a package for spatial transcriptomics for single cell that uses topic modelling, solved with stochastic variational infernce. The intresting
+part is with the formulation of topic models, we can get interpretable embedding which are useful for downstream analysis.
+
+Currently available modules: STAMP
+
+* Free software: MIT license
+* Documentation: https://JinmiaoChenLab.github.io/scTM/.
+
+
+Features
+--------
+
+- STAMP: A spatially-aware dimensional reduction designed for spatial data.
+
+Minimal Installation
+--------------------
+
+``
+pip install scTM
+``
+
+or
+
+``
+conda create --name sctm python=3.8
+git clone https://JinmiaoChenLab.github.io/scTM/
+cd scTM
+pip install .
+``
+
+Basic Usage
+-----------
+To be added
+
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
