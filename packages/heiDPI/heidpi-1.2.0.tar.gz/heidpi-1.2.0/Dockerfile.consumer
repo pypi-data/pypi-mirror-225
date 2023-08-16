@@ -1,0 +1,24 @@
+FROM pypy:latest
+
+ENV WRITE="/var/log" \
+    SHOW_FLOW_EVENTS=1 \
+    SHOW_PACKET_EVENTS=0 \
+    SHOW_ERROR_EVENTS=0 \
+    SHOW_DAEMON_EVENTS=0 \
+    UNIX="" \
+    PORT=7000 \
+    HOST=""
+
+WORKDIR /usr/src/app
+
+COPY heidpi ./ \
+     config.yml ./ \
+     LICENSE ./ \
+     README.md ./ \
+     requirements.txt ./ \
+     pyproject.toml ./
+
+RUN pip install . \
+    pip install -r requirements.txt
+
+CMD [ "heiDPI"]
