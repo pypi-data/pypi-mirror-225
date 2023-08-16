@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: pyFilo
+Version: 0.0.1
+Summary: Python library for handling bioinformatics data
+Project-URL: Homepage, https://github.com/elvirah0/python-filogenetica-tools
+Keywords: phylogeny,bioinformatics
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+Requires-Dist: click >=8.1.5
+Provides-Extra: dev
+Requires-Dist: pylint >=2.10 ; extra == 'dev'
+Requires-Dist: black >=23.3.0 ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx >=5.0.1 ; extra == 'docs'
+Requires-Dist: sphinx-markdown-builder ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme >=1.0.0 ; extra == 'docs'
+Provides-Extra: tests
+Requires-Dist: pytest >=7.3.1 ; extra == 'tests'
+Requires-Dist: pytest-cov >=4.0.0 ; extra == 'tests'
+
+===================
+PyFilo
+===================
+
+This package contains functions to help Philogenetics Analysis.
+
