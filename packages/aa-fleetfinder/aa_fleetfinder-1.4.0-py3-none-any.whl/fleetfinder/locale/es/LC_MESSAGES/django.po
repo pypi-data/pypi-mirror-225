@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Zigor Fernandez Moreno <sietehierros@gmail.com>, 2023.
+# Peter Pfeufer <info@ppfeufer.de>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-30 18:42+0200\n"
+"PO-Revision-Date: 2023-08-15 21:40+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"Language-Team: Spanish <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-fleetfinder/es/>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+#: __init__.py:12 templates/fleetfinder/base.html:5
+msgid "Fleet Finder"
+msgstr "Buscador de Flotas"
+
+#. Translators: This is the app name and version, which will appear in the Django Backend
+#: apps.py:21
+#, python-brace-format
+msgid "Fleet Finder v{__version__}"
+msgstr "Buscador de Flotas v{__version__}"
+
+#: models.py:44
+msgid ""
+"FC is not in the registered fleet anymore or fleet is no longer available."
+msgstr ""
+"El FC ya no está en la flota registrada o la flota ya no está disponible."
+
+#: models.py:46
+msgid "Registered fleet seems to be no longer available."
+msgstr "Parece que la flota registrada ya no está disponible."
+
+#: models.py:47
+msgid "FC is no longer the fleet boss."
+msgstr "El FC ya no es el jefe de flota."
+
+#: models.py:48
+msgid "FC switched to another fleet."
+msgstr "El FC se cambió a otra flota."
+
+#: models.py:51 templates/fleetfinder/create-fleet.html:27
+#: templates/fleetfinder/edit-fleet.html:27
+msgid "Fleet Name"
+msgstr "Nombre de la Flota"
+
+#: models.py:59 templates/fleetfinder/dashboard.html:17
+msgid "Fleet Commander"
+msgstr "Comandante de Flota"
+
+#: models.py:61
+msgid "Creation date and time"
+msgstr "Crear la fecha y hora"
+
+#: models.py:62 templates/fleetfinder/create-fleet.html:62
+#: templates/fleetfinder/edit-fleet.html:58
+msgid "Fleet MOTD"
+msgstr "MOTD de la Flota"
+
+#: models.py:63
+msgid "Free move"
+msgstr "Movimiento libre"
+
+#: models.py:69
+msgid "Group restrictions"
+msgstr "Restricciones de grupo"
+
+#: models.py:77
+msgid "Last ESI error"
+msgstr "Último error del ESI"
+
+#: models.py:81
+msgid "Last ESI error time"
+msgstr "Hora del último error del ESI"
+
+#: models.py:84
+msgid "ESI error count"
+msgstr "Recuento de errores del ESI"
+
+#: templates/fleetfinder/create-fleet.html:5
+#: templates/fleetfinder/create-fleet.html:11
+#: templates/fleetfinder/partials/header/header-navigation.html:18
+msgid "Create Fleet"
+msgstr "Crear Flota"
+
+#: templates/fleetfinder/create-fleet.html:36
+#: templates/fleetfinder/edit-fleet.html:36
+msgid "Select Groups"
+msgstr "Grupos Seleccionados"
+
+#: templates/fleetfinder/create-fleet.html:39
+#: templates/fleetfinder/edit-fleet.html:39
+msgid ""
+"Only selected groups will have access to the fleet. If no groups are "
+"selected the fleet will be available to all who have access to this module."
+msgstr ""
+"Solo los grupos seleccionados tendrán acceso a la flota. Si no se selecciona "
+"ningún grupo, la flota estará disponible para todos los que tengan acceso a "
+"este módulo."
+
+#: templates/fleetfinder/create-fleet.html:72
+#: templates/fleetfinder/edit-fleet.html:68
+msgid "Enable Free Move"
+msgstr "Habilitar Movimiento Libre"
+
+#: templates/fleetfinder/create-fleet.html:74
+#: templates/fleetfinder/edit-fleet.html:70
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/fleetfinder/dashboard.html:9
+#: templates/fleetfinder/partials/header/header-navigation.html:13
+msgid "Available Fleets"
+msgstr "Flotas Disponibles"
+
+#: templates/fleetfinder/dashboard.html:18
+#: templates/fleetfinder/fleet-details.html:44
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/fleetfinder/dashboard.html:19
+msgid "Created At"
+msgstr "Creado En"
+
+#: templates/fleetfinder/dashboard.html:20
+msgid "Join"
+msgstr "Unirse"
+
+#: templates/fleetfinder/dashboard.html:23
+msgid "Details"
+msgstr "Detalles"
+
+#: templates/fleetfinder/dashboard.html:24
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/fleetfinder/edit-fleet.html:5
+#: templates/fleetfinder/edit-fleet.html:11
+msgid "Edit Fleet"
+msgstr "Editar la Flota"
+
+#: templates/fleetfinder/fleet-details.html:5
+msgid "Fleet Details"
+msgstr "Detalles de la Flota"
+
+#: templates/fleetfinder/fleet-details.html:13
+msgid "Fleet Composition"
+msgstr "Composición de la Flota"
+
+#: templates/fleetfinder/fleet-details.html:21
+msgid "Ship Name"
+msgstr "Nombre de la Nave"
+
+#: templates/fleetfinder/fleet-details.html:22
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: templates/fleetfinder/fleet-details.html:36
+msgid "Fleet Members"
+msgstr "Miembros de la Flota"
+
+#: templates/fleetfinder/fleet-details.html:45
+msgid "Ship type"
+msgstr "Tipo de Nave"
+
+#: templates/fleetfinder/fleet-details.html:46
+msgid "System"
+msgstr "Sistema"
+
+#: templates/fleetfinder/join-fleet.html:5 views.py:79
+msgid "Join Fleet"
+msgstr "Unirse a la Flota"
+
+#: templates/fleetfinder/join-fleet.html:11
+msgid "Fleet Invitation"
+msgstr "Invitación a la Flota"
+
+#: templates/fleetfinder/join-fleet.html:21
+msgid "Select the characters to invite"
+msgstr "Selecciona los personajes a invitar"
+
+#: templates/fleetfinder/join-fleet.html:29
+msgid "Send fleet invites"
+msgstr "Enviar invitaciones de Flota"
+
+#: templates/fleetfinder/partials/footer/app-translation-footer.html:5
+msgid ""
+"Do you want to help translate this app into your language or improve the "
+"existing translation?"
+msgstr ""
+"¿Quieres ayudar a traducir esta aplicación a tu idioma o mejorar la "
+"traducción existente?"
+
+#: templates/fleetfinder/partials/footer/app-translation-footer.html:8
+msgid "Join our team of translators!"
+msgstr "¡Únete a nuestro equipo de traductores!"
+
+#: templates/fleetfinder/partials/header/header-navigation.html:7
+msgid "Toggle navigation"
+msgstr "Alternar la navegación"
+
+#: views.py:92
+msgid "View Fleet Details"
+msgstr "Ver detalles de la Flota"
+
+#: views.py:99
+msgid "Edit Fleet Advert"
+msgstr "Editar Anuncio de la Flota"
+
+#: views.py:243
+#, python-brace-format
+msgid ""
+"<h4>Error!</h4><p>ESI returned the following error: {esi_error_message}</p>"
+msgstr ""
+"<h4>Error!</h4><p>El ESI devolvió el siguiente error: {esi_error_message}</p>"
