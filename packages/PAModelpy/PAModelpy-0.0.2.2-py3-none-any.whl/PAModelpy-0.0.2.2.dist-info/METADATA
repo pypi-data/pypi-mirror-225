@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: PAModelpy
+Version: 0.0.2.2
+Summary: Python framework for building and analysing protein allocation models
+Author-email: Samira van den Bogaard <samira.vandenbogaard@rwth-aachen.de>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: biopython ==1.80
+Requires-Dist: cobra ==0.26.2
+Requires-Dist: ipykernel ==6.21.2
+Requires-Dist: ipywidgets ==7.7.5
+Requires-Dist: jupyter ==1.0.0
+Requires-Dist: jupyter-console ==6.6.1
+Requires-Dist: jupyter-core ==5.2.0
+Requires-Dist: jupyterlab-widgets ==1.1.4
+Requires-Dist: kaleido ==0.2.1
+Requires-Dist: openpyxl ==3.1.0
+Requires-Dist: optlang ==1.6.1
+Requires-Dist: pandas ==1.5.3
+Requires-Dist: plotly ==5.13.0
+Requires-Dist: python-libsbml ==5.19.7
+Requires-Dist: PythonCyc ==2.0.2
+Requires-Dist: regex ==2022.10.31
+Requires-Dist: requests ==2.28.2
+Requires-Dist: tabulate ==0.9.0
+Requires-Dist: xlrd ==2.0.1
+Requires-Dist: xlwt ==1.3.0
+
+# PAMpy
+Python implementation of the PAM framework (https://github.com/Spherotob/PAM_public) to create GECKO like ME models.
+
+## Code structure:
+- **example_PAM_generation**: (in `./Examples/PAModel_example_script.ipynb`) An example of how to build, run and validate a proteome allocation model for *Escherichia coli*.
+- **EnzymeSectors**: The objects which are used to store the data of the different enzyme sectors which are added to the genome-scale model
+- **PAModel**: Proteome Allocation (PA) model class. This class builds on to the `cobra.core.Model` class from the COBRApy toolbox with functions to build enzyme sectors, to add enzyme kinetics parameters and in the future to perform a sensitivity analysis on the enzyme variables.
+- **Enzyme**: Different classes which relate enzymes to the model with enzyme constraints and variables.
+- **CatalyticEvent**: A class which serves as an interface between reactions and enzyme. This allows for easy lookup of Protein-Reaction assocations.
+- **PAMValidator**: Functions to validate the model predictions with physiology data and giving a graphical overview. The script uses data for E.coli (found in `./Data/Ecoli_physiology`) by default.
+
+## Dependencies
+cobrapy toolbox, Gurobi solver
+
+More dependencies see `pyproject.toml`
