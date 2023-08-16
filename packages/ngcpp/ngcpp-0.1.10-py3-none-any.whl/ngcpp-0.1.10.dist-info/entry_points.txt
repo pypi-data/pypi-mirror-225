@@ -1,0 +1,5 @@
+[console_scripts]
+ngc_cluster=ngcpp.cli.cluster_info:main
+ngc_job=ngcpp.cli.job_info:main
+ngc_resume=ngcpp.cli.resume:resume
+
