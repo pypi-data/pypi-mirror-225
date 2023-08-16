@@ -1,0 +1,18 @@
+[project]
+name = "pathnav"
+version = "1.2.7"
+authors = [
+  { name="TitusHM", email="dev.titushm@gmail.com" },
+]
+description = "Naviagte paths with ease"
+readme = "README.md"
+requires-python = ">=3.5"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/titushm/pathnav"
+"Bug Tracker" = "https://github.com/titushm/pathnav/issues"
