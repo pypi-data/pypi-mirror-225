@@ -1,0 +1,21 @@
+publish:
+	-docker run --rm -v $(shell pwd):/io ghcr.io/pyo3/maturin publish \
+		--compatibility manylinux2014 \
+		--interpreter 3.7 \
+		--username ${user} \
+		--password ${password} || echo "Que sera, sera! Best effort."
+	-docker run --rm -v $(shell pwd):/io ghcr.io/pyo3/maturin publish \
+		--compatibility manylinux2014 \
+		--interpreter 3.8 \
+		--username ${user} \
+		--password ${password} || echo "Que sera, sera! Best effort."
+	-docker run --rm -v $(shell pwd):/io ghcr.io/pyo3/maturin publish \
+		--compatibility manylinux2014 \
+		--interpreter 3.9 \
+		--username ${user} \
+		--password ${password} || echo "Que sera, sera! Best effort."
+	-docker run --rm -v $(shell pwd):/io ghcr.io/pyo3/maturin publish \
+		--compatibility manylinux2014 \
+		--interpreter 3.10 \
+		--username ${user} \
+		--password ${password} || echo "Que sera, sera! Best effort."
