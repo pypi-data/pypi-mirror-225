@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: py_seedlings
+Version: 0.12.0
+Summary: helpful python starter functions for various repository use
+Home-page: https://pypi.org/project/py-seedlings/
+Author: James Kabbes
+Author-email: james.kabbes@gmail.com
+Project-URL: GitHub, https://github.com/jameskabbes/py_starter
+Project-URL: Documentation, https://jameskabbes.github.io/py_starter
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# py_starter
+Helpful python starter functions for various repository use <br>
+
+[Documentation](https://jameskabbes.github.io/py_starter)<br>
+[PyPI](https://pypi.org/project/kabbes-py-starter)
+
+<br>
+
+# Installation
+`pip install kabbes_py_starter`
+
+<br>
+
+# Usage
+For more in-depth documentation, read the information provided on the Pages. Or better yet, read the source code.
+
+```python
+import py_starter as ps
+```
+
+```python
+ps.print_for_loop( ['Apple','Strawberry','Banana'] )
+```
+
+```
+>>> 
+1. Apple
+2. Strawberry
+3. Banana
+```
+
+```python
+ps.merge_two_dicts( {'A':'Alpha','C':'Nothing'}, {'B':'Bravo':'C':'Charlie'} )
+```
+
+```
+>>> {'A':'Alpha','B':'Bravo','C':'Charlie'}
+```
+
+<br>
+
+# Author
+James Kabbes
