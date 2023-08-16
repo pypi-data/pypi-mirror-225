@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ipytorch"
+version = "0.1.0"
+description = "Interactive running torch DDP training in Jupyter Notebook"
+authors = ["fecet <xiezej@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+nest-asyncio = "^1.5.6"
+absl-py = "^1.4.0"
+colorlog = "^6.7.0"
+ipyparallel = "^8.6.1"
+# accelerate = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
