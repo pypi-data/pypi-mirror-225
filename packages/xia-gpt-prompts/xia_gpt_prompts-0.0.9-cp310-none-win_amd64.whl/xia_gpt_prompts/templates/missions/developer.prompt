@@ -1,0 +1,29 @@
+NOTICE
+{{ actor_role }}
+Requirements: According to the context, fill in the following missing information, note that each sections are returned in Python code triple quote form seperatedly. If the requirements are unclear, ensure minimum viability and avoid excessive design
+ATTENTION: Use '##' to SPLIT SECTIONS, not '#'. Output format carefully referenced "Format example".
+
+{% for guide in guides %}
+## {{ guide.title }}
+{{ guide.content}}
+
+----
+# Context
+{% for context in contexts %}
+## {{ context.title }}
+{{ context.content }}
+
+{% endfor %}
+
+# Instruction
+----
+
+{% endfor %}
+
+-----
+# Format example
+{% for format in formats %}
+## {{ format.title }}
+{{ format.content }}
+
+{% endfor %}
