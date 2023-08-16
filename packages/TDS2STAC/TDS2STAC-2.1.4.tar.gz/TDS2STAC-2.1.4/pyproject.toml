@@ -1,0 +1,10 @@
+[tool.isort]
+profile = "black"
+line_length = 79
+src_paths = ["tds2stac"]
+float_to_top = true
+known_first_party = "tds2stac"
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
