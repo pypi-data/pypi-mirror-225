@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: streamlit-component-socket-client
+Version: 0.1.0
+Summary: socket client which allow you to use and render session tate with out to wait for socket.
+Author: Muhammad Kamran
+Author-email: mkrnaqeebi@gmail.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# streamlit-component-socket-client
+
+socket client which allow you to use and render session tate with out to wait for socket.
+
+## Installation instructions 
+
+```sh
+pip install streamlit-component-socket-client
+```
+
+## Usage instructions
+
+```python
+import streamlit as st
+
+from streamlit_component_socket_client import streamlit_component_socket_client
+
+value = streamlit_component_socket_client()
+
+st.write(value)
