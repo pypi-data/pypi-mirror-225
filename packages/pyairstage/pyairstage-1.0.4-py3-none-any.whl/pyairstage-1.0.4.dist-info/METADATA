@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: pyairstage
+Version: 1.0.4
+Summary: Python library to control Fujitsu Airstage Airconditioners
+Home-page: https://github.com/danielkaldheim/pyairstage
+Author: Daniel Rufus Kaldheim
+Author-email: daniel@kaldheim.org
+License: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp
+Requires-Dist: certifi
+Requires-Dist: chardet
+Requires-Dist: idna
+Requires-Dist: urllib3
+
+# pyairstage
+
+Python Library for interacting with Fujitsu Airstage Airconditioners API.
+
+Inspired from https://github.com/thierryvt/pyfujitsu
