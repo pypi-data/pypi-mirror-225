@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+from neuronautics.analysis.type.line_analysis import LineAnalysis
+
+
+class {{ class_name }}(LineAnalysis):
+    def get_input_params(self):
+        # Define your method logic here
+        return [{'name': 'num_lines', 'min': 1, 'max': 10, 'default': 2, 'type': 'int'}, ]
+
+    def run(self, spikes, num_lines, *args, **kwargs):
+        # Define your method logic here
+        data = {
+            'X': [1, 2, 3, 4, 5],
+        }
+        for ix in range(num_lines):
+            data[f'Y{ix}'] = np.random.randn(5)
+
+        df = pd.DataFrame(data)
+        return df
+
+    def plot(self, *args, **kwargs):
+        return super().plot(title='{{ title }}', xlabel='x', ylabel='y', *args, **kwargs)
+
+if __name__ == "__main__":
+    # Sample dataframe
+    sample_data = pd.DataFrame({
+        'column1': [1, 2, 3],
+        'column2': ['A', 'B', 'C']
+    })
+
+    # Instantiate your class and call methods
+    instance = {{ class_name }}()
+    instance.get_input_params()
+    instance.run()
