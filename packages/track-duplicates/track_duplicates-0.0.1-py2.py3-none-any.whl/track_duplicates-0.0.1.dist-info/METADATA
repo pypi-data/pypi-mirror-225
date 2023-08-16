@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: track-duplicates
+Version: 0.0.1
+Summary: A simple tool to extract reads from a certain taxa from BAM files
+Home-page: https://github.com/genomewalker/track-duplicates
+Author: Antonio Fernandez-Guerra
+Author-email: antonio@metagenomics.eu
+License: MIT
+Keywords: track-duplicates,GTDB
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+Requires-Dist: pandas >=1.4.2
+Requires-Dist: tqdm >=4.64.1
+Requires-Dist: pysam >=0.17.0
+Requires-Dist: numpy >=1.21.2
+Requires-Dist: biopython >=1.79
+Requires-Dist: pyarrow >=12.0.1
+
+UNKNOWN
+
