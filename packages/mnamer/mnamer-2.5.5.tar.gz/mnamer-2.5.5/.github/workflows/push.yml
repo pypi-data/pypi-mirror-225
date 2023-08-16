@@ -1,0 +1,43 @@
+name: push
+
+on:
+  push:
+  schedule:
+    - cron: "0 8 * * 1" # mondays at 8am
+  release:
+    types:
+      - published
+      - prereleased
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/init
+      - uses: ./.github/actions/lint
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/init
+      - uses: ./.github/actions/test
+        with:
+          local: true
+          network: true
+          e2e: true
+          coverage: true
+
+  publish-pypi:
+    if: >-
+      success()
+      && github.ref == 'refs/heads/main'
+
+    needs:
+      - lint
+      - test
+
+    uses: ./.github/workflows/publish.yml
