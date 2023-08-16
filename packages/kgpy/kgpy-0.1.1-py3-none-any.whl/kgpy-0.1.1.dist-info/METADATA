@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: kgpy
+Version: 0.1.1
+Summary: Generic Python utilities for use with Kankelborg Group repositories.
+Author-email: "Roy T. Smart" <roytsmart@gmail.com>, "Jacob D. Parker" <jacobdparker@gmail.com>
+Project-URL: Homepage, https://github.com/Kankelborg-Group/kgpy
+Project-URL: Documentation, https://kgpy.readthedocs.io/en/latest/
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pytest
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: astropy
+Requires-Dist: sunpy[all]
+Requires-Dist: aiapy
+Requires-Dist: pandas
+Requires-Dist: wget
+Requires-Dist: urlpath
+Requires-Dist: shapely
+Requires-Dist: ezdxf
+Requires-Dist: sphinx-autodoc-typehints
+Requires-Dist: astropy-sphinx-theme
+Requires-Dist: roman
+Requires-Dist: ipyparallel
+Requires-Dist: adjustText
+Requires-Dist: ChiantiPy
+Requires-Dist: xrt
+Requires-Dist: thermo
+Requires-Dist: numba
+
+# kgpy
+
+[![tests](https://github.com/Kankelborg-Group/kgpy/workflows/tests/badge.svg)](https://github.com/Kankelborg-Group/kgpy/actions?query=workflow%3Atests)
+[![codecov](https://codecov.io/gh/Kankelborg-Group/kgpy/branch/master/graph/badge.svg)](https://codecov.io/gh/Kankelborg-Group/kgpy)
+[![Documentation Status](https://readthedocs.org/projects/kgpy/badge/?version=latest)](https://kgpy.readthedocs.io/en/latest/?badge=latest)
+
+This library aims to contain general code that does not belong with a specific Kankelborg Group project.
+
+## Documentation
+
+The [documentation](https://kgpy.readthedocs.io/) is currently hosted by Read the Docs.
+It is automatically compiled every time a commit is pushed to `master`.
