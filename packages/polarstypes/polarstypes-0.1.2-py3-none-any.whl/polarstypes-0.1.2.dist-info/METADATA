@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: polarstypes
+Version: 0.1.2
+Summary: This library is for utility functions around the polars dataframe library, paticulary compressing integer datatypes and also sting to categorical
+License: MIT
+Author: Isaac Moore
+Author-email: isaacmooreuky@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: polars (>=0.18.13,<0.19.0)
+Description-Content-Type: text/markdown
+
+# polars-types
+This library is centered around down casting datatypes in python polars. hopefully this kind of feature will be standard eventually
+The library can help polars users achieve the memory compression offered by the underlying 
+data format used for python-polars - a columnar data store
+
+There are so far two key functions
+
+One function that identifies integer ranges and selects the appropriate integer datatype (bit resolution and signedness)
+One function that converts non-unique string columns to categorical columns
+
+Future:
+- itentify non-repeating values as attributes or as type literal
+
