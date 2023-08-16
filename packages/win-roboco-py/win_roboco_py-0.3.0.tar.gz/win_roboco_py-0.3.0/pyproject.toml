@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "win-roboco-py"
+version = "0.3.0"
+authors = [ { name = "Emilian Cioca" } ]
+description = "A wrapper for Window's Robocopy utility."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE" }
+keywords = [
+    "copy",
+    "move",
+    "filesystem",
+    "windows"
+]
+
+# Classifiers list: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/EmilianC/win-roboco-py"
+"Repository" = "https://github.com/EmilianC/win-roboco-py"
+"Changes" = "https://github.com/EmilianC/win-roboco-py/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/EmilianC/win-roboco-py/issues"
