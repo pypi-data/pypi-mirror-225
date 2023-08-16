@@ -1,0 +1,16 @@
+loguru>=0.7.0
+selenium>=4.11.2
+aiohttp>=3.8.5
+opencv-python~=4.5.5.62
+undetected-chromedriver==3.5.2
+webdriver-manager==3.8.2
+numpy>=1.21.5
+requests>=2.31.1
+pyyaml>=6.0
+
+[dev]
+nox
+pytest
+
+[test]
+pytest
