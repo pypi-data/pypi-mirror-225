@@ -1,0 +1,36 @@
+{
+  "name": "e2xauthoring",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "0.2.0-dev3",
+  "description": "An app for e2xgrader",
+  "scripts": {
+    "install": "lerna run bootstrap",
+    "build": "lerna run build",
+    "prettier": "prettier --write \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
+    "prettier:files": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DigiKlausur/e2xauthoring.git"
+  },
+  "keywords": [
+    "nbgrader",
+    "e2xgrader",
+    "teaching",
+    "jupyter",
+    "notebook"
+  ],
+  "author": "Tim Metzler",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^5.3.0",
+    "prettier": "^2.7.1"
+  },
+  "bugs": {
+    "url": "https://github.com/DigiKlausur/e2xauthoring/issues"
+  },
+  "homepage": "https://github.com/DigiKlausur/e2xauthoring#readme"
+}
