@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyFilo"
+description = "Python library for handling bioinformatics data"
+requires-python = ">=3.8"
+readme = "README.rst"
+dynamic = ["version"]
+keywords=['phylogeny', 'bioinformatics']
+dependencies = [
+    "click>=8.1.5"
+]
+
+[project.urls]
+Homepage ='https://github.com/elvirah0/python-filogenetica-tools'
+
+[project.optional-dependencies]
+dev = [
+    "pylint>=2.10",
+    "black>=23.3.0"
+]
+tests = [
+    "pytest>=7.3.1",
+    "pytest-cov>=4.0.0"
+]
+docs = [
+    "sphinx>=5.0.1",
+    "sphinx-markdown-builder",
+    "sphinx_rtd_theme>=1.0.0"
+]
+
+[project.scripts]
+pyFilo = "pyFilo.__main__:cli"
+
+[tool.pylint]
+max-line-length = 88
+disable = [
+    "C0103", # (invalid-name)
+    "C0114", # (missing-module-docstring)
+    "C0115", # (missing-class-docstring)
+    "C0116", # (missing-function-docstring)
+    "R0903", # (too-few-public-methods)
+    "R0913", # (too-many-arguments)
+    "W0105", # (pointless-string-statement)
+]
+
+
+[tool.setuptools.dynamic]
+version = {attr = "pyFilo.__version__"}
+
+[tool.setuptools.packages.find]
+where=["."]
+exclude=["tests*","experiments*","docs*", "samples*", "scripts*"]
+
+[tool.pytest.ini_options]
+minversion = "7.3.1"
+addopts = "-ra -q --cov --cov-report=xml"
+
+[tool.coverage.run]
+source = ["pyFilo"]
