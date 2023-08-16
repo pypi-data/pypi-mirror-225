@@ -1,0 +1,106 @@
+Metadata-Version: 2.1
+Name: nova-python
+Version: 0.1.7
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+License-File: LICENSE
+Summary: 🐍 Python library for accessing the Nova API
+Author: Leander <@henceiusegentoo>
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Repo, https://github.com/henceiusegentoo/nova-python
+
+# nova-python
+🐍 Python library for accessing the Nova API
+
+## Usage ##
+Install the module
+```sh
+$ pip install nova-python
+```
+
+Import the module
+```python
+from nova_python import Endpoints, Models, NovaClient
+```
+
+Create an instance of NovaClient, using your API key
+
+```python
+client = NovaClient("YOUR_API_KEY")
+```
+
+nova_python currently implements two enums: Endpoints and Models. Those contain:
+
+**Endpoints**
+* `Endpoints.CHAT_COMPLETION`
+* `Endpoints.MODERATION`
+
+**Models**
+* `Models.GPT3`
+* `Models.GPT4`
+* `Models.MODERATION_LATEST`
+* `Models.MODERATION_STABLE`  
+
+Now, to make a request, use the `make_request` function. For example:
+
+```python
+from nova_python import Endpoints, Models, NovaClient
+client = NovaClient("YOUR_API_KEY")
+
+reponse = client.make_request(
+    endpoint=Endpoints.CHAT_COMPLETION,
+    model=Models.GPT3,
+    data=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+
+...
+```
+
+or
+
+```python
+from nova_python import Endpoints, Models, NovaClient
+client = NovaClient("YOUR_API_KEY")
+
+reponse = client.make_request(
+    endpoint=Endpoints.MODERATION,
+    model=Models.MODERATION_STABLE,
+    data=[{"input": "I'm going to kill them."}]
+)
+
+...
+```
+If everything goes to plan, you'll receive a string containing JSON-Data, which you can then use in your project.  
+
+Note, that when using chat completion, as special ChatResponse-Instance get's returned.  
+You can access the reponse's json.data, by casting it to a string using the `str` method, like this:
+```python
+...
+
+str(reponse)
+
+...
+```
+
+but more importantly, you can use it's `get_message_content` function, to directly get access to the chat reponse. Used like this:
+```
+...
+
+content = reponse.get_message_content()
+
+...
+```
+
+
+*Happy prompting!*
+<br><br>
+## FAQ ##
+**Q**: I keep getting `RuntimeError: error sending request for url (https://api.nova-oss.com/v1/moderations): operation timed out`  
+**A**: Try passing a higher value than 30 as `seconds_until_timeout` to `make_request` 
+
+Made with 🩸 by Leander
