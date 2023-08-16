@@ -1,0 +1,15 @@
+click>=4.0
+
+[dev]
+black
+ipython
+mypy
+pdbpp
+pre-commit
+rich
+ruff
+click-groups[test]
+
+[test]
+pytest>=6.0
+pytest-cov
