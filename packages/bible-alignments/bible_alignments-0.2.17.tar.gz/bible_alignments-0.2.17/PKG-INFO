@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: bible-alignments
+Version: 0.2.17
+Summary: Word-level alignments for Bibles, including both automatic alignments and manually corrected alignments.
+Home-page: https://github.com/Clear-Bible/Alignments
+License: MIT
+Keywords: Bible,alignment,Bible alignment
+Author: Sean Boisen
+Author-email: sean.boisen@clear.bible
+Requires-Python: >=3.8,<=3.11
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Religion
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Religion
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: biblelib (>=0.2.17,<0.3.0)
+Requires-Dist: django (>=4.2.2,<5.0.0)
+Requires-Dist: django-environ (>=0.10.0,<0.11.0)
+Requires-Dist: djangorestframework (>=3.14.0,<4.0.0)
+Requires-Dist: jsonlines (>=3.1.0,<4.0.0)
+Requires-Dist: jupyterlab (>=3.6.1,<4.0.0)
+Requires-Dist: pydantic (>=2.1.1,<3.0.0)
+Requires-Dist: tomli (>=2.0.1,<3.0.0)
+Project-URL: Repository, https://github.com/Clear-Bible/Alignments
+Description-Content-Type: text/markdown
+
+
+
+# Alignments
+
+This repository contains word alignments for Bibles, including both automatic alignments and manually corrected alignments.  It is meant to serve two goals:
+
+1. The [Scripture Burrito Working Group](https://docs.burrito.bible/en/latest/) is creating a Scripture Alignments flavor, which will be a standard for exchanging alignment data.  This repository reflects an initial proposal, and as the standard develops, the data in this repository will be used to ensure that the standard is adequate.
+2. Developers need a way to obtain the best available alignments for a given language or translation.  We want to collect the best alignments we can find here and provide a way to find needed alignments and track development of alignment.
+
+Alignment data is provided by various parties, who own the copyright to their alignments. All alignment data is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+All code on this repository is Copyright (c) 2023 by Clear Bible, Inc.  It is licensed under a [MIT License](https://opensource.org/license/mit/). 
+
+## Python Quick Start
+
+To run this code:
+
+- ensure [Poetry](https://python-poetry.org/) is installed
+- `poetry add`
+
+## Contributing Alignments
+
+We're interested in collecting alignments that are useful for
+the Bible translation community, especially those based on
+openly-licensed texts. If you have alignments to contribute, see
+[Contributing](docs/contributing.md). 
+
