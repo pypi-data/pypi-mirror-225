@@ -1,0 +1,97 @@
+# **crypts** by pymoduledev
+
+[![License](https://img.shields.io/badge/License-Apache%202.0%20License-green.svg)](https://www.python.org/downloads/release/python-270/)    [![Version Required](https://img.shields.io/badge/Version%20Required-Python%202.7-blue.svg)](https://www.python.org/downloads/release/python-270/)
+
+**crypts** is a Python module developed by **pymoduledev** for the task of encrypting and decrypting.
+
+## **Getting Started**
+
+### Installation
+
+You can install **crypts** using pip:
+
+`pip install crypts`
+
+## **Usage**
+
+Make sure to import crypts using `import crypts`!
+
+#### base64 Class
+
+Base64 is a encoding system using ASCII characters and is widely known and respected in the world as a starter encoding system, but not recommended for business use.
+
+You can use base64 encode using:
+ `encrypted_text = crypts.base64.encode("Text to Encode")`
+
+Decode using:
+
+`decrypted_text = crypts.base64.decode(encrypted_text)`
+
+#### xor Class
+
+The XOR class encapsulates the exclusive OR (XOR) operation, a fundamental bitwise logical operation in cryptography and digital systems. XOR takes two binary inputs and produces a single binary output. It yields 1 if the inputs are different and 0 if they are the same.
+
+To use the xor class, you first need a key, which you can get using:
+`key = crypts.xor.key()`
+
+To encrypt:
+`encrypted_text = crypts.xor.encrypt(text, key)`
+
+To decrypt:
+`decrypted_text = crypts.xor.decrypt(encrypted_text, key)`
+
+#### fernet Class
+
+Fernet is a symmetric encryption algorithm and a protocol used for securing data, particularly in the context of cryptography and information security. It's designed to provide confidentiality by encrypting data in such a way that only authorized parties with the correct key can decrypt and access the original information.
+
+To use fernet class, you first need a key, which you can get using:
+`key = crypts.fernet.key()`
+
+To encrypt:
+`encrypted_text = crypts.fernet.encrypt(text, key)`
+
+To decrypt:
+`decrypted_text = crypts.fernet.decrypt(encrypted_text, key)`
+
+#### hybrid Class
+
+A hybrid cryptosystem is a cryptographic approach that combines the strengths of both symmetric and asymmetric encryption methods. It utilizes asymmetric encryption for secure key exchange, ensuring a shared symmetric key remains confidential between parties, and then employs symmetric encryption for the efficient and fast encryption of the actual data. This approach balances security and efficiency, making it suitable for secure data transmission in various applications, such as secure web browsing and encrypted messaging.
+
+To use the hybrid class, you need a public key and a private key. To get them, use:
+`private_key, public_key = crypts.hybrid.key()`
+
+To encrypt:
+`encrypted_key, encrypted_text = crypts.hybrid.encrypt(text, public_key)`
+
+To decrypt:
+`decrypted_text = crypts.hybrid.decrypt(encrypted_key, encrypted_text, private_key)`
+
+#### rsa Class
+
+RSA (Rivest-Shamir-Adleman) is an asymmetric encryption algorithm that relies on the mathematical properties of large prime numbers. It involves generating a pair of keys: a public key for encryption and a private key for decryption. Messages are encrypted by performing mathematical operations with the recipient's public key, and only the corresponding private key can decrypt them. RSA is also used for creating digital signatures to ensure message authenticity and integrity. While widely used, RSA's security hinges on the difficulty of factoring large numbers into primes, and the advent of quantum computing has spurred research into post-quantum cryptographic alternatives.
+
+To get the public key and private key required, use:
+`private_key, public_key = crypts.rsa.key()`
+
+To encrypt:
+`encrypted_text = crypts.rsa.encrypt(text, public_key)`
+
+To decrypt:
+`decrypted_text = crypts.rsa.decrypt(encrypted_text, private_key)`
+
+#### ultra Class
+
+The ultra class is a mixture of all the methods mentioned, to create one method over all other methods listed.
+
+To get keys:
+`keys = crypts.ultra.key()`
+
+To encrypt:
+`encrypted_text = crypts.ultra.encrypt(text, keys)`
+
+To decrypt:
+`decrypted_text = crypts.ultra.decrypt(encrypted_text, keys)`
+
+## License
+
+crypts uses Apache License 2.0. Get a copy of the License here: [Apache License 2.0](https://apache.org/licenses/LICENSE-2.0.txt/)
