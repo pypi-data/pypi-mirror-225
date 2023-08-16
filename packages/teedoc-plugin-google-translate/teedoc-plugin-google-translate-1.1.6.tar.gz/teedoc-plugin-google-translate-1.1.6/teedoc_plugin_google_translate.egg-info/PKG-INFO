@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: teedoc-plugin-google-translate
+Version: 1.1.6
+Summary: Google translate plugin for teedoc
+Home-page: https://github.com/Neutree/teedoc
+Author: Neucrack
+Author-email: CZD666666@gmail.com
+License: MIT
+Keywords: teedoc Google translate plugin
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+teedoc-plugin-google-translate
+===========
+
+Google translate support for [teedoc](https://github.com/Neutree/teedoc)
+
+
+## Develop
+
+
+There is a config named `domain` for this plugin, by default it is `/`, means use translate resources in local.
+But somtime it will be out of date, you can change it to `https://translate.google.cn/` or `https://translate.google.com/` to use google translate online.
+
+And mannually update the files, but it is pretty hard, so we default to `https://translate.google.cn/` since update at 2023.8.16.
+
+
+
+
