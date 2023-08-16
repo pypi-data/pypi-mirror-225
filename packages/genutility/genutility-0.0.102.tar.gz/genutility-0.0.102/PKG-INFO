@@ -1,0 +1,164 @@
+Metadata-Version: 2.1
+Name: genutility
+Version: 0.0.102
+Summary: A collection of various Python utilities
+Home-page: https://github.com/Dobatymo/genutility
+Author: Dobatymo
+License: UNKNOWN
+Description: # genutility
+        
+        A collection of various Python utilities.
+        
+        Requires Python 3.7+.
+        The last version which mostly worked with Python 2.7 was `0.0.59`.
+        The last version which mostly worked with Python 3.5 was `0.0.65`.
+        The last version which worked with Python 3.6 was `0.0.96`.
+        
+        ## Install
+        `pip install genutility`
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Utilities
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: algorithms
+Provides-Extra: args
+Provides-Extra: aria
+Provides-Extra: asynchronous
+Provides-Extra: atomic
+Provides-Extra: av
+Provides-Extra: bench
+Provides-Extra: benchmarks
+Provides-Extra: binary
+Provides-Extra: browscap
+Provides-Extra: bs4
+Provides-Extra: cache
+Provides-Extra: callbacks
+Provides-Extra: casedict
+Provides-Extra: cholesky
+Provides-Extra: compat
+Provides-Extra: concurrency
+Provides-Extra: config
+Provides-Extra: constants_physics
+Provides-Extra: constants_video
+Provides-Extra: cpython
+Provides-Extra: crypto
+Provides-Extra: csv
+Provides-Extra: cv
+Provides-Extra: datastructures
+Provides-Extra: datetime
+Provides-Extra: dbm
+Provides-Extra: debug
+Provides-Extra: dict
+Provides-Extra: downloadmanager
+Provides-Extra: encoder
+Provides-Extra: error
+Provides-Extra: exceptions
+Provides-Extra: factorial
+Provides-Extra: file
+Provides-Extra: fileformats
+Provides-Extra: filesdb
+Provides-Extra: filesystem
+Provides-Extra: fingerprinting
+Provides-Extra: flask
+Provides-Extra: func
+Provides-Extra: gensim
+Provides-Extra: geometry
+Provides-Extra: graph
+Provides-Extra: hardware
+Provides-Extra: hash
+Provides-Extra: html
+Provides-Extra: http
+Provides-Extra: image
+Provides-Extra: imdb
+Provides-Extra: implementationdetail
+Provides-Extra: indexing
+Provides-Extra: iter
+Provides-Extra: json
+Provides-Extra: latex
+Provides-Extra: lda
+Provides-Extra: locale
+Provides-Extra: logging
+Provides-Extra: markdown
+Provides-Extra: math
+Provides-Extra: mediainfo
+Provides-Extra: metrics
+Provides-Extra: metrictree
+Provides-Extra: mongo
+Provides-Extra: msgpack
+Provides-Extra: multihash
+Provides-Extra: net
+Provides-Extra: networkx
+Provides-Extra: nlp
+Provides-Extra: nltk
+Provides-Extra: numba
+Provides-Extra: numpy
+Provides-Extra: object
+Provides-Extra: ops
+Provides-Extra: os
+Provides-Extra: os_mac
+Provides-Extra: os_posix
+Provides-Extra: os_shared
+Provides-Extra: os_win
+Provides-Extra: pandas
+Provides-Extra: parquet
+Provides-Extra: pdf
+Provides-Extra: pickle
+Provides-Extra: pillow
+Provides-Extra: powerpoint
+Provides-Extra: profile
+Provides-Extra: rand
+Provides-Extra: rasa
+Provides-Extra: regression
+Provides-Extra: resizing
+Provides-Extra: rich
+Provides-Extra: ringlist
+Provides-Extra: salesforce
+Provides-Extra: scene_change_detection
+Provides-Extra: scipy
+Provides-Extra: scrapy
+Provides-Extra: search
+Provides-Extra: segment_tree
+Provides-Extra: sequence
+Provides-Extra: set
+Provides-Extra: signal
+Provides-Extra: sort
+Provides-Extra: spark
+Provides-Extra: sparql
+Provides-Extra: sql
+Provides-Extra: sqlite
+Provides-Extra: statistics
+Provides-Extra: stdio
+Provides-Extra: string
+Provides-Extra: sudoku
+Provides-Extra: sys
+Provides-Extra: tensorflow
+Provides-Extra: test
+Provides-Extra: tests
+Provides-Extra: text
+Provides-Extra: text_segmentation
+Provides-Extra: text_summarization
+Provides-Extra: time
+Provides-Extra: tls
+Provides-Extra: toml
+Provides-Extra: torch
+Provides-Extra: torrent
+Provides-Extra: tqdm
+Provides-Extra: tree
+Provides-Extra: twisted
+Provides-Extra: twitch
+Provides-Extra: typing
+Provides-Extra: unicode
+Provides-Extra: unqlite
+Provides-Extra: url
+Provides-Extra: videofile
+Provides-Extra: widgets
+Provides-Extra: win
+Provides-Extra: win32
+Provides-Extra: wsgi
+Provides-Extra: xsl
+Provides-Extra: yaml
+Provides-Extra: all
