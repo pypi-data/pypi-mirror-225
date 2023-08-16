@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "shaped-target-clickhouse"
+version = "0.0.8"
+description = "`target-clickhouse` is a Singer target for clickhouse, built with the Meltano Singer SDK."
+readme = "README.md"
+authors = ["Ben Theunissen"]
+keywords = [
+    "ELT",
+    "clickhouse",
+]
+license = "Apache-2.0"
+packages = [
+    { include = "target_clickhouse" },
+]
+
+[tool.poetry.dependencies]
+python = "<3.12,>=3.7.1"
+singer-sdk = { version=">=0.28,<0.32" }
+fs-s3fs = { version = "^1.1.1", optional = true }
+clickhouse-sqlalchemy = "^0.2.4"
+simplejson = "^3.19.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.1"
+tox = "^3.25.0"
+ruff = "^0.0.278"
+singer-sdk = { version=">=0.28,<0.32", extras = ["testing"] }
+types-simplejson = "^3.19.0.1"
+
+[tool.poetry.extras]
+s3 = ["fs-s3fs"]
+
+[tool.ruff]
+ignore = [
+    "ANN101",  # missing-type-self
+    "ANN102",  # missing-type-cls
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D401", # First line should be in imperative mood
+    "D407", # Missing dashed underline after section
+]
+select = ["ALL"]
+src = ["target_clickhouse"]
+target-version = "py37"
+
+[tool.ruff.flake8-annotations]
+allow-star-arg-any = true
+
+[tool.ruff.isort]
+known-first-party = ["target_clickhouse"]
+
+[tool.ruff.pylint]
+max-args=6
+
+[[tool.mypy.overrides]]
+disable_error_code = ["name-defined"]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.5.1"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+# CLI declaration
+target-clickhouse = 'target_clickhouse.target:TargetClickhouse.cli'
