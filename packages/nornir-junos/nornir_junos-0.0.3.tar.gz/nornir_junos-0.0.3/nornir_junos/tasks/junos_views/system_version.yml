@@ -1,0 +1,9 @@
+junos_version_table:
+  rpc: get-software-information
+  item: software-information
+  view: junos_version_view
+
+junos_version_view:
+  fields:
+    model: product-model
+    version: junos-version

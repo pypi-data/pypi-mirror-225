@@ -1,0 +1,9 @@
+junos_isis_adj_table:
+  rpc: get-isis-adjacency-information
+  item: isis-adjacency
+  key: interface-name
+  view: junos_isis_adj_view
+
+junos_isis_adj_view:
+  fields:
+    system_name: system-name
