@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: d42
+Version: 1.5.2
+Summary: One package for district42 ecosystem
+Home-page: https://github.com/tsv1/d42
+Author: Nikita Tsvetkov
+Author-email: tsv1@fastmail.com
+License: Apache-2.0
+Project-URL: Docs, https://d42.vedro.io
+Project-URL: GitHub, https://github.com/tsv1/d42
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# d42
+
+[![PyPI](https://img.shields.io/pypi/v/d42.svg?style=flat-square)](https://pypi.python.org/pypi/d42/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/d42?style=flat-square)](https://pypi.python.org/pypi/d42/)
+[![Python Version](https://img.shields.io/pypi/pyversions/d42.svg?style=flat-square)](https://pypi.python.org/pypi/d42/)
+
+One package for [district42 ecosystem](https://github.com/topics/district42)
+
+d42 = [district42](https://pypi.org/project/district42/) + [blahblah](https://pypi.org/project/blahblah/) + [valera](https://pypi.org/project/valera/) + [revolt](https://pypi.org/project/revolt/)
+
+## Installation
+
+```sh
+pip3 install d42
+```
+
+## Usage
+
+```python
+from d42 import schema, fake, validate_or_fail
+
+sch = schema.str("banana")
+
+assert validate_or_fail(sch, fake(sch))
+```
