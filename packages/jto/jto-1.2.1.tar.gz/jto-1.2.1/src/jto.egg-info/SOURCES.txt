@@ -1,0 +1,15 @@
+LICENSE.md
+README.md
+pyproject.toml
+src/jto/__init__.py
+src/jto/dataclass_generator.py
+src/jto/json_builder.py
+src/jto/json_parser.py
+src/jto/undefined_field.py
+src/jto.egg-info/PKG-INFO
+src/jto.egg-info/SOURCES.txt
+src/jto.egg-info/dependency_links.txt
+src/jto.egg-info/requires.txt
+src/jto.egg-info/top_level.txt
+tests/test_converter.py
+tests/test_generator.py
