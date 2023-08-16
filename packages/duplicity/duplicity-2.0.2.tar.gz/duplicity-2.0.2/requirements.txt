@@ -1,0 +1,62 @@
+
+##### installed first to avoid conflicts #####
+
+chardet<3.10
+cryptography==3.4.8
+requests
+urllib3<1.26
+
+##### basic requirements #####
+
+fasteners
+python-gettext
+
+##### backend libraries #####
+
+atom
+azure-storage-blob
+b2sdk
+boto
+boto3
+botocore
+boxsdk[jwt]
+dropbox
+gdata-python3
+google-api-python-client
+google-auth-oauthlib
+httplib2
+jottalib
+kerberos
+keyring
+lxml
+mediafire
+megatools
+paramiko
+pexpect
+psutil
+pydrive2
+pyrax
+python-swiftclient
+python-keystoneclient
+requests-oauthlib
+
+##### testing libraries #####
+
+coverage
+mock>=3.0.5
+pycodestyle
+pylint
+pytest
+pytest-cov
+pytest-runner
+setuptools>=44.1.1
+setuptools-scm>=5.0.2
+tox<4.0
+
+##### documentation libraries #####
+
+gitchangelog
+myst-parser
+pystache
+sphinx
+sphinx-rtd-theme
