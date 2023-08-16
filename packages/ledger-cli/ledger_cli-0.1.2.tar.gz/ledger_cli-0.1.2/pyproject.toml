@@ -1,0 +1,94 @@
+[tool.poetry]
+name = "ledger-cli"
+version = "0.1.2"
+description = "ledger-cli"
+authors = ["Til Schünemann <til.schuenemann@mailbox.org>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/tilschuenemann/ledger-cli"
+repository = "https://github.com/tilschuenemann/ledger-cli"
+documentation = "https://ledger-cli.readthedocs.io"
+packages = [
+    { include = "ledgercli", from = "src" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/tilschuenemann/ledger-cli/releases"
+
+[tool.poetry.scripts]
+ledgercli = "ledgercli.cli:cli"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = ">=8.0.1"
+pandas = "^1.5.2"
+numpy = "^1.23.5"
+
+[tool.poetry.dev-dependencies]
+Pygments = ">=2.10.0"
+black = ">=21.10b0"
+coverage = {extras = ["toml"], version = ">=6.2"}
+darglint = ">=1.8.1"
+mypy = ">=0.930"
+pre-commit = ">=2.16.0"
+pre-commit-hooks = ">=4.1.0"
+pytest = ">=6.2.5"
+sphinx = ">=4.3.2"
+sphinx-autobuild = ">=2021.3.14"
+sphinx-click = ">=3.0.2"
+typeguard = ">=2.13.3"
+xdoctest = {extras = ["colors"], version = ">=0.15.10"}
+myst-parser = {version = ">=0.16.1"}
+sphinx-rtd-theme = "^1.1.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.284"
+
+[tool.ruff]
+select = ["E", "F",
+"I",    # isort
+"S",    # flake8-bandit
+"B",    # bugbear
+"PD",   # pandas vet
+"N",    # pep8-naming
+"UP",   # pyupgrade
+"D",    # pydocstyle
+"C4",   # comprehensions
+]
+line-length = 120
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+target-version = "py311"
+src = ["src", "test"]
+ignore = ["S101","E501"]
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.black]
+line-length=120
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+tests = ["tests", "*/tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["ledgercli", "tests"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.mypy]
+strict = true
+warn_unreachable = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
