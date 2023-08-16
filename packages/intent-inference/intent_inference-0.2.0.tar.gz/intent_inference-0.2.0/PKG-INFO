@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: intent-inference
+Version: 0.2.0
+Summary: Predicts selection intent
+Author: Jake Wagoner, Kiran Gadhave
+Requires-Python: >=3.8.1,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.24.3,<2.0.0)
+Requires-Dist: pandas (>=1.0.0,<2.0.0)
+Requires-Dist: paretoset (>=1.2.3,<2.0.0)
+Requires-Dist: scikit-learn (>=1.2.2,<2.0.0)
+Requires-Dist: vega-datasets (>=0.9.0,<0.10.0)
+Description-Content-Type: text/markdown
+
+# Intent Inference
+
+Infer the intent of a selection for a given database.
+
+Run `poetry version <bump-rule>` to increase the version before publishing. bump-rule has to be one of patch, minor, major, prepatch, preminor, premajor, prerelease
+
