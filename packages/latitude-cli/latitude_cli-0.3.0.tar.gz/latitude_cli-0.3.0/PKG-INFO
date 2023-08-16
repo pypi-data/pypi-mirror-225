@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: latitude-cli
+Version: 0.3.0
+Summary: CLI for managing some general dev tasks
+Home-page: https://github.com/hloughrey/latitude-cli
+Author: Hugh Loughrey
+Author-email: hugh.loughrey@gmail.com
+Requires-Python: >=3.8.1,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: GitPython (>=3.1.32,<4.0.0)
+Requires-Dist: colorama (>=0.4.4,<0.5.0)
+Requires-Dist: packaging (>=21.3,<22.0)
+Requires-Dist: requests (>=2.27.1,<3.0.0)
+Requires-Dist: shellingham (>=1.4.0,<2.0.0)
+Requires-Dist: typer (>=0.4.0,<0.5.0)
+Project-URL: Repository, https://github.com/hloughrey/latitude-cli
+Description-Content-Type: text/markdown
+
+<p align="center">
+    <img alt="Latitude55" src="https://res.cloudinary.com/latitude55/image/upload/v1634117961/logo-light.svg" width="210" />
+</p>
+<h1 align="center">
+Latitude55 Cli
+</h1>
+
+CLI tool for managing general development tasks.
+
+## Getting Started
+
+Requirements:
+
+- [Poetry](https://python-poetry.org/)
+
+### Development
+
+```bash
+poetry shell
+poetry install
+pre-commit install
+poetry run latitude55 --help
+```
+
+### Build
+
+```bash
+poetry shell
+poetry build
+```
+
+### Generate requirements.txt
+
+```bash
+poetry shell
+poetry export -f requirements.txt --output requirements.txt
+```
+
+### Creating a release
+
+```bash
+poetry shell
+poetry version <patch, minor, major>
+git commit -m "Release v<Version>"
+// After Merge
+git tag -a v<Version> -m "release v<Version>"
+```
+
