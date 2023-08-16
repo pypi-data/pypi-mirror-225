@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: pytest-ignore-test-results
+Version: 0.2.1
+Summary: A pytest plugin to ignore test results.
+Author-email: Fu Hanxi <fuhanxi@espressif.com>
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Framework :: Pytest
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pytest>=7.0
+Requires-Dist: sphinx ; extra == "doc"
+Requires-Dist: sphinx-rtd-theme ; extra == "doc"
+Requires-Dist: sphinx_copybutton ; extra == "doc"
+Requires-Dist: myst-parser ; extra == "doc"
+Requires-Dist: sphinxcontrib-mermaid ; extra == "doc"
+Requires-Dist: pytest-cov ; extra == "test"
+Provides-Extra: doc
+Provides-Extra: test
+
+# pytest-ignore-test-results
+
+A pytest plugin to ignore test results.
+
