@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: euv-snapshot-imaging-spectrograph
+Version: 0.1.1
+Summary: Python code for processesing and analysing data from the EUV Snapshot Imaging Spectrograph (ESIS)
+Author-email: "Roy T. Smart" <roytsmart@gmail.com>, "Jacob D. Parker" <jacobdparker@gmail.com>
+Project-URL: Homepage, https://github.com/Kankelborg-Group/ESIS
+Project-URL: Documentation, https://kankelborg-group.github.io/ESIS/_build/html/index.html
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pytest
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: astropy
+Requires-Dist: sphinx-autodoc-typehints
+Requires-Dist: astropy-sphinx-theme
+Requires-Dist: kgpy
+Requires-Dist: ndcube
+Requires-Dist: tensorflow
+Requires-Dist: pylatex
+Requires-Dist: num2words
+Requires-Dist: bokeh
+Requires-Dist: pandas
+
+# ESIS
+
+![tests](https://github.com/Kankelborg-Group/ESIS/workflows/tests/badge.svg)
+
+Repository for code and information relating to the _EUV Snapshot Imaging Spectrograph_ (ESIS).
+
