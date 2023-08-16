@@ -1,0 +1,13 @@
+import os
+
+# POSTGRES
+POSTGRE_HOSTNAME = os.getenv("POSTGRE_HOSTNAME", "dpg-chrcfi9mbg5e1f1e6un0-a.oregon-postgres.render.com")
+POSTGRE_PORT = int(os.getenv("POSTGRE_PORT", '5432'))
+POSTGRE_DATABASE = os.getenv("POSTGRE_DATABASE", 'dev_db_xzwf')
+POSTGRE_USER = os.getenv("POSTGRE_USER", 'admin')
+POSTGRE_PASSWORD = os.getenv("POSTGRE_PASSWORD")
+POSTGRE_MAX_CONNECTIONS = int(os.getenv("POSTGRE_MAX_CONNECTIONS", 10))
+POSTGRE_MIN_CONNECTIONS = int(os.getenv("POSTGRE_MIN_CONNECTIONS", 1))
+POSTGRE_CACHE_SECONDS = int(os.getenv("POSTGRE_CACHE_SECONDS", 10))
+
+MIN_DB_POLLING_SLEEP_S = float(os.getenv('MIN_DB_POLLING_SLEEP_S', '1.0'))
