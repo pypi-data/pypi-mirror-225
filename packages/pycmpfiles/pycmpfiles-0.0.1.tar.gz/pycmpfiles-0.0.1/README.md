@@ -1,0 +1,1 @@
+A small example package which is used to compare two file and show the difference
