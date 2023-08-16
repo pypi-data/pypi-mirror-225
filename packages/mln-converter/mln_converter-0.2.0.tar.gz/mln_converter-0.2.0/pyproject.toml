@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "mln-converter"
+version = "0.2.0"
+description = "Converts exported data from Minuteman Library Network reading history."
+authors = ["Hugh Enxing <deeoh@woodforsheep.trade>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "mln_converter"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+pre-commit = "^3.3.3"
+ipython = "^8.14.0"
+pylint = "^2.17.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+mln-to-csv = "mln_converter:main"
