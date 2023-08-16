@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: agora_logging
+Version: 1.1.44
+Summary: Logging libraries for the Agora Edge Apps SDK 2.0 (Python)
+Author-email: AgoraIoT <agoraiot@slb.com>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: Apache Software License
+Project-URL: Home, https://agoraiot.github.io
+
+
+# agora_logging
+
+This package is the Logging library for the Agora Edge Apps SDK (Python) developed by SLB.
+
+Use this SDK to construct an edge application, and then containerize it for the running on the edge with AgoraIoT.  Documentation on using the entire SDK can be found at: [AgoraIoT SDK Documentation](https://slb-edge.github.io).
+
+## Release Notes
+
+### v1.0.20
+
+- Fix message about Verbosity instead of LogLevel
+- Force flush of sys.stdout when writing exception logs
+
+### v1.0.18
+
+- Make versions of all modules all the same
+
+### v1.0.7 - Beta
+
+- Initial test release.
+
