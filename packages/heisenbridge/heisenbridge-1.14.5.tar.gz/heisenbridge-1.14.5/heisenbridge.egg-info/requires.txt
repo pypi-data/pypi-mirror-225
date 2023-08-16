@@ -1,0 +1,15 @@
+irc<20.4,>=19.0.0
+ruamel.yaml<0.18,>=0.15.35
+mautrix<0.21,>=0.15.0
+python-socks[asyncio]>=1.2.4
+aiohttp<4.0.0,>=3.8.0
+
+[dev]
+mypy
+flake8
+black>=22.3.0
+reorder-python-imports
+pre-commit
+
+[test]
+pytest
