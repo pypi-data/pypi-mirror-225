@@ -1,0 +1,17 @@
+fire
+h5py
+matplotlib
+numpy
+pandas
+scipy
+tqdm
+
+[accelerators]
+numba
+
+[develop]
+coverage
+pre-commit
+pytest
+pytest-cov
+pytest-mock
