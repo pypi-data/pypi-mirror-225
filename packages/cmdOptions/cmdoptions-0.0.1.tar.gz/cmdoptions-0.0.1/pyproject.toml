@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cmdOptions"
+version = "0.0.1"
+authors = [
+  { name="SteelHeart696", email="steelheart696@gmail.com" },
+]
+description = "A package making it easier to create small command-line option pickers"
+readme = "README.md"
+keywords = ["command-line", "simple"]
+requires-python = ">=3.7"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/EricWoll/Command-Line-Options"
+"Bug Tracker" = "https://github.com/EricWoll/Command-Line-Options/issues"
