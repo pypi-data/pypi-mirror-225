@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: nbproject
+Version: 0.9.2
+Summary: nbproject: Manage Jupyter notebooks.
+Author-email: Lamin Labs <laminlabs@gmail.com>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: pydantic<2.0.0
+Requires-Dist: pyyaml
+Requires-Dist: packaging
+Requires-Dist: orjson
+Requires-Dist: ipylab
+Requires-Dist: importlib-metadata
+Requires-Dist: stdlib_list; python_version < '3.10'
+Requires-Dist: lamin_utils>=0.5.0
+Requires-Dist: pre-commit ; extra == "dev"
+Requires-Dist: black ; extra == "dev"
+Requires-Dist: pytest>=6.0 ; extra == "dev"
+Requires-Dist: pytest-cov ; extra == "dev"
+Requires-Dist: pandas ; extra == "dev"
+Requires-Dist: nbformat ; extra == "dev"
+Requires-Dist: nbproject_test >= 0.4.5 ; extra == "dev"
+Requires-Dist: laminci ; extra == "dev"
+Project-URL: Home, https://github.com/laminlabs/nbproject
+Provides-Extra: dev
+
+[![Stars](https://img.shields.io/github/stars/laminlabs/nbproject?logo=GitHub&color=yellow)](https://github.com/laminlabs/nbproject)
+[![coverage](https://codecov.io/gh/laminlabs/nbproject/branch/main/graph/badge.svg?token=05R04PR9RB)](https://codecov.io/gh/laminlabs/nbproject)
+[![pypi](https://img.shields.io/pypi/v/nbproject?color=blue&label=pypi%20package)](https://pypi.org/project/nbproject)
+[![doi](https://img.shields.io/badge/doi-10.56528%2Fnbp-lightgrey)](https://doi.org/10.56528/nbp)
+
+# nbproject
+
+Light-weight Jupyter notebook manager. Track metadata, imports, and integrity.
+
+---
+
+💡 We recommend [lamindb.track()](https://lamin.ai/docs/ref/lamindb.track) instead of `nbproject` to:
+
+- consistently track data sources across notebooks, pipelines & apps
+- full provenance for datasets that you pull and push from notebooks
+- manage notebook copying & integrate with Google Colab
+- broader compatibility
+
+Like `nbproject`, `lamindb` is open-source.
+
+`nbproject` will continue to be maintained as a utility for `lamindb`.
+
+---
+
+Install: ![pyversions](https://img.shields.io/pypi/pyversions/nbproject)
+
+```
+pip install nbproject
+```
+
+Get started:
+
+```
+import nbproject
+
+nbproject.header()  # Tracks notebook, displays metadata
+
+# do things
+
+nbproject.publish()  # Checks consecutiveness, bumps version
+```
+
+More: Read the [docs](https://lamin.ai/docs/nbproject).
+
