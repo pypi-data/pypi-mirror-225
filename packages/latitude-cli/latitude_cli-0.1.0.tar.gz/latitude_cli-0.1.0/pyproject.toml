@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "latitude-cli"
+version = "0.1.0"
+description = "CLI for managing some general dev tasks"
+readme = "README.md"
+documentation = ""
+repository = "https://github.com/hloughrey/latitude-cli"
+authors = ["Hugh Loughrey <hugh.loughrey@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+typer = "^0.4.0"
+colorama = "^0.4.4"
+shellingham = "^1.4.0"
+requests = "^2.27.1"
+packaging = "^21.3"
+GitPython = "^3.1.32"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pre-commit = "^2.17.0"
+mypy = "^0.931"
+flake8 = "^6.0.0"
+
+[tool.poetry.group.semver.dependencies]
+python-semantic-release = "^8.0.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+lat = "latitude_cli.cli:run"
+
+[tool.semantic_release]
+branch = "master"
+version_variables = [
+    "latitude_cli/__init__.py:__version__"
+]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+version_source = "tag"
+commit_version_number = true
+tag_commit = true
+upload_to_pypi = false
+upload_to_release = false
+hvcs = "github"
