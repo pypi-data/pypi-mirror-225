@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: nonebot-plugin-kanonbot
+Version: 0.0.1b5
+Summary: nonebot plugin kanonbot
+Home-page: https://github.com/SuperGuGuGu/nonebot_plugin_kanonbot
+Author: SuperGuGuGu
+Author-email: 13680478000@163.com
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: pillow (>=9.5.0)
+Requires-Dist: httpx (>=0.24.0)
+Requires-Dist: toml (>=0.10.2)
+Requires-Dist: nonebot2 (>=2.0.0)
+Requires-Dist: nonebot-adapter-onebot (>=2.2.3)
+Requires-Dist: nonebot-plugin-apscheduler (>=0.2.0)
+
