@@ -1,0 +1,14 @@
+[project]
+name = "sourmash_plugin_abundhist"
+description = "sourmash plugin to calculate abundance profiles."
+readme = "README.md"
+requires-python = ">=3.8"
+version = "0.3.1"
+
+dependencies = ["sourmash>=4.8.0,<5", "numpy", "termplotlib", "seaborn"]
+
+[metadata]
+license = { text = "BSD 3-Clause License" }
+
+[project.entry-points."sourmash.cli_script"]
+abundhist_command = "sourmash_plugin_abundhist:Command_Abundhist"
