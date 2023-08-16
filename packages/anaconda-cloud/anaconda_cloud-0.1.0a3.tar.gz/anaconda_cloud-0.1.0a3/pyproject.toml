@@ -1,0 +1,25 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs>=0.3", "setuptools-scm>=7.1"]
+
+[project]
+dependencies = [
+  "anaconda-cloud-cli",
+  "anaconda-cloud-auth"
+]
+description = "Anaconda Cloud client tools"
+dynamic = ["version"]
+license = {text = "BSD-3-Clause"}
+name = "anaconda-cloud"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/anaconda_cloud/_version.py"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+git_describe_command = "git describe --dirty --tags --long --match 'anaconda-cloud-v*'"
+root = "../.."
