@@ -1,0 +1,93 @@
+[build-system]
+requires = [
+    "setuptools>=61.2",
+
+    # see https://github.com/yt-project/ewah_bool_utils/issues/52
+    "Cython>=3.0, <3.1",
+
+    # TODO: simplify numpy requirement after numpy 1.26.0 final is released
+    "oldest-supported-numpy ; python_version < '3.12.0rc1'",
+    "numpy>=1.26.0b1 ; python_version >= '3.12.0rc1'",
+]
+
+[project]
+name = "ewah_bool_utils"
+version = "1.1.0rc1"
+description = "EWAH Bool Array utils for yt"
+authors = [
+  { name = "Matthew Turk" },
+  { name = "Meagan Lang" },
+  { name = "Navaneeth Suresh" },
+]
+requires-python =">=3.8"
+dependencies = [
+  # match the absolute oldest version of numpy with *any*
+  # level of support for our minimal Python requirement
+  # https://github.com/scipy/oldest-supported-numpy/issues/76#issuecomment-1628865694
+  "numpy>=1.17.3,<2.0",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Cython",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[project.license]
+text = "BSD"
+
+[project.readme]
+file = "README.rst"
+content-type = "text/x-rst"
+
+
+[project.urls]
+Homepage = "https://github.com/yt-project/ewah_bool_utils"
+
+[tool.setuptools]
+license-files = [
+    "LICENSE",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+target-version = "py38" # https://github.com/charliermarsh/ruff/issues/2039
+exclude = ["*__init__.py"]
+ignore = ["E501"]
+select = [
+    "E",
+    "F",
+    "W",
+    "C4",  # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "YTT", # flake8-2020
+    "I",   # isort
+    "UP",  # pyupgrade
+]
+
+[tool.ruff.isort]
+combine-as-imports = true
