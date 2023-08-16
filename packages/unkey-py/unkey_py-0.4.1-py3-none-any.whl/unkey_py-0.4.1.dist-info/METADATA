@@ -1,0 +1,108 @@
+Metadata-Version: 2.1
+Name: unkey-py
+Version: 0.4.1
+Summary: An asynchronous Python SDK for unkey.dev.
+Home-page: https://github.com/Jonxslays/unkey.py
+License: GPL-3.0-only
+Author: Jonxslays
+Requires-Python: >=3.8
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Requires-Dist: aiohttp (>3.8.1)
+Requires-Dist: attrs (>=22)
+Project-URL: Repository, https://github.com/Jonxslays/unkey.py
+Description-Content-Type: text/markdown
+
+# unkey.py
+
+An asynchronous Python SDK for [unkey.dev](https://unkey.dev/).
+
+## Documentation
+
+- [Stable](https://jonxslays.github.io/unkey.py/)
+- [Development](https://jonxslays.github.io/unkey.py/dev/)
+
+## Installation
+
+**Python version 3.8 or greater is required to use unkey.py.**
+
+### Stable
+
+```sh
+pip install -U unkey.py
+```
+
+### Development
+
+```sh
+pip install -U git+https://github.com/Jonxslays/unkey.py
+```
+
+For more information on using `pip`, check out the [pip documentation](https://pip.pypa.io/en/stable/).
+
+## Example
+
+```py
+import asyncio
+import os
+
+import unkey
+
+
+async def main() -> None:
+    client = unkey.Client(api_key=os.environ["API_KEY"])
+    await client.start()
+
+    result = await client.keys.verify_key("prefix_123ABC")
+
+    if result.is_ok:
+        data = result.unwrap()
+        print(data.valid)
+        print(data.owner_id)
+        print(data.meta)
+        print(data.error)
+    else:
+        print(result.unwrap_err())
+
+    await client.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+
+## What is unkey.dev
+
+unkey.dev is a fully open source API key management solution. It allows you to create,
+manage, and validate API keys for your applications users. You can even host it yourself,
+that's the beauty of open source.
+
+If you're interested in learning more about the project, consider checking out any of these links:
+
+- [Website](https://unkey.dev/)
+- [API documentation](https://docs.unkey.dev/)
+- [Github repository](https://github.com/chronark/unkey)
+- [Discord community](https://discord.gg/TmMczTKArw)
+
+## Contributing
+
+unkey.py is open to contributions. Check out the
+[contributing guide](https://github.com/Jonxslays/unkey.py/blob/master/CONTRIBUTING.md) to learn how.
+
+## License
+
+unkey.py is licensed under the [GPLv3 License](https://github.com/Jonxslays/unkey.py/blob/master/LICENSE).
+
