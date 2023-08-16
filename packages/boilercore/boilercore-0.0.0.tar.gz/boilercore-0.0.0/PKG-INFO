@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: boilercore
+Version: 0.0.0
+Summary: Common functionality of boiler repositories.
+Author-email: "Blake Naccarato, Kwang Jin Kim" <blake.naccarato@gmail.com>
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: pydantic>=1.10.12
+Requires-Dist: ruamel.yaml>=0.17.32
+Project-URL: Changes, https://blakeNaccarato.github.io/boilercore/changelog.html
+Project-URL: Docs, https://blakeNaccarato.github.io/boilercore
+Project-URL: Home, https://github.com/blakeNaccarato/boilercore
+Project-URL: Tracker, https://github.com/blakeNaccarato/boilercore/issues
+
+# boilercore
+
+Common functionality of boiler repositories.
+

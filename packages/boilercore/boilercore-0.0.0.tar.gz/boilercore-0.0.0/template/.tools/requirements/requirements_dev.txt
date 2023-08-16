@@ -1,0 +1,33 @@
+# * -------------------------------------------------------------------------------- * #
+# * Changes below should persist in significant template updates.
+
+# * -------------------------------------------------------------------------------- * #
+# * Changes below may be lost in significant template updates.
+
+# Experiment
+jupyter
+ipympl
+
+# Debug
+debugpy
+
+# For `python` via `pythonrc.py`
+rich
+
+# Terminal experiments
+ipython
+
+# Format
+sourcery-cli
+nbqa
+
+# Profiling
+snakeviz
+
+# Pre-commit
+pre-commit
+
+# For local publishing to PyPi with flit
+keyring
+
+-r requirements_both.txt

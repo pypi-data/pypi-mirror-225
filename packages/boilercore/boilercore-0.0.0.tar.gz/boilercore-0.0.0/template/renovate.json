@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Establish base config, schedule, and manager defaults.",
+  "extends": [
+    "config:base",
+    "group:allNonMajor",
+    ":enablePreCommit",
+    ":preserveSemverRanges"
+  ],
+  "schedule": ["on the first day of the month"],
+  "enabledManagers": ["github-actions", "pip_requirements", "pre-commit"],
+  "github-actions": {
+    "description": "Additionally monitor template GitHub actions.",
+    "fileMatch": ["^template/\\.github/workflows/*"]
+  },
+  "pip_requirements": {
+    "description": "Additionally monitor template dev tooling.",
+    "fileMatch": ["^template/\\.tools/requirements/*"]
+  },
+  "pre-commit": {
+    "description": "Additionally monitor pre-commit config.",
+    "fileMatch": ["^template/\\.pre-commit-config\\.yaml$"]
+  },
+  "packageRules": [
+    {
+      "description": "Pre-commit manages black and ruff. Projects manage pyright.",
+      "matchManagers": ["pip_requirements"],
+      "matchPaths": ["template/.tools/requirements/*"],
+      "ignoreDeps": ["black", "ruff", "pyright"]
+    }
+  ]
+}
