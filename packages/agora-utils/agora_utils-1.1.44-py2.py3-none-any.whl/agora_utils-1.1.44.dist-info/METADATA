@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: agora_utils
+Version: 1.1.44
+Summary: Utilities libraries for the Agora Edge Apps SDK 2.0 (Python)
+Author-email: AgoraIoT <agoraiot@slb.com>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: Apache Software License
+Project-URL: Home, https://agoraiot.github.io
+
+
+# agora_utils
+
+This package is the Utilities library for the Agora Edge Apps SDK (Python) developed by SLB.
+
+Use this SDK to construct an edge application, and then containerize it for the running on the edge with AgoraIoT.  Documentation on using the entire SDK can be found at: [AgoraIoT SDK Documentation](https://slb-edge.github.io).
+
+## Release Notes
+
+### v1.0.18
+
+- Make versions of all modules all the same
+- Add ability to Mock (AEA2:BusClient:Mock (True/False)) the BusClient
+- Fix issue with subscriptions
+
+### v1.0.7 - Beta
+
+- Initial test release.
+
