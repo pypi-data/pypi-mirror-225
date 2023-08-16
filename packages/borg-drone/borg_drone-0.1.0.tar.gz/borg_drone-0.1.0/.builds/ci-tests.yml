@@ -1,0 +1,23 @@
+image: debian/stable
+
+packages:
+  - python3
+  - python3-pip
+  - make
+
+environment:
+  REPO_NAME: borg-drone
+
+tasks:
+  - setup: |
+      python3 -V
+      pip -V
+      export PATH="$HOME/.local/bin:$PATH"
+      pip install -q -U pip
+
+  - test: |
+      python3 -V
+      pip -V
+      cd ${REPO_NAME}
+      pip install --no-color --progress-bar off '.[test]'
+      make test
