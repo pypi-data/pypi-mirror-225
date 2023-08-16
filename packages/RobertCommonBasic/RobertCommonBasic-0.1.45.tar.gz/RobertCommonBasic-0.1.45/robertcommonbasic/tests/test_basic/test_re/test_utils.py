@@ -1,0 +1,21 @@
+from robertcommonbasic.basic.re.utils import format_name, find_match, contain_match, search_match
+from robertcommonbasic.basic.dt.utils import parse_time
+
+
+def test():
+    name = 'Bldg3_Area1_hourly_SiteId_08-14-2021-23_00_00_PM_EDT.zip'
+    time = format_name(name, r'[^0-9]+', '')
+    tm = parse_time(time)
+    print(tm)
+
+
+def get_expression_points(expression: str, pattern: str = r'<%(.*?)%>') -> list:
+    return find_match(expression, pattern)
+
+
+#points = get_expression_points('if <%Bucket Brigade.Real4%> and <%Bucket@Brigade_Real5%>')
+#points = get_expression_points('<%Bucket Brigade.Real4%>')
+import re
+print(re.compile(r'[\u4e00-\u9fa5]').search('    日期\t名称'))
+print(contain_match('    日期\t名称', r'[\u4e00-\u9fa5]'))
+print(find_match('bit(v,1)', r'bit\(v,(.*?)\)'))
