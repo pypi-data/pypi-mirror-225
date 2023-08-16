@@ -1,0 +1,143 @@
+import os
+import pytest
+from selenium import webdriver
+from liveramp_automation.helpers.login import LoginHepler
+from liveramp_automation.helpers.file import FileHelper
+from liveramp_automation.utils.log import Logger
+from typing import Generator
+from playwright.sync_api import Playwright, BrowserContext
+
+
+###########################
+# Resource Prefix handle #
+##########################
+
+@pytest.fixture(scope="module")
+def res():
+    """Get the configuration for the test environment.
+
+    :return: Configuration dictionary for the test environment.
+    """
+    Logger.info("It is going to import the envChoice.")
+    if not os.environ.get('ENVCHOICE'):
+        os.environ['ENVCHOICE'] = "prod"
+    runEnv = os.environ['ENVCHOICE']
+    init_dict = FileHelper.read_init_file('', 'pytest.ini')
+    try:
+        if init_dict and init_dict['data']:
+            resource_data = init_dict['data']
+        if resource_data['resource_path']:
+            resource_path = resource_data['resource_path']
+        else:
+            Logger.error("Please provive resource_data path.")
+        if resource_data['resource_prefix']:
+            resource_prefix = resource_data['resource_prefix']
+        else:
+            Logger.error("Please provive resource_prefix.")
+    except TypeError:
+        Logger.error("Please provive resource_prefix.")
+
+    Logger.info("The testing environment is {} ".format(runEnv))
+    return FileHelper.load_env_yaml(resource_path, resource_prefix, runEnv)
+
+
+###########################
+# API Prefix handle #
+##########################
+
+@pytest.fixture(scope="module")
+def headers(lr_org_key=None):
+    headers = {"Authorization": auth}
+    try:
+        if lr_org_key:
+            Logger.info("It is going to import the envChoice.")
+            lr_org_value = res[lr_org_key]
+            headers["lr-org-id"] = lr_org_value
+    except Exception as e:
+        Logger.error("An error occurred while obtaining lr_org_value: {}".format(e))
+
+
+@pytest.fixture(scope="module")
+def auth(username=os.environ["APIUSERNAME"], password=os.environ["APIPASSWORD"]):
+    """
+        Creates headers for API requests with OAuth2 token.
+        :param password:
+        :param username:
+    """
+    try:
+        Logger.info("Calling Okta OAuth2 token...")
+        token = LoginHepler.call_oauth2_get_token(username, password)
+        if token:
+            Logger.info("OAuth2 token obtained successfully.")
+            return token
+        else:
+            Logger.error("Failed to obtain OAuth2 token.")
+            return None
+    except Exception as e:
+        Logger.error("An error occurred while obtaining OAuth2 token: {}".format(e))
+        return None
+
+
+################################################
+# UI Automation Testing Prefix handle #
+###############################################
+
+@pytest.fixture(scope="module")
+def driver():
+    """Pytest fixture that provides a Selenium WebDriver instance for testing.
+        Yields:
+            WebDriver: A Selenium WebDriver instance for testing purposes.
+    """
+    if not os.environ.get('runEnv'):
+        os.environ['runEnv'] = "remote"
+    runEnv = os.environ['runEnv']
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    config_data = FileHelper.read_init_file("", "pytest.ini", "r")
+    Logger.info(config_data)
+    download_dir = config_data.get('download', 'reports/download')
+    default_directory = os.path.join(os.getcwd(), download_dir)
+    prefs = {"download.default_directory": default_directory}
+    chrome_options.add_experimental_option("prefs", prefs)
+    Logger.info("The run Env is {}".format(runEnv))
+    Logger.info("Run WEBDriver on lang=en ")
+    chrome_options.add_argument('--lang=en')
+
+    if runEnv == "remote":
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('window-size=1920x1480')
+    else:
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('window-size=1920x1480')
+
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.maximize_window()
+    Logger.info("We are going to open a blank page.")
+    driver.get("about:blank")
+    driver.implicitly_wait(30)
+    Logger.info("We've started a ChromeDriver here.")
+    yield driver
+    driver.close()
+    Logger.info("We've closed the ChromeDriver.Goodbye!")
+
+
+@pytest.fixture(scope="module")
+def page(playwright: Playwright) -> Generator[BrowserContext, None, None]:
+    """ Pytest fixture that provides a Playwright BrowserContext for testing.
+       Args:
+           playwright (Playwright): Playwright instance.
+       Yields:
+           BrowserContext: A Playwright BrowserContext for testing purposes.
+    """
+    if os.environ['runEnv'] == "remote":
+        context = playwright.chromium.launch_persistent_context("", headless=True)
+    else:
+        context = playwright.chromium.launch_persistent_context("", headless=False, args=['--lang=en'])
+    page = context.new_page()
+    page.set_default_timeout(60000)
+    yield page
+    page.close()
+    context.close()
