@@ -1,0 +1,136 @@
+-- For now, we can't store in the proc schema because of the callout objects issue
+create or replace procedure PLUGIN.CONFIGURE_APIS()
+   returns object
+   language javascript
+   execute as owner
+as
+$$
+// snowflake object automatically injected by Snowpark
+
+try{
+    snowflake.log("info", "CONFIGURE_APIS called");
+    var currentDatabaseResults = snowflake.createStatement( {
+        sqlText: `select current_database()`,
+        binds:[]
+    } ).execute();
+    currentDatabaseResults.next();
+    var currentDatabase = currentDatabaseResults.getColumnValue(1);
+
+    var appsResults = snowflake.createStatement( {
+        sqlText: `select 
+                    EXTERNAL_ACCESS_INTEGRATION_NAMES ARRAY,
+                    OAUTH_SECRETS ARRAY,
+                    OTHER_SECRETS ARRAY
+                from DATA.OMNATA_REGISTRATION`,
+        binds:[]
+    } ).execute();
+    let integrationNames;
+    let oauthSecrets;
+    let otherSecrets;
+    if (!appsResults.next())  {
+        integrationNames = []
+        otherSecrets = []
+        snowflake.log("info", "No existing OMNATA_REGISTRATION record found, using empty arrays");
+    }else{
+        integrationNames = appsResults.getColumnValue(1);
+        oauthSecrets = appsResults.getColumnValue(2) || [];
+        otherSecrets = appsResults.getColumnValue(3) || [];
+        snowflake.log("info", `External Access Integrations from registration: ${integrationNames.join(',')}`);
+        snowflake.log("info", `OAuth secrets from registration: ${oauthSecrets.join(',')}`);
+        snowflake.log("info", `Other secrets from registration: ${otherSecrets.join(',')}`);
+    }
+    var currentSecretsResult = snowflake.createStatement( {
+        sqlText: `show secrets in schema data`,
+        binds:[]
+    } ).execute();
+
+    // remove secret names which do not exist in the schema
+    var secretsWhichExist = []
+    while (currentSecretsResult.next()){
+        secretsWhichExist.push(currentSecretsResult.getColumnValue(2));
+    }
+    snowflake.log("info", `Secrets found in schema: ${secretsWhichExist.join(',')}`);
+    secrets = (oauthSecrets||[]).concat((otherSecrets||[])).filter(x => secretsWhichExist.includes(x));
+    snowflake.log("info", `Secrets to assign to procs: ${secrets.join(',')}`);
+    // format of function/proc binding is SECRETS = ('cred' = oauth_token )
+    secrets = secrets.map(x => `'${x}' = ${currentDatabase}.DATA.${x}`)
+
+    // we need to remove integrations which don't exist or aren't visible.
+    // since we can't 'show' or 'desc' from inside the stored proc, we can only do this by trial (on the SYNC proc)
+    while(integrationNames.length>0){
+        try{
+            var sqlText = `alter procedure SYNC(OBJECT)
+                        set EXTERNAL_ACCESS_INTEGRATIONS = (${integrationNames.join(',')}),
+                            SECRETS = (${secrets.join(',')})`
+            snowflake.log("info", `Executing SQL: ${sqlText}`);
+            var appsResults = snowflake.createStatement( {
+                sqlText:sqlText,
+                binds:[]
+            } ).execute();
+            break;
+        }
+        catch(e){
+            let regex = /integration '(.+)'/i;
+            let match = e.message.match(regex);
+            if (match) {
+                let matchedName = match[1];
+                snowflake.log("warn", `Could not find integration ${matchedName}, excluding from stored procs`);
+                let existingCount = integrationNames.length;
+                integrationNames = integrationNames.filter(item => item.toLowerCase() !== matchedName.toLowerCase());
+                if (integrationNames.length == existingCount){
+                    throw `Tried to exclude External Access integration ${matchedName} but couldn't match it`
+                }
+            } else {
+                throw e;
+            }
+
+        }
+    }
+    snowflake.log("info", `Integrations visible to app: ${integrationNames.join(',')}`);
+
+    const procsToAlter = [
+        'SYNC(OBJECT)',
+        `CONFIGURATION_FORM(VARCHAR,
+                            OBJECT,
+                            VARCHAR,
+                            VARCHAR,
+                            VARCHAR,
+                            OBJECT,
+                            VARCHAR,
+                            OBJECT,
+                            OBJECT)`,
+        `CONNECTION_TEST(VARCHAR, 
+                        OBJECT, 
+                        VARCHAR,
+                        VARCHAR,
+                        VARCHAR)`,
+        `RETRIEVE_SECRETS(VARCHAR,
+                        VARCHAR)`
+            ];
+    procsToAlter.forEach(function(procToAlter) {
+        var sqlText = `alter procedure ${procToAlter}
+                    set EXTERNAL_ACCESS_INTEGRATIONS = (${integrationNames.join(',')}),
+                        SECRETS = (${secrets.join(',')})`
+        snowflake.log("info", `Executing SQL: ${sqlText}`);
+        var appsResults = snowflake.createStatement( {
+            sqlText:sqlText,
+            binds:[]
+        } ).execute();
+    });
+    return {
+        "success": true,
+        "data": null
+    }
+}
+catch(e){
+   return {
+      "success": false,
+      "error": `CONFIGURE_APIS: ${String(e)}`
+   }
+}
+
+$$
+;
+
+grant usage on procedure PLUGIN.CONFIGURE_APIS()
+to application role OMNATA_MANAGEMENT;
