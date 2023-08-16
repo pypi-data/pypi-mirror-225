@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: ValeraLib
+Version: 0.1.0
+Summary: The library goes brrrrrr
+Home-page: https://github.com/Valera6/ValeraLib
+Author: Valera
+Author-email: v79166789533@gmail.com
+Keywords: The greatest package to ever exist
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: ipython (<9.0.0,>=8.10.0)
+Requires-Dist: numpy (<2.0.0,>=1.24.3)
+Requires-Dist: pandas (<2.0.0,>=1.5.3)
+Requires-Dist: playsound (<2.0.0,>=1.2.2)
+Requires-Dist: plotly (<6.0.0,>=5.14.1)
+Requires-Dist: telebot
+Requires-Dist: pywin32
+Requires-Dist: requests (<3.0.0,>=2.31.0)
+
+# Guidelines:
+- camelcase
+
+##### Other:
+Can't be bothered to remove telegram api keys, so I guess just please don't intentionally spam me.
