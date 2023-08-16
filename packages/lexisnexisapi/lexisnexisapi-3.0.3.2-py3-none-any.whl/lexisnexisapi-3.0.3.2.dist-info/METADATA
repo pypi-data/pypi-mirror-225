@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: lexisnexisapi
+Version: 3.0.3.2
+Summary: a module to support lexisnexis api(s)
+Home-page: https://pypi.org/project/lexisnexisapi/
+Author: Robert Cuffney
+Author-email: robert.cuffney@lexisnexis.com
+License: MIT
+Keywords: metabase webservices lexisnexis
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: xmltodict
+
+see README.md file
