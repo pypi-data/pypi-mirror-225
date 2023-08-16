@@ -1,0 +1,13 @@
+layoutparser[layoutmodels,tesseract]
+python-multipart
+huggingface-hub
+opencv-python!=4.7.0.68
+onnxruntime
+transformers>=4.25.1
+
+[tables]
+
+[tables:platform_machine == "x86_64"]
+unstructured.PaddleOCR
+protobuf<3.21
+paddlepaddle>=2.4
