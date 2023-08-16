@@ -1,0 +1,84 @@
+#! /usr/bin/env/python
+from showdata import generate_html_table, load_dir
+import showdata.server as showdata_server 
+import click
+import os
+
+@click.group()
+def main():
+    pass
+
+@main.command()
+@click.option('-i', '--input-path', help='Input path. It can be a folder, a pandas pkl/csv file or json file.')
+@click.option('-o', '--output-path', default='./index.html', help='Output path. It must in a parent directory of all images. Default is ./index.html.')
+@click.option('-w', '--width', default='400', help='Width of all the images. Default is 400')
+@click.option('-h', '--height', default='auto', help='Height of all the images. Default is auto')
+@click.option('-l', '--level', default=1, type=int, help='Level of folder to be generated. Default is 1')
+@click.option('-r', '--rel-path', default=True, type=bool, help='Whether to use relative path of input path and output path. Default is True')
+@click.option('-f', '--float-precision', default=2, type=int, help='Float precision. Default is 2')
+@click.option('-m', '--max-str-len', default=50, type=int, help='Max string length. Default is 50')
+def show(input_path, output_path, width, height, level, rel_path, float_precision, max_str_len):
+    assert os.path.exists(input_path), 'Input file not exists.'
+    data_table = []
+    if os.path.isdir(input_path):
+        data_table = load_dir(input_path, level)
+
+    elif input_path.endswith('pkl'):
+        import pandas as pd
+        data_table = pd.read_pickle(input_path).to_dict('records')
+
+    elif input_path.endswith('csv'):
+        import pandas as pd
+        data_table = pd.read_csv(input_path, index_col=0).to_dict('records')
+
+    elif input_path.endswith('json'):
+        import json
+        with open(input_path, 'r') as f:
+            data_table = json.load(f)
+
+    generate_html_table(data_table,
+                        image_width=width,
+                        image_height=height,
+                        output_path=output_path,
+                        rel_path=rel_path,
+                        float_precision=float_precision,
+                        max_str_len=max_str_len)
+
+
+@main.command()
+@click.option('-o', '--output-path', default='index.html')
+@click.option('-w', '--width', default=400)
+@click.option('-e', '--exts', default='jpg,png,mp4,jpeg,gif')
+@click.argument('compare_folders', nargs=-1)
+def compare(compare_folders, output_path, width, exts):
+    exts = exts.split(',')
+    table = []
+    for fname in sorted(os.listdir(compare_folders[0])):
+        if fname.split('.')[-1] in exts:
+            row = {}
+            for folder in compare_folders:
+                row[folder] = os.path.join(folder, fname)
+            table.append(row)
+    generate_html_table(table, image_width=width, output_path=output_path)
+
+
+@main.command()
+@click.option('-p', '--port', default='8000')
+@click.option('-h', '--host', default='0.0.0.0')
+@click.option('-d', '--debug', default=False, type=bool, help="Whether to open the flask app in debug mode.")
+@click.option('--allow-modify', default=False, type=bool, help="Whether to allow the user to modify your files.")
+@click.option('--show-delete-button', default=False, type=bool, help="Whethter to show the delete button.")
+@click.option('--index-hide', default=True, type=bool, help="Whether to hide the folder content if there is a index.html in that folder.")
+@click.option('--password', default="1234", type=str, help="Password")
+@click.option('--root-url', default="/", type=str, help="Root url used for redirect.")
+def server(port, host, debug, allow_modify, show_delete_button, index_hide, password, root_url):
+    showdata_server.allow_modify = allow_modify
+    showdata_server.show_delete_button = show_delete_button
+    showdata_server.index_hide = index_hide
+    showdata_server.password = password
+    showdata_server.root_url = root_url
+    showdata_server.app.run(host, port, debug=debug)
+
+
+if __name__ == "__main__":
+    main()
