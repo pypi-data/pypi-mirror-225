@@ -1,0 +1,125 @@
+/*  ------------------------------------------------------------------------  */
+/* Comel Base CSS - https://github.com/hueyyeng/Comel
+/* By Huey Yeng
+/*  ------------------------------------------------------------------------  */
+
+* {
+  color: #ffffff;
+}
+
+QWidget {
+  background-color: #31363b;
+}
+
+QWidget:disabled {
+  color: lightgray;
+  background-color: gray;
+}
+
+QToolTip {
+  background-color: rgb(240, 240, 240);
+  color: #555555;
+}
+
+QMenuBar {
+  border-bottom: 1px solid darkgray;
+}
+
+QMenuBar::item {
+  padding: 7px;
+}
+
+QMenu::item {
+  background-color: #31363b;
+}
+
+QMenu::item:selected, QMenuBar::item:selected {
+  color: black;
+  background-color: lightsteelblue;
+}
+
+QMenu {
+  border: 1px solid darkgray;
+}
+
+::section {
+  background-color: #474f56;
+}
+
+QListView, QTableView, QTreeView {
+  background-color: rgb(85, 90, 95);
+}
+
+QHeaderView::section:hover {
+  background-color: rgb(130, 140, 145);
+}
+
+QHeaderView::section:pressed {
+  background-color: rgb(160, 160, 160);
+}
+
+QPushButton {
+  border: 1px solid gray;
+  padding: 4px;
+}
+
+QPushButton:hover {
+  background-color: rgb(130, 140, 145);
+}
+
+QPushButton:pressed {
+  background-color: rgb(200, 210, 215);
+}
+
+QProgressBar {
+  background-color: rgb(85, 90, 95);
+  border: 1px solid darkgray;
+  text-align: center;
+}
+
+QProgressBar::chunk {
+  background-color: rgb(30, 50, 75);
+  width: 10px;
+}
+
+QComboBox {
+  background-color: rgb(85, 90, 95);
+  border: 1px solid darkgray;
+  padding: 3px;
+  selection-background-color: dodgerblue;
+}
+
+QSpinBox {
+  background-color: rgb(85, 90, 95);
+  border-width: 4;
+}
+
+QPlainTextEdit, QTextEdit, QLineEdit {
+  background-color: rgb(85, 90, 95);
+  border: 1px solid gray;
+}
+
+QTabWidget::pane {
+  border: 1px solid darkgray;
+}
+
+QTabBar::tab {
+  border: 1px solid darkgray;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 4px;
+}
+
+QTabBar::tab:hover {
+  background-color: rgb(130, 140, 145);
+}
+
+QTabBar::tab:pressed {
+  background-color: rgb(200, 210, 215);
+}
+
+QStatusBar {
+  border-top: 1px solid darkgray;
+  min-height: 24px;
+}
