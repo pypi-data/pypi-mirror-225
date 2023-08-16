@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "mcfc"
+version = "0.2.2"
+description = 'Text formatting using Minecraft color codes.'
+readme = "README.md"
+license = "MIT"
+keywords = ["console", "printing", "print colored", "minecraft color codes", "rich", "print"]
+authors = ["woidzero <woidzerov@gmail.com>"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+packages = [{ include = "mcfc" }]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.urls]
+"Homepage" = "https://github.com/woidzero/mcfc#readme"
+"Issues" = "https://github.com/woidzero/mcfc/issues"
+"Source" = "https://github.com/woidzero/mcfc"
+
+[tool.ruff]
+target-version = "py311"
+ignore = ["F401"]
+unfixable = ["F401"]

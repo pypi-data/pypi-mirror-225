@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: mcfc
+Version: 0.2.2
+Summary: Text formatting using Minecraft color codes.
+License: MIT
+Keywords: console,printing,print colored,minecraft color codes,rich,print
+Author: woidzero
+Author-email: woidzerov@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Project-URL: Homepage, https://github.com/woidzero/mcfc#readme
+Project-URL: Issues, https://github.com/woidzero/mcfc/issues
+Project-URL: Source, https://github.com/woidzero/mcfc
+Description-Content-Type: text/markdown
+
+# mcfc
+
+[![PyPI - Version](https://img.shields.io/pypi/v/mcfc.svg)](https://pypi.org/project/mcfc)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/mcfc)](https://pypi.org/project/mcfc)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mcfc.svg)](https://pypi.org/project/mcfc)
+
+Text formatting using Minecraft color codes.
+
+## Installation
+
+```
+ pip install mcfc
+```
+
+## Usage
+```python
+ import mcfc
+ 
+ mcfc.echo("&cH&6e&el&al&bo&d!")
+```
+### Output
+![preview](images/output-cmd.png)
+
+
+## Preview
+![preview](images/preview.png)
+
+## Support
+
+For support, email <a href="mailto://woidzeroo@gmail.com">woidzeroo@gmail.com</a>
+
+## License
+
+`mcfc` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+
