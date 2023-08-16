@@ -1,0 +1,3 @@
+[console_scripts]
+uniteai_llm = uniteai.llm_server:main
+uniteai_lsp = uniteai.lsp_server:main
