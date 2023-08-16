@@ -1,0 +1,18 @@
+$def with (application, onions, domains)
+<p><strong>Application:</strong>
+$if application:
+    $application
+$else:
+    <a href=/application>add</a>
+</p>
+<p><strong>Onions:</strong>
+$for onion in onions:
+    <a href=http://$onion>$onion[:12]</a>
+</p>
+<p><strong>Domains:</strong>
+$if domains:
+    $for domain in domains:
+        $domain
+$else:
+    <a href=/domains>add</a>
+</p>

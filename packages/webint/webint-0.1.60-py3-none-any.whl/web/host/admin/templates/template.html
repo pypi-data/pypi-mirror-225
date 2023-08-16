@@ -1,0 +1,44 @@
+$def with (resource)
+<!doctype html>
+<html>
+<head>
+<title>$tx.host.local_ip\
+$if "title" in resource:
+    &nbsp;&ndash;&nbsp;$resource.title
+</title>
+<style>
+html {
+  background-color: #666; }
+body {
+  background-color: #ccc;
+  border-color: #bbb;
+  border-style: solid;
+  border-width: 0 .25em .25em .25em;
+  color: #222;
+  margin: 0 auto;
+  max-width: 30em;
+  padding: 2em 1em; }
+h1 {
+  font-family: monospace;
+  font-size: 4em;
+  margin-top: 0;
+  text-align: center; }
+h1 a {
+  color: #333;
+  text-decoration: none; }
+h3 {
+  border-bottom: .25em solid #666; }
+</style>
+</head>
+<body>
+<h1><a href=/>\
+$for subnet in tx.host.local_ip.split('.'):
+    $:("<span style=color:#aaa>0</span>" * (3-len(str(subnet))))$subnet\
+    $if not loop.last:
+         \
+</a></h1>
+$if "title" in resource:
+    <h2>$resource.title</h2>
+$:resource
+</body>
+</html>

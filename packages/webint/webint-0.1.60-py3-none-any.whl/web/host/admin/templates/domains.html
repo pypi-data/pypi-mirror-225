@@ -1,0 +1,59 @@
+$def with (domains)
+$var title: Domain Settings
+<form>
+$# <label><h4><input id=include_domain type=checkbox $("checked" if domain else "")>
+$# Domain</h4></label>
+$# <div id=domain_details>
+$# $if domain:
+$#     $if domain_ip == local_ip:
+$#         <p style=color:green>Your domain points to this machine. You are ready to proceed.</p>
+$#         $if www_domain_ip == local_ip:
+$#             <p style=color:green><code>www.</code> also points and will be used.</p>
+$#         $else:
+$#             <p style=color:red><code>www.</code> does not point. It will not be used.</p>
+$#     $else:
+$#         <p style=color:red><code>$domain</code> currently
+$#             points to <code>$domain_ip</code></p>
+$#         <p>This machine's IP address is <code>$local_ip</code></p>
+$#         <p style=font-size:1.25em;font-weight:bold>Please point <code>$domain</code> to <code>$local_ip</code></p>
+$#         $# <p>Your DNS settings are currently being served by: <strong>$domain_ns</strong></p>
+$#         $# <p style=color:red>$www_domain_ip</p>
+$#         <h5>Domain Lookup</h5>
+$#         <dl>
+$#         <dt>
+$#             <dt>Registrar</dt>
+$#             <dd>$domain_whois["registrar"].upper()</dd>
+$#             <dt>Whois server</dt>
+$#             <dd><code>$domain_whois["whois_server"]</code></dd>
+$#             <dt>Name servers</dt>
+$#             <dd><ul style=list-style:none;padding:0>
+$#             $for ns in sorted(set([ns.upper() for ns in domain_whois["name_servers"]])):
+$#                 <li><code>$ns</code></li>
+$#             </ul></dd>
+$#         </p>
+$#         $if domain_host:
+$#             <p>Your domain records appears to be hosted by
+$#                 <a href=https://$domain_host[1]>$domain_host[0]</a>. </p>
+$#             <p>Follow these <a href=https://$domain_host[2] target=_blank>instructions</a>.</p>
+$#         $else:
+$#             <p>It isn't clear where your domain records are being hosted.</p>
+$# <div>
+$# <input id=domain name=domain value="$domain">
+$# <button>Check</button>
+$# </div>
+$# </div>
+</form>
+
+<script type=module>
+import { load } from '/static/web.js'
+load(() => {
+  const updateDomainView = ev => {
+    if (include_domain.checked)
+      domain_details.style.display = 'block'
+    else
+      domain_details.style.display = 'none'
+  }
+  updateDomainView()
+  include_domain.addEventListener('change', updateDomainView)
+})
+</script>
