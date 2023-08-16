@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tKot"
+version = "0.4.1"
+authors = [
+    {name="Serj Kotilevski", email="youserj@outlook.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "Pillow >= 9.4.0"
+]
+keywords=[
+    "tkinter",
+    "widget"
+]
+
+[project.urls]
+repository = "https://github.com/youserj/tkinter_extensions_project"
