@@ -1,0 +1,8 @@
+pydantic>=1.10.6
+
+[testing]
+flake8>=4.0
+mypy>=1.0
+pytest>=6.0
+pytest-cov>=2.0
+tox>=4.0
