@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: dtflw
+Version: 0.6.5
+Summary: dtflw is a Python framework for building modular data pipelines based on Databricks dbutils.notebook API.
+Home-page: https://github.com/SoleyIo/dtflw
+Author: Soley GmbH
+Author-email: codeofconduct@soley.io
+Project-URL: Bug Reports, https://github.com/SoleyIo/dtflw/issues
+Project-URL: Source, https://github.com/SoleyIo/dtflw
+Keywords: databricks,data pipelines,etl,data engineering
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ddt >=1.5.0
+Requires-Dist: setuptools
+Provides-Extra: local
+Requires-Dist: pyspark ; extra == 'local'
+
+See [the home page](https://github.com/SoleyIo/dtflw/blob/main/README.md) of the project for details.
