@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools==66.1.1", "setuptools_scm[toml]==7.0.5"]
+build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
+split_on_trailing_comma = true
+combine_as_imports = true
+
+[tool.setuptools_scm]
+# To enable SCM versioning, we need an empty tool configuration for setuptools_scm
+
+[tool.towncrier]
+directory = "changes"
+package = "travertino"
+package_dir = "src"
+filename = "CHANGELOG.rst"
+title_format = "{version} ({project_date})"
+issue_format = "`#{issue} <https://github.com/beeware/travertino/issues/{issue}>`_"
+template = "changes/template.rst"
+type = [
+    { directory = "feature", name = "Features", showcontent = true },
+    { directory = "bugfix", name = "Bugfixes", showcontent = true },
+    { directory = "removal", name = "Backward Incompatible Changes", showcontent = true },
+    { directory = "doc", name = "Documentation", showcontent = true },
+    { directory = "misc", name = "Misc", showcontent = false },
+]

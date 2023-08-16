@@ -1,0 +1,64 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_call:
+    outputs:
+      artifact-name:
+        description: "Name of the uploaded artifact; use for artifact retrieval."
+        value: ${{ jobs.package.outputs.artifact-name }}
+
+jobs:
+  pre-commit:
+    name: Pre-commit checks
+    uses: beeware/.github/.github/workflows/pre-commit-run.yml@main
+
+  towncrier:
+    name: Check towncrier
+    uses: beeware/.github/.github/workflows/towncrier-run.yml@main
+
+  package:
+    name: Python Package
+    uses: beeware/.github/.github/workflows/python-package-create.yml@main
+
+  unit-tests:
+    name: Python compatibility test
+    needs: [pre-commit, towncrier, package]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12-dev"]
+        include:
+          - experimental: false
+
+          - python-version: "3.12-dev"
+            experimental: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4.7.0
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Get packages
+      uses: actions/download-artifact@v3.0.2
+      with:
+        name: ${{ needs.package.outputs.artifact-name }}
+        path: dist
+
+    - name: Install dev dependencies
+      run: |
+        # We don't actually want to install travertino;
+        # we just want the dev extras so we have a known version of tox.
+        python -m pip install $(ls dist/travertino-*.whl)[dev]
+
+    - name: Test
+      run: |
+        tox -e py --installpkg dist/travertino-*.whl
