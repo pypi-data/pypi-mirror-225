@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: swxtools
+Version: 0.0.3
+Summary: Collection of tools to work with space weather data, developed at KNMI.
+Project-URL: Homepage, https://gitlab.com/KNMI-OSS/spaceweather/swxtools/
+Project-URL: Bug Tracker, https://gitlab.com/KNMI-OSS/spaceweather/-/issues
+Author-email: Eelco Doornbos <eelco.doornbos@knmi.nl>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: apexpy
+Requires-Dist: astropy
+Requires-Dist: beautifulsoup4
+Requires-Dist: netcdf4
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pyhdf
+Requires-Dist: pymsis
+Requires-Dist: scipy
+Requires-Dist: sgp4
+Requires-Dist: spacepy
+Requires-Dist: xarray
+Description-Content-Type: text/markdown
+
+# spaceweathertools
+
+This python package contains tools used in the space weather group of KNMI. It contains Python code to access the KNMI HAPI server, retrieve space weather data from various online sources, and create or manipulate satellite orbit ephemeris.
