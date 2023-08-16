@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: timeplus-leptons
+Version: 0.0.3
+Summary: Timeplus OpenAI API monitor tool
+Home-page: https://github.com/timeplus-io/leptons
+Author: Timeplus
+Author-email: eng@timeplus.io
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+
+# leptons
+
+leptons records all openAI api calls by adding an api hook that sends request/response to Timeplus cloud.
+
+to install leptons, run `pip install timeplus-leptons`
+
+to use leptons, refer to following sample code 
+
+```
+import os
+import openai
+from leptons import agent
+
+# start the monitor agent of leptons
+api_key = os.environ.get("TIMEPLUS_API_KEY")
+api_address = os.environ.get("TIMEPLUS_ADDRESS")
+agent = Agent(api_address=api_address, api_key=api_key)
+agent.start()
+
+# your open ai calls here
+openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": input}],
+        temperature=temp
+    )
+
+```
