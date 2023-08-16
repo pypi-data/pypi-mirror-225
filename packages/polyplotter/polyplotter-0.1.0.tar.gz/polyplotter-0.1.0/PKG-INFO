@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: polyplotter
+Version: 0.1.0
+Summary: A quick way to plot polygons
+Author-email: Julius <julius.simonelli@gmail.com>
+Project-URL: homepage, https://github.com/jss367/polyplotter
+Project-URL: repository, https://github.com/jss367/polyplotter
+Project-URL: bug_tracker, https://github.com/jss367/polyplotter/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# polyplotter
+A repo for plotting polygons in Python
+
+
+
+Recommended usage:
+
+```
+from polyplotter import plotpoly as p
+p(my_polygon)
+```
+
+## Installation
+
+This package can be installed from using pip:
+
+`pip install polyplotter`
