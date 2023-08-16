@@ -1,0 +1,23 @@
+[package]
+name = "rcdb_unpacker"
+version = "0.1.2"
+authors = ["Malik Sulaimanov <malik@retechlabs.com>"]
+edition = "2021"
+homepage = "https://retechlabs.com/"
+documentation = "https://bitbucket.org/abhiretech/rebotics_core/wiki/Home"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "rcdb_unpacker"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.19.0"
+rayon  = "1.5"
+num_cpus = "1.0"
+flate2 = "1.0.26"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+zip = "0.6.6"
+ndarray = "0.15.6"
+numpy = "0.19"
