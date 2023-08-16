@@ -1,0 +1,77 @@
+#!python
+
+import argparse
+
+from alfreds_init.init import alfreds_init
+from alfreds_seed.seed import alfred_seed
+from alfreds_start.start import alfred_start
+from alfreds_stop.stop import stop_containers
+from alfreds_update.update_agent import update_agent
+from alfreds_update.update_working_directory import update_working_directory
+
+# ignore all warnings
+import warnings
+
+from refresh.refresh import refresh
+
+warnings.filterwarnings("ignore")
+
+# Create the parser
+parser = argparse.ArgumentParser(prog='alfreds')
+
+# Create subparsers for different commands
+subparsers = parser.add_subparsers(dest='command')
+
+# Create a parser for 'init' command
+init_parser = subparsers.add_parser('init', help='Initialize Alfreds')
+init_parser.add_argument('--agent_path', help='Path to the agent. It should be an absolute path')
+init_parser.add_argument('--working_dir', help='Working directory. It should be an absolute path')
+init_parser.add_argument('--seed_directory_path', help='Directory path to seed. It should be an absolute path', nargs='?')
+
+# Create a parser for 'start' command
+start_parser = subparsers.add_parser('start', help='Start Alfreds')
+
+# Create a parser for 'stop' command
+subparsers.add_parser('stop', help='Stop Alfreds')
+
+# Create a parser for 'uninstall' command
+subparsers.add_parser('uninstall')
+
+# Create a parser for 'update {agent_path}' command
+update_agent_parser = subparsers.add_parser('update_agent', help='Update agent path')
+update_agent_parser.add_argument('agent_path', help='Path to the agent')
+
+# Create a parser for 'update {working_directory}' command
+update_dir_parser = subparsers.add_parser('update_working_dir', help='Update working directory')
+update_dir_parser.add_argument('working_directory', help='Working directory')
+
+# seed parser
+seed_parser = subparsers.add_parser('seed')
+seed_parser.add_argument('seed_directory_path', help='Directory path to seed')
+
+# Create a parser for refresh
+subparsers.add_parser('refresh', help = 'Refresh Alfreds')
+
+# Parse the command line arguments
+args = parser.parse_args()
+
+# Print the additional arguments if present
+if args.command == 'init':
+    alfreds_init(args.agent_path, args.working_dir, args.seed_directory_path)
+elif args.command == 'start':
+    alfred_start()
+elif args.command == 'update_agent':
+    update_agent(args.agent_path)
+elif args.command == 'update_working_dir':
+    update_working_directory(args.working_directory)
+elif args.command == 'stop':
+    print("Stopping Alfreds...")
+    stop_containers()
+    print("Alfreds stopped.")
+elif args.command == 'seed':
+    seed_directory_path = args.seed_directory_path
+    alfred_seed(seed_directory_path)
+elif args.command == 'refresh':
+    print("Refreshing Alfreds...")
+    refresh()
+    print("Alfreds refreshed.")

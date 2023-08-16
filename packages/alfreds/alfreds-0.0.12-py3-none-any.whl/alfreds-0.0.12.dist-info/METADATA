@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: alfreds
+Version: 0.0.12
+Summary: Alfred Package
+Home-page: https://github.com/TBD
+Author: Data Facade
+Author-email: info@data-facade.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools
+Requires-Dist: wheel
+Requires-Dist: tqdm
+Requires-Dist: twine
+Requires-Dist: requests
+
+# Alfreds CLI Tool
+
+Alfreds is a command-line tool that allows you to perform various tasks related to agents, working directories, and seeds.
+
+## Installation
+
+To install alfreds, run the following command:
+
+```
+pip install alfreds
+```
+
+## Usage
+
+Alfreds can perform the following tasks:
+
+1. Initialize alfreds:
+   ```
+   alfreds init --agent_dir {agent_absolute_path} --working_dir {working_dir_absolute_path} --seed_dir {seeds_absolute_path(optional)}
+   ```
+   This command initializes alfreds with the specified agent, working directory, and seeds (optional). 
+
+2. Update the agent:
+   ```
+   alfreds update_agent {agent_absolute_path}
+   ```
+   This command updates the agent with the specified absolute path.
+
+3. Update the working directory:
+   ```
+   alfreds update_working_dir {working_dir_absolute_path}
+   ```
+   This command updates the working directory with the specified absolute path.
+
+4. Seed the application:
+   ```
+   alfreds seed {seed dir/csv file absolute path}
+   ```
+   This command seeds the application with the specified seed directory or CSV file.
+
+5. Stop alfreds:
+   ```
+   alfreds stop
+   ```
+   This command stops the alfreds application.
+
+6. Start alfreds:
+   ```
+   alfreds start
+   ```
+   This command starts the alfreds application.
+
+7. Refresh alfreds:
+   ```
+   alfreds refresh
+   ```
+   This command refreshes the alfreds application.
+
+8. Alfreds Help:
+   ```
+   alfreds --help
+   ```
+   This command displays the help menu for alfreds.
+
+Please note that you need to provide the absolute paths for the agent, working directory, and seeds when using the respective commands.
+
+If you have any questions or need further assistance, please refer to the alfreds documentation or contact our support team.
