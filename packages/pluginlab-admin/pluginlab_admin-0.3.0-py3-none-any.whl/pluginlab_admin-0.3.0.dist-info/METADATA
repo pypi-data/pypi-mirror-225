@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: pluginlab-admin
+Version: 0.3.0
+Requires-Dist: requests (<3.0.0,>=2.31.0)
+Requires-Dist: pyjwt[crypto] (<3.0.0,>=2.8.0)
+
