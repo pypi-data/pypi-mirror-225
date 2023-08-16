@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: hnu-quant-db
+Version: 0.0.13
+Summary: HNU Quant Association Database Query Tool
+Author: rikkaka
+Author-email: 793329010@qq.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: pandas (>=2.0)
+Requires-Dist: sqlalchemy (>=2.0)
+Requires-Dist: psycopg2-binary (>=2.9)
+
