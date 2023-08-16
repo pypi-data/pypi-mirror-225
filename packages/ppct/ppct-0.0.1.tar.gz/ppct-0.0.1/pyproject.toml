@@ -1,0 +1,25 @@
+[project]
+name = "ppct"
+version = "0.0.1"
+description = "Pure Python common toolset"
+authors = [
+    { name = "xfoobar", email = "" },
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "setuptools>=68.0.0",
+    "pip>=23.2.1",
+]
