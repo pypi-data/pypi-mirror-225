@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: ipytorch
+Version: 0.1.0
+Summary: Interactive running torch DDP training in Jupyter Notebook
+Author: fecet
+Author-email: xiezej@gmail.com
+Requires-Python: >=3.8
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: absl-py (>=1.4.0,<2.0.0)
+Requires-Dist: colorlog (>=6.7.0,<7.0.0)
+Requires-Dist: ipyparallel (>=8.6.1,<9.0.0)
+Requires-Dist: nest-asyncio (>=1.5.6,<2.0.0)
+Description-Content-Type: text/markdown
+
+
