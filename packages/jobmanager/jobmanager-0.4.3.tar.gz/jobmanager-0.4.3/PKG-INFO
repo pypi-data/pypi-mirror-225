@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: jobmanager
+Version: 0.4.3
+Summary: a facility for distributed computing
+Home-page: https://github.com/cimatosa/jobmanager
+License: MIT
+Keywords: multiprocessing,queue,parallel,distributed,computing,progress,manager,job,persistent data,scheduler
+Author: Richard Hartmann
+Requires-Python: >=3.9,<4.0
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: binfootprint (>=1.2.0,<2.0.0)
+Requires-Dist: numpy (>=1.24.1,<2.0.0)
+Requires-Dist: progression (>=0.2.0,<0.3.0)
+Requires-Dist: scipy (>=1.8.1,<2.0.0)
+Requires-Dist: threadpoolctl (==3.1.0)
+Project-URL: Repository, https://github.com/cimatosa/jobmanager
+Description-Content-Type: text/markdown
+
+jobmanager
+==========
+[![PyPI](http://img.shields.io/pypi/v/jobmanager.svg)](https://pypi.python.org/pypi/jobmanager)
+
+Easy distributed computing based on the python class SyncManager for remote communication and python module multiprocessing for local parallelism.
+
+### Documentation (out of date)
+The documentation is available at http://cimatosa.github.io/jobmanager/ 
+
+### Developer's note (out of date)
+After cloning into jobmanager, create a virtual environment
+
+    virtualenv --system-site-packages ve_jm
+    source ve_jm/bin/activate
+
+Install all dependencies
+
+    python setup.py develop
+    
+Running an example
+
+    python examples/simple_example.py
+
+Running tests
+
+    python setup.py test
+
