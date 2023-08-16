@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: boilerdaq
+Version: 0.4.0
+Summary: Data processing pipeline for a nucleate pool boiling apparatus.
+Author-email: Blake Naccarato <blake.naccarato@gmail.com>
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: boilercore>=0.0.0
+Requires-Dist: dulwich>=0.21.5
+Requires-Dist: dvc[gs]>=3.10.1
+Requires-Dist: ipykernel>=6.25.0
+Requires-Dist: loguru>=0.7.0
+Requires-Dist: matplotlib>=3.7.2
+Requires-Dist: mcculw>=1.0.0
+Requires-Dist: nbformat>=5.9.2
+Requires-Dist: PyQt5>=5.15.9
+Requires-Dist: pandas[hdf5,performance]>=2.0.2
+Requires-Dist: pandas-stubs~=2.0.2
+Requires-Dist: ploomber-engine>=0.0.30
+Requires-Dist: pyqtgraph>=0.13.3
+Requires-Dist: PyVISA>=1.13.0
+Requires-Dist: seaborn>=0.12.2
+Requires-Dist: simple-pid>=2.0.0
+Requires-Dist: numba>=0.57.1
+Requires-Dist: numpy>=1.24.4,<1.25
+Project-URL: Changes, https://blakeNaccarato.github.io/boilerdaq/changelog.html
+Project-URL: Docs, https://blakeNaccarato.github.io/boilerdaq
+Project-URL: Home, https://github.com/blakeNaccarato/boilerdaq
+Project-URL: Tracker, https://github.com/blakeNaccarato/boilerdaq/issues
+
+# boilerdaq
+
+Data processing pipeline for a nucleate pool boiling apparatus.
+
