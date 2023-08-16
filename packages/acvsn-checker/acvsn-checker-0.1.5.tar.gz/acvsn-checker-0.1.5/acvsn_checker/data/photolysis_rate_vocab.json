@@ -1,0 +1,138 @@
+{
+  "GasJvalue CoreName:Products": {
+    "jO3": [
+      "O2-O1D"
+    ],
+    "jNO2": [
+      "NO-O3P"
+    ],
+    "jH2O2": [
+      "OH-OH"
+    ],
+    "jNO3": [
+      "NO-O2",
+      "NO2-O3P"
+    ],
+    "jN2O5": [
+      "NO3-NO2"
+    ],
+    "jHNO2": [
+      "OH-NO"
+    ],
+    "jHNO3": [
+      "OH-NO2"
+    ],
+    "jHNO4": [
+      "HO2-NO2"
+    ],
+    "jCH2O": [
+      "H-HCO",
+      "H2-CO"
+    ],
+    "jCH3CHO": [
+      "CH3-HCO"
+    ],
+    "jPropanal": [
+      "CH2CH3-HCO"
+    ],
+    "jCH3OOH": [
+      "CH3O-OH"
+    ],
+    "jMeONO2": [
+      "CH3O-NO2"
+    ],
+    "jEthONO2": [
+      "CH3CH2O-NO2"
+    ],
+    "jPAN": [
+      "CH3COO2-NO2",
+      "CH3COO-NO3"
+    ],
+    "jMAC": [
+    ],
+    "jMVK": [
+    ],
+    "jMEK": [
+      "CH3CO-CH2CH3"
+    ],
+    "jAcetone": [
+      "CH3CO-CH3"
+    ],
+    "jEthAcetate": [
+    ],
+    "jMeAcetate": [
+    ],
+    "jCHOCHO": [
+      "HCO-HCO",
+      "H2-2CO"
+    ],
+    "jCH3COCHO ": [
+      "CH3CO-HCO"
+    ],
+    "j23Butanedione": [
+    ],
+    "jCl2": [
+      "Cl-Cl"
+    ],
+    "jClO": [
+      "Cl-O3P"
+    ],
+    "jClNO2": [
+      "Cl-NO2"
+    ],
+    "jClONO": [
+      "Cl-NO2"
+    ],
+    "jClONO2": [
+      "Cl-NO3",
+      "ClO-NO2"
+    ],
+    "jBr2": [
+      "Br-Br"
+    ],
+    "jBrO": [
+      "Br-O"
+    ],
+    "jHOBr": [
+      "OH-Br"
+    ],
+    "jBrNO": [
+      "Br-NO"
+    ],
+    "jBrONO": [
+      "Br-NO2",
+      "BrO-NO"
+    ],
+    "jBrONO2": [
+      "BrO-NO2",
+      "Br-NO3"
+    ],
+    "jBrNO2": [
+      "Br-NO2"
+    ],
+    "jBrCl": [
+      "Br-Cl"
+    ],
+    "jCHBr3": [
+    ],
+    "jButanal": [
+    ],
+    "jBr2O": [
+    ],
+    "jHydroxyacetone": [
+      "CH3CO-CH3O",
+      "CH3COO-CH3"
+    ]
+  },
+  "AquJvalue CoreName:Products": [
+  ],
+  "MeasurementDirection": [
+    "Downwelling",
+    "Upwelling",
+    "Total"
+  ],
+  "SpectralCoverage": [
+    "Partial",
+    "Full"
+  ]
+}
