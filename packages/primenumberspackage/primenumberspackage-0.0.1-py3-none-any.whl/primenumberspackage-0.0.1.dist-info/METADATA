@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: primenumberspackage
+Version: 0.0.1
+Summary: This code shows a range of prime numbers based on the minimum and maximum numbers the user prompts
+Home-page: https://github.com/lucasvenicius19/primenumberspackage.git
+Author: Lucas Venicius Alves Santos
+Author-email: lucas.alves.santos19@gmail.com
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# primenumberspackage
+
+Description.
+The package primenumberspackage is used to:
+    - Set a minimum number
+    - Set a maximum number
+    - Find prime number in that range
+    - Asks the user if the user wants to quit or run the package again
+
+# Installation
+
+Use the package manager [pip](https://pip.pypa ...) to install primenumberspackage
+
+"""bash
+pip install primenumberspackage
+"""
+
+# Author
+Lucas Venicius Alves Santos
