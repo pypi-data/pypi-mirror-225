@@ -1,0 +1,3 @@
+[build-system]
+requires = ['setuptools>=42', 'rasterio']
+build-backend = 'setuptools.build_meta'
