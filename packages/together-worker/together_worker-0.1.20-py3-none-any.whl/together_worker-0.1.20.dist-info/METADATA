@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: together-worker
+Version: 0.1.20
+Summary: 
+Home-page: https://github.com/together-computer/together-worker
+License: MIT
+Keywords: NLP,vision,speech,deep,learning,transformer,pytorch,tensorflow,BERT,GPT-2
+Author: together
+Author-email: together@together.xyz
+Requires-Python: >=3.7.2,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: aiohttp (>=3.8.3,<4.0.0)
+Requires-Dist: dacite (>=1.6.0,<2.0.0)
+Requires-Dist: netifaces (>=0.11.0,<0.12.0)
+Requires-Dist: pynvml (>=11.4.1,<12.0.0)
+Requires-Dist: together-web3 (>=0.1.6,<0.2.0)
+Project-URL: Repository, https://github.com/together-computer/together-worker
+Description-Content-Type: text/markdown
+
+# together_worker
+
+## Setup dev
+
+```console
+make install
+```
+
+## Publish to PyPi
+
+GitHub repo > Releases > Draft a new Release > Choose a tag > Create new tag on publish >
+
+Name the tag using the current version from pyproject.toml with a "v" e.g. `v1.0.9`.
+
+> Publish Release
+
+In the repo toolbar select > Actions
+
+- Verify the publish workflow is running and completes successfully
+
+
