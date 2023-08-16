@@ -1,0 +1,38 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "mtb-core"
+version = "0.0.1"
+description = "Shared library"
+authors = ["Mel Massadian <mel@melmassadian.com>"]
+packages = [{ include = "mtb" }]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+numpy = ">=1.21"
+
+[tool.poetry.dev-dependencies]
+black = "^23.1.0"
+isort = "^5.12.0"
+pylint = "^2.16.3"
+pyright = "^1.1.296"
+pytest = "^7.2.1"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.pyright]
+
+[tool.pylint."messages control"]
+disable = "all"
+enable = [
+    "empty-docstring",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+]
+ignore = ["setup.py", "__init__.py"]
+ignore-paths = ["tests"]
