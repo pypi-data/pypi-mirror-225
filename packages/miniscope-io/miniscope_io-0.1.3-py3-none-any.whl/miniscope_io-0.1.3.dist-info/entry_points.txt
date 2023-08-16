@@ -1,0 +1,4 @@
+[console_scripts]
+uart_image_capture=miniscope_io.uart_daq:main
+updateDevice=miniscope_io.uart_daq:updateDevice
+
