@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: bsdm
+Version: 0.1.4
+Summary: Beautiful SVG Data Model
+Author: Loïc BAUD
+Author-email: loic.baud@tnpconsultants.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: argparse (>=1.4.0,<2.0.0)
+Requires-Dist: logging (>=0.4.9.6,<0.5.0.0)
+Requires-Dist: pathlib (>=1.0.1,<2.0.0)
+Requires-Dist: regex (>=2023.8.8,<2024.0.0)
+Requires-Dist: svgwrite (>=1.4.3,<2.0.0)
+Requires-Dist: tk (>=0.1.0,<0.2.0)
+Description-Content-Type: text/markdown
+
+# bsdm
+ 
+
