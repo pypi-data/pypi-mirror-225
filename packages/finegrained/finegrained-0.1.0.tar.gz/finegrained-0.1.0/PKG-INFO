@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: finegrained
+Version: 0.1.0
+Summary: Quickly prepare data, train new models and export to production from a command line
+License: MIT
+Author: Rustem Galiullin
+Author-email: rustemgal@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: fiftyone (>=0.19.0,<0.20.0)
+Requires-Dist: fire (>=0.5.0,<0.6.0)
+Requires-Dist: lightning-flash[image] (>=0.8.1.post0,<0.9.0)
+Requires-Dist: numpy (>=1.22.4,<2.0.0)
+Requires-Dist: pillow (>=9.4.0,<10.0.0)
+Requires-Dist: pyyaml (>=6.0,<7.0)
+Requires-Dist: scikit-learn (>=1.2.2,<2.0.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Description-Content-Type: text/markdown
+
+# Fine-grained image recognition
+
+A package and command-line tool to quickly get from raw data to a production model.
+The main target is to train an object detector and a image classfier / similarity search
+model to detect and recognize fine-grained objects on images and video.
+
+This package is built upon an open-source computer vision data management tool
+[FiftyOne](https://docs.voxel51.com/index.html). It also provides an integration
+with a data annotation tool [CVAT](https://www.cvat.ai/) and a model-training framework
+[Lightning Flash](https://lightning-flash.readthedocs.io/) that are 
+
+## Structure
+
+The package is structured as follows:
+
+- **data**: contains the code to prepare data for training
+- **models**: contains the code to train, evaluate and export models
+
+## Development installation
+
+This package is managed with [Poetry](https://python-poetry.org/).
+To install the package in development mode, run the following command:
+
+```bash
+poetry install
+pre-commit install
+```
+
