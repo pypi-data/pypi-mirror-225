@@ -1,0 +1,167 @@
+import time
+import os
+import json
+import argparse
+import threading
+import cve_prioritizer
+import inthewild
+import strobes_vi
+import sploitus
+from functools import cache
+from rich import print
+from rich.live import Live
+from rich.table import Table
+
+def args():
+    parser = argparse.ArgumentParser(description="Insights about CVEs, with LIB Intel-Toolkit")
+    parser.add_argument("-f", "--file", type=str, const=True, nargs='?', default='cves.txt', help="Define file.txt with CVE to analyse. (Default is cves.txt)")
+    parser.add_argument("-k", "--key", type=str, const=True, nargs='?', help="Define KEY to API NVD.")
+    arguments = parser.parse_args()
+    return arguments
+
+class Live_Table:
+    def __init__(self, file_txt, key_nvd) -> None:
+        with open(file_txt, 'r') as file:
+            self.cves = [line.rstrip() for line in file]
+        self.itwild = inthewild.consult()
+        self.strobes = strobes_vi.consult()
+        self.sploitus = sploitus.consult()
+        self.cve_info = cve_prioritizer.consult(api_key_nvd=key_nvd)
+        self.total_exploitations = {}
+        self.exist_patch = {}
+        self.types_exploits = {}
+
+    def t_exploitation(self):
+        for cve in self.cves:
+            self.total_exploitations[cve] = self.itwild.get_vuln_total_exploitation(cve)
+    
+    def t_exploits(self):
+        for cve in self.cves:
+            self.types_exploits[cve] = self.sploitus.get_types_exploits(cve)
+            # print(self.types_exploits)
+            
+    def s_patch(self):
+        for cve in self.cves:
+            self.exist_patch[cve] = self.strobes.check_vuln_has_patch(cve)
+
+    def get_item_exploitation(self, cve):
+        return str(self.total_exploitations[f'{cve}'])
+    
+    @cache
+    def __get_type_exploit_from_cache(self, cve, type):
+        exploit = [x for x in self.types_exploits[cve] if x == type]
+        if len(exploit) != 0:
+            return True
+        else:
+            return False
+
+    def generate_table(self) -> Table:
+        """Make a new table."""
+        row = 1
+        table = Table()
+        table.add_column("Row ID")
+        table.add_column("Priority")
+        table.add_column("CVE")
+        table.add_column("CVSS")
+        table.add_column("Status")
+        table.add_column("Interest Status")
+        table.add_column("Exploitation Status")
+        table.add_column("Mitigation Status")
+
+        for cve in self.cve_info.PRIORITIES_LIST:
+            cve_exploitation = self.get_item_exploitation(cve=cve.get('cve'))
+            exploitation = ":stop_sign:"
+            patch = ":skull: Unavailable"
+            exploit = ""
+            
+            if cve_exploitation == "0":
+                exploitation = ":snowflake: Not exploited"
+            if cve_exploitation == "1": 
+                exploitation = ":collision: Exploited"
+            
+            # print(self.types_exploits[])
+            with open('output.json', 'w') as file:
+                file.write(json.dumps(self.types_exploits, indent=4))
+            
+            try:
+                if len(self.types_exploits.get(cve.get('cve'))) == 0:
+                    exploit = ':warning: Unobserved'
+            except:
+                pass
+            if self.types_exploits.get(cve.get('cve')):
+                if self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='metasploit'): 
+                    exploit = ':bomb: Productized'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='packetstorm'):
+                    exploit = ':bomb: Productized'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='zdt'):
+                    exploit = ':bomb: Productized'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='dsquare'):
+                    exploit = ':bomb: Productized'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='wpexploit'):
+                    exploit = ':bomb: Productized'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='githubexploit'):
+                    exploit = ':lady_beetle: Code Available'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='seebug'):
+                    exploit = ':lady_beetle: Code Available'
+                elif self.__get_type_exploit_from_cache(cve=cve.get('cve'), type='exploitdb'):
+                    exploit = ':lady_beetle: Code Available'
+            try:
+                if self.exist_patch.get(cve.get('cve')):
+                    patch = ":hammer_and_wrench: Available"
+            except:
+                patch = ":skull: Unavailable"
+            table.add_row(
+                f'{row}',
+                f"{cve.get('priority')}",
+                f"{cve.get('cve')}", 
+                f"{cve.get('cvss_baseScore')}", 
+                f"{cve.get('status')}",
+                f"{exploitation}",
+                f"{exploit}",
+                f"{patch}"
+            )
+            row += 1
+        return table
+    
+    def process(self):
+        self.cve_info.process_list(self.cves)
+
+def run(file, api_key_nvd):
+    live_t = Live_Table(file_txt=file, key_nvd=api_key_nvd)
+    t1 = threading.Thread(target=live_t.process)
+    t2 = threading.Thread(target=live_t.t_exploitation)
+    t3 = threading.Thread(target=live_t.s_patch)
+    t4 = threading.Thread(target=live_t.t_exploits)
+    t1.start()
+    t2.start()
+    t3.start()
+    t4.start()
+    try:
+        with Live(live_t.generate_table(), refresh_per_second=4) as live:
+            while True:
+                time.sleep(0.4)
+                live.update(live_t.generate_table())
+    except KeyboardInterrupt:
+        print('[red]Exiting')
+
+def cli():
+    if __name__ == "__main__":
+        ARGS = args()
+        if ARGS.file:
+            file = ARGS.file
+        if os.path.exists(file):
+            pass
+        else:
+            print(f"[red]File {file} not exist.")
+            exit(1)
+        if ARGS.key:
+            key_nvd = ARGS.key
+            run(file=file,api_key_nvd=key_nvd)
+        elif os.environ.get("API_KEY_NVD"):
+            key_nvd = os.environ.get("API_KEY_NVD")
+            run(file=file,api_key_nvd=key_nvd)
+        else:
+            print(f'[red]API Key NVD not define. Please inform argument -k or API_KEY_NVD variable environment')
+
+if __name__ == "__main__":
+    cli()
