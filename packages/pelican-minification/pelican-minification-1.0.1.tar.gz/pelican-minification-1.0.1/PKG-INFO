@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: pelican-minification
+Version: 1.0.1
+Summary: Minifies HTML, CSS and JS of generated Pelican content.
+Home-page: https://github.com/dArignac/pelican-minification
+Author: Alexander Herrmann
+Author-email: github@torv.rocks
+Keywords: pelican,javascript,css,html,minification
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Text Processing :: Markup
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/x-rst
+Provides-Extra: dev
+License-File: LICENSE
+
+⚠️⚠️⚠️ **IMPORTANT** ⚠️⚠️⚠️
+
+The plugin was moved to the official Pelican plugin organization.
+
+You can now find it here: https://github.com/pelican-plugins/minify
+
+Also the package name changed to `pelican-minify`. Please read the docs.
+
+New PyPI place is https://pypi.org/project/pelican-minify/.
+
+⚠️⚠️⚠️ **IMPORTANT** ⚠️⚠️⚠️
