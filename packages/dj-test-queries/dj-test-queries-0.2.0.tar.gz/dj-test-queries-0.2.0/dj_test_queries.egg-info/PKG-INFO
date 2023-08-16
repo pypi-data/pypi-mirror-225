@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: dj-test-queries
+Version: 0.2.0
+Summary: Extension of assertNumQueries that can record queries that were executed and show the differences in future runs.
+Home-page: https://github.com/PetrDlouhy/dj-test-queries
+Author: Petr Dlouhý
+Author-email: petr.dlouhy@email.cz
+License: MIT
+Keywords: dj-test-queries
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Django :: 1.11
+Classifier: Framework :: Django :: 2.1
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+=============================
+Django test queries
+=============================
+
+.. image:: https://badge.fury.io/py/dj-test-queries.svg
+    :target: https://badge.fury.io/py/dj-test-queries
+
+.. image:: https://codecov.io/gh/PetrDlouhy/dj-test-queries/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/PetrDlouhy/dj-test-queries
+
+Extension of assertNumQueries that can record queries that were executed and show the differences in future runs.
+
+Documentation
+-------------
+
+The full documentation is at https://dj-test-queries.readthedocs.io.
+
+Quickstart
+----------
+
+Install ``dj-test-queries``:
+
+.. code-block:: bash
+
+   pip install dj-test-queries
+
+Apply ``NumQueriesMixin`` to your test and use ``assertNumQueries`` as you would normally do:
+
+.. code-block:: python
+
+    from test_queries import NumQueriesMixin
+
+    class XYZTests(NumQueriesMixin, TestCase):
+        def test_xyz(self):
+            with self.assertNumQueries(3):
+                xyz()
+
+Generating SQL log records
+--------------------------
+
+Run the tests with ``TEST_QUERIES_REWRITE_SQLLOGS`` environment variable to generate sqllog files:
+
+.. code-block:: bash
+
+    TEST_QUERIES_REWRITE_SQLLOGS="true" manage.py test
+
+Files like ``test_views.XYZTests.test_xyz.sqllog`` will appear in ``sqllog`` directory next to your ``test_views.py`` file.
+
+If you will run the test next time and the queries will differ from previous, the test will print out output detailing the change with stacktrace from where the query was executed.
+You can also enlist the ``*.sqllog`` files to your repository to see the changes.
+
+If the tests are executed without the ``TEST_QUERIES_REWRITE_SQLLOGS`` environment variable, the logs are created to files named like ``test_views.XYZTests.test_xyz.sqllog`` to make possible to compare the difference.
+
+Running Tests
+-------------
+
+Does the code actually work?
+
+::
+
+    source <YOURVIRTUALENV>/bin/activate
+    (myenv) $ pip install tox
+    (myenv) $ tox
+
+
+Development commands
+---------------------
+
+::
+
+    pip install -r requirements_dev.txt
+    invoke -l
+
+
+Credits
+-------
+
+Tools used in rendering this package:
+
+*  Cookiecutter_
+*  `cookiecutter-djangopackage`_
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
+
+
+
+
+History
+-------
+
+0.2.0 (2023-08-15)
+++++++++++++++++++
+
+* Fixes for new version of DDT (tested in 3.8.1 - 4.2.0)
+* Automatic testing
+
+0.1.0 (2023-04-21)
+++++++++++++++++++
+
+* First release on PyPI.
