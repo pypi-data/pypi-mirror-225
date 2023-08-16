@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: polymatheia
+Version: 1.0.4
+Summary: A python library to support digital archive metadata use
+Home-page: https://polymatheia.readthedocs.io
+License: MIT
+Author: Mark Hall
+Author-email: mark.hall@work.room3b.eu
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Education
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: Sickle (>=0.7.0,<0.8.0)
+Requires-Dist: deprecation (>=2.1.0,<3.0.0)
+Requires-Dist: lxml (>=4.5.2,<5.0.0)
+Requires-Dist: munch (>=2.5.0,<3.0.0)
+Requires-Dist: pandas (>=1.1.0,<2.0.0)
+Requires-Dist: requests (>=2.24.0,<3.0.0)
+Requires-Dist: srupy (>=0.0.45,<0.0.46)
+Project-URL: Repository, https://github.com/scmmmh/polymatheia
+Description-Content-Type: text/markdown
+
+# Polymatheia
+
+![Validation Status](https://github.com/scmmmh/polymatheia/workflows/Validation/badge.svg) ![Build Status](https://github.com/scmmmh/polymatheia/workflows/Tests/badge.svg) [![Documentation Status](https://readthedocs.org/projects/polymatheia/badge/?version=latest)](https://polymatheia.readthedocs.io/en/latest/?badge=latest) [![PyPI version](https://badge.fury.io/py/polymatheia.svg)](https://badge.fury.io/py/polymatheia)
+
+Polymatheia is a python library to support working with digital archive metadata. Its aim is not necessarily to cover
+all ways of working with digital archive metadata, but to make it (comparatively) easy to undertake most types of
+tasks and analysis.
+
+*Homepage*: https://polymatheia.readthedocs.io
+
+*Repository*: https://github.com/scmmmh/polymatheia
+
+*Package*: https://pypi.org/project/polymatheia
+
+*License*: MIT
+
