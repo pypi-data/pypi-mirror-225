@@ -1,0 +1,9 @@
+adaptavist-fixed==0.1
+pytest>=5.4.0
+pytest-assume>=2.3.2
+pytest-metadata>=1.6.0
+
+[test]
+beautifulsoup4
+lxml
+requests
