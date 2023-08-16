@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "miniscope_io"
+version = "0.1.3"
+description = ""
+authors = [
+    "sneakers-the-rat <JLSaunders987@gmail.com>",
+    "t-sasatani <sasatani.dev@gmail.com>",
+]
+readme = "README.md"
+packages = [{include = "miniscope_io"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+opencv-python = "^4.7.0.72"
+numpy = "^1.25.0"
+pydantic = "^1.10.9"
+ipywidgets = "^8.0.6"
+jupyter = "^1.0.0"
+matplotlib = "^3.7.1"
+coloredlogs = "^15.0.1"
+pyserial = "^3.5"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[tool.poetry.group.tests]
+optional = true
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.0"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^6.2.1"
+furo = "^2023.5.20"
+myst-parser = "^2.0.0"
+
+[tool.poetry.extras]
+tests = ["pytest"]
+docs = ["sphinx", "furo", "myst-parser"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+uart_image_capture = "miniscope_io.uart_daq:main"
+updateDevice = "miniscope_io.uart_daq:updateDevice"
