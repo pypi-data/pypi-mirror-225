@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: pai-repl
+Version: 0.1.1
+Summary: Python REPL with LLM integration
+Author: Alex Wiles
+Author-email: xwiles@gmail.com
+Requires-Python: >=3.6,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: openai (==0.27.8)
+Requires-Dist: prompt_toolkit (==3.0.39)
+Requires-Dist: pydantic (==2.1.1)
+Description-Content-Type: text/markdown
+
+# pai: A Python REPL with built in LLM support
+
+Describe your task, and pai generates the Python code for you using the REPL history as context
+
+## Demo
+
+```
+>>> nums = [1,1,2,3,3,4,5]
+>>> ai: calc mean median and mode of nums. assign each to a variable
+import statistics
+
+nums = [1,1,2,3,3,4,5]
+
+mean = statistics.mean(nums)
+median = statistics.median(nums)
+mode = statistics.mode(nums)
+
+mean, median, mode
+(2.7142857142857144, 3, 1)
+>>> mean
+2.7142857142857144
+>>> median
+3
+```
