@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: django-countries-geoextent
+Version: 0.0.1
+Summary: Country geographic extent plugin for Django Countries
+Home-page: https://github.com/wmo-raf/django-countries-geoextent
+Author: Erick Otenyo
+Author-email: otenyo.erick@gmail.com
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: django-countries >=7.5.1
+
+# Django Countries GeoExtent
+
+This package adds a `geo_extent` attribute to
+the `django-countries` [Country](https://github.com/SmileyChris/django-countries#the-country-object) object.
+
+The `geo_extent` attribute represents the geographic extent of a country, as extracted
+from [GADM 4.1](https://gadm.org/download_world.html) boundaries data.
+
+## Installation
+
+```
+pip install django-countries-geoextent
+```
+
+## Usage
+
+Once installed, use the [Django Country](https://github.com/SmileyChris/django-countries#the-country-object) as
+described in the [docs](https://github.com/SmileyChris/django-countries).
+
+A new attribute named `geo_extent` will be added to a Country object instance, that represents the geographic extent of
+the country, as obtained from [GADM 4.1](https://gadm.org/download_world.html) boundaries data.
+
+If a country is not found, the `geo_extent` attribute will be `None`
