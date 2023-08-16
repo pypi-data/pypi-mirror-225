@@ -1,0 +1,18 @@
+{
+    "name": "{{ name }}",
+
+    "dockerComposeFile": "docker-compose.yml",
+    "postCreateCommand": "bash -e /rs/project/.devcontainer/post-create.sh",
+    "remoteUser": "rs",
+    "service": "main",
+    "workspaceFolder": "/rs/project",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "ms-python.python"
+            ]
+        }
+    }
+}

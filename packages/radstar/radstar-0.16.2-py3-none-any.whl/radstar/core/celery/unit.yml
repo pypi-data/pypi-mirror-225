@@ -1,0 +1,10 @@
+celery_queues:
+  - celery
+
+services:
+  - name: beat
+    cmd: "{celery} beat"
+  - name: flower
+    cmd: "{celery} flower --address=127.0.0.1 --port=5003 --url_prefix=_flower"
+  - name: worker
+    cmd: "{celery} worker -Q {queues}"
