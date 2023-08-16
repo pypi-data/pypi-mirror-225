@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: fastlbp-imbg
+Version: 0.0.3
+Summary: A small example package
+Author-email: Ben Woodhams <benwoodhams@outlook.com>, Mykhailo Koreshkov <koreshov.m@gmail.com>
+Project-URL: Homepage, https://github.com/imbg-ua/ImageTextureFinder
+Project-URL: Bug Tracker, https://github.com/imbg-ua/ImageTextureFinder/issues
+Keywords: lbp,texture,features,image
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pillow ==9.5.0
+Requires-Dist: numpy ==1.22.4
+Requires-Dist: pandas ==2.0.1
+Requires-Dist: anndata ==0.9.1
+Requires-Dist: scanpy ==1.9.3
+Requires-Dist: scikit-image ==0.20.0
+Requires-Dist: scikit-learn ==1.2.2
+Requires-Dist: scipy ==1.9.1
+Requires-Dist: hdbscan ==0.8.33
+Requires-Dist: matplotlib ==3.7.1
+Requires-Dist: tqdm ==4.65.0
+Requires-Dist: joblib ==1.2.0
+Requires-Dist: numba ==0.55.2
+Requires-Dist: dask ==2023.4.0
+Requires-Dist: ipykernel ==6.22.0
+Requires-Dist: ipython ==8.12.0
+Requires-Dist: ipywidgets ==8.0.6
+Requires-Dist: vispy ==0.11.0
+Requires-Dist: bokeh ==3.1.0
+Requires-Dist: napari ==0.4.17
+Requires-Dist: colour ==0.1.5
+
+# ImageTextureFinder
+A project to create an easy-to-use way of finding areas of common patterns and structures within an image. Should work on any image, designed for use on any biological images including DAPI, IMC and H&E.
+
+See `sample_run.sh` for details.
+
+- Branch `pip` is the latest. It contains a pip packagable version of this project.
+- Branch `baseline` is the most stable. It is not ready for pip tho.
+- Branch `dev` is unstable and for dev purpuses only.
