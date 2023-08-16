@@ -1,0 +1,15 @@
+# Generated files
+
+__pycache__
+*.egg-info
+.vscode
+
+/build/
+/venv/
+/dist/
+.version
+
+# Testing files
+.hapm/
+hapm.yaml
+export
