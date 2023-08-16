@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: earningtrader
+Version: 0.1.0
+Summary: A trading platform based on the Reinforcement Learning framework
+Author-Email: UponTheSky <sailing.to.orbis@gmail.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Project-URL: Github repository, https://github.com/uponTheSky/earningtrader
+Requires-Python: >=3.9
+Requires-Dist: yfinance>=0.2.27
+Requires-Dist: numpy>=1.25.2
+Requires-Dist: pandas>=2.0.3
+Description-Content-Type: text/markdown
+
+# earningtrader
+A trading platform based on the Reinforcement Learning framework
+
+## Getting Started
+- TBA
+
+## Overview
+
+### Project Architecture
+There are five main components in the project. Please refer to the image below:
+
+![](./docs/image/rl-trader.drawio.svg)
+
+- TBA
