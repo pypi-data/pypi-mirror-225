@@ -1,0 +1,5 @@
+[console_scripts]
+aiogram = aiogram_cli.main:cli
+
+[aiogram_cli.plugins]
+builtin-develop = aiogram_cli.develop.plugin:develop_runner
