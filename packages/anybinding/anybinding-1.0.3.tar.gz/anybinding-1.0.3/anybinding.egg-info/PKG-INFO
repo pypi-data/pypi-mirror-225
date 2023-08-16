@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: anybinding
+Version: 1.0.3
+Summary: any command line program binding to python.
+Home-page: https://github.com/guangrei/Anypybinding
+Author: guangrei
+Author-email: myawn@pm.me
+License: MIT
+Keywords: command binding
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+[![status workflow test](https://github.com/guangrei/Anypybinding/actions/workflows/python-app.yml/badge.svg)](https://github.com/guangrei/Anypybinding/actions) 
+[![status workflow build](https://github.com/guangrei/Anypybinding/actions/workflows/release_to_pypi.yml/badge.svg)](https://github.com/guangrei/Anypybinding/actions)
+
+[![Downloads](https://static.pepy.tech/badge/anybinding)](https://pepy.tech/project/anybinding) [![Downloads](https://static.pepy.tech/badge/anybinding/month)](https://pepy.tech/project/anybinding) [![Downloads](https://static.pepy.tech/badge/anybinding/week)](https://pepy.tech/project/anybinding)
+
+this library can binding any command line program to pythonic way, work for python 2 and 3.
+
+## Installation
+
+```
+pip install anybinding
+```
+
+## Usage
+
+open `test.py` for example usage or see projects that use `Anypybinding` [here](https://github.com/guangrei/Anypybinding/network/dependents).
