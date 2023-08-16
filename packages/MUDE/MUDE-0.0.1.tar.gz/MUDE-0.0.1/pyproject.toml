@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MUDE"
+version = "0.0.1"
+authors = [
+  { name="Robert Lanzafame", email="r.c.lanzafame@tudelft.nl" },
+  { name="Quinten van Woerkom", email="q.e.vanwoerkom@student.tudelft.nl" },
+]
+description = "A Python package in support of the Modelling, Uncertainty, and Data Analysis for Engineers course given at TU Delft, Civil Engineering"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = []
+
+[project.urls]
+"Homepage" = "https://gitlab.tudelft.nl/mude/mude"
+"Bug Tracker" = "https://gitlab.tudelft.nl/mude/mude/-/issues"
