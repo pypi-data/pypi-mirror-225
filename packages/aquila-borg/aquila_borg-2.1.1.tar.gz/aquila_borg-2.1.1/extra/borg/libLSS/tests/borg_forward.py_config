@@ -1,0 +1,41 @@
+Nsteps=20
+tests={'forward_tests':
+       {'linear':
+         {'includes':["libLSS/physics/hades_pt.hpp"],
+         'model':'LibLSS::HadesLinear',
+         'model_args':'comm, box, box, 0.001, 1.0' },
+       '2lpt':
+         {'includes':["libLSS/physics/forwards/borg_2lpt.hpp"],
+         'model':'LibLSS::Borg2LPTModel<>',
+         'model_args':'comm, box, box, false /* norsd*/, 1 /* ss factor */, 2.0, 0.001, 1.0, false' },
+       'lpt':
+         {'includes':["libLSS/physics/forwards/borg_lpt.hpp"],
+         'model':'LibLSS::BorgLptModel<>',
+         'model_args':'comm, box, box, false /* norsd*/, 1 /* ss factor */, 2.0, 0.001, 1.0, false' }
+       ,
+       'qlpt':
+         {'includes':["libLSS/physics/forwards/borg_qlpt.hpp"],
+         'model':'LibLSS::BorgQLptModel',
+         'model_args':'comm, box, box, 0.1, false /* norsd*/, 1 /* ss factor */, 2.0, 0.001, 1.0, false' }
+       ,
+       'qlpt_rsd':
+         {'includes':["libLSS/physics/forwards/borg_qlpt_rsd.hpp"],
+         'model':'LibLSS::BorgQLptRsdModel',
+         'model_args':'comm, box, box, 0.1, false /* norsd*/, 1 /* ss factor */, 2.0, 0.001, 1.0, false' }
+       ,
+       'altair':
+         {'includes':["libLSS/physics/forwards/altair_ap.hpp"],
+         'model':'LibLSS::ALTAIR::AltairAPForward',
+         'model_args':f'comm, box, box_z',
+         'model_extra_prev':"""
+           auto box_z = box;
+           box_z.L0 *= 0.8;
+           box_z.L1 *= 0.8;
+           box_z.L2 *= 0.8;
+           box_z.xmin0 = -box_z.L0/2;
+           box_z.xmin1 = -box_z.L1/2;
+           box_z.xmin2 = -box_z.L2/2;
+"""
+         }
+       }
+    }

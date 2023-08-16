@@ -1,0 +1,3 @@
+#include "libLSS/borg_version.hpp"
+
+const std::string LibLSS::BORG_GIT_VERSION = "@BORG_GIT_VER@"; 

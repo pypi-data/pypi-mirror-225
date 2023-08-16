@@ -1,0 +1,390 @@
+inc = ["libLSS/physics/hades_log.hpp"]
+default_likelihood = "LibLSS::HadesLinearDensityLikelihood"
+default_model = "LibLSS::HadesLog"
+tests = {
+    'tests': {
+        'lpt_mngp_quad_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp",
+                "libLSS/physics/modified_ngp.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::BorgLptModel<LibLSS::ModifiedNGP<double,LibLSS::NGPGrid::Quad>>',
+            'model_args':
+            'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        'lpt_rsd_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::BorgLptModel<>',
+            'model_args':
+            'comm, box, box, true /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        'qlpt_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_qlpt.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::BorgQLptModel',
+            'model_args':
+            'comm, box, box, 0.8, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        'qlpt_rsd_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_qlpt_rsd.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::BorgQLptRsdModel',
+            'model_args':
+            'comm, box, box, 0.8, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        'lpt_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::BorgLptModel<>',
+            'model_args':
+            'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        '2lpt_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/borg_2lpt.hpp"
+            ],
+            'likelihood':
+            default_likelihood,
+            'model':
+            'LibLSS::Borg2LPTModel<>',
+            'model_args':
+            'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false'
+        },
+        'powerlaw_poisson_downgrade': {
+            'downgrade':
+            4,
+            'includes':
+            inc + [
+                "libLSS/physics/likelihoods/voxel_poisson.hpp",
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/power_law.hpp",
+                "libLSS/physics/bias/downgrader.hpp"
+            ],
+            'likelihood':
+            "LibLSS::GenericHMCLikelihood<LibLSS::bias::Downgrader<LibLSS::bias::PowerLaw>, LibLSS::VoxelPoissonLikelihood>",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'upgrade': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/upgrade.hpp",
+                "libLSS/physics/forwards/downgrade.hpp",
+                "libLSS/physics/chain_forward_model.hpp"
+            ],
+            'likelihood': default_likelihood,
+            'model':['LibLSS::ForwardUpgrade',
+                'LibLSS::ForwardDowngrade'],
+            'model_args':['comm, box, 2','comm,box2']
+        },
+        'manypower_1_1_linear': {
+            'includes':
+            inc + [
+                "libLSS/physics/likelihoods/voxel_poisson.hpp",
+                "libLSS/physics/likelihoods/gaussian.hpp",
+                "libLSS/physics/adapt_classic_to_gauss.hpp",
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/many_power.hpp",
+                "libLSS/physics/hades_pt.hpp"
+            ],
+            'likelihood':
+                "LibLSS::GenericHMCLikelihood<LibLSS::bias::ManyPower<LibLSS::bias::ManyPowerLevels<double, 1, 1>>, LibLSS::VoxelPoissonLikelihood>",
+            'model':
+            "LibLSS::HadesLinear",
+            'model_args': 'comm, box, box, 1.0, 1.0'
+        },
+        'manypower_2_2_poisson': {
+            'includes':
+            inc + [
+                "libLSS/physics/likelihoods/voxel_poisson.hpp",
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/many_power.hpp"
+            ],
+            'likelihood':
+            "LibLSS::GenericHMCLikelihood<LibLSS::bias::ManyPower<LibLSS::bias::ManyPowerLevels<double, 2, 2>>, LibLSS::VoxelPoissonLikelihood>",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'poisson': {
+            'includes': [
+                "libLSS/samplers/borg/borg_poisson_likelihood.hpp",
+                "libLSS/physics/hades_log.hpp"
+            ],
+            'likelihood':
+            "LibLSS::BorgPoissonLikelihood",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'robust_poisson': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/power_law.hpp",
+                "libLSS/physics/likelihoods/robust_poisson.hpp"
+            ],
+            'likelihood':
+            "LibLSS::GenericHMCLikelihood<LibLSS::bias::PowerLaw, LibLSS::RobustPoissonLikelihood>",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'voxel_poisson': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/broken_power_law_sigmoid.hpp",
+                "libLSS/physics/likelihoods/voxel_poisson.hpp"
+            ],
+            'likelihood':
+            "LibLSS::GenericHMCLikelihood<LibLSS::bias::BrokenPowerLawSigmoid, LibLSS::VoxelPoissonLikelihood>",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+	# FS: disable bundling of EFTBias and GaussianLikelihood
+        #'2ob': {
+        #    'includes':
+        #    inc + [
+        #        "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+        #        "libLSS/physics/bias/eft_bias.hpp",
+        #        "libLSS/physics/adapt_classic_to_gauss.hpp",
+        #        "libLSS/physics/likelihoods/gaussian.hpp"
+        #    ],
+        #    'likelihood':
+        #    'LibLSS::GenericHMCLikelihood<LibLSS::bias::EFTBiasDefault, LibLSS::GaussianLikelihood>',
+        #    'model':
+        #    default_model,
+        #    'model_args': 'comm, box, 0.001'
+        #},
+	# FS: this is config for EFTBias/EFTLikelihood gradient test
+        'eftlike': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/eft_bias.hpp",
+                "libLSS/physics/adapt_classic_to_gauss.hpp",
+                "libLSS/physics/likelihoods/eft.hpp"
+            ],
+            'likelihood':
+            'LibLSS::GenericHMCLikelihood<LibLSS::bias::EFTBiasDefault, LibLSS::EFTLikelihood>',
+            'model':
+            default_model,
+            'model_args': 'comm, box, 1e-5'
+        },
+	# FS: this is config for EFTBiasMarg/EFTMargLikelihood gradient test
+        'eftlikemarg': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/eft_bias_marg.hpp",
+                "libLSS/physics/adapt_classic_to_gauss.hpp",
+                "libLSS/physics/likelihoods/eftmarg.hpp"
+            ],
+            'likelihood':
+            'LibLSS::GenericHMCLikelihood<LibLSS::bias::EFTBiasMarg, LibLSS::EFTMargLikelihood>',
+            'model':
+            default_model,
+            'model_args': 'comm, box, 1e-5'
+        },
+        'generic_gaussian_linear': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/linear_bias.hpp",
+                "libLSS/physics/adapt_classic_to_gauss.hpp",
+                "libLSS/physics/likelihoods/gaussian.hpp"
+            ],
+            'likelihood':
+            "LibLSS::GenericHMCLikelihood<LibLSS::AdaptBias_Gauss<LibLSS::bias::LinearBias>, LibLSS::GaussianLikelihood>",
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'mowhite': {
+            'includes':
+            inc + [
+                "libLSS/samplers/generic/generic_hmc_likelihood.hpp",
+                "libLSS/physics/bias/double_power_law.hpp",
+                "libLSS/physics/adapt_classic_to_gauss.hpp",
+                "libLSS/physics/likelihoods/gaussian.hpp"
+            ],
+            'likelihood':
+            'LibLSS::GenericHMCLikelihood<LibLSS::AdaptBias_Gauss<LibLSS::bias::DoubleBrokenPowerLaw>, LibLSS::GaussianLikelihood>',
+            'model':
+            default_model,
+            'model_args': 'comm, box, 0.001'
+        },
+        'chain_primordial_downgrade': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp",
+                "libLSS/physics/forwards/downgrade.hpp",
+                "libLSS/physics/forwards/transfer.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+                'LibLSS::BorgLptModel<>', 'LibLSS::ForwardTransfer', 'LibLSS::ForwardDowngrade'
+            ],
+            'model_extra' : ['', '', '', 'm->setupInverseCIC(0.9);', ''],
+            'model_args': [
+                'comm, box, 0.002', 'comm, box',
+                'comm, box, box2, false /* norsd*/, 2 /* ss factor */, 2.0, 0.002, 1.0, false',
+                'comm, box2', 'comm, box2'
+            ]
+        },
+        'chain_primordial_downgrade_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/downgrade.hpp"
+            ],
+            'downgrade': 2,
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 
+                'LibLSS::ForwardDowngrade'
+            ],
+            'model_args': [
+                'comm, box, 1.0', 
+                'comm, box'
+            ]
+        },
+        'chain_transfer': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp",
+                "libLSS/physics/forwards/transfer.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+                'LibLSS::BorgLptModel<>', 'LibLSS::ForwardTransfer'
+            ],
+            'model_args': [
+                'comm, box, 0.002', 'comm, box',
+                'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.002, 1.0, false',
+                'comm, box'
+            ],
+            'model_extra' : ['', '', '', 'm->setupInverseCIC(0.9);']
+        },
+        'chain_enforcemass': {
+            'includes': [
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/enforceMass.hpp",
+                "libLSS/physics/forwards/softplus.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': ['LibLSS::ForwardSoftPlus', 'LibLSS::ForwardEnforceMass'],
+            'model_args': [
+                'comm, box', 'comm, box']
+        },
+        'ly_alpha':
+            {'includes':["libLSS/samplers/lya/hades_lya_likelihood.hpp","libLSS/physics/forwards/borg_lpt.hpp"],
+             'likelihood': "LibLSS::BorgLyAlphaLikelihood",
+             'model':'LibLSS::BorgLptModel<>',
+             'model_args':'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false',
+             'base_code':'generic_los_gradient_test.cpp'
+        }, 
+        'ly_alpha_qlpt':
+            {'includes':["libLSS/samplers/lya/hades_lya_likelihood.hpp","libLSS/physics/forwards/borg_qlpt.hpp"],
+             'likelihood': "LibLSS::BorgLyAlphaLikelihood",
+             'model':'LibLSS::BorgQLptModel',
+             'model_args':'comm, box, box, 0.8, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false',
+             'base_code':'generic_los_gradient_test.cpp'
+        }, 
+        'ly_alpha_rsd':
+            {'includes':["libLSS/samplers/lya_rsd_qlpt/hades_lya_likelihood_rsd.hpp","libLSS/physics/forwards/borg_qlpt_rsd.hpp"],
+             'likelihood': "LibLSS::BorgLyAlphaRsdLikelihood",
+             'model':'LibLSS::BorgQLptRsdModel',
+             'model_args':'comm, box, box, 0.8, false /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false',
+             'base_code':'generic_los_gradient_test.cpp'
+       },
+      'altair':
+         {'includes':[
+                "libLSS/physics/forwards/altair_ap.hpp",
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+         ],
+         'likelihood':"LibLSS::HadesLinearDensityLikelihood",
+         'model': [
+             'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+             'LibLSS::ALTAIR::AltairAPForward'
+         ],
+         'model_args':[
+            'comm, box, 0.002', 'comm, box',
+            f'comm, box, box_z'],
+         'model_extra_prev':['','',"""
+           auto box_z = box;
+           box_z.L0 *= 0.8;
+           box_z.L1 *= 0.8;
+           box_z.L2 *= 0.8;
+           box_z.xmin0 = -box_z.L0/2;
+           box_z.xmin1 = -box_z.L1/2;
+           box_z.xmin2 = -box_z.L2/2;
+"""]
+         },
+       'chain_primordial_lpt_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+                "libLSS/physics/forwards/borg_lpt.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+                'LibLSS::BorgLptModel<>'
+            ],
+            'model_args': [
+                'comm, box, 0.002', 'comm, box',
+                'comm, box, box, false /* norsd*/, 2 /* ss factor */, 2.0, 0.002, 1.0, false'
+            ]
+        }
+    }
+}

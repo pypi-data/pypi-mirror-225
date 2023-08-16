@@ -1,0 +1,7 @@
+CODEABI_1.0 {
+  global:
+    PyInit__borg;
+    _init;
+    _fini;
+  local: *;
+};

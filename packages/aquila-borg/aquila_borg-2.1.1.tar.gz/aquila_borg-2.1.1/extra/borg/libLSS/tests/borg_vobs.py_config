@@ -1,0 +1,15 @@
+inc=["libLSS/samplers/generic/generic_hmc_likelihood.hpp","libLSS/physics/bias/linear_bias.hpp","libLSS/physics/adapt_classic_to_gauss.hpp","libLSS/physics/likelihoods/gaussian.hpp"]
+default_likelihood="LibLSS::GenericHMCLikelihood<LibLSS::AdaptBias_Gauss<LibLSS::bias::LinearBias>, LibLSS::GaussianLikelihood>"
+tests={'tests':
+       {'lpt_linear':
+            {'includes':inc+["libLSS/physics/forwards/borg_lpt.hpp"],
+             'likelihood': default_likelihood,
+             'model':'LibLSS::BorgLptModel<>',
+             'model_args':'comm, box, box, true /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false' },
+        '2lpt_linear': {
+         'includes':inc+["libLSS/physics/forwards/borg_2lpt.hpp"],
+         'likelihood': default_likelihood,
+         'model':'LibLSS::Borg2LPTModel<>',
+         'model_args':'comm, box, box, true /* norsd*/, 2 /* ss factor */, 2.0, 0.001, 1.0, false' }
+       }
+     }

@@ -1,0 +1,7 @@
+#include "libLSS/ares_version.hpp"
+
+const std::string LibLSS::ARES_GIT_VERSION = "@GIT_VER@"; 
+const std::string LibLSS::ARES_BUILTIN_MODULES = "@ARES_MODULES@"; 
+const std::string LibLSS::ARES_GIT_REPORT =
+#include "libLSS/git_state.cpp"
+;

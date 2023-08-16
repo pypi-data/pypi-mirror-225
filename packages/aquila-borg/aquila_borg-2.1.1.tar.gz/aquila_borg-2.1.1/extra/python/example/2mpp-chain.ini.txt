@@ -1,0 +1,89 @@
+[system]
+console_output=logares.txt
+mask_precision=0.9
+VERBOSE_LEVEL = 2
+N0 = 16 
+N1 = 16
+N2 = 16
+
+#Ndata0=64
+#Ndata1=64
+#Ndata2=64
+
+L0 = 200
+L1 = 200
+L2 = 200
+
+corner0 = 0
+corner1 = 0
+corner2 = 0
+
+NUM_MODES=100
+test_mode=true
+
+# If true, the initial power spectrum of the chain is set to the cosmological one
+seed_cpower=true
+
+# Indicate which samplers should be blocked for testing purposes
+
+[block_loop]
+# Indicate which samplers should be blocked for testing purposes
+bias_sampler_blocked=true
+nmean_sampler_blocked=true
+hades_sampler_blocked=false
+
+ares_heat=1.0
+
+[gravity]
+model=CHAIN
+models=PRIMORDIAL,TRANSFER_EHU
+
+[gravity_chain_0]
+model=PRIMORDIAL
+a_final=1.0
+
+[mcmc]
+number_to_generate=1
+random_ic=false
+init_random_scaling=1.0
+
+[likelihood]
+
+[hades]
+algorithm=HMC
+max_epsilon=0.01
+max_timesteps=50
+mixing=1
+
+[run]
+NCAT = 1
+SIMULATION=true
+
+[cosmology]
+omega_r = 0
+fnl = 0
+omega_k = 0
+omega_m = 0.3175
+omega_b = 0.049
+omega_q = 0.6825
+w = -1
+wprime = 0
+n_s = 0.9624
+sigma8 = 0.8344
+h100 = 0.6711
+beta = 1.5 
+z0 = 0
+
+# 11.5 mag cut
+
+[catalog_0]
+datafile = 2MPP.txt
+bias=8,1,0.1,1
+halo_selection=none
+refbias = false
+nmean=10
+
+
+[python]
+likelihood_path=test_likelihood.py
+bias_sampler_type=slice

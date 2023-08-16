@@ -1,0 +1,235 @@
+diff -ur omptl.old/omptl_algorithm omptl/omptl_algorithm
+--- omptl.old/omptl_algorithm	2022-06-19 08:21:39.815498672 +0200
++++ omptl/omptl_algorithm	2022-06-19 08:21:52.953544672 +0200
+@@ -20,7 +20,7 @@
+ #define OMPTL_ALGORITHM 1
+ 
+ #include <algorithm>
+-#include <omptl/omptl>
++#include "omptl"
+ 
+ namespace omptl
+ {
+@@ -553,9 +553,9 @@
+ } // namespace omptl
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_algorithm_par.h>
++  #include "omptl_algorithm_par.h"
+ #else
+-  #include <omptl/omptl_algorithm_ser.h>
++  #include "omptl_algorithm_ser.h"
+ #endif
+ 
+ #endif /* OMPTL_ALGORITHM */
+diff -ur omptl.old/omptl_algorithm_par.h omptl/omptl_algorithm_par.h
+--- omptl.old/omptl_algorithm_par.h	2022-06-19 08:21:39.816498675 +0200
++++ omptl/omptl_algorithm_par.h	2022-06-19 08:23:50.705956964 +0200
+@@ -20,9 +20,10 @@
+ #include <utility>
+ #include <cmath>
+ #include <cstdlib>
++#include <random>
+ 
+-#include <omptl/omptl_tools.h>
+-#include <omptl/omptl_numeric>
++#include "omptl_tools.h"
++#include "omptl_numeric"
+ 
+ #include <iterator>
+ 
+@@ -510,7 +511,7 @@
+ 
+ 		typename std::vector<Iterator>::iterator result =
+ 		    std::find_if(results.begin(),results.end(),
+-			std::bind2nd(std::not_equal_to<Iterator>(), last) );
++			std::bind(std::not_equal_to<Iterator>(), std::placeholders::_1, last) );
+ 
+ 		if ( result != results.end() )
+ 			return *result;
+@@ -569,7 +570,7 @@
+ 
+ 		const typename std::vector<Iterator>::iterator result
+ 			 = std::find_if(results.begin(), results.end(),
+-			std::bind2nd(std::not_equal_to<Iterator>(), last) );
++			std::bind(std::not_equal_to<Iterator>(), std::placeholders::_1, last) );
+ 
+ 		if ( result != results.end() )
+ 			return *result;
+@@ -654,7 +655,7 @@
+ 
+ 		const typename std::vector<Iterator>::iterator
+ 		result = std::find_if(results.begin(), results.end(),
+-					std::bind2nd(std::not_equal_to<Iterator>(), last1));
++					std::bind(std::not_equal_to<Iterator>(), std::placeholders::_1, last1));
+ 
+ 		if ( result != results.end() )
+ 			return *result;
+@@ -953,7 +954,7 @@
+ 		results[t] = std::lower_bound(partitions[t].first, partitions[t].second, value, comp);
+ 
+ 	const typename std::vector<ForwardIterator>::iterator result =
+-		std::find_if(results.begin(), results.end(), std::bind2nd(std::not_equal_to<ForwardIterator>(), last) );
++		std::find_if(results.begin(), results.end(), std::bind(std::not_equal_to<ForwardIterator>(), std::placeholders::_1, last) );
+ 
+ 	if (result != results.end())
+ 		return *result;
+@@ -1179,7 +1180,7 @@
+ 
+ namespace detail
+ {
+-	
++
+ template<typename Iterator, class StrictWeakOrdering>
+ Iterator _pivot_range(Iterator first, Iterator last,
+ 	const typename std::iterator_traits<Iterator>::value_type pivot,
+@@ -1309,14 +1310,14 @@
+ void random_shuffle(RandomAccessIterator first, RandomAccessIterator last,
+                     const unsigned P)
+ {
+-	std::random_shuffle(first, last);
++	std::shuffle(first, last, std::mt19937(std::random_device()()));
+ }
+ 
+ template <class RandomAccessIterator, class RandomNumberGenerator>
+ void random_shuffle(RandomAccessIterator first, RandomAccessIterator last,
+                     RandomNumberGenerator& rgen, const unsigned P)
+ {
+-	std::random_shuffle(first, last, rgen);
++	std::shuffle(first, last, std::mt19937(std::random_device()()));
+ }
+ 
+ // Not (yet) parallelized, not straightforward due to possible dependencies
+@@ -1472,7 +1473,7 @@
+                             const T& new_value, const unsigned P)
+ {
+ 	return ::omptl::replace_copy_if(first, last, result,
+-			std::bind2nd(std::equal_to<T>(), old_value), new_value, P);
++			std::bind(std::equal_to<T>(), std::placeholders::_1, old_value), new_value, P);
+ }
+ 
+ template <class ForwardIterator, class Predicate, class T>
+@@ -1700,7 +1701,7 @@
+ 
+ 	std::vector<char> pivot_used(pivots.size(), false); // can't be bool due to parallel write
+ 
+-	const unsigned max_depth = std::floor(std::tr1::log2(P));
++	const unsigned max_depth = unsigned(std::floor(std::log2(P)));
+ 	assert(1u << max_depth <= P);
+ 	for (unsigned i = 0; i < max_depth; ++i)
+ 	{
+@@ -1781,7 +1782,7 @@
+ std::cout  << std::endl;
+ 
+ std::cout << borders.size() << " " << partitions.size() << " " << P << std::endl;
+-*/	
++*/
+ 	// Round one: sort final partitions, split remaining
+ 	#pragma omp parallel for
+ 	for (int i = 0; i < int(partitions.size()); ++i)
+@@ -1814,7 +1815,7 @@
+ 
+ 			const RandomAccessIterator begin  = partitions[i].first;
+ 			const RandomAccessIterator end    = partitions[i].second;
+-			
++
+ 			const RandomAccessIterator middle =
+ 				detail::_pivot_range(begin, end, pivots[pivot_index], comp);
+ 			partitions[i  ] = std::make_pair(begin, middle);
+diff -ur omptl.old/omptl_algorithm_ser.h omptl/omptl_algorithm_ser.h
+--- omptl.old/omptl_algorithm_ser.h	2022-06-19 08:21:39.815498672 +0200
++++ omptl/omptl_algorithm_ser.h	2022-06-19 08:21:52.960544697 +0200
+@@ -14,7 +14,7 @@
+ // You should have received a copy of the GNU Lesser General Public
+ // License along with this library; if not, write to the Free Software
+ // Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+-
++#include <random>
+ 
+ namespace omptl
+ {
+@@ -463,14 +463,14 @@
+ void random_shuffle(RandomAccessIterator first, RandomAccessIterator last,
+       const unsigned P)
+ {
+-	return ::std::random_shuffle(first, last);
++	return ::std::shuffle(first, last, std::mt19937(std::random_device()()));
+ }
+ 
+ template <class RandomAccessIterator, class RandomNumberGenerator>
+ void random_shuffle(RandomAccessIterator first, RandomAccessIterator last,
+                     RandomNumberGenerator &rgen, const unsigned P)
+ {
+-	return ::std::random_shuffle(first, last, rgen);
++	return ::std::shuffle(first, last, std::mt19937(std::random_device()()));
+ }
+ 
+ template <class ForwardIterator, class T>
+diff -ur omptl.old/omptl_numeric omptl/omptl_numeric
+--- omptl.old/omptl_numeric	2022-06-19 08:21:39.816498675 +0200
++++ omptl/omptl_numeric	2022-06-19 08:21:52.955544679 +0200
+@@ -19,7 +19,7 @@
+ #define OMPTL_NUMERIC 1
+ 
+ #include <numeric>
+-#include <omptl/omptl>
++#include "omptl"
+ 
+ namespace omptl
+ {
+@@ -73,11 +73,11 @@
+ } // namespace omptl
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_numeric_par.h>
++  #include "omptl_numeric_par.h"
+ #else
+-  #include <omptl/omptl_numeric_ser.h>
++  #include "omptl_numeric_ser.h"
+ #endif
+ 
+-#include <omptl/omptl_numeric_extensions.h>
++#include "omptl_numeric_extensions.h"
+ 
+ #endif /* OMPTL_NUMERIC */
+diff -ur omptl.old/omptl_numeric_extensions.h omptl/omptl_numeric_extensions.h
+--- omptl.old/omptl_numeric_extensions.h	2022-06-19 08:21:39.815498672 +0200
++++ omptl/omptl_numeric_extensions.h	2022-06-19 08:21:52.956544683 +0200
+@@ -51,9 +51,9 @@
+ } // namespace
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_numeric_extensions_par.h>
++  #include "omptl_numeric_extensions_par.h"
+ #else
+-  #include <omptl/omptl_numeric_extensions_ser.h>
++  #include "omptl_numeric_extensions_ser.h"
+ #endif
+ 
+ namespace omptl
+diff -ur omptl.old/omptl_numeric_par.h omptl/omptl_numeric_par.h
+--- omptl.old/omptl_numeric_par.h	2022-06-19 08:21:39.816498675 +0200
++++ omptl/omptl_numeric_par.h	2022-06-19 08:21:52.957544686 +0200
+@@ -23,8 +23,8 @@
+ #include <functional>
+ #include <iterator>
+ 
+-#include <omptl/omptl_algorithm>
+-#include <omptl/omptl_tools.h>
++#include "omptl_algorithm"
++#include "omptl_tools.h"
+ 
+ namespace omptl
+ {
+diff -ur omptl.old/omptl_tools.h omptl/omptl_tools.h
+--- omptl.old/omptl_tools.h	2022-06-19 08:21:39.816498675 +0200
++++ omptl/omptl_tools.h	2022-06-19 08:21:52.957544686 +0200
+@@ -25,7 +25,7 @@
+ #include <climits>
+ #include <iterator>
+ 
+-#include <tr1/cmath>
++#include <cmath>
+ 
+ namespace omptl
+ {

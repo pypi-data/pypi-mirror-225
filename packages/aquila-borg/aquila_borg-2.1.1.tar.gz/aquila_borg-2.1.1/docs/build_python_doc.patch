@@ -1,0 +1,14 @@
+diff --git a/docs/source/index.rst b/docs/source/index.rst
+index 411d36bc..3fbb72e1 100644
+--- a/docs/source/index.rst
++++ b/docs/source/index.rst
+@@ -89,3 +89,9 @@ years:
+     ~~~~~~~~~ subsubsections
+     ^^^^^^^^^
+     '''''''''
++
++.. toctree::
++   :maxdepth: 1
++   :caption: Python reference documentation
++
++   pythonref.rst

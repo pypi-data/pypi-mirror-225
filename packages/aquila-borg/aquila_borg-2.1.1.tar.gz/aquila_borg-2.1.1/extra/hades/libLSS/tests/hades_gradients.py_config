@@ -1,0 +1,74 @@
+tests = {
+    'tests': {
+        'linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/hades_pt.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model_args':
+            'comm, box, box, 0.001, 1',
+            'model':
+            'LibLSS::HadesLinear'
+        },
+        'log_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/hades_log.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model':
+            'LibLSS::HadesLog',
+            'model_args':
+            'comm, box, 0.001'
+        },
+        'primordial_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/forwards/primordial.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model':
+            'LibLSS::ForwardPrimordial',
+            'model_args':
+            'comm, box, 0.001'
+        },
+        'chain_primordial_log_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+                "libLSS/physics/hades_log.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+                'LibLSS::HadesLog'
+            ],
+            'model_args':
+            ['comm, box, 0.001', 'comm, box', 'comm, box, .001']
+        },
+        'chain_primordial_pt_linear': {
+            'includes': [
+                "libLSS/samplers/hades/hades_linear_likelihood.hpp",
+                "libLSS/physics/chain_forward_model.hpp",
+                "libLSS/physics/forwards/primordial.hpp",
+                "libLSS/physics/forwards/transfer_ehu.hpp",
+                "libLSS/physics/hades_pt.hpp"
+            ],
+            'likelihood':
+            "LibLSS::HadesLinearDensityLikelihood",
+            'model': [
+                'LibLSS::ForwardPrimordial', 'LibLSS::ForwardEisensteinHu',
+                'LibLSS::HadesLinear'
+            ],
+            'model_args':
+            ['comm, box, .001', 'comm, box', 'comm, box, box, .001, 1']
+        }
+    }
+}

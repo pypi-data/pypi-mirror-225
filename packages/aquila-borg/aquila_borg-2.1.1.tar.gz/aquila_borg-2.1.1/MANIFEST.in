@@ -1,0 +1,13 @@
+graft libLSS
+graft extra
+graft src
+graft build_tools
+graft scripts
+graft cmake
+graft cmake_modules
+graft docs
+graft examples
+graft external
+include build.sh CHANGES.rst
+include requirements.txt setup.py License*txt VERSION.txt CMakeLists.txt README.rst
+prune docs/_build

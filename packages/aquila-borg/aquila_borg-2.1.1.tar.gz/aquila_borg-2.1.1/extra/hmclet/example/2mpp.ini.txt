@@ -1,0 +1,358 @@
+[system]
+console_output=logares.txt
+mask_precision=0.1
+VERBOSE_LEVEL = 2
+N0 = 32
+N1 = 32
+N2 = 32
+
+L0 = 677.7
+L1 = 677.7
+L2 = 677.7
+
+corner0 = -338.85
+corner1 = -338.85
+corner2 = -338.85
+
+NUM_MODES=100
+N_MC=1000
+test_mode=true
+
+# If true, the initial power spectrum of the chain is set to the cosmological one
+seed_cpower=true
+
+bias_0_sampler_generic_blocked=false
+bias_1_sampler_generic_blocked=false
+bias_2_sampler_generic_blocked=false
+bias_3_sampler_generic_blocked=false
+bias_4_sampler_generic_blocked=true
+
+# Indicate which samplers should be blocked for testing purposes
+
+[block_loop]
+# Indicate which samplers should be blocked for testing purposes
+#messenger_signal_blocked=false
+power_sampler_a_blocked=true
+power_sampler_b_blocked=true
+power_sampler_c_blocked=true
+#bias_sampler_blocked=false
+
+hades_sampler_blocked=false
+
+ares_heat=1.0
+
+[gravity]
+#model=HADES_PT
+model=LPT_CIC
+supersampling=2
+forcesampling=2
+pm_nsteps=30
+pm_start_z=69
+lightcone=false
+do_rsd=false
+
+[mcmc]
+number_to_generate=100
+random_ic=false
+init_random_scaling=1.0
+
+[julia]
+likelihood_path=test_like.jl
+likelihood_module=julia_test
+bias_sampler_type=hmclet
+ic_in_julia=true
+#hmclet_matrix=QN_DIAGONAL
+hmclet_matrix=DIAGONAL
+hmclet_frozen=true
+#hmclet_burnin=400
+#hmclet_burnin_memory=50
+hmclet_maxEpsilon=0.1
+#hmclet_maxEpsilon=0.01
+hmclet_maxNtime=100
+hmclet_massScale = 0
+#hmclet_correlationLimiter=0.5
+
+[hades]
+likelihood=GENERIC_POISSON_BROKEN_POWERLAW_BIAS
+#likelihood=BORG_POISSON
+algorithm=HMC
+max_epsilon=0.01
+max_timesteps=50
+mixing=1
+
+[run]
+NCAT = 1
+
+[cosmology]
+fnl = 0
+omega_r = 0
+omega_k = 0
+omega_m = 0.3175
+omega_b = 0.049
+omega_q = 0.6825
+w = -1
+wprime = 0
+n_s = 0.9624
+sigma8 = 0.8344
+h100 = 0.6711
+beta = 1.5 
+z0 = 0
+
+# 11.5 mag cut
+
+[catalog_0]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+#maskdata = one.fits
+#maskdata = zero.fits
+bias=100,1,0,0.005
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -21.50
+galaxy_faint_absolute_magnitude_cut = -21.00
+refbias = false
+nmean=1
+
+[catalog_1]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -22.00
+galaxy_faint_absolute_magnitude_cut = -21.50
+refbias = false
+nmean=1
+
+
+
+[catalog_2]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -22.50
+galaxy_faint_absolute_magnitude_cut = -22.00
+refbias = false
+nmean=1
+
+
+[catalog_3]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -23.00
+galaxy_faint_absolute_magnitude_cut = -22.50
+refbias = false
+nmean=1
+
+
+[catalog_4]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -23.50
+galaxy_faint_absolute_magnitude_cut = -23.00
+refbias = false
+nmean=1
+
+[catalog_5]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -24.00
+galaxy_faint_absolute_magnitude_cut = -23.50
+refbias = false
+nmean=1
+
+[catalog_6]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -24.50
+galaxy_faint_absolute_magnitude_cut = -24.00
+refbias = false
+nmean=1
+
+[catalog_7]
+datafile = 2MPP.txt
+maskdata = completeness_11_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 9
+galaxy_faint_apparent_magnitude_cut = 11.5
+galaxy_bright_absolute_magnitude_cut = -25.00
+galaxy_faint_absolute_magnitude_cut = -24.50
+refbias = false
+nmean=1
+
+
+
+
+
+
+# 11.5 - 12.5 mag cut
+
+[catalog_8]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -21.50
+galaxy_faint_absolute_magnitude_cut = -21.00
+refbias = false
+nmean=1
+
+
+
+[catalog_9]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -22.00
+galaxy_faint_absolute_magnitude_cut = -21.50
+refbias = false
+nmean=1.
+
+[catalog_10]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -22.50
+galaxy_faint_absolute_magnitude_cut = -22.00
+refbias = false
+nmean=1
+
+[catalog_11]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -23.00
+galaxy_faint_absolute_magnitude_cut = -22.50
+refbias = false
+nmean=1
+
+[catalog_12]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -23.50
+galaxy_faint_absolute_magnitude_cut = -23.00
+refbias = false
+nmean=1
+
+[catalog_13]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -24.00
+galaxy_faint_absolute_magnitude_cut = -23.50
+refbias = false
+nmean=1
+
+[catalog_14]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -24.50
+galaxy_faint_absolute_magnitude_cut = -24.00
+refbias = false
+nmean=1
+
+[catalog_15]
+datafile = 2MPP.txt
+maskdata = completeness_12_5.fits.gz
+radial_selection = schechter
+schechter_mstar = -23.28
+schechter_alpha = -0.94
+schechter_sampling_rate = 1000
+schechter_dmax = 700
+galaxy_bright_apparent_magnitude_cut = 11.5
+galaxy_faint_apparent_magnitude_cut = 12.5
+galaxy_bright_absolute_magnitude_cut = -25.00
+galaxy_faint_absolute_magnitude_cut = -24.50
+refbias = false
+nmean=1
+
