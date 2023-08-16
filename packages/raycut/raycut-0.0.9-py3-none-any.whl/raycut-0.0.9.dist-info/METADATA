@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: raycut
+Version: 0.0.9
+Summary: A convenience library for Ray that allows you to run a function on a remote
+Home-page: http://github.com/d33tah/raycut
+Author: Jacek "d33tah" Wielemborek
+Author-email: d33tah@gmail.com
+License: WTFPL
+Requires-Dist: ray
+Requires-Dist: boto3
+Requires-Dist: pyyaml
+
+A convenience library for Ray that allows you to run a function on a remote
+EC2 instance from JuPyter Notebook. It's a thin wrapper around Ray that
+automatically sets up the cluster for you and allows you to run a function on
+a remote instance with a single function call.
