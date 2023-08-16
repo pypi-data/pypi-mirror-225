@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: MUDE
+Version: 0.0.2
+Summary: A Python package in support of the Modelling, Uncertainty, and Data Analysis for Engineers course given at TU Delft, Civil Engineering
+Author-email: Robert Lanzafame <r.c.lanzafame@tudelft.nl>, Quinten van Woerkom <q.e.vanwoerkom@student.tudelft.nl>
+Project-URL: Homepage, https://gitlab.tudelft.nl/mude/mude
+Project-URL: Bug Tracker, https://gitlab.tudelft.nl/mude/mude/-/issues
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Python Tools for Modelling, Uncertainty, and Data Analysis for Engineers
+This package contains a set of tools that are used to support the MUDE course given at Civil Engineering, TU Delft, for first-year MSc students.
+It contains a set of tools and dependencies that are used in the course contents themselves.
+In addition, this package has several debugging tools that can be used by students and staff to check that their installation is compatible with the requirements for the course.
+
+## Authors
+This package was developed by the MUDE teaching team at the TU Delft Faculty of Civil Engineering and Geosciences.
+
+## License
+Per the default suggested in the roadmap “Copyright and open licenses in online education” of the TU Delft Open Education Consortium, this work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
