@@ -1,0 +1,81 @@
+# Client Throttler
+
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/OVINC-CN/ClientThrottler/blob/master/LICENSE.txt)
+[![Release Version](https://img.shields.io/badge/release-1.0.0-brightgreen.svg)](https://github.com/OVINC-CN/ClientThrottler/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/OVINC-CN/ClientThrottler/pulls)
+
+## Overview
+
+A distributed proactive rate limiting algorithm based on Redis.
+
+Users can proactively limit the invocation frequency of methods or functions.
+
+Calls that exceed the limit will not be discarded, but will instead be queued and retried in the next cycle based on the
+calculated delay time.
+
+## Getting started
+
+### Installation
+
+```bash
+$ pip install client_throttler
+```
+
+### Usage
+
+```
+# -*- coding: utf-8 -*-
+
+import asyncio
+
+from redis.client import Redis
+
+from client_throttler.throttler import throttler
+
+redis_client = Redis(host="localhost", port=1234, db=1)
+
+
+@throttler(rate="1/2s", redis_client=redis_client)
+async def funcA(*args, **kwargs):
+    return args, kwargs
+
+
+class TestAPI:
+    api = "test_api"
+
+    @throttler(rate="1/2s", redis_client=redis_client)
+    async def funcB(self):
+        return self.api
+
+    def funcD(self):
+        return self.api
+
+
+def funcC(*args, **kwargs):
+    return args, kwargs
+
+
+async def main():
+    result_a = await funcA(1, 2, 3, name=1, age=2)
+    print("A:", result_a)
+    result_b = await TestAPI().funcB()
+    print("B:", result_b)
+    result_c = funcC(1, 2, 3, name=1, age=2)
+    print("C:", result_c)
+    result_d = TestAPI().funcD()
+    print("D:", result_d)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+"""
+A: ((1, 2, 3), {'name': 1, 'age': 2})
+B: test_api
+C: ((1, 2, 3), {'name': 1, 'age': 2})
+D: test_api
+"""
+```
+
+## License
+
+Based on the MIT protocol. Please refer to [LICENSE](LICENSE)
