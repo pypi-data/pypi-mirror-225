@@ -1,0 +1,50 @@
+[project]
+name = "kirami-plugin-beauty-rate"
+version = "0.1.0"
+description = "基于 KiramiBot 的颜值评分插件"
+authors = [
+    { name = "Komorebi", email = "mute231010@gmail.com" },
+]
+dependencies = [
+    "KiramiBot>=0.0.0",
+    "nonebot-plugin-alconna>=0.16.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/KomoriDev/kirami-plugin-beauty-rate"
+Repository = "https://github.com/KomoriDev/kirami-plugin-beauty-rate"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.0.284",
+]
+
+[tool.ruff]
+select = [
+    "E",
+    "W",
+    "F",
+    "UP",
+    "C",
+    "T",
+    "PYI",
+    "PT",
+    "Q",
+]
+ignore = [
+    "E402",
+    "C901",
+]
+line-length = 120
+target-version = "py310"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
