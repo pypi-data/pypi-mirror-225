@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: mailpad
+Version: 1.0.1
+Summary: Python Mailing Library
+Author: Shivansh Dwivedi
+Author-email: <me@shivanshdwivedi.tech>
+License: MIT
+Keywords: mailpad,python,mail,email,email client,smtp
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: langchain
+
+A package that allows to send mails from python environment
