@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: dkdc
+Version: 0.0.28
+Summary: dkdc
+Project-URL: Homepage, https://github.com/lostmygithubaccount/dkdc
+Project-URL: Bug Tracker, https://github.com/lostmygithubaccount/dkdc/issues
+Author-email: Cody <cody@dkdc.dev>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.11
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: typer[all]
+Description-Content-Type: text/markdown
+
+# dkdc
+
+Don't know, don't care, the tool for me.
+
