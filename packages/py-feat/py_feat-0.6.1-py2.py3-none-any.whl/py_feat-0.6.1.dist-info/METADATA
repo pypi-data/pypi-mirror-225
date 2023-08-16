@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: py-feat
+Version: 0.6.1
+Summary: Facial Expression Analysis Toolbox
+Home-page: https://github.com/cosanlab/py-feat
+Author: Jin Hyun Cheong, Tiankang Xie, Sophie Byrne, Eshin Jolly, Luke Chang
+Author-email: jcheong0428@gmail.com, eshin.jolly@gmail.com
+License: MIT license
+Keywords: feat,face,facial expression,emotion
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+License-File: LICENSE
+Requires-Dist: pandas >=1.0
+Requires-Dist: numpy >=1.9
+Requires-Dist: seaborn >=0.7.0
+Requires-Dist: matplotlib >=2.1
+Requires-Dist: nltools >=0.4.7
+Requires-Dist: numexpr <2.8.5
+Requires-Dist: scikit-learn >=1.2
+Requires-Dist: pywavelets >=0.3.0
+Requires-Dist: h5py >=2.7.0
+Requires-Dist: Pillow >=6.0.0
+Requires-Dist: torchvision
+Requires-Dist: scikit-image >=0.19
+Requires-Dist: joblib
+Requires-Dist: easing-functions
+Requires-Dist: celluloid
+Requires-Dist: tqdm
+Requires-Dist: kornia
+Requires-Dist: av >=9.2.0
+Requires-Dist: xgboost >=1.6.0
+
+Facial Expression Analysis Toolbox
