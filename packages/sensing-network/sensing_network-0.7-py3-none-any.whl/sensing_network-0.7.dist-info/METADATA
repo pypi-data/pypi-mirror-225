@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: sensing-network
+Version: 0.7
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: torch
+Requires-Dist: pytorch-lightning
+Requires-Dist: networkx
+Requires-Dist: pathos
+Requires-Dist: lcapy
+Requires-Dist: sympy
+Requires-Dist: pyvista
+
