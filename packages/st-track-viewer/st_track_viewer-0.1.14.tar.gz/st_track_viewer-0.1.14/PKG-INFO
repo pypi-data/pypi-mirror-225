@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: st_track_viewer
+Version: 0.1.14
+Summary: A Streamlit component for visualizing track data on images
+Home-page: 
+Author: Elliot Glas
+Author-email: elliot.glas@viscando.com
+Requires-Python: >=3.6
+Description-Content-Type: text/plain
+License-File: LICENSE
+
+
+      st-track-analysis
+      ================
+
+      st-track-analysis is a Python package that provides a custom Streamlit component for visualizing track data on images. It allows you to easily plot and analyze tracks with associated ground data on top of images.
+
+      Features
+      --------
+      - Supports visualizing multiple tracks with their associated ground data on the same image.
+      - Easily overlay shape data, such as bounding boxes, on the images.
+      - Option to provide names for each track for better identification.
+      - Customizable key for using the component in Streamlit apps.
+      - Automatic conversion of images created by matplotlib into base64-encoded URLs for display.
+
+      Requirements
+      ------------
+      - Python 3.x
+      - streamlit
+      - matplotlib
+      
