@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: rcdb_unpacker
+Version: 0.1.1
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: rebotics-sdk >=0.25.8, <0.26.0
+Home-Page: https://retechlabs.com/
+Author: Malik Sulaimanov <malik@retechlabs.com>
+Author-email: Malik Sulaimanov <malik@retechlabs.com>
+Requires-Python: >=3.10
