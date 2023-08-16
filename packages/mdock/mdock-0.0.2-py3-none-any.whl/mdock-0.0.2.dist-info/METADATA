@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: mdock
+Version: 0.0.2
+Summary: Matplotlib figure dock based on QT
+Author-email: "Mikkel N. Schmidt" <mnsc@dtu.dk>
+Keywords: matplotlib,figure,dock
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib
+Requires-Dist: pyqtads
+
+*mdock*
+
+Matplotlib figure dock based on QT.
