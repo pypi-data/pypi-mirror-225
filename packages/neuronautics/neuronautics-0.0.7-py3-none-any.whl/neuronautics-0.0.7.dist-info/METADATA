@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: neuronautics
+Version: 0.0.7
+Summary: My package description
+Author: Daniel de Santos Sierra
+Author-email: desantossierra@gmail.com
+License: GNU General
+Keywords: one,two
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+License-File: LICENSE
+Requires-Dist: pyqt5
+Requires-Dist: PyQtChart
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: McsPyDataTools
+Requires-Dist: scikit-learn
+Requires-Dist: pyyaml
+Requires-Dist: jinja2
+Requires-Dist: networkx
+

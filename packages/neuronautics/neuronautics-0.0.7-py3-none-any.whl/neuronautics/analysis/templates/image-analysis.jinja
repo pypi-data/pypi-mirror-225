@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+from neuronautics.analysis.type.image_analysis import ImageAnalysis
+
+
+class {{ class_name }}(ImageAnalysis):
+    def get_input_params(self):
+        # Define your method logic here
+        return [
+                    {'name': 'cmap', 'values': ['Blue', 'Green'], 'default': 'Blue', 'type': 'list'},
+                ]
+
+    def run(self, spikes, *args, **kwargs):
+        # Define your method logic here
+        return np.random.rand(10, 10)
+
+    def plot(self, *args, **kwargs):
+        return super().plot(title='{{ title }}', *args, **kwargs)
+
+if __name__ == "__main__":
+    # Sample dataframe
+    sample_data = pd.DataFrame({
+        'column1': [1, 2, 3],
+        'column2': ['A', 'B', 'C']
+    })
+
+    # Instantiate your class and call methods
+    instance = {{ class_name }}()
+    instance.get_input_params()
+    instance.run()
