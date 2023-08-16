@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: api-data-fetchingpi
+Version: 0.1
+Summary: API package that provides us the method to fetch the data from the API, along with the method to convert that into proper dataframe
+Author: auth
+Author-email: author@gmail.com
+License: MIT
+Requires-Dist: pandas
+Requires-Dist: requests
+
