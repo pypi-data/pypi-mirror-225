@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: pleroma.py
+Version: 0.0.5
+Home-page: https://github.com/ioistired/pleroma.py
+Author: io
+License: AGPL-3.0-only
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown; variant=GFM
+License-File: LICENSE.md
+Requires-Dist: aiohttp ~=3.0
+Requires-Dist: anyio ~=3.0
+Requires-Dist: python-dateutil ~=2.8
+
+# pleroma.py
+
+Small aiohttp-based wrapper around the Mastodon/Pleroma API. Deliberately does not cover all endpoints. More endpoints will be added as I need them.
+
+## License
+
+AGPL 3.0 only, see LICENSE.md.
