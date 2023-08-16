@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: e2xauthoring
+Version: 0.2.0.dev3
+Summary: Authoring app for e2xgrader
+Project-URL: Source, https://github.com/Digiklausur/e2xauthoring
+Author-email: Tim Metzler <tim.metzler@h-brs.de>
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Requires-Dist: e2xcore>=0.0.2
+Requires-Dist: gitpython
+Provides-Extra: dev
+Requires-Dist: hatchling; extra == 'dev'
+Requires-Dist: pre-commit; extra == 'dev'
+Requires-Dist: tbump; extra == 'dev'
+Description-Content-Type: text/markdown
+
+# e2xauthoring
+
+---
+
+This is an authoring component for e2xgrader
