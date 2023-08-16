@@ -1,0 +1,27 @@
+numpy>=1.18.1
+Pillow>=1.6
+pandas>=1.0.1
+future
+requests>=2.4
+shapely
+fs
+pytz
+jsonschema
+asyncio
+aiodns
+brotlipy
+tableschema
+ibm-cos-sdk
+polling
+aiohttp>=3.0.0
+matplotlib
+numpy
+ipyleaflet
+pyproj
+pandas
+numexpr
+bottleneck
+xarray
+
+[:python_version < "3.0"]
+futures
