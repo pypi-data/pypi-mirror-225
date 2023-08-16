@@ -1,0 +1,1851 @@
+{
+    "consumes": {
+        "local.get": 4,
+        "local.set": 4,
+        "local.tee": 4,
+        "global.get": 4,
+        "global.set": 4,
+        "i32.const": 4,
+        "i64.const": 8,
+        "f32.const": 4,
+        "f64.const": 8
+    },
+    "opcodes": [
+        {
+            "offset": 0,
+            "instructions": [
+                [
+                    "unreachable",
+                    [],
+                    []
+                ],
+                [
+                    "nop",
+                    [],
+                    []
+                ]
+            ]
+        },
+        {
+            "offset": 26,
+            "instructions": [
+                [
+                    "drop",
+                    [
+                        "any"
+                    ],
+                    []
+                ],
+                [
+                    "select",
+                    [
+                        "any",
+                        "any",
+                        "i32"
+                    ],
+                    [
+                        "any"
+                    ]
+                ]
+            ]
+        },
+        {
+            "offset": 32,
+            "instructions": [
+                [
+                    "local.get",
+                    [],
+                    [
+                        "any"
+                    ]
+                ],
+                [
+                    "local.set",
+                    [
+                        "any"
+                    ],
+                    []
+                ],
+                [
+                    "local.tee",
+                    [
+                        "any"
+                    ],
+                    [
+                        "any"
+                    ]
+                ],
+                [
+                    "global.get",
+                    [],
+                    [
+                        "any"
+                    ]
+                ],
+                [
+                    "global.set",
+                    [
+                        "any"
+                    ],
+                    []
+                ]
+            ]
+        },
+        {
+            "offset": 65,
+            "instructions": [
+                [
+                    "i32.const",
+                    [],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.const",
+                    [],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "f32.const",
+                    [],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f64.const",
+                    [],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "i32.eqz",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.eq",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.ne",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.lt_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.lt_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.gt_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.gt_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.le_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.le_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.ge_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.ge_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.eqz",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.eq",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.ne",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.lt_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.lt_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.gt_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.gt_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.le_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.le_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.ge_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.ge_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.eq",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.ne",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.lt",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.gt",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.le",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f32.ge",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.eq",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.ne",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.lt",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.gt",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.le",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "f64.ge",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.clz",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.ctz",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.popcnt",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.add",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.sub",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.mul",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.div_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.div_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.rem_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.rem_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.and",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.or",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.xor",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.shl",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.shr_s",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.shr_u",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.rotl",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.rotr",
+                    [
+                        "i32",
+                        "i32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.clz",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.ctz",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.popcnt",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.add",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.sub",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.mul",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.div_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.div_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.rem_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.rem_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.and",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.or",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.xor",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.shl",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.shr_s",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.shr_u",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.rotl",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.rotr",
+                    [
+                        "i64",
+                        "i64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "f32.abs",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.neg",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.ceil",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.floor",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.trunc",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.nearest",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.sqrt",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.add",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.sub",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.mul",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.div",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.min",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.max",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.copysign",
+                    [
+                        "f32",
+                        "f32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f64.abs",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.neg",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.ceil",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.floor",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.trunc",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.nearest",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.sqrt",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.add",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.sub",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.mul",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.div",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.min",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.max",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.copysign",
+                    [
+                        "f64",
+                        "f64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "i32.wrap_i64",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.trunc_f32_s",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.trunc_f32_u",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.trunc_f64_s",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i32.trunc_f64_u",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.extend_i32_s",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.extend_i32_u",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.trunc_f32_s",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.trunc_f32_u",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.trunc_f64_s",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "i64.trunc_f64_u",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "f32.convert_i32_s",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.convert_i32_u",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.convert_i64_s",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.convert_i64_u",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f32.demote_f64",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f64.convert_i32_s",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.convert_i32_u",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.convert_i64_s",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.convert_i64_u",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "f64.promote_f32",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ],
+                [
+                    "i32.reinterpret_f32",
+                    [
+                        "f32"
+                    ],
+                    [
+                        "i32"
+                    ]
+                ],
+                [
+                    "i64.reinterpret_f64",
+                    [
+                        "f64"
+                    ],
+                    [
+                        "i64"
+                    ]
+                ],
+                [
+                    "f32.reinterpret_i32",
+                    [
+                        "i32"
+                    ],
+                    [
+                        "f32"
+                    ]
+                ],
+                [
+                    "f64.reinterpret_i64",
+                    [
+                        "i64"
+                    ],
+                    [
+                        "f64"
+                    ]
+                ]
+            ]
+        }
+    ],
+    "functions": {
+        "local_get_32": "uint32_t offset",
+        "local_get_64": "uint32_t offset",
+        "local_set_32": "uint32_t offset",
+        "local_set_64": "uint32_t offset",
+        "local_tee_32": "uint32_t offset",
+        "local_tee_64": "uint32_t offset",
+        "global_get_32": "uint64_t globalTableAddr, uint32_t offset",
+        "global_get_64": "uint64_t globalTableAddr, uint32_t offset",
+        "global_set_32": "uint64_t globalTableAddr, uint32_t offset",
+        "global_set_64": "uint64_t globalTableAddr, uint32_t offset",
+        "reg_param_f32_linux_0": "uint8_t offset",
+        "reg_param_f32_linux_1": "uint8_t offset",
+        "reg_param_f32_linux_2": "uint8_t offset",
+        "reg_param_f32_linux_3": "uint8_t offset",
+        "reg_param_f32_linux_4": "uint8_t offset",
+        "reg_param_f32_linux_5": "uint8_t offset",
+        "reg_param_f32_linux_6": "uint8_t offset",
+        "reg_param_f32_linux_7": "uint8_t offset",
+        "reg_param_f64_linux_0": "uint8_t offset",
+        "reg_param_f64_linux_1": "uint8_t offset",
+        "reg_param_f64_linux_2": "uint8_t offset",
+        "reg_param_f64_linux_3": "uint8_t offset",
+        "reg_param_f64_linux_4": "uint8_t offset",
+        "reg_param_f64_linux_5": "uint8_t offset",
+        "reg_param_f64_linux_6": "uint8_t offset",
+        "reg_param_f64_linux_7": "uint8_t offset",
+        "reg_param_i32_linux_0": "uint8_t offset",
+        "reg_param_i32_linux_1": "uint8_t offset",
+        "reg_param_i32_linux_2": "uint8_t offset",
+        "reg_param_i32_linux_3": "uint8_t offset",
+        "reg_param_i32_linux_4": "uint8_t offset",
+        "reg_param_i32_linux_5": "uint8_t offset",
+        "reg_param_i64_linux_0": "uint8_t offset",
+        "reg_param_i64_linux_1": "uint8_t offset",
+        "reg_param_i64_linux_2": "uint8_t offset",
+        "reg_param_i64_linux_3": "uint8_t offset",
+        "reg_param_i64_linux_4": "uint8_t offset",
+        "reg_param_i64_linux_5": "uint8_t offset",
+        "ret_v32": "uint64_t errorPageAddr",
+        "ret_v64": "uint64_t errorPageAddr",
+        "ret_void": "uint64_t errorPageAddr",
+        "sub_rsp": "uint8_t offset"
+    },
+    "replacements": {
+        "f32.const": [
+            [
+                "255, 255, 255, 127",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4)"
+            ]
+        ],
+        "f64.const": [
+            [
+                "255, 255, 255, 255, 255, 255, 255, 127",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4), buf.at(offset + 5), buf.at(offset + 6), buf.at(offset + 7), buf.at(offset + 8)"
+            ],
+            [
+                "255, 255, 255, 127",
+                "buf.at(offset + 5), buf.at(offset + 6), buf.at(offset + 7), buf.at(offset + 8)"
+            ],
+            [
+                "255, 255, 255, 126",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4)"
+            ]
+        ],
+        "global_get_32": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24), (uint8_t)((globalTableAddr + offset) >> 32), (uint8_t)((globalTableAddr + offset) >> 40), (uint8_t)((globalTableAddr + offset) >> 48), (uint8_t)((globalTableAddr + offset) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24)"
+            ]
+        ],
+        "global_get_64": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24), (uint8_t)((globalTableAddr + offset) >> 32), (uint8_t)((globalTableAddr + offset) >> 40), (uint8_t)((globalTableAddr + offset) >> 48), (uint8_t)((globalTableAddr + offset) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset + 4), (uint8_t)((globalTableAddr + offset + 4) >> 8), (uint8_t)((globalTableAddr + offset + 4) >> 16), (uint8_t)((globalTableAddr + offset + 4) >> 24)"
+            ],
+            [
+                "0, 0, 0, 254",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24)"
+            ]
+        ],
+        "global_set_32": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24), (uint8_t)((globalTableAddr + offset) >> 32), (uint8_t)((globalTableAddr + offset) >> 40), (uint8_t)((globalTableAddr + offset) >> 48), (uint8_t)((globalTableAddr + offset) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24)"
+            ]
+        ],
+        "global_set_64": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24), (uint8_t)((globalTableAddr + offset) >> 32), (uint8_t)((globalTableAddr + offset) >> 40), (uint8_t)((globalTableAddr + offset) >> 48), (uint8_t)((globalTableAddr + offset) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(globalTableAddr + offset), (uint8_t)((globalTableAddr + offset) >> 8), (uint8_t)((globalTableAddr + offset) >> 16), (uint8_t)((globalTableAddr + offset) >> 24)"
+            ],
+            [
+                "0, 0, 0, 254",
+                "(uint8_t)(globalTableAddr + offset + 4), (uint8_t)((globalTableAddr + offset + 4) >> 8), (uint8_t)((globalTableAddr + offset + 4) >> 16), (uint8_t)((globalTableAddr + offset + 4) >> 24)"
+            ]
+        ],
+        "i32.const": [
+            [
+                "255, 255, 255, 127",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4)"
+            ]
+        ],
+        "i32.div_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24), (uint8_t)((errorPageAddr + 10) >> 32), (uint8_t)((errorPageAddr + 10) >> 40), (uint8_t)((errorPageAddr + 10) >> 48), (uint8_t)((errorPageAddr + 10) >> 56)"
+            ],
+            [
+                "255, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 11), (uint8_t)((errorPageAddr + 11) >> 8), (uint8_t)((errorPageAddr + 11) >> 16), (uint8_t)((errorPageAddr + 11) >> 24), (uint8_t)((errorPageAddr + 11) >> 32), (uint8_t)((errorPageAddr + 11) >> 40), (uint8_t)((errorPageAddr + 11) >> 48), (uint8_t)((errorPageAddr + 11) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24)"
+            ],
+            [
+                "255, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 11), (uint8_t)((errorPageAddr + 11) >> 8), (uint8_t)((errorPageAddr + 11) >> 16), (uint8_t)((errorPageAddr + 11) >> 24)"
+            ]
+        ],
+        "i32.div_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24), (uint8_t)((errorPageAddr + 10) >> 32), (uint8_t)((errorPageAddr + 10) >> 40), (uint8_t)((errorPageAddr + 10) >> 48), (uint8_t)((errorPageAddr + 10) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24)"
+            ]
+        ],
+        "i32.rem_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24), (uint8_t)((errorPageAddr + 12) >> 32), (uint8_t)((errorPageAddr + 12) >> 40), (uint8_t)((errorPageAddr + 12) >> 48), (uint8_t)((errorPageAddr + 12) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24)"
+            ]
+        ],
+        "i32.rem_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24), (uint8_t)((errorPageAddr + 12) >> 32), (uint8_t)((errorPageAddr + 12) >> 40), (uint8_t)((errorPageAddr + 12) >> 48), (uint8_t)((errorPageAddr + 12) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24)"
+            ]
+        ],
+        "i32.trunc_f32_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i32.trunc_f32_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i32.trunc_f64_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i32.trunc_f64_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i64.const": [
+            [
+                "255, 255, 255, 255, 255, 255, 255, 127",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4), buf.at(offset + 5), buf.at(offset + 6), buf.at(offset + 7), buf.at(offset + 8)"
+            ],
+            [
+                "255, 255, 255, 127",
+                "buf.at(offset + 5), buf.at(offset + 6), buf.at(offset + 7), buf.at(offset + 8)"
+            ],
+            [
+                "255, 255, 255, 126",
+                "buf.at(offset + 1), buf.at(offset + 2), buf.at(offset + 3), buf.at(offset + 4)"
+            ]
+        ],
+        "i64.div_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24), (uint8_t)((errorPageAddr + 10) >> 32), (uint8_t)((errorPageAddr + 10) >> 40), (uint8_t)((errorPageAddr + 10) >> 48), (uint8_t)((errorPageAddr + 10) >> 56)"
+            ],
+            [
+                "255, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 11), (uint8_t)((errorPageAddr + 11) >> 8), (uint8_t)((errorPageAddr + 11) >> 16), (uint8_t)((errorPageAddr + 11) >> 24), (uint8_t)((errorPageAddr + 11) >> 32), (uint8_t)((errorPageAddr + 11) >> 40), (uint8_t)((errorPageAddr + 11) >> 48), (uint8_t)((errorPageAddr + 11) >> 56)"
+            ]
+        ],
+        "i64.div_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 10), (uint8_t)((errorPageAddr + 10) >> 8), (uint8_t)((errorPageAddr + 10) >> 16), (uint8_t)((errorPageAddr + 10) >> 24), (uint8_t)((errorPageAddr + 10) >> 32), (uint8_t)((errorPageAddr + 10) >> 40), (uint8_t)((errorPageAddr + 10) >> 48), (uint8_t)((errorPageAddr + 10) >> 56)"
+            ]
+        ],
+        "i64.rem_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24), (uint8_t)((errorPageAddr + 12) >> 32), (uint8_t)((errorPageAddr + 12) >> 40), (uint8_t)((errorPageAddr + 12) >> 48), (uint8_t)((errorPageAddr + 12) >> 56)"
+            ]
+        ],
+        "i64.rem_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 12), (uint8_t)((errorPageAddr + 12) >> 8), (uint8_t)((errorPageAddr + 12) >> 16), (uint8_t)((errorPageAddr + 12) >> 24), (uint8_t)((errorPageAddr + 12) >> 32), (uint8_t)((errorPageAddr + 12) >> 40), (uint8_t)((errorPageAddr + 12) >> 48), (uint8_t)((errorPageAddr + 12) >> 56)"
+            ]
+        ],
+        "i64.trunc_f32_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i64.trunc_f32_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i64.trunc_f64_s": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "i64.trunc_f64_u": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 13), (uint8_t)((errorPageAddr + 13) >> 8), (uint8_t)((errorPageAddr + 13) >> 16), (uint8_t)((errorPageAddr + 13) >> 24), (uint8_t)((errorPageAddr + 13) >> 32), (uint8_t)((errorPageAddr + 13) >> 40), (uint8_t)((errorPageAddr + 13) >> 48), (uint8_t)((errorPageAddr + 13) >> 56)"
+            ]
+        ],
+        "local_get_32": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ]
+        ],
+        "local_get_64": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ],
+            [
+                "254, 0, 0, 0",
+                "(uint8_t)(offset - 4), (uint8_t)((offset - 4) >> 8), (uint8_t)((offset - 4) >> 16), (uint8_t)((offset - 4) >> 24)"
+            ]
+        ],
+        "local_set_32": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ]
+        ],
+        "local_set_64": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ],
+            [
+                "254, 0, 0, 0",
+                "(uint8_t)(offset - 4), (uint8_t)((offset - 4) >> 8), (uint8_t)((offset - 4) >> 16), (uint8_t)((offset - 4) >> 24)"
+            ]
+        ],
+        "local_tee_32": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ]
+        ],
+        "local_tee_64": [
+            [
+                "255, 0, 0, 0",
+                "(uint8_t)offset, (uint8_t)(offset >> 8), (uint8_t)(offset >> 16), (uint8_t)(offset >> 24)"
+            ],
+            [
+                "254, 0, 0, 0",
+                "(uint8_t)(offset - 4), (uint8_t)((offset - 4) >> 8), (uint8_t)((offset - 4) >> 16), (uint8_t)((offset - 4) >> 24)"
+            ]
+        ],
+        "reg_param_f32_linux_0": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_1": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_2": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_3": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_4": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_5": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_6": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f32_linux_7": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_0": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_1": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_2": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_3": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_4": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_5": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_6": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_f64_linux_7": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_0": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_1": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_2": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_3": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_4": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i32_linux_5": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_0": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_1": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_2": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_3": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_4": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "reg_param_i64_linux_5": [
+            [
+                "36, 1",
+                "36, offset"
+            ]
+        ],
+        "ret_v32": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 1), (uint8_t)((errorPageAddr + 1) >> 8), (uint8_t)((errorPageAddr + 1) >> 16), (uint8_t)((errorPageAddr + 1) >> 24), (uint8_t)((errorPageAddr + 1) >> 32), (uint8_t)((errorPageAddr + 1) >> 40), (uint8_t)((errorPageAddr + 1) >> 48), (uint8_t)((errorPageAddr + 1) >> 56)"
+            ],
+            [
+                "255, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24), (uint8_t)(errorPageAddr >> 32), (uint8_t)(errorPageAddr >> 40), (uint8_t)(errorPageAddr >> 48), (uint8_t)(errorPageAddr >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 1), (uint8_t)((errorPageAddr + 1) >> 8), (uint8_t)((errorPageAddr + 1) >> 16), (uint8_t)((errorPageAddr + 1) >> 24)"
+            ],
+            [
+                "255, 0, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24)"
+            ]
+        ],
+        "ret_v64": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 1), (uint8_t)((errorPageAddr + 1) >> 8), (uint8_t)((errorPageAddr + 1) >> 16), (uint8_t)((errorPageAddr + 1) >> 24), (uint8_t)((errorPageAddr + 1) >> 32), (uint8_t)((errorPageAddr + 1) >> 40), (uint8_t)((errorPageAddr + 1) >> 48), (uint8_t)((errorPageAddr + 1) >> 56)"
+            ],
+            [
+                "255, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24), (uint8_t)(errorPageAddr >> 32), (uint8_t)(errorPageAddr >> 40), (uint8_t)(errorPageAddr >> 48), (uint8_t)(errorPageAddr >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 1), (uint8_t)((errorPageAddr + 1) >> 8), (uint8_t)((errorPageAddr + 1) >> 16), (uint8_t)((errorPageAddr + 1) >> 24)"
+            ],
+            [
+                "255, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 5), (uint8_t)((errorPageAddr + 5) >> 8), (uint8_t)((errorPageAddr + 5) >> 16), (uint8_t)((errorPageAddr + 5) >> 24)"
+            ],
+            [
+                "0, 255, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24)"
+            ]
+        ],
+        "ret_void": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24), (uint8_t)(errorPageAddr >> 32), (uint8_t)(errorPageAddr >> 40), (uint8_t)(errorPageAddr >> 48), (uint8_t)(errorPageAddr >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)errorPageAddr, (uint8_t)(errorPageAddr >> 8), (uint8_t)(errorPageAddr >> 16), (uint8_t)(errorPageAddr >> 24)"
+            ]
+        ],
+        "sub_rsp": [
+            [
+                ", 0",
+                ", offset"
+            ]
+        ],
+        "unreachable": [
+            [
+                "0, 0, 0, 0, 0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 9), (uint8_t)((errorPageAddr + 9) >> 8), (uint8_t)((errorPageAddr + 9) >> 16), (uint8_t)((errorPageAddr + 9) >> 24), (uint8_t)((errorPageAddr + 9) >> 32), (uint8_t)((errorPageAddr + 9) >> 40), (uint8_t)((errorPageAddr + 9) >> 48), (uint8_t)((errorPageAddr + 9) >> 56)"
+            ],
+            [
+                "0, 0, 0, 255",
+                "(uint8_t)(errorPageAddr + 9), (uint8_t)((errorPageAddr + 9) >> 8), (uint8_t)((errorPageAddr + 9) >> 16), (uint8_t)((errorPageAddr + 9) >> 24)"
+            ]
+        ]
+    }
+}
