@@ -1,0 +1,10 @@
+# DO NOT TOUCH THE FOLLOWING LINES:
+from importlib.metadata import version as _version
+
+__version__ = _version(__package__)
+
+
+# IMPORTS WHICH SHOULD APPEAR IN emzed.ext.{{cookiecutter.pkg_name}}
+# AFTER INSTALLING THE PACKAGE:
+
+from .example_module import compute
