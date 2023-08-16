@@ -1,0 +1,443 @@
+# Thinknum
+As companies move their business operations to the Internet, new data trails are being created that can provide unique insights on these companies. Thinknum Alternative Data indexes all of these data trails in one platform, providing investors with critical data points that others miss.
+
+## Installation
+```
+pip install thinknum
+```
+
+## Query
+
+Import library.
+
+```
+from thinknum import Query
+```
+
+To authenticate, you must first obtain a client_id and client_secret from your assigned Thinknum account manager. Your client_secret must not be shared or exposed via publicly accessible resources (such as browser client-side scripting).
+
+```python
+q = Query(
+    client_id='Your client id',
+    client_secret='Your client secret'
+)
+```
+
+The default timeout is 180 seconds. If you need to change timeout seconds, you can configure it with the timeout argument.
+
+```python
+q = Query(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    timeout=300
+)
+```
+
+No timeout error happen if you set it to None.
+```python
+q = Query(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    timeout=None
+)
+```
+
+If you need to use a proxy, you can configure it with the proxies argument.
+
+```python
+proxies = {
+  "http": "http://10.10.1.10:3128",
+  "https": "http://10.10.1.10:1080",
+}
+
+q = Query(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    proxies=proxies
+)
+```
+
+Requests can ignore verifying the SSL certficate if you set verify to False. By default, verify is set to True.
+
+```python
+q = Query(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    verify=False
+)
+```
+
+You will get a list of datasets, each of which has the dataset id and its display_name.
+```python
+q.get_dataset_list()
+```
+
+You will get dataset's metadata.
+```python
+q.get_dataset_metadata(dataset_id='job_listings')
+```
+
+It's possible to limit the dataset list to a specific ticker by specific a "ticker" query parameter. For example, getting all datasets available for Apple Inc:
+
+```python
+q.get_ticker_dataset_list(query='nasdaq:aapl')
+```
+
+You can search for tickers.
+```python
+q.get_ticker_list(query="tesla")
+```
+
+You can also search for tickers of particular dataset
+```python
+q.get_ticker_list(query="tesla", dataset_id='job_listings')
+```
+
+You can retrieve data for specific dataset and tickers with various filters. To retrieve data lulu's job listings in 2020, an example request is:
+
+```python
+q.add_ticker('nasdaq:lulu') # Add ticker
+q.add_filter(
+    column='as_of_date',
+    type='>=',
+    value=["2020-01-01"]
+)
+q.add_filter(
+    column='as_of_date',
+    type='<=',
+    value=["2020-12-31"]
+)
+q.add_sort(
+    column='as_of_date',
+    order='asc'
+)   # Add Sort
+q.get_data(dataset_id='job_listings')    # Retrieve data
+```
+
+You can retrieve data with OR filters. To retrieve lulu's job listings which title has `sales` or description has `sales` in 2020, an example request is:
+```python
+q.add_ticker('nasdaq:aapl') # Add ticker
+q.add_filter(
+    column='as_of_date',
+    type='>=',
+    value=["2020-01-01"]
+)
+q.add_filter(
+    column='as_of_date',
+    type='<=',
+    value=["2020-12-31"]
+)
+root_condition = q.add_condition(
+    match='any'
+)
+q.add_filter(
+    column='title',
+    type='...',
+    value='sales',
+    condition=root_condition
+)
+q.add_filter(
+    column='description',
+    type='...',
+    value='sales',
+    condition=root_condition
+)
+q.get_data(dataset_id='job_listings')    # Retrieve data
+```
+
+You can retrieve data with more complicated filters. To retrieve lulu's sales job in 2020 or marketing job in 2021:
+```python
+q.add_ticker('nasdaq:aapl') # Add ticker
+q.add_filter(
+    column='as_of_date',
+    type='>=',
+    value=["2020-01-01"]
+)
+q.add_filter(
+    column='as_of_date',
+    type='<=',
+    value=["2020-12-31"]
+)
+root_condition = q.add_condition(
+    match='any',
+)
+c1 = q.add_condition(
+    match='all',
+    condition=root_condition
+)
+q.add_filter(
+    column='title',
+    type='...',
+    value='sales',
+    condition=c1
+)
+q.add_filter(
+    column='as_of_date',
+    type='>=',
+    value=["2020-01-01"],
+    condition=c1
+)
+q.add_filter(
+    column='as_of_date',
+    type='<=',
+    value=["2020-12-31"],
+    condition=c1
+)
+
+c2 = q.add_condition(
+    match='all',
+    condition=root_condition
+)
+q.add_filter(
+    column='title',
+    type='...',
+    value='marketing',
+    condition=c2
+)
+q.add_filter(
+    column='as_of_date',
+    type='>=',
+    value=["2021-01-01"],
+    condition=c2
+)
+q.add_filter(
+    column='as_of_date',
+    type='<=',
+    value=["2021-12-31"],
+    condition=c2
+)
+q.get_data(dataset_id='job_listings')    # Retrieve data
+```
+
+Please note that the maximum depth of condition is two.
+
+You can also specify `start` and `limit`. The default values are `1` and `100000`.
+```
+q.get_data(
+    dataset_id='job_listings', 
+    start=1,
+    limit=1000
+)
+```
+
+Sometimes you only need get aggregated results for a dataset. In such cases you can retrieve them through the `addGroup` and `addAggregation` functions.
+
+```python
+q.add_ticker('nasdaq:lulu') # Add ticker
+q.add_group(column='as_of_date') # Add group
+q.add_aggregation(
+    column='dataset__entity__entity_ticker__ticker__ticker',
+    type='count'
+)   # Add aggregation
+q.add_sort(
+    column='as_of_date',
+    order='asc'
+)   # Add sort
+q.get_data(dataset_id='job_listings')
+```
+
+There a few functions that you can apply to queries to gather even more insight into the data. You can retrieve a listing of the available functions in a dataset with the `getDatasetMetadata` function. For example, there is `nearby` function for `store` dataset.
+
+```python
+q.add_ticker('nasdaq:lulu')
+q.add_function(
+    function='nearby',
+    parameters={
+        "dataset_type": "dataset",
+        "dataset": "store",
+        "tickers":["nyse:ua"],
+        "entities": [],
+        "distance": 5,
+        "is_include_closed": False
+    }
+)
+q.get_data(dataset_id='store')
+```
+
+Also, you can apply `nearest` function to `store` dataset like the following code.
+```python
+q.add_ticker('nasdaq:lulu')
+q.add_function(
+    function='nearest',
+    parameters={
+        "dataset_type": "dataset",
+        "dataset": "store",
+        "tickers":["nyse:ua"],
+        "entities": [],
+        "ranks": [1],
+        "is_include_closed": False
+    }
+)
+q.get_data(dataset_id='store')
+```
+
+Also, you can apply `sales` function to `Car Inventory` dataset like the following code.
+
+```python
+q.add_ticker('nyse:kmx')
+q.add_function(
+    function='sales',
+    parameters={
+        "lookahead_day_count": 2,
+        "start_date": "2020-01-01",
+        "end_date": "2020-01-07"
+    }
+)
+q.get_data(dataset_id='car_inventory')
+```
+
+Also, you can reset entire query.
+```python
+q.reset_query()
+```
+
+Also, you can reset tickers.
+```python
+q.reset_tickers()
+```
+
+Also, you can reset filters.
+```python
+q.reset_filters()
+```
+
+Also, you can reset functions.
+```python
+q.reset_functions()
+```
+
+Also, you can reset groups.
+```python
+q.reset_groups()
+```
+
+Also, you can reset aggregations.
+```python
+q.reset_aggregations()
+```
+
+Also, you can reset sorts.
+```python
+q.reset_sorts()
+```
+
+## History
+
+Import library.
+
+```
+from thinknum import History
+```
+
+Like the `Query` library, you must authenticate to utilize `History` library.
+
+```python
+h = History(
+    client_id='Your client id',
+    client_secret='Your client secret'
+)
+```
+
+If you need to use a proxy, you can configure it with the proxies argument.
+
+```python
+proxies = {
+  "http": "http://10.10.1.10:3128",
+  "https": "http://10.10.1.10:1080",
+}
+
+h = History(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    proxies=proxies
+)
+```
+
+Requests can ignore verifying the SSL certficate if you set verify to False. By default, verify is set to True.
+
+```python
+h = History(
+    client_id='Your client id',
+    client_secret='Your client secret',
+    verify=False
+)
+```
+
+To retrieve a list of available history for a dataset:
+
+```python
+h.get_history_list(dataset_id='store')
+```
+
+You can view the metadata for the historical file:
+
+```python
+h.get_history_metadata(
+    dataset_id='store',
+    history_date='2020-03-09'
+)
+```
+
+To download a CSV of the historical data:
+
+```python
+h.download(
+    dataset_id='store',
+    history_date='2020-03-09'
+)
+```
+
+You can specify download path:
+
+```python
+h.download(
+    dataset_id='store',
+    history_date='2020-03-09', 
+    download_path='/Users/sangwonseo/Downloads'
+)
+```
+
+
+## Upload
+
+Import library.
+
+```
+from thinknum import Upload
+```
+
+Like the `Query` library, you must authenticate to utilize `Upload` library.
+
+```python
+u = Upload(
+    client_id='Your client id',
+    client_secret='Your client secret'
+)
+```
+
+You can upload and import CSV to Thinknum.
+
+```python
+result = u.upload_csv('/Users/sangwonseo/Downloads/data.csv')
+```
+
+You can check status of CSV.
+
+```python
+u.check_upload_status(upload_id=result['id'])
+```
+
+
+## For more details about Library or API
+Please visit https://docs.thinknum.com/docs
+
+## If you are interested in Thinknum
+Please request demo at https://www.thinknum.com/demo/
+
+## If you have any questions
+Please email at customersuccess@thinknum.com
+
+License
+----
+
+MIT
