@@ -1,0 +1,105 @@
+[build-system]
+requires = [ "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "nlpia2"
+version = "0.0.38"
+description = "Natural language processing utilities and examples for the book Natural Language Processing in Action (nlpia) 2nd Edition by Hobson Lane and Maria Dyshel."
+license = "AGPLv3"
+readme = "README.md"
+authors = [ "Hobson Lane <hobson@tangibleai.com>", "Maria Dyshel <maria@tangibleai.com>", "Leo Hepis <leo@leohepis.com>", "Geoffrey Marshal", "Sylvia Lee", "Winnie Yeung @dcvionwinnie", "Mohammed Dala Ali <mms.dala@gmail.com>", "Alex Rosengarten @alxrsngrtn", "Jose Robins @jorobins",]
+homepage = "https://gitlab.com/tangibleai/nlpia2"
+repository = "https://gitlab.com/tangibleai/nlpia2"
+documentation = "https://gitlab.com/tangibleai/nlpia2"
+keywords = [ "NLP", "Natural Language Processing", "Virtual Assistant", "chatbot", "Text Processing", "Machine Learning", "Text Mining", "Deep Learning",]
+classifiers = [ "Development Status :: 5 - Production/Stable", "Intended Audience :: Developers", "Operating System :: OS Independent", "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)", "Topic :: Software Development :: Libraries :: Python Modules", "Topic :: Text Processing :: Linguistic", "Topic :: Text Processing", "Topic :: Communications", "Topic :: Communications :: Chat", "Intended Audience :: Education",]
+[[tool.poetry.packages]]
+include = "nlpia2"
+from = "src"
+
+[tool.poetry.scripts]
+cnn = "nlpia2.ch07.cnn:main"
+adoc_extract = "nlpia2.text_processing.extractors:main"
+
+[tool.poetry.dependencies]
+babel = "^2.12.1"
+beautifulsoup4 = "^4.12.2"
+bidict = "^0.22.1"
+bleach = "^6.0.0"
+boto3 = "^1.28.27"
+botocore = "^1.31.27"
+configargparse = "^1.7"
+coreferee = "^1.4.1"
+cython = "^3.0.0"
+dataframe-image = "^0.1.12"
+dateparser = "^1.1.8"
+django = "^4.2.4"
+edit-distance = "^1.0.6"
+einops = "^0.6.1"
+environment = "^1.0.0"
+evaluate = "^0.4.0"
+gitpython = "^3.1.32"
+h5py = "^3.9.0"
+html2text = "^2020.1.16"
+html5lib = "^1.1"
+jsonlines = "^3.1.0"
+jupyter-console = "^6.6.3"
+langchain = "^0.0.265"
+lxml = "^4.9.3"
+matplotlib = "==3.7.2"
+matplotlib-inline = "^0.1.6"
+meilisearch = "^0.28.2"
+mistune = "^3.0.1"
+nessvec = "^0.0.12"
+nlpia2-wikipedia = "==1.5.6"
+nltk = "^3.8.1"
+openai = "^0.27.8"
+pandas = "==1.5.3"
+parsimonious = "^0.10.0"
+pillow = "^9.5.0"
+pip = "*"
+poetry = "^1.5.1"
+pronouncing = "^0.2.0"
+protobuf = "==4.24.0"
+psutil = "^5.9.5"
+pypdf2 = "^3.0.1"
+python = ">=3.9"
+python-dotenv = "^1.0.0"
+python-slugify = "^8.0.1"
+rapidfuzz = ">=2.13.2,<2.14"
+recommonmark = "^0.7.1"
+sacrebleu = "^2.3.1"
+streamlit = "^1.25.0"
+seaborn = "^0.12.2"
+sentence-transformers = "^2.2.2"
+spacy = "==3.5.4"
+spacy-experimental = "==0.6.3"
+sphinx = "^7.1.2"
+textacy = "^0.13.0"
+transformers = "==4.31.0"
+toml = "^0.10.2"
+tox = "^4.8.0"
+tqdm = "^4.66.1"
+unidecode = "^1.3.6"
+xmltodict = "^0.13.0"
+
+[tool.poetry.dev-dependencies]
+tox = "*"
+pytest-cov = "*"
+pylint = "*"
+pre-commit = "*"
+deepdiff = "*"
+httpretty = "*"
+flatdict = "*"
+pydocstyle = "*"
+
+[tool.poetry.extras]
+test = [ "pytest", "pytest-cov",]
+sound = [ "soundex",]
+pdf = [ "pymupdf", "tabula-py", "tabulate",]
+graph = [ "graphviz",]
+
+[tool.poetry.dependencies.farm-haystack]
+version = "*"
+extras = [ "faiss",]
