@@ -1,0 +1,27 @@
+{
+    "owner": "billing_rory5@ziosk.com",
+    "organizations": {
+        "Red Robins": {
+            "users": {
+                "billing_01@ziosk.com": "FINANCIAL",
+                "rory@virtuousai.com": "DEVELOPER",
+                "chris@virtuousai.com": "DEVELOPER",
+                "alan@virtuousai.com": "DEVELOPER"
+            },
+            "pipelines": {
+                "Ziosk Pipeline": {
+                    "locations": {
+                        "RRGB0121": {
+                            "users": {
+                                "billing_01@ziosk.com": "VIEWER",
+                                "rory@virtuousai.com": "CONTRIBUTOR",
+                                "alan@virtuousai.com": "CONTRIBUTOR",
+                                "chris@virtuousai.com": "CONTRIBUTOR"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
