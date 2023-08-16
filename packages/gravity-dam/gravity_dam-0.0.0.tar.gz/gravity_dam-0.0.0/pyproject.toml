@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "gravity-dam"
+version = "0.0.0"
+description = "A Python library that combines various stream constraints and stream regularization algorithms. (It's like a gravity dam that uses itself to resist the pressure of the water)"
+authors = ["so1n <so1n897046026@gmail.com>"]
+license = "\"Apache Software License\""
+readme = "README.md"
+packages = [{include = "gravity_dam"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
