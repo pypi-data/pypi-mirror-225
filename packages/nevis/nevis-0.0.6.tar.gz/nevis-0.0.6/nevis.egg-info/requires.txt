@@ -1,0 +1,15 @@
+bnglonlat
+matplotlib>=1.5
+numpy
+pykml
+scipy
+setuptools
+zipfile-deflate64
+
+[dev]
+flake8>=3
+sphinx!=1.7.3,>=1.5
+
+[extras]
+convertbng
+pillow
