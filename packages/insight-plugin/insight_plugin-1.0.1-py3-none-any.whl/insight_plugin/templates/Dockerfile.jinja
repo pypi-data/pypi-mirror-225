@@ -1,0 +1,22 @@
+FROM {{ sdk_type }}:{{ sdk_version }}
+
+LABEL organization={{ vendor }}
+LABEL sdk=python
+{% if packages %}
+RUN {{ install_package_command }}{% for package in packages %} {{ package }}{% endfor %}{% if not "slim" in sdk_type %} -y{% endif %}
+{% endif %}
+WORKDIR /python/src
+
+ADD ./plugin.spec.yaml /plugin.spec.yaml
+ADD ./requirements.txt /python/src/requirements.txt
+
+RUN if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+ADD . /python/src
+
+RUN	python setup.py build && python setup.py install
+
+# User to run plugin code. The two supported users are: root, nobody
+USER {{ user }}
+
+ENTRYPOINT ["/usr/local/bin/{{prefix}}_{{ plugin_name }}"]
