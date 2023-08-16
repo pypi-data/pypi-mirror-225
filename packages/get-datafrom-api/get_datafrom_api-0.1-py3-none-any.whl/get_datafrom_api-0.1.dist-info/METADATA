@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: get-datafrom-api
+Version: 0.1
+Summary: API package that provides us the method to fetch the data from the API, along with the method to convert that into proper dataframe
+Author: sankeerthanab
+Author-email: sankeerthanab4@gmail.com
+License: MIT
+Requires-Dist: pandas
+Requires-Dist: requests
+
