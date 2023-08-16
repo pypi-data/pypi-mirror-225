@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: trick17
+Version: 0.0.2
+Summary: Systemd utility functions in pure python
+Project-URL: Documentation, https://github.com/miccoli/trick17#readme
+Project-URL: Issues, https://github.com/miccoli/trick17/issues
+Project-URL: Source, https://github.com/miccoli/trick17
+Author-email: Stefano Miccoli <stefano.miccoli@polimi.it>
+License-Expression: MIT
+License-File: LICENSE.txt
+Keywords: systemd
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# trick17
+
+[![Pre-Alpha warning](https://img.shields.io/badge/warning-Pre--Alpha%20code-red)]()
+
+[![PyPI - Version](https://img.shields.io/pypi/v/trick17.svg)](https://pypi.org/project/trick17)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/trick17.svg)](https://pypi.org/project/trick17)
+
+`trick17` is a pure python, lightweight package that interfaces with various [systemd](https://systemd.io) components.
+
+-----
+
+**Table of Contents**
+
+- [Installation](#installation)
+- [Modules](#modules)
+- [License](#license)
+
+## Installation
+
+```console
+pip install trick17
+```
+
+## Modules
+
+### trick17.daemon
+
+- `daemon.booted()` returns `True` if system was booted by systemd.
+- `daemon.notify(state)` sends a notification to systemd.
+
+### trick17.journal
+
+The `trick17.journal` allows to use the systemd [Native Journal Protocol](https://systemd.io/JOURNAL_NATIVE_PROTOCOL/) via the Python [Logging facility](https://docs.python.org/3/library/logging.html).
+
+- `JournalHandler` is a [`logging.Handler`](https://docs.python.org/3/library/logging.html#logging.Handler) subclass that speaks the systemd Native Journal Protocol
+- Function `stderr_is_journal()` can be used to check if logging via `sys.stderr` should be upgraded to native logging, see [Automatic Protocol Upgrading](https://systemd.io/JOURNAL_NATIVE_PROTOCOL/#automatic-protocol-upgrading)
+
+```python
+import logging
+
+from trick17 import journal
+
+if journal.stderr_is_journal():
+    handler = journal.JournalHandler()
+else:
+    handler = logging.StreamHandler()
+root = logging.getLogger()
+root.addHandler(handler)
+
+logging.error('Something happened')
+```
+
+## License
+
+`trick17` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
