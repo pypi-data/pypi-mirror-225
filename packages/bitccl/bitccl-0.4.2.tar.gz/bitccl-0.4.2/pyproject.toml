@@ -1,0 +1,29 @@
+[tool.black]
+line-length = 127
+
+[tool.isort]
+profile = "black"
+line_length = 127
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=bitccl",
+    "--cov-report",
+    "term-missing"
+]
+filterwarnings = [
+    "error::DeprecationWarning",
+    "error::PendingDeprecationWarning",
+    "ignore:There is no current event loop:DeprecationWarning", # TODO: remove when https://github.com/python/cpython/issues/100160 is fixed
+]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*",
+    "venv/*",
+    "env/*",
+    "bitccl/cli.py",
+    "bitccl/logger.py",
+    "setup.py"
+]
