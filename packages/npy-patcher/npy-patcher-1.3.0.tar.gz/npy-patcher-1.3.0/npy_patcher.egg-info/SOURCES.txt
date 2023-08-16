@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+npy_patcher.egg-info/PKG-INFO
+npy_patcher.egg-info/SOURCES.txt
+npy_patcher.egg-info/dependency_links.txt
+npy_patcher.egg-info/top_level.txt
+src/npy_header.cpp
+src/npy_header.hpp
+src/patcher.hpp
+src/pybind.cpp
+src/pyparse.cpp
+src/pyparse.hpp
+src/npy_patcher/__init__.pyi
+src/npy_patcher/py.typed
