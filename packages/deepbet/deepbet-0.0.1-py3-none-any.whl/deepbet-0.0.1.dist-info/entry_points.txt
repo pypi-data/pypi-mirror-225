@@ -1,0 +1,4 @@
+[console_scripts]
+deepbet-cli=deepbet.interfaces.cli:run_cli
+deepbet-gui=deepbet.interfaces.gui:run_gui
+
