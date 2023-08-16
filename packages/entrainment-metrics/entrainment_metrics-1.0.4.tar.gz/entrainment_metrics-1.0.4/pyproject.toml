@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "entrainment-metrics"
+version = "1.0.4"
+description = "Measure acoustic-prosodic entrainment in speech"
+authors = [
+    "E. Ernst, A. Gravano, R. Gálvez"
+]
+# New attributes
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/erikernst4/entrainment-metrics"
+repository = "https://github.com/erikernst4/entrainment-metrics"
+documentation="https://entrainment-metrics.readthedocs.io/en/latest/"
+keywords = ["speech", "prosody", "speech-analysis", "entrainment", "prosodic-analysis"]
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.11"
+click = "8.0.2"
+scipy = "^1.8.1"
+opensmile = "^2.4.1"
+coverage = "^6.4.4"
+sklearn = "^0.0"
+matplotlib = "^3.6.3"
+praat-parselmouth = "^0.4.3"
+allosaurus = "^1.0.2"
+
+[tool.poetry.dev-dependencies]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
