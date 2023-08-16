@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/sam_subseq/IndexMap.py
+src/sam_subseq/SamRefAlignment.py
+src/sam_subseq/__init__.py
+src/sam_subseq/io.py
+src/sam_subseq/main.py
+src/sam_subseq.egg-info/PKG-INFO
+src/sam_subseq.egg-info/SOURCES.txt
+src/sam_subseq.egg-info/dependency_links.txt
+src/sam_subseq.egg-info/entry_points.txt
+src/sam_subseq.egg-info/top_level.txt
+tests/test_index_map.py
+tests/test_main.py
+tests/test_ref_alignment.py
