@@ -1,0 +1,270 @@
+{
+    "grammar": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "none": "KK"
+        },
+        "roots": {
+            "fi": "language"
+        },
+        "topics": "SM1.1",
+        "en": "grammar",
+        "fi": "kielioppi",
+        "nl": "de grammatica"
+    },
+    "word": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "topics": [
+            "SM1.1",
+            "SM1.2"
+        ],
+        "singular": {
+            "en": "word",
+            "fi": "sana",
+            "nl": "het woord"
+        },
+        "plural": {
+            "en": "words",
+            "fi": "sanat",
+            "nl": "de woorden"
+        }
+    },
+    "vocabulary": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "none": "KK"
+        },
+        "roots": {
+            "fi": "word",
+            "nl": "word"
+        },
+        "topics": "SM1.1",
+        "en": "vocabulary",
+        "fi": "sanasto",
+        "nl": "de woordenschat"
+    },
+    "compound word": {
+        "level": {
+            "none": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "roots": "word",
+        "topics": "SM1.1",
+        "en": "compound word",
+        "fi": "yhdyssana",
+        "nl": "het samengestelde woord"
+    },
+    "phrase": {
+        "level": {
+            "A1": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "topics": "SM1.1",
+        "singular": {
+            "en": "phrase",
+            "fi": "fraasi",
+            "nl": "de frase"
+        },
+        "plural": {
+            "en": "phrases",
+            "fi": "fraasit",
+            "nl": "de frasen|de frases"
+        }
+    },
+    "sentence": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "sentence",
+            "fi": "lause",
+            "nl": "de zin"
+        },
+        "plural": {
+            "en": "sentences",
+            "fi": "lauseet",
+            "nl": "de zinnen"
+        }
+    },
+    "vowel": {
+        "level": {
+            "A2": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "topics": "SM1.1",
+        "singular": {
+            "en": "vowel",
+            "fi": "vokaali",
+            "nl": "de klinker"
+        },
+        "plural": {
+            "en": "vowels",
+            "fi": "vokaalit",
+            "nl": "de klinkers"
+        }
+    },
+    "consonant": {
+        "level": {
+            "A2": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "roots": {
+            "nl": "vowel"
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "consonant",
+            "fi": "konsonantti",
+            "nl": "de medeklinker"
+        },
+        "plural": {
+            "en": "consonants",
+            "fi": "konsonantit",
+            "nl": "de medeklinkers"
+        }
+    },
+    "alphabet": {
+        "level": {
+            "A1": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "topics": "SM1.1",
+        "en": "alphabet",
+        "fi": "aakkoset",
+        "nl": "het alfabet"
+    },
+    "question word": {
+        "level": {
+            "none": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "roots": [
+            "question",
+            "word"
+        ],
+        "topics": "SM1.2",
+        "en": "question word",
+        "fi": "kysymyssana",
+        "nl": "het vraagwoord"
+    },
+    "subject": {
+        "level": {
+            "B1": "EP",
+            "none": [
+                "KK",
+                "OD"
+            ]
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "subject",
+            "fi": "subjekti",
+            "nl": "het onderwerp"
+        },
+        "plural": {
+            "en": "subjects",
+            "fi": "subjektit",
+            "nl": "de onderwerpen"
+        }
+    },
+    "verb": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "none": "KK"
+        },
+        "roots": {
+            "nl": [
+                "job",
+                "word"
+            ]
+        },
+        "topics": [
+            "SM1.1",
+            "SM1.5"
+        ],
+        "singular": {
+            "en": "verb",
+            "fi": "verbi",
+            "nl": "het werkwoord"
+        },
+        "plural": {
+            "en": "verbs",
+            "fi": "verbit",
+            "nl": "de werkwoorden"
+        }
+    },
+    "infinitive": {
+        "level": {
+            "A1": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "topics": "SM1.5",
+        "en": "infinitive",
+        "fi": "infinitiivi",
+        "nl": "de infinitief"
+    },
+    "pronoun": {
+        "level": {
+            "A1": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "en": "pronoun",
+        "fi": "pronomini",
+        "nl": "het voornaamwoord"
+    },
+    "personal pronoun": {
+        "level": {
+            "B2": "OD",
+            "none": [
+                "EP",
+                "KK"
+            ]
+        },
+        "roots": [
+            "pronoun"
+        ],
+        "topics": "SM1.1",
+        "en": "personal pronoun",
+        "fi": "persoonapronomini",
+        "nl": "het persoonlijk voornaamwoord"
+    },
+    "intonation": {
+        "level": {
+            "B1": "OD",
+            "none": [
+                "EP",
+                "KK"
+            ]
+        },
+        "topics": "SM1.2",
+        "en": "intonation",
+        "fi": "intonaatio",
+        "nl": "de intonatie"
+    }
+}

@@ -1,0 +1,258 @@
+{
+    "journey": {
+        "level": {
+            "A1": [
+                "KK",
+                "OD"
+            ],
+            "A2": "EP"
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "journey",
+            "fi": "matka",
+            "nl": "de reis"
+        },
+        "plural": {
+            "en": "journeys",
+            "fi": "matka",
+            "nl": "de reizen"
+        }
+    },
+    "car": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "topics": [
+            "SM1.1",
+            "SM1.2"
+        ],
+        "root": {
+            "singular": {
+                "en": "car",
+                "fi": "auto",
+                "nl": "de auto"
+            },
+            "plural": {
+                "en": "cars",
+                "fi": "autot",
+                "nl": "de auto's"
+            }
+        },
+        "diminutive": {
+            "singular": {
+                "en": "(little car)",
+                "fi": "(pieni auto)",
+                "nl": "het autootje"
+            },
+            "plural": {
+                "en": "(little cars)",
+                "fi": "(pienet autot)",
+                "nl": "de autootjes"
+            }
+        }
+    },
+    "flight": {
+        "level": {
+            "A1": "OD",
+            "A2": [
+                "EP",
+                "KK"
+            ]
+        },
+        "singular": {
+            "en": "flight",
+            "fi": "lento",
+            "nl": "de vlucht"
+        },
+        "plural": {
+            "en": "flights",
+            "fi": "lennot",
+            "nl": "de vluchten"
+        }
+    },
+    "passport": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "B1": "KK"
+        },
+        "singular": {
+            "en": "passport",
+            "fi": "passi",
+            "nl": "het paspoort"
+        },
+        "plural": {
+            "en": "passports",
+            "fi": "passit",
+            "nl": "de paspoorten"
+        }
+    },
+    "port": {
+        "level": {
+            "A2": "KK",
+            "B1": [
+                "EP",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "port",
+            "fi": "satama",
+            "nl": "de haven"
+        },
+        "plural": {
+            "en": "ports",
+            "fi": "satamat",
+            "nl": "de havens"
+        }
+    },
+    "airport": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "none": "KK"
+        },
+        "topics": "city",
+        "roots": {
+            "en": "port",
+            "fi": "flight"
+        },
+        "singular": {
+            "en": "airport",
+            "fi": "lentokenttä",
+            "nl": "het vliegveld"
+        },
+        "plural": {
+            "en": "airports",
+            "fi": "lentokentät",
+            "nl": "de vliegvelden"
+        }
+    },
+    "train": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "train",
+            "fi": "juna",
+            "nl": "de trein"
+        },
+        "plural": {
+            "en": "trains",
+            "fi": "junat",
+            "nl": "de treinen"
+        }
+    },
+    "metro": {
+        "level": {
+            "A2": "OD",
+            "C2": "KK"
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "metro",
+            "fi": [
+                "metro",
+                "maanalainen"
+            ],
+            "nl": "de metro"
+        },
+        "plural": {
+            "en": "metros",
+            "fi": [
+                "metrot",
+                "maanalaiset"
+            ],
+            "nl": "de metro's"
+        }
+    },
+    "bus": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "roots": {
+            "fi": "car"
+        },
+        "topics": "SM1.2",
+        "singular": {
+            "en": "bus",
+            "fi": [
+                "bussi",
+                "linja-auto"
+            ],
+            "nl": "de bus"
+        },
+        "plural": {
+            "en": "buses",
+            "fi": [
+                "bussit",
+                "linja-autot"
+            ],
+            "nl": "de bussen"
+        }
+    },
+    "bus driver": {
+        "roots": {
+            "en": [
+                "bus",
+                "to drive"
+            ],
+            "fi": "bus",
+            "nl": "bus"
+        },
+        "en": "bus driver",
+        "fi": "bussikuski",
+        "nl": "de buschauffeur"
+    },
+    "stop": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "none": "KK"
+        },
+        "singular": {
+            "en": "stop",
+            "fi": "pysäkki",
+            "nl": "de halte"
+        },
+        "plural": {
+            "en": "stops",
+            "fi": "pysäkit",
+            "nl": "de haltes"
+        }
+    },
+    "bus stop": {
+        "level": {
+            "A1": "OD",
+            "A2": "EP",
+            "none": "KK"
+        },
+        "roots": [
+            "bus",
+            "stop"
+        ],
+        "topics": "SM1.2",
+        "en": "bus stop",
+        "fi": [
+            "linja-autopysäkki",
+            "bussipysäkki"
+        ],
+        "nl": "de bushalte"
+    }
+}

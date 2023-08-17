@@ -1,0 +1,398 @@
+{
+    "body": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "singular": {
+            "en": "body",
+            "fi": [
+                "vartalo",
+                "keho"
+            ],
+            "nl": "het lichaam"
+        },
+        "plural": {
+            "en": "bodies",
+            "fi": [
+                "vartalot",
+                "kehot"
+            ],
+            "nl": "de lichamen"
+        }
+    },
+    "eye": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "topics": "SM1.4",
+        "singular": {
+            "en": "eye",
+            "fi": "silmä",
+            "nl": "het oog"
+        },
+        "plural": {
+            "en": "eyes",
+            "fi": "silmät",
+            "nl": "de ogen"
+        }
+    },
+    "ear": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "ear",
+            "fi": "korva",
+            "nl": "het oor"
+        },
+        "plural": {
+            "en": "ears",
+            "fi": "korvat",
+            "nl": "de oren"
+        }
+    },
+    "hair": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "singular": {
+            "en": "hair",
+            "fi": "hius",
+            "nl": [
+                "de haar",
+                "het haar"
+            ]
+        },
+        "plural": {
+            "en": "hairs",
+            "fi": "hiukset",
+            "nl": "de haren"
+        }
+    },
+    "nose": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "singular": {
+            "en": "nose",
+            "fi": "nenä",
+            "nl": "de neus"
+        },
+        "plural": {
+            "en": "noses",
+            "fi": "nenät",
+            "nl": "de neuzen"
+        }
+    },
+    "mouth": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "mouth",
+            "fi": "suu",
+            "nl": "de mond"
+        },
+        "plural": {
+            "en": "mouths",
+            "fi": "suut",
+            "nl": "de monden"
+        }
+    },
+    "lip": {
+        "level": {
+            "B1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "lip",
+            "fi": "huuli",
+            "nl": "de lip"
+        },
+        "plural": {
+            "en": "lips",
+            "fi": "huulet",
+            "nl": "de lippen"
+        }
+    },
+    "tooth": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "A2": "KK"
+        },
+        "singular": {
+            "en": "tooth",
+            "fi": "hammas",
+            "nl": "de tand"
+        },
+        "plural": {
+            "en": "teeth",
+            "fi": "hampaat",
+            "nl": "de tanden"
+        }
+    },
+    "head": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "head",
+            "fi": "pää",
+            "nl": "het hoofd"
+        },
+        "plural": {
+            "en": "heads",
+            "fi": "päät",
+            "nl": "de hoofden"
+        }
+    },
+    "back": {
+        "level": {
+            "A1": "OD",
+            "A2": [
+                "EP",
+                "KK"
+            ]
+        },
+        "singular": {
+            "en": "back",
+            "fi": "selkä",
+            "nl": "de rug"
+        },
+        "plural": {
+            "en": "backs",
+            "fi": "selät",
+            "nl": "de ruggen"
+        }
+    },
+    "shoulder": {
+        "level": {
+            "A2": "OD",
+            "B1": "EP",
+            "none": "KK"
+        },
+        "roots": {
+            "fi": "head"
+        },
+        "singular": {
+            "en": "shoulder",
+            "fi": "olkapää",
+            "nl": "de schouder"
+        },
+        "plural": {
+            "en": "shoulders",
+            "fi": "olkapäät",
+            "nl": "de schouders"
+        }
+    },
+    "arm": {
+        "level": {
+            "A1": [
+                "EP",
+                "OD"
+            ],
+            "none": "KK"
+        },
+        "roots": {
+            "fi": "hand"
+        },
+        "singular": {
+            "en": "arm",
+            "fi": "käsivarsi",
+            "nl": "de arm"
+        },
+        "plural": {
+            "en": "arms",
+            "fi": "käsivarret",
+            "nl": "de armen"
+        }
+    },
+    "hand": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "hand",
+            "fi": "käsi",
+            "nl": "de hand"
+        },
+        "plural": {
+            "en": "hands",
+            "fi": "kädet",
+            "nl": "de handen"
+        }
+    },
+    "finger": {
+        "level": {
+            "A1": "KK",
+            "A2": [
+                "EP",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "finger",
+            "fi": "sormi",
+            "nl": "de vinger"
+        },
+        "plural": {
+            "en": "fingers",
+            "fi": "sormet",
+            "nl": "de vingers"
+        }
+    },
+    "stomach": {
+        "level": {
+            "A2": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "stomach",
+            "fi": "vatsa",
+            "nl": "de maag"
+        },
+        "plural": {
+            "en": "stomachs",
+            "fi": "vatsat",
+            "nl": "de magen"
+        }
+    },
+    "belly": {
+        "level": {
+            "A2": "KK",
+            "C2": "OD",
+            "none": "EP"
+        },
+        "singular": {
+            "en": "belly",
+            "fi": [
+                "maha",
+                "masu"
+            ],
+            "nl": "de buik"
+        },
+        "plural": {
+            "en": "bellies",
+            "fi": [
+                "mahat",
+                "masut"
+            ],
+            "nl": "de buiken"
+        }
+    },
+    "knee": {
+        "level": {
+            "A2": [
+                "OD",
+                "KK"
+            ],
+            "B1": "EP"
+        },
+        "singular": {
+            "en": "knee",
+            "fi": "polvi",
+            "nl": "de knie"
+        },
+        "plural": {
+            "en": "knees",
+            "fi": "polvet",
+            "nl": "de knieën"
+        }
+    },
+    "leg": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "leg",
+            "fi": "jalka;upper part",
+            "nl": "het been"
+        },
+        "plural": {
+            "en": "legs",
+            "fi": "jalat;upper part",
+            "nl": "de benen"
+        }
+    },
+    "foot": {
+        "level": {
+            "A1": [
+                "EP",
+                "KK",
+                "OD"
+            ]
+        },
+        "singular": {
+            "en": "foot",
+            "fi": "jalka;lower part",
+            "nl": "de voet"
+        },
+        "plural": {
+            "en": "feet",
+            "fi": "jalat;lower part",
+            "nl": "de voeten"
+        }
+    },
+    "toe": {
+        "level": {
+            "A2": "EP",
+            "B1": "OD",
+            "none": "KK"
+        },
+        "singular": {
+            "en": "toe",
+            "fi": "varvas",
+            "nl": "de teen"
+        },
+        "plural": {
+            "en": "toes",
+            "fi": "varpaat",
+            "nl": "de tenen"
+        }
+    }
+}

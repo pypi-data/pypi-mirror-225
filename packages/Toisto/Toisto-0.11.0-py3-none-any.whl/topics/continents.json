@@ -1,0 +1,57 @@
+{
+    "continent": {
+        "level": {
+            "A2": "OD",
+            "B1": "EP"
+        },
+        "roots": {
+            "fi": "country"
+        },
+        "singular": {
+            "en": "continent",
+            "fi": "maanosa",
+            "nl": "het continent"
+        },
+        "plural": {
+            "en": "continents",
+            "fi": "maanosat",
+            "nl": "de continenten"
+        }
+    },
+    "africa": {
+        "topics": "SM1.2",
+        "en": "Africa",
+        "fi": "Afrikka",
+        "nl": "Afrika"
+    },
+    "america": {
+        "en": "America",
+        "fi": "Amerikka",
+        "nl": "Amerika"
+    },
+    "south america": {
+        "topics": "SM1.2",
+        "en": "South America",
+        "fi": "Etelä-Amerikka",
+        "nl": "Zuid-Amerika"
+    },
+    "asia": {
+        "topics": "SM1.2",
+        "en": "Asia",
+        "fi": "Aasia",
+        "nl": "Azië"
+    },
+    "europe": {
+        "topics": "SM1.2",
+        "en": "Europe",
+        "fi": "Eurooppa",
+        "nl": "Europa"
+    },
+    "middle east": {
+        "topics": "SM1.2",
+        "roots": "east",
+        "en": "Middle East",
+        "fi": "Lähi-itä",
+        "nl": "Midden-Oosten|het Midden-Oosten"
+    }
+}
