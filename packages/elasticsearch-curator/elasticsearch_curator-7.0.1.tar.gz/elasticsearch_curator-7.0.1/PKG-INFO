@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: elasticsearch-curator
+Version: 7.0.1
+Summary: Tending your Elasticsearch indices and snapshots
+Project-URL: Homepage, https://github.com/elastic/curator
+Project-URL: Bug Tracker, https://github.com/elastic/curator/issues
+Author-email: Elastic <info@elastic.co>
+License: Apache-2.0
+License-File: LICENSE.txt
+License-File: NOTICE
+Keywords: elasticsearch,index-expiry,indexed,time-series
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Requires-Dist: boto3>=1.24.54
+Requires-Dist: certifi>=2023.5.7
+Requires-Dist: click==8.1.4
+Requires-Dist: elasticsearch7==7.17.9
+Requires-Dist: pyyaml==6.0.1
+Requires-Dist: requests-aws4auth>=1.1.2
+Requires-Dist: requests>=2.28.1
+Requires-Dist: six>=1.16.0
+Requires-Dist: voluptuous>=0.13.1
+Provides-Extra: doc
+Requires-Dist: sphinx; extra == 'doc'
+Provides-Extra: test
+Requires-Dist: mock; extra == 'test'
+Requires-Dist: pytest-cov; extra == 'test'
+Requires-Dist: pytest>=7.2.1; extra == 'test'
+Requires-Dist: requests; extra == 'test'
+Description-Content-Type: text/x-rst
+
+.. _readme:
+
+
+Curator
+=======
+
+Have indices in Elasticsearch? This is the tool for you!
+
+Like a museum curator manages the exhibits and collections on display,
+Elasticsearch Curator helps you curate, or manage your indices.
+
+ANNOUNCEMENT
+------------
+
+Curator is breaking into version dependent releases. Curator 6.x will work with
+Elasticsearch 6.x, Curator 7.x will work with Elasticsearch 7.x, and when it is
+released, Curator 8.x will work with Elasticsearch 8.x.
+
+Watch this space for updates when that is coming.
