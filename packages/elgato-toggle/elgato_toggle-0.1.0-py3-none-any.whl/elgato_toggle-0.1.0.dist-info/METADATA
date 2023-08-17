@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: elgato-toggle
+Version: 0.1.0
+Summary: 
+Author: Artanicus
+Author-email: artanicus@nocturnal.fi
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: absl-py (>=1.4.0,<2.0.0)
+Requires-Dist: asyncio (>=3.4.3,<4.0.0)
+Requires-Dist: elgato (>=4.0.1,<5.0.0)
+Description-Content-Type: text/markdown
+
+# Elgato-toggle
+
+## Installation
+```
+pip install elgato-toggle
+```
+
+## Sample usage
+
+Toggle a single light:
+```shell
+elgato-toggle --light=keylight.local
+```
+
+Toggle multiple lights via shell expansion:
+```shell
+elgato-toggle --light=keylight-{left,right}.local
+```
+
