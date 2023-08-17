@@ -1,0 +1,4 @@
+[console_scripts]
+h5move = ftag.hdf5.h5move:main
+vds = ftag.vds:main
+wps = ftag.wps.working_points:main
