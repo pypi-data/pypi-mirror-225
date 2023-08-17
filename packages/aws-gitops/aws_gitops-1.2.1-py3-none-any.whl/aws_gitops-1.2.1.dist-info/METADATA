@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: aws-gitops
+Version: 1.2.1
+Summary: Automatically regenerate gitops application yaml configuration files with new infrastructure data.
+Home-page: https://github.com/Mu-Nirvana/aws-git-ops
+Author: Ben Campbell
+Author-email: ben@munirvana.com
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: rich
+Requires-Dist: click
+Requires-Dist: PyYAML
+Requires-Dist: boto3
+
+Checkout https://github.com/Mu-Nirvana/aws-git-ops
