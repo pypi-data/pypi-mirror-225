@@ -1,0 +1,93 @@
+[tool.poetry]
+name = "jammy"
+version = "0.1.12"
+description = "A Versatile ToolBox"
+authors = ["Qin <qsh.zh27@gmail.com>"]
+license = "MIT"
+packages = [
+    { include="jammy" },
+    { include="jamtorch" },
+    { include="jamnp" },
+    { include="jamviz" },
+    { include="jamweb" }
+]
+
+readme = "README.md"
+documentation = "https://jammy.readthedocs.io/en/latest/"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+numpy = "^1.24.1"
+scipy = "^1.10.1"
+loguru = "^0.7.0"
+einops = "^0.6.0"
+hydra-core = "^1.1.0"
+GitPython = "^3.1.17"
+ipdb = "^0.13.8"
+matplotlib = "^3.7.1"
+gpustat = "^0.6.0"
+tqdm = "^4.11.0"
+attrs = "^20.3.0"
+
+# learn
+wandb = { version = "^0.10.31", optional = true }
+
+# torch
+pytorch-lightning = { version = "^1.5.10", optional = true }
+torch = { version = "^1.10.0", optional = true }
+torchvision = { version = "^0.11.0", optional = true }
+torchinfo = { version = "^1.5.3", optional = true }
+
+# webs
+tornado = { version = "^6.1", optional = true }
+pyzmq = { version = "^22.3.0", optional = true }
+
+# storage
+h5py = { version = "^3.4.0", optional = true }
+msgpack = { version = "^1.0.2", optional = true }
+msgpack-numpy = { version = "^0.4.7", optional = true }
+pyarrow = { version = "^6.0.0", optional = true }
+lmdb = { version = "^1.2.1", optional = true }
+python-memcached = { version = "^1.59", optional = true }
+
+# pro
+line-profiler = { version = "^3.3.1", optional = true }
+ubelt = { version = "^0.10.2", optional = true }
+parse = { version = "^1.19.0", optional = true }
+pudb = { version = "^2022.1", optional = true }
+timeout-decorator = "^0.5.0"
+filelock = "^3.8.0"
+stackprinter = "^0.2.10"
+
+[tool.poetry.extras]
+torch = ["wandb", "pytorch-lightning", "torch", "torchvision", "torchinfo"]
+web = ["tornado", "pyzmq"]
+storage = ["h5py", "msgpack", "msgpack-numpy", "pyarrow", "lmdb", "python-memcached"]
+pro = ["line-profiler", "ubelt", "parse", "pudb"]
+all = ["wandb", "pytorch-lightning", "torch", "torchvision", "torchinfo", "tornado", "pyzmq", "h5py", "msgpack", "msgpack-numpy", "pyarrow", "lmdb", "python-memcached", "line-profiler", "ubelt", "parse", "pudb"]
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.13.0"
+isort = "^5.8.0"
+black = "^21.5b1"
+pylint = "^2.8.3"
+Sphinx = "^4.2.0"
+Pallets-Sphinx-Themes = "^2.0.1"
+sphinx-tabs = "^3.2.0"
+m2r2 = "^0.3.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+jgpus="jammy.cli_scripts.gpu_sc:start_sever"
+jgpuc="jammy.cli_scripts.gpu_sc:start_client"
+jshs="jammy.cli_scripts.shell_executor:start_sever"
+jshc="jammy.cli_scripts.shell_executor:echo_hello"
+jshinfo="jammy.cli_scripts.shell_executor:echo_state"
+jshka="jammy.cli_scripts.shell_executor:client_kill_all"
+jinspect-file="jammy.cli_scripts.inspect_file:simple"
+jsys-info="jammy.cli_scripts.sys_info:main"
+jdk="jammy.cli_scripts.dk:my_app"
+ngc_debug="jammy.cli_scripts.ngc_debug:my_app"
