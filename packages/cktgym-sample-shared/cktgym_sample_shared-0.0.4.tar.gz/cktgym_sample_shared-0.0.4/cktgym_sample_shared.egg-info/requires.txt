@@ -1,0 +1,10 @@
+pydantic==1.9.1
+hdl21>=4.0.0
+
+[dev]
+pytest==7.1
+coverage
+pytest-cov
+pre-commit==2.20
+black==22.6
+twine
