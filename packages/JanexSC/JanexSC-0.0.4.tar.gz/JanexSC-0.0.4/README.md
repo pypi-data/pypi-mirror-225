@@ -1,0 +1,100 @@
+# Janex-SpaCy
+
+A version of the set of Janex Frameworks which utilises SpaCy's models to determine the best response and intent class.
+
+If you want to use a less heavyweight but still-accurate version of Janex, I would recommend using Janex: PyTorch Edition, which uses Neural Network techniques from PyTorch and NLTK synonym generation to enhance the user experience.
+```
+https://pypi.org/project/JanexPT/
+```
+
+Otherwise, if you would like one that doesn't rely on third-party libraries, I would suggest using Janex: Python Edition ('Vanilla Janex'),
+
+```
+https://pypi.org/project/Janex
+```
+
+<h3> How to use </h3>
+
+<h5> Adding to your project </h5>
+
+Firstly, you'll need to install the library using the Python pip package manager.
+
+```
+python3 -m pip install JanexSC
+
+```
+Secondly, you need to import the library into your Python script.
+
+```
+from JanexSpacy import *
+```
+
+<h4>Using Janex in your code</h4>
+
+<h5>Create an instance</h5>
+
+Before anything else, you need to create an instance of the IntentMatcher class. (If you do not have one made already, the program will automatically download a pre-written file created by @SoapDoesCode - big thanks to her for their intents file!)
+
+```
+intents_file_path = "./intents.json"
+
+thesaurus_file_path = "./thesaurus.json"
+
+vectors_file_path = "./vectors.json"
+
+matcher = JanexSpacy(intents_file_path, thesaurus_file_path, vectors_file_path)
+```
+
+Optional: If you would like to update your thesaurus to your most recent pre-written file, then you can add this code to check for new versions and to download them. Be careful though, this function removes your thesaurus file, which means any unsaved data which doesn't exist on the pre-written file will be erased. (But could possibly be restored in your bin directory)
+
+```
+matcher.update_thesaurus()
+```
+
+<h5>Tokenizing:</h5>
+
+To utilise the tokenizer feature, here is an example of how it can be used.
+
+```
+input_string = "Hello! What is your name?"
+
+words = matcher.Tokenize(input_string)
+
+print(words)
+```
+
+<h5>Intent classifying:</h5>
+
+To compare the input with the patterns from your intents.json storage file, you have to declare the intents file path.
+
+```
+intent_class = matcher.pattern_compare(input_string)
+
+print(intent_class)
+```
+
+<h5>Response similarity:</h5>
+
+Sometimes a list of responses in a class can become varied in terms of context, and so in order to get the best possible response, we can use the 'responsecompare' function to compare the input string with your list of responses.
+
+```
+BestResponse = matcher.response_compare(input_string, intent_class)
+
+print(BestResponse)
+```
+
+<h5>Text Generation:</h5>
+
+In experimental phase but included in Janex: 0.0.15 and above, and ported through JanexSC, the 'ResponseGenerator' function can absorb the response chosen by your response comparer from your intents.json file, and then modify it, replacing words with synonyms, to give it a more unscripted response.
+
+For this to be used, if you haven't got a thesaurus.json file already, the IntentMatcher will automatically download the pre-written example directly from Github and into your chatbot folder.
+
+After doing so, you may include the feature in your code like this.
+
+```
+generated_response = matcher.ResponseGenerator(BestResponse)
+
+print(generated_response)
+```
+
+Warning: This feature is still work-in-progress, and will only be as effective per the size of your thesaurus file, so don't expect it to be fully stable until I have fully completed it. :)
