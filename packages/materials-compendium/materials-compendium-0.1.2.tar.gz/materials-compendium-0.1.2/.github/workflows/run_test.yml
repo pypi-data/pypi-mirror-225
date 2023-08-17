@@ -1,0 +1,46 @@
+name: Run Tests
+
+on:
+  # allows running workflows manually
+  workflow_dispatch:
+
+  pull_request:
+    branches:
+      - develop
+    paths-ignore:
+      - docs/**
+  
+  push:
+    branches:
+      - develop
+    paths-ignore:
+      - docs/**
+
+jobs:
+  main:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ['3.7', '3.8', '3.9', '3.10', '3.11']
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install Materials Compendium
+        run: |
+          python -m pip install .
+
+      - name: Install pytest
+        run: |
+          python -m pip install pytest
+
+      - name: Test Materials Compendium
+        run: python -m pytest -ra tests
