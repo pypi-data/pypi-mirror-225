@@ -1,0 +1,135 @@
+[tool.poetry]
+authors = ["Kevin Kirsche <kev.kirsche@gmail.com>"]
+description = "Unofficial backend utilities for using Material-UI's X-Data-Grid component"
+# TODO: finish support for this
+# documentation = "https://mui-data-grid.readthedocs.io/en/latest/"
+include = ["src/mui/py.typed", "LICENSE"]
+license = "MIT"
+name = "mui-data-grid"
+packages = [{ include = "mui", from = "src" }]
+readme = "README.md"
+repository = "https://github.com/kkirsche/mui-data-grid"
+version = "0.10.1"
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4"
+pydantic = ">=2.1.1,<3"
+typing-extensions = ">=4.7.1,<5"
+
+# [tool.poetry.extras]
+# flask = ["flask@>=2,<3"]
+# sqlalchemy = ["sqlalchemy@>=1.4,<2"]
+
+[tool.poetry.group.github-actions.dependencies]
+black = "^23.7.0"
+codespell = "^2.2.5"
+example-isort-formatting-plugin = "^0.1.1"
+example-isort-sorting-plugin = "^0.1.0"
+hypothesis = "^6.82.4"
+interrogate = "^1.5.0"
+isort = "^5.12.0"
+mypy = "^1.4.1"
+pytest = "^7.4.0"
+ruff = "^0.0.284"
+
+[tool.poetry.group.flask.dependencies]
+flask = ">=2.2.5,<3"
+
+[tool.poetry.group.sqlalchemy.dependencies]
+sqlalchemy = ">=1.4,<2"
+sqlalchemy2-stubs = ">=0.0.2a34"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+formatter = "example"
+profile = "black"
+remove_redundant_aliases = true
+sort_order = "natural_plus"
+
+[tool.black]
+include = '\.pyi?$'
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+exclude = ['^compat\.py$']
+follow_imports = "normal"
+plugins = ["pydantic.mypy", "sqlalchemy.ext.mypy.plugin"]
+python_version = "3.8"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+    "tests.mui.v5.grid.sort.test_model",
+    "tests.mui.v5.grid.sort.test_item",
+]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config -p no:pastebin -p no:nose"
+minversion = "7.2"
+empty_parameter_set_mark = "fail_at_collect"
+testpaths = ["tests"]
+
+[tool.interrogate]
+color = true
+exclude = ["tests"]
+fail-under = 95
+ignore-init-method = false
+ignore-init-module = true
+ignore-magic = false
+ignore-module = false
+ignore-nested-classes = false
+ignore-nested-functions = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-semiprivate = false
+ignore-setters = false
+quiet = false
+verbose = 1
+
+[tool.pyright]
+exclude = ["**/__pycache__", "**/.git"]
+include = ["src"]
+pythonPlatform = "All"
+pythonVersion = "3.8"
+typeCheckingMode = "strict"
+
+[tool.ruff]
+# https://beta.ruff.rs/docs/settings/#select
+# https://beta.ruff.rs/docs/rules/ defines what the select codes mean
+select = [
+    "ARG",   # flake8-unused-arguments
+    "ASYNC", # flake8-async
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "C90",   # mccabe
+    "DTZ",   # flake8-datetimez
+    "E",     # pycodestyle (errors)
+    "F",     # Pyflakes
+    "PIE",   # flake8-pie
+    "PTH",   # flake8-use-pathlibdd
+    "PYI",   # flake8-pyi
+    "Q",     # flake8-quotes
+    "S",     # flake8-bandit
+    "UP",    # pyupgrade
+    "W",     # pycodestyle (warnings)
+    "YTT",   #  flake8-2020
+]
+target-version = "py38"
+line-length = 88
+extend-exclude = ["tests"]
+
+[tool.ruff.mccabe]
+max-complexity = 15
