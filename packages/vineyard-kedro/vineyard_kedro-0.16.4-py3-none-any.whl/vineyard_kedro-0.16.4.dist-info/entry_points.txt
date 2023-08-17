@@ -1,0 +1,3 @@
+[kedro.global_commands]
+vineyard = vineyard.contrib.kedro.plugins.cli:cli
+
