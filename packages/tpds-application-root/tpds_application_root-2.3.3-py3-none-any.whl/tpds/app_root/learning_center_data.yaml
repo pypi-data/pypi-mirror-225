@@ -1,0 +1,182 @@
+---
+videos:
+  - description: Cryptography Primer (part 1)
+    links:
+      - {
+          name: Embedded Security Principles,
+          link: https://www.youtube.com/watch?v=TdexOLD33bs&feature=youtu.be,
+        }
+      - { name: 暗号技術入門シリーズ 1/5, link: https://youtu.be/46Fgr7s-Qnk }
+      - {
+          name: 加密技术入门,
+          link: http://www.microchip.com.cn/newcommunity/index.php?m=Video&a=show&id=313,
+        }
+  - description: Cryptography Primer (part 2)
+    links:
+      - {
+          name: Confidentiality,
+          Integrity,
+          Authentication,
+          link: https://www.youtube.com/watch?v=uIHBCCL3q84&feature=youtu.be,
+        }
+      - { name: 暗号技術入門シリーズ 2/5, link: https://youtu.be/iQoSskXep0g }
+      - {
+          name: 身份验证、完整性和机密性,
+          link: http://www.microchip.com.cn/newcommunity/index.php?m=Video&a=show&id=314,
+        }
+  - description: Cryptography Primer (part 3)
+    links:
+      - { name: Hashing, link: https://www.youtube.com/watch?v=wKtwVBCPzJ8 }
+      - { name: 暗号技術入門シリーズ 3/5, link: https://youtu.be/g1d3mTteEOE }
+      - {
+          name: 哈希运算和对称加密,
+          link: http://www.microchip.com.cn/newcommunity/index.php?m=Video&a=show&id=315,
+        }
+  - description: Cryptography Primer (part 4)
+    links:
+      - {
+          name: Asymmetric Authentication,
+          link: https://www.youtube.com/watch?v=uBdaafYMhM0,
+        }
+      - { name: 暗号技術入門シリーズ 4/5, link: https://youtu.be/ar0WJ3rUjyI }
+      - {
+          name: 非对称加密,
+          link: http://www.microchip.com.cn/newcommunity/index.php?m=Video&a=show&id=316,
+        }
+  - description: Cryptography Primer (part 5)
+    links:
+      - {
+          name: Chain of Trust,
+          link: https://www.youtube.com/watch?v=_koscMUIrYg,
+        }
+      - { name: 暗号技術入門シリーズ 5/5, link: https://youtu.be/-9oV2WFHQTw }
+      - {
+          name: 信任链,
+          link: http://www.microchip.com.cn/newcommunity/index.php?m=Video&a=show&id=317,
+        }
+  - description: Avnet IoTConnect Cloud Secure Authentication with ATECC608 TrustFLEX
+    links:
+      - {
+          name: ShieldsUP#3-S2,
+          link: https://event.on24.com/wcc/r/3346209/08251C988C6BF940C32D236CD913F811,
+        }
+  - description: Wireless Charging Authentication Compliance With the Wireless Power Consortium (WPC) 1.3
+    links:
+      - {
+          name: ShieldsUP#2-S2,
+          link: https://event.on24.com/wcc/r/3344595/B84C71D45D05A3DBC705D769B01A7004,
+        }
+  - description: Trust Platform Design Suite v2 Update and Overview
+    links:
+      - {
+          name: ShieldsUP#36-S1,
+          link: https://event.on24.com/wcc/r/3110709/E5C5382F8C96EC57B3230C2CDA2F3227,
+        }
+  - description: How to Bulk Upload Pre-Provisioned Certificates in AWS IoT from Microchip Secure Elements
+    links:
+      - {
+          name: ShieldsUP#35-S1,
+          link: https://event.on24.com/wcc/r/3084536/387B2CC192A6A83C5DB95A9513C7FA6D,
+        }
+  - description: Demystifying the ISA/IEC 62443 Security Standard for Industrial Systems
+    links:
+      - {
+          name: ShieldsUP#34-S1,
+          link: https://event.on24.com/wcc/r/3084533/68B8C2F224CB044D8C8DBA469ABB94FB,
+        }
+  - description: Manufacturing Logistic Challenges of Secure Key Provisioning - Advantages of a Discrete Secure Element
+    links:
+      - {
+          name: ShieldsUP#30-S1,
+          link: https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&referrer=https%3A%2F%2Fwww.microchip.com%2F&eventid=2862929&sessionid=1&key=D70BDF2A8227895E5E6F03F8B0C4B17A&regTag=&V2=false&sourcepage=register,
+        }
+  - description: Simplifying Secure Application Designs with dsPIC33/PIC24 and ATECC608 Devices
+    links:
+      - {
+          name: ShieldsUP#26-S1,
+          link: https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&referrer=https%3A%2F%2Fwww.microchip.com%2F&eventid=2822363&sessionid=1&key=43C85BE99E6145FEFD80CDD1A09B25EE&regTag=&V2=false&sourcepage=register,
+        }
+  - description: WolfSSL and server agnostic mutual TLS authentication with the ATECC608 Trust&GO
+    links:
+      - {
+          name: ShieldsUP#24-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar24.html,
+        }
+  - description: Counterfeit Protection of Disposable Applications with the ATSHA206A
+    links:
+      - {
+          name: ShieldsUP#23-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar23.html,
+        }
+  - description: Accessories Authentication with TrustFLEX Secure Elements
+    links:
+      - {
+          name: ShieldsUP#20-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar20.html,
+        }
+  - description: Firmware Verification with TrustFlex Secure Elements
+    links:
+      - {
+          name: ShieldsUP#19-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar19.html,
+        }
+  - description: Secure Authentication with TrustFLEX Secure Element and Your Own Certificate Authority for AWS IoT
+    links:
+      - {
+          name: ShieldsUP#16-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar16.html,
+        }
+  - description: Secure Authentication with TrustFLEX Secure Element and Microsoft Azure
+    links:
+      - {
+          name: ShieldsUP#13-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar13.html,
+        }
+  - description: Automotive Network Security
+    links:
+      - {
+          name: ShieldsUP#10-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar10.html,
+        }
+  - description: AWS IoT and Trust&GO ATECC608A hands-on
+    links:
+      - {
+          name: ShieldsUP#7-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar7.html,
+        }
+  - description: Trust Platform overview of Trust&GO, TrustFLEX, TrustCUSTOM
+    links:
+      - {
+          name: ShieldsUP#2-S1,
+          link: https://page.microchip.com/FY21Q2-ShieldsUP-HardGates_LP-ShieldsUp-Webinar2.html,
+        }
+  - description: What's New with Security Standards and Regulations?
+    links:
+      - {
+          name: Ask Our Experts#1 - Secure Elements,
+          link: https://youtu.be/oMSusN7SF5s,
+        }
+  - description: What is FIPS?
+    links:
+      - {
+          name: Ask Our Experts#2 - Secure Elements,
+          link: https://youtu.be/9Mt96IOUDiM,
+        }
+  - description: What is JIL for Secure Elements?
+    links:
+      - {
+          name: Ask Our Experts#3 - Secure Elements,
+          link: https://youtu.be/1aH-4r7SGiw,
+        }
+  - description: What is JIL Inside an EAL Rating?
+    links:
+      - {
+          name: Ask Our Experts#4 - Secure Elements,
+          link: https://youtu.be/C17jJ0oERy8,
+        }
+  - description: What is ISO21434 for Automotive?
+    links:
+      - {
+          name: Ask Our Experts#5 - Secure Elements,
+          link: https://youtu.be/C9zzUU2-yrc,
+        }
