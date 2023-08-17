@@ -1,0 +1,144 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.10.1"
+tag_format = "v$version"
+version_files = [
+    "pyproject.toml:version"
+]
+bump_message = "chore(release): version $current_version → $new_version"
+update_changelog_on_bump = true
+
+[tool.poetry]
+name = "termynal"
+version = "0.10.1"
+description = "A lightweight and modern animated terminal window"
+authors = ["Danil Akhtarov <daxartio@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/daxartio/termynal"
+homepage = "https://daxartio.github.io/termynal/"
+documentation = "https://daxartio.github.io/termynal/"
+keywords = ["mkdocs", "markdown", "plugin"]
+
+[tool.poetry.urls]
+Changelog = "https://daxartio.github.io/termynal/changelog/"
+
+[tool.poetry.plugins."mkdocs.plugins"]
+"termynal" = "termynal.plugin:TermynalPlugin"
+
+[tool.poetry.plugins."markdown.extensions"]
+"termynal" = "termynal.markdown:TermynalExtension"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+markdown = "*"
+mkdocs = {version = "^1.4", optional = true}
+
+[tool.poetry.group.dev.dependencies]
+black = ">=23.7.0"
+mypy = "^1.4.1"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-deadfixtures = "^2.2.1"
+pytest-mock = "^3.11.1"
+pyyaml = "^6.0.1"
+ruff = "^0.0.282"
+types-Markdown = "^3.4.2.10"
+types-pyyaml = "^6.0.12.11"
+
+[tool.poetry.group.docs.dependencies]
+markdown-include = "^0.8.1"
+mkdocs = "^1.4"
+mkdocs-material = "^9.1.21"
+
+[tool.poetry.group.git.dependencies]
+commitizen = "^3.5.3"
+
+[tool.poetry.extras]
+mkdocs = ["mkdocs"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+no_implicit_optional = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.coverage.run]
+omit = ["tests/*", "**/__main__.py", "**/.venv/*", "**/site-packages/*"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 94
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+addopts = "--strict-markers --showlocals --verbosity 2"
+log_level = "DEBUG"
+
+[tool.ruff]
+select = ["F",
+    "E",
+    "W",
+    "C90",
+    "I",
+    "N",
+    "D",
+    # "UP",
+    "YTT",
+    # "ANN",
+    "S",
+    "BLE",
+    # "FBT",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "DTZ",
+    "T10",
+    "EM",
+    "EXE",
+    "ISC",
+    "ICN",
+    "G",
+    "INP",
+    "PIE",
+    "T20",
+    "PT",
+    "Q",
+    "RET",
+    "SIM",
+    "TID",
+    "TCH",
+    "ARG",
+    "PTH",
+    "ERA",
+    "PD",
+    # "PGH",
+    "PL",
+    "TRY",
+    "RSE",
+    "RUF",
+]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D203",
+    "D213",
+    "S101",
+]
+exclude = []

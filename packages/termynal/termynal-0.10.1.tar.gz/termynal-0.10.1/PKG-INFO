@@ -1,0 +1,98 @@
+Metadata-Version: 2.1
+Name: termynal
+Version: 0.10.1
+Summary: A lightweight and modern animated terminal window
+Home-page: https://daxartio.github.io/termynal/
+License: MIT
+Keywords: mkdocs,markdown,plugin
+Author: Danil Akhtarov
+Author-email: daxartio@gmail.com
+Requires-Python: >=3.8.1,<4.0.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: mkdocs
+Requires-Dist: markdown
+Requires-Dist: mkdocs (>=1.4,<2.0) ; extra == "mkdocs"
+Project-URL: Changelog, https://daxartio.github.io/termynal/changelog/
+Project-URL: Documentation, https://daxartio.github.io/termynal/
+Project-URL: Repository, https://github.com/daxartio/termynal
+Description-Content-Type: text/markdown
+
+# Termynal
+
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/daxartio/termynal/check.yml)
+[![PyPI](https://img.shields.io/pypi/v/termynal)](https://pypi.org/project/termynal/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/termynal)](https://www.python.org/downloads/)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://daxartio.github.io/termynal/)
+![GitHub](https://img.shields.io/github/license/daxartio/termynal)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/termynal)
+![GitHub last commit](https://img.shields.io/github/last-commit/daxartio/termynal)
+
+A lightweight and modern animated terminal window.
+Built for [mkdocs](https://www.mkdocs.org/).
+
+## Installation
+
+![termynal](termynal.gif)
+
+[Examples](https://daxartio.github.io/termynal/)
+
+## Usage
+
+Use `<!-- termynal -->` before code block
+
+````
+<!-- termynal -->
+
+```
+$ python script.py
+```
+````
+
+### Mkdocs integration
+
+Declare the plugin:
+
+```yaml
+...
+plugins:
+  - termynal
+...
+```
+
+Optionally, pass options to the processor:
+
+```yaml
+[...]
+markdown_extensions:
+  - termynal:
+      prompt_literal_start:
+        - "$"
+        - ">"
+[...]
+```
+
+This config allows you to use another prompt:
+
+````markdown
+<!-- termynal -->
+
+```
+> pip install termynal
+---> 100%
+Installed
+```
+
+````
+
+## Credits
+
+Thanks [ines](https://github.com/ines/termynal)
+
+## Contribution
+
+[Contribution guidelines for this project](CONTRIBUTING.md)
+
