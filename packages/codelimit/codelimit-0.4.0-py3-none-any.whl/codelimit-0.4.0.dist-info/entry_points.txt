@@ -1,0 +1,4 @@
+[console_scripts]
+codelimit=codelimit.__main__:cli
+hook=codelimit.__main__:pre_commit_hook
+
