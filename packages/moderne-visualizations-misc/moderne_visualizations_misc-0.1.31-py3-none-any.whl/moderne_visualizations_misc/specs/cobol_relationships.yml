@@ -1,0 +1,17 @@
+---
+type: specs.moderne.io/v1beta/visualization
+name: io.moderne.FindCobolRelationships
+displayName: Find COBOL relationships
+description: >
+  This diagram shows relationships between different COBOL resources.
+recipe: org.openrewrite.cobol.search.FindRelationships
+dataTable: org.openrewrite.cobol.table.CobolRelationships
+options:
+  - node_shape:
+      displayName: Node shape
+      description: 'The shape of the nodes in the diagram. (default: ellipse)'
+      valid:
+        - circle
+        - ellipse
+        - box
+      required: false
