@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "pytailor"
+version = "0.8.0"
+description = "pyTailor orchestrates your existing python code as *workflows*"
+authors = ["Audun Gravdal Johansen <audun@entail.no>"]
+license = "BSD-3-Clause"
+repository = "https://github.com/entailor/pytailor/"
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9, <3.12"
+httpx = "^0.24.1"
+click = "^8.1.6"
+toml = "^0.10.1"
+pydantic = "^1.5.1"
+requests = "^2.31.0"
+genson = "^1.2.2"
+jsonpath-ng = "^1.5.2"
+
+[tool.poetry.dev-dependencies]
+datamodel-code-generator = "^0.21.4"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-httpx = "^0.23.1"
+mkdocs-material = "^9.1.21"
+pymdown-extensions = "^10.1"
+pygments = "^2.16.1"
+markdown = "^3.4.4"
+mkautodoc = "^0.2.0"
+nox = "^2023.4.22"
+
+[tool.poetry.scripts]
+tailor = 'pytailor.cli.main:cli'
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
