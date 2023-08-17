@@ -1,0 +1,10 @@
+nest-asyncio
+tqdm
+aiofiles
+orjson
+httpx[http2]
+pandas
+python-dotenv
+
+[:platform_system != "Windows"]
+uvloop
