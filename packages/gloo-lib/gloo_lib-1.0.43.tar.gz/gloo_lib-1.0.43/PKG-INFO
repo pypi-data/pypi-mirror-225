@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: gloo-lib
+Version: 1.0.43
+Summary: 
+Author: Gloo
+Author-email: contact@trygloo.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: flatten-json (>=0.1.13,<0.2.0)
+Requires-Dist: httpx (>=0.24.1,<0.25.0)
+Requires-Dist: openai (>=0.27.8)
+Requires-Dist: pydantic (==1.10.10)
+Requires-Dist: pytest (>=7.4.0,<8.0.0)
+Requires-Dist: pytest-asyncio (>=0.21.1,<0.22.0)
+Requires-Dist: pytest-sugar (>=0.9.7,<0.10.0)
+Requires-Dist: six (>=1.16.0,<2.0.0)
+Requires-Dist: termcolor (>=2.3.0,<3.0.0)
