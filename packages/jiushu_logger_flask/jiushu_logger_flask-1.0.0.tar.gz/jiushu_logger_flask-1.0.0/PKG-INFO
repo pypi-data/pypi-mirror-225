@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: jiushu_logger_flask
+Version: 1.0.0
+Summary: Jiushu logger for Flask routes.
+Author-email: Ai Tutu <zhixiao.yang0124@gmail.com>
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: The Unlicense (Unlicense)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: System :: Logging
+Classifier: Typing :: Typed
+Requires-Dist: flask >=2.0.0
+Requires-Dist: jiushu-logger >=1.0.0
+Requires-Dist: orjson >=3.8.0
+Requires-Dist: python-ulid >=1.1.0
+Requires-Dist: flask-unittest ; extra == "test"
+Project-URL: Bug Tracker, https://github.com/XiaoxiaFamily/jiushu-logger-flask/issues
+Project-URL: Homepage, https://github.com/XiaoxiaFamily/jiushu-logger-flask
+Provides-Extra: test
+
+![logo.png](logo.png)
+
+# jiushu-logger-flask【九书 Flask 路由专用】
+
+## 简介
+
+JF 专用格式化 logger 的 Flask 路由特供版，专门输出请求日志。
+
+## 使用方法
+
+```python
+import orjson
+from flask import Flask, g
+
+from jiushu_logger_flask import RouteLogging
+
+app = Flask(__name__)
+
+# Logging for routes.
+# You can set which route should be skipped, 
+#   or which pattern the route matches should be skipped.
+RouteLogging(app,
+             skip_routes=['/api/health'],
+             skip_regexes=[r'''^.*skip.*$'''])
+
+
+@app.get('/api/test')
+def _test():
+    # You can get trace id of *this* request.
+    # If apache-skywalking is used, this trace_id will be the ID tracing by skywalking.
+    print(g.trace_id)
+    return b'Hello, world!', 200
+
+
+@app.get('/api/health')
+def _health():
+    return orjson.dumps({'status': 'UP'}), 200, {'Content-Type': 'application/json'}
+
+
+app.run('0.0.0.0', 8080)
+```
