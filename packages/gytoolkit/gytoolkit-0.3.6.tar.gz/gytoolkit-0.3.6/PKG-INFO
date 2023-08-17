@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: gytoolkit
+Version: 0.3.6
+Summary: 用于PB业务管理的工具集
+Home-page: https://gitee.com/xuan_qi/gytoolkit
+License: MIT
+Author: XUAN Qi
+Author-email: xuan.q@foxmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: cx-oracle (>=8.3.0,<9.0.0)
+Requires-Dist: jqdatasdk (>=1.9.0,<2.0.0)
+Requires-Dist: openpyxl (>=3.1.2,<4.0.0)
+Requires-Dist: pandas (>=1.3)
+Requires-Dist: sqlalchemy (>=2.0.19,<3.0.0)
+Requires-Dist: xlrd (>=2.0.1,<3.0.0)
+Project-URL: Repository, https://gitee.com/xuan_qi/gytoolkit
+Description-Content-Type: text/markdown
+
+# gytoolkit
+
+#### 介绍
+收录用于券商PB业务的管理工具
+
+#### 软件架构
+软件架构说明
+1.  mailparser:操作gy mail
+2.  (开发中)ppwdbapi:smppw数据库api
+3.  (开发中)reprots:周报月报各种定期报表
+
+#### 安装教程
+
+1.  pip install gytoolkit
+
+#### 使用说明
+
+1.  mailparser:参见[examples/mailparser.py](examples/mailparser.py)
+        
+
+
+#### 参与贡献
+
+1.  Fork 本仓库
+2.  新建 Feat_xxx 分支
+3.  提交代码
+4.  新建 Pull Request
+
