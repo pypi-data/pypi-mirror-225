@@ -1,0 +1,131 @@
+Metadata-Version: 2.1
+Name: frequenz-repo-config
+Version: 0.5.1
+Summary: Frequenz repository setup tools and common configuration
+Author-email: Frequenz Energy-as-a-Service GmbH <floss@frequenz.com>
+License: MIT
+Project-URL: Changelog, https://github.com/frequenz-floss/frequenz-repo-config-python/releases
+Project-URL: Issues, https://github.com/frequenz-floss/frequenz-repo-config-python/issues
+Project-URL: Repository, https://github.com/frequenz-floss/frequenz-repo-config-python
+Project-URL: Support, https://github.com/frequenz-floss/frequenz-repo-config-python/discussions/categories/support
+Keywords: config,frequenz,grpc,lib,library,mkdocs,nox,project,protobuf,python,repo-config,repository,setuptools,tool
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Typing :: Typed
+Requires-Python: <4,>=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: nox >=2022.11.21
+Requires-Dist: mkdocs-gen-files <0.6.0,>=0.4.0
+Provides-Extra: actor
+Provides-Extra: api
+Requires-Dist: grpcio-tools <2,>=1.47.0 ; extra == 'api'
+Requires-Dist: mypy-protobuf <4,>=3.0.0 ; extra == 'api'
+Requires-Dist: setuptools <68,>=67.6.0 ; extra == 'api'
+Provides-Extra: app
+Provides-Extra: dev
+Requires-Dist: frequenz-repo-config[dev-docstrings,dev-formatting,dev-mkdocs,dev-mypy,dev-noxfile,dev-pylint,dev-pytest] ; extra == 'dev'
+Provides-Extra: dev-docstrings
+Requires-Dist: pydocstyle ==6.3.0 ; extra == 'dev-docstrings'
+Requires-Dist: darglint ==1.8.1 ; extra == 'dev-docstrings'
+Requires-Dist: tomli ==2.0.1 ; extra == 'dev-docstrings'
+Provides-Extra: dev-formatting
+Requires-Dist: black ==23.3.0 ; extra == 'dev-formatting'
+Requires-Dist: isort ==5.12.0 ; extra == 'dev-formatting'
+Provides-Extra: dev-mkdocs
+Requires-Dist: mike ==1.1.2 ; extra == 'dev-mkdocs'
+Requires-Dist: mkdocs-gen-files ==0.5.0 ; extra == 'dev-mkdocs'
+Requires-Dist: mkdocs-literate-nav ==0.6.0 ; extra == 'dev-mkdocs'
+Requires-Dist: mkdocs-material ==9.1.16 ; extra == 'dev-mkdocs'
+Requires-Dist: mkdocs-section-index ==0.3.5 ; extra == 'dev-mkdocs'
+Requires-Dist: mkdocstrings[python] ==0.22.0 ; extra == 'dev-mkdocs'
+Provides-Extra: dev-mypy
+Requires-Dist: mypy ==1.2.0 ; extra == 'dev-mypy'
+Requires-Dist: types-setuptools <68,>=67.6.0 ; extra == 'dev-mypy'
+Requires-Dist: frequenz-repo-config[dev-mkdocs,dev-noxfile,dev-pytest] ; extra == 'dev-mypy'
+Provides-Extra: dev-noxfile
+Requires-Dist: nox ==2023.4.22 ; extra == 'dev-noxfile'
+Provides-Extra: dev-pylint
+Requires-Dist: frequenz-repo-config[dev-mkdocs,dev-noxfile,dev-pytest] ; extra == 'dev-pylint'
+Provides-Extra: dev-pytest
+Requires-Dist: pytest ==7.4.0 ; extra == 'dev-pytest'
+Requires-Dist: pylint ==2.17.3 ; extra == 'dev-pytest'
+Requires-Dist: cookiecutter ==2.1.1 ; extra == 'dev-pytest'
+Requires-Dist: sybil ==5.0.3 ; extra == 'dev-pytest'
+Provides-Extra: extra-lint-examples
+Requires-Dist: pylint <3,>=2.17.3 ; extra == 'extra-lint-examples'
+Requires-Dist: pytest <8,>=7.3.0 ; extra == 'extra-lint-examples'
+Requires-Dist: sybil <6,>=5.0.3 ; extra == 'extra-lint-examples'
+Provides-Extra: lib
+Provides-Extra: model
+
+# Frequenz Repository Configuration
+
+[![Build Status](https://github.com/frequenz-floss/frequenz-repo-config-python/actions/workflows/ci.yaml/badge.svg)](https://github.com/frequenz-floss/frequenz-repo-config-python/actions/workflows/ci.yaml)
+[![PyPI Package](https://img.shields.io/pypi/v/frequenz-repo-config)](https://pypi.org/project/frequenz-repo-config/)
+[![Docs](https://img.shields.io/badge/docs-latest-informational)](https://frequenz-floss.github.io/frequenz-repo-config-python/)
+
+## Introduction
+
+This is a highly opinionated set of tools and configurations to set up a Python
+repository for [Frequenz](https://frequenz.com) projects.
+
+It offers:
+
+* [Cookiecutter] templates for scaffolding new projects
+* Trivial build of `noxfile.py` with some predefined sessions that include all
+  common checks.
+* Tools to build protobuf/grpc files as Python, including type information.
+
+## Quick Example
+
+To start a new project, you should first [install
+Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/installation.html).
+It is normally available in any Linux distribution, but some have a very old
+version (for example, Ubuntu/Debian). You can [check which version your distro
+has on Repology](https://repology.org/project/cookiecutter/versions). You need
+**at least version 2.1.0**. To ensure you get an up-to-date version, you can
+always use `pip` and install it in a `venv`:
+
+```console
+$ python -m venv cookiecutter
+$ cd cookiecutter
+$ . bin/activate
+(venv) $ pip install cookiecutter
+Collecting cookiecutter
+...
+```
+
+Then simply run [Cookiecutter] where you want to create the new project. A new
+directory will be created with the generated project name. For example:
+
+```sh
+cd ~/devel
+cookiecutter gh:frequenz-floss/frequenz-repo-config-python \
+    --directory=cookiecutter \
+    --checkout v0.5.1
+```
+
+This command will prompt you for the project type, name, and other
+configuration options, and it will generate the entire project for you.
+
+After completing the project and fixing the `TODO`s, you can either amend the
+previous commit using `git commit --amend` or create a new commit for the
+changes using `git commit`.
+
+## Documentation
+
+For more detailed documentation, please check the [project's
+website](https://frequenz-floss.github.io/frequenz-repo-config-python/).
+
+## Contributing
+
+If you want to know how to build this project and contribute to it, please
+refer to the [Contributing Guide](CONTRIBUTING.md).
+
+
+[Cookiecutter]: https://cookiecutter.readthedocs.io/en/stable
