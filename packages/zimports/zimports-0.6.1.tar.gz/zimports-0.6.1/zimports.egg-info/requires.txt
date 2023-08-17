@@ -1,0 +1,6 @@
+pyflakes
+flake8-import-order
+tomli
+
+[:python_version < "3.10"]
+importlib-metadata
