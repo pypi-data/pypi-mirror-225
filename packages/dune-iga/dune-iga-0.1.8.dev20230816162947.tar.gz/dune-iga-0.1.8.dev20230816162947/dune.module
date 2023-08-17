@@ -1,0 +1,11 @@
+// SPDX-FileCopyrightText: 2022 The dune-iga developers mueller@ibb.uni-stuttgart.de
+// SPDX-License-Identifier: CC0-1.0
+
+#Name of the module
+Module: dune-iga
+Version: 0.1.7
+Maintainer: mueller@ibb.uni-stuttgart.de
+
+Depends: dune-grid dune-functions dune-alugrid
+Suggests: dune-vtk dune-fufem
+Python-Requires: geomdl numpy scipy mpi4py
