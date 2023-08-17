@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: cktgym-sample-server
+Version: 0.0.4
+Summary: Sample Discovery Server
+Home-page: https://github.com/BWRC-AMS-ML-Discovery
+Author: The Regents of the University of California
+Author-email: haohanw@eecs.berkeley.edu
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+Requires-Dist: hdl21 (>=4.0.0)
+Requires-Dist: scipy (==1.10.1)
+Requires-Dist: python-dotenv (==1.0.0)
+Requires-Dist: cktgym-discovery-server
+Requires-Dist: cktgym-sample-shared
+Provides-Extra: dev
+Requires-Dist: pytest (==7.1) ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pre-commit (==2.20) ; extra == 'dev'
+Requires-Dist: black (==22.6) ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+
