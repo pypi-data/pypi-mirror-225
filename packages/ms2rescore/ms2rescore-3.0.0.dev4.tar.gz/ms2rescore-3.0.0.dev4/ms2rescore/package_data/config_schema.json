@@ -1,0 +1,227 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "MS²Rescore configuration",
+    "description": "MS²Rescore JSON configuration file.",
+    "type": "object",
+    "required": ["ms2rescore"],
+    "properties": {
+        "ms2rescore": {
+            "description": "General MS²Rescore settings.",
+            "type": "object",
+            "required": ["psm_file"],
+            "additionalProperties": false,
+            "properties": {
+                "feature_generators": {
+                    "description": "Feature generators and their configurations.",
+                    "type": "object",
+                    "patternProperties": {
+                        ".*": { "$ref": "#/$defs/feature_generator" },
+                        "basic": {
+                            "$ref": "#/$defs/feature_generator/$defs/basic"
+                        },
+                        "ms2pip": {
+                            "$ref": "#/$defs/feature_generator/$defs/ms2pip"
+                        },
+                        "deeplc": {
+                            "$ref": "#/$defs/feature_generator/$defs/deeplc"
+                        },
+                        "maxquant": {
+                            "$ref": "#/$defs/feature_generator/$defs/maxquant"
+                        }
+                    }
+                },
+                "rescoring_engine": {
+                    "description": "Rescoring engine to use and its configuration. Leave empty to skip rescoring and write features to file.",
+                    "type": "object",
+                    "minProperties": 0,
+                    "maxProperties": 1,
+                    "patternProperties": {
+                        ".*": { "$ref": "#/$defs/rescoring_engine" },
+                        "percolator": {
+                            "$ref": "#/$defs/rescoring_engine/$defs/percolator"
+                        },
+                        "mokapot": {
+                            "$ref": "#/$defs/rescoring_engine/$defs/mokapot"
+                        }
+                    },
+                    "default": {
+                        "mokapot": {}
+                    }
+                },
+                "config_file": {
+                    "description": "Path to configuration file",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }]
+                },
+                "psm_file": {
+                    "description": "Path to file with peptide-spectrum matches.",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }]
+                },
+                "psm_file_type": {
+                    "description": "PSM file type. By default inferred from file extension.",
+                    "type": "string",
+                    "default": "infer"
+                },
+                "spectrum_path": {
+                    "description": "Path to spectrum file or directory with spectrum files",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }]
+                },
+                "output_path": {
+                    "description": "Path and root name for output files",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }]
+                },
+                "log_level": {
+                    "description": "Logging level",
+                    "type": "string",
+                    "enum": ["debug", "info", "warning", "error", "critical"]
+                },
+                "id_decoy_pattern": {
+                    "description": "Regex pattern used to identify the decoy PSMs in identification file.",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }],
+                    "default": null
+                },
+                "spectrum_id_pattern": {
+                    "description": "Regex pattern to extract index or scan number from spectrum file. Requires at least one capturing group.",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }],
+                    "default": "(.*)",
+                    "format": "regex"
+                },
+                "psm_id_pattern": {
+                    "description": "Regex pattern to extract index or scan number from PSM file. Requires at least one capturing group.",
+                    "oneOf": [{ "type": "string" }, { "type": "null" }],
+                    "default": "(.*)",
+                    "format": "regex"
+                },
+                "lower_score_is_better": {
+                    "description": "Bool indicating if lower score is better",
+                    "type": "boolean",
+                    "default": false
+                },
+                "modification_mapping": {
+                    "description": "Mapping of modification labels to each replacement label.",
+                    "type": "object",
+                    "default": {}
+                },
+                "fixed_modifications": {
+                    "description": "Mapping of amino acids with fixed modifications to the modification name.",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": true
+                },
+                "processes": {
+                    "description": "Number of parallel processes to use; -1 for all available",
+                    "type": "number",
+                    "multipleOf": 1,
+                    "minimum": -1,
+                    "default": -1
+                },
+                "rename_to_usi": {
+                    "description": "Convert spectrum IDs to their universal spectrum identifier",
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "$defs": {
+        "feature_generator": {
+            "description": "Feature generator configuration",
+            "type": "object",
+            "additionalProperties": true,
+            "$defs": {
+                "basic": {
+                    "$schema": "#/definitions/feature_generator",
+                    "description": "Basic feature generator configuration",
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "ms2pip": {
+                    "$schema": "#/definitions/feature_generator",
+                    "description": "MS²PIP feature generator configuration",
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                        "model": {
+                            "description": "MS²PIP model to use (see MS²PIP documentation)",
+                            "type": "string",
+                            "default": "HCD"
+                        },
+                        "ms2_tolerance": {
+                            "description": "MS2 error tolerance in Da",
+                            "type": "number",
+                            "minimum": 0,
+                            "default": 0.02
+                        }
+                    }
+                },
+                "deeplc": {
+                    "$schema": "#/definitions/feature_generator",
+                    "description": "DeepLC feature generator configuration",
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                        "calibration_set_size": {
+                            "description": "Calibration set size",
+                            "oneOf": [
+                                { "type": "integer" },
+                                { "type": "number" }
+                            ],
+                            "default": 0.15
+                        }
+                    }
+                },
+                "maxquant": {
+                    "$schema": "#/definitions/feature_generator",
+                    "description": "MaxQuant feature generator configuration",
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "rescoring_engine": {
+            "description": "Rescoring engine configuration",
+            "type": "object",
+            "additionalProperties": true,
+            "$defs": {
+                "mokapot": {
+                    "$schema": "#/definitions/rescoring_engine",
+                    "description": "Mokapot rescoring engine configuration. Additional properties are passed to the Mokapot brew function.",
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                        "fasta_file": {
+                            "description": "Path to FASTA file with protein sequences to use for protein inference",
+                            "oneOf": [{ "type": "string" }, { "type": "null" }]
+                        },
+                        "write_weights": {
+                            "description": "Write Mokapot weights to a text file",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "write_txt": {
+                            "description": "Write Mokapot results to a text file",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "write_flashlfq": {
+                            "description": "Write Mokapot results to a FlashLFQ-compatible file",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                },
+                "percolator": {
+                    "$schema": "#/definitions/rescoring_engine",
+                    "description": "Percolator rescoring engine configuration",
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                        "init-weights": {
+                            "description": "Weights file for scoring function",
+                            "oneOf": [{ "type": "string" }, { "type": "null" }],
+                            "default": false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
