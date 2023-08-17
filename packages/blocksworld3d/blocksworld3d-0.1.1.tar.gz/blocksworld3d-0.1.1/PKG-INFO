@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: blocksworld3d
+Version: 0.1.1
+Summary: Minimalistic 3D blocksworld environment simulator for reinforcement learning & robotics research.
+Home-page: https://github.com/ethanmclark1/blocksworld
+Author: Ethan Clark
+Author-email: eclark715@gmail.com
+License: Apache
+Keywords: Environment,Agent,RL,Gym,Robotics,3D
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7, <3.11
+Provides-Extra: testing
+License-File: LICENSE
