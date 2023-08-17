@@ -1,0 +1,46 @@
+{% extends "../core/setup.html" %}
+{% load static %}
+{% load render_kakebo %}
+
+{% block style %}
+<link href="{% static 'basic/assets/css/kakebo-style.css' %}" rel="stylesheet">
+{% endblock style %}
+
+{% block content %}
+<section class="section-padding">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-10">
+				<form method="POST">{% csrf_token %}
+
+					<table class="w-100">
+						<thead>
+						<tr>
+							<th class="text-center" width="12.5%"></th>
+							{% for val in cell_ %}
+							<th class="text-center" width="12.5%"
+								style="border-bottom: 8px solid orange;">
+								{{ val }}
+							</th>
+							{% endfor %}
+						</tr>
+						</thead>
+
+						{% for value in list_tr %}
+						{% render_table value.0 value.1 'spese di prima necessità' key_kakebo %}
+						{% white_space_table %}
+						{% endfor %}
+
+						{% render_table_total totals_days %}
+
+					</table>
+
+				</form>
+			</div>
+			<div class="col-2">
+				idk
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}
