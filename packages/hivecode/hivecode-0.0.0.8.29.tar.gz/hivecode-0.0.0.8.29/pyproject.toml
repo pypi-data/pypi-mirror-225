@@ -1,0 +1,47 @@
+[project]
+name = "hivecode"
+description = "Hivecode is a versatile and comprehensive Python library, with a focus on efficiency and reusability, Hivecode empowers developers and data enthusiasts alike to streamline their projects."
+version = "0.0.0.8.29"
+requires-python = ">=3.8.0"
+readme = "README.rst"
+authors = [
+    {name = "Juan Manuel Mejía Botero", email="juanmam941025@gmail.com"},
+    {name = "Sebastian López Valencia", email="sebaslv12@hotmail.com"}
+]
+
+dynamic = ["dependencies", "classifiers"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "twine",
+    "Sphinx"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Juanmam/hivecode"
+"Documentation" = "https://hivecode.readthedocs.io/en/latest/"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov=native"
+testpaths = [
+    "test",
+]
+
+[tool.mypy]
+mypy_path = "src"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optionals = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
