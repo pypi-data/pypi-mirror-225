@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: stowrap
+Version: 0.0.5
+Summary: stowrap: Python Storage Service Wrapper.
+Home-page: https://github.com/yokoe/stowrap
+Download-URL: https://github.com/yokoe/stowrap
+Author: yokoe
+Author-email: kreuz45@kreuz45.com
+Maintainer: yokoe
+Maintainer-email: kreuz45@kreuz45.com
+License: MIT
+Keywords: gcs s3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# stowrap
+Python Storage Service Wrapper
+
+## How to use
+### Initialize client
+```
+import stowrap
+
+c = stowrap.Client("gcs")
+
+or
+
+c = stowrap.Client("s3")
+
+```
+
+### Upload a file
+```
+result = c.upload("my-bucket", "/path/to/local/file", "dstfile.txt")
+print(result.url)
+```
