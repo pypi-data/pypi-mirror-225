@@ -1,0 +1,72 @@
+name: sha104_105_support
+
+backend:
+  path: "backend"
+  routers:
+    - router
+
+frontend:
+  path: frontend
+  entrypoints:
+    - name: sha104_tflxauth_config
+      title: SHA104-TFLXAUTH Configurator
+      description: ""
+      entry: "assets/sha10x_tflxauth/SHA104 TFLXAUTH Configurator.html"
+      applications:
+        - configurator
+      devices:
+        - SHA104-TFLXAUTH
+      boards:
+        - DM320118
+    - name: sha105_tflxauth_config
+      title: SHA105-TFLXAUTH Configurator
+      description: ""
+      entry: "assets/sha10x_tflxauth/SHA105 TFLXAUTH Configurator.html"
+      applications:
+        - configurator
+      devices:
+        - SHA105-TFLXAUTH
+      boards:
+        - DM320118
+    - name: sym_auth_sha104_105
+      title: Symm Auth - Diversified Key
+      description: ""
+      entry: "TrustFlex/Symm Auth Diversified Key.ipynb"
+      icon:
+        name: sym_auth_sha104_105_png
+        path: frontend/TrustFlex/assets/images/sym_auth_sha10x.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+      devices:
+        - SHA104-TFLXAUTH
+      boards:
+        - DM320118
+    - name: sym_auth_sha104_105_sharedkey
+      title: Symm Auth - Shared Key
+      description: ""
+      entry: "TrustFlex/Symm Auth Shared Key.ipynb"
+      icon:
+        name: sym_auth_sha104_105_png
+        path: frontend/TrustFlex/assets/images/sym_auth_sha10x.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+      devices:
+        - SHA104-TFLXAUTH
+      boards:
+        - DM320118
+    - name: sym_auth_sha104_105_challenge_response
+      title: Symm Auth - Challenge/Response
+      description: ""
+      entry: "TrustFlex/Symm Auth Challenge Response.ipynb"
+      icon:
+        name: sym_auth_sha104_105_png
+        path: frontend/TrustFlex/assets/images/sym_auth_sha10x.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+      devices:
+        - SHA104-TFLXAUTH
+      boards:
+        - DM320118
