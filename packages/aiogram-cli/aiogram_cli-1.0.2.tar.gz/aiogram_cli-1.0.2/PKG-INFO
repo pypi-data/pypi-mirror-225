@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: aiogram_cli
+Version: 1.0.2
+Project-URL: Documentation, https://github.com/aiogram/cli#readme
+Project-URL: Issues, https://github.com/aiogram/cli/issues
+Project-URL: Source, https://github.com/aiogram/cli
+Author-email: Alex Root Junior <jroot.junior@gmail.com>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Plugins
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Utilities
+Requires-Python: >=3.10
+Requires-Dist: aiogram~=3.0.0rc1
+Requires-Dist: click-plugins~=1.1.1
+Requires-Dist: click~=8.1.6
+Requires-Dist: colorama~=0.4.6
+Requires-Dist: watchfiles~=0.19.0
+Description-Content-Type: text/markdown
+
+# aiogram-cli (PoC)
+
+Command line interface for developers
+
+Works only with [aiogram](https://github.com/aiogram/aiogram) 3.0+
+
+Here is only bootstrap for CLI interface with extensions based on [pkg_resources](https://setuptools.readthedocs.io/en/latest/pkg_resources.html)
+
+## Installation
+
+### From PyPi
+`pip install aiogram-cli` or `pip install aiogram[cli]`
+
+## Usage
+
+Just run in terminal `aiogram` and see what you can do with it.
+
+## Example
+
+[![asciicast](https://asciinema.org/a/5tg0CV7ogvuqQz8ZmHP9CBPjl.svg)](https://asciinema.org/a/5tg0CV7ogvuqQz8ZmHP9CBPjl)
+
+## Writing extensions
+
+Any **aiogram-cli** extension package should provide an entry point like this:
+```
+[aiogram_cli.plugins]
+my_extension = my_package.module:my_command
+```
+
+Or with poetry like this:
+```toml
+[tool.poetry.plugins."aiogram_cli.plugins"]
+"builtin-about" = "aiogram_cli.about:command_about"
+"builtin-plugins" = "aiogram_cli.plugins:command_plugins"
+```
