@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "StockHero"
+version = "0.4.4"
+authors = [{ name = "RobWen"}]
+maintainer = [{ name = "asti205"}]
+description = "market data from finance APIs and other publicy available sources"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial :: Investment"
+]
