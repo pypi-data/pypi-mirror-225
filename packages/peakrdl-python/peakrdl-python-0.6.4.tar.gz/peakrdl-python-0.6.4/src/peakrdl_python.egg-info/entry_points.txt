@@ -1,0 +1,6 @@
+[console_scripts]
+peakrdl_python = peakrdl_python.peakpython:main_function
+
+[peakrdl.exporters]
+python = peakrdl_python.__peakrdl__:Exporter
+

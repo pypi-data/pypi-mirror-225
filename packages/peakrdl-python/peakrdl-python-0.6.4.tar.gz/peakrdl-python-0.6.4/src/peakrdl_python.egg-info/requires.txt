@@ -1,0 +1,6 @@
+systemrdl-compiler>=1.24.0
+jinja2
+peakrdl-ipxact
+
+[:python_version < "3.8"]
+asynctest
