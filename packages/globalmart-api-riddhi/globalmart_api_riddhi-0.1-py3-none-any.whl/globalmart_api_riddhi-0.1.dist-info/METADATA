@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: globalmart-api-riddhi
+Version: 0.1
+Summary: API package that provides us the method to fetch the data from the API, along with the method to convert that into proper dataframe
+Author: auth
+Author-email: author@email.com
+License: MIT
+Requires-Dist: pandas
+Requires-Dist: requests
+
