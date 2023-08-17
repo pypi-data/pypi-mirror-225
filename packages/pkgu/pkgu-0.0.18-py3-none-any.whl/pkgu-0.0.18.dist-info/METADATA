@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: pkgu
+Version: 0.0.18
+Summary: Find the out-dated packages installed by the Pip tool and update them.
+Home-page: https://github.com/Abeautifulsnow/pkgu
+Author: Abeautifulsnow <lnrunstone.0727@gmail.com>
+Author-email: lcprunstone@163.com
+License: MIT
+Keywords: python3,pip,pip install pkg --upgrade,pip-update
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic (>=1.9.2)
+Requires-Dist: orjson (>=3.7.11)
+Requires-Dist: prettytable (>=3.3.0)
+Requires-Dist: loguru (>=0.6.0)
+Requires-Dist: colorama (>=0.4.5)
+Requires-Dist: halo (>=0.0.31)
+Requires-Dist: toml (>=0.10.2)
+Requires-Dist: py-retry (>=0.0.4)
+Requires-Dist: simple-term-menu (>=1.5.0)
+
+# pkgu
+
+Find the out-dated packages installed by the Pip tool and update them. Inspired by 👉[depu(Go)](https://github.com/kevwan/depu).
+However, `pkgu` supports full and partial updates, which is more convenient and flexible.
+
+## Usage
+
+- Run code from source code
+
+First, you need to install dependencies.
+
+if you don't have `poetry` tool, please install it first. 🔗: [poetry installation](https://python-poetry.org/docs/#installation), otherwise, install packages directly.
+
+```bash
+poetry install
+```
+
+and then, run `pkgu.py` script.
+
+```bash
+python3 pkgu.py
+```
+
+- Use it through pip
+
+```bash
+pip3 install pkgu
+```
+
+after the installation is complete, `pkgu` executable file will be written to the python bin directory and you can enter `pkgu -h` command on your terminal to learn how to use it.
+
+## ScreenShoot
+
+> 1. No packages need to be upgraded.
+
+![img.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img.png)
+
+> 2. Upgrade some expired packages.
+
+![img_4.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_4.png)
+![img_2.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_2.png)
+![img_3.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_3.png)
+
+> 3. Update the pkg synchronously
+
+![img_1.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_1.png)
+
+> 4. Update the pkg asynchronously
+
+![img_5.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_5.png)
+
+We can see that the async method is faster than sync method about 9 seconds(Only in this test situation).
+So now it can support to update the python libraries asynchronously. 🥳
+
+> 5. !!!New - Support for selectable update packages
+
+* List all availbable packages
+
+![img_6.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_6.png)
+
+* Select ths part of package to be updated
+
+![img_7.png](https://raw.githubusercontent.com/Abeautifulsnow/pkgu/main/screenshoot/img_7.png)
