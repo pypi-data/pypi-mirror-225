@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "openai-function-call"
+version = "0.2.3"
+description = "Helper functions that allow us to improve openai's function_call ergonomics"
+authors = ["Jason <jason@jxnl.co>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "openai_function_call"}]
+repository = "https://github.com/jxnl/openai_function_call"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^0.27.8"
+pydantic = "^2.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+mkdocs = "^1.4.3"
+mkdocs-material = "^9.1.18"
+mkdocstrings = "^0.22.0"
+mkdocstrings-python = "^1.1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
