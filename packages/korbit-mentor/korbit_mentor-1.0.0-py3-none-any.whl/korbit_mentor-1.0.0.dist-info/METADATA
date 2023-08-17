@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: korbit-mentor
+Version: 1.0.0
+Summary: Korbit mentor CLI tool will allow you to analyze any local files.
+Home-page: https://www.korbit.ai
+Author: Korbit Technologies Inc.
+Author-email: team@korbit.ai
+License: MIT
+Keywords: SOFTWARE,DEVELOPMENT,MENTOR,ENGINEER
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: validators
+Requires-Dist: beautifulsoup4
+Requires-Dist: click
+Requires-Dist: rich
+
+# Korbit AI Mentor
+
+Korbit mentor CLI will allow you to analyze any local files of your computer.
+
+## How to
+
+### PIP
+
+Using `pip` you can install the CLI and start running analysis.
+
+```sh
+pip install korbit-mentor
+```
+
+You can then run it as follow:
+
+```sh
+python -m korbit /path/to/folder ## Absolute path
+python -m korbit ../to/folder ## Relative path
+python -m korbit .  ## Curent folder anlaysis
+```
+
+### Binary
+
+#### Linux - MacOS
+
+1. Automatically installation
+
+```sh
+curl https://mentor-resources.korbit.ai/cli/installer.sh | bash
+```
+
+1. Linux and Macos x86
+
+```sh
+wget https://mentor-resources.korbit.ai/cli/korbit-x86_64 -O /usr/bin/local/korbit
+```
+
+1. MacOS arm64
+
+```sh
+wget https://mentor-resources.korbit.ai/cli/korbit-aarch64 -O /usr/bin/local/korbit
+```
+
+#### Windows
+
+```sh
+wget https://mentor-resources.korbit.ai/cli/korbit-win.exe -O korbit.exe
+```
