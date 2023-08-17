@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: agamprimer
+Version: 0.6.7
+Summary: A package to design primers in Anopheles gambiae whilst considering genetic variation with malariagen_data
+License: MIT
+Author: Sanjay Nagi
+Author-email: sanjay.nagi@lstmed.ac.uk
+Requires-Python: >=3.8,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: gget
+Requires-Dist: kaleido (==0.2.1)
+Requires-Dist: malariagen_data
+Requires-Dist: openpyxl
+Requires-Dist: primer3-py (==2.0.0)
+Requires-Dist: seaborn
