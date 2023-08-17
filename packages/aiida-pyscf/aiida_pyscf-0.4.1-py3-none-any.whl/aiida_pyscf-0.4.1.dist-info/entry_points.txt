@@ -1,0 +1,9 @@
+[aiida.calculations]
+pyscf.base=aiida_pyscf.calculations.base:PyscfCalculation
+
+[aiida.parsers]
+pyscf.base=aiida_pyscf.parsers.base:PyscfParser
+
+[aiida.workflows]
+pyscf.base=aiida_pyscf.workflows.base:PyscfBaseWorkChain
+
