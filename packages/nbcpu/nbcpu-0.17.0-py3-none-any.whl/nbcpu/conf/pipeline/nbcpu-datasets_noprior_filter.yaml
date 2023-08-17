@@ -1,0 +1,32 @@
+defaults:
+  - nbcpu-datasets
+
+steps:
+  - uses: load_dataframes
+    with:
+      data_files: ${__project_workspace_path__:}/nbcpu-topic_noprior/model/outputs/LDA_model(1)_k(20)-doc_topic_dists.parquet
+      verbose: true
+  - uses: dataframe_eval_columns
+    with:
+      expressions:
+        topic_irrelevant: "topic9 + topic10 + topic11 + topic6 + topic16 + topic18 + topic19 + topic4"
+      verbose: true
+  - uses: dataframe_select_columns
+    with:
+      columns:
+        - id
+        - topic_irrelevant
+      verbose: true
+  - uses: merge_dataframes
+    with:
+      right: ${__project_workspace_path__:}/datasets/processed/khmer_tokenized/train.parquet
+      "on": id
+      verbose: true
+  - uses: filter_and_sample_data
+    with:
+      queries:
+        - "topic_irrelevant < 0.5"
+      output_dir: ${__project_workspace_path__:}/datasets/processed/topic_noprior_filtered
+      train_filename: train.parquet
+      discard_filename: discard.parquet
+      verbose: true
