@@ -1,0 +1,28 @@
+name: uxarray-docs
+channels:
+    - conda-forge
+dependencies:
+    - python
+    - dask
+    - netcdf4
+    - numba
+    - numpy<=1.24
+    - pathlib
+    - pre_commit
+    - pytest
+    - pytest-cov
+    - scipy
+    - xarray
+    - pip
+    - ipykernel
+    - ipython
+    - jupyter_client
+    - sphinx-book-theme
+    - myst-nb
+    - sphinx-design
+    - nbsphinx
+    - matplotlib-base
+    - spatialpandas
+    - shapely
+    - pip:
+      - antimeridian
