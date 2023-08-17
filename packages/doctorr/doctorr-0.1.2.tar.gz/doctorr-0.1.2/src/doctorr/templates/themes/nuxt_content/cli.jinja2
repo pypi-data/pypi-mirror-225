@@ -1,0 +1,54 @@
+# {{ prog }} CLI Documentation
+
+{% if description %}
+{{ description }}
+{% endif %}
+
+## Usage
+
+```
+{{ bare_usage }}
+```
+
+## Commands and Arguments
+
+{% for cmd in subcommands %}
+### Command: `{{ cmd.name }}`
+{{ cmd.help }}
+#### Usage 
+```
+{{ cmd.subcommand_usage }}
+```
+
+{% for arg in cmd.arguments %}
+{% if arg.name != "help" %}
+- **`{{ arg.name }}`**: {{ arg.help }}
+{% if arg.default %}  - Default: `{{ arg.default }}`{% endif %}
+{% if arg.choices %}  - Choices: `{{ ", ".join(arg.choices|map('string')) }}`{% endif %}
+{% endif %}
+
+{% endfor %}
+
+{% if cmd.subcommands %}
+#### Subcommands for `{{ cmd.name }}`:
+
+{% for subcmd in cmd.subcommands %}
+
+##### **`{{ subcmd.name }}`**
+{%if subcmd.help %}{{ subcmd.help }}{% endif %}
+
+###### Usage 
+```
+{{ subcmd.subcommand_usage }}
+```
+
+{% for subarg in subcmd.arguments %}
+{% if subarg.name != "help" %}
+- **`{{ subarg.name }}`**: {{ subarg.help }}
+{% if subarg.default %}    Default: `{{ subarg.default }}`{% endif %}
+{% if subarg.choices %}    Choices: `{{ ", ".join(subarg.choices|map('string')) }}`{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% endfor %}
