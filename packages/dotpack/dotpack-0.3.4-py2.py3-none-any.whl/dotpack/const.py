@@ -1,0 +1,11 @@
+COLORS = {}
+RED = R = (255, 0, 0)
+GREEN = G = (0, 255, 0)
+BLUE = B = (0, 0, 255)
+ORANGE = O = (255, 165, 0)
+YELLOW = Y = (255, 255, 0)
+AQUA = A = (0, 255, 255)
+PURPLE = P = (148, 0, 211)
+MAGENTA = M = (255, 0, 255)
+BLACK = K = (0, 0, 0)
+WHITE = W = (255, 255, 255)
