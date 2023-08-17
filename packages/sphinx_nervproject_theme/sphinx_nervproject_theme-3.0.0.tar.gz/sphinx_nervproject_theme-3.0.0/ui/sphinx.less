@@ -1,0 +1,245 @@
+.content .section {
+  margin-bottom: 0;
+  &:hover {
+    .headerlink {
+      opacity: 1;
+    }
+  }
+}
+
+.content {
+   // FIXME: sphinx should provide a citation-reference?
+  & a:focus {
+    // remove outline because padding mess it up
+    outline: none;
+  }
+}
+
+
+/* Use # as symbol for anchor headerlinks */
+h1, h2, h3, h4, h5, h6 {
+  &:hover a.headerlink, &:hover a:visited.headerlink {
+    &::after {
+      visibility: visible;
+      content: "#";
+    }
+  }
+}
+
+a.headerlink, a:visited.headerlink {
+  font-size: 0.85em;
+  visibility: hidden;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ul.page-nav {
+  list-style: none;
+  & li {
+    display: inline-block;
+  }
+}
+
+.body-header {
+  display: flex;
+  & ul.page-nav {
+    flex-grow: 1;
+    list-style: none;
+    list-style-position: inside;
+    text-align: right;
+    margin-right: 2em;
+    & li + li:before {
+      content: "|";
+      padding: 0 1em;
+    }
+  }
+}
+
+ul.breadcrumbs {
+  list-style: none;
+  & li {
+    display: inline-block;
+  }
+}
+
+
+
+/** index page **/
+.toctree-wrapper .caption {
+  // same as h2
+  font-weight: 600;
+  line-height: 1.25em;
+  font-size: 1.65rem;
+  padding-bottom: .3rem;
+  border-bottom: 0.1em solid @BClr;
+}
+
+
+
+/** footer **/
+.footer {
+  clear: both;
+  min-height: 2rem;
+  padding-top: 1rem;
+  color: @FoTClr;
+  font-size: small;
+  line-height: 1.5rem;
+}
+
+
+/** pygments style **/
+.content .highlight {
+  border-radius: 0.5em;
+}
+
+// force background color from pygments
+.content .highlight pre {
+  background-color: inherit;
+}
+
+.content .highlighted {
+  background-color: @AClr; //#fbe54e;
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+/*** admonitions based on custom-blocks.styl */
+.admonition {
+  padding: .1rem 1.5rem;
+  border-left-width: .5rem;
+  border-left-style: solid;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  height: min-content;
+  margin: 1rem 0;
+  // default color
+  background-color: @AaBgClr;
+  border-color: @AaBClr;
+  color: @AaTClr;
+  a, a:visited {
+    color: @AaLClr;
+    &:hover {
+      color: @AaLHClr;
+    }
+  }
+
+  .admonition-title {
+    font-weight: 600;
+    margin-bottom: -0.4rem;
+  }
+  &.success {
+    background-color: @AsBgClr;
+    border-color: @AsBClr;
+    color: @AsTClr;
+    a, a:visited {
+      color: @AsLClr;
+      &:hover {
+        color: @AsLHClr;
+      }
+    }
+  }
+  &.hint {
+    background-color: @AhBgClr;
+    border-color: @AhBClr;
+    color: @AhTClr;
+    a, a:visited {
+      color: @AhLClr;
+      &:hover {
+        color: @AhLHClr;
+      }
+    }
+  }
+  &.tip {
+    background-color: @AtBgClr;
+    border-color: @AtBClr;
+    color: @AtTClr;
+    a, a:visited {
+      color: @AtLClr;
+      &:hover {
+        color: @AtLHClr;
+      }
+    }
+  }
+  &.important {
+    background-color: @AiBgClr;
+    border-color: @AiBClr;
+    color: @AiTClr;
+    a, a:visited {
+      color: @AiLClr;
+      &:hover {
+        color: @AiLHClr;
+      }
+    }
+  }
+  &.note {
+    background-color: @AnBgClr;
+    border-color: @AnBClr;
+    color: @AnTClr;
+    a, a:visited {
+      color: @AnLClr;
+      &:hover {
+        color: @AnLHClr;
+      }
+    }
+  }
+  &.warning {
+    background-color: @AwBgClr;
+    border-color: @AwBClr;
+    color: @AwTClr;
+    a, a:visited {
+      color: @AwLClr;
+      &:hover {
+        color: @AwLHClr;
+      }
+    }
+  }
+  &.danger {
+    background-color: @AdBgClr;
+    border-color: @AdBClr;
+    color: @AdTClr;
+    a, a:visited {
+      color: @AdLClr;
+      &:hover {
+        color: @AdLHClr;
+      }
+    }
+  }
+  &.caution {
+    background-color: @AcBgClr;
+    border-color: @AcBClr;
+    color: @AcTClr;
+    a, a:visited {
+      color: @AcLClr;
+      &:hover {
+        color: @AcLHClr;
+      }
+    }
+  }
+  &.danger {
+    background-color: @AdBgClr;
+    border-color: @AdBClr;
+    color: @AdTClr;
+    a, a:visited {
+      color: @AdLClr;
+      &:hover {
+        color: @AdLHClr;
+      }
+    }
+  }
+}
+
+blockquote {
+  background-color: @BqBgClr;
+  border-color: @BqBClr;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  margin-left: -0.4rem;
+  color: @BqTClr;
+  a, a:visited {
+    color: @BqLClr;
+    &:hover {
+      color: @BqLHClr;
+    }
+  }
+}

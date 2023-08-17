@@ -1,0 +1,29 @@
+{
+  "name": "sphinx_nervproject_theme",
+  "version": "3.0.0",
+  "description": "Sphinx Nerv Project Theme",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:theme-light": "node node_modules/less/bin/lessc --clean-css='--advanced' ui/theme-light.less sphinx_nervproject_theme/static/theme-light.css",
+    "build:theme-light-hc": "node node_modules/less/bin/lessc --clean-css='--advanced' ui/theme-light-hc.less sphinx_nervproject_theme/static/theme-light-hc.css",
+    "build:theme-dark": "node node_modules/less/bin/lessc --clean-css='--advanced' ui/theme-dark.less sphinx_nervproject_theme/static/theme-dark.css",
+    "build:theme-dark-hc": "node node_modules/less/bin/lessc --clean-css='--advanced' ui/theme-dark-hc.less sphinx_nervproject_theme/static/theme-dark-hc.css",
+    "build:theme-print": "node node_modules/less/bin/lessc --clean-css='--advanced' ui/theme-print.less sphinx_nervproject_theme/static/theme-print.css",
+    "build": "npm run build:theme-light && npm run build:theme-light-hc && npm run build:theme-dark && npm run build:theme-dark-hc && npm run build:theme-print"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@procrastinator.nerv-project.eu:nerv-project/communication/sphinx_nervproject_theme"
+  },
+  "author": "kujiu",
+  "license": "EUPL-1.2",
+  "dependencies": {
+    "clean-css": "^5.3.2",
+    "less": "^4.2.0",
+    "less-plugin-clean-css": "^1.5.1",
+    "sfnt2woff": "*"
+  }
+}

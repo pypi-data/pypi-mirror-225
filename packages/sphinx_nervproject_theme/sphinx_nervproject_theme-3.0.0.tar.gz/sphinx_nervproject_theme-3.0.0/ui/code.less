@@ -1,0 +1,187 @@
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.content {
+  td.linenos, td.code {
+    border: none;
+    padding: 0;
+    margin: 0;
+    > .highlight pre {
+      border: none;
+    }
+  }
+  code {
+    color: @CdTClr;
+    padding: 0.25rem 0.1rem;
+    margin: 0;
+    font-size: 0.85em;
+    background-color: @CdBgClr;
+    border-bottom: @CdBClr solid 0.2em;
+    a, a:visited {
+      color: @CdLClr;
+      &:hover {
+        color: @CdLHClr;
+      }
+    }
+  }
+
+  td.linenos pre, pre span.lineno {
+    border-right: solid 0.3em @CdLnBClr;
+    background-color: @CdLnBgClr;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    color: @CdLnTClr;
+    white-space: pre;
+    overflow-wrap: normal;
+    margin: 0;
+  }
+
+  pre span.lineno {
+    float: left;
+    margin: 0 0.5rem 0 -0.5rem;
+    padding-left: 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  pre, pre[class*="language-"] {
+    line-height: 1.4;
+    padding: 1.25rem 1.5rem 1.25rem 0.5rem;
+    margin: 0.85rem 0;
+    background-color: @PrBgClr;
+    color: @PrTClr;
+    border-left: @PrBClr solid 0.5em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    code {
+      color: @PrTClr;
+      padding: 0;
+      background-color: transparent;
+    }
+    a, a:visited {
+      color: @PrLClr;
+      &:hover {
+        color: @PrLHClr;
+      }
+    }
+  }
+}
+
+div[class*="language-"] {
+  position: relative;
+  background-color: @CdBgClr;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  .highlight-lines {
+    padding-top: 1.3rem;
+    width: 100%;
+    line-height: 1.4;
+    .highlighted {
+      background-color: @CdBgAClr;
+      color: @CdAClr;
+    }
+  }
+  pre, pre[class*="language-"] {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+  &::before {
+    z-index: 3;
+    font-size: 0.75rem;
+    color: @CdT2Clr;
+  }
+  &:not(.line-numbers-mode) {
+    .line-numbers-wrapper {
+      display: none;
+    }
+  }
+  &.line-numbers-mode {
+    .highlight-lines {
+      .highlighted {
+        position: relative;
+        &:before {
+          content: ' ';
+          z-index: 3;
+          display: block;
+          width: @lineNumbersWrapperWidth;
+          height: 100%;
+          background-color: @CdBgAClr;
+          color: @CdBgClr;
+        }
+      }
+    }
+    pre {
+      padding-left: @lineNumbersWrapperWidth;
+      vertical-align: middle;
+    }
+    .line-numbers-wrapper {
+      width: @lineNumbersWrapperWidth;
+      text-align: center;
+      color: @PrLNClr;
+      padding: 1.25rem 0;
+      line-height: 1.4;
+      .line-number {
+        position: relative;
+        z-index: 4;
+        font-size: 0.85em;
+      }
+    }
+    &::after {
+      content: '';
+      z-index: 2;
+      width: @lineNumbersWrapperWidth;
+      height: 100%;
+      border-left: 0.5rem solid @PrB2Clr;
+      background-color: @PrBgClr;
+    }
+  }
+}
+
+
+//for lang in js ts html md vue css sass scss less stylus go java c sh yaml rst rust zsh gdscript esc
+//  div{'[class~="language-' + lang + '"]'}
+//    &:before
+//      content ('' + lang)
+
+div[class~="language-javascript"] {
+  &:before {
+    content: "js";
+  }
+}
+
+div[class~="language-typescript"] {
+  &:before {
+    content: "ts";
+  }
+}
+
+div[class~="language-markup"] {
+  &:before {
+    content: "html";
+  }
+}
+
+div[class~="language-markdown"] {
+  &:before {
+    content: "md";
+  }
+}
+
+div[class~="language-json"]:before {
+  content: "json";
+}
+
+div[class~="language-ruby"]:before {
+  content: "rb";
+}
+
+div[class~="language-python"]:before {
+  content: "py";
+}
+
+div[class~="language-bash"]:before {
+  content: "sh";
+}

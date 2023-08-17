@@ -1,0 +1,924 @@
+// responsive breakpoints
+@MQNarrow: 95ex;
+@MQMobile: 72ex;
+@MQMobileNarrow: 42ex;
+
+// Print header and footer
+
+@PrintFooterHeight: 7rem;
+@PrintHeaderHeight: 6rem;
+
+// colors
+
+/*
+S..Clr: Social network
+
+Suffixes:
+AClr: Accent color
+BClr: Border color
+BgClr: Background color
+FClr: Focus color
+HClr: Hover color
+LClr: Link color
+LHClr: Link hover color
+TClr: Text color
+
+Prefixes:
+
+Aa: Admonition (standard)
+Ac: Admonition (caution)
+Ad: Admonition (danger)
+Ae: Admonition (error)
+Ah: Admonition (hint)
+Ai: Admonition (important)
+An: Admonition (note)
+As: Admonition (success)
+At: Admonition (tip)
+Aw: Admonition (warning)
+Ar: Arrow
+
+Bh: ButtonHover
+Bq: Blockquote
+Btn: Button
+Cd: Code
+CdLn: Code line column
+Fo: Footer
+In: Input
+Pr: Pre
+Sd: Sidebar
+Te: Table even
+To: Table odd
+Tr: Term
+Nv: Navbar
+
+*/
+
+@basesidebarWidth: 20rem;
+@basecontentWidth: 100%;
+
+  // code
+@baselineNumbersWrapperWidth: 4.5rem;
+
+@baseAClr: hsl(211, 49%, 53%);
+@baseSdA2Clr: hsl(211, 49%, 74.2%);
+@baseFClr: hsl(36, 97%, 53%);
+@baseBgClr: hsl(0, 0%, 95%);
+@baseTClr: hsl(210, 29%, 24%);
+@baseT2Clr: hsl(210, 29%, 11%);
+@baseSdT2Clr: hsl(210, 29%, 33%);
+@baseTrClr: hsl(209, 27%, 41%);
+@baseBClr: hsl(211, 49%, 63%);
+@baseLClr: @baseAClr;
+@baseLHClr: hsl(36, 97%, 38%);
+@baseArBgClr: hsl(0, 0%, 80%);
+
+@baseNvAClr: hsl(36, 97%, 82%);
+@baseNvBgClr: hsl(0, 0%, 16%);
+@baseNvBClr: hsl(211, 49%, 63%);
+@baseNvTClr: hsl(211, 49%, 75%);
+@baseNvLClr: hsl(211, 49%, 75%);
+@baseNvLHClr: hsl(36, 97%, 82%);
+
+@baseInBgClr: hsl(0, 0%, 100%);
+@baseInBClr: hsl(211, 49%, 63%);
+
+@baseBtnBgAClr: hsl(0, 0%, 100%);
+@baseBtnBgClr: hsl(0, 0%, 100%);
+@baseBtnBClr: hsl(211, 49%, 63%);
+@baseBtnTClr: @baseTClr;
+
+@baseAaBgClr: hsl(0, 0%, 89%);
+@baseAaBClr: hsl(0, 0%, 47%);
+@baseAaTClr: @baseTClr;
+@baseAaLClr: @baseLClr;
+@baseAaLHClr: @baseLHClr;
+
+@baseAtBgClr: hsl(210, 20%, 96%);
+@baseAtBClr: hsl(153, 47%, 49%);
+@baseAtTClr: hsl(153, 47%, 10%);
+@baseAtLClr: @baseLClr;
+@baseAtLHClr: @baseLHClr;
+
+@baseAwBgClr: hsla(50, 100%, 70%, 0.3);
+@baseAwBClr: hsl(50, 100%, 45.5%);
+@baseAwTClr: hsl(50, 100%, 21%);
+@baseAwLClr: @baseLClr;
+@baseAwLHClr: @baseLHClr;
+
+@baseAdBgClr: hsl(0, 100%, 95%);
+@baseAdBClr: hsl(0, 100%, 40%);
+@baseAdTClr: hsl(0, 100%, 15%);
+@baseAdLClr: @baseLClr;
+@baseAdLHClr: @baseLHClr;
+
+@baseAsBgClr: @baseAtBgClr;
+@baseAsBClr: @baseAtBClr;
+@baseAsTClr: @baseAtTClr;
+@baseAsLClr: @baseAtLClr;
+@baseAsLHClr: @baseAtLHClr;
+
+@baseAhBgClr: @baseAtBgClr;
+@baseAhBClr: @baseAtBClr;
+@baseAhTClr: @baseAtTClr;
+@baseAhLClr: @baseAtLClr;
+@baseAhLHClr: @baseAtLHClr;
+
+@baseAiBgClr: hsl(207, 73%, 94%);
+@baseAiBClr: hsl(208, 77%, 65%);
+@baseAiTClr: @baseTClr;
+@baseAiLClr: @baseLClr;
+@baseAiLHClr: @baseLHClr;
+
+@baseAnBgClr: @baseAiBgClr;
+@baseAnBClr: @baseAiBClr;
+@baseAnTClr: @baseAiTClr;
+@baseAnLClr: @baseAiLClr;
+@baseAnLHClr: @baseAiLHClr;
+
+@baseAcBgClr: @baseAwBgClr;
+@baseAcBClr: @baseAwBClr;
+@baseAcTClr: @baseAwTClr;
+@baseAcLClr: @baseAwLClr;
+@baseAcLHClr: @baseAwLHClr;
+
+@baseAeBgClr: @baseAdBgClr;
+@baseAeBClr: @baseAdBClr;
+@baseAeTClr: @baseAdTClr;
+@baseAeLClr: @baseAdLClr;
+@baseAeLHClr: @baseAdLHClr;
+
+@baseBqAClr: @baseAClr;
+@baseBqBgClr: hsl(0, 0%, 100%);
+@baseBqBClr: hsl(210, 10%, 49%);
+@baseBqTClr: hsl(0, 0%, 40%);
+@baseBqLClr: @baseLClr;
+@baseBqLHClr: @baseLHClr;
+
+@baseCdAClr: hsl(211, 49%, 15%);
+@baseCdBgAClr: hsl(211, 49%, 89%);
+@baseCdBgClr: @baseAaBgClr;
+@baseCdBClr: @baseAaBClr;
+@baseCdTClr: @baseAaTClr;
+@baseCdT2Clr: hsla(211, 29%, 27%, 0.4);
+@baseCdLClr: @baseAaLClr;
+@baseCdLHClr: @baseAaLHClr;
+@baseCdLnTClr: @baseFoTClr;
+@baseCdLnBClr: @baseFoBClr;
+@baseCdLnBgClr: @baseFoBgClr;
+
+
+@basePrAClr: @baseCdAClr;
+@basePrBgAClr: @baseCdBgAClr;
+@basePrBgClr: @baseCdBgClr;
+@basePrBClr: @baseCdBClr;
+@basePrB2Clr: hsla(0, 0%, 47%, 66%);
+@basePrTClr: @baseCdBgClr;
+@basePrLNClr: hsla(0, 0%, 89%, 0.3);
+@basePrLClr: @baseCdLClr;
+@basePrLHClr: @baseCdLHClr;
+
+@baseTeAClr: @baseAClr;
+@baseTeBgAClr: hsl(211, 49%, 80%);
+@baseTeBgClr: hsl(0, 0%, 100%);
+@baseTeBClr: hsl(210, 10%, 90%);
+@baseTeTClr: @baseTClr;
+@baseTeLClr: @baseLClr;
+@baseTeLHClr: @baseLHClr;
+
+@baseToAClr: @baseAClr;
+@baseToBgAClr: hsl(211, 49%, 85%);
+@baseToBgClr: hsl(0, 0%, 95%);
+@baseToBClr: hsl(210, 10%, 89%);
+@baseToTClr: @baseTClr;
+@baseToLClr: @baseLClr;
+@baseToLHClr: @baseLHClr;
+
+@baseSdAClr: @baseAClr;
+@baseSdBgClr: hsl(0, 0%, 100%);
+@baseSdBClr: hsl(0, 0%, 50%);
+@baseSdTClr: @baseTClr;
+@baseSdLClr: @baseLClr;
+@baseSdLHClr: @baseLHClr;
+
+@baseFoAClr: @baseNvAClr;
+@baseFoBClr: hsl(36, 97%, 62%);
+@baseFoBgClr: @baseNvBgClr;
+@baseFoTClr: @baseNvTClr;
+@baseFoLClr: @baseNvLClr;
+@baseFoLHClr: @baseNvLHClr;
+
+@baseInAClr: @baseAClr;
+@baseInTClr: @baseTClr;
+@baseInHClr: @baseLHClr;
+
+@baseBtnAClr: @baseAClr;
+@baseBtnHClr: @baseLHClr;
+@baseBhBgClr: @baseBtnBgClr;
+
+@baseSEmailClr: hsl(216, 61%, 59%);
+@baseSContactClr: hsl(216, 61%, 59%);
+@baseSFacebookClr: hsl(221, 42%, 42%);
+@baseSGithubClr: hsl(180, 3%, 14%);
+@baseSGoogleClr: hsl(6, 69%, 51%);
+@baseSLinkedinClr: hsl(212, 56%, 46%);
+@baseSPinterestClr: hsl(4, 78%, 44%);
+@baseSRedditClr: hsl(16, 100%, 50%);
+@baseSRssClr: hsl(23, 93%, 49%);
+@baseSSoundcloudClr: hsl(20, 100%, 50%);
+@baseSStackOverflowClr: hsl(347, 100%, 50%);
+@baseSTwitterClr: hsl(203, 69%, 59%);
+@baseSMastodonClr: hsl(205, 100%, 54%);
+@baseSDiasporaClr: hsl(0, 0%, 0%);
+@baseSYoutubeClr: hsl(3, 76%, 50%);
+
+// High contrast colors
+@highContrastBaseAClr: hsl(211, 49%, 40%);
+@highContrastBaseSdA2Clr: hsl(211, 49%, 56%);
+@highContrastBaseFClr: hsl(36, 97%, 42%);
+@highContrastBaseBgClr: hsl(0, 0%, 100%);
+@highContrastBaseTClr: hsl(210, 29%, 2%);
+@highContrastBaseT2Clr: hsl(210, 29%, 0.8%);
+@highContrastBaseSdT2Clr: hsl(210, 29%, 3%);
+@highContrastBaseTrClr: hsl(209, 27%, 10%);
+@highContrastBaseBClr: hsl(211, 49%, 43%);
+@highContrastBaseLClr: hsl(36, 97%, 42%);
+@highContrastBaseLHClr: hsl(36, 97%, 28%);
+@highContrastBaseArBgClr: hsl(0, 0%, 10%);
+
+@highContrastBaseNvAClr: hsl(36, 97%, 12%);
+@highContrastBaseNvBgClr: hsl(0, 0%, 100%);
+@highContrastBaseNvBClr: hsl(211, 49%, 3%);
+@highContrastBaseNvTClr: hsl(211, 49%, 75%);
+@highContrastBaseNvLClr: hsl(211, 49%, 75%);
+@highContrastBaseNvLHClr: hsl(36, 97%, 62%);
+
+@highContrastBaseInBgClr: hsl(0, 0%, 100%);
+@highContrastBaseInBClr: hsl(211, 49%, 5%);
+
+@highContrastBaseBtnBgAClr: hsl(0, 0%, 100%);
+@highContrastBaseBtnBgClr: hsl(0, 0%, 100%);
+@highContrastBaseBtnBClr: hsl(211, 49%, 3%);
+
+@highContrastBaseBtnTClr: @highContrastBaseTClr;
+
+@highContrastBaseAaBgClr: hsl(0, 0%, 100%);
+@highContrastBaseAaBClr: hsl(0, 0%, 37%);
+@highContrastBaseAaTClr: @highContrastBaseTClr;
+@highContrastBaseAaLClr: @highContrastBaseLClr;
+@highContrastBaseAaLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseAtBgClr: hsl(210, 20%, 100%);
+@highContrastBaseAtBClr: hsl(153, 47%, 39%);
+@highContrastBaseAtTClr: hsl(153, 47%, 2%);
+@highContrastBaseAtLClr: @highContrastBaseLClr;
+@highContrastBaseAtLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseAwBgClr: hsla(50, 100%, 100%, 0.3);
+@highContrastBaseAwBClr: hsl(50, 100%, 35.5%);
+@highContrastBaseAwTClr: hsl(50, 100%, 2%);
+@highContrastBaseAwLClr: @highContrastBaseLClr;
+@highContrastBaseAwLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseAdBgClr: hsl(0, 100%, 100%);
+@highContrastBaseAdBClr: hsl(0, 100%, 40%);
+@highContrastBaseAdTClr: hsl(0, 100%, 2%);
+@highContrastBaseAdLClr: @highContrastBaseLClr;
+@highContrastBaseAdLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseAsBgClr: @highContrastBaseAtBgClr;
+@highContrastBaseAsBClr: @highContrastBaseAtBClr;
+@highContrastBaseAsTClr: @highContrastBaseAtTClr;
+@highContrastBaseAsLClr: @highContrastBaseAtLClr;
+@highContrastBaseAsLHClr: @highContrastBaseAtLHClr;
+
+@highContrastBaseAhBgClr: @highContrastBaseAtBgClr;
+@highContrastBaseAhBClr: @highContrastBaseAtBClr;
+@highContrastBaseAhTClr: @highContrastBaseAtTClr;
+@highContrastBaseAhLClr: @highContrastBaseAtLClr;
+@highContrastBaseAhLHClr: @highContrastBaseAtLHClr;
+
+@highContrastBaseAiBgClr: hsl(207, 73%, 100%);
+@highContrastBaseAiBClr: hsl(208, 77%, 45%);
+@highContrastBaseAiTClr: @highContrastBaseTClr;
+@highContrastBaseAiLClr: @highContrastBaseLClr;
+@highContrastBaseAiLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseAnBgClr: @highContrastBaseAiBgClr;
+@highContrastBaseAnBClr: @highContrastBaseAiBClr;
+@highContrastBaseAnTClr: @highContrastBaseAiTClr;
+@highContrastBaseAnLClr: @highContrastBaseAiLClr;
+@highContrastBaseAnLHClr: @highContrastBaseAiLHClr;
+
+@highContrastBaseAcBgClr: @highContrastBaseAwBgClr;
+@highContrastBaseAcBClr: @highContrastBaseAwBClr;
+@highContrastBaseAcTClr: @highContrastBaseAwTClr;
+@highContrastBaseAcLClr: @highContrastBaseAwLClr;
+@highContrastBaseAcLHClr: @highContrastBaseAwLHClr;
+
+@highContrastBaseAeBgClr: @highContrastBaseAdBgClr;
+@highContrastBaseAeBClr: @highContrastBaseAdBClr;
+@highContrastBaseAeTClr: @highContrastBaseAdTClr;
+@highContrastBaseAeLClr: @highContrastBaseAdLClr;
+@highContrastBaseAeLHClr: @highContrastBaseAdLHClr;
+
+@highContrastBaseBqAClr: @highContrastBaseAClr;
+@highContrastBaseBqBgClr: hsl(0, 0%, 100%);
+@highContrastBaseBqBClr: hsl(210, 10%, 39%);
+@highContrastBaseBqTClr: hsl(0, 0%, 40%);
+@highContrastBaseBqLClr: @highContrastBaseLClr;
+@highContrastBaseBqLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseCdAClr: hsl(211, 49%, 15%);
+@highContrastBaseCdBgAClr: hsl(211, 49%, 89%);
+@highContrastBaseCdBgClr: @highContrastBaseAaBgClr;
+@highContrastBaseCdBClr: @highContrastBaseAaBClr;
+@highContrastBaseCdTClr: @highContrastBaseAaTClr;
+@highContrastBaseCdT2Clr: hsla(206, 99%, 2%, 0.4);
+@highContrastBaseCdLClr: @highContrastBaseAaLClr;
+@highContrastBaseCdLHClr: @highContrastBaseAaLHClr;
+@highContrastBaseCdLnTClr: @highContrastBaseFoTClr;
+@highContrastBaseCdLnBClr: @highContrastBaseFoBClr;
+@highContrastBaseCdLnBgClr: @highContrastBaseFoBgClr;
+
+
+@highContrastBasePrAClr: @highContrastBaseCdAClr;
+@highContrastBasePrBgAClr: @highContrastBaseCdBgAClr;
+@highContrastBasePrBgClr: @highContrastBaseCdBgClr;
+@highContrastBasePrBClr: @highContrastBaseCdBClr;
+@highContrastBasePrB2Clr: hsla(0, 0%, 37%, 66%);
+@highContrastBasePrTClr: @highContrastBaseCdBgClr;
+@highContrastBasePrLNClr: hsla(0, 0%, 100%, 0.3);
+@highContrastBasePrLClr: @highContrastBaseCdLClr;
+@highContrastBasePrLHClr: @highContrastBaseCdLHClr;
+
+@highContrastBaseTeAClr: @highContrastBaseAClr;
+@highContrastBaseTeBgAClr: hsl(211, 49%, 100%);
+@highContrastBaseTeBgClr: hsl(0, 0%, 100%);
+@highContrastBaseTeBClr: hsl(210, 10%, 20%);
+@highContrastBaseTeTClr: @highContrastBaseTClr;
+@highContrastBaseTeLClr: @highContrastBaseLClr;
+@highContrastBaseTeLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseToAClr: @highContrastBaseAClr;
+@highContrastBaseToBgAClr: hsl(211, 49%, 100%);
+@highContrastBaseToBgClr: hsl(0, 0%, 100%);
+@highContrastBaseToBClr: hsl(210, 10%, 29%);
+@highContrastBaseToTClr: @highContrastBaseTClr;
+@highContrastBaseToLClr: @highContrastBaseLClr;
+@highContrastBaseToLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseSdAClr: @highContrastBaseAClr;
+@highContrastBaseSdBgClr: hsl(0, 0%, 100%);
+@highContrastBaseSdBClr: hsl(0, 0%, 30%);
+@highContrastBaseSdTClr: @highContrastBaseTClr;
+@highContrastBaseSdLClr: @highContrastBaseLClr;
+@highContrastBaseSdLHClr: @highContrastBaseLHClr;
+
+@highContrastBaseFoAClr: @highContrastBaseNvAClr;
+@highContrastBaseFoBClr: hsl(36, 97%, 42%);
+@highContrastBaseFoBgClr: @highContrastBaseNvBgClr;
+@highContrastBaseFoTClr: @highContrastBaseNvTClr;
+@highContrastBaseFoLClr: @highContrastBaseNvLClr;
+@highContrastBaseFoLHClr: @highContrastBaseNvLHClr;
+
+@highContrastBaseInAClr: @highContrastBaseAClr;
+@highContrastBaseInTClr: @highContrastBaseTClr;
+@highContrastBaseInHClr: @highContrastBaseLHClr;
+
+@highContrastBaseBtnAClr: @highContrastBaseAClr;
+@highContrastBaseBtnHClr: @highContrastBaseLHClr;
+@highContrastBaseBhBgClr: @highContrastBaseBtnBgClr;
+
+@highContrastBaseSEmailClr: hsl(216, 61%, 19%);
+@highContrastBaseSContactClr: hsl(216, 61%, 19%);
+@highContrastBaseSFacebookClr: hsl(221, 42%, 12%);
+@highContrastBaseSGithubClr: hsl(180, 3%, 14%);
+@highContrastBaseSGoogleClr: hsl(6, 69%, 11%);
+@highContrastBaseSLinkedinClr: hsl(212, 56%, 16%);
+@highContrastBaseSPinterestClr: hsl(4, 78%, 14%);
+@highContrastBaseSRedditClr: hsl(16, 100%, 10%);
+@highContrastBaseSRssClr: hsl(23, 93%, 19%);
+@highContrastBaseSSoundcloudClr: hsl(20, 100%, 10%);
+@highContrastBaseSStackOverflowClr: hsl(347, 100%, 10%);
+@highContrastBaseSTwitterClr: hsl(203, 69%, 19%);
+@highContrastBaseSMastodonClr: hsl(205, 100%, 14%);
+@highContrastBaseSDiasporaClr: hsl(0, 0%, 10%);
+@highContrastBaseSYoutubeClr: hsl(3, 76%, 10%);
+
+// Dark colors
+@darkBaseAClr: hsl(36, 97%, 62%);
+@darkBaseSdA2Clr: hsl(36, 97%, 86%);
+@darkBaseFClr: hsl(36, 97%, 62%);
+@darkBaseBgClr: hsl(0, 0%, 8%);
+@darkBaseTClr: hsl(210, 29%, 90%);
+@darkBaseT2Clr: hsl(210, 29%, 4%);
+@darkBaseSdT2Clr: hsl(210, 29%, 100%);
+@darkBaseTrClr: hsl(209, 27%, 61%);
+@darkBaseBClr: hsl(211, 49%, 63%);
+@darkBaseLClr: hsl(211, 49%, 63%);
+@darkBaseLHClr: hsl(36, 97%, 82%);
+@darkBaseArBgClr: hsl(0, 0%, 80%);
+
+@darkBaseNvAClr: hsl(36, 97%, 82%);
+@darkBaseNvBgClr: hsl(0, 0%, 16%);
+@darkBaseNvBClr: hsl(211, 49%, 63%);
+@darkBaseNvTClr: hsl(211, 49%, 75%);
+@darkBaseNvLClr: hsl(211, 49%, 75%);
+@darkBaseNvLHClr: hsl(36, 97%, 82%);
+
+@darkBaseInBgClr: hsl(0, 0%, 10%);
+@darkBaseInBClr: hsl(211, 49%, 63%);
+
+@darkBaseBtnBgAClr: hsl(0, 0%, 10%);
+@darkBaseBtnBgClr: hsl(0, 0%, 10%);
+@darkBaseBtnBClr: hsl(211, 49%, 63%);
+@darkBaseBtnTClr: @darkBaseTClr;
+
+@darkBaseAaBgClr: hsl(0, 0%, 5%);
+@darkBaseAaBClr: hsl(0, 0%, 47%);
+@darkBaseAaTClr: @darkBaseTClr;
+@darkBaseAaLClr: @darkBaseLClr;
+@darkBaseAaLHClr: @darkBaseLHClr;
+
+@darkBaseAtBgClr: hsl(210, 20%, 16%);
+@darkBaseAtBClr: hsl(153, 47%, 49%);
+@darkBaseAtTClr: hsl(153, 47%, 90%);
+@darkBaseAtLClr: @darkBaseLClr;
+@darkBaseAtLHClr: @darkBaseLHClr;
+
+@darkBaseAwBgClr: hsla(50, 100%, 10%, 0.3);
+@darkBaseAwBClr: hsl(50, 100%, 45.5%);
+@darkBaseAwTClr: hsl(50, 100%, 81%);
+@darkBaseAwLClr: @darkBaseLClr;
+@darkBaseAwLHClr: @darkBaseLHClr;
+
+@darkBaseAdBgClr: hsl(0, 100%, 10%);
+@darkBaseAdBClr: hsl(0, 100%, 40%);
+@darkBaseAdTClr: hsl(0, 100%, 90%);
+@darkBaseAdLClr: @darkBaseLClr;
+@darkBaseAdLHClr: @darkBaseLHClr;
+
+@darkBaseAsBgClr: @darkBaseAtBgClr;
+@darkBaseAsBClr: @darkBaseAtBClr;
+@darkBaseAsTClr: @darkBaseAtTClr;
+@darkBaseAsLClr: @darkBaseAtLClr;
+@darkBaseAsLHClr: @darkBaseAtLHClr;
+
+@darkBaseAhBgClr: @darkBaseAtBgClr;
+@darkBaseAhBClr: @darkBaseAtBClr;
+@darkBaseAhTClr: @darkBaseAtTClr;
+@darkBaseAhLClr: @darkBaseAtLClr;
+@darkBaseAhLHClr: @darkBaseAtLHClr;
+
+@darkBaseAiBgClr: hsl(207, 73%, 14%);
+@darkBaseAiBClr: hsl(208, 77%, 65%);
+@darkBaseAiTClr: @darkBaseTClr;
+@darkBaseAiLClr: @darkBaseLClr;
+@darkBaseAiLHClr: @darkBaseLHClr;
+
+@darkBaseAnBgClr: @darkBaseAiBgClr;
+@darkBaseAnBClr: @darkBaseAiBClr;
+@darkBaseAnTClr: @darkBaseAiTClr;
+@darkBaseAnLClr: @darkBaseAiLClr;
+@darkBaseAnLHClr: @darkBaseAiLHClr;
+
+@darkBaseAcBgClr: @darkBaseAwBgClr;
+@darkBaseAcBClr: @darkBaseAwBClr;
+@darkBaseAcTClr: @darkBaseAwTClr;
+@darkBaseAcLClr: @darkBaseAwLClr;
+@darkBaseAcLHClr: @darkBaseAwLHClr;
+
+@darkBaseAeBgClr: @darkBaseAdBgClr;
+@darkBaseAeBClr: @darkBaseAdBClr;
+@darkBaseAeTClr: @darkBaseAdTClr;
+@darkBaseAeLClr: @darkBaseAdLClr;
+@darkBaseAeLHClr: @darkBaseAdLHClr;
+
+@darkBaseBqAClr: @darkBaseAClr;
+@darkBaseBqBgClr: hsl(0, 0%, 5%);
+@darkBaseBqBClr: hsl(210, 10%, 49%);
+@darkBaseBqTClr: hsl(0, 0%, 90%);
+@darkBaseBqLClr: @darkBaseLClr;
+@darkBaseBqLHClr: @darkBaseLHClr;
+
+@darkBaseCdAClr: hsl(211, 49%, 85%);
+@darkBaseCdBgAClr: hsl(211, 49%, 10%);
+@darkBaseCdBgClr: @darkBaseAaBgClr;
+@darkBaseCdBClr: @darkBaseAaBClr;
+@darkBaseCdTClr: @darkBaseAaTClr;
+@darkBaseCdT2Clr: hsla(206, 99%, 90%, 0.4);
+@darkBaseCdLClr: @darkBaseAaLClr;
+@darkBaseCdLHClr: @darkBaseAaLHClr;
+@darkBaseCdLnTClr: @darkBaseFoTClr;
+@darkBaseCdLnBClr: @darkBaseFoBClr;
+@darkBaseCdLnBgClr: @darkBaseFoBgClr;
+
+@darkBasePrAClr: @darkBaseCdAClr;
+@darkBasePrBgAClr: @darkBaseCdBgAClr;
+@darkBasePrBgClr: @darkBaseCdBgClr;
+@darkBasePrBClr: @darkBaseCdBClr;
+@darkBasePrB2Clr: hsla(0, 0%, 47%, 66%);
+@darkBasePrTClr: @darkBaseCdBgClr;
+@darkBasePrLNClr: hsla(0, 0%, 5%, 0.3);
+@darkBasePrLClr: @darkBaseCdLClr;
+@darkBasePrLHClr: @darkBaseCdLHClr;
+
+@darkBaseTeAClr: @darkBaseAClr;
+@darkBaseTeBgAClr: hsl(211, 49%, 80%);
+@darkBaseTeBgClr: hsl(0, 0%, 100%);
+@darkBaseTeBClr: hsl(210, 10%, 20%);
+@darkBaseTeTClr: @darkBaseTClr;
+@darkBaseTeLClr: @darkBaseLClr;
+@darkBaseTeLHClr: @darkBaseLHClr;
+
+@darkBaseToAClr: @darkBaseAClr;
+@darkBaseToBgAClr: hsl(211, 49%, 15%);
+@darkBaseToBgClr: hsl(0, 0%, 15%);
+@darkBaseToBClr: hsl(210, 10%, 29%);
+@darkBaseToTClr: @darkBaseTClr;
+@darkBaseToLClr: @darkBaseLClr;
+@darkBaseToLHClr: @darkBaseLHClr;
+
+@darkBaseSdAClr: @darkBaseAClr;
+@darkBaseSdBgClr: hsl(0, 0%, 5%);
+@darkBaseSdBClr: hsl(0, 0%, 50%);
+@darkBaseSdTClr: @darkBaseTClr;
+@darkBaseSdLClr: @darkBaseLClr;
+@darkBaseSdLHClr: @darkBaseLHClr;
+
+@darkBaseFoAClr: @darkBaseNvAClr;
+@darkBaseFoBClr: hsl(36, 97%, 62%);
+@darkBaseFoBgClr: @darkBaseNvBgClr;
+@darkBaseFoTClr: @darkBaseNvTClr;
+@darkBaseFoLClr: @darkBaseNvLClr;
+@darkBaseFoLHClr: @darkBaseNvLHClr;
+
+@darkBaseInAClr: @darkBaseAClr;
+@darkBaseInTClr: @darkBaseTClr;
+@darkBaseInHClr: @darkBaseLHClr;
+
+@darkBaseBtnAClr: @darkBaseAClr;
+@darkBaseBtnHClr: @darkBaseLHClr;
+@darkBaseBhBgClr: @darkBaseBtnBgClr;
+
+@darkBaseSEmailClr: hsl(216, 61%, 69%);
+@darkBaseSContactClr: hsl(216, 61%, 69%);
+@darkBaseSFacebookClr: hsl(221, 42%, 43%);
+@darkBaseSGithubClr: hsl(180, 3%, 94%);
+@darkBaseSGoogleClr: hsl(6, 69%, 61%);
+@darkBaseSLinkedinClr: hsl(212, 56%, 66%);
+@darkBaseSPinterestClr: hsl(4, 78%, 64%);
+@darkBaseSRedditClr: hsl(16, 100%, 60%);
+@darkBaseSRssClr: hsl(23, 93%, 69%);
+@darkBaseSSoundcloudClr: hsl(20, 100%, 60%);
+@darkBaseSStackOverflowClr: hsl(347, 100%, 60%);
+@darkBaseSTwitterClr: hsl(203, 69%, 69%);
+@darkBaseSMastodonClr: hsl(205, 100%, 64%);
+@darkBaseSDiasporaClr: hsl(0, 0%, 100%);
+@darkBaseSYoutubeClr: hsl(3, 76%, 60%);
+
+// High contrast dark colors
+@darkHighContrastBaseAClr: hsl(36, 97%, 62%);
+@darkHighContrastBaseSdA2Clr: hsl(36, 97%, 86%);
+@darkHighContrastBaseFClr: hsl(36, 97%, 43%);
+@darkHighContrastBaseBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseTClr: hsl(210, 29%, 98%);
+@darkHighContrastBaseT2Clr: hsl(210, 29%, 39.2%);
+@darkHighContrastBaseSdT2Clr: hsl(210, 29%, 100%);
+@darkHighContrastBaseTrClr: hsl(209, 27%, 98%);
+@darkHighContrastBaseBClr: hsl(211, 49%, 80%);
+@darkHighContrastBaseLClr: hsl(36, 97%, 60%);
+@darkHighContrastBaseLHClr: hsl(36, 97%, 72%);
+@darkHighContrastBaseArBgClr: hsl(0, 0%, 100%);
+
+@darkHighContrastBaseNvAClr: hsl(36, 97%, 92%);
+@darkHighContrastBaseNvBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseNvBClr: hsl(211, 49%, 73%);
+@darkHighContrastBaseNvTClr: hsl(211, 49%, 95%);
+@darkHighContrastBaseNvLClr: hsl(211, 49%, 95%);
+@darkHighContrastBaseNvLHClr: hsl(36, 97%, 82%);
+
+@darkHighContrastBaseInBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseInBClr: hsl(211, 49%, 93%);
+
+@darkHighContrastBaseBtnBgAClr: hsl(0, 0%, 10%);
+@darkHighContrastBaseBtnBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseBtnBClr: hsl(211, 49%, 83%);
+@darkHighContrastBaseBtnTClr: @darkHighContrastBaseTClr;
+
+@darkHighContrastBaseAaBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseAaBClr: hsl(0, 0%, 47%);
+@darkHighContrastBaseAaTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseAaLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseAaLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseAtBgClr: hsl(210, 20%, 0%);
+@darkHighContrastBaseAtBClr: hsl(153, 47%, 49%);
+@darkHighContrastBaseAtTClr: hsl(153, 47%, 90%);
+@darkHighContrastBaseAtLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseAtLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseAwBgClr: hsla(50, 100%, 0%, 0.3);
+@darkHighContrastBaseAwBClr: hsl(50, 100%, 45.5%);
+@darkHighContrastBaseAwTClr: hsl(50, 100%, 81%);
+@darkHighContrastBaseAwLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseAwLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseAdBgClr: hsl(0, 100%, 0%);
+@darkHighContrastBaseAdBClr: hsl(0, 100%, 40%);
+@darkHighContrastBaseAdTClr: hsl(0, 100%, 90%);
+@darkHighContrastBaseAdLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseAdLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseAsBgClr: @darkHighContrastBaseAtBgClr;
+@darkHighContrastBaseAsBClr: @darkHighContrastBaseAtBClr;
+@darkHighContrastBaseAsTClr: @darkHighContrastBaseAtTClr;
+@darkHighContrastBaseAsLClr: @darkHighContrastBaseAtLClr;
+@darkHighContrastBaseAsLHClr: @darkHighContrastBaseAtLHClr;
+
+@darkHighContrastBaseAhBgClr: @darkHighContrastBaseAtBgClr;
+@darkHighContrastBaseAhBClr: @darkHighContrastBaseAtBClr;
+@darkHighContrastBaseAhTClr: @darkHighContrastBaseAtTClr;
+@darkHighContrastBaseAhLClr: @darkHighContrastBaseAtLClr;
+@darkHighContrastBaseAhLHClr: @darkHighContrastBaseAtLHClr;
+
+@darkHighContrastBaseAiBgClr: hsl(207, 73%, 0%);
+@darkHighContrastBaseAiBClr: hsl(208, 77%, 65%);
+@darkHighContrastBaseAiTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseAiLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseAiLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseAnBgClr: @darkHighContrastBaseAiBgClr;
+@darkHighContrastBaseAnBClr: @darkHighContrastBaseAiBClr;
+@darkHighContrastBaseAnTClr: @darkHighContrastBaseAiTClr;
+@darkHighContrastBaseAnLClr: @darkHighContrastBaseAiLClr;
+@darkHighContrastBaseAnLHClr: @darkHighContrastBaseAiLHClr;
+
+@darkHighContrastBaseAcBgClr: @darkHighContrastBaseAwBgClr;
+@darkHighContrastBaseAcBClr: @darkHighContrastBaseAwBClr;
+@darkHighContrastBaseAcTClr: @darkHighContrastBaseAwTClr;
+@darkHighContrastBaseAcLClr: @darkHighContrastBaseAwLClr;
+@darkHighContrastBaseAcLHClr: @darkHighContrastBaseAwLHClr;
+
+@darkHighContrastBaseAeBgClr: @darkHighContrastBaseAdBgClr;
+@darkHighContrastBaseAeBClr: @darkHighContrastBaseAdBClr;
+@darkHighContrastBaseAeTClr: @darkHighContrastBaseAdTClr;
+@darkHighContrastBaseAeLClr: @darkHighContrastBaseAdLClr;
+@darkHighContrastBaseAeLHClr: @darkHighContrastBaseAdLHClr;
+
+@darkHighContrastBaseBqAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseBqBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseBqBClr: hsl(210, 10%, 49%);
+@darkHighContrastBaseBqTClr: hsl(0, 0%, 90%);
+@darkHighContrastBaseBqLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseBqLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseCdAClr: hsl(211, 49%, 85%);
+@darkHighContrastBaseCdBgAClr: hsl(211, 49%, 0%);
+@darkHighContrastBaseCdBgClr: @darkHighContrastBaseAaBgClr;
+@darkHighContrastBaseCdBClr: @darkHighContrastBaseAaBClr;
+@darkHighContrastBaseCdTClr: @darkHighContrastBaseAaTClr;
+@darkHighContrastBaseCdT2Clr: hsla(211, 29%, 98%, 0.4);
+@darkHighContrastBaseCdLClr: @darkHighContrastBaseAaLClr;
+@darkHighContrastBaseCdLHClr: @darkHighContrastBaseAaLHClr;
+@darkHighContrastBaseCdLnTClr: @darkHighContrastBaseFoTClr;
+@darkHighContrastBaseCdLnBClr: @darkHighContrastBaseFoBClr;
+@darkHighContrastBaseCdLnBgClr: @darkHighContrastBaseFoBgClr;
+
+@darkHighContrastBasePrAClr: @darkHighContrastBaseCdAClr;
+@darkHighContrastBasePrBgAClr: @darkHighContrastBaseCdBgAClr;
+@darkHighContrastBasePrBgClr: @darkHighContrastBaseCdBgClr;
+@darkHighContrastBasePrBClr: @darkHighContrastBaseCdBClr;
+@darkHighContrastBasePrB2Clr: hsla(0, 0%, 47%, 66%);
+@darkHighContrastBasePrTClr: @darkHighContrastBaseCdBgClr;
+@darkHighContrastBasePrLNClr: hsla(0, 0%, 0%, 0.3);
+@darkHighContrastBasePrLClr: @darkHighContrastBaseCdLClr;
+@darkHighContrastBasePrLHClr: @darkHighContrastBaseCdLHClr;
+
+@darkHighContrastBaseTeAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseTeBgAClr: hsl(211, 49%, 80%);
+@darkHighContrastBaseTeBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseTeBClr: hsl(210, 10%, 500%);
+@darkHighContrastBaseTeTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseTeLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseTeLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseToAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseToBgAClr: hsl(211, 49%, 0%);
+@darkHighContrastBaseToBgClr: hsl(0, 0%, 0%);
+@darkHighContrastBaseToBClr: hsl(210, 10%, 50%);
+@darkHighContrastBaseToTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseToLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseToLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseSdAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseSdBgClr: hsl(0, 0%, 2%);
+@darkHighContrastBaseSdBClr: hsl(0, 0%, 50%);
+@darkHighContrastBaseSdTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseSdLClr: @darkHighContrastBaseLClr;
+@darkHighContrastBaseSdLHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseFoAClr: @darkHighContrastBaseNvAClr;
+@darkHighContrastBaseFoBClr: hsl(36, 97%, 62%);
+@darkHighContrastBaseFoBgClr: @darkHighContrastBaseNvBgClr;
+@darkHighContrastBaseFoTClr: @darkHighContrastBaseNvTClr;
+@darkHighContrastBaseFoLClr: @darkHighContrastBaseNvLClr;
+@darkHighContrastBaseFoLHClr: @darkHighContrastBaseNvLHClr;
+
+@darkHighContrastBaseInAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseInTClr: @darkHighContrastBaseTClr;
+@darkHighContrastBaseInHClr: @darkHighContrastBaseLHClr;
+
+@darkHighContrastBaseBtnAClr: @darkHighContrastBaseAClr;
+@darkHighContrastBaseBtnHClr: @darkHighContrastBaseLHClr;
+@darkHighContrastBaseBhBgClr: @darkHighContrastBaseBtnBgClr;
+
+@darkHighContrastBaseSEmailClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSContactClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSFacebookClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSGithubClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSGoogleClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSLinkedinClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSPinterestClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSRedditClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSRssClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSSoundcloudClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSStackOverflowClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSTwitterClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSMastodonClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSDiasporaClr: hsl(209, 69%, 73%);
+@darkHighContrastBaseSYoutubeClr: hsl(209, 69%, 73%);
+
+// Print colors
+
+@printBaseAClr: @baseAClr;
+@printBaseSdA2Clr: @baseSdA2Clr;
+@printBaseFClr: @baseFClr;
+@printBaseBgClr: transparent;
+@printBaseTClr: black;
+@printBaseT2Clr: @baseT2Clr;
+@printBaseSdT2Clr: @baseSdT2Clr;
+@printBaseTrClr: @baseTrClr;
+@printBaseBClr: @baseBClr;
+@printBaseLClr: @printBaseAClr;
+@printBaseLHClr: @baseLHClr;
+@printBaseArBgClr: @baseArBgClr;
+
+@printBaseNvAClr: @baseNvAClr;
+@printBaseNvBgClr: white;
+@printBaseNvBClr: @baseNvBClr;
+@printBaseNvTClr: black;
+@printBaseNvLClr: @printBaseLClr;
+@printBaseNvLHClr: @baseNvLHClr;
+
+@printBaseInBgClr: @baseInBgClr;
+@printBaseInBClr: @baseInBClr;
+
+@printBaseBtnBgAClr: @baseBtnBgAClr;
+@printBaseBtnBgClr: @baseBtnBgClr;
+@printBaseBtnBClr: @baseBtnBClr;
+@printBaseBtnTClr: @printBaseTClr;
+
+@printBaseAaBgClr: @baseAaBgClr;
+@printBaseAaBClr: @baseAaBClr;
+@printBaseAaTClr: @printBaseTClr;
+@printBaseAaLClr: @printBaseLClr;
+@printBaseAaLHClr: @printBaseLHClr;
+
+@printBaseAtBgClr: @baseAtBgClr;
+@printBaseAtBClr: @baseAtBClr;
+@printBaseAtTClr: @baseAtTClr;
+@printBaseAtLClr: @printBaseLClr;
+@printBaseAtLHClr: @printBaseLHClr;
+
+@printBaseAwBgClr: @baseAwBgClr;
+@printBaseAwBClr: @baseAwBClr;
+@printBaseAwTClr: @baseAwTClr;
+@printBaseAwLClr: @printBaseLClr;
+@printBaseAwLHClr: @printBaseLHClr;
+
+@printBaseAdBgClr: @baseAdBgClr;
+@printBaseAdBClr: @baseAdBClr;
+@printBaseAdTClr: @baseAdTClr;
+@printBaseAdLClr: @printBaseLClr;
+@printBaseAdLHClr: @printBaseLHClr;
+
+@printBaseAsBgClr: @printBaseAtBgClr;
+@printBaseAsBClr: @printBaseAtBClr;
+@printBaseAsTClr: @printBaseAtTClr;
+@printBaseAsLClr: @printBaseAtLClr;
+@printBaseAsLHClr: @printBaseAtLHClr;
+
+@printBaseAhBgClr: @printBaseAtBgClr;
+@printBaseAhBClr: @printBaseAtBClr;
+@printBaseAhTClr: @printBaseAtTClr;
+@printBaseAhLClr: @printBaseAtLClr;
+@printBaseAhLHClr: @printBaseAtLHClr;
+
+@printBaseAiBgClr: @baseAiBgClr;
+@printBaseAiBClr: @baseAiBClr;
+@printBaseAiTClr: @printBaseTClr;
+@printBaseAiLClr: @printBaseLClr;
+@printBaseAiLHClr: @printBaseLHClr;
+
+@printBaseAnBgClr: @printBaseAiBgClr;
+@printBaseAnBClr: @printBaseAiBClr;
+@printBaseAnTClr: @printBaseAiTClr;
+@printBaseAnLClr: @printBaseAiLClr;
+@printBaseAnLHClr: @printBaseAiLHClr;
+
+@printBaseAcBgClr: @printBaseAwBgClr;
+@printBaseAcBClr: @printBaseAwBClr;
+@printBaseAcTClr: @printBaseAwTClr;
+@printBaseAcLClr: @printBaseAwLClr;
+@printBaseAcLHClr: @printBaseAwLHClr;
+
+@printBaseAeBgClr: @printBaseAdBgClr;
+@printBaseAeBClr: @printBaseAdBClr;
+@printBaseAeTClr: @printBaseAdTClr;
+@printBaseAeLClr: @printBaseAdLClr;
+@printBaseAeLHClr: @printBaseAdLHClr;
+
+@printBaseBqAClr: @printBaseAClr;
+@printBaseBqBgClr: @baseBqBgClr;
+@printBaseBqBClr: @baseBqBClr;
+@printBaseBqTClr: @baseBqTClr;
+@printBaseBqLClr: @printBaseLClr;
+@printBaseBqLHClr: @printBaseLHClr;
+
+@printBaseCdAClr: @baseCdAClr;
+@printBaseCdBgAClr: @baseCdBgAClr;
+@printBaseCdBgClr: @printBaseAaBgClr;
+@printBaseCdBClr: @printBaseAaBClr;
+@printBaseCdTClr: @printBaseAaTClr;
+@printBaseCdT2Clr: @baseCdT2Clr;
+@printBaseCdLClr: @printBaseAaLClr;
+@printBaseCdLHClr: @printBaseAaLHClr;
+@printBaseCdLnTClr: @printBaseFoTClr;
+@printBaseCdLnBClr: @printBaseFoBClr;
+@printBaseCdLnBgClr: @printBaseFoBgClr;
+
+
+@printBasePrAClr: @printBaseCdAClr;
+@printBasePrBgAClr: @printBaseCdBgAClr;
+@printBasePrBgClr: @printBaseCdBgClr;
+@printBasePrBClr: @printBaseCdBClr;
+@printBasePrB2Clr: @basePrB2Clr;
+@printBasePrTClr: @printBaseCdBgClr;
+@printBasePrLNClr: @basePrLNClr;
+@printBasePrLClr: @printBaseCdLClr;
+@printBasePrLHClr: @printBaseCdLHClr;
+
+@printBaseTeAClr: @printBaseAClr;
+@printBaseTeBgAClr: @baseTeBgAClr;
+@printBaseTeBgClr: @baseTeBgClr;
+@printBaseTeBClr: @baseTeBClr;
+@printBaseTeTClr: @printBaseTClr;
+@printBaseTeLClr: @printBaseLClr;
+@printBaseTeLHClr: @printBaseLHClr;
+
+@printBaseToAClr: @printBaseAClr;
+@printBaseToBgAClr: @baseToBgAClr;
+@printBaseToBgClr: @baseToBgClr;
+@printBaseToBClr: @baseToBClr;
+@printBaseToTClr: @printBaseTClr;
+@printBaseToLClr: @printBaseLClr;
+@printBaseToLHClr: @printBaseLHClr;
+
+@printBaseSdAClr: @printBaseAClr;
+@printBaseSdBgClr: @baseSdBgClr;
+@printBaseSdBClr: @baseSdBClr;
+@printBaseSdTClr: @printBaseTClr;
+@printBaseSdLClr: @printBaseLClr;
+@printBaseSdLHClr: @printBaseLHClr;
+
+@printBaseFoAClr: @printBaseNvAClr;
+@printBaseFoBClr: @baseFoBClr;
+@printBaseFoBgClr: @printBaseNvBgClr;
+@printBaseFoTClr: @printBaseNvTClr;
+@printBaseFoLClr: @printBaseNvLClr;
+@printBaseFoLHClr: @printBaseNvLHClr;
+
+@printBaseInAClr: @printBaseAClr;
+@printBaseInTClr: @printBaseTClr;
+@printBaseInHClr: @printBaseLHClr;
+
+@printBaseBtnAClr: @printBaseAClr;
+@printBaseBtnHClr: @printBaseLHClr;
+@printBaseBhBgClr: @printBaseBtnBgClr;
+
+@printBaseSEmailClr: @baseSEmailClr;
+@printBaseSContactClr: @baseSContactClr;
+@printBaseSFacebookClr: @baseSFacebookClr;
+@printBaseSGithubClr: @baseSGithubClr;
+@printBaseSGoogleClr: @baseSGoogleClr;
+@printBaseSLinkedinClr: @baseSLinkedinClr;
+@printBaseSPinterestClr: @baseSPinterestClr;
+@printBaseSRedditClr: @baseSRedditClr;
+@printBaseSRssClr: @baseSRssClr;
+@printBaseSSoundcloudClr: @baseSSoundcloudClr;
+@printBaseSStackOverflowClr: @baseSStackOverflowClr;
+@printBaseSTwitterClr: @baseSTwitterClr;
+@printBaseSMastodonClr: @baseSMastodonClr;
+@printBaseSDiasporaClr: @baseSDiasporaClr;
+@printBaseSYoutubeClr: @baseSYoutubeClr;
