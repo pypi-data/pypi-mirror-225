@@ -1,0 +1,317 @@
+:root {
+  --primary-color: rgb(255, 138, 221);
+    --primary-hover-color: #945080;
+    --table-head-color: #1a141a;
+    --databox-color: #181818;
+    --r-text-color: #ffffff;
+    --input-background-color: #1a1a1a;
+    --table-light: #3a363d;
+    --table-dark: #222023;
+    --button-color: #3a363d;
+    --background-color: #3a3a3a;
+}
+
+span {
+    color: var(--r-text-color);
+}
+.container-fluid {background-color: var(--background-color)
+}
+html {
+    background-color: var(--background-color);
+}
+
+body {
+        color: var(--r-text-color);
+}
+
+.headerBox {
+	text-align: center;
+}
+
+h4 {
+    text-align: center;
+    color: var(--r-text-color);
+}
+
+a {
+    color: var(--r-text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.databox {
+	background-color: var(--databox-color);
+	border-radius: 10px;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	padding: 2px;
+    box-shadow: 5px 5px 5px var(--table-dark);
+
+}
+
+.header-box {
+   border-radius: 0 !important;
+   border-color: var(--table-head-color) !important;
+}
+
+
+.Select-value {
+    background-color: var(--input-background-color);
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+.Select-value-label {
+    color: var(--r-text-color) !important;
+
+}
+
+.Select-menu-outer {
+    background-color: var(--input-background-color);
+    border: 0;
+    color: var(--r-text-color);
+}
+.Select-control {
+    border-radius: 5px !important;
+    background-color: var(--input-background-color) !important;
+    border-color: var(--input-background-color) !important;
+
+}
+
+
+
+.VirtualizedSelectOption {
+    color: var(--r-text-color);
+    background-color: var(--table-dark) !important;
+ }
+
+
+
+.VirtualizedSelectFocusedOption {
+    background-color:  var(--primary-hover-color) !important;
+}
+
+.equal-height-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.equal-height-column {
+  display: flex;
+  flex-direction: column;
+}
+.equal-height-column > * {
+  flex-grow: 1;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-light) !important;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-dark) !important;
+
+}
+tr:nth-child(even):hover{
+        background-color: var(--primary-hover-color) !important;
+}
+tr:nth-child(odd):hover{
+        background-color: var(--primary-hover-color) !important;
+}
+
+th {
+    background-color: var(--table-head-color) !important;
+    padding: 10px !important;
+
+
+}
+td {
+    background-color: rgba(0, 89, 255, 0) !important;
+    padding: 10px !important;
+
+}
+
+.dt-table-container__row-0 tr:first-of-type{
+    background-color: transparent !important;
+}
+
+th:first-of-type.dash-header  {
+  border-top-left-radius: 15px;
+}
+th:last-of-type.dash-header  {
+  border-top-right-radius: 10px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+.column-actions {
+    order: 9;
+    margin-left: 10px;
+}
+
+input {
+    color: var(--r-text-color) !important;
+    background-color: var(--input-background-color) !important;
+}
+
+th input{
+    background-color: transparent !important;
+}
+
+.column-header-name {
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dash-filter input:hover{
+    color: var(--r-text-color) !important;
+
+}
+
+#tbl .dash-filter .input{
+    color: var(--r-text-color) !important;
+
+}
+
+#permutation-nr input {
+    height: 100% !important;
+    border-radius: 5px !important;
+    border-color: red !important;
+}
+
+#tbl th.dash-filter {
+    border-color: transparent !important;
+    border-width: 0 !important;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner input:not([type=radio]):not([type=checkbox]):hover{
+    color: var(--primary-color) !important;
+}
+th span{
+    color: white !important;
+}
+
+th input{
+    color: white !important;
+}
+
+.dash-header {
+    color: var(--r-text-color) !important;
+
+}
+
+.first-page, .previous-page, .next-page, .last-page {
+    border-radius: 5px;
+}
+
+.first-page:enabled path, .previous-page:enabled path, .next-page:enabled path, .last-page:enabled path {
+    fill: white;
+}
+
+.first-page:hover:enabled path, .previous-page:hover:enabled path, .next-page:hover:enabled path, .last-page:hover:enabled path {
+    fill: var(--primary-color);
+}
+
+input.current-page, input.current-page::placeholder {
+    color: var(--r-text-color) !important;
+}
+
+.Select-control {
+    color: var(--r-text-color)
+}
+.Select-placeholder {
+    color: var(--r-text-color)
+}
+
+.btn-primary {
+    background-color: var(--button-color);
+    border-color:  var(--button-color);
+    color: var(--r-text-color)
+}
+
+#replicate-mode .daq-booleanswitch--light__background {
+    background-color: var(--primary-color) !important;
+}
+
+.daq-booleanswitch--light__background {
+    background-color: var(--r-text-color) !important;
+}
+
+.btn-primary:hover {
+    color: var(--r-text-color);
+    background-color:  var(--primary-hover-color);
+    border-color:  var(--primary-hover-color); /*set the color you want here*/
+}
+
+.btn-primary:active {
+    background-color:  var(--primary-color) !important;
+    border-color:  var(--primary-color) !important; /*set the color you want here*/
+}
+
+.alert {
+    margin: 0;
+}
+
+
+.rc-slider-track {
+  background-color: var(--primary-color) !important;
+}
+
+.rc-slider-mark-text {
+    color: var(--r-text-color);
+}
+
+.rc-slider-dot-active {
+  border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.rc-slider-handle {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.rc-slider-handle:hover {
+  border-color: var(--primary-color) !important;
+}
+
+.rc-slider-handle-active:active {
+  border-color: red;
+}
+
+
+#distribution-graph .hovertext rect {
+  fill: var(--table-dark) !important;
+}
+
+.alert-msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 999999 !important;
+    font-size: 1.5em;
+}
+
+.daq-colorpicker--light__container {
+    border: 0 solid !important;
+}
+
+.chrome-picker {
+    background-color: transparent !important;
+    border: 0 solid !important;
+}
+
+.dash-filter--case {
+    border-color: var(--primary-color) !important;
+}
