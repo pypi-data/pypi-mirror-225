@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: gridtools-cpp
+Version: 2.3.1
+Home-page: https://gridtools.github.io
+Author: ETH Zurich
+Author-email: gridtools@cscs.ch
+Project-URL: Source Code, https://github.com/GridTools/gridtools
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8
+
+<a href="https://GridTools.github.io/gridtools"><img src="https://raw.githubusercontent.com/GridTools/gridtools/gh-pages/v1.0/_static/logo.svg"/></a>
+
+# Python package for GridTools headers and CMake files
+
+## Usage
+
+Use the following when compiling C++ code with GridTools programmatically from Python.
+Either by calling a compiler directly or by generating a CMake project and calling CMake on it.
+
+```python
+import gridtools_cpp
+include_dir = gridtools_cpp.get_include_dir()   # header files can be found here
+cmake_dir = gridtools_cpp.get_cmake_dir()       # cmake files can be found here
+```
+
