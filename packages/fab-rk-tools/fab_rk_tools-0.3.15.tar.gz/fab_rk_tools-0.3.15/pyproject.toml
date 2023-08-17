@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "fab-rk-tools"
+version = "0.3.15"
+description = "Common tools and utilities for RK graphs"
+authors = ["Optimeering AS <dev@optimeering.com>"]
+packages = [
+    {include = "fab_rk_tools"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+pandas = "*"
+numpy = "*"
+plotly = "*"
+archimedes-python-client = "*"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.14.1"
+isort = "^5.10.1"
+black = "23.7.0"
+notebook = "*"
+coverage = "*"
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
