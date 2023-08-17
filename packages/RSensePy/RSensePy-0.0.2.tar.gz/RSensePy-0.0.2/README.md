@@ -1,0 +1,141 @@
+**Satellite Image Index Calculation Python Package**
+
+![Vegetation Index Calculation](https://i.ibb.co/mHsrnRt/package-logo.png)
+
+Welcome to the Vegetation Index Calculation Python Package! This package provides advanced features for calculating various vegetation indices from satellite imagery, allowing users to efficiently analyze vegetation patterns and dynamics. Whether you are a researcher, a data scientist, or an environmental enthusiast, this package will empower you to gain valuable insights into vegetation health and distribution.
+
+## Features
+
+- **Wide Range of Vegetation Indices:** The package offers a comprehensive selection of popular vegetation indices, including NDVI (Normalized Difference Vegetation Index), EVI (Enhanced Vegetation Index), SAVI (Soil Adjusted Vegetation Index), and more. Each index has been carefully implemented to ensure accurate and reliable results.
+
+- **Batch Processing:** The package is designed for efficiency, allowing you to process large batches of satellite images in parallel. This feature significantly speeds up the analysis and enhances productivity.
+
+- **Visualization Tools:** Visualize the calculated vegetation indices using built-in plotting functions. These visualizations aid in understanding the spatial distribution and temporal changes of vegetation in the study area.
+
+- **Data Preprocessing:** The package offers data preprocessing utilities, including AOI masking and cloud masking, to ensure the quality of input satellite imagery before index calculation.
+
+## Installation
+
+To install the Vegetation Index Calculation package, you can use pip:
+
+```bash
+pip install RSensePy
+```
+
+## Getting Started
+
+Once the package is installed, check out the [example notebook](https://github.com/richiedlon/SoftwareDevProject/RSensePy_example.ipynb) to get started with vegetation index calculation and visualization. The notebook provides step-by-step guidance on loading satellite imagery, calculating vegetation indices, and generating informative visualizations.
+
+```python
+import RSensePy
+RSensePy.help()
+
+# Create RSensePy Image Object
+RSensePyObj = RSensePy.L8("path//to//the//Landsat8//Image//Folder")
+```
+## Getting Image Metadata
+Once the RSensePy object created users can get meta data by calling the meta function.
+```python
+RSensePyObj.meta()
+```
+
+## Index calculation basics
+### Features
+
+- **Cloud Masking:** RSensePy incorporates cloud masking capabilities, allowing accurate NDVI computation by accounting for cloudy regions within satellite imagery.
+
+- **Save Location:** Users can conveniently specify the directory where computed NDVI outputs will be saved, promoting organized data management and easy access for further analysis.
+
+- **AOI Integration:** The package seamlessly integrates shapefiles or Bounding box for targeted analysis. By providing a shapefile location, users can focus computation on specific geographic regions, enhancing analysis precision.
+
+- **Optional Visualization:** RSensePy provides an optional visualization feature, enabling users to visualize the calculated NDVI outputs spatially and gain insights into vegetation health distribution in grayscale.
+
+- **Custom normalized difference calculation:** RSensePy provides an optional visualization feature, enabling users to visualize the calculated NDVI outputs spatially and gain insights into vegetation health distribution in grayscale.
+
+```python
+# Clip the Image with external shapefile
+# If cloud masking is required, set the cloud parameter to True, else False
+# If visualization is required, set the visualise parameter to True, else False
+RSensePyObj.NDVI(cloud=True, save_location="output/Location/path", shp_location="shapefile/location/path", visualise=False)
+```
+```python
+# Clip the Image with bounding box coordinated
+# bbox = [minX, minY, maxX, maxY]
+bbox = [13.490206, 48.3355,14.076421, 48.007881]
+RSensePyObj.NDVI(cloud=True, save_location="output/Location/path", bbcoord=bbox, visualise=False)
+```
+## Supported Indices and Object Methods
+
+- **Normalized Difference Vegetation Index (NDVI):** `NDVI()`
+- **Enhanced Vegetation Index (EVI):** `EVI()`
+- **Normalized Difference Water Index (NDWI):** `NDWI()`
+- **Normalized Burn Ratio (NBR):** `NBR()`
+- **Normalized Difference Built-Up Index (NDBI):** `NDBI()`
+- **Green Normalized Difference Vegetation Index (GNDVI):** `GNDVI()`
+- **Green Leaf Index (GLI):** `GLI()`
+- **Soil Adjusted Vegetation Index (SAVI):** `SAVI()`
+- **Green Soil Adjusted Vegetation Index (GSAVI):** `GSAVI()`
+- **Green Chlorophyll Index (GLI):** `GLI()`
+- **Visible Atmospherically Resistant Index (VARI):** `VARI()`
+
+## Example Usage
+
+```python
+import RSensePy
+
+# Load image and initialize ImageObject (similar to previous example)
+image = RSensePy.L8("path//to//the//Landsat8//Image//Folder")
+
+# Calculate NDVI using RSensePy
+image.NDVI(cloud=True, save_location=output_location, shp_location=shapefile_location, visualise=False)
+
+# Calculate EVI using RSensePy
+image.EVI(cloud=True, save_location=output_location, shp_location=shapefile_location, visualise=False)
+
+# Calculate NDWI using RSensePy
+image.NDWI(cloud=True, save_location=output_location, shp_location=shapefile_location, visualise=False)
+
+# ... Repeat for other indices ...
+```
+
+## Calculate Normalised Difference between two bands
+Below example shows how to calculate normalised difference between band 4 and band 5
+```python
+import RSensePy
+# Access individual Landsat bands using object attributes
+band1 = RSensePyObj.b1
+band2 = RSensePyObj.b2
+...
+...
+band6 = RSensePyObj.b6
+band7 = RSensePyObj.b7
+
+RSensePyObj.norm_dif(cloud=True, save_location=output/Location/path,shp_location=shapefile/location/path, band1= RSensePyObj.b4, band2= RSensePyObj.b5, visualise=True)
+```
+
+## Get capabilities of the RSensePy
+Provide information about which Indexes can be calculated. Note - At the moment only Landsat 8 images are supported.
+```python
+import RSensePy
+RSensePy.getCapabilities()
+```
+
+
+
+## Contributing
+
+We welcome contributions from the community! If you would like to contribute to the package, please contact the developers for more information.
+
+## Bug Reports and Support
+
+If you encounter any issues or have questions regarding the package, please submit a bug report or question in the [Issues](https://github.com/richiedlon/SoftwareDevProject/issues) section of this repository.
+
+## License
+
+Copyright (c) 2023, E.M.R.D Ekanayaka - Opeyemi Kazim
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
