@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: sql-llm
+Version: 0.0.1
+Summary: A playground for SQL and LLMs
+Author-email: Jeremy Dyer <jdye64@gmail.com>
+Project-URL: Homepage, https://github.com/jdye64/sql-llm
+Project-URL: Bug Tracker, https://github.com/jdye64/sql-llm/issues
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Classifier: Topic :: Scientific/Engineering
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# sql-llm
+Playground for all things SQL and LLM
+
+Poke around with:
+- llm-rs

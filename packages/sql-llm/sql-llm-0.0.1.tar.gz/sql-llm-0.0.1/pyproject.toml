@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sql-llm"
+version = "0.0.1"
+authors = [
+  { name="Jeremy Dyer", email="jdye64@gmail.com" },
+]
+description = "A playground for SQL and LLMs"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/jdye64/sql-llm"
+"Bug Tracker" = "https://github.com/jdye64/sql-llm/issues"
