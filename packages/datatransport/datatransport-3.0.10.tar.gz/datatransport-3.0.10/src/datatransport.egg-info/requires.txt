@@ -1,0 +1,14 @@
+python-dateutil
+pytimeparse2
+sapphire_config
+texttable
+
+[:python_version < "3.10"]
+importlib_resources>1.3
+
+[devel]
+black
+build
+pyfakefs
+pylint
+pytest
