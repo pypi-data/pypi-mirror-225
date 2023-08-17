@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: NLPWash
+Version: 0.0.1
+Summary: NLP Package to perform preprocessing on text data in one line
+Home-page: https://github.com/Hiten-98/NLPWash/tree/main
+Author: Hiten Mandaliya
+Author-email: hitenmandaliya562@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# NLPWash
+
+To play with text data lots of cleaning is required which includes
+1. Normalization
+2. Removing hyperlinks
+3. Removing HTML tags
+4. Removing punctuation
+5. Tokenization
+6. Removing stopwords
+7. Stemming 
+8. Lemmatization
+
+Using NLPWash this all can be done in just 1 line of code
+
+# Installation
+
+```
+pip install NLPWash
+```
+
+Example codes are present in test directory
+
