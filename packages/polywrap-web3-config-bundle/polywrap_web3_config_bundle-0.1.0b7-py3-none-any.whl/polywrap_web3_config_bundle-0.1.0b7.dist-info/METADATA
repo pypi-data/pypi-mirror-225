@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: polywrap-web3-config-bundle
+Version: 0.1.0b7
+Summary: Polywrap Web3 Client Config Bundle
+Author: Niraj
+Author-email: niraj@polywrap.io
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: polywrap-client-config-builder (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-core (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-ethereum-provider (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-manifest (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-sys-config-bundle (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-uri-resolvers (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-wasm (>=0.1.0b7,<0.2.0)
+Description-Content-Type: text/x-rst
+
+Polywrap Web3 Config Bundle
+===========================
+This package contains the system configuration bundle for Polywrap Client.
+
+Bundled Wraps
+-------------
+
+.. csv-table::
+    :header: "wrap", "description"
+
+    "http", "To make HTTP requests"
+    "ipfs_http_client", "To add or retrieve items from IPFS"
+    "ipfs_resolver", "To fetch wraps from IPFS"
+    "ethereum_provider", "To perform ethereum RPC calls"
+    "ethereum-wrapper", "A higher level API to perform ethereum operations (like etheres.js)"
+    "ens_text_record_resolver", "To resolve URIs from ens text record"
+    "ens_ipfs_contenthash_resolver", "To resolve URIs from ens content hash"
+    "ens_resolver", "To resolve URIs from ens"
+
+Quickstart
+----------
+
+Imports
+~~~~~~~
+
+>>> from polywrap_client_config_builder import PolywrapClientConfigBuilder
+>>> from polywrap_web3_config_bundle import web3_bundle
+>>> from polywrap_client import PolywrapClient
+>>> from polywrap_core import Uri, UriPackage
+
+Configure
+~~~~~~~~~
+
+>>> config = PolywrapClientConfigBuilder().add_bundle(web3_bundle).build()
+>>> client = PolywrapClient(config)
+
+Resolve URI with bundled ens resolver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+>>> response = client.try_resolve_uri(
+...     Uri.from_str("wrap://ens/wrap-link.eth")
+... )
+>>> assert isinstance(response, UriPackage)
+
