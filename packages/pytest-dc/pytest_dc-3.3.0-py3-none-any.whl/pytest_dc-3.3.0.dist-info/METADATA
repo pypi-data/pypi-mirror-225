@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: pytest-dc
+Version: 3.3.0
+Summary: Manages Docker containers during your integration tests
+Home-page: https://github.com/pytest-docker-compose/pytest-docker-compose
+Author: Roald Storm
+Author-email: roaldstorm@gmail.com
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Pytest
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Testing
+License-File: LICENSE
+Requires-Dist: docker-compose
+Requires-Dist: pytest >=3.3
+
