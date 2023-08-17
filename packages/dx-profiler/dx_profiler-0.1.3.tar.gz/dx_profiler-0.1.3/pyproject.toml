@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "dx-profiler"
+version = "0.1.3"
+description = "Profile Dx App"
+authors = ["SangHyeukYoon <shyoon@snuailab.ai>"]
+readme = "README.md"
+packages = [{include = "dx_profiler"}, {include = "proto_py"}, {include = "inference"}, {include = "player"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+grpcio = "^1.56.2"
+grpcio-tools = "^1.56.2"
+nats-py = "^2.3.1"
+opencv-python-headless = "^4.8.0.74"
+typer = {extras = ["all"], version = "^0.9.0"}
+pyqt5 = "^5.15.9"
+tqdm = "^4.65.2"
+
+[tool.poetry.scripts]
+dx-profiler = "dx_profiler.cli:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[virtualenvs]
+create = true
+in-project = true
