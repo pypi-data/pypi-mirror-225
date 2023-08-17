@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+objectutils/__init__.py
+objectutils/class_wrapper.py
+objectutils/main.py
+objectutils/single_dispatch.py
+objectutils/traverse.py
+objectutils.egg-info/PKG-INFO
+objectutils.egg-info/SOURCES.txt
+objectutils.egg-info/dependency_links.txt
+objectutils.egg-info/top_level.txt
+tests/test_traverse.py
+tests/test_traverse_singledispatch.py
