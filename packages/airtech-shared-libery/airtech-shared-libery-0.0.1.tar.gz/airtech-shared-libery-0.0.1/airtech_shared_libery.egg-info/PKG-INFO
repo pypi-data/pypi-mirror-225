@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: airtech-shared-libery
+Version: 0.0.1
+Summary: Minha biblioteca compartilhada
+Author: Airtech
+License: MIT
+License-File: LICENCE
+
+# PostgreSQLConnection
+
+The PostgreSQLConnection class is a class for establishing and managing connections to a PostgreSQL database. It uses the psycopg2 library to connect to the database and provides methods for executing SQL queries and managing transactions.
+
+Example Usage
+
+## Create a PostgreSQLConnection object
+
+```bash
+conn = PostgreSQLConnection('localhost', 'test_db', 'test_user', 'test_password')
+```
+
+## Execute a SQL query
+
+```bash
+result = conn.execute_query('SELECT * FROM test_table')
+```
+
+## Fetch the results of the query
+
+```bash
+rows = conn.fetch_results(result)
+```
+
+## Close the connection
+
+```bash
+conn.close()
+```
+
+Full Explanation
+The PostgreSQLConnection class is designed to simplify the process of connecting to a PostgreSQL database and executing SQL queries. It uses the psycopg2 library, which is a PostgreSQL adapter for Python, to establish the connection.
+
+The class has four attributes: host, database, user, and password, which store the connection details for the database. It also has a connection_pool attribute, which is an instance of the psycopg2.pool.SimpleConnectionPool class. This connection pool allows for efficient management of database connections by reusing existing connections instead of creating new ones.
+
+The __init__ method is the constructor of the class. It takes the connection details as arguments and initializes the attributes accordingly. It also creates the connection pool object using the SimpleConnectionPool class from psycopg2.pool. The minconn argument specifies the minimum number of connections in the pool, and the maxconn argument specifies the maximum number of connections.
+
+The class provides several methods for interacting with the database. The execute_query method takes an SQL query as an argument and executes it using a connection from the connection pool. It returns the result of the query, which can be used to fetch the results using the fetch_results method.
+
+The fetch_results method takes a result object as an argument and fetches all the rows from the result. It returns a list of tuples, where each tuple represents a row in the result.
+
+The close method closes the connection to the database and returns it to the connection pool.
+
+Overall, the PostgreSQLConnection class provides a convenient and efficient way to connect to a PostgreSQL database, execute SQL queries, and manage transactions.
