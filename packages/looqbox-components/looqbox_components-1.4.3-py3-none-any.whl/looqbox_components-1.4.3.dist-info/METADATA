@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: looqbox-components
+Version: 1.4.3
+Summary: A looqbox package with most used visual components templates
+Home-page: https://github.com/looqbox/python-visual-components
+Author: Looqbox
+Author-email: admin@looqbox.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: looqbox (>=3.14.0)
+Requires-Dist: boto3 (>=1.24.45)
+Requires-Dist: botocore (>=1.27.45)
+Requires-Dist: certifi (>=2022.6.15)
+Requires-Dist: charset-normalizer (>=2.1.0)
+Requires-Dist: idna (>=3.3)
+Requires-Dist: jmespath (>=1.0.1)
+Requires-Dist: pip (>=22.2.2)
+Requires-Dist: python-dateutil (>=2.8.2)
+Requires-Dist: requests (>=2.28.1)
+Requires-Dist: s3transfer (>=0.6.0)
+Requires-Dist: setuptools (>=63.4.1)
+Requires-Dist: six (>=1.16.0)
+Requires-Dist: urllib3 (>=1.26.11)
+Requires-Dist: wheel (>=0.37.1)
+Requires-Dist: multipledispatch (>=0.6.0)
+Requires-Dist: multimethod (>=1.4)
+
