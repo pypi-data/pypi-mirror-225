@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>parityos_addons &mdash; ParityOS 2.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="parityos.encodings" href="encodings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ParityOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom_device_models.html">Making a custom device model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asynchronous_submission.html">Asynchronous submissions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parity_decoder.html">The Parity Decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Solving Optimization Problems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="parityos.html">parityos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">parityos.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_interface.html">parityos.api_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encodings.html">parityos.encodings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">parityos_addons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.interfaces.CirqExporter"><code class="docutils literal notranslate"><span class="pre">CirqExporter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.CirqExporter.__init__"><code class="docutils literal notranslate"><span class="pre">CirqExporter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.CirqExporter.gate_to_cirq"><code class="docutils literal notranslate"><span class="pre">CirqExporter.gate_to_cirq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.CirqExporter.to_cirq"><code class="docutils literal notranslate"><span class="pre">CirqExporter.to_cirq()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.interfaces.QiskitExporter"><code class="docutils literal notranslate"><span class="pre">QiskitExporter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.QiskitExporter.__init__"><code class="docutils literal notranslate"><span class="pre">QiskitExporter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.QiskitExporter.gate_to_qiskit"><code class="docutils literal notranslate"><span class="pre">QiskitExporter.gate_to_qiskit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parityos_addons.interfaces.QiskitExporter.to_qiskit"><code class="docutils literal notranslate"><span class="pre">QiskitExporter.to_qiskit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.qaoa.generate_qaoa"><code class="docutils literal notranslate"><span class="pre">generate_qaoa()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.spin_hamiltonians.SpinZ"><code class="docutils literal notranslate"><span class="pre">SpinZ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.spin_hamiltonians.spinz_to_constraint"><code class="docutils literal notranslate"><span class="pre">spinz_to_constraint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.spin_hamiltonians.spinz_to_hamiltonian"><code class="docutils literal notranslate"><span class="pre">spinz_to_hamiltonian()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parityos_addons.spin_hamiltonians.untie_spinz_product"><code class="docutils literal notranslate"><span class="pre">untie_spinz_product()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ParityOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">parityos_addons</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_reference/parityos_addons.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-parityos_addons.interfaces">
+<span id="parityos-addons"></span><h1>parityos_addons<a class="headerlink" href="#module-parityos_addons.interfaces" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.CirqExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">parityos_addons.interfaces.</span></span><span class="sig-name descname"><span class="pre">CirqExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">NamedQubit</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parityos_addons.interfaces.CirqExporter" title="Permalink to this definition"></a></dt>
+<dd><p>Tool to convert ParityOS circuits to Cirq circuits.</p>
+<p>Instantiate the CirqExporter with a qubit map and a parameter map.
+Then use the <cite>to_cirq</cite> method to convert ParityOS circuits to Cirq circuits.</p>
+<dl class="simple">
+<dt>EXAMPLE:</dt><dd><p>qubit_map = {Qubit(i): cirq.NamedQubit(str(i)) for i in range(10)}
+parameter_map = {‘theta’: sympy.Symbol(‘theta’), ‘gamma’: sympy.Symbol(‘gamma’)}
+cirq_exporter = CirqExporter(qubit_map, parameter_map)
+cirq_circuit = cirq_exporter.to_cirq(parityos_circuit)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.CirqExporter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">NamedQubit</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parityos_addons.interfaces.CirqExporter.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the circuit to a cirq circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter_map</strong> – a mapping of the form {parameter_name: parameter_value}, where the
+parameter_name is a string that is used as a parameter_name in the ParityOS circuit,
+and parameter_value is a number like object (int, float, numpy float or a Sympy symbol
+are all valid). Optional.  If not given, then an empty dictionary is used instead.</p></li>
+<li><p><strong>qubit_map</strong> – a mapping of the form {ParityOS_qubit: cirq_qubit}, where cirq_qubit is a
+Cirq NamedQubit instance. Optional. If not given, then ParityOS Qubits are automatically
+converted into cirq.NamedQubit instances with the same label.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.CirqExporter.gate_to_cirq">
+<span class="sig-name descname"><span class="pre">gate_to_cirq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="base.html#parityos.base.gates.Gate" title="parityos.base.gates.Gate"><span class="pre">Gate</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GateOperation</span></span></span><a class="headerlink" href="#parityos_addons.interfaces.CirqExporter.gate_to_cirq" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a gate to a Cirq gate operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gate</strong> – a ParityOS gate instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a Cirq gate operation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.CirqExporter.to_cirq">
+<span class="sig-name descname"><span class="pre">to_cirq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="base.html#parityos.base.gates.Gate" title="parityos.base.gates.Gate"><span class="pre">Gate</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="base.html#parityos.base.circuit.Circuit" title="parityos.base.circuit.Circuit"><span class="pre">Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Circuit</span></span></span><a class="headerlink" href="#parityos_addons.interfaces.CirqExporter.to_cirq" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the circuit to a Cirq circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>circuit</strong> – a ParityOS circuit of quantum gates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a Cirq circuit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.QiskitExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">parityos_addons.interfaces.</span></span><span class="sig-name descname"><span class="pre">QiskitExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parityos_addons.interfaces.QiskitExporter" title="Permalink to this definition"></a></dt>
+<dd><p>Tool to convert ParityOS circuits to Qiskit quantum circuits.</p>
+<p>Instantiate the QiskitExporter with a qubit map and a parameter map.
+Then use the <cite>to_qiskit</cite> method to convert a ParityOS circuit to Qiskit quantum circuit.</p>
+<dl class="simple">
+<dt>EXAMPLE:</dt><dd><p>from qiskit.circuit import Parameter
+parameter_map = {‘theta’: Parameter(‘$theta$’), ‘gamma’: Parameter(‘$gamma$’)}
+qiskit_exporter = QiskitExporter(parameter_map)
+qiskit_circuit = qiskit_exporter.to_qiskit(parityos_circuit)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.QiskitExporter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parityos_addons.interfaces.QiskitExporter.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the circuit to a Qiskit circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter_map</strong> – a mapping of the form {parameter_name: parameter_value}, where the
+parameter_name is a string that is used as a parameter_name in the ParityOS circuit,
+and parameter_value is a number like object (int, float, numpy float or a Qiskit
+Parameter object are all valid). Optional. If not given, then an empty dictionary is
+used instead.</p></li>
+<li><p><strong>qubit_map</strong> – a mapping of the form {ParityOS_qubit: qubit_index}, where qubit_index is
+the integer index of the qubit in the Qiskit qubit register. Optional.</p></li>
+<li><p><strong>qubits</strong> – an iterable of ParityOS qubits. This is used to generate a qubit_map where
+each qubit is mapped onto its index in the sequence. Optional.
+Either a <cite>qubit_map</cite> or a <cite>qubits</cite> iterable must be given.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.QiskitExporter.gate_to_qiskit">
+<span class="sig-name descname"><span class="pre">gate_to_qiskit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gate</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Gate</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#parityos_addons.interfaces.QiskitExporter.gate_to_qiskit" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a gate to a (Qiskit instruction, qubit_indices) tuple.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gate</strong> – a ParityOS gate instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a (Qiskit instruction, qubit_indices) tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="parityos_addons.interfaces.QiskitExporter.to_qiskit">
+<span class="sig-name descname"><span class="pre">to_qiskit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="base.html#parityos.base.gates.Gate" title="parityos.base.gates.Gate"><span class="pre">Gate</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="base.html#parityos.base.circuit.Circuit" title="parityos.base.circuit.Circuit"><span class="pre">Circuit</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QuantumCircuit</span></span></span><a class="headerlink" href="#parityos_addons.interfaces.QiskitExporter.to_qiskit" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the circuit to a Qiskit quantum circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>circuit</strong> – a ParityOS circuit of quantum gates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a Qiskit QuantumCircuit object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-parityos_addons.qaoa"></span><dl class="py function">
+<dt class="sig sig-object py" id="parityos_addons.qaoa.generate_qaoa">
+<span class="sig-prename descclassname"><span class="pre">parityos_addons.qaoa.</span></span><span class="sig-name descname"><span class="pre">generate_qaoa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parityos_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="parityos.html#parityos.ParityOSOutput" title="parityos.encodings.parityos_output.ParityOSOutput"><span class="pre">ParityOSOutput</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unitary_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="base.html#parityos.base.circuit.Circuit" title="parityos.base.circuit.Circuit"><span class="pre">Circuit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#parityos_addons.qaoa.generate_qaoa" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a QAOA quantum circuit and a dictionary with parameter bounds.
+The QAOA quantum circuit is composed of several unitary propagators, related to the problem
+Hamiltonian, driver terms and Parity constraints. The parameter bounds dictionary maps
+the parameter names used in the quantum circuit onto a (lower bound, upper bound) tuple of
+floats for each classical QAOA parameter in the QAOA circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parityos_output</strong> (<a class="reference internal" href="parityos.html#parityos.ParityOSOutput" title="parityos.ParityOSOutput"><em>ParityOSOutput</em></a>) – <p>The compiler output as an object of ParityOSOutput,
+containing information about the compiled problem and the raw constraint circuit,
+as defined in the response schema.
+Assumptions:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>the device has only 2-body connections;</p></li>
+<li><p>the interaction coefficients are explicit numbers, not strings.</p></li>
+</ol>
+</div></blockquote>
+</p></li>
+<li><p><strong>unitary_pattern</strong> (<em>str</em>) – <p>the pattern of unitaries to use in each repetition.  Should be a
+string with the following characters:</p>
+<blockquote>
+<div><ul>
+<li><p>Z: the problem Hamiltonian</p></li>
+<li><p>X: the driver Hamiltonian</p></li>
+<li><p>C: the constraint Hamiltonian</p></li>
+</ul>
+</div></blockquote>
+<p>The string is expressed in time order, from left to right.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Example:</dt><dd><p>To create a ParityOS QAOA circuit of order p=3, create the circuit from a ParityOSOutput
+object with a unitary_pattern of order 3:
+qaoa_circuit, parameter_bounds = generate_qaoa(parityos_output, ‘XCZXCZXCZ’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-parityos_addons.spin_hamiltonians"></span><dl class="py class">
+<dt class="sig sig-object py" id="parityos_addons.spin_hamiltonians.SpinZ">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">parityos_addons.spin_hamiltonians.</span></span><span class="sig-name descname"><span class="pre">SpinZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Hashable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parityos_addons.spin_hamiltonians.SpinZ" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a classical Ising spin value (+1 or -1) or the Z-eigenvalue of a Pauli Z operator.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parityos_addons.spin_hamiltonians.spinz_to_constraint">
+<span class="sig-prename descclassname"><span class="pre">parityos_addons.spin_hamiltonians.</span></span><span class="sig-name descname"><span class="pre">spinz_to_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mul</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="base.html#parityos.base.constraints.EqualityConstraint" title="parityos.base.constraints.EqualityConstraint"><span class="pre">EqualityConstraint</span></a></span></span><a class="headerlink" href="#parityos_addons.spin_hamiltonians.spinz_to_constraint" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a product of SpinZ objects into an EqualityConstraint object
+:param product: product of SpinZ objects and an optional integer factor that is +1 or -1.
+:return: an EqualityConstraint object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parityos_addons.spin_hamiltonians.spinz_to_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">parityos_addons.spin_hamiltonians.</span></span><span class="sig-name descname"><span class="pre">spinz_to_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Add</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Mul</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spinz_constraints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="parityos.html#parityos.ProblemRepresentation" title="parityos.base.problem_representation.ProblemRepresentation"><span class="pre">ProblemRepresentation</span></a></span></span><a class="headerlink" href="#parityos_addons.spin_hamiltonians.spinz_to_hamiltonian" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an expression containing sums of products of SpinZ objects into a ParityOS problem
+representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – an expression containing sums of products of SpinZ objects</p></li>
+<li><p><strong>spinz_constraints</strong> – an iterable of products of SpinZ objects that define additional
+constraints for the optimization problem.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a ProblemRepresentation object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parityos_addons.spin_hamiltonians.untie_spinz_product">
+<span class="sig-prename descclassname"><span class="pre">parityos_addons.spin_hamiltonians.</span></span><span class="sig-name descname"><span class="pre">untie_spinz_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mul</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">FrozenSet</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="parityos.html#parityos.Qubit" title="parityos.base.qubits.Qubit"><span class="pre">Qubit</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#parityos_addons.spin_hamiltonians.untie_spinz_product" title="Permalink to this definition"></a></dt>
+<dd><p>Spilt a product of spinz and other factors into a pure product of SpinZ object and the product
+of all the remaining factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>product</strong> – A product of SpinZ objects and other Sympy objects or numbers</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a tuple where the first item is the product of SpinZ objects and the second item
+is the product of all the other factors in the term</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="encodings.html" class="btn btn-neutral float-left" title="parityos.encodings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Parity Quantum Computing GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
