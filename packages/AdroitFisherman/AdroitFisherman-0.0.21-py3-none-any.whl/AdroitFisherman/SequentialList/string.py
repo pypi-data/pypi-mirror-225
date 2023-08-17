@@ -1,0 +1,43 @@
+import ctypes
+class SequentialList_string():
+    def __init__(self):
+        self.__list=ctypes.cdll.LoadLibrary("./Libraries/SequentialList_string.dll")
+    def set_capacity(self,size):
+        set_capacity=self.__list.set_capacity
+        set_capacity.argtypes=[ctypes.c_int]
+        set_capacity(size)
+    def init_list(self):
+        init_list=self.__list.init_list
+        init_list.restype=ctypes.c_bool
+        return init_list()
+    def destroy_list(self):
+        destroy_list=self.__list.destroy_list
+        destroy_list()
+    def clear_list(self):
+        clear_list=self.__list.clear_list
+        clear_list()
+    def list_empty(self):
+        list_empty=self.__list.list_empty
+        list_empty.restype=ctypes.c_bool
+        return list_empty()
+    def list_length(self):
+        list_length=self.__list.list_length
+        list_length.restype=ctypes.c_int
+        return list_length()
+    def get_elem(self,index):
+        get_elem=self.__list.get_elem
+        get_elem.argtypes=[ctypes.c_int]
+        get_elem.restype=ctypes.c_char_p
+        return ctypes.c_char_p(get_elem(index)).value
+    def list_insert(self,index,elem):
+        list_insert=self.__list.list_insert
+        list_insert.argtypes=[ctypes.c_int,ctypes.c_char_p]
+        list_insert.restype=ctypes.c_bool
+        return list_insert(index,elem)
+    def list_delete(self,index):
+        list_delete=self.__list.list_delete
+        list_delete.argtypes=[ctypes.c_int]
+        list_delete.restype=ctypes.c_bool
+        return list_delete(index)
+    def traverse_list(self):
+        self.__list.traverse_list()
