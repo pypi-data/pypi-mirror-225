@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: causal-testing-framework
+Version: 5.2.1
+Summary: A framework for causal testing using causal directed acyclic graphs.
+Author: The CITCOM team
+License: MIT
+Project-URL: Bug_Tracker, https://github.com/CITCOM-project/CausalTestingFramework/issues
+Project-URL: Documentation, https://causal-testing-framework.readthedocs.io/
+Project-URL: Source, https://github.com/CITCOM-project/CausalTestingFramework
+Keywords: causal inference,verification
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: z3-solver ~=4.11.2
+Requires-Dist: econml ~=0.12
+Requires-Dist: fitter ~=1.4
+Requires-Dist: lhsmdu ~=1.1
+Requires-Dist: networkx ~=2.6
+Requires-Dist: numpy ~=1.23
+Requires-Dist: pandas ~=1.3
+Requires-Dist: scikit-learn ~=1.1
+Requires-Dist: scipy ~=1.7
+Requires-Dist: statsmodels ~=0.13
+Requires-Dist: tabulate ~=0.8
+Requires-Dist: pydot ~=1.4
+Provides-Extra: dev
+Requires-Dist: autopep8 ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: autoapi ; extra == 'dev'
+Requires-Dist: myst-parser ; extra == 'dev'
+Requires-Dist: sphinx-autoapi ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: covasim ~=3.0.7 ; extra == 'test'
+
+# Causal Testing Framework: A Causal Inference-Driven Software Testing Framework
+
+![example workflow](https://github.com/CITCOM-project/CausalTestingFramework/actions/workflows/ci-tests.yaml/badge.svg) [![codecov](https://codecov.io/gh/CITCOM-project/CausalTestingFramework/branch/main/graph/badge.svg?token=04ijFVrb4a)](https://codecov.io/gh/CITCOM-project/CausalTestingFramework) [![Documentation Status](https://readthedocs.org/projects/causal-testing-framework/badge/?version=latest)](https://causal-testing-framework.readthedocs.io/en/latest/?badge=latest)
+
+Causal testing is a causal inference-driven framework for functional black-box testing. This framework utilises
+graphical causal inference (CI) techniques for the specification and functional testing of software from a black-box
+perspective. In this framework, we use causal directed acyclic graphs (DAGs) to express the anticipated cause-effect
+relationships amongst the inputs and outputs of the system-under-test and the supporting mathematical framework to
+design statistical procedures capable of making causal inferences. Each causal test case focuses on the causal effect of
+an intervention made to the system-under test. That is, a prescribed change to the input configuration of the
+system-under-test that is expected to cause a change to some output(s).
+
+![Causal Testing Workflow](images/workflow.png)
+
+
+## Installation
+
+See the readthedocs site for [installation
+instructions](https://causal-testing-framework.readthedocs.io/en/latest/installation.html).
+
+## Documentation
+
+Further information on causal inference, the code, usage and more can be found on the [docs](https://causal-testing-framework.readthedocs.io/en/latest/)
