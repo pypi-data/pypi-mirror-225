@@ -1,0 +1,330 @@
+\chapter{The \texttt{results} command}
+\label{results-command}
+
+This chapter provides the subcommand [[results]], which lists the results of a 
+course.
+The purpose of the listing is to export results from Canvas.
+The format of the listing is compatible with the \texttt{ladok3} 
+package\footnote{%
+  URL: \url{https://github.com/dbosk/ladok3}
+}.
+
+\section{The [[results]] subcommand and its options}
+
+We outline the module:
+<<results.py>>=
+import canvaslms.cli
+from canvaslms.cli import assignments, courses, submissions, users
+import canvaslms.hacks.canvasapi
+
+import argparse
+import csv
+import canvasapi.submission
+import datetime as dt
+import importlib
+import importlib.machinery
+import importlib.util
+import os
+import pathlib
+import re
+import sys
+
+<<functions>>
+
+def add_command(subp):
+  """Adds the results command to argparse parser subp"""
+  <<add results command to subp>>
+@
+
+We add the subparser for [[results]].
+The command requires two arguments: course and assignment.
+We also want the option to filter on users.
+We can add these by using [[add_assignment_option]], however, we don't need the 
+ungraded flag as we want to export results (\ie graded material).
+Also, we can just add the [[add_user_or_group_option]] to be able to filter on 
+users or groups.
+<<add results command to subp>>=
+results_parser = subp.add_parser("results",
+    help="Lists results of a course",
+    description="""<<results command description>>""",
+    epilog="""<<results command epilog>>""")
+results_parser.set_defaults(func=results_command)
+assignments.add_assignment_option(results_parser, ungraded=False)
+users.add_user_or_group_option(results_parser)
+<<add option for custom summary module>>
+<<add option to include Fs>>
+@
+
+Let's summarize what we want to do.
+<<results command description>>=
+Lists results of a course for export, for instance to the `ladok report` 
+command. Output format, CSV:
+
+  <course code> <component code> <student ID> <grade> <grade date> <graders ...>
+<<results command epilog>>=
+If you specify an assignment group, the results of the assignments in that 
+group will be summarized. You can supply your own function for summarizing 
+grades through the -S option. See `pydoc3 canvaslms.grades` for different 
+options.
+@ We will cover the option for and loading of the custom summary module later, 
+in \cref{custom-summary-modules}.
+
+Now, that [[results_command]] function must take three arguments: [[config]], 
+[[canvas]] and [[args]].
+However, unlike the other commands, we don't want to do the processing for the 
+assignment options using [[process_assignment_option]].
+We want to handle that ourselves, because we want slightly different handling.
+<<functions>>=
+def results_command(config, canvas, args):
+  <<get results and print them>>
+@
+
+Now we'd simply like to print the results.
+The user provides us with a set of courses and a set of assignments or 
+assignment groups in those courses.
+If the user provides assignment groups, we will automatically summarize the 
+results of all assignments in the assignment group.
+
+We will create a list of results, where each result is a tuple (actually a 
+list, since the length might vary).
+These tuples will then be printed in CSV format to standard output.
+<<get results and print them>>=
+output = csv.writer(sys.stdout, delimiter=args.delimiter)
+
+if args.assignment_group != "":
+  results = summarize_assignment_groups(canvas, args)
+else:
+  results = summarize_assignments(canvas, args)
+
+for result in results:
+  <<filter if [[result]] contains an F and we don't want to include those>>
+  output.writerow(result)
+@
+
+We also let the user choose to not include Fs in the output.
+<<add option to include Fs>>=
+results_parser.add_argument("-F", "--include-Fs",
+  required=False, default=False, action="store_true",
+  help="Include failing grades (Fs) in output. By default we only output "
+    "A--Es and Ps.")
+@
+
+The grade is the third element of the results list.
+If we check the first letter of the grade we can detect both F and Fx.
+<<filter if [[result]] contains an F and we don't want to include those>>=
+if not args.include_Fs and result[3][0] == "F":
+  continue
+@
+
+
+\section{Summarizing assignment results}
+
+In this case, we want to have one assignment per row in the output.
+We want to output course, assignment, student ID, grade, submission date and 
+those who participated in the grading.
+
+We first get the list of courses.
+We do this to then get the list of all users in all courses.
+We need these to get the integration ID, that can be used for LADOK for 
+example.
+
+Then we get the list of assignments in all courses.
+We get the submissions for each assignment.
+These submissions are filtered by user.
+We do this because this attaches a [[user]] attribute to each submissions with 
+the details of each user.
+This gives a trivial [[yield]] statement at the end.
+<<functions>>=
+def summarize_assignments(canvas, args):
+  """
+  Turn submissions into results:
+  - canvas is a Canvas object,
+  - args is the command-line arguments, as parsed by argparse.
+  """
+
+  <<create [[submissions_list]]>>
+
+  for submission in submissions_list:
+    if submission.grade is not None:
+      yield [
+        submission.assignment.course.course_code,
+        submission.assignment.name,
+        submission.user.integration_id,
+        submission.grade,
+        round_to_day(submission.submitted_at or submission.graded_at),
+        *all_graders(submission)
+      ]
+@
+
+To create the list of submissions, [[submissions_list]], we have to do the 
+following.
+First need to list the courses.
+For each course we need to get all the users (students).
+Then, for each course, we also need all the assignments.
+When we have the assignments, we can get the submissions.
+Fortunately, we can use the filtering functions provided by the [[courses]], 
+[[assignments]] and [[submissions]] modules.
+They will parse the CLI arguments and generate the lists.
+<<create [[submissions_list]]>>=
+assignments_list = assignments.process_assignment_option(canvas, args)
+users_list = users.process_user_or_group_option(canvas, args)
+
+submissions_list = submissions.filter_submissions(
+  submissions.list_submissions(assignments_list,
+                               include=["submission_history"]),
+  users_list)
+@
+
+\section{Fixing the dates}
+
+We want the grade date to be a date, not the timestamp supplied by Canvas.
+For instance, LADOK wants dates, not timestamps.
+<<functions>>=
+def round_to_day(timestamp):
+  """
+  Takes a Canvas timestamp and returns the corresponding datetime.date object.
+  """
+  return dt.date.fromisoformat(timestamp.split("T")[0])
+@
+
+\section{Getting all graders for a submission}
+
+We need all graders who participated in the grading, meaning also those who 
+previously graded (since the last grader might just complement it).
+<<functions>>=
+def all_graders(submission):
+  """
+  Returns a list of everyone who participated in the grading of the submission. 
+  I.e. also those who graded previous submissions, when submission history is 
+  available.
+  """
+  graders = []
+
+  for prev_submission in submission.submission_history:
+    <<turn [[prev_submission]] into [[Submission]] object>>
+    <<append [[prev_submission]]'s grader to [[graders]]>>
+
+  return graders
+@
+
+To make the code easier, we'll turn the [[submission_history]] data into 
+[[Submission]] objects.
+We also want to keep the added [[.assignment]] attribute, since we'll use it 
+later.
+<<turn [[prev_submission]] into [[Submission]] object>>=
+prev_submission = canvasapi.submission.Submission(
+  submission._requester, prev_submission)
+prev_submission.assignment = submission.assignment
+@
+
+Now, we'd like to extract the grader.
+We'll get the grader's Canvas user ID, so we'll need to resolve it to an actual 
+user.
+Fortunately, we can use the [[resolve_grader]] function from the 
+[[submissions]] module to do all the work.
+<<append [[prev_submission]]'s grader to [[graders]]>>=
+grader = submissions.resolve_grader(prev_submission)
+if grader:
+  graders.append(grader)
+@
+
+
+\section{Summarizing assignment group results}
+
+In this case, we want to have one assignment group per row in the output.
+We want to output course, assignment group, student ID, summarized grade based 
+on all assignments in the group and the latest submission date.
+
+Unlike the previous case, here we must maintain the structure of which 
+assignments belong to which assignment group so that we can check easily that a 
+user has passed all assignments in the group.
+<<functions>>=
+def summarize_assignment_groups(canvas, args):
+  """
+  Summarize assignment groups into a single grade:
+  - canvas is a Canvas object,
+  - args is the command-line arguments, as parsed by argparse.
+  """
+
+  <<load the correct summary module as [[summary]]>>
+
+  courses_list = courses.process_course_option(canvas, args)
+  all_assignments = list(assignments.process_assignment_option(canvas, args))
+  users_list = list(users.process_user_or_group_option(canvas, args))
+
+  for course in courses_list:
+    ag_list = assignments.filter_assignment_groups(
+      course, args.assignment_group)
+
+    for assignment_group in ag_list:
+      assignments_list = list(assignments.filter_assignments_by_group(
+        assignment_group, all_assignments))
+      for user, grade, grade_date, *graders in summary.summarize_group(
+        assignments_list, users_list):
+          <<check if we should skip based on [[grade]]>>
+          yield [
+            course.course_code,
+            assignment_group.name,
+            user.integration_id,
+            grade,
+            grade_date,
+            *graders
+          ]
+@ We will now cover the [[summarize_group]] function in the [[summary]] module.
+
+If a student hasn't done anything, the grade and date will be [[None]].
+There is no point in including this in the result.
+<<check if we should skip based on [[grade]]>>=
+if grade is None or grade_date is None:
+  continue
+@
+
+\subsection{Loading a custom summary module}
+\label{custom-summary-modules}
+
+Different teachers have different policies for merging several assignments into 
+one grade.
+We now want to provide a way to override the default function.
+<<summary module option doc>>=
+Name of Python module or file containing module to load with a custom 
+summarization function to summarize assignment groups. The default module is 
+part of the `canvaslms` package: `{default_summary_module}`. But it could be 
+any Python file in the file system or other built-in modules. See `pydoc3 
+canvaslms.grades` for alternative modules or how to build your own.
+<<add option for custom summary module>>=
+default_summary_module = "canvaslms.grades.conjunctavg"
+results_parser.add_argument("-S", "--summary-module",
+  required=False, default=default_summary_module,
+  help=f"""<<summary module option doc>>""")
+@
+
+Now, let's load the module into the identifier [[summary]] for the above code.
+This is a very dangerous construction.
+An attacker can potentially load their own module and have it execute when 
+reporting grades.
+For instance, a malicious module could change grades, \eg always set 
+A's.
+
+Now to the loader, we first try to load a system module, then we look for a 
+module in the current working directory.
+<<load the correct summary module as [[summary]]>>=
+try:
+  summary = importlib.import_module(args.summary_module)
+except ModuleNotFoundError:
+  module_path = pathlib.Path.cwd() / args.summary_module
+  module = module_path.stem
+
+  try:
+    loader = importlib.machinery.SourceFileLoader(
+      module, str(module_path))
+    spec = importlib.util.spec_from_loader(module, loader)
+    summary = importlib.util.module_from_spec(spec)
+    loader.exec_module(summary)
+  except Exception as err:
+    canvaslms.cli.err(1, f"Error loading summary module "
+      f"'{args.summary_module}': {err}")
+@
+
+The available summary functions and the default one can be found in 
+\cref{summary-modules}.
+
