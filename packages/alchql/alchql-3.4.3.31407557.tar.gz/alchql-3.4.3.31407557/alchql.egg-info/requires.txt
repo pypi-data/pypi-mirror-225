@@ -1,0 +1,17 @@
+graphene>=3.0
+promise>=2.3
+SQLAlchemy<2,>=1.4
+aiodataloader==0.4
+protobuf
+setuptools>v62.1.0
+
+[test]
+pytest<7.0,>=6.2.0
+coverage[toml]
+starlette
+sqlalchemy_utils<1.0,>=0.37.0
+pytest-benchmark<4.0,>=3.4.0
+pytest-asyncio<0.18,>=0.17.2
+aiosqlite<0.18,>=0.17.0
+pytest-cov
+starlette_graphene3
