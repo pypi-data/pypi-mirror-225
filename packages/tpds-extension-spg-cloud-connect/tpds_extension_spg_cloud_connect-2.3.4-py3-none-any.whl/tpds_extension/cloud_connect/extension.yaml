@@ -1,0 +1,158 @@
+name: spg_cloud_connect
+
+frontend:
+  entrypoints:
+    - name: aws_custom_pki
+      title: AWS Custom PKI
+      description: ""
+      entry: TrustFlex/AWS Connect-Custom PKI-TFLEX.ipynb
+      icon:
+        name: aws_png
+        path: TrustFlex/assets/images/AWS.png
+      applications:
+        - IoT
+        - AWS
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320118
+    - name: aws_mchp_pki
+      title: AWS IoT Authentication
+      entry: TrustFlex/AWS Connect-IoT Auth-TFLEX.ipynb
+      description: ""
+      icon:
+        name: aws_png
+        path: TrustFlex/assets/images/AWS.png
+      applications:
+        - IoT
+        - AWS
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320118
+    - name: azure_custom_pki
+      title: Azure Custom PKI
+      description: ""
+      entry: TrustFlex/Azure Connect-Custom PKI-TFLEX.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320118
+    - name: azure_mchp_pki
+      title: Azure IoT Authentication
+      description: ""
+      entry: TrustFlex/Azure Connect-IoT Auth-TFLEX.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320118
+    - name: azure_RTOS
+      title: Azure RTOS
+      description: ""
+      entry: TrustFlex/Azure Connect-RTOS-TFLEX.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - ATSAME54-XPRO    
+    - name: gcp_custom_pki
+      title: GCP Custom PKI
+      description: ""
+      entry: TrustFlex/Google Connect-Custom PKI-TFLEX.ipynb
+      icon:
+        name: gcp_png
+        path: TrustFlex/assets/images/GCP.png
+      applications:
+        - IoT
+        - GCP
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320109
+    - name: gcp_mchp_pki
+      title: GCP IoT Authentication
+      description: ""
+      entry: TrustFlex/Google Connect-IoT Auth-TFLEX.ipynb
+      icon:
+        name: gcp_png
+        path: TrustFlex/assets/images/GCP.png
+      applications:
+        - IoT
+        - GCP
+      devices:
+        - ATECC608B-TFLXTLS
+      boards:
+        - DM320109
+    - name: aws_tng
+      title: AWS IoT Authentication
+      description: ""
+      entry: TrustnGo/AWS Connect-IoT Auth-TNG.ipynb
+      icon:
+        name: aws_png
+        path: TrustFlex/assets/images/AWS.png
+      applications:
+        - IoT
+        - AWS
+      devices:
+        - ATECC608B-TNGTLS
+      boards:
+        - DM320118
+    - name: azure_tng
+      title: Azure IoT Authentication
+      description: ""
+      entry: TrustnGo/Azure Connect-IoT Auth-TNG.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - ATECC608B-TNGTLS
+      boards:
+        - DM320118
+    - name: azure_Rtos
+      title: Azure RTOS
+      description: ""
+      entry: TrustnGo/Azure Connect-RTOS-TNG.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - ATECC608B-TNGTLS
+      boards:
+        - ATSAME54-XPRO    
+    - name: gcp_tng
+      title: GCP IoT Authentication
+      description: ""
+      entry: TrustnGo/Google Connect-IoT Auth-TNG.ipynb
+      icon:
+        name: gcp_png
+        path: TrustFlex/assets/images/GCP.png
+      applications:
+        - IoT
+        - GCP
+      devices:
+        - ATECC608B-TNGTLS
+      boards:
+        - DM320118

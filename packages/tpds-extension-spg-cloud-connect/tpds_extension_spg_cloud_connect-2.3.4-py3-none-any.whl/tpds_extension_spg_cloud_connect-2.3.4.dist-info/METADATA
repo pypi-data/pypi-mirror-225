@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: tpds-extension-spg-cloud-connect
+Version: 2.3.4
+Summary: Microchip(SPG) Trust Platform - Cloud Connection Usecases
+Home-page: https://www.microchip.com/TrustPlatform
+Author: Microchip Technology
+Author-email: SPG.Tools@microchip.com
+Classifier: License :: Other/Proprietary License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: all
+Requires-Dist: boto3[crt] ; extra == 'all'
+Requires-Dist: google-cloud-iot ; extra == 'all'
+Requires-Dist: google-cloud-pubsub ; extra == 'all'
+Requires-Dist: azure-iot-hub ; extra == 'all'
+Requires-Dist: azure-identity ; extra == 'all'
+Requires-Dist: azure-mgmt-iothub ; extra == 'all'
+Requires-Dist: azure-iot-device ; extra == 'all'
+Requires-Dist: azure-iothub-provisioningserviceclient ; extra == 'all'
+Requires-Dist: azure-mgmt-iothubprovisioningservices ; extra == 'all'
+Requires-Dist: azure-mgmt-resource ; extra == 'all'
+Requires-Dist: awscli ; extra == 'all'
+Provides-Extra: aws
+Requires-Dist: boto3[crt] ; extra == 'aws'
+Requires-Dist: awscli ; extra == 'aws'
+Provides-Extra: azure
+Requires-Dist: azure-iot-hub ; extra == 'azure'
+Requires-Dist: azure-identity ; extra == 'azure'
+Requires-Dist: azure-mgmt-iothub ; extra == 'azure'
+Requires-Dist: azure-iot-device ; extra == 'azure'
+Requires-Dist: azure-iothub-provisioningserviceclient ; extra == 'azure'
+Requires-Dist: azure-mgmt-iothubprovisioningservices ; extra == 'azure'
+Requires-Dist: azure-mgmt-resource ; extra == 'azure'
+Provides-Extra: gcp
+Requires-Dist: google-cloud-iot ; extra == 'gcp'
+Requires-Dist: google-cloud-pubsub ; extra == 'gcp'
+
+Cloud Connectivity Use cases for Trust Platform Design Suite
+===============================================================================
