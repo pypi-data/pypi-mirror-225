@@ -1,0 +1,63 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-repl"
+version = "1.0.1"
+authors = [
+    {name = "Sebastiano Mariani", email = "mariani.sebastiano@gmail.com"},
+]
+description = "A REPL for ChatGPT"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+
+]
+requires-python = ">=3.10"
+
+dependencies = [
+  "prompt_toolkit",
+  "rich",
+  "langchain==0.0.261",
+  "openai",
+  "pydantic",
+  "websockets",
+  "fastapi",
+  "uvicorn",
+  "pinecone-client",
+  "jinja2",
+  "sse_starlette"
+]
+
+[project.optional-dependencies]
+DEV = [
+  "pylint",
+  "ipdb",
+  "black",
+  "pytest",
+  "mypy",
+  "pre-commit",
+]
+
+[project.urls]
+homepage = "https://github.com/Phat3/LLM-Repl"
+repository = "https://github.com/Phat3/LLM-Repl.git"
+
+[tool.pylint.master]
+ignored-modules = ""
+disable = """
+W1514,F0010,useless-super-delegation,E1103,W0108,W0404,R0904,R0922,W0105,
+W0142,C0301,C0321,C0322,C0324,R,W0232,E1001,W0212,W0703,C,I0011,I0012,I0013,E0012,W0511"""
+
+[project.scripts]
+llm-repl = "llm_repl.__main__:main"
+
+[tool.setuptools.package-data]
+"llm_repl.data.chatgpt.personalities" = ["*.yml"]
