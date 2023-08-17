@@ -1,0 +1,127 @@
+Metadata-Version: 2.1
+Name: sh40-carmine
+Version: 0.3.5
+Summary: The no-boilerplate CLI library powered by Python's introspection.
+Project-URL: Documentation, https://github.com/shade40/carmine#readme
+Project-URL: Issues, https://github.com/shade40/carmine/issues
+Project-URL: Source, https://github.com/shade40/carmine
+Author-email: bczsalba <bczsalba@gmail.com>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: griffe
+Requires-Dist: sh40-slate
+Requires-Dist: sh40-zenith
+Description-Content-Type: text/markdown
+
+![carmine](https://singlecolorimage.com/get/D70040/1600x200)
+
+## carmine
+
+The no-boilerplate CLI library powered by Python's introspection.
+
+```
+pip install sh40-carmine
+```
+
+![rule](https://singlecolorimage.com/get/D70040/1600x5)
+
+### the context
+
+CLIs (command line interfaces) are one of Python's longest standing issues. The builtin solution, `argparse`, is hard to understand & reason about, and doesn't even follow Python's own conventions in multiple places.
+
+Alternative solutions often feel redundant and force you to define arguments twice - once in the function's definition, and another time as an CLI option. 
+
+Turns out, there's a better solution
+
+### the solution
+
+`carmine` reads your functions signatures _directly_, removing the need to manually define option types. It also (optionally) uses type hints to automatically convert arguments given to the CLI to the types you expect them to be. All this is done with no modification to the syntax!
+
+```python
+"""My Carmine app."""
+
+import sys
+from carmine import carmine_cli, Choice
+
+def hello(name: str, *, age: int) -> None:
+    """Says hello!
+
+    Args:
+        name: Your name.
+        age: Your age.
+    """
+
+    print(f"Hello {name}, are you {age} years old?")
+
+def goodbye(name: str, duration: Choice("for now", "forever")) -> None:
+    """Says goodbye!
+
+    Args:
+        name: Your name.
+        age: How long you're gonna leave for.
+    """
+
+    print(f"It's been nice knowing you, {name}!", end="")
+
+    if duration == "for now":
+        print("See you soon!")
+    else:
+        print("Eh, you'll be back soon enough.")
+
+def main(argv: list[str] | sys.argv) -> None:
+    """Runs the application."""
+
+    with carmine_cli(__doc__, argv) as register:
+        register(hello, goodbye)
+```
+
+<img>
+
+### single-command mode
+
+Not every app needs to have multiple commands. If your app only registers one thing, `carmine` will no longer require a command selection, which keeps things cleaner.
+
+```python
+"""My (simple) Carmine app.
+
+This docstring won't be used in the help, as the sole command's overrules it.
+"""
+
+import sys
+from carmine import carmine_cli, Choice
+
+
+def multiply(a: int, b: int, *, power: bool = False) -> None:
+    """Multiplies two numbers.
+
+    Args:
+        a: The first number.
+        b: The second number.
+        power: Interpret `b` as a power, rather than a factor.
+    """
+
+    result = a ** b if power else a * b
+    print(result)
+
+def main(argv: list[str] | sys.argv) -> None:
+    """Runs the application."""
+
+    with carmine_cli(__doc__, argv) as register:
+        register(multiply)
+```
+
+<img>
+
+![rule](https://singlecolorimage.com/get/D70040/1600x5)
+
+### examples
