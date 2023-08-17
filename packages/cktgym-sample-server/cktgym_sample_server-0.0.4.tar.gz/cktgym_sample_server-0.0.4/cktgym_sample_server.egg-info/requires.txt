@@ -1,0 +1,13 @@
+hdl21>=4.0.0
+scipy==1.10.1
+python-dotenv==1.0.0
+cktgym_discovery_server
+cktgym_sample_shared
+
+[dev]
+pytest==7.1
+coverage
+pytest-cov
+pre-commit==2.20
+black==22.6
+twine
