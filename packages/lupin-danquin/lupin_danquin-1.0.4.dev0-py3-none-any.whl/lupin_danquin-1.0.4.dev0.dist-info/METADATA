@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: lupin-danquin
+Version: 1.0.4.dev0
+Summary: Testing - Documentation
+License: MIT License
+Keywords: documentation,testing
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Information Technology
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Documentation
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+License-File: LICENCE
+Requires-Dist: typer[all] ==0.6.1
+Requires-Dist: python-dotenv ==0.21.0
+Requires-Dist: Jinja2 ==3.1.2
+Provides-Extra: test
+Requires-Dist: pytest ==7.2.2 ; extra == 'test'
+Requires-Dist: flake8 ==6.0.0 ; extra == 'test'
+
+Test VAL3 code and generate documentation from it
