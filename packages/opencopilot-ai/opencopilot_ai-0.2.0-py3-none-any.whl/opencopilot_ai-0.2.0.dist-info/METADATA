@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: opencopilot-ai
+Version: 0.2.0
+Summary: OpenCopilot Backend
+Home-page: https://github.com/opencopilotdev/opencopilot
+Author: OpenCopilot
+Author-email: kaspar@nftport.xyz
+License: MIT
+License-File: LICENCE.txt
+Requires-Dist: fastapi ==0.95.1
+Requires-Dist: psycopg2-binary ==2.9.6
+Requires-Dist: python-dotenv ==1.0.0
+Requires-Dist: python-json-logger ==2.0.7
+Requires-Dist: sqlalchemy ==2.0.1
+Requires-Dist: uvicorn ==0.21.1
+Requires-Dist: pandas ==1.5.3
+Requires-Dist: pexpect ==4.8.0
+Requires-Dist: gunicorn ==20.1.0
+Requires-Dist: langchain ==0.0.236
+Requires-Dist: passlib ==1.7.4
+Requires-Dist: pyjwt[crypto] ===2.6.0
+Requires-Dist: Jinja2 ==3.1.2
+Requires-Dist: tiktoken ==0.4.0
+Requires-Dist: text-generation ==0.6.0
+Requires-Dist: weaviate-client ==3.19.2
+Requires-Dist: pytest ==7.3.1
+Requires-Dist: pytest-cov ==4.1.0
+Requires-Dist: pytest-asyncio ==0.21.0
+Requires-Dist: pypdf ==3.9.1
+Requires-Dist: unstructured ==0.7.2
+Requires-Dist: pdf2image ==1.16.3
+Requires-Dist: sentence-transformers ==2.2.2
+Requires-Dist: matplotlib ==3.7.1
+Requires-Dist: beautifulsoup4 ==4.12.2
+Requires-Dist: openai ==0.27.8
+Requires-Dist: wandb ==0.15.4
+Requires-Dist: streamlit ==1.24.0
+Requires-Dist: playwright ==1.35.0
+Requires-Dist: dataclasses-json ==0.5.9
+Requires-Dist: omegaconf ==2.3.0
+Requires-Dist: GitPython ==3.1.31
+Requires-Dist: pytesseract ==0.3.10
+Requires-Dist: aiohttp ==3.8.5
+Requires-Dist: xxhash ==3.3.0
+
