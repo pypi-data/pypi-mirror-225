@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "rich-tables"
+version = "0.3.0"
+description = "Ready-made rich tables for various purposes"
+authors = ["Šarūnas Nejus <snejus@pm.me>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/snejus/rich-tables"
+repository = "https://github.com/snejus/rich-tables"
+
+packages = [{ from = "src", include = "rich_tables" }]
+
+keywords = ["json", "pretty", "rich", "console", "terminal"]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Intended Audience :: System Administrators",
+  "Operating System :: OS Independent",
+  "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4"
+
+rich = ">=12.3.0"
+multimethod = "*"
+
+rgbxy = { version = ">=0.5", optional = true }
+sqlparse = { version = "^0.4.4", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+flake8 = ">=4.0.1"
+mypy = ">=0.910"
+pylint = ">=2.13.7"
+
+pytest = ">=7"
+pytest-clarity = ">=1.0.1"
+pytest-cov = ">=3.0.0"
+pytest-sugar = "*"
+freezegun = ">=1.2.1"
+
+types-six = ">=1.16.2"
+types-freezegun = ">=1.1.9"
+flake8-mypy = ">=17.8.0"
+coveralls = ">=3.3.1"
+
+[tool.poetry.extras]
+hue = ["rgbxy"]
+sql = ["sqlparse"]
+
+[tool.poetry.scripts]
+table = "rich_tables.table:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
