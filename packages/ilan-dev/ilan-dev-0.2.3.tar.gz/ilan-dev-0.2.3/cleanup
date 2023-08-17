@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+import os
+import string
+from argparse import ArgumentParser
+from fnmatch import fnmatch
+from os.path import basename, join, isfile, isdir
+
+
+ASCII_ONLY = False
+VERBOSE = False
+
+# file extensions which are cleaned when using the -r option
+FILE_EXT = ('.py', '.txt', '.c', '.h', '.pyx', '.pyi', '.sh',
+            '.yml', '.yaml', '.md', '.rst', '.md', '.xml')
+
+# directories being ignored
+IGNORE_DIRS = ('.git', '__pycache__', '*.egg-info')
+
+
+def cleanup(data, expand_tabs=True):
+    if data == '':
+        return ''
+
+    data = data.replace('\r', '')
+    data = '\n'.join(line.rstrip() for line in data.split('\n'))
+    if expand_tabs:
+        data = data.expandtabs()
+
+    if ASCII_ONLY:
+        allowed = set(string.printable)
+        data = ''.join(c for c in data if c in allowed)
+
+    # make sure we have newline at the end
+    if not data.endswith('\n'):
+        data += '\n'
+
+    return data
+
+
+def clean_file(path):
+    if VERBOSE:
+        print(path)
+    if not isfile(path):
+        print("Ignoring non-existing file: %s" % path)
+        return
+
+    with open(path, 'r') as fi:
+        old_data = fi.read()
+
+    new_data = cleanup(old_data, 'makefile' not in basename(path).lower())
+
+    if new_data == old_data:
+        return
+
+    print("Rewriting %s" % path)
+    with open(path, 'w') as fo:
+        fo.write(new_data)
+
+
+def clean_dir(dir_path):
+    if not isdir(dir_path):
+        print("Not a directory: %s" % dir_path)
+        return
+
+    for root, dirs, files in os.walk(dir_path):
+        for dn in list(dirs):
+            if any(fnmatch(dn, pat) for pat in IGNORE_DIRS):
+                dirs.remove(dn)
+
+        for fn in files:
+            if fn.endswith(FILE_EXT):
+                path = join(root, fn)
+                clean_file(path)
+
+
+def main():
+    p = ArgumentParser(description=("""
+Cleanup whitespace in FILE, that is:
+(a) remove carriage returns
+(b) remove excess whitespace at the end of each line
+(c) expand tabs (to 8 spaces), but not in a Makefile
+(d) make sure file has a newline at the end
+"""))
+    p.add_argument("--ascii-only", action="store_true",
+                   help="allow only ASCII bytes (removes others)")
+
+    p.add_argument('-r', "--recur", action="store_true",
+                   help="cleanup recursively")
+
+    p.add_argument('-v', "--verbose", action="store_true")
+
+    p.add_argument("--version", action="store_true")
+
+    p.add_argument(dest='paths', metavar='FILE', nargs='*')
+
+    args = p.parse_args()
+
+    if args.version:
+        import ilan_dev
+        print("ilan-dev: %s" % ilan_dev.__version__)
+        return
+
+    global ASCII_ONLY, VERBOSE
+    ASCII_ONLY = args.ascii_only
+    VERBOSE = args.verbose
+
+    if args.recur:
+        if not args.paths:
+            args.paths.append('.')
+        for path in args.paths:
+            clean_dir(path)
+    else:
+        for path in args.paths:
+            clean_file(path)
+
+
+if __name__ == '__main__':
+    main()

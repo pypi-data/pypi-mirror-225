@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: ilan-dev
+Version: 0.2.3
+Summary: a few personal tools I use for development
+Home-page: https://github.com/ilanschnell/ilan-dev
+Author: Ilan Schnell
+Author-email: ilanschnell@gmail.com
+License: BSD
+Classifier: License :: OSI Approved :: Python Software Foundation License
+Classifier: Environment :: Console
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Utilities
+License-File: LICENSE.txt
+
+Ilan's dev tools
+================
+
+A collection of very small tools I've been using for many many years, see:
+
+.. code-block:: shell-session
+
+    $ pip install ilan-dev
+    $ cleanup -h
+    ...
+    $ tarinfo -h
+    ...

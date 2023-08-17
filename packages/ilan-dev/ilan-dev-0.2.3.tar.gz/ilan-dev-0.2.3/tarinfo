@@ -1,0 +1,210 @@
+#!/usr/bin/env python
+import re
+import sys
+import tarfile
+import difflib
+from os.path import basename, isfile
+
+import ilan_dev
+from ilan_dev import lcp, human_bytes, get_empty_missing_dirs
+
+
+cext_pat = re.compile(r'''
+.*lib/
+python\d\.\d+/
+(site-packages|lib-dynload)/    # directories with C extensions
+(?P<mod>\S+?)                   # actual module name
+\.(abi|cp)[\w\-]+\.so           # file extension
+$                               # end of string
+''', re.VERBOSE)
+
+def tar_cext(path):
+    res = []
+    with tarfile.open(path) as t:
+        for m in t.getmembers():
+            match = cext_pat.match(m.name)
+            if match is not None:
+                res.append(match.group('mod').replace('/', '.'))
+    for mod in sorted(res):
+        print('import', mod)
+
+def tar_nameset(path):
+    with tarfile.open(path) as t:
+        return set(m.name for m in t.getmembers())
+
+def tar_common(paths):
+    a = tar_nameset(paths[0])
+    for path in paths[1:]:
+        a &= tar_nameset(path)
+    return a
+
+def tar_diff(path_a, path_b):
+    a = sorted(s + '\n' for s in tar_nameset(path_a))
+    b = sorted(s + '\n' for s in tar_nameset(path_b))
+    diff = difflib.unified_diff(a, b, fromfile=path_a, tofile=path_b)
+    sys.stdout.writelines(diff)
+
+def tar_empty_missing(path, cmd):
+    with tarfile.open(path) as t:
+        lst = [(m.name, m.isdir()) for m in t.getmembers()]
+
+    index = {'empty': 0, 'missing': 1}[cmd]
+    res = get_empty_missing_dirs(lst)[index]
+    for name in sorted(res):
+        print(name)
+
+def show_stat(path):
+    size = nfiles = nsym = nlnk = ndirs = nelf = 0
+    names = []
+    with tarfile.open(path) as t:
+        for m in t.getmembers():
+            names.append((m.name, m.isdir()))
+            if m.isfile():
+                nfiles += 1
+                if t.extractfile(m).read(4) == b'\x7fELF':
+                    nelf += 1
+            if m.issym(): nsym += 1
+            if m.islnk(): nlnk += 1
+            if m.isdir(): ndirs += 1
+            size += m.size
+
+    empty, missing = get_empty_missing_dirs(names)
+
+    print("        regular files: %7d" % nfiles)
+    print("       symbolic links: %7d" % nsym)
+    print("           hard links: %7d" % nlnk)
+    print("          directories: %7d" % ndirs)
+    print("           empty dirs: %7d" % len(empty))
+    print("         missing dirs: %7d" % len(missing))
+    print("       total archives: %7d" % len(names))
+    print("            ELF files: %7d" % nelf)
+    print("           total size: %7s" % human_bytes(size))
+    print("longest common prefix: %r" % lcp([name for name, _ in names]))
+
+def tar_select(name, path):
+    try:
+        with tarfile.open(path) as t:
+            data = t.extractfile(name).read()
+    except KeyError as e:
+        print("Error: %s" % e)
+        return
+    try:
+        print(data.decode())
+    except UnicodeDecodeError:
+        print("size: %d bytes" % len(data))
+        print(data[:256])
+
+def help():
+    print("""\
+usage: %s [options] COMMAND [TAR ...]",
+
+display useful information about tar files
+
+Commands:
+  cext          list Python C extension imports
+  common        list archive name common in all tarballs
+  diff          show difference of two tarballs (compares archive names only)
+  elf           list ELF archive members
+  empty         list empty directories
+  missing       list missing directories
+  lcp           show the longest common prefix of all archive names
+  ls            list archive members, similar to 'ls -l'
+  select NAME   show content of archive NAME
+  stat          display a useful summart of information
+  size          list file sizes of all archives (sorted by size)
+
+Options:
+  -h, --help  show this help message and exit
+  --version
+""" % basename(sys.argv[0]))
+
+CMDS = ['cext', 'common', 'diff', 'elf', 'empty', 'missing',
+        'lcp', 'ls', 'select', 'stat', 'size']
+
+def check_commamd(cmd):
+    if cmd in CMDS:
+        return
+    print("no such command: %r" % cmd)
+    close_matches = difflib.get_close_matches(cmd, CMDS)
+    if close_matches:
+        print("did you mean %r?" % close_matches[0])
+    else:
+        print("commands are: %r" % CMDS)
+    return True
+
+def main():
+    args = sys.argv[1:]
+    if len(args) == 0 or '-h' in args or '--help' in args:
+        help()
+        return
+
+    if "--version" in args:
+        print("ilan-dev: %s" % ilan_dev.__version__)
+        return
+
+    cmd, args = args[0], args[1:]
+    if check_commamd(cmd):
+        sys.exit(1)
+
+    if cmd == 'common':
+        if len(args) == 0:
+            sys.exit("'common' requires at least one tar archive, try --help")
+        for x in sorted(tar_common(args)):
+            print(x)
+        return
+
+    if cmd == 'diff':
+        if len(args) != 2:
+            sys.exit("'diff' requires exactly two tar archives, try --help")
+        tar_diff(*args)
+        return
+
+    if cmd == 'select':
+        if len(args) == 0:
+            sys.exit("'select' requires NAME, try --help")
+        archive_name, args = args[0], args[1:]
+
+    for path in args:
+        if not isfile(path):
+            sys.exit("no such file: %r" % path)
+
+        if len(args) > 1:
+            print("==> %s <==" % path)
+
+        if cmd == 'cext':
+            tar_cext(path)
+
+        if cmd == 'elf':
+            with tarfile.open(path) as t:
+                for m in t.getmembers():
+                    if m.isfile() and t.extractfile(m).read(4) == b'\x7fELF':
+                        print(m.name)
+
+        if cmd in ('empty', 'missing'):
+            tar_empty_missing(path, cmd)
+
+        if cmd == 'lcp':
+            with tarfile.open(path) as t:
+                s = lcp(m.name for m in t.getmembers())
+            if s:
+                print(s)
+
+        if cmd == 'ls':
+            with tarfile.open(path) as t:
+                t.list()
+
+        if cmd == 'select':
+            tar_select(archive_name, path)
+
+        if cmd == 'size':
+            with tarfile.open(path) as t:
+                lst = [(m.size, m.name) for m in t.getmembers()]
+            for size, name in sorted(lst):
+                print("%-60s %10s" % (name, human_bytes(size)))
+
+        if cmd == 'stat':
+            show_stat(path)
+
+
+if __name__ == '__main__':
+    main()
