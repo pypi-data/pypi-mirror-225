@@ -1,0 +1,188 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from functools import partial
+from typing import Iterable, Optional
+
+import orjson
+from rdflib import BNode, Literal, URIRef
+
+from kgdata.dataset import Dataset
+from kgdata.db import deser_from_dict, ser_to_dict
+from kgdata.dbpedia.config import DBpediaDirCfg
+from kgdata.dbpedia.datasets.generic_extractor_dump import generic_extractor_dump
+from kgdata.dbpedia.datasets.mapping_extractor_dump import mapping_extractor_dump
+from kgdata.dbpedia.datasets.ontology_dump import rdf_type
+from kgdata.dbpedia.datasets.properties import (
+    as_multilingual,
+    assert_all_literal,
+    rdfs_comment,
+    rdfs_label,
+)
+from kgdata.misc.resource import RDFResource, Record
+from kgdata.models.entity import Entity, Statement
+from kgdata.models.multilingual import MultiLingualString, MultiLingualStringList
+from kgdata.spark import does_result_dir_exist
+from kgdata.wikipedia.misc import get_title_from_url
+
+
+def entities(lang: str = "en") -> Dataset[Entity]:
+    cfg = DBpediaDirCfg.get_instance()
+
+    outdir = cfg.entities.parent / f"{cfg.entities.name}_{lang}"
+
+    if not does_result_dir_exist(outdir / "merge"):
+        part1 = mapping_extractor_dump(lang).get_rdd().map(lambda r: (r.id, r))
+        part2 = generic_extractor_dump(lang).get_rdd().map(lambda r: (r.id, r))
+
+        (
+            part1.fullOuterJoin(part2)
+            .map(lambda x: merge_resources(x[1][0], x[1][1]))
+            .map(partial(to_entity, dump_lang=lang))
+            .map(ser_to_dict)
+            .coalesce(256)
+            .saveAsTextFile(
+                str(outdir),
+                compressionCodecClass="org.apache.hadoop.io.compress.GzipCodec",
+            )
+        )
+
+    get_ds = lambda path: Dataset(
+        outdir / path / "*.gz", deserialize=partial(deser_from_dict, Entity)
+    )
+
+    if not does_result_dir_exist(outdir / "infer"):
+        rdd = get_ds("merge").get_rdd()
+
+        (
+            rdd.map(lambda e: (e.id, e))
+            .leftOuterJoin(
+                rdd.flatMap(infer_new_data).map(lambda t: (t.subject, t)).groupByKey()
+            )
+            .map(merge_new_triple)
+            .map(ser_to_dict)
+            .coalesce(256)
+            .saveAsTextFile(
+                str(outdir / "infer"),
+                compressionCodecClass="org.apache.hadoop.io.compress.GzipCodec",
+            )
+        )
+
+    return get_ds("infer")
+
+
+def merge_resources(
+    r1: Optional[RDFResource], r2: Optional[RDFResource]
+) -> RDFResource:
+    if r1 is None:
+        assert r2 is not None
+        return r2
+    if r2 is None:
+        assert r1 is not None
+        return r1
+    return r1.merge(r2)
+
+
+def to_entity(resource: RDFResource, dump_lang: str):
+    label = extract_entity_label(resource, dump_lang)
+    default_lang = label.lang
+
+    description = as_multilingual(
+        assert_all_literal(resource.props.get(rdfs_comment, []))
+    )
+    if len(description.lang2value) > 1:
+        if default_lang in description.lang2value:
+            description.lang = default_lang
+        else:
+            # to handle case where there is no description in default language
+            description.lang = default_lang
+            description.lang2value[default_lang] = ""
+
+    return Entity(
+        id=resource.id,
+        label=label,
+        description=description,
+        aliases=MultiLingualStringList({default_lang: []}, default_lang),
+        props={
+            pid: [to_statement(s) for s in lst] for pid, lst in resource.props.items()
+        },
+    )
+
+
+def to_statement(value: URIRef | BNode | Literal) -> Statement:
+    assert not isinstance(value, BNode)
+    return Statement(value=value, qualifiers={}, qualifiers_order=[])
+
+
+def extract_entity_label(
+    resource: RDFResource,
+    dump_lang: str = "en",
+):
+    """The implementation is different from extract_label from properties.py"""
+    if rdfs_label in resource.props:
+        label = as_multilingual(assert_all_literal(resource.props[rdfs_label]))
+        if dump_lang not in label.lang2value:
+            # use the URL as label
+            label.lang2value[dump_lang] = get_title_from_url(resource.id, "/resource/")
+        label.lang = dump_lang
+    else:
+        label = MultiLingualString(
+            {dump_lang: get_title_from_url(resource.id, "/resource/")}, dump_lang
+        )
+    return label
+
+
+type2contradictions = {
+    URIRef(k): {URIRef(v) for v in vs}
+    for k, vs in {
+        "http://dbpedia.org/ontology/GovernmentType": {
+            "http://dbpedia.org/ontology/Country"
+        }
+    }.items()
+}
+prop2range = {
+    k: URIRef(v)
+    for k, v in {
+        "http://dbpedia.org/property/governmentType": "http://dbpedia.org/ontology/GovernmentType",
+        "http://dbpedia.org/ontology/governmentType": "http://dbpedia.org/ontology/GovernmentType",
+    }.items()
+}
+
+
+@dataclass
+class NewTriple(Record):
+    subject: str
+    predicate: str
+    object: URIRef | Literal
+    constraints: set[URIRef | Literal] | set[URIRef] | set[Literal]
+
+
+def infer_new_data(e: Entity):
+    out: list[NewTriple] = []
+    for k, newtype in prop2range.items():
+        for val in e.props.get(k, []):
+            if isinstance(val.value, URIRef):
+                out.append(
+                    NewTriple(
+                        str(val.value), rdf_type, newtype, type2contradictions[newtype]
+                    )
+                )
+    return out
+
+
+def merge_new_triple(
+    tup: tuple[str, tuple[Entity, Optional[Iterable[NewTriple]]]]
+) -> Entity:
+    id, (ent, triples) = tup
+
+    if triples is not None:
+        for triple in triples:
+            if triple.predicate not in ent.props:
+                ent.props[triple.predicate] = []
+            if triple.constraints.isdisjoint(
+                (stmt.value for stmt in ent.props[triple.predicate])
+            ):
+                ent.props[triple.predicate].append(
+                    Statement(value=triple.object, qualifiers={}, qualifiers_order=[])
+                )
+    return ent
