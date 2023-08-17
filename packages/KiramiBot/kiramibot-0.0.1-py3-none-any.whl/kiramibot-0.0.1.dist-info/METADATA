@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: KiramiBot
+Version: 0.0.1
+Summary: 🌟 读作 Kirami，写作星见，简明轻快的聊天机器人应用。
+Keywords: kirami bot chatbot onebot
+Home-page: https://kiramibot.dev
+Author-Email: Akirami <akiramiaya@outlook.com>
+License: AGPL-3.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Robot Framework
+Classifier: Framework :: Robot Framework :: Library
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development
+Classifier: Typing :: Typed
+Project-URL: Homepage, https://kiramibot.dev
+Project-URL: Repository, https://github.com/A-kirami/KiramiBot
+Project-URL: Documentation, https://kiramibot.dev/docs
+Requires-Python: <4.0,>=3.10
+Requires-Dist: nonebot2[fastapi]>=2.0.1
+Requires-Dist: nonebot-adapter-onebot>=2.2.4
+Requires-Dist: typing-extensions>=4.7.1
+Requires-Dist: APScheduler>=3.10.1
+Requires-Dist: mango-odm>=0.3.2
+Requires-Dist: arrow>=1.2.3
+Requires-Dist: bidict>=0.22.1
+Requires-Dist: cashews>=6.2.0
+Requires-Dist: flowery>=0.0.1
+Requires-Dist: rich>=13.5.2
+Requires-Dist: loguru>=0.7.0
+Requires-Dist: tomli>=2.0.1; python_version < "3.11"
+Requires-Dist: pyyaml>=6.0.1
+Requires-Dist: playwright>=1.36.0
+Requires-Dist: httpx[http2]>=0.24.1
+Requires-Dist: Jinja2>=3.1.2
+Requires-Dist: tenacity>=8.2.2
+Requires-Dist: yagmail>=0.15.293
+Requires-Dist: filetype>=1.2.0
+Requires-Dist: markdown-it-py[linkify,plugins]>=3.0.0
+Requires-Dist: mdit-py-emoji>=0.1.1
+Requires-Dist: pygments>=2.16.1
+Description-Content-Type: text/markdown
+
+# KiramiBot
