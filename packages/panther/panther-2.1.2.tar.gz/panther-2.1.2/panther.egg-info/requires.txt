@@ -1,0 +1,13 @@
+bpython~=0.24
+bson~=0.5
+httptools~=0.5
+pantherdb~=1.2
+pydantic~=2.0
+redis~=4.5
+rich~=13.3
+uvicorn~=0.21
+watchfiles~=0.18
+python-jose~=3.3
+
+[full]
+pymongo>=4.3.3
