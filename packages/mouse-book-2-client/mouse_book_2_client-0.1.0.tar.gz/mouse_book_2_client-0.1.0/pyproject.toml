@@ -1,0 +1,29 @@
+[project]
+name = "mouse-book-2-client"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "Christopher Mochizuki", email = "mochic808@gmail.com" },
+]
+dependencies = [
+    "requests>=2.31.0",
+    "pydantic>=2.1.1",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "python-dotenv>=1.0.0",
+    "pytest-order>=1.1.0",
+]
