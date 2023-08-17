@@ -1,0 +1,5 @@
+[console_scripts]
+sparsify.check_environment = sparsify.check_environment.main:main
+sparsify.login = sparsify.login:main
+sparsify.run = sparsify.cli.run:main
+
