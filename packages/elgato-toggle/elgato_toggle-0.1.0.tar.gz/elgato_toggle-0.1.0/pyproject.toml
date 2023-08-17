@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "elgato-toggle"
+version = "0.1.0"
+description = ""
+authors = ["Artanicus <artanicus@nocturnal.fi>"]
+readme = "README.md"
+packages = [{include = "elgato_toggle"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+elgato = "^4.0.1"
+asyncio = "^3.4.3"
+absl-py = "^1.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.1.1"
+black = "^23.1.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+elgato-toggle = 'elgato_toggle.__main__:run'
