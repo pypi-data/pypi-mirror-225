@@ -1,0 +1,82 @@
+site_name: TensorShare
+site_url: https://github.com/chainyo/tensorshare
+site_author: chainyo
+site_description: 🤝 Trade any tensors over the network
+
+repo_name: chainyo/tensorshare
+repo_url: https://github.com/chainyo/tensorshare
+
+copyright: Copyright (c) 2023-present Thomas Chaigneau <t.chaigneau.tc@gmail.com>
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: lime
+      accent: deep orange
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: lime
+      accent: deep orange
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: material/handshake
+  features:
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search:
+  - git-revision-date-localized:
+      type: timeago
+      enable_creation_date: true
+  - mkdocstrings
+
+extra:
+  social:
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/tensorshare/
+    - icon: fontawesome/brands/github
+      link: https://github.com/chainyo
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/chainyo_ai
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/thomas-chaigneau-dev
+
+nav:
+  - 🤝 Getting Started: index.md
+  - ⚙️ Installation: installation.md
+  - 📖 Usage:
+    - "Introduction": usage/introduction.md
+    - "TensorShare": usage/tensorshare.md
+    - "Backends": usage/backends.md
+    - "TensorShareServer": usage/tensorshare_server.md
+    - "TensorShareClient": usage/tensorshare_client.md
+    - "FastAPI Integration": usage/fastapi_integration.md
+  - 🔎 API Reference:
+    - tensorshare.TensorShare: api/tensorshare.md
+    - tensorshare.TensorProcessor: api/processor.md
+    - tensorshare.TensorShareServer: api/tensorshare_server.md
+    - tensorshare.TensorShareClient: api/tensorshare_client.md
+    - Serialization: api/serialization.md
+    - Backend & TensorType: api/constants.md
+  - 📝 License: license.md
