@@ -1,0 +1,61 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "polywrap-msgpack"
+version = "0.1.0b7"
+description = "WRAP msgpack encoder/decoder"
+authors = ["Cesar <cesar@polywrap.io>", "Niraj <niraj@polywrap.io>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+msgpack = "^1.0.4"
+
+[tool.poetry.group.dev.dependencies]
+msgpack-types = "^0.2.0"
+pytest = "^7.1.2"
+pylint = "^2.15.4"
+black = "^22.10.0"
+bandit = { version = "^1.7.4", extras = ["toml"]}
+tox = "^3.26.0"
+tox-poetry = "^0.4.1"
+isort = "^5.10.1"
+pyright = "^1.1.275"
+pydocstyle = "^6.1.1"
+hypothesis = "^6.70.0"
+pytest-cov = "^4.0.0"
+pytest-xdist = "^3.2.1"
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+
+[tool.black]
+target-version = ["py310"]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportShadowedImports = false
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+[tool.pylint]
+disable = [
+    "too-many-return-statements",  # too picky about return statements
+    "protected-access",  # Needed for internal use
+    "invalid-name",  # too picky about names
+]
+ignore = [
+    "tests/"
+]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pydocstyle]
+# default
