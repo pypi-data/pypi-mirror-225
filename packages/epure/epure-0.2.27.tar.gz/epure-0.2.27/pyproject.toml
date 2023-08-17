@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "epure"
+version = "0.2.27"
+description = "purest architecture"
+authors = ["Nikita Umarov <nagvalhm@yandex.ru>", "Pavel Pichugin"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    # { include = "pypi_stub" },
+    { include = "epure" }
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg2 = "2.9.3"
+inflection = "^0.5.1"
+jsonpickle = "^2.2.0"
+
+[tool.poetry.dev-dependencies]
+pyright = "1.1.257"
+pytest = "7.1.2"
+pre-commit = "^2.19.0"
+networkx = "^2.8.5"
+matplotlib = "^3.5.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+strictParameterNoneValue = false
+reportSelfClsParameterName = false
+# reportWildcardImportFromLibrary = false
+
+[tool.poetry.urls]
+Homepage = "https://github.com/nagvalhm/epure"
+Source = "https://github.com/nagvalhm/epure"
+Documentation = "https://github.com/nagvalhm/epure/blob/main/README.md"
