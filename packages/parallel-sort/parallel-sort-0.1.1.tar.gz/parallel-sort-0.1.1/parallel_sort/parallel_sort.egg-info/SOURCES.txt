@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+parallel_sort/parallel_sort.cpp
+parallel_sort/parallel_sort.hpp
+parallel_sort/parallel_sort.pyx
+parallel_sort/parallel_sort.egg-info/PKG-INFO
+parallel_sort/parallel_sort.egg-info/SOURCES.txt
+parallel_sort/parallel_sort.egg-info/dependency_links.txt
+parallel_sort/parallel_sort.egg-info/not-zip-safe
+parallel_sort/parallel_sort.egg-info/requires.txt
+parallel_sort/parallel_sort.egg-info/top_level.txt
+parallel_sort/tests/__init__.py
+parallel_sort/tests/test_sorting.py
