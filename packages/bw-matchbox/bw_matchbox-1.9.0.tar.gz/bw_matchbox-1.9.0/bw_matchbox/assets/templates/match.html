@@ -1,0 +1,66 @@
+{% include 'header.html' %}
+
+{# Module-specific dependencies... #}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/match.css') }}">
+
+{# Core js module #}
+<script src="{{ url_for('static', filename='js/Match/Match.js') }}"></script>
+
+<div id="match-root" class="container match-root">
+  {% include 'navigation.html' %}
+  <div class="row">
+    <div class="column">
+      <h2>{{ ds.name }}</h2>
+      <ul class="details-list">
+        <li><label>Location:</label> {{ds.location}}</li>
+        <li><label>Unit:</label> {{ds.unit}}</li>
+        <li><label>Comment:</label> {{ds.comment}}</li>
+      </ul>
+      <div><input type="text" class="u-full-width" placeholder="Enter value to search" value="{{ query_string }}" id="query-string" /></div>
+      <div class="info-tableau">
+        <div class="error" id="error">Sample error text</div>
+        <div id="loader-splash" class="loader-splash bg-white full-cover"><div class="loader-spinner"></div></div>
+      </div>
+      <table id="result-table" class="fixed-table">
+        <thead>
+          <tr>
+            <th class="cell-name"><div>Activity</div></th>
+            <th class="cell-referenceProduct"><div>Product</div></th>
+            <th class="cell-location"><div>Location</div></th>
+            <th class="cell-unit"><div>Unit</div></th>
+          </tr>
+        </thead>
+        <tbody id="result-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+modules.require('Match', function requireMatch(Match) {
+  // Global variables for compare tables feature (via global variable `sharedData`)...
+  const sharedData = {
+    searchUrlPrefix: '{{ url_for('search') }}',
+    source: '{{ ds.id }}',
+    database: '{{ config.target }}',
+    initialQueryString: '{{ query_string }}',
+    initialTableRows: {{ matches_json|safe }}, // Initial table rows...
+    originalProcess: {
+      name: '{{ ds.name }}',
+      location: '{{ ds.location }}',
+      unit: '{{ ds.unit }}',
+      comment: `{{ ds.comment|safe }}`,
+    },
+  };
+
+  // Export to global scope (to access from generated html code handlers).
+  window.Match = Match;
+
+  // Start core module...
+  Match.start(sharedData);
+});
+
+</script>
+{% include 'footer.html' %}
