@@ -1,0 +1,51 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "bionty"
+authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "pronto>=2.5.4",
+    "lamin_utils>=0.9.8", # don't pin here as it's pinned in lamindb
+    "pyyaml",
+    "pandas",
+    "pyarrow",
+    "botocore",
+    "rich",
+    "filelock",
+    "rapidfuzz",
+    "requests"
+]
+
+[project.urls]
+Home = "https://github.com/laminlabs/bionty"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest>=6.0",
+    "pytest-cov",
+    "laminci",
+    "nbproject-test",
+    "bioregistry",
+    "sqlalchemy",
+    "mysqlclient",
+    "mysql-connector-python",
+]
+
+[tool.black]
+preview = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
