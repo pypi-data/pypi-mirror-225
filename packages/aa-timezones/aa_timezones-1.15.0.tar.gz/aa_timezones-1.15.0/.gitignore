@@ -1,0 +1,15 @@
+/build/
+/dist/
+/aa_timezones.egg-info/
+__pycache__
+.idea/
+
+
+*.log
+*.tmp
+*.bak
+*.old
+.coverage
+/coverage.xml
+.tox/
+htmlcov/
