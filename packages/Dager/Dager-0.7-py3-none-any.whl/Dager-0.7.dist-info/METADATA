@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: Dager
+Version: 0.7
+Summary: Data Acquisition and Generation Engine for Reporting
+Home-page: https://github.com/iddy-ani/Dager_data
+Author: Idriss Animashaun
+Author-email: idriss.animashaun@intel.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: anyio (==3.7.1)
+Requires-Dist: certifi (==2023.5.7)
+Requires-Dist: dnspython (==2.4.0)
+Requires-Dist: exceptiongroup (==1.1.2)
+Requires-Dist: h11 (==0.14.0)
+Requires-Dist: httpcore (==0.17.3)
+Requires-Dist: idna (==3.4)
+Requires-Dist: numpy (==1.25.1)
+Requires-Dist: pandas (==2.0.3)
+Requires-Dist: pymongo (==4.4.1)
+Requires-Dist: python-dateutil (==2.8.2)
+Requires-Dist: pytz (==2023.3)
+Requires-Dist: six (==1.16.0)
+Requires-Dist: sniffio (==1.3.0)
+Requires-Dist: tzdata (==2023.3)
+
+DAGER - Data Acquisition and Generation Engine for Reporting
