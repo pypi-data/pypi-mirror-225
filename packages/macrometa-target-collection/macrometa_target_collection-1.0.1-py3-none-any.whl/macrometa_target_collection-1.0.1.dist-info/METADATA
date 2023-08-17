@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: macrometa-target-collection
+Version: 1.0.1
+Summary: Singer.io target for writing to Macrometa GDN collections
+License: Apache-2.0
+Keywords: ELT,Connectors,Workflows,Macrometa,GDN,Collection,Target
+Author: Macrometa
+Author-email: info@macrometa.co
+Requires-Python: >=3.8.1,<3.11
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: adjust-precision-for-schema (==0.3.4)
+Requires-Dist: c8connector (>=0.0.31)
+Requires-Dist: pipelinewise-singer-python (==1.2.0)
+Requires-Dist: prometheus-client (==0.16.0)
+Requires-Dist: pyc8 (==1.0.1)
+Project-URL: Bug Tracker, https://github.com/Macrometacorp/macrometa-target-collection/issues
+Project-URL: Homepage, https://www.macrometa.com/
+Description-Content-Type: text/markdown
+
+# macrometa-target-collection
+
+A [Singer](https://singer.io) target that writes data to ([GDN Collections](https://macrometa.com/docs/c8ql/)).
+
+## How to use it
+
+`macrometa_target_collection` works together with any other [Singer Tap] to move data from sources like [Braintree], [Freshdesk] and [Hubspot] to JSONL formatted files.
+
