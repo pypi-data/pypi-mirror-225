@@ -1,0 +1,59 @@
+name: backtest-ape
+
+plugins:
+  - name: alchemy
+    version: 0.5.4
+  - name: solidity
+    version: 0.5.4
+  - name: foundry
+    version: 0.5.2
+  - name: notebook
+    version: 0.5.0-alpha.2
+  - name: etherscan
+    version: 0.5.5
+  - name: risk
+    version: 0.1.0-alpha.2
+  - name: vyper
+    version: 0.5.2
+
+default_ecosystem: ethereum
+
+ethereum:
+  default_network: mainnet-fork
+  mainnet_fork:
+    default_provider: foundry
+
+foundry:
+  fork:
+    ethereum:
+      mainnet:
+        upstream_provider: alchemy
+
+dependencies:
+  - name: OpenZeppelin
+    github: OpenZeppelin/openzeppelin-contracts
+    version: 4.7.3
+  - name: UniswapV2Core
+    github: Uniswap/v2-core
+    branch: master
+  - name: UniswapV3Core
+    github: Uniswap/v3-core
+    branch: 0.8
+  - name: UniswapV3Periphery
+    github: Uniswap/v3-periphery
+    branch: 0.8
+  - name: GearboxV2Core
+    github: Gearbox-protocol/core-v2
+    version: 1.7.2
+  - name: Chainlink
+    github: smartcontractkit/chainlink
+    version: 1.11.0
+
+solidity:
+  import_remapping:
+    - "@openzeppelin/contracts=OpenZeppelin/4.7.3"
+    - "@uniswap/v2-core/contracts=UniswapV2/master"
+    - "@uniswap/v3-periphery/contracts=UniswapV3Periphery/v0.8"
+    - "@uniswap/v3-core/contracts=UniswapV3Core/v0.8"
+    - "@gearbox/core-v2/contracts=GearboxV2Core/1.7.2"
+    - "@chainlink/contracts=Chainlink/1.11.0"
