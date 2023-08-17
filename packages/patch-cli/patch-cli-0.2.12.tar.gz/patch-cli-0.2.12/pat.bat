@@ -1,0 +1,1 @@
+@python pat.py %*

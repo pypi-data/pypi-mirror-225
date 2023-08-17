@@ -1,0 +1,30 @@
+
+#app-grid {
+    layout: grid;
+    grid-size: 3;
+    grid-columns: 1fr  1fr  1fr;
+    grid-rows: 3 1fr;
+}
+
+#top-help-container{
+    height: 3;
+}
+#bottom-help-container{
+    height: 1;
+}
+
+ContainerPanel {
+    height: 100%;
+    width: 100%;
+}
+
+Header {
+    layer: below;
+}
+
+/* All components within ContainerPanel have this class added automatically */
+.inner-component {
+    layer: above;
+    margin: 1;
+    height: 100%;
+}

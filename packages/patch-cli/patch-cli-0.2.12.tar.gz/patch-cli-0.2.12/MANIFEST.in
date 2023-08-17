@@ -1,0 +1,6 @@
+include .pat-complete.fish
+include .pat-complete.sh
+include .pat-complete.zsh
+include pat.py
+include pat.bat
+recursive-include src/patch *.css
