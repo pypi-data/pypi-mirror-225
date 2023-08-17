@@ -1,0 +1,4 @@
+[console_scripts]
+dysweep_create = dysweep.console:create_sweep
+dysweep_run_resume = dysweep.console:run_resume_sweep
+
