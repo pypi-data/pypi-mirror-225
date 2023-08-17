@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools","setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jsgprogressbar"
+version = "1.0.4"
+authors = [
+  { name="Juan Santos Gomez", email="juansantosgomez@protonmail.com" },
+]
+description = "A function that makes a progressbar for your loops"
+requires-python = ">=3.3"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/JuanSantosGomez/loopprogress"
