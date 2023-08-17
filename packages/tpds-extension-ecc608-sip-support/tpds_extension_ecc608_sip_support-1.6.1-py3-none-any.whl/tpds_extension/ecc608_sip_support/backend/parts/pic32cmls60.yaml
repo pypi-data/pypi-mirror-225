@@ -1,0 +1,39 @@
+---
+title: PIC32CMLS60 Information
+devices:
+  PIC32CMLS60:
+    basePart: PIC32CMLS60
+    partLink: https://www.microchip.com/en-us/product/PIC32CM5164LS60064
+    provisioningFlow: TrustFLEX
+    partType: System-in-Package
+    productCategory: MCU32
+    tpdsRelease: Yes
+parts:
+  - partNumber: PIC32CM5164LS60064-I/PT
+    deviceName: PIC32CMLS60
+    packagePin: TQFP-64
+    memory: 512K/64K
+    media: Reel
+    moq: 1200
+    status: Production
+  - partNumber: PIC32CM5164LS60064-I/5LX
+    deviceName: PIC32CMLS60
+    packagePin: VQFN-64
+    memory: 512K/64K
+    media: Reel
+    moq: 3300
+    status: Production
+  - partNumber: PIC32CM5164LS60100-I/PT
+    deviceName: PIC32CMLS60
+    packagePin: TQFP-100
+    memory: 512K/64K
+    media: Reel
+    moq: 1000
+    status: Production
+  - partNumber: PIC32CM5164LS60048-I/U5B
+    deviceName: PIC32CMLS60
+    packagePin: VQFN-48
+    memory: 512K/64K
+    media: Reel
+    moq: 4000
+    status: Production

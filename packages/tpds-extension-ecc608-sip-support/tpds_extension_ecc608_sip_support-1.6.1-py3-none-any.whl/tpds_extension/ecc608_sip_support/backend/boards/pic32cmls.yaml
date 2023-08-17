@@ -1,0 +1,24 @@
+---
+title: Proto Board Data
+boards:
+  EV76R77A:
+    description: PIC32CMLS60 Curiosity Pro
+    partNumber: EV76R77A
+    web_link: https://www.microchip.com/en-us/development-tool/EV76R77A
+    img: https://www.microchip.com/content/dam/mchp/mrt-dam/products/mc32/210205-MC32-PHOTO-EV76R77A-Angle-mD.jpg
+    serial_series: MCHP3383
+    mcu_part_number: 32CM5164LS60100
+    program_tool: EDBG
+    kit_parser_pid: 8978
+    kit_parser_version: v3.0.4
+    kit_name: PIC32CMLS60 Curiosity Pro
+    product_string: PIC32CMLS60 Curiosity Pro
+    connection:
+      interfaceType: hid
+      vid: 1003
+      pid: 8465
+    devices:
+      - deviceName: ATECC608B-TFLXTLS
+        partInterface:
+          interfaceType: i2c
+          address: 0xC0

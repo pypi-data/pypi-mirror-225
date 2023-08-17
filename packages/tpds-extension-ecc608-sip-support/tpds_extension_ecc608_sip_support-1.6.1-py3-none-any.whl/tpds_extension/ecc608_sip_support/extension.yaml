@@ -1,0 +1,174 @@
+name: ecc608_sip_support
+
+backend:
+  path: backend
+
+frontend:
+  entrypoints:
+    - name: pic32cmls60_config
+      title: PIC32CMLS60 Configurator
+      description: ""
+      entry: "assets/PIC32CMLS60 Configurator.html"
+      applications:
+        - configurator
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: symmetric_authentication_pic32cmls60
+      title: Symm Auth - Shared Key
+      description: ""
+      entry: TrustFlex/symmetric_authentication/PIC32CMLS60-Symmetric Authentication.ipynb
+      icon:
+        name: symm_key_auth_png
+        path: TrustFlex/symmetric_authentication/assets/images/symmetric key auth.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+        - IoT
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: ip_protection_pic32cmls60
+      title: IP Protection
+      description: ""
+      entry: TrustFlex/ip_protection/PIC32CMLS60-IP Protection.ipynb
+      icon:
+        name: ip_protection_png
+        path: TrustFlex/ip_protection/assets/IP protection.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+        - IoT
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: public_key_rotation_pic32cmls60
+      title: Secure Public Key Rotation
+      description: A small description about Public Key Rotation
+      entry: TrustFlex/public_key_rotation/PIC32CMLS60-Public Key Rotation.ipynb
+      icon:
+        name: public_key_rotation_png
+        path: TrustFlex/public_key_rotation/assets/Public key rotation.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+        - IoT
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: asymmetric_authentication_pic32cmls60
+      title: Asymmetric Authentication
+      description: ""
+      entry: TrustFlex/asymmetric_authentication/PIC32CMLS60-Asymmetric Authentication.ipynb
+      icon:
+        name: asymm_key_auth_png
+        path: TrustFlex/asymmetric_authentication/assets/images/asymmetric auth.png
+      applications:
+        - Accessory Authentication
+        - Disposable Authentication
+        - IoT
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: aws_custom_pki_pic32cmls60
+      title: AWS Custom PKI
+      description: ""
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-AWSCustomPKI-TFLEX.ipynb
+      icon:
+        name: aws_png
+        path: TrustFlex/cloud_connect/assets/images/AWS.png
+      applications:
+        - IoT
+        - AWS
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: aws_mchp_pki_pic32cmls60
+      title: AWS IoT Authentication
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-AWSIoTAuth-TFLEX.ipynb
+      description: ""
+      icon:
+        name: aws_png
+        path: TrustFlex/cloud_connect/assets/images/AWS.png
+      applications:
+        - IoT
+        - AWS
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: azure_custom_pki_pic32cmls60
+      title: Azure Custom PKI
+      description: ""
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-AzureCustomPKI-TFLEX.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/cloud_connect/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: azure_mchp_pki_pic32cmls60
+      title: Azure IoT Authentication
+      description: ""
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-AzureIoTAuth-TFLEX.ipynb
+      icon:
+        name: azure_png
+        path: TrustFlex/cloud_connect/assets/images/Azure.png
+      applications:
+        - IoT
+        - Azure
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: gcp_custom_pki_pic32cmls60
+      title: GCP Custom PKI
+      description: ""
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-GoogleCustomPKI-TFLEX.ipynb
+      icon:
+        name: gcp_png
+        path: TrustFlex/cloud_connect/assets/images/GCP.png
+      applications:
+        - IoT
+        - GCP
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: gcp_mchp_pki_pic32cmls60
+      title: GCP IoT Authentication
+      description: ""
+      entry: TrustFlex/cloud_connect/PIC32CMLS60-GoogleIoT Auth-TFLEX.ipynb
+      icon:
+        name: gcp_png
+        path: TrustFlex/cloud_connect/assets/images/GCP.png
+      applications:
+        - IoT
+        - GCP
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
+    - name: secure_boot_pic32cmls60
+      title: Secure Boot
+      description: ""
+      entry: TrustFlex/secure_boot/PIC32CMLS60-Secure Boot.ipynb
+      icon:
+        name: secureboot_png
+        path: TrustFlex/secure_boot/assets/images/secure_boot.png
+      applications:
+        - Secure Boot
+      devices:
+        - PIC32CMLS60
+      boards:
+        - PIC32CMLS60_CURIOSITY
