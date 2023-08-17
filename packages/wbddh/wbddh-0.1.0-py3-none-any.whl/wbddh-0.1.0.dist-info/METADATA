@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: wbddh
+Version: 0.1.0
+Summary: Python wrapper for DDH Open API
+Home-page: https://github.com/WB-DECIS/WBDDH
+Author: DECIS
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Provides-Extra: admin
+Requires-Dist: msal ; extra == 'admin'
+Requires-Dist: pyyaml ; extra == 'admin'
+
+# WBDDH
+WBDDH is a Python wrapper for World Bank Data Catalog Web APIs. It can be used for both DDH API v1.0 and v2.0.
+
+## Setup
+Public users:
+```sh
+pip install -U wbddh
+```
+DDH administrators:
+```sh
+pip install -U wbddh[admin]
+```
+
+## Usage
+WBDDH handles HTTP requests and manages MSAL sessions.
+
+Users first have to set API_host before using other functions:
+```sh
+import wbddh
+wbddh.set_api_host(url)
+```
+
+Admin users first have to create a session to further run other admin functions:
+```sh
+import wbddh
+session = wbddh.create_session(name='default_ddh_session', params=None, autoCopy=True, verify=None)
+```
+
+Users can send a simple GET/POST request:
+```sh
+wbddh.get(endpoint, params=None, headers=None, session=None)
+wbddh.post(endpoint, params=None, json=None, headers=None, session=None)
+```
+
+Alternatively, users can repeat sending a GET/POST request until it succeeds or it tries {num_try} times:
+```sh
+wbddh.try_get(endpoint, params=None, headers=None, session=None, num_try=3, interval=300)
+wbddh.try_post(endpoint, params=None, json=None, headers=None, session=None, num_try=3, interval=300)
+```
+
+There are two helper functions that fetch all data for endpoints that have paging parameters (ex. search, datasets):
+```sh
+wbddh.get_all_in_generator(endpoint, params=None, top_key="top", skip_key="skip", headers=None, session=None)
+wbddh.get_all_in_list(endpoint, params=None, top_key="top", skip_key="skip", headers=None, session=None)
+```
+
+## Examples
+Jupyter Notebooks under examples folder show basic use cases utilizing wbddh.
+
+  
+
+
