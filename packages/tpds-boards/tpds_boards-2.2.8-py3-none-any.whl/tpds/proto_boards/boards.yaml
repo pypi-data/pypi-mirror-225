@@ -1,0 +1,83 @@
+---
+title: Proto Board Data
+boards:
+  DM320118:
+    description: CryptoAuth Trust Platform
+    partNumber: DM320118
+    web_link: https://www.microchip.com/en-us/development-tool/DM320118
+    img: https://www.microchip.com/content/dam/mchp/mrt-dam/devtools/3609-rev6.jpg
+    serial_series: MCHP3311
+    mcu_part_number: ATSAMD21E18A
+    program_tool: nEDBG
+    kit_parser_pid: 8978
+    kit_parser_version: v3.1.0
+    kit_name: CryptoAuth Trust Platform
+    product_string: CryptoAuth Trust Platform
+    connection:
+      interfaceType: hid
+      vid: 1003
+      pid: 8565
+    devices:
+      - deviceName: ATECC608B-TCSM
+        partInterface:
+          interfaceType: i2c
+          address: 0xC0
+      - deviceName: ATECC608B-TNGTLS
+        partInterface:
+          interfaceType: i2c
+          address: 0x6A
+      - deviceName: ATECC608B-TFLXTLS
+        partInterface:
+          interfaceType: i2c
+          address: 0x6C
+  DM320109:
+    description: CryptoAuth XSTK
+    partNumber: DM320109
+    web_link: https://www.microchip.com/en-us/development-tool/DM320109
+    img: https://www.microchip.com/content/dam/mchp/mrt-dam/devtools/2674-180601-spg-cryptoauthssh-xstk-kit.jpg
+    serial_series: ATML2130
+    mcu_part_number: ATSAMD21J18A
+    program_tool: EDBG
+    kit_parser_pid: 8978
+    kit_parser_version: v3.1.0
+    kit_name: SAM D21 Xplained Pro
+    product_string: CryptoAuth Trust Platform
+    connection:
+      interfaceType: hid
+      vid: 1003
+      pid: 8465
+  ATSAME54-XPRO:
+    description: SAM E54 Xplained Pro
+    partNumber: ATSAME54-XPRO
+    web_link: https://www.microchip.com/en-us/development-tool/atsame54-xpro
+    img: https://www.microchip.com/content/dam/mchp/mrt-dam/products/dvtl/220804-devtools-photo-atsame54-xpro-angle-transparent.jpg
+    serial_series: ATML2748
+    mcu_part_number: ATSAME54P20A
+    program_tool: EDBG
+    kit_parser_pid: 0
+    kit_parser_version: v1.0.0
+    kit_name: SAM E54 Xplained Pro
+    connection:
+      interfaceType: uart
+      baud: 115200
+  EV62V87A:
+    description: SAM D21 IoT v2 Development Board
+    partNumber: EV62V87A
+    web_link: https://www.microchip.com/en-us/development-tool/EV62V87A
+    img: https://www.microchip.com/content/dam/mchp/mrt-dam/products/mc32/220209-mcu32-photo-ev62v87a-angle-2-transparent.jpg
+    serial_series: MCHP3441
+    mcu_part_number: ATSAMD21G18A
+    program_tool: nEDBG
+    kit_parser_pid: 8978
+    kit_parser_version: v3.0.4
+    kit_name: SAM D21 IoT v2 Development Board
+    product_string: SAM D21 IoT v2 Development Board
+    connection:
+      interfaceType: hid
+      vid: 1003
+      pid: 8565
+    devices:
+      - deviceName: ATECC608B-TFLXTLS
+        partInterface:
+          interfaceType: i2c
+          address: 0x6C
