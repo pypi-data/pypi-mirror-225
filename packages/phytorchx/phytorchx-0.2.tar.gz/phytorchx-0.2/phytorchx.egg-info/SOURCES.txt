@@ -1,0 +1,14 @@
+.gitignore
+LICENSE.txt
+README.md
+pyproject.toml
+.github/workflows/python-publish.yml
+phytorchx/__init__.py
+phytorchx/_version.py
+phytorchx/_version.pyi
+phytorchx/broadcast.py
+phytorchx.egg-info/PKG-INFO
+phytorchx.egg-info/SOURCES.txt
+phytorchx.egg-info/dependency_links.txt
+phytorchx.egg-info/requires.txt
+phytorchx.egg-info/top_level.txt
