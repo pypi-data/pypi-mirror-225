@@ -1,0 +1,4 @@
+[console_scripts]
+create_mesh = cartographi.cli:create_mesh_cli
+export_mesh = cartographi.cli:export_mesh_cli
+rebuild_mesh = cartographi.cli:rebuild_mesh_cli
