@@ -1,0 +1,25 @@
+{
+  "results": {
+    "hellaswag": {
+      "acc": 0.5879306910973909,
+      "acc_stderr": 0.0049120153691600745,
+      "acc_norm": 0.786197968532165,
+      "acc_norm_stderr": 0.00409150785055958
+    }
+  },
+  "versions": {
+    "hellaswag": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained='/data1/cgzhang6/models/llama2-7b-hf',trust_remote_code=True,use_accelerate=False",
+    "num_fewshot": 10,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda:2",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}

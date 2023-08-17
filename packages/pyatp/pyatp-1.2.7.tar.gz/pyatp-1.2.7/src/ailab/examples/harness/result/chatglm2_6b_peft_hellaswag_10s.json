@@ -1,0 +1,25 @@
+{
+  "results": {
+    "hellaswag": {
+      "acc": 0.26090420235012945,
+      "acc_stderr": 0.004382303181183642,
+      "acc_norm": 0.26618203545110536,
+      "acc_norm_stderr": 0.00441057343183763
+    }
+  },
+  "versions": {
+    "hellaswag": 0
+  },
+  "config": {
+    "model": "hf-chatglm",
+    "model_args": "pretrained='/home/sdk_models/chatglm2_6b',add_special_tokens=False,trust_remote_code=True,dtype='float16',use_accelerate=False,peft=/data1/cgzhang6/finetuned_models/my_chatglm2_model/checkpoint-100",
+    "num_fewshot": 10,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda:7",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}
