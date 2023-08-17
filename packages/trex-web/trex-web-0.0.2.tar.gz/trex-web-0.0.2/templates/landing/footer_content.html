@@ -1,0 +1,85 @@
+	<footer>
+
+      <!-- Footer Start-->
+      <div id="fotter_main" class="footer-main">
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row  justify-content-between">
+                    <div class="col-lg-3 col-md-4 col-sm-8">
+                         <div class="single-footer-caption mb-30">
+                              <!-- logo -->
+                             <div class="footer-logo">
+                                 <a href="/">
+									<img src="{{ url_for('custom_bp.app_logo') }}?version={{ DEPLOYED_VERSION_NO }}" alt="{{ application_name }}" height="50">
+								</a>
+                             </div>
+                             <div class="footer-tittle">
+                                 <div class="footer-pera">
+                                     <p class="info1">
+										Everyone like rewards, you can start to design 
+										your reward program for your customers
+									</p>
+                                </div>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Quick Links</h4>
+                                <ul>
+									{#
+                                    <li><a href="/about-us">About Us</a></li>
+									#}
+                                    <li><a href="#membership-program-fetaure">Features</a></li>
+                                    <li><a href="#pricing">Pricing</a></li>
+                                    <li><a href="#download">Download</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Support</h4>
+                                <ul>
+									<li><a href="/privacy-policy">Privacy Policy</a></li>
+                                    <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+									
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-8">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Get Social</h4>
+                                <div class="col">
+					            	<ul class="social">
+					              		<li><a href=""><svg title="Facebook"><use xlink:href="#icon-facebook"></use></svg></a></li>
+					              		<li><a href=""><svg title="Twitter"><use xlink:href="#icon-twitter"></use></svg></a></li>
+					              		<li><a href=""><svg title="LinkedIn"><use xlink:href="#icon-linkedin"></use></svg></a></li>
+					            	</ul>
+					          	</div>
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Copy-Right -->
+                <div class="row align-items-center">
+                    <div class="col-xl-12 ">
+                        <div class="footer-copy-right">
+                           <p>
+							Copyright &copy; <a href="{{ application_href }}">{{ application_name }}</a>. All rights reserved
+							</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+       <!-- Footer End-->
+
+   </footer>

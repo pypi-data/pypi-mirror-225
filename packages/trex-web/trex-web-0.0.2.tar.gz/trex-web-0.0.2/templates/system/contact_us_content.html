@@ -1,0 +1,32 @@
+<div class="container contact-form">
+    <form id="contact_us_form" name="contact_us_form" action="{{ url_for('system_bp.contact_us_post') }}" method="POST">
+       <div class="row">
+            <div class="col-lg-11">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" value="" />
+                </div>
+                
+				<div class="form-group">
+                    <textarea name="message" class="form-control" rows="4" 
+					placeholder="Your Message *"></textarea>
+                </div>
+
+				<div id="g-recaptcha"></div>
+      			<br/>
+				<input type="hidden" name="verify_token" id="verify_token" />
+						
+                <div class="form-group">
+                    <button id="contact_us_button" type="button" class="btn btn-success btn-block"> 
+							Send Message  
+					</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>	

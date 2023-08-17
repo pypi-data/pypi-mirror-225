@@ -1,0 +1,36 @@
+{% extends "skeleton/leon/structure.html" %}
+
+{% block header_class %}sm-header{% endblock %}
+
+{% block content %}
+	
+<section class="section-padd4">
+
+	<div class="container content">
+	    <div class="row justify-content-md-center">
+	    	<div class="white-panel solid-line-grey col-md-10 opacity">
+	    		<h2 class="mt-5 mb-5">
+	    			{% block error_message %}{% endblock %}
+	    		</h2>
+				
+				{% block error_content %}{% endblock %}
+				{% block error_action %}
+				<div class="error-actions mt-3 mb-5">
+				    <a href="{{ url_for('main_bp.contact_us_page') }}" class="btn btn-primary btn-lg">
+						<span class="glyphicon glyphicon-envelope">
+					</span> Contact Support </a>
+				</div>
+				{% endblock %}	
+	    		
+	        </div>
+	        
+	   	</div>
+	   	
+	</div> 
+    
+</section>
+
+{% endblock %}
+
+
+
