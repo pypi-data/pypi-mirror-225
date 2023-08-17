@@ -1,0 +1,31 @@
+[build-system]
+requires = ['setuptools>=65.0', 'pandas>=1.5', 'numpy>=1.23.5', 'requests>=2.28.1', 'python-dotenv>=1.0.0', "pydantic>=2.1.1"]
+build-backend = 'setuptools.build_meta'
+
+[tool.poetry]
+name = 'digital_cortex'
+version = '0.0.24'
+authors = [
+    'Charlie Wardell <charlie@digital-cortex.io>',
+    'Chris Esworthy <chris@digital-cortex.io>',
+    'Satendra Kumar <satendra.kumar@thirdnormal.com>',
+    'Mohd Sabir <sabir@thirdnormal.com>',
+    'Prachi Soni <prachi.soni@thirdnormal.com>'
+]
+description = 'Python Client for Digital Cortex'
+readme = 'README.md'
+
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+pydantic = "^2.1.1"
+
+[project.urls]
+'Homepage' = 'https://github.com/D-Cortex/digital-cortex-python/issues'
+'Bug Tracker' = 'https://github.com/D-Cortex/digital-cortex-python/issues'
