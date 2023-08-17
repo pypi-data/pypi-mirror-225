@@ -1,0 +1,35 @@
+test_name: "{{ test_name }}"
+stages:
+  {%- for stage in stages %}
+  - name: "{{ stage.name }}"
+    request:
+      url: "{{ variables['HOST'] }}/api{{ stage.request.url }}"
+      method: "{{ stage.request.method }}"
+      params:
+        api-key: "{{ variables['api-key'] }}"
+        auth-userid: "{{ variables['auth-userid'] }}"
+        {%- for key, value in stage.request.params.items() %}
+        {{ key }}: {{ value|tojson|safe }}
+        {%- endfor %}
+        {%- if stage.request.optional_params %}
+        # Optional Parameters
+        {%- for key, value in stage.request.optional_params.items() %}
+        {{ key }}: {{ value|tojson|safe }}
+        {%- endfor %}
+        {%- endif %}
+    response:
+      status_code: {{ stage.response.status_code }}
+      {%- if 'save' in stage.response and stage.response.save.json %}
+      save:
+        json:
+          {%- for key, value in stage.response.save.json.items() %}
+          {{ key }}: {{ value|tojson|safe }}
+          {%- endfor %}
+      {%- endif %}
+      {%- if 'verify' in stage.response and stage.response.verify %}
+      verify:
+        {%- for key, value in stage.response.verify.items() %}
+        {{ key }}: {{ value|tojson|safe }}
+        {%- endfor %}
+      {%- endif %}
+  {%- endfor %}
