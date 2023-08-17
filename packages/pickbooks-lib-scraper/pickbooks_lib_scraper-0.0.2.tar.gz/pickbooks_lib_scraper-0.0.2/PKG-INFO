@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: pickbooks_lib_scraper
+Version: 0.0.2
+Summary: A small example package
+Project-URL: Homepage, https://github.com/StevenCafe/pickbooks_lib_scraper
+Project-URL: Bug Tracker, https://github.com/StevenCafe/pickbooks_lib_scraper/issues
+Author-email: StevenCafe <pinylnln@google.com>
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8.10
+Description-Content-Type: text/markdown
+
+# Example Package
+
+This is a simple example package. You can use
+[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+to write your content.
+
+# How to build package
+
+This is a note for how to packaging a project into Pypi
+
+- Root directory should contain __init__.py file, means it's a library
+- Prepare pyporject.toml, project naming convension is like 'short_enough'
+- python -m build 產生dist/ will load pyporject.toml
+- pip install twine
+- Prepare Pypi Account
+- save .pypirc 
+- twine upload --config-file .pypirc dist/*
+
+package_dir={'mypkg': 'src/mypkg'},
