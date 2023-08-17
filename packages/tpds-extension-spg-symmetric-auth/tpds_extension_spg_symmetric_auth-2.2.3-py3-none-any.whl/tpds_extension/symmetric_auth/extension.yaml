@@ -1,0 +1,19 @@
+name: spg_symmetric_auth
+
+frontend:
+  entrypoints:
+  - name: sym_auth_ecc608_sharedkey
+    title: Symm Auth - Shared Key
+    description: ""
+    entry: TrustFlex/Symm Auth Shared Key.ipynb
+    icon:
+      name: symm_key_auth_png
+      path: TrustFlex/assets/images/symmetric key auth.png
+    applications:
+      - Accessory Authentication
+      - Disposable Authentication
+      - IoT
+    devices:
+      - ATECC608B-TFLXTLS
+    boards:
+      - DM320118
