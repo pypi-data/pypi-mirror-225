@@ -1,0 +1,45 @@
+%makro randint name, a, b
+	decl name, float, 0
+	rand name, int, uniform, a, b
+%emakro
+
+%const global_value, 21
+
+message facebook_post, query
+	prm photos, float
+emessage
+
+agent average_user
+	prm num_seen_photos, float, init, 0
+	prm friends, list, conn
+
+	behav initialize, setup
+		action initialize_friends, modify_self
+			decl max_friends, float, 0
+			len max_friends, connections
+			decl num_friends, float, 0
+			rand num_friends, int, uniform, 0, max_friends
+			subs friends, connections, num_friends
+		eaction
+	ebehav
+
+	behav facebook_activity, cyclic, 30
+		action post_photos, send_msg, facebook_post, query
+			randint, num_photos, 1, 5
+			set send.photos, num_photos
+			randint, numa_photos, 1, 5
+			send friends
+		eaction
+	ebehav
+
+	behav read_posts, msg_rcv, facebook_post, query
+		action update_seen_photos, modify_self
+			add num_seen_photos, rcv.photos
+		eaction
+	ebehav
+eagent
+
+graph statistical
+    size 150
+    defg average_user, 100%, dist_exp, 0.1
+egraph
