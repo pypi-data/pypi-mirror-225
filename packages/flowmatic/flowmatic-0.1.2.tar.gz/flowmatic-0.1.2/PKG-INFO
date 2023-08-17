@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: flowmatic
+Version: 0.1.2
+Summary: 
+Author: aeteseb
+Author-email: 113799213+aeteseb@users.noreply.github.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: ctkmessagebox (>=2.4,<3.0)
+Requires-Dist: customtkinter (>=5.2.0,<6.0.0)
+Requires-Dist: pillow (>=10.0.0,<11.0.0)
+Requires-Dist: tkinterdnd2-universal (>=1.7.3,<2.0.0)
+Description-Content-Type: text/markdown
+
+# FlowMatic
+
+Build python automatic workflows
+

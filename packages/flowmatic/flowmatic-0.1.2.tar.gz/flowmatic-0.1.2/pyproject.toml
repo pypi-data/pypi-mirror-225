@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "flowmatic"
+version = "0.1.2"
+description = ""
+authors = ["aeteseb <113799213+aeteseb@users.noreply.github.com>"]
+readme = "README.md"
+include = ["assets/"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+customtkinter = "^5.2.0"
+tkinterdnd2-universal = "^1.7.3"
+pillow = "^10.0.0"
+ctkmessagebox = "^2.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
