@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "cougar"
+version = "0.5.1"
+description = ""
+license = "Apache-2.0"
+authors = ["Yunchong Gan <yunchong@pku.edu.cn>"]
+maintainers = ["Yunchong Gan <yunchong@pku.edu.cn>"]
+readme = "README.md"
+repository = "https://github.com/Phimos/cougar"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: C",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.21"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
