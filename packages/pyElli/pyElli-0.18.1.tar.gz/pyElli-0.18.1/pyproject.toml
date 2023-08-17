@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=64.0.1", "setuptools-scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyElli"
+description = "An ellipsometry analysis tool for reproducible and comprehensible building of optical models."
+dynamic = ["version"]
+authors = [
+    { name = "Marius Müller", email = "marius.mueller@physik.uni-giessen.de" },
+    { name = "Florian Dobener", email = "pyelli@schroedingerscat.org" }
+]
+requires-python = ">=3.7"
+license = { file = "LICENSE.txt" }
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
+dependencies = [
+    "scipy",
+    "numpy>=1.20",
+    "pandas>=1.0.0",
+    "h5py",
+    "pyyaml",
+    "importlib-resources",
+    "rapidfuzz",
+    "lark>=1.1.5",
+    "pint",
+]
+
+[project.optional-dependencies]
+fitting = [
+    "ipython",
+    "ipywidgets",
+    "plotly",
+    "matplotlib",
+    "lmfit"
+]
+testing = [
+    "pytest",
+    "pytest-cov",
+    "nbmake"
+]
+
+[project.urls]
+homepage = "https://github.com/PyEllips/pyElli/"
+repository = "https://github.com/PyEllips/pyElli/"
+documentation = "https://pyelli.readthedocs.io/en/latest/"
+changelog = "https://github.com/PyEllips/pyElli/blob/master/CHANGELOG.md"
+tracker = "https://github.com/PyEllips/pyElli/issues"
+download = "https://github.com/PyEllips/pyElli/releases"
+
+[tool.setuptools_scm]
+version_scheme = "python-simplified-semver"
+local_scheme = "node-and-date"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests*"]

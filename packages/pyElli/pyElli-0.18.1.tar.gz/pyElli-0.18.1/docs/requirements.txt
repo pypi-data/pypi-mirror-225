@@ -1,0 +1,26 @@
+# Requirements file for ReadTheDocs, check .readthedocs.yml.
+# To build the module reference correctly, make sure every external package
+# under `install_requires` in `setup.cfg` is also listed here!
+sphinx!=5.1.0
+sphinx_rtd_theme
+m2r2
+myst_parser
+scipy
+numpy>=1.20
+pandas>=1.0.0
+lmfit
+plotly
+ipython
+ipywidgets
+sphinx-gallery
+sphinx-plotly-directive
+sphinxcontrib-mermaid 
+matplotlib
+h5py
+importlib-resources
+h5py
+pyyaml
+importlib-resources
+rapidfuzz
+lark>=1.1.5
+pint
