@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "jsonsteg"
+version = "1.0.0"
+description = "Write payload into JSON without modifying it"
+authors = ["PyryL <pyry@pyry.info>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+coverage = "^7.3.0"
+invoke = "^2.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+jsonsteg = "cli.main:start"
