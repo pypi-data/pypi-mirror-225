@@ -1,0 +1,29 @@
+---
+
+  - hosts: localhost
+    become: yes
+    become_user: root
+    tasks:
+    - name: Create user
+      user:
+        name: '{{ criscostack_user }}'
+        generate_ssh_key: yes
+
+    - name: Set home folder perms
+      file:
+        path: '{{ user_directory }}'
+        mode: 'o+rx'
+        owner: '{{ criscostack_user }}'
+        group: '{{ criscostack_user }}'
+        recurse: yes
+
+    - name: Set /tmp/.brik folder perms
+      file:
+        path: '{{ repo_path }}'
+        owner: '{{ criscostack_user }}'
+        group: '{{ criscostack_user }}'
+        recurse: yes
+
+    - name: Change default shell to bash
+      shell: "chsh {{ criscostack_user }} -s $(which bash)"
+...

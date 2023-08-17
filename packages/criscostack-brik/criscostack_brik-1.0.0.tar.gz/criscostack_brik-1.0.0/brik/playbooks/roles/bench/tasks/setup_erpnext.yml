@@ -1,0 +1,29 @@
+---
+  - name: Check if paa App exists
+    stat: path="{{ brik_path }}/apps/paa"
+    register: app
+
+  - name: Get the paa app
+    command: brik get-app paa {{ paa_repo_url }} --branch {{ paa_branch }}
+    args:
+      creates: "{{ brik_path }}/apps/paa"
+      chdir: "{{ brik_path }}"
+    when: not app.stat.exists and not without_paa
+
+  - name: Check whether the site already exists
+    stat: path="{{ brik_path }}/sites/{{ site }}"
+    register: site_folder
+    when: not without_site
+
+  - name: Create a new site
+    command: "brik new-site {{ site }} --admin-password '{{ admin_password }}' --mariadb-root-password '{{ mysql_root_password }}'"
+    args:
+      chdir: "{{ brik_path }}"
+    when: not without_site and not site_folder.stat.exists
+
+  - name: Install paa to default site
+    command: "brik --site {{ site }} install-app paa"
+    args:
+      chdir: "{{ brik_path }}"
+    when: not without_site and not without_paa
+...
