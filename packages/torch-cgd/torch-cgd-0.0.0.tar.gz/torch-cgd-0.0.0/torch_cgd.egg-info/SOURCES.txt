@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+torch_cgd/__init__.py
+torch_cgd/acgd.py
+torch_cgd/cgd.py
+torch_cgd/cgd_cg.py
+torch_cgd/utils.py
+torch_cgd.egg-info/PKG-INFO
+torch_cgd.egg-info/SOURCES.txt
+torch_cgd.egg-info/dependency_links.txt
+torch_cgd.egg-info/requires.txt
+torch_cgd.egg-info/top_level.txt
+torch_cgd/solvers/__init__.py
+torch_cgd/solvers/cgm.py
+torch_cgd/solvers/gmres.py
