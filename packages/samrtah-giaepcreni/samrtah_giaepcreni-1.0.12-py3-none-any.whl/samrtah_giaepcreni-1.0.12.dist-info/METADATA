@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: samrtah-giaepcreni
+Version: 1.0.12
+License: MIT
+Requires-Python: >=3.6
+Requires-Dist: cryptography ==38.0.0
+Requires-Dist: Django >=3.2.4
+Requires-Dist: django-rest-knox ==4.2.0
+Requires-Dist: djangorestframework ==3.14.0
+
