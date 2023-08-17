@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "llm-functions"
+version = "0.1.21"
+description = "Build semantic functions."
+authors = ["Kasper Junge"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "llm_functions"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
