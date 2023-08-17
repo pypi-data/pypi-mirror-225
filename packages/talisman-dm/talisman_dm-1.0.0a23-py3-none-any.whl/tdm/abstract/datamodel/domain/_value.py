@@ -1,0 +1,22 @@
+from abc import ABCMeta
+from dataclasses import dataclass
+from typing import Generic, Set, Type, TypeVar
+
+from tdm.abstract.datamodel.value import EnsureConfidenced
+from tdm.helper import generics_mapping
+from ._type import AbstractDomainType
+
+_VT = TypeVar('_VT', bound=EnsureConfidenced)
+
+
+@dataclass(frozen=True)
+class AbstractValueDomainType(AbstractDomainType, Generic[_VT], metaclass=ABCMeta):
+    value_type: Type[_VT]
+
+    @classmethod
+    def constant_fields(cls) -> Set[str]:
+        return {'value_type'}
+
+    @classmethod
+    def get_value_type(cls) -> type:
+        return generics_mapping(cls)[_VT]
