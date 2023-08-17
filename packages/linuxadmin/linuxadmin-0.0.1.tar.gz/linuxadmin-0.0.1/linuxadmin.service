@@ -1,0 +1,11 @@
+[Unit]
+Description=LinuxAdmin thinclient
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/linuxadmin
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
