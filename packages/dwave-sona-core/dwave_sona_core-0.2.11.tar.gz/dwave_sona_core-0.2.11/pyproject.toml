@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "dwave-sona-core"
+version = "0.2.11"
+description = ""
+authors = ["dwave-dev"]
+license = ""
+readme = "README.md"
+packages = [{include = "sona"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+typer = "^0.7.0"
+loguru = "^0.6.0"
+pydantic = {extras = ["dotenv"], version = "^1.10.5"}
+boto3 = "^1.26.85"
+redis = "^4.5.4"
+confluent-kafka = "^2.1.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
