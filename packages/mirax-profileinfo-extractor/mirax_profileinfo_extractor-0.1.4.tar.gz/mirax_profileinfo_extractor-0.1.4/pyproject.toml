@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mirax_profileinfo_extractor"
+version = "0.1.4"
+dependencies = [
+  'configparser',
+  "setuptools>=61.0"
+]
+authors = [
+  { name="GODARD Tuatini", email="tuatini@pathologywatch.com" },
+]
+description = "A simple library that extracts profile information from a MIRAX file."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pathologywatch/mirax_profileinfo_extractor"
+"Bug Tracker" = "https://github.com/pathologywatch/mirax_profileinfo_extractor/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
