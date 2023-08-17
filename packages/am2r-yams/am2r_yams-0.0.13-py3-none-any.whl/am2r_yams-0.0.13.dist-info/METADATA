@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: am2r-yams
+Version: 0.0.13
+Summary: An open source randomizer patcher for AM2R.
+Home-page: https://github.com/Miepee/YAMS
+Author: Miepee
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pythonnet
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-mock ; extra == 'test'
+
+Very WIP
+
+# License
+- GPLv3 for code, see LICENSE file
+- [CC-BY-SA 4.0](https://creativecommons.org/licenses/by/4.0/) for the Art assets under the `Sprites` folder
