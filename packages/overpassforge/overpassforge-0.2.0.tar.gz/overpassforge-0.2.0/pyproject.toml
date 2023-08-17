@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[project]
+name = "overpassforge"
+dynamic = ["version"]
+authors = [
+  { name="Krafpy", email="krafpy@gmail.com" },
+]
+description = "A library for generating OpenStreetMap's Overpass QL queries from Python objects."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Krafpy/Overpass-Forge"
+"Bug Tracker" = "https://github.com/Krafpy/Overpass-Forge/issues"
+"Documentation" = "https://overpassforge.readthedocs.io/en/latest"
