@@ -1,0 +1,73 @@
+# 🚀 LeakPy
+
+LeakPy is a third-party client designed to interact with the leakix.net API using Python. 
+
+> ❗ **Note:** This is **not** the official LeakIX client. The official LeakIX client for Python can be found at [https://github.com/LeakIX/LeakIXClient-Python](https://github.com/LeakIX/LeakIXClient-Python).
+
+## 📥 Installation
+
+To install LeakPy via PyPi:
+
+```bash
+pip install leakpy
+```
+
+## 🖥️ CLI Usage
+
+```bash
+$ leakpy -h
+usage: leakpy [-h] [-s {service,leak}] [-p PAGES] [-q QUERY] [-P PLUGIN] [-o OUTPUT] [-r] [-lp]
+
+options:
+  -h, --help            show this help message and exit
+  -s {service,leak}, --scope {service,leak}
+                        Type of information
+  -p PAGES, --pages PAGES
+                        Number of pages
+  -q QUERY, --query QUERY
+                        Specify the query
+  -P PLUGIN, --plugin PLUGIN
+                        Specify the plugin
+  -o OUTPUT, --output OUTPUT
+                        Output file
+  -r, --reset-api       Reset the saved API key
+  -lp, --list-plugins   List available plugins
+```
+
+## 📘 Library Documentation
+
+### LeakixScraper
+
+The `LeakixScraper` class enables interaction with the leakix.net API.
+
+#### Initialization
+
+You can instantiate the class by passing an API key:
+
+```python
+from leakpy.scraper import LeakixScraper
+
+scraper = LeakixScraper(api_key="Your_API_Key")
+```
+
+#### Methods
+
+- **execute(scope, query, pages)**
+
+    Execute a search on leakix.net.
+
+    Arguments:
+    - `scope` (str): Type of information (e.g., "service" or "leak").
+    - `query` (str): The query to be performed.
+    - `pages` (int): Number of pages to retrieve.
+
+    Example:
+
+    ```python
+    results = scraper.execute(scope="leak", query='+country:"France"', pages=10)
+    print(results)
+    ```
+
+### 🚫 Disclaimer
+
+LeakPy is an unofficial tool and has no affiliation with leakix.net. The developers of LeakPy are not responsible for any misuse or potential damage caused by this tool. Use LeakPy responsibly and ensure you have permission to access any data you're attempting to retrieve.
