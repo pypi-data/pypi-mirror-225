@@ -1,0 +1,17 @@
+*.egg-info/
+.ipynb_checkpoints/
+dist/
+build/
+*.py[cod]
+node_modules/
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log
+
+# Compiled javascript
+cad_viewer_widget/nbextension/
+cad_viewer_widget/labextension/
+
+# OS X
+.DS_Store
+TODO
