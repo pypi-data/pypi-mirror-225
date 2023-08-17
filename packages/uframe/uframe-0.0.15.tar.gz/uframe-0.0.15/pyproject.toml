@@ -1,0 +1,44 @@
+
+[build-system]
+requires = ["setuptools>=42.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[tool.mypy]
+mypy_path = "uframe"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true
+
+
+[project]
+name = "uframe"
+version = "0.0.15"
+authors = [
+  { name="Christian Amesoder", email="christian.amesoeder@informatik.uni-regensburg.de" },
+  { name="Michael Hagn", email="michael.hagn@stud.uni-regensburg.de" }
+]
+description = "Package for handling uncertain data"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/URWI2/uframe"
