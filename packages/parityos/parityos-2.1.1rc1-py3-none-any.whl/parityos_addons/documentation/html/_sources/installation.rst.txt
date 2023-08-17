@@ -1,0 +1,50 @@
+Installation
+===================
+
+ParityOS is a Python package; to install it you will need an environment with Python >= 3.7.
+
+As ParityOS is hosted in a private package registry, you will need a
+token in order to install it; contact ParityQC to receive one.
+
+Once you do have a ParityOS token, please add the following lines to your pip.conf file (
+typically located in a .pip directory in your home folder)::
+
+    [global]
+    extra-index-url = https://__token__:<parityos token>@gitlab.parityqc.com/api/v4/projects/55/packages/pypi/simple
+
+where ``<parityos token>`` should be substituted by the token you received.
+
+ParityOS can then be installed with pip::
+
+    pip install parityos
+
+This will install only the base features of ParityOS; in case one wants to use features related to
+Cirq or Qiskit, one can install ParityOS via ``pip install 'parityos[cirq]'``
+or ``pip install 'parityos[qiskit]'`` respectively.
+For the ``spin_hamiltonian`` addon to be installed correctly, one has to add the `spinz` option to
+the pip install specification: ``pip install 'parityos[spinz]'``
+(or ``pip install 'parityos[spinz, cirq]'`` if one wants to install it together with Cirq).
+
+.. note::
+    Aside from adding the ``extra-index-url`` option in the ``pip.conf`` file,
+    one can instead provide it when invoking pip, i.e.::
+
+         pip install parityos --extra-index-url https://__token__:<parityos token>@gitlab.parityqc.com/api/v4/projects/55/packages/pypi/simple
+
+.. note::
+    It is recommended to install parityos inside a virtual environment.
+    To create a standard Python ``venv`` environment, enter the following commands before
+    installing parityos::
+
+        python -m venv my_new_venv  && source my_new_venv/bin/activate
+
+    To create a Conda environment, enter the following commands before installing parityos::
+
+        conda create --name my_new_conda_env  &&  conda activate my_new_conda_env
+
+    Remember to activate the environment each time you are going to use ``parityos``!
+
+For more information about how to create and submit problems, see the :ref:`quickstart:Quickstart` section.
+
+.. _pip.conf: https://pip.pypa.io/en/stable/user_guide/#config-file
+.. _python-dotenv: https://pypi.org/project/python-dotenv/
