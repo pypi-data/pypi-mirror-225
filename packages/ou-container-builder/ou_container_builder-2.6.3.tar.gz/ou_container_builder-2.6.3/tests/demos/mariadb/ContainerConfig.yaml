@@ -1,0 +1,13 @@
+module:
+  code: MariadbDemo
+  presentation: "1"
+image:
+  user: test
+packs:
+  - name: mariadb
+    options:
+      database: demo
+      username: demo
+      password: demoPWD
+server:
+  access_token: test

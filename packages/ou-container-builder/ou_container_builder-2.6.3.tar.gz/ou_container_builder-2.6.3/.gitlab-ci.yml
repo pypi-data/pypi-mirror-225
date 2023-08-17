@@ -1,0 +1,120 @@
+stages:
+  - build
+  - test
+  - publish
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+
+sast:
+  stage: test
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+build-package:
+  image: python:3.10
+  stage: build
+  script:
+    - pip install hatch
+    - hatch build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 300 seconds
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
+
+demo-tests:
+  image: docker:latest
+  stage: test
+  services:
+    - docker:dind
+  before_script:
+    - until docker info; do sleep 1; done
+    - apk add --no-cache python3 py3-pip curl
+    - pip install dist/*.whl
+  script:
+    - cd tests/demos
+    - ./demo-tests.sh $DEMO
+  parallel:
+    matrix:
+      - DEMO:
+        - code_server
+        - code_server_pinned
+        - custom_apt_key_dearmor
+        - jupyterlab/v3
+        - jupyterlab/v4
+        - nbclassic
+        - openrefine
+        - tutorial_server
+        - mariadb
+  dependencies:
+    - build-package
+  needs:
+    - build-package
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "default"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+trigger-docs:
+  image: curlimages/curl:latest
+  stage: publish
+  script:
+    - curl -X POST -d "token=f4fb791db48804c4a30dfe809720b9600977141e" https://readthedocs.org/api/v2/webhook/ou-container-builder/206795/
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "default"
+
+publish-package:
+  image: python:3.10
+  stage: publish
+  script:
+    - pip install hatch
+    - hatch publish
+  dependencies:
+    - build-package
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+(b[0-9]+)?$/
+
+publish-beta-image:
+  image: docker:latest
+  stage: publish
+  services:
+    - docker:dind
+  before_script:
+    - until docker info; do sleep 1; done
+  script:
+    - docker build . --tag mmh352/ou-container-builder:${CI_COMMIT_TAG:1}
+    - docker login -u mmh352 -p $DOCKER_HUB_TOKEN
+    - docker push mmh352/ou-container-builder:${CI_COMMIT_TAG:1}
+  retry:
+    when: script_failure
+    max: 2
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+b[0-9]+$/
+
+publish-image:
+  image: docker:latest
+  stage: publish
+  services:
+    - docker:dind
+  before_script:
+    - until docker info; do sleep 1; done
+  script:
+    - /bin/ash
+    - export major_minor_patch=${CI_COMMIT_TAG:1}
+    - export major_minor=${major_minor_patch%.*}
+    - export major=${major_minor%.*}
+    - docker build . --tag mmh352/ou-container-builder:${major_minor_patch} --tag mmh352/ou-container-builder:${major_minor} --tag mmh352/ou-container-builder:${major}
+    - docker login -u mmh352 -p $DOCKER_HUB_TOKEN
+    - docker push -a mmh352/ou-container-builder
+  retry:
+    when: script_failure
+    max: 2
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/

@@ -1,0 +1,12 @@
+module:
+  code: CodeServerDemo
+  presentation: "1"
+image:
+  user: test
+packs:
+  - name: code_server
+    options:
+      extensions:
+        - ms-python.python
+server:
+  access_token: test
