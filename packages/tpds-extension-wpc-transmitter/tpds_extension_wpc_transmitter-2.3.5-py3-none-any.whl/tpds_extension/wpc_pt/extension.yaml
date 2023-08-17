@@ -1,0 +1,23 @@
+name: wpc_pt_config
+title: Qi Power Transmitter
+description: ""
+
+backend:
+  path: "backend"
+  routers:
+  - router
+
+frontend:
+  path: frontend
+  entrypoints:
+  - name: ecc608_tflxwpc_config
+    title: ECC608-TFLXWPC Configurator
+    description: ""
+    entry: "assets/ecc608_tflxwpc/ECC608-TFLXWPC Configurator.html"
+    applications:
+      - configurator
+      - WPC
+    devices:
+      - ECC608-TFLXWPC
+    boards:
+      - DM320118
