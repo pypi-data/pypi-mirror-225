@@ -1,0 +1,62 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=65.0.0", "wheel"]
+
+[project]
+authors = [{name = "Chintak Sheth", email = "chintaksheth@gmail.com"}]
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = ["notion-client==2.0.0", "requests==2.31.0", "pytest", "pytest-asyncio"]
+description = "Converts Notion documents into Markdown format files compatbile with the Hugo framework."
+keywords = ["notion", "hugo", "markdown"]
+license = {file = "LICENSE"}
+name = "notion2hugo"
+readme = "README.md"
+requires-python = ">=3.9, <4"
+version = "0.2.0"
+
+[project.optional-dependencies]
+dev = ["black", "bumpver", "build", "twine", "isort", "pip-tools", "types-requests"]
+
+[project.urls]
+Homepage = "https://github.com/chintak/notion2hugo"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+log_cli = true
+log_cli_level = "INFO"
+
+[project.scripts]
+publish_notion_to_hugo = "notion2hugo.__main__:main"
+
+[tool.bumpver]
+commit = true
+commit_message = "bump version {old_version} -> {new_version}"
+current_version = "0.2.0"
+post_commit_hook = ""
+pre_commit_hook = ""
+push = false
+tag = true
+tag_message = "{new_version}"
+tag_scope = "default"
+version_pattern = "MAJOR.MINOR.PATCH"
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+  'current_version = "{version}"',
+  'version = "{version}"',
+]
+"src/notion2hugo/__init__.py" = [
+  '^__version__ = "{version}"$',
+]
