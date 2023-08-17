@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: iCypress
+Version: 0.7
+Summary: iCYPRESS: identifying CYtokine PREdictors of diSeaSe. A library that analyzes cytokines using Graph Neural Networks
+Home-page: https://github.com/luciancahil/iCYPRESS
+Download-URL: https://github.com/luciancahil/iCYPRESS/archive/refs/tags/v_01.tar.gz
+Author: royhe
+Author-email: royhe62@yahoo.ca
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# iCYPRESSS
+
+
+To Install
+pip install torch_geometric
+conda install pytorch-scatter -c pyg
+pip install iCypres
