@@ -1,0 +1,6 @@
+python3 -m pip wheel --no-cache-dir -r requirement.txt -w offline_packages
+
+pip install --no-index --find-links offline_packages -r requirement.txt
+
+-------------------
+sudo apt-get install python3-tk python3-pip
