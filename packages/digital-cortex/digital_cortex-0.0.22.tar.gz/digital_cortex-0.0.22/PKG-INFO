@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: digital-cortex
+Version: 0.0.22
+Summary: Python Client for Digital Cortex
+Author: Charlie Wardell
+Author-email: charlie@digital-cortex.io
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pydantic (>=2.1.1,<3.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# digital-cortex-python
+
+Python Client package for Digital Cortex
+
+[# https://packaging.python.org/en/latest/tutorials/packaging-projects/]()
+
+Aug-08-2023
+
+twine upload --repository testpypi dist/* should reference the [testpypi] section in .pypirc. It is not.
+
+to get around this, I need to enter `__token__` as my username and my api key as password. 
+
+You must update the version number in pyproject.toml every time you want to push.
+
+You should probably move this to Poetry
+
+
+FUNCTIONS WERE WRITTEN FOR THE OLD VERSION OF DC
+
