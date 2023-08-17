@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: db-lonewolpy
+Version: 1.0.2
+Summary: DB Connector
+Home-page: https://github.com/nikunjs21/db-lonewolpy
+Author: Nikunj
+Author-email: savaliyanikunj2@gmail.com
+License: MIT
+Requires-Dist: mysql-connector-python (==8.1.0)
+Requires-Dist: python-dotenv (==1.0.0)
+
