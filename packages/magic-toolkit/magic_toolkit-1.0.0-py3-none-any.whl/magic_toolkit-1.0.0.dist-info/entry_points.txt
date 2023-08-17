@@ -1,0 +1,5 @@
+[console_scripts]
+magic-kill = magic.scripts_wrapper:force_kill
+magic-sftp = magic.sftp.main:main
+magic-ssh = magic.ssh.remote_manager:main
+
