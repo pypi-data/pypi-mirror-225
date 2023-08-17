@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cocmd"
+version = "0.1.0"
+description = ""
+authors = ["Moshe Roth <mzsrtgzr2@gmail.com>"]
+readme = "README.md"
+packages = [{include = "cocmd_cli"}]
+
+[tool.poetry.scripts]
+cocmd = "cocmd_cli.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
