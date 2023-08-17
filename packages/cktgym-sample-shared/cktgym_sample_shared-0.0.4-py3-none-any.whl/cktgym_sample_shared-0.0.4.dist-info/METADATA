@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: cktgym-sample-shared
+Version: 0.0.4
+Summary: Sample Discovery User Shared Code
+Home-page: https://github.com/BWRC-AMS-ML-Discovery
+Author: The Regents of the University of California
+Author-email: haohanw@eecs.berkeley.edu
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic (==1.9.1)
+Requires-Dist: hdl21 (>=4.0.0)
+Provides-Extra: dev
+Requires-Dist: pytest (==7.1) ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pre-commit (==2.20) ; extra == 'dev'
+Requires-Dist: black (==22.6) ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+
