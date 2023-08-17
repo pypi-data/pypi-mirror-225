@@ -1,0 +1,2 @@
+This module is an add-on to sqlite3. It helps to perform the simplest tasks with tables: reading and writing. 
+It was created as part of a Python programming course for high school students, but you can use it too.
