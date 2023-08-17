@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: phytorchx
+Version: 0.2
+Summary: Small utiilities package for PyTorch
+Author-email: Kosio Karchev <kosiokarchev@gmail.com>
+License: MIT
+Project-URL: GitHub, https://github.com/kosiokarchev/phytorchx
+Project-URL: Read the Docs, https://phytorchx.readthedocs.org/
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: more-itertools
+Requires-Dist: optree
+Requires-Dist: torch
+
+# φtorch-x
+#### *small utilities package for PyTorch*
