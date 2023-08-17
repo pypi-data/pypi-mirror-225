@@ -1,0 +1,21 @@
+classification:
+  grid_model:
+    learning_rate: [0.01, 0.1]
+    n_estimators: [100, 250, 500]
+    num_leaves: [6, 12, 18, 30]
+    boosting_type : ['gbdt', 'dart']
+    reg_alpha : [0, 1, 1.5]
+    reg_lambda : [0, 1, 1.5]
+    subsample: [0.4, 0.6]
+    class_weight: ['balanced']
+
+regression:
+  grid_model:
+    learning_rate: [0.01, 0.1]
+    n_estimators: [100, 250, 500]
+    num_leaves: [6, 12, 18, 30]
+    boosting_type : ['gbdt', 'dart']
+    reg_alpha : [0, 1, 1.5]
+    reg_lambda : [0, 1, 1.5]
+    subsample: [0.4, 0.6]
+
