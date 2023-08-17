@@ -1,0 +1,10 @@
+<script>
+  try {
+    const parent = window.parent
+    const parentColor = parent.getComputedStyle(parent.document.querySelector("body")).getPropertyValue("color");
+    const thisBody = window.document.querySelector("body")
+    if(!thisBody.style["color"]) thisBody.style["color"] = parentColor
+  } catch (err) {
+    console.log("Modelbit: Unable to copy Hex body color", err)
+  }
+</script>
