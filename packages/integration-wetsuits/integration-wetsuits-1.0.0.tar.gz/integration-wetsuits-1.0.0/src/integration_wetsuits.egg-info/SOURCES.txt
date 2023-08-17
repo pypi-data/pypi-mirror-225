@@ -1,0 +1,13 @@
+pyproject.toml
+src/integration_wetsuits/__init__.py
+src/integration_wetsuits/edi.py
+src/integration_wetsuits/edi_dict.py
+src/integration_wetsuits/itsp.py
+src/integration_wetsuits.egg-info/PKG-INFO
+src/integration_wetsuits.egg-info/SOURCES.txt
+src/integration_wetsuits.egg-info/dependency_links.txt
+src/integration_wetsuits.egg-info/requires.txt
+src/integration_wetsuits.egg-info/top_level.txt
+tests/test_edi.py
+tests/test_itsp.py
+tests/test_sample.py
