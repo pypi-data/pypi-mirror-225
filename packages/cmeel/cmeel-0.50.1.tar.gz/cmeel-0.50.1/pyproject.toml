@@ -1,0 +1,65 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.isort]
+profile = "black"
+
+[tool.poetry]
+authors = ["Guilhem Saurel <guilhem.saurel@laas.fr>"]
+classifiers = [
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: C++",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: System :: Archiving :: Packaging",
+  "Topic :: System :: Software Distribution"
+]
+description = "Create Wheel from CMake projects"
+documentation = "https://cmeel.readthedocs.io/"
+homepage = "https://github.com/cmake-wheel/cmeel"
+include = ['cmeel.pth']
+license = "BSD-2-Clause"
+name = "cmeel"
+readme = "README.md"
+version = "0.50.1"
+
+[tool.poetry.dependencies]
+cmake = {optional = true, version = "^3.27.2"}
+git-archive-all = {optional = true, version = "^1.23.1"}
+packaging = {optional = true, version = "^23.1"}
+python = "^3.8"
+tomli = {python = "< 3.11", version = "^2.0.1"}
+wheel = {optional = true, version = "^0.41.1"}
+
+[tool.poetry.extras]
+build = ["cmake", "git-archive-all", "packaging", "wheel"]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+furo = "^2023.7.26"
+isort = "^5.12.0"
+mypy = "^1.4.1"
+myst-parser = "^2.0.0"
+requests = "^2.31.0"
+ruff = "^0.0.282"
+# safety = {allow-prereleases = true, version = "^2.4.0b1"} TODO: bump when they fix packaging support
+sphinx = "^7.1.2"
+
+[tool.poetry.scripts]
+cmeel = "cmeel.__main__:main"
+
+[tool.poetry.urls]
+changelog = "https://github.com/cmake-wheel/cmeel/blob/main/CHANGELOG.md"
+
+[tool.ruff]
+extend-ignore = ["D203", "D213"]
+extend-select = ["A", "B", "C", "COM", "D", "EM", "EXE", "G", "N", "PTH", "RET", "RUF", "UP", "W", "YTT"]
+target-version = "py37"
+
+[tool.tomlsort]
+all = true
