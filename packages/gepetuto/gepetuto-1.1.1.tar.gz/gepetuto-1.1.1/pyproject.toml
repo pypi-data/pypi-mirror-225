@@ -1,0 +1,40 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.isort]
+profile = "black"
+
+[tool.poetry]
+authors = [
+  "Guilhem Saurel <guilhem.saurel@laas.fr>",
+  "Nicolas Mansard <nmansard@laas.fr>",
+  "Théo Martinez <tmartinezf@laas.fr>"
+]
+description = "Tutorial edition framework"
+homepage = "https://github.com/gepetto/gepetuto"
+license = "BSD-2-Clause"
+name = "gepetuto"
+readme = "README.md"
+version = "1.1.1"
+
+[tool.poetry.dependencies]
+black = {extras = ["jupyter"], version = "^23.7.0"}
+isort = "^5.12.0"
+jupyterlab = "^4.0.5"
+python = "^3.8"
+ruff = "^0.0.284"
+
+[tool.poetry.scripts]
+gepetuto = "gepetuto.__main__:main"
+
+[tool.poetry.urls]
+changelog = "https://github.com/gepetto/gepetuto/blob/main/CHANGELOG.md"
+
+[tool.ruff]
+extend-ignore = ["D203", "D213"]
+extend-select = ["A", "B", "C", "COM", "D", "EM", "EXE", "G", "N", "PTH", "RET", "RUF", "UP", "W", "YTT"]
+target-version = "py38"
+
+[tool.tomlsort]
+all = true
