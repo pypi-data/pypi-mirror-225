@@ -1,0 +1,143 @@
+ws = new WebSocket("ws://localhost:1302/websocket");
+
+function send(msg, _handle) {
+  if( typeof(ws) == 'undefined' || (ws.readyState === undefined) || (ws.readyState > 1)) {
+    console.log('send - reopen socket')
+    ws = new WebSocket("ws://localhost:1302/websocket");
+  } else {
+    ws.onmessage = _handle
+    ws.send( JSON.stringify(msg));
+    // console.log("send sent:", JSON.stringify(msg));
+  };
+  console.log('handle: ', _handle);
+  ws.onopen = function () {
+    console.log(_handle)
+    console.log('socket re-opened');
+    ws.onmessage = _handle
+    ws.send( JSON.stringify(msg));
+    // console.log("send sent (re-open path):", JSON.stringify(msg));
+  }
+}
+
+function send_message(id, args, _handle){
+  var msg = { msg_id: id, parameters: args };
+  console.log('send_message', msg)
+  send(msg, _handle);
+}
+
+function open_link(mdfile, section) {
+  send_message(3, [String(mdfile), String(section)], open_link_handle)
+};
+
+function open_link_handle(evt) {
+  response = handle_message(evt)
+  console.log(response)
+};
+
+function handle_message(evt) {
+  var msg = JSON.parse(evt.data)
+  if( msg.status == "OK" )
+  {
+    console.log("handle_message: ", msg.response, "OK")
+  }
+  else if( msg.status == 'error' )
+  {
+    console.log("handle_messag: ERROR: ", msg.response)
+  }
+  console.log('hanlde_message - close socket')
+  ws.close()
+  console.log('handle_message - close socket')
+  var response = msg.response
+  console.log('handle_message - response: ', response)
+  return response
+}
+
+function ta010_tflexauth_json(jsonOBJ) {
+    console.log([String(jsonOBJ)]);
+    fetch("http://localhost:5001/ta010/generate_tflxauth_xml",
+        {
+            method: "POST",
+            body: String(jsonOBJ),
+
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+      if (data.status !== "ABORT") {
+        alert(
+          "Response: " +
+            data.response +
+            "\n\nStatus Message:\n" +
+            data.status.replace(/(<([^>]+)>)/ig, "")
+        );
+      }
+    })
+};
+
+function ta010_tflexauth_proto_prov(jsonOBJ) {
+    console.log([String(jsonOBJ)]);
+    fetch("http://localhost:5001/ta010/provision_tflxauth_device",
+        {
+            method: "POST",
+            body: String(jsonOBJ),
+
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+            alert('Response: ' + data.response +
+                '\n\nStatus Message:\n' + data.status.replace(/(<([^>]+)>)/ig, ""))
+        })
+};
+
+$('input[type=radio][name=devIface]').change(function() {
+        document.getElementById("fixedReference").checked = false;
+    if (this.value == 'i2c') {
+        document.getElementById("fixedReference").disabled= false;
+    }
+    else if (this.value == 'swi') {
+        document.getElementById("fixedReference").disabled= true;
+        fetch("http://localhost:5001/boards/is_kitparser_updated/?board_name=DM320118&target_version=3.0.7")
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.is_updated == false) {
+                alert_msg = 'KitParser details:'
+                alert_msg += '\n' + data.status_msg
+                // alert_msg += ' \nCurrent Version: ' + data.current_version +
+                //     ' Target Version: ' + data.target_version
+                alert(alert_msg)
+                document.getElementById('devI2cIfaceId').checked = true;
+            }
+        })
+    }
+});
+
+// Validate device address
+const deviceAddress = document.querySelector('#deviceAddress');
+deviceAddress.addEventListener('change', (e) => {
+  if (!e.target.checkValidity()) {
+    alert('not valid')
+    e.target.value = ''
+  }
+  if (e.target.value) {
+    const value = parseInt(e.target.value, 16);
+    if (value < 1 || value > 127) {
+      e.target.value = ''
+    }
+  }
+});
+
+// Validate counter value
+const counterInput = document.querySelector('#counterVal');
+counterInput.addEventListener('change', (e) => {
+    if (!e.target.checkValidity()){
+        e.target.value=''
+    }
+    counter_val = document.getElementById("counterVal").value ? document.getElementById("counterVal").value : 10000;
+    document.getElementById('limitedUsePrivate').title = 'Connect ECC Private Key to Monotonic Counter for '+ counter_val +' counts';
+    document.getElementById('limitedUseSecret').title = 'Connect HMAC Key to Monotonic Counter for '+ counter_val +' counts';
+});

@@ -1,0 +1,75 @@
+name: ta010_support
+
+backend:
+  path: "backend"
+  routers:
+    - router
+  requires:
+    - wpc_pt_config
+
+frontend:
+  path: frontend
+  entrypoints:
+  - name: ta010_tflxauth_config
+    title: TA010-TFLXAUTH Configurator
+    description: ""
+    entry: "assets/ta010_tflxauth/TA010 TFLXAUTH Configurator.html"
+    applications:
+      - configurator
+    devices:
+      - TA010-TFLXAUTH
+    boards:
+      - DM320118
+  - name: ta010_tflxwpc_config
+    title: TA010-TFLXWPC Configurator
+    description: ""
+    entry: "assets/ta010_tflxwpc/TA010 TFLXWPC Configurator.html"
+    applications:
+      - configurator
+    devices:
+      - TA010-TFLXWPC
+    boards:
+      - DM320118
+  - name: asym_auth_ta010
+    title: Asymmetric Authentication
+    description: ""
+    entry: TrustFlex/TA010-AsymmetricAuthentication.ipynb
+    icon:
+      name: asym_auth_ta010_png
+      path: frontend/TrustFlex/assets/images/asymm_auth/asym_auth_ta010.png
+    applications:
+      - Accessory Authentication
+      - Disposable Authentication
+      - IoT
+    devices:
+      - TA010-TFLXAUTH
+    boards:
+      - DM320118
+  - name: sym_auth_ta010
+    title: Symm Auth - Diversified Key
+    description: ""
+    entry: TrustFlex/TA010-SymmetricAuthentication.ipynb
+    icon:
+      name: sym_auth_ta010_png
+      path: frontend/TrustFlex/assets/images/symm_auth/sym_auth_ta010.png
+    applications:
+      - Accessory Authentication
+      - Disposable Authentication
+      - IoT
+    devices:
+      - TA010-TFLXAUTH
+    boards:
+      - DM320118
+  - name: wpc_auth_ta010
+    title: WPC Authentication
+    description: ""
+    entry: TrustFlex/TA010-WPC-Authentication.ipynb
+    icon:
+      name: wpc_auth_ta010_png
+      path: frontend/TrustFlex/assets/images/wpc_auth/wpc_auth_ta010.png
+    applications:
+      - WPC
+    devices:
+      - TA010-TFLXWPC
+    boards:
+      - DM320118

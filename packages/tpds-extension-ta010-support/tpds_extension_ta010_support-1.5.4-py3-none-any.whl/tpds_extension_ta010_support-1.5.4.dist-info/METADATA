@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: tpds-extension-ta010-support
+Version: 1.5.4
+Summary: Microchip(SPG) Trust Platform - TA010 Device Support
+Home-page: https://www.microchip.com/TrustPlatform
+Author: Microchip Technology
+Author-email: SPG.Tools@microchip.com
+Classifier: License :: Other/Proprietary License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: tpds-core >=2.3.4
+Requires-Dist: tpds-helper >=2.3.6
+
+# NextGen TA010-TFLXAUT Configurator
+
+- TA010 Configurator Package is distributed under NDA
+
+## Release Notes
+
+### 1.0.0
+    - Initial version with options to generate provisioning files and Proto Provisioning Device.

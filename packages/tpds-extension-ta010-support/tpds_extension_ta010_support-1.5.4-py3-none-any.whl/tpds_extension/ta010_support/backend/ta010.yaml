@@ -1,0 +1,65 @@
+---
+title: TA010 Device Information
+devices:
+  TA010-TFLXAUTH:
+    basePart: TA010
+    partLink: https://www.microchip.com/en-us/product/TA010
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    partInterface:
+      - i2c
+      - swi
+  TA010-TFLXWPC:
+    basePart: TA010
+    partLink: https://www.microchip.com/en-us/product/TA010
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    partInterface:
+      - i2c
+  TA010-RBYCZ:
+    basePart: TA010
+    partLink: https://www.microchip.com/en-us/product/TA010
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+parts:
+  - partNumber: TA010-TFLXAUTHU
+    deviceName: TA010-TFLXAUTH
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: TA010-TFLXAUTHS
+    deviceName: TA010-TFLXAUTH
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: TA010-TFLXWPCU
+    deviceName: TA010-TFLXWPC
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: TA010-TFLXWPCS
+    deviceName: TA010-TFLXWPC
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: TA010-RBYCZ
+    deviceName: TA010-RBYCZ
+    packagePin: RBH 3-pin contact
+    memory: N/A
+    media: Reel
+    moq:
+    status: Introduction
