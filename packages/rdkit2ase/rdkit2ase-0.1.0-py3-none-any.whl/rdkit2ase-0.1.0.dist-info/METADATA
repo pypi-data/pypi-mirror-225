@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: rdkit2ase
+Version: 0.1.0
+Summary: interface between rdkit and ASE
+License: Apache-2.0
+Author: zincwarecode
+Author-email: zincwarecode@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: ase (>=3.22.1,<4.0.0)
+Requires-Dist: networkx (>=3.1,<4.0)
+Requires-Dist: rdkit (>=2023.3.2,<2024.0.0)
+Description-Content-Type: text/markdown
+
+[![zincware](https://img.shields.io/badge/Powered%20by-zincware-darkcyan)](https://github.com/zincware)
+# rdkit2ase - Interface between the rdkit and ASE package.
+
+Installation via `pip install rdkit2ase`.
+
+```py
+from rdkit2ase import rdkit2ase, ase2rdkit
+
+atoms: ase.Atoms = rdkit2ase(mol)
+mol = ase2rdkit(atoms)
+```
+
+### Limitations
+- `rdkit2ase.ase2rdkit` won't be able to detect higher order bonds.
+
