@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: awadb
+Version: 0.3.10
+Summary: AI Native database for embedding vectors
+Home-page: UNKNOWN
+Author: Vincent
+Author-email: awadb.vincent@gmail.com
+License: Apache 2.0
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Provides-Extra: test
+Requires-Dist: pytest (>=6.0) ; extra == 'test'
+
+AI Native database for embedding vectors
+
+
