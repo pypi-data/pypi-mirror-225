@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: lupin-danquin
+Version: 1.0.4.dev0
+Summary: Testing - Documentation
+License: MIT License
+Keywords: documentation,testing
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Information Technology
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Documentation
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Provides-Extra: test
+License-File: LICENCE
+
+Test VAL3 code and generate documentation from it
