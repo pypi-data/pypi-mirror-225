@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = [
+  "src/event_study_test/*.py",
+  "src/event_study_test/data_panel.csv",
+  "src/event_study_test/event_panel.csv",
+  "tests/",
+]
+
+[project]
+name = "event_study_test"
+version = "0.0.9"
+authors = [
+  { name="researchrebel", email="amoossavi21@gmail.com" },
+]
+maintainers = [
+  { name="researchrebel", email="amoossavi21@gmail.com" },
+]
+description = "A package for conducting event studies"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+	"pandas",
+	"numpy",
+	"statsmodels",
+	"scipy",
+	"pandas-market-calendars",
+	"scikit-learn",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
