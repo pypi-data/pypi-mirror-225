@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: hjannova
+Version: 0.0.2
+Summary: ANOVA TEST
+Home-page: UNKNOWN
+Author: Harshwardhan Jadhav
+Author-email: harshwardhanpj2001@gmail.com
+License: UNKNOWN
+Keywords: annovatest,feature selection,annova test,python tutorial,hj annova test
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: scipy
+
+The ANOVA Test Package is a Python library designed to facilitate the analysis of variance (ANOVA) tests, an essential statistical technique used to compare means among multiple groups. Whether you're a data scientist, researcher, or analyst, this package simplifies the process of conducting one-way ANOVA tests, making it easy to determine whether there are statistically significant differences between group means.
+
+
