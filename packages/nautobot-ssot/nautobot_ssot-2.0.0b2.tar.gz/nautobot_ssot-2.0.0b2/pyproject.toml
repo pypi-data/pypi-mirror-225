@@ -1,0 +1,217 @@
+[tool.poetry]
+name = "nautobot-ssot"
+version = "v2.0.0-beta.2"
+description = "Nautobot Single Source of Truth"
+authors = ["Network to Code, LLC <info@networktocode.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/nautobot/nautobot-plugin-ssot"
+repository = "https://github.com/nautobot/nautobot-plugin-ssot"
+documentation = "https://nautobot-plugin-ssot.readthedocs.io"
+keywords = ["nautobot", "nautobot-plugin"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+include = [
+    "LICENSE",
+    "README.md",
+]
+packages = [
+    { include = "nautobot_ssot" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.11"
+nautobot = "2.0.0b2"
+diffsync = "^1.6.0"
+Jinja2 = { version = ">=2.11.3", optional = true }
+Markdown = "!=3.3.5"
+PyYAML = { version = ">=6", optional = true }
+cloudvision = { version = "^1.9.0", optional = true }
+cvprac = { version = "^1.2.2", optional = true }
+dnspython = { version = "^2.1.0", optional = true }
+# nautobot-device-lifecycle-mgmt = { version = "^1.0.2", optional = true }
+packaging = ">=21.3, <24"
+prometheus-client = "~0.16.0"
+ijson = { version = ">=2.5.1", optional = true }
+oauthlib = { version = ">=3.1.0", optional = true }
+python-magic = { version = ">=0.4.15", optional = true }
+pytz = { version = ">=2019.3", optional = true }
+requests = { version = ">=2.21.0", optional = true }
+requests-oauthlib = { version = ">=1.3.0", optional = true }
+six = { version = ">=1.13.0", optional = true }
+drf-spectacular = "0.26.3"
+
+[tool.poetry.dev-dependencies]
+bandit = "*"
+black = "*"
+coverage = "*"
+django-debug-toolbar = "*"
+# we need to pin flake8 because of package dependencies that cause it to downgrade and
+# therefore cause issues with linting since older versions do not take .flake8 as config
+flake8 = "^3.9.2"
+invoke = "*"
+ipython = "*"
+pydocstyle = "*"
+pylint = "*"
+pylint-django = "*"
+pylint-nautobot = "*"
+pytest = "*"
+python-dotenv = "^0.21.1"
+yamllint = "*"
+Markdown = "*"
+markdown-include = "*"
+toml = "*"
+# Rendering docs to HTML
+mkdocs = "1.4.2"
+# Material for MkDocs theme
+mkdocs-material = "9.0.11"
+# Render custom markdown for version added/changed/remove notes
+mkdocs-version-annotations = "1.0.0"
+# Automatic documentation from sources, for MkDocs
+griffe = "0.30.1"
+mkdocstrings = "0.22.0"
+mkdocstrings-python = "1.1.2"
+requests-mock = "^1.10.0"
+parameterized = "^0.8.1"
+
+[tool.poetry.plugins."nautobot_ssot.data_sources"]
+"example" = "nautobot_ssot.sync.example:ExampleSyncWorker"
+
+[tool.poetry.plugins."nautobot_ssot.data_targets"]
+"example" = "nautobot_ssot.sync.example:ExampleSyncWorker"
+
+[tool.poetry.extras]
+aci = [
+    "PyYAML",
+]
+all = [
+    "Jinja2",
+    "PyYAML",
+    "cloudvision",
+    "cvprac",
+    "dnspython",
+    "ijson",
+    "nautobot-device-lifecycle-mgmt",
+    "oauthlib",
+    "python-magic",
+    "pytz",
+    "requests",
+    "requests-oauthlib",
+    "six",
+]
+aristacv = [
+    "cloudvision",
+    "cvprac",
+]
+infoblox = [
+    "dnspython",
+]
+# pysnow = "^0.7.17"
+# PySNow is currently pinned to an older version of pytz as a dependency, which blocks compatibility with newer
+# versions of Nautobot. See https://github.com/rbw/pysnow/pull/186
+# For now, we have embedded a copy of PySNow under nautobot_ssot/integrations/servicenow/third_party/pysnow;
+# here are its direct packaging dependencies:
+pysnow = [
+    "requests",
+    "oauthlib",
+    "python-magic",
+    "requests-oauthlib",
+    "six",
+    "ijson",
+    "pytz",
+]
+servicenow = [
+    "Jinja2",
+    "PyYAML",
+    "ijson",
+    "oauthlib",
+    "python-magic",
+    "pytz",
+    "requests",
+    "requests-oauthlib",
+    "six",
+]
+nautobot-device-lifecycle-mgmt = [
+    "nautobot-device-lifecycle-mgmt",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | nautobot_ssot/integrations/servicenow/third_party
+  )/
+  | settings.py     # This is where you define files that should not be stylized by black
+                     # the root of the project
+)
+'''
+
+[tool.pylint.master]
+# Include the pylint_django plugin to avoid spurious warnings about Django patterns
+load-plugins="pylint_django,pylint_nautobot"
+ignore=".venv"
+
+[tool.pylint-nautobot]
+supported_nautobot_versions = [
+  "2",  # Supporting 2.x.y
+]
+
+[tool.pylint.basic]
+# No docstrings required for private methods (Pylint default), or for test_ functions, or for inner Meta classes.
+no-docstring-rgx="^(_|test_|Meta$)"
+
+[tool.pylint.messages_control]
+# Line length is enforced by Black, so pylint doesn't need to check it.
+# Pylint and Black disagree about how to format multi-line arrays; Black wins.
+disable = """,
+    line-too-long,
+    too-few-public-methods,
+    """
+
+[tool.pylint.miscellaneous]
+# Don't flag TODO as a failure, let us commit with things that still need to be done in the code
+notes = """,
+    FIXME,
+    XXX,
+    """
+
+[tool.pydocstyle]
+convention = "google"
+inherit = false
+match = "(?!__init__).*\\.py"
+match-dir = "(?!tests|migrations|development)[^\\.].*"
+# D212 is enabled by default in google convention, and complains if we have a docstring like:
+# """
+# My docstring is on the line after the opening quotes instead of on the same line as them.
+# """
+# We've discussed and concluded that we consider this to be a valid style choice.
+add_ignore = "D212"
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+addopts = "-vv --doctest-modules"
