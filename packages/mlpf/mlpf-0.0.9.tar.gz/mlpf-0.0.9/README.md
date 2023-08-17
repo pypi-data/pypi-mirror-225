@@ -1,0 +1,304 @@
+<p align="center">
+<img src="https://github.com/viktor-ktorvi/mlpf/assets/69254199/333dfd18-7c60-4874-a89b-92eecf32ac96?raw=True" width="650">
+</p>
+
+
+
+__MLPF__ is a python library for (optimal) power flow calculations with machine learning.
+
+It offers a few main features such as:
+
+:chart_with_downwards_trend: Efficient loss functions compatible with both _PyTorch_
+<img src="https://pytorch.org/assets/images/pytorch-logo.png" height=30></img>
+and _scikit-learn_
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" height=30></img>.
+
+💱 Conversion functions to go from [PPCs](https://rwl.github.io/PYPOWER/api/pypower.caseformat-module.html) to _NumPy_ arrays or _Torch_ tensors.
+
+<br>
+As well as some optional high level utilities:
+
+🗂️ Data classes that make it easy to go from PPCs to custom (or [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/)
+<img src="https://raw.githubusercontent.com/pyg-team/pyg_sphinx_theme/master/pyg_sphinx_theme/static/img/pyg_logo.png" height=30></img>
+) data objects with all the info needed for (O)PF extracted.
+
+📊 Metrics specific to (O)PF for logging and evaluation.
+
+🔎 Visualization and description tools to take a quick look at your data.
+
+Contributions welcome!
+
+## Installation
+
+```commandline
+pip install mlpf
+```
+
+The previous command will install all the dependencies for working with numpy and scikit-learn. It will **not**, however, install all the dependencies needed for
+working with torch. To use the torch functionalities, please
+install [PyTorch](https://pytorch.org/), [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html) with its dependencies(torch-scatter etc.)
+and optionally [TorchMetrics](https://torchmetrics.readthedocs.io/en/stable/).
+
+Installation directly from the master branch:
+
+```
+pip install git+https://github.com/viktor-ktorvi/mlpf.git
+```
+
+## Basic usage
+
+:cd: :file_folder:    Load your data in the [PYPOWER case format](https://rwl.github.io/PYPOWER/api/pypower.caseformat-module.html).
+
+:open_file_folder: :arrow_heading_up:    Extract powers, voltages, limits and cost coefficients from the PPCs into either _NumPy_ arrays or _torch_ tensors.
+
+🏋🏻‍♀️ :chart_with_downwards_trend:    Plug the data into your machine learning models.
+
+:chart_with_upwards_trend: :bar_chart:     Use the loss functions to evaluate your results or to train your models(the _torch_ versions of the loss functions are differentiable!).
+
+### In depth examples
+
+|                          | Power flow                                                                                                                                                                                                                                   | Optimal power flow                                                                                                                                                                                                                                                   |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| Data extraction and loss | <ul><li>[NumPy/scikit-learn](examples/sklearn/loss/power_flow.py)</li><li>[torch](examples/torch/loss/power_flow.py)</li></ul>                                                                                                               | <ul><li>[NumPy/scikit-learn](examples/sklearn/loss/optimal_power_flow.py)</li><li>[torch](examples/torch/loss/optimal_power_flow.py)</li></ul>                                                                                                                       | 
+| Supervised learning      | <ul><li>[scikit-learn linear regression](examples/sklearn/supervised/power_flow/linear_regression.py)<li>[torch MLP](examples/torch/supervised/power_flow/mlp.py)</li><li>[torch GCN](examples/torch/supervised/power_flow/gcn.py)</li></ul> | <ul><li>[scikit-learn linear regression](examples/sklearn/supervised/optimal_power_flow/linear_regression.py)<li>[torch MLP](examples/torch/supervised/optimal_power_flow/mlp.py)</li><li>[torch GCN](examples/torch/supervised/optimal_power_flow/gcn.py)</li></ul> |
+| Unsupervised learning    | <ul><li>[torch MLP](examples/torch/unsupervised/power_flow/mlp.py)</li><li>[torch GCN](examples/torch/unsupervised/power_flow/gcn.py)</li></ul>                                                                                              | <ul><li>[torch MLP](examples/torch/unsupervised/optimal_power_flow/mlp.py)</li><li>[torch GCN](examples/torch/unsupervised/optimal_power_flow/gcn.py)</li></ul>                                                                                                      |
+
+### Quick start
+
+#### Power flow
+
+<details>
+<summary>ppc</summary>
+
+```python
+import copy
+
+import pandapower as pp
+import pandapower.networks as pn
+
+from pypower.ppoption import ppoption
+from pypower.runpf import runpf
+
+net = pn.case118()
+
+ppc = pp.converter.to_ppc(net, init="flat")
+
+ppopt = ppoption(OUT_ALL=0, VERBOSE=0)
+ppc, converged = runpf(copy.deepcopy(ppc), ppopt=ppopt)
+```
+
+</details>
+
+##### NumPy/scikit-learn
+
+```python
+import numpy as np
+
+from mlpf.data.conversion.numpy.power_flow import (
+    extract_line_arrays,
+    extract_power_arrays,
+    extract_voltage_arrays
+)
+
+from mlpf.loss.numpy.power_flow import (
+    active_power_errors,
+    reactive_power_errors
+)
+
+# extract quantities
+active_powers, reactive_powers = extract_power_arrays(ppc)
+voltage_magnitudes, voltage_angles = extract_voltage_arrays(ppc)
+edge_index, conductances, susceptances = extract_line_arrays(ppc)
+
+active_errors = active_power_errors(edge_index, active_powers, voltage_magnitudes, voltage_angles, conductances, susceptances)
+reactive_errors = reactive_power_errors(edge_index, reactive_powers, voltage_magnitudes, voltage_angles, conductances, susceptances)
+
+print(f"Total P loss = {np.sum(active_errors):.3e} p.u.")
+print(f"Total Q loss = {np.sum(reactive_errors):.3e} p.u.")
+```
+
+##### Torch
+
+```python
+import torch
+
+from mlpf.data.conversion.torch.power_flow import (
+    extract_line_tensors,
+    extract_power_tensors,
+    extract_voltage_tensors
+)
+from mlpf.loss.torch.power_flow import (
+    active_power_errors,
+    reactive_power_errors
+)
+
+# extract quantities
+# note: going from float64 to float32(the standard in torch) will increase the PF loss significantly
+active_powers, reactive_powers = extract_power_tensors(ppc, dtype=torch.float64)
+voltage_magnitudes, voltage_angles = extract_voltage_tensors(ppc, dtype=torch.float64)
+edge_index, conductances, susceptances = extract_line_tensors(ppc, dtype=torch.float64)
+
+active_errors = active_power_errors(edge_index, active_powers, voltage_magnitudes, voltage_angles, conductances, susceptances)
+reactive_errors = reactive_power_errors(edge_index, reactive_powers, voltage_magnitudes, voltage_angles, conductances, susceptances)
+
+print(f"Total P loss = {torch.sum(active_errors):.3e} p.u.")
+print(f"Total Q loss = {torch.sum(reactive_errors):.3e} p.u.")
+```
+
+#### Optimal power flow
+
+<details>
+<summary>ppc</summary>
+
+```python
+import copy
+
+import pandapower as pp
+import pandapower.networks as pn
+
+from pypower.ppoption import ppoption
+from pypower.runopf import runopf
+
+net = pn.case118()
+ppc = pp.converter.to_ppc(net, init="flat")
+
+ppopt = ppoption(OUT_ALL=0, VERBOSE=0)
+ppc = runopf(copy.deepcopy(ppc), ppopt=ppopt)
+```
+
+</details>
+
+##### NumPy/scikit-learn
+
+```python
+import numpy as np
+
+from mlpf.data.conversion.numpy.optimal_power_flow import (
+    extract_active_power_limits_arrays,
+    extract_cost_coefficients_array,
+    extract_demand_arrays,
+    extract_reactive_power_limits_arrays,
+    extract_voltage_limits_arrays,
+)
+
+from mlpf.data.conversion.numpy.power_flow import (
+    extract_power_arrays,
+    extract_voltage_arrays
+)
+
+from mlpf.loss.numpy.bound_errors import (
+    lower_bound_errors,
+    upper_bound_errors
+)
+
+from mlpf.loss.numpy.costs import polynomial_costs
+
+# extract quantities
+active_powers, reactive_powers = extract_power_arrays(ppc)
+voltage_magnitudes, voltage_angles = extract_voltage_arrays(ppc)
+
+voltages_min, voltages_max = extract_voltage_limits_arrays(ppc)
+active_powers_min, active_powers_max = extract_active_power_limits_arrays(ppc)
+reactive_powers_min, reactive_powers_max = extract_reactive_power_limits_arrays(ppc)
+
+active_power_demands, _ = extract_demand_arrays(ppc)
+active_powers_generation = (active_powers + active_power_demands) * ppc["baseMVA"]
+
+cost_coefficients = extract_cost_coefficients_array(ppc)
+
+# calculate errors
+voltage_upper_errors = upper_bound_errors(voltage_magnitudes, voltages_max)
+voltage_lower_errors = lower_bound_errors(voltage_magnitudes, voltages_min)
+
+active_upper_errors = upper_bound_errors(active_powers, active_powers_max)
+active_lower_errors = lower_bound_errors(active_powers, active_powers_min)
+
+reactive_upper_errors = upper_bound_errors(reactive_powers, reactive_powers_max)
+reactive_lower_errors = lower_bound_errors(reactive_powers, reactive_powers_min)
+
+cost_errors = np.sum(polynomial_costs(active_powers_generation, cost_coefficients)) - ppc["f"]
+
+print(f"Total V max violation = {np.sum(voltage_upper_errors):.3e} p.u.")
+print(f"Total V min violation = {np.sum(voltage_lower_errors):.3e} p.u.")
+
+print(f"Total P max violation = {np.sum(active_upper_errors):.3e} p.u.")
+print(f"Total P min violation = {np.sum(active_lower_errors):.3e} p.u.")
+
+print(f"Total Q max violation = {np.sum(reactive_upper_errors):.3e} p.u.")
+print(f"Total Q min violation = {np.sum(reactive_lower_errors):.3e} p.u.")
+
+print(f"Total costs = {cost_errors:.3e} $/h")
+```
+
+##### Torch
+
+```python
+import torch
+
+from mlpf.data.conversion.torch.optimal_power_flow import (
+    extract_active_power_limits_tensors,
+    extract_cost_coefficients_tensor,
+    extract_demand_tensors,
+    extract_reactive_power_limits_tensors,
+    extract_voltage_limits_tensors,
+)
+
+from mlpf.data.conversion.torch.power_flow import (
+    extract_power_tensors,
+    extract_voltage_tensors
+)
+
+from mlpf.loss.torch.bound_errors import (
+    lower_bound_errors,
+    upper_bound_errors
+)
+
+from mlpf.loss.torch.costs import polynomial_costs
+
+# extract quantities
+active_powers, reactive_powers = extract_power_tensors(ppc, dtype=torch.float64)
+voltage_magnitudes, voltage_angles = extract_voltage_tensors(ppc, dtype=torch.float64)
+
+voltages_min, voltages_max = extract_voltage_limits_tensors(ppc, dtype=torch.float64)
+active_powers_min, active_powers_max = extract_active_power_limits_tensors(ppc, dtype=torch.float64)
+reactive_powers_min, reactive_powers_max = extract_reactive_power_limits_tensors(ppc, dtype=torch.float64)
+
+active_power_demands, _ = extract_demand_tensors(ppc, dtype=torch.float64)
+active_powers_generation = (active_powers + active_power_demands) * ppc["baseMVA"]
+
+cost_coefficients = extract_cost_coefficients_tensor(ppc, dtype=torch.float64)
+
+# calculate errors
+voltage_upper_errors = upper_bound_errors(voltage_magnitudes, voltages_max)
+voltage_lower_errors = lower_bound_errors(voltage_magnitudes, voltages_min)
+
+active_upper_errors = upper_bound_errors(active_powers, active_powers_max)
+active_lower_errors = lower_bound_errors(active_powers, active_powers_min)
+
+reactive_upper_errors = upper_bound_errors(reactive_powers, reactive_powers_max)
+reactive_lower_errors = lower_bound_errors(reactive_powers, reactive_powers_min)
+
+cost_errors = torch.sum(polynomial_costs(active_powers_generation, cost_coefficients)) - ppc["f"]
+
+print(f"Total V max violation = {torch.sum(voltage_upper_errors):.3e} p.u.")
+print(f"Total V min violation = {torch.sum(voltage_lower_errors):.3e} p.u.")
+
+print(f"Total P max violation = {torch.sum(active_upper_errors):.3e} p.u.")
+print(f"Total P min violation = {torch.sum(active_lower_errors):.3e} p.u.")
+
+print(f"Total Q max violation = {torch.sum(reactive_upper_errors):.3e} p.u.")
+print(f"Total Q min violation = {torch.sum(reactive_lower_errors):.3e} p.u.")
+
+print(f"Total costs = {cost_errors:.3e} $/h")
+```
+
+### Development
+
+```
+git clone https://github.com/viktor-ktorvi/mlpf.git
+cd mlpf
+
+conda env create -f environment.yml
+conda activate mlpfenv
+```
+
