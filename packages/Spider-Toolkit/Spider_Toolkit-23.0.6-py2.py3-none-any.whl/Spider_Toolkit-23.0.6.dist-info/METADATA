@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: Spider-Toolkit
+Version: 23.0.6
+Summary: 爬虫辅助模块
+Home-page: 
+Author: Uncle_Ming
+Author-email: 2462711716@qq.com
+Keywords: tools spider requests download
+Classifier: Development Status :: 1 - Planning
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: pandas
+Requires-Dist: PyExecJS
+Requires-Dist: pymysql
+Requires-Dist: redis
+Requires-Dist: pymongo
+Requires-Dist: Crypto
+
+爬虫辅助模块0.0.6版本修复了bug
