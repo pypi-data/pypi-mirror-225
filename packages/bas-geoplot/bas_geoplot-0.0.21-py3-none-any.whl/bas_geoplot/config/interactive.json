@@ -1,0 +1,358 @@
+{   "Basemap":{
+        "zoom_start":2.6,
+        "plot_title":true,
+        "title":null,
+        "offline_coastlines":null,
+        "offline_filepath":null
+    },
+    "Paths":{
+        "line_width":3.0,
+        "line_color":"black",
+        "line_opacity":1.0,
+        "path_points":false,
+        "data_name":null,
+        "unit":"",
+        "scaling_factor":1.0,
+        "Traveltime (Days)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"traveltime",
+            "unit":"Days"
+        },
+        "Traveltime (Hrs)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"traveltime",
+            "unit":"Hrs",
+            "scaling_factor":24.0
+        },
+        "Fuel":{
+            "line_color":{
+                "color":"Dark2_03"
+            },
+            "data_name":"fuel",
+            "unit":"Tonnes"
+        },
+        "Battery":{
+            "line_color":{
+                "color":"Dark2_03"
+            },
+            "data_name":"battery",
+            "unit":"Ah"
+        },
+        "tCO2e":{
+            "line_color":{
+                "color":"Dark2_03"
+            },
+            "data_name":"fuel",
+            "unit":"tCO2e",
+            "scaling_factor":3.25
+        },
+        "Max Speed (km/hr)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"speed",
+            "unit":"km/hr"
+        },
+        "Max Speed (knots)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"speed",
+            "unit":"knots",
+            "scaling_factor":0.539957
+        },
+        "Distance (km)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"distance",
+            "unit":"km",
+            "scaling_factor":0.001
+        },
+        "Distance (Nautical miles)":{
+            "line_color":{
+                "color":"viridis"
+            },
+            "data_name":"distance",
+            "unit":"Nautical miles",
+            "scaling_factor":0.000539957
+        },
+        "black":{
+            "line_color":"black",
+            "data_name":"traveltime"
+        },
+        "purple":{
+            "line_color":"purple",
+            "data_name":"traveltime"
+        },
+        "blue":{
+            "line_color":"blue",
+            "data_name":"traveltime"
+        },
+        "green":{
+            "line_color":"green",
+            "data_name":"traveltime"
+        },
+        "yellow":{
+            "line_color":"yellow",
+            "data_name":"traveltime"
+        },
+        "orange":{
+            "line_color":"orange",
+            "data_name":"traveltime"
+        },
+        "red":{
+            "line_color":"red",
+            "data_name":"traveltime"
+        }
+    },
+    "Maps":{
+        "line_width":0.6,
+        "line_color":"black",
+        "fill_color":"black",
+        "fill_opacity":0.0,
+        "data_name": null,
+        "units":"",
+        "trim_min": null,
+        "trim_max": null,
+        "dummy_data":{
+            "data_name":"dummy_data"
+        },
+        "SIC":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"BuPu_09",
+                "cmin":0.0,
+                "cmax":100.0
+            },
+            "fill_opacity":0.6,
+            "data_name":"SIC",
+            "units":"%"
+        },
+        "Wind Resistance": {
+            "line_color":"gray",
+            "line_width":0.01,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"wind resistance",
+            "units":"kN",
+            "scaling_factor":0.001
+        },
+        "Total Resistance": {
+            "line_color":"gray",
+            "line_width":0.01,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"resistance",
+            "units":"kN",
+            "scaling_factor":0.001
+        },
+        "Elev":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"BuPu_09"
+            },
+            "fill_opacity":0.6,
+            "data_name":"elevation",
+            "units":"m"
+        },
+        "Fuel (Tonnes/Day)":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"fuel",
+            "units":"Tonnes/Day"
+        },
+        "Battery Usage":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"battery",
+            "units":"Ah/Day"
+        },
+        "Shortest Time":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"Spectral_03"
+            },
+            "fill_opacity":0.6,
+            "data_name":"shortest_traveltime",
+            "units":"Days"
+        },
+        "Wave Height":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"BuGn_09"
+            },
+            "fill_opacity":0.6,
+            "data_name":"swh",
+            "units":"m"
+        },
+        "tCO2e":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"fuel",
+            "units":"tCO2e/Day",
+            "scaling_factor":3.25
+        },
+        "Max Speed (km/hr)":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"speed",
+            "units":"km/hr"
+        },
+        "Max Speed (knots)":{
+            "line_color":"gray",
+            "line_width":0.05,
+            "fill_color":{
+                "colormap":"YlOrRd_04"
+            },
+            "fill_opacity":0.6,
+            "data_name":"speed",
+            "units":"knots",
+            "scaling_factor":0.539957
+        },
+        "Extreme Sea Ice Conc":{
+            "line_width":0.05,
+            "fill_color":"red",
+            "data_name": "ext_ice",
+            "fill_opacity":0.6
+        },
+        "Extreme Waves":{
+            "line_width":0.05,
+            "fill_color":"brown",
+            "data_name": "ext_waves",
+            "fill_opacity":0.6
+        },
+        "Land Mask":{
+            "fill_opacity":0.6,
+            "data_name":"land",
+            "line_width":0.05
+        },
+        "Shallows":{
+            "fill_opacity":0.6,
+            "data_name":"shallow",
+            "fill_color":"blue",
+            "line_width":0.05
+        },
+        "Mesh Grid Outline":
+        {
+            "fill_color":"white"
+        }
+    },
+    "Points":{
+        "color":"black",
+        "marker_size":1.0,
+        "line_width":0.1,
+        "names": null,
+        "icon":"circle",
+
+        "Waypoints":{
+            "names":{
+                "font_size":10.0
+            },
+            "icon":"circle"
+        }
+
+    },
+    "Vectors":{
+        "color": "blue",
+        "scale":25,
+        "line_width":0.001,
+        "Long":"Long",
+        "Lat":"Lat",
+        "U":"U",
+        "V":"V",
+        "Currents":{
+            "Long":"cx",
+            "Lat":"cy",
+            "U":"uC",
+            "V":"vC",
+            "color":"gray",
+            "line_width":0.001,
+            "scale":3
+        },
+        "Winds":{
+            "Long":"cx",
+            "Lat":"cy",
+            "U":"u10",
+            "V":"v10",
+            "color":"blue",
+            "line_width":0.001,
+            "scale":0.1
+        },
+        "Wave Direction":{
+            "Long":"cx",
+            "Lat":"cy",
+            "U":"uW",
+            "V":"vW",
+            "color":"green",
+            "line_width":0.001,
+            "scale":0.1
+        }
+    },
+    "TimeData":{
+        "period":"P1D",
+        "duration":"P1M",
+        "point":true,
+        "loop":false,
+        "color":"orange",
+        "weight":3.0,
+        "icon":"circle",
+        "opacity": 0.8,
+        "SDA":{
+            "color":"orange",
+            "icon":"ship"
+        }
+    },
+    "MeshInfo":{
+        "PolarRoute":{"fields":[
+            {"Name":"Sea Ice Concentration (%)","data":"SIC"},
+            {"Name":"Max Speed (knots)","data":"speed","scaling_factor":0.539957},
+            {"Name":"Max Speed (km/hr)","data":"speed"},
+            {"Name":"Fuel (Tonnes/Day)","data":"fuel"},
+            {"Name":"Battery (Ah/Day)","data":"battery"},
+            {"Name":"Current Magnitude (m/s)","data":"mC"},
+            {"Name":"Current Component X (m/s)","data":"uC"},
+            {"Name":"Current Component Y (m/s)","data":"vC"},
+            {"Name":"Wind Magnitude (m/s)","data":"m10"},
+            {"Name":"Wind Component X (m/s)","data":"u10"},
+            {"Name":"Wind Component Y (m/s)","data":"v10"},
+            {"Name":"Wave Height (m)","data":"swh"},
+            {"Name":"Minimum Depth (m)","data":"elevation","scaling_factor":-1},
+            {"Name":"Ice Resistance (kN)","data":"ice resistance","scaling_factor":0.001},
+            {"Name":"Cell Centre Longitude (deg)","data":"cx"},
+            {"Name":"Cell Centre Latitude (deg)","data":"cy"},
+            {"Name":"Cell Width (deg)","data":"dcx"},
+            {"Name":"Cell Height (deg)","data":"dcy"},
+            {"Name":"Cell ID","data":"id"}
+            ]
+        }
+    }
+}
