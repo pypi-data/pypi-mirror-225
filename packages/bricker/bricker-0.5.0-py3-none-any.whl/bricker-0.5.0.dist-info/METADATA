@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: bricker
+Version: 0.5.0
+Summary: CLI tool for syncing a Databricks folder structure with a local git repo.
+Home-page: https://github.com/sporveien/bricker
+Author: sporveien
+Author-email: brick@sporveien.com
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+License-File: LICENSE.txt
+Requires-Dist: Click
+Requires-Dist: requests
+Requires-Dist: gitpython
+Requires-Dist: easydict
+Requires-Dist: pyyaml
+
