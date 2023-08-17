@@ -1,0 +1,104 @@
+Metadata-Version: 2.1
+Name: sync_env
+Version: 1.0.3
+Summary: environment
+Project-URL: Homepage, https://github.com/ichir0roie/python-sync-env
+Project-URL: Bug Tracker, https://github.com/ichir0roie/python-sync-env/issues
+Author-email: ichir0roioe <ichir0roie@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+# python-sync-env
+easy load environment methods for python
+
+# basic usage
+
+## environment
+
+```batch
+NONE=のん
+```
+
+## python file
+```python
+from sync_env import SyncEnv
+
+class Env(SyncEnv):
+
+    TEST = "test"
+    VALUE = None
+    NONE = None
+
+env = Env()
+```
+
+## any file
+
+
+```python
+
+from any.file import env
+
+assert env.NONE == "なん"
+
+```
+
+## output
+
+```python
+
+# ~~
+
+if __name__ == "__main__":
+    print(env.TEST)
+    print(env.VALUE)
+    print(env.NONE)
+```
+
+```log
+test
+None
+のん
+```
+
+# generate
+
+## generate script
+
+```python
+from sync_env import SyncEnv, GenerateEnv
+
+
+class EnvA(SyncEnv):
+    one = None
+    two = None
+
+
+class EnvB(SyncEnv):
+    two = None
+    three = None
+
+
+ge = GenerateEnv([
+    EnvA,
+    EnvB
+])
+
+ge.generate()
+
+```
+
+
+## output
+
+.env
+
+```bat
+one=
+two=
+three=
+
+```
