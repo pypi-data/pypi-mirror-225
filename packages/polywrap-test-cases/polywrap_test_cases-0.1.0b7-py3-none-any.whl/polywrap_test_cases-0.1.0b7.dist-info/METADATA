@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: polywrap-test-cases
+Version: 0.1.0b7
+Summary: Wrap Test cases for Polywrap
+Author: Cesar
+Author-email: cesar@polywrap.io
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/x-rst
+
+Polywrap Test Cases
+===================
+This package contains the utility functions to fetch the wrappers    from the wasm-test-harness repo.
+
+Functions
+---------
+
+.. csv-table::
+    :header: "function", "description"
+
+    "get_path_to_test_wrappers", "Get the path to the test wrappers."
+    "fetch_file", "Fetch a file using HTTP."
+    "unzip_file", "Unzip a file to a destination."
+    "fetch_wrappers", "Fetch the wrappers from the wasm-test-harness repo."
+
