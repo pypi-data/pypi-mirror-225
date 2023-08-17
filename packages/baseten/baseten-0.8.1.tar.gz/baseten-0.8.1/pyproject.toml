@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "baseten"
+version = "0.8.1"
+description = "Deploy machine learning models to Baseten"
+readme = "pypi_readme.md"
+authors = [
+    "Amir Haghighat <amir@baseten.co>",
+    "Phil Howes <phil@baseten.co>",
+    "Tuhin Srivastava <tuhin@baseten.co>",
+]
+keywords = ["MLOps", "AI", "Model Serving", "Model Deployment", "Machine Learning"]
+
+[tool.poetry.urls]
+"Homepage" = "https://baseten.co"
+"Documentation" = "https://docs.baseten.co"
+"Truss" = "https://truss.baseten.co"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+click = ">=7.0"
+requests = ">=2.22"
+joblib = ">=0.12.5"
+jinja2 = ">=2.10.3"
+colorama = ">=0.4.3"
+coolname = ">=1.1.0"
+pyyaml = ">=5.1"
+tqdm = "^4.62.1"
+requests-toolbelt = "^0.9.1"
+tenacity = "^8.0.1"
+single-source = "^0.3.0"
+semantic-version = "^2.10.0"
+truss = "^0.6.0"
+Pillow = "^9.3.0"
+types-requests = "^2.28.11.7"
+types-setuptools = "^65.6.0.2"
+types-pillow = "^9.3.0.4"
+types-pyyaml = "^6.0.12.2"
+halo = "^0.0.31"
+types-pytz = "^2022.7.1.0"
+pytz = "^2022.7.1"
+boto3 = ">=1.26.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+wheel = "^0.37.1"
+flake8 = "^3.7"
+tox = "^3.14"
+coverage = "^4.5"
+ipdb = "^0.12.2"
+isort = "^4.3"
+responses = "^0.10.6"
+pre-commit = "^2.18.1"
+matplotlib = "^3.1.2"
+yapf = "^0.29.0"
+tensorflow = "^2.4.0"
+torch = "^1.7.1"
+scikit-learn = "^1.0.2"
+pandas = "1.1.5"
+h5py = ">=2.10.0"
+
+[tool.poetry.scripts]
+baseten = 'baseten.cli:cli_group'
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^0.991"
+black = "^22.6.0"
+ipykernel = "^6.21.1"
+
+[tool.poetry.group.docs.dependencies]
+watchdog = "^2.2.1"
+mkdocs = "^1.4.2"
+mkdocs-material = "^9.0.9"
+mkdocs-click = {git = "https://github.com/bolasm/mkdocs-click.git"}
+mkdocstrings = {extras = ["python"], version = "^0.20.0"}
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = 3.8
+ignore_missing_imports = true
