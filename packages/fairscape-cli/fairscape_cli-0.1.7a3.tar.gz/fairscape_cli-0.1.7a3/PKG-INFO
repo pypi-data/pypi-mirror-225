@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: fairscape-cli
+Version: 0.1.7a3
+Summary: A cli for validating metadata, packaging ROCrates, and interacting with the FAIRSCAPE API
+License: LICENSE
+Author: Max Levinson
+Requires-Python: >=3.8,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: click (>=8.1.3,<9.0.0)
+Requires-Dist: fairscape-models (>=0.1.2,<0.2.0)
+Requires-Dist: imageio (>=2.27.0,<3.0.0)
+Requires-Dist: mkdocs-material (>=9.1.18,<10.0.0)
+Requires-Dist: pandas (>=2.0.0,<3.0.0)
+Requires-Dist: prettytable (>=3.7.0,<4.0.0)
+Requires-Dist: pyld (>=2.0.3,<3.0.0)
+Description-Content-Type: text/markdown
+
+# fairscape-cli
+Data Validation and Packaging utility for sending evidence graphs to FAIRSCAPE
+
+Documentation: [https://fairscape.github.io/fairscape-cli/](https://fairscape.github.io/fairscape-cli/)
+
+
