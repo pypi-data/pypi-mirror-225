@@ -1,0 +1,5 @@
+[console_scripts]
+collectbinaries = wintappy.etlutils.collectbinaries:main
+download_from_s3 = wintappy.etlutils.download_from_s3:main
+rawtorolling = wintappy.etlutils.rawtorolling:main
+rawtostdview = wintappy.etlutils.rawtostdview:main
