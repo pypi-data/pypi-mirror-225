@@ -1,0 +1,25 @@
+[project]
+name = "jgs-container-image-utils"
+dynamic = ["version"]
+description = "Helper programs for handling container images"
+authors = [
+    {name = "Jens Gwen Stein", email = "jens.s.stein@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+load-image = "jgs_container_image_utils.load_image:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "env"
+variable = "VERSION"
+
+[tool.hatch.build.hooks.version]
+path = "src/jgs_container_image_utils/_version.py"

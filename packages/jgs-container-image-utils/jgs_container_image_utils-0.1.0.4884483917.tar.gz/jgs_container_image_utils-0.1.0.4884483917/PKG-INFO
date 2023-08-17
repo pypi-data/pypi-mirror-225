@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: jgs-container-image-utils
+Version: 0.1.0.4884483917
+Summary: Helper programs for handling container images
+Author-email: Jens Gwen Stein <jens.s.stein@gmail.com>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# jgs-container-image-utils
+
+Helper programs for handling container images
+
+**load_image.py**
+Load a container image from a local archive only if the image digest
+differs from that of an already loaded image with a specified name.

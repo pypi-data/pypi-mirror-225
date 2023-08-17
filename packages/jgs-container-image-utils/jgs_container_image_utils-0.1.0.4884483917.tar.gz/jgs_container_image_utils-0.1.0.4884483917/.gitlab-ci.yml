@@ -1,0 +1,35 @@
+stages:
+- test
+- build
+- publish
+sast:
+  stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
+
+.install_pdm: &install_pdm |
+  pip install -U pip wheel
+  pip install pdm
+
+build:
+  stage: build
+  image: python:3-slim-bullseye
+  variables:
+    VERSION: "0.1.0.$CI_JOB_ID"
+  script:
+    - *install_pdm
+    - pdm build
+  artifacts:
+    paths:
+    - dist
+
+publish:
+  stage: publish
+  image: python:3-slim-bullseye
+  dependencies:
+  - build
+  script:
+    - *install_pdm
+    - pdm publish -P $PYPI_ACCESS_TOKEN --no-build
+  only:
+    - main
