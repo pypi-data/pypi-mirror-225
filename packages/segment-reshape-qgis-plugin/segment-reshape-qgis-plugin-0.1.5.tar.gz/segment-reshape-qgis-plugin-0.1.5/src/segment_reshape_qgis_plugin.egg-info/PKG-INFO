@@ -1,0 +1,158 @@
+Metadata-Version: 2.1
+Name: segment-reshape-qgis-plugin
+Version: 0.1.5
+Summary: QGIS plugin with a map tool to reshape a continuous segment topogically.
+Home-page: https://github.com/nlsfi/segment-reshape-qgis-plugin
+Author: National Land Survey of Finland
+Author-email: eero.hietanen@maanmittauslaitos.fi
+License: GNU GPL v3.0
+Project-URL: Changelog, https://github.com/nlsfi/segment-reshape-qgis-plugin/blob/main/CHANGELOG.md
+Keywords: qgis
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Typing :: Typed
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# segment-reshape-qgis-plugin
+
+QGIS plugin with a map tool to reshape a continuous segment topogically.
+
+## Plugin
+
+`Segment reshape tool` plugin is available from the QGIS plugin repository. It provides a simple toolbar with one action. Action will activate a segment reshape map tool, with which a common segment portion can be clicked and a new segment can be digitized. After digitizing the features are edited to match the new common segment.
+
+## Library
+
+To use this library as an external dependency in your plugin or other Python code, install it using `pip install segment-reshape-qgis-plugin` and use imports from the provided `segment_reshape` package. If used in a plugin, library must be installed in the runtime QGIS environment or use [qgis-plugin-dev-tools] to bundle your plugin with runtime dependencies included.
+
+### API documentation
+
+Simple use case can be seen in [integration test](./test/integration/test_simple_line_reshape.py).
+
+#### Finding common segment
+
+`segment_reshape.topology.find_related.find_segment_to_reshape` calculates the line segment between features that share equal sequence of vertices along their edges at the trigger location. By default all QGIS project layers are used to find connected features if topological editing is enabled. Custom list of layers can also be passed as an argument.
+
+Return values are:
+
+- Common segment (`None` if not found)
+- Features that share the common segment (and relevant vertex indices)
+- Features that share the end points of the common segment (and relevant vertex index)
+
+#### Editing geometries partially
+
+`segment_reshape.geometry.reshape.make_reshape_edits` reshapes the provided common parts and edges, so that common part shared vertex indices are replaced and edges are moved to match the reshaped geometry. Output of `find_segment_to_reshape` (common parts & edges) can be used as input for this function.
+
+#### Map tool
+
+Map tool is found in `segment_reshape.map_tool.segment_reshape_tool.SegmentReshapeTool`, it can be subclassed or used as is in custom plugins.
+
+The Map Tool should be taken into use as follows:
+
+```python
+
+from segment_reshape.map_tool.segment_reshape_tool import (
+    SegmentReshapeTool,
+    SegmentReshapeToolHandler,
+)
+
+class SegmentReshapePlugin(QObject):
+    def __init__(self, iface) -> None:
+        super().__init__(parent=None)
+        self.iface = iface
+
+        self.segment_reshape_tool = SegmentReshapeTool(iface.mapCanvas())
+
+    def initGui(self) -> None:
+        self.segment_reshape_tool_action = QAction(
+            QIcon(resources_path("icons/segment_reshape.svg")),
+            self.tr("Reshape common segment"),
+            self.iface.mainWindow(),
+        )
+        self.segment_reshape_tool_handler = SegmentReshapeToolHandler(
+            self.segment_reshape_tool, self.segment_reshape_tool_action
+        )
+        self.iface.registerMapToolHandler(self.segment_reshape_tool_handler)
+
+        self.toolbar = iface.addToolBar(
+            self.tr("Segment reshape toolbar"),
+        )
+        self.toolbar.addAction(self.segment_reshape_tool_action)
+
+```
+
+## Development of segment-reshape-qgis-plugin
+
+See [development readme](./DEVELOPMENT.md).
+
+## License & copyright
+
+Licensed under GNU GPL v3.0.
+
+Copyright (C) 2022 [National Land Survey of Finland].
+
+[National Land Survey of Finland]: https://www.maanmittauslaitos.fi/en
+[qgis-plugin-dev-tools]: https://github.com/nlsfi/qgis-plugin-dev-tools
+
+# CHANGELOG
+
+## [0.1.5] - 2023-08-16
+
+- Fix: Add support for reshaping closed linestrings
+- Fix: Add support for reshaping closed linestring partially, when the reshaped segment falls on the wraparound location
+
+## [0.1.4] - 2023-04-14
+
+- Feature: Change the mouse cursor to the wait cursor when finding common segment os editing is in progress
+- Performance improvments. Finding a common segment should now be a magnitude faster with large geometries.
+
+## [0.1.3] - 2023-03-23
+
+- Feature: Digitizing the new geometry for a segment behaves now as the native QGIS digitizing tools. It supports etc. snapping, tracing and advanced cad tools.
+- Feature: Map tool button is enabled only when a line or polygon layer is active. This is implemented through MapToolHandler which ensures that the tool behaves like rest of the map tools. This means also that the tool can be deactivated only by selecting another map tool.
+- Fix: Color of the start point indicator line was changed to grey to make difference to the digitized line.
+
+## [0.1.2] - 2023-02-23
+
+- Feature: Set z coordinate values of the reshaped geometry to QGIS's default z coordinate value instead of NaN
+
+## [0.1.1] - 2023-01-17
+
+- Fix: Correcly move multiple edges for same feature.
+
+## [0.1.0] - 2022-12-14
+
+- Feature: Add support for key commands (backspace and esc) in vertex editing.
+- Fix: In cases where segment was split from the middle the start and end parts of the line is correctly merged back together.
+- Fix: Geometry comparison was fixed so that only common vertices between geometries are taken into account. Before edges were split if an edge crossed other edge also from non vertex point.
+- Feature: Preserve source feature z coordinate for calculated segment.
+
+## [0.0.3] - 2022-11-17
+
+- Fix: Fix missing toolbar icon by including resource files in setuptools build.
+
+## [0.0.2] - 2022-11-09
+
+- Feature: Implement a QGIS plugin with a simple toolbar.
+- Feature: Add map tool for selecting and drawing the reshape geometry.
+- Feature: Support complex calculation for the common segment.
+- Feature: Add snapping support when drawing the reshape geometry.
+
+## [0.0.1] - 2022-10-28
+
+- Initial release: API for finding common segments and making reshape edits.
+
+[0.0.1]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.0.1
+[0.0.2]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.0.2
+[0.0.3]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.0.3
+[0.1.0]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.0
+[0.1.1]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.1
+[0.1.2]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.2
+[0.1.3]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.3
+[0.1.4]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.4
+[0.1.5]: https://github.com/nlsfi/segment-reshape-qgis-plugin/releases/tag/v0.1.5
