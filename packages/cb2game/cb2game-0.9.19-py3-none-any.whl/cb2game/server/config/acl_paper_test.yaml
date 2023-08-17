@@ -1,0 +1,21 @@
+{
+    "name": "Demonstration test config",
+    "comment": "This is a data analysis config. It contains the games used for testing the model.",
+    "data_prefix": "~/data/acl_paper_release/with_piid/human_human_and_deploy",
+    "analysis_game_id_ranges": [[264, 265], [267, 267], [269, 277], [280, 280], [284, 284], [307, 313], [315, 323], [326, 339], [343, 375], [396, 399], [402, 410], [413, 425], [428, 428], [430, 453], [495, 495], [497, 498], [503, 505], [508, 508], [511, 521], [527, 527], [529, 529], [531, 532], [538, 539], [542, 543], [545, 545], [548, 548], [550, 550], [553, 553], [563, 563], [566, 566], [571, 572], [576, 576], [595, 595], [597, 597], [600, 606], [612, 612], [614, 614], [645, 646], [653, 653], [662, 662], [666, 666], [670, 670], [679, 679], [684, 684], [699, 699], [711, 711], [717, 718], [722, 722], [728, 728], [730, 730], [733, 736], [741, 741], [750, 750]],
+    "map_cache_size": 0,
+    "card_covers": true,
+    "fog_start": 13,
+    "fog_end": 20,
+    "fps_limit": 30,
+    "live_feedback_enabled": true,
+    "sqlite_pragmas": [
+        ['cache_size', -1048576], # 1MB cache size. Negative implies kibibyte units.
+        ['journal_mode', 'wal'],  # Use WAL-mode
+        ['synchronous', 'off'],  # Use normal sync mode.
+        ['temp_store', 'memory'],  # Use memory for temp storage.
+        ['mmap_size', '30000000000'], # 30GB mmap size.
+        ['foreign_keys', 1],
+    ],
+    "google_oauth_client_id": "787231947800-ee2g4lptmfa0av2qb26n1qu60hf5j2fd.apps.googleusercontent.com"
+}

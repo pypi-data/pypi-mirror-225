@@ -1,0 +1,7 @@
+{
+    "name": "200-games-cumulative",
+    "comment": "This is a data analysis config. DO NOT RUN A SERVER WITH THIS. All data cumulative so far.",
+    "data_prefix": "~/data/200-games",
+    "analysis_game_id_ranges": [[27, 215], [345, 458], [593, 702]],
+    "map_cache_size": 0
+}

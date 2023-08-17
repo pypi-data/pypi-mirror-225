@@ -1,0 +1,16 @@
+{
+    "name": "pipelined-training-games",
+    "comment": "This is a data analysis config. DO NOT RUN A SERVER WITH THIS.",
+    "data_prefix": "~/data/separated-games-3",
+    "analysis_game_id_ranges": [[2126, 2199], [2218, 2283], [2286, 2375]],
+    "map_cache_size": 0,
+    "sqlite_pragmas": [
+        ['cache_size', -1048576],
+        ['journal_mode', 'wal'],  # Use WAL-mode
+        ['synchronous', 'off'],  # Use normal sync mode.
+        ['temp_store', 'memory'],  # Use memory for temp storage.
+        ['mmap_size', '10000000000'], # 10GB mmap size.
+        ['foreign_keys', 1],
+        ['wal_autocheckpoint', 1000]
+    ]
+}
