@@ -1,0 +1,22 @@
+{% from "macros/form_macros.html" import render_field %}
+{% extends "layouts/basic_template.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block style%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <form action="{{url_for('home_post_register')}}" method="post">
+        {{ register_form.csrf_token }}
+        {{ render_field(register_form.name) }}
+        {{ render_field(register_form.birth_date) }}
+        {{ render_field(register_form.email) }}
+        {{ render_field(register_form.password) }}
+        {{ register_form.submit }}
+    </form>
+
+{% endblock %}
