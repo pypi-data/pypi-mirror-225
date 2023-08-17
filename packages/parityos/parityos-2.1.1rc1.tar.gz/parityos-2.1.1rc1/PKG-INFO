@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: parityos
+Version: 2.1.1rc1
+Summary: Python bindings to the ParityOS API
+Home-page: https://parityqc.com/
+Requires-Python: >=3.7
+Provides-Extra: cirq
+Provides-Extra: qiskit
+Provides-Extra: spinz
+Provides-Extra: all
+License-File: License.txt
