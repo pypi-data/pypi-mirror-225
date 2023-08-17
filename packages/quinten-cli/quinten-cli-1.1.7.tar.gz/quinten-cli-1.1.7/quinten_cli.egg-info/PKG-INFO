@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: quinten-cli
+Version: 1.1.7
+Author-email: Quinten Roets <qdr2104@columbia.edu>
+License: MIT
+Project-URL: Source Code, https://github.com/quintenroets/cli
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+License-File: LICENSE
+
+# Cli
+
+Package with utilities to interact with the command line interface:
+* Output interactions
+* Input interactions
+* Running processes
+
+## Installation
+
+```shell
+pip install quinten-cli
+```
+
+## Usage
+Use 
+
+```shell
+import cli
+```
+instead of
+
+```shell
+import subprocess
+```
+
+to run processes
