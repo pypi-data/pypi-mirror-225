@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: shinami-python-sdk
+Version: 0.2.0
+Summary: This library provides easy access to Shinami APIs.
+Author: Studio Mirai, LLC
+Author-email: os@sm.xyz
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: httpx (>=0.24.1,<0.25.0)
+Requires-Dist: pydantic (>=2.1.1,<3.0.0)
+Description-Content-Type: text/markdown
+
+# Shinami Python SDK
+
+This package is an asynchronous API wrapper for the [Shinami In-App Wallet (IAW) API](https://docs.shinami.com/reference/in-app-wallet-api).
+
+Currently, this SDK supports the IAW methods below.
+
+* shinami_key_createSession
+* shinami_wal_createWallet
+* shinami_wal_executeGaslessTransactionBlock
+* shinami_wal_getWallet
+
+## How to Install
+
+```
+pip install shinami-python-sdk
+```
+
+## How to Use
+
+```
+import asyncio
+import os
+
+from shinami_python_sdk.iaw import ShinamiIawClient
+
+# Set Shinami API key.
+SHINAMI_IAW_API_TOKEN = os.environ["SHINAMI_IAW_API_KEY"]
+
+# Initialize IAW API client.
+shinami_iaw_client = ShinamiIawClient(SHINAMI_IAW_API_KEY)
+
+# Create a session_token.
+session_token = asyncio.run(shinami_iaw_client.create_session("NOT_A_SECURE_SECRET"))
+
+# Create a wallet.
+wallet = asyncio.run(shinami_iaw_client.create_wallet("walletid123", session_token))
+```
