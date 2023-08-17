@@ -1,0 +1,11 @@
+mlpype-base==0.4.9
+fastapi>=0.79.0
+
+[dev]
+mlpype-base==0.4.9
+fastapi==0.79.0
+uvicorn==0.18.2
+
+[strict]
+mlpype-base==0.4.9
+fastapi==0.79.0
