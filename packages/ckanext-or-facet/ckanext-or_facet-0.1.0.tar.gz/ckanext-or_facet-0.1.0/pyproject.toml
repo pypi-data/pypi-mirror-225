@@ -1,0 +1,9 @@
+[black]
+line-length = 79
+[tool.towncrier]
+issue_format = ""
+directory = "changes"
+package = "ckanext.or_facet"
+package_dir = "ckanext"
+filename = "CHANGELOG.rst"
+name = "ckanext-or-facet"
