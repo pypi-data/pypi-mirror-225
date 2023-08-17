@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Module: fdw",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "module": "fdw",
+            "args": [
+            ],
+            "justMyCode": true
+        },
+    ]
+}
