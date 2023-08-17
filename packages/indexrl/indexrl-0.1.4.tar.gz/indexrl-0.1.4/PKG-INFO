@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: indexrl
+Version: 0.1.4
+Summary: Generate remote sensing indices using image-mask pairs.
+Author: Dilith Jayakody
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: gym (==0.26.1)
+Requires-Dist: numpy (==1.20.3)
+Requires-Dist: scikit-learn (==1.0)
+Requires-Dist: torch (==1.13.1)
+Requires-Dist: torchvision (==0.14.1)
+Requires-Dist: transformers (==4.26.1)
+Requires-Dist: treelib (==1.6.1)
+Description-Content-Type: text/markdown
+
+# IndexRL
+Using reinfrocement learning to generate mathematical operations for remote sensing indices.
+
