@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=65.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OpenOrchestratorConnection"
+version = "0.0.5"
+authors = [
+  { name="ITK Development", email="itk-rpa@mkb.aarhus.dk" },
+]
+description = "Connection library to use with the OpenOrchestrator project"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+]
+dependencies = [
+  'pyodbc == 4.0.39',
+  'cryptography == 41.0.3'
+]
+
+[project.urls]
+"Homepage" = "https://github.com/itk-dev-rpa/OpenOrchestratorConnection"
+"Bug Tracker" = "https://github.com/itk-dev-rpa/OpenOrchestratorConnection/issues"
+
