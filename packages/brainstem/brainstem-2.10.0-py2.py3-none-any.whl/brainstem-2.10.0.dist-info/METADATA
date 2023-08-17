@@ -1,0 +1,312 @@
+Metadata-Version: 2.1
+Name: brainstem
+Version: 2.10.0
+Summary: Acroname BrainStem Software Control Package
+Home-page: http://www.acroname.com
+Author: Acroname Inc.
+Author-email: support@acroname.com
+License: Copyright (c) 2023 Acroname Inc.        
+        ("Software") Includes python files, and compiled python objects
+        excluding the BrainStem2 library shared object (.dylib, .framework, .so, or .dll) which is covered
+        under a speparate license Included as Appendix 1 of this document        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+        documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+        the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+        to permit persons to whom the Software is furnished to do so, subject to the following conditions:        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+        the Software.        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+        WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+        OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        
+        ==============================================================================
+        ## Appendix 1: BrainStem2 library shared object, static archive, and library headers.        
+        SOFTWARE LICENSE AGREEMENT
+        Copyright (c) 1994-2023 Acroname Inc.        
+        Single User and Multiple-Users License Grant: Acroname Inc. ("Acroname") and its suppliers grant to
+        Customer ("Customer") a nonexclusive and nontransferable license to use the BrainStem2 shared object
+        (.dylib, .framework, .so, .dll, etc) static archive (.a), and associated library header files
+        ("Software") in object code form.        
+        CUSTOMER SHALL NOT: MODIFY THE SOFTWARE; REVERSE ENGINEER OR REVERSE COMPILE OR REVERSE ASSEMBLE ALL
+        OR ANY PORTION OF THE SOFTWARE.        
+        Customer agrees that aspects of the licensed materials, including the specific design and structure
+        of individual programs, constitute trade secrets and/or copyrighted material of Acroname. Title to
+        Software and documentation shall remain solely with Acroname.        
+        Customer agrees that redistributions of this Software must retain the above copyright notice, this
+        list of conditions and the following disclaimer.        
+        DISCLAIMER. EXCEPT AS SPECIFIED IN THIS AGREEMENT, ALL EXPRESS OR IMPLIED CONDITIONS,
+        REPRESENTATIONS, AND WARRANTIES INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTY OF
+        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT OR ARISING FROM A COURSE OF
+        DEALING, USAGE, OR TRADE PRACTICE, ARE HEREBY EXCLUDED TO THE EXTENT ALLOWED BY APPLICABLE LAW.
+        IN NO EVENT WILL ACRONAME OR ITS SUPPLIERS BE LIABLE FOR ANY LOST REVENUE, PROFIT, OR DATA, OR FOR
+        SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL, OR PUNITIVE DAMAGES HOWEVER CAUSED AND REGARDLESS OF
+        THE THEORY OF LIABILITY ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF ACRONAME
+        OR ITS SUPPLIERS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS SOFTWARE IS NOT INTENDED
+        FOR USE IN LIFE SUPPORT SYSTEMS. In no event shall Acroname's or its suppliers' liability to
+        Customer, whether in contract, tort (including negligence), or otherwise, exceed the price paid by
+        Customer. Some jurisdictions may not allow limitation or exclusion of liability for consequential
+        or incidental damages.        
+        This Software License Agreement is effective until terminated. Customer may terminate this License
+        at any time by destroying all copies of the Software including any documentation. This License will
+        terminate immediately without notice from Acroname if Customer fails to comply with any provision
+        of this License. Upon termination, Customer must destroy all copies of the Software.        
+        This Software, including technical data, is subject to U.S. export control laws, including the U.S.
+        Export Administration Act and its associated regulations, and may be subject to export or import
+        regulations in other countries. Customer agrees to comply strictly with all such regulations and
+        acknowledges that it has the responsibility to obtain licenses to export, re-export, or import
+        Software. This License shall be governed by and construed in accordance with the laws of the State
+        of Colorado, United States of America, as if performed wholly within the state and without giving
+        effect to the principles of conflict of law. If any portion hereof is found to be void or
+        unenforceable, the remaining provisions of this License shall remain in full force and effect. This
+        License constitutes the entire License between the parties with respect to the use of the Software.        
+        ## Brainstem2 Direct Dependency License Notification:        
+        ### Lib USB        
+        This binary distribution uses libUSB v1.0 (https://libusb.info). LibUSB is licensed under GNU Lesser
+        General Public License (LGPL) v2.1. Acroname will provide, at request (support@acroname.com), object
+        code sufficient to recompile the Acroname BrainStem binary distribution with an updated interface
+        compatible copy of the libUSB library.        
+        ### Lib USB is licensed under LGPL v2.1        
+        Full license text at
+        https://www.gnu.org/licenses/lgpl-2.1.html
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: cffi (>=1.0.0)
+
+
+# BrainStem Python Library
+
+The BrainStem python package gives access to simple python commands
+to control and interact with a collection of BrainStem devices
+
+# Features
+
+- Easily interact with BrainStem devices using python
+- Learn more about the capabilities of BrainStem devices in [Acroname's reference documentation](https://acroname.com/reference/)
+
+# Download
+
+- As of version 2.9.21, the BrainStem Python library is available on [PyPI](https://pypi.org/project/brainstem)
+- It is also available from the BrainStem Development Kit at [Acroname's downloads page](https://acroname.com/software/brainstem-development-kit)
+    - Download the operating system specific BrainStem Development Kit
+    - Once downloaded and contents extracted, inside the extracted folder, navigate to:
+        - `[project_root]/development/python` to find the latest version of the `brainstem-*.whl`
+
+# Installation
+
+On Windows, to install a new version of BrainStem (or update an existing one), simply execute:
+
+```bash
+$> pip install --user brainstem --upgrade
+```
+
+Or from wheel file:
+
+```bash
+$> pip install --user brainstem-*.whl --upgrade
+```
+
+On MacOS and Linux, pip is for the older Python 2 version, pip3 must be executed instead:
+```bash
+$ pip3 install --user brainstem --upgrade
+```
+
+Or from wheel file:
+
+```bash
+$ pip3 install --user brainstem-*.whl --upgrade
+```
+
+To uninstall the library, the easiest way is with pip:
+
+Windows:
+
+```bash
+$> pip uninstall brainstem
+```
+
+MacOS and Linux:
+
+```bash
+$> pip3 uninstall brainstem
+```
+
+# Troubleshooting
+
+- Some additional requirements for installing python wheels in general and the BrainStem wheel specifically may be needed
+- If any errors are encountered installing or running the BrainStem python package, see the `Additional Requirements` section near the bottom of this document
+
+# A Tour of the Python Example
+
+After navigating to `[project_root]/development/python_examples`, choose the folder that corresponds with the product being used.  
+For example, the most common product sold is Acroname's 8-port hub, so the folder needed in this case will be `usbhub3p_example`.
+
+To run the example, execute:
+
+```bash
+$> python usbhub3p_example.py
+```
+
+for your specific BrainStem device.  
+
+The example requires that a USB BrainStem link module be connected to the host computer.  
+If the following message is seen, there is likely no module connected or the incorrect example program was run:
+
+```
+'Could not find a module.'
+```
+
+Once the example starts running, it will print out some basic information about
+the module and then blink the user LED on the module.
+
+# Working with BrainStem from the Interpreter
+
+The following is a brief introduction to writing a python program that talks to a connected BrainStem:  
+
+Start up the python interpreter:
+
+```bash
+$> python
+```
+
+The first step is to import the BrainStem package:
+
+```python
+>>>  import brainstem
+```
+
+- `stem` and `discover` are the two primary modules
+- `stem` contains classes for each of the distinct module types:
+
+    * USBStem
+    * EtherStem
+    * MTMIOSerial
+    * MTMUSBStem
+    * MTMEtherStem
+    * USBHub2x4
+    * MTMRelay
+    * MTMPM1
+    * USBHub3p
+    * MTMDAQ1
+    * USBCSwitch
+
+Next search for all connected modules:
+
+```python
+>>> specs = brainstem.discover.findAllModules(brainstem.link.Spec.USB)
+>>> print [str(s) for s in specs]
+```
+
+Then search for the first USB module:
+
+```python
+>>> spec = brainstem.discover.findFirstModule(brainstem.link.Spec.USB)
+>>> print spec
+```
+
+If a USB module is found, create a USBStem object and connect to it using
+the spec object that was returned by discover:
+
+```python
+>>> stem = brainstem.stem.USBStem()
+>>> stem.connectFromSpec(spec)
+```
+
+Then get some information about the module:
+
+```python
+>>> result = stem.system.getModel()
+>>> print brainstem.defs.model_info(result.value)
+```
+
+Finally, flash the user LED, on or off every 100ms.
+
+```python
+>>> from time import sleep
+>>> for i in range(0,51):
+...     err = stem.system.setLED(i % 2)
+...     if err != brainstem.result.Result.NO_ERROR:
+...         break
+...     sleep(0.1)
+...
+>>>
+```
+
+That's it! Once this basic example is running, a good place to go is the
+documentation to learn about all the other features available.
+
+At the prompt type the following:
+
+```python
+>>> help(stem.system)
+# or
+>>> help(brainstem.stem)
+```
+
+***
+
+# Additional Requirements
+
+## python
+
+The BrainStem python package is currently compatible with python 2.7 and python 
+3.6 through 3.10. When using 2.7 it is recommended that your python version be 
+at least 2.7.9.
+
+MS Windows generally does not include Python, and a suitable Python package will need to be [downloaded and installed](https://www.python.org/downloads/) before proceeding with the following guide.  
+The BrainStem wheel is compatible with both 32 and 64bit python packages.  
+Python version >= 2.7.9 is recommended.
+
+MacOS X and most Linux distributions generally include a Python installation.  
+However, the installation may not include pip and setuptools which are required to install the BrainStem Python module.
+
+## pip
+
+The BrainStem python package is installed via a platform specific wheel.  
+To install these wheels, a relatively up to date version of pip and setuptools is needed.  
+Pip can be installed by following the instructions at:  
+
+https://pip.pypa.io/en/latest/installing.html
+
+If pip is installed it may still be helpful to update pip.   
+Administrator privileges may be required on MacOS and Linux.  
+Instructions for updating pip can be found at:
+
+https://pip.pypa.io/en/latest/installing.html#upgrade-pip
+
+
+## libffi
+
+The BrainStem python library relies on libffi.  
+On MacOS X and Windows, this is generally available.  
+Linux users may need to install libffi via the distro's package manager.  
+The package is generally named libffi-dev or similar.
+
+## Python development headers
+
+Linux users may need to install the development package for python
+via the distro's package manager before the brainstem wheel can be installed.  
+The package is generally named python-dev or similar.
+
+## CentOS package manager
+
+On CentOS and yum based distros the following command will install the required packages:
+
+```bash
+$> sudo yum install libffi-devel python-devel
+```
+
+***
+
+# Support
+
+If these troubleshooting steps don't solve the issue, please let us know.  
+We have a mailing list located at: support@acroname.com
+and a [support page](https://acroname.com/contact-us) to get in touch with Acroname support staff.
+
+Enjoy!
+
+The Acroname Team.
