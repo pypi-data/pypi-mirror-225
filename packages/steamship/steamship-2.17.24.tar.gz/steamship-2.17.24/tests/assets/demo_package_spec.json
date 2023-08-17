@@ -1,0 +1,277 @@
+{
+  "name": "TestPackage",
+  "methods": [
+    {
+      "returns": "<class 'dict'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": null,
+      "path": "/__dir__",
+      "verb": "GET",
+      "doc": "Return this Invocable's PackageSpec for remote inspection -- e.g. documentation or OpenAPI generation."
+    },
+    {
+      "returns": "<class 'dict'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": null,
+      "path": "/__dir__",
+      "verb": "POST",
+      "doc": "Return this Invocable's PackageSpec for remote inspection -- e.g. documentation or OpenAPI generation."
+    },
+    {
+      "returns": "<class 'steamship.invocable.invocable_response.InvocableResponse'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/__instance_init__",
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [],
+      "path": "/config",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "GET",
+      "doc": "This is called get_config because there's already `.config` object on the class."
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[Task]'>",
+      "args": [
+        {
+          "name": "name",
+          "kind": "<class 'str'>",
+          "values": null
+        }
+      ],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/future_greet",
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[Task]'>",
+      "args": [
+        {
+          "values": null,
+          "kind": "<class 'str'>",
+          "name": "name"
+        }
+      ],
+      "path": "/future_greet_then_greet_again",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [
+        {
+          "name": "name",
+          "kind": "<class 'str'>",
+          "values": null
+        }
+      ],
+      "className": "TestPackage",
+      "config": {
+        "identifier": "foo",
+        "timeout": 10,
+        "public": true,
+        "body": 98.6
+      },
+      "path": "/greet",
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [
+        {
+          "values": null,
+          "kind": "<class 'str'>",
+          "name": "name"
+        }
+      ],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/greet",
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [],
+      "path": "/json_with_status",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "POST",
+      "doc": "Our base client tries to be smart with parsing things that look like SteamshipResponse objects, but there's\n        a problem with this when our packages response with a JSON string of the sort {\"status\": \"foo\"} -- the Client\n        will unhelpfully try to coerce that string value into a Task object and fail. This method helps us test that\n        we are handling it properly."
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [
+        {
+          "values": null,
+          "kind": "<class 'str'>",
+          "name": "fact"
+        }
+      ],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/learn",
+      "verb": "POST",
+      "doc": "Learns a new fact."
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [
+        {
+          "name": "name",
+          "kind": "<class 'str'>",
+          "values": null
+        }
+      ],
+      "path": "/public_get_greet",
+      "className": "TestPackage",
+      "config": {
+        "public": true
+      },
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [
+        {
+          "values": null,
+          "name": "name",
+          "kind": "<class 'str'>"
+        }
+      ],
+      "path": "/public_post_greet",
+      "className": "TestPackage",
+      "config": {
+        "public": true
+      },
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [
+        {
+          "values": null,
+          "name": "query",
+          "kind": "<class 'str'>"
+        },
+        {
+          "values": null,
+          "kind": "<class 'int'>",
+          "name": "k"
+        }
+      ],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/query",
+      "verb": "POST",
+      "doc": "Learns a new fact."
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/raise_python_error",
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [],
+      "path": "/raise_steamship_error",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[bytes]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/resp_binary",
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[bytes]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/resp_bytes_io",
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [],
+      "path": "/resp_dict",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[bytes]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/resp_image",
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [],
+      "path": "/resp_obj",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/resp_string",
+      "verb": "GET",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[dict]'>",
+      "args": [],
+      "path": "/user_info",
+      "className": "TestPackage",
+      "config": {},
+      "verb": "POST",
+      "doc": null
+    },
+    {
+      "returns": "<class 'foo.InvocableResponse[str]'>",
+      "args": [],
+      "className": "TestPackage",
+      "config": {},
+      "path": "/workspace",
+      "verb": "GET",
+      "doc": null
+    }
+  ],
+  "sdkVersion": "unknown",
+  "usedMixins": [],
+  "doc": null
+}
