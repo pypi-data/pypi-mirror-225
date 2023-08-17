@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: pathologyfoundation
+Version: 0.1.12
+Summary: A package of pathology foundation models.
+Home-page: https://github.com/PathologyFoundation/pathologyfoundation
+Author: Zhi Huang
+Author-email: hz9423@gmail.com
+Keywords: Pathology,Foundation model,PLIP,OpenPath
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: clip-anytorch
+Requires-Dist: pillow (>=9.0.1)
+Requires-Dist: appdirs
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: tqdm
+Requires-Dist: gdown
+Requires-Dist: scikit-learn
+
+Please check our github page: https://github.com/PathologyFoundation/pathologyfoundation
