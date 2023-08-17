@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: zconfig-watchedfile
+Version: 2.0
+Summary: ZConfig statement to register a logging handler using WatchedFileHandler
+Home-page: https://github.com/gocept/zconfig_watchedfile
+Author: gocept <mail@gocept.com>
+Author-email: mail@gocept.com
+License: ZPL 2.1
+Keywords: ZConfig WatchedFileHandler logging handler
+Classifier: License :: OSI Approved :: Zope Public License
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+License-File: LICENSE.txt
+Requires-Dist: ZConfig
+Requires-Dist: setuptools
+Provides-Extra: test
+
+===================
+zconfig_watchedfile
+===================
+
+Provides a ZConfig statement to register a logging handler that uses a
+`WatchedFileHandler`_, which is helpful for integrating with an external
+logrotate service::
+
+    %import zconfig_watchedfile
+    <logger>
+      name example
+
+      <watchedfile>
+        path /path/to/logfile.log
+      </watchedfile>
+    </logger>
+
+The ``<watchedfile>`` supports both the default ZConfig settings for handlers
+(formatter, dateformat, level) and the parameters of `WatchedFileHandler`_
+(mode, encoding, delay).
+
+This package is compatible with Python version 3.8 up to 3.11.
+
+.. _`WatchedFileHandler`: https://docs.python.org/3.11/library/logging.handlers.html#watchedfilehandler
+
+
+==================================
+Change log for zconfig_watchedfile
+==================================
+
+2.0 (2023-08-17)
+================
+
+- Drop support for all Python versions older than 3.8.
+
+- Add support for Python 3.9, 3.10, 3.11.
+
+
+1.2 (2019-12-04)
+================
+
+- Migrated to github.
+
+- Add support for Python 3.7 and 3.8.
+
+
+1.1 (2019-01-25)
+================
+
+- Make `setup.py` compatible with newer `setuptools` versions.
+
+- Drop support for Python 2.6.
+
+
+1.0 (2013-11-29)
+================
+
+- initial release
