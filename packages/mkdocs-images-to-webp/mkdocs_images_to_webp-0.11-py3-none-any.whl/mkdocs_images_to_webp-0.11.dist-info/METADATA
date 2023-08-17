@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: mkdocs-images-to-webp
+Version: 0.11
+Home-page: https://github.com/mur4d1n
+Download-URL: https://github.com/mur4d1n-lib/mkdocs-images-to-webp/archive/refs/tags/v_011.tar.gz
+Author: mur4d1n
+Author-email: mur4d1n@yandex.ru
+Project-URL: download_url, https://github.com/mur4d1n-lib/mkdocs-images-to-webp/archive/refs/tags/v_011.tar.gz
+Keywords: mkdocs,images,webp
+License-File: LICENSE
+Requires-Dist: mkdocs ==1.4.2
+Requires-Dist: pillow
+Requires-Dist: importlib-metadata ; python_version == "3.8"
+Requires-Dist: importlib-metadata ; python_version > "3.8"
+
