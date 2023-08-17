@@ -1,0 +1,299 @@
+Metadata-Version: 2.1
+Name: taskp5
+Version: 2.0.2
+Summary: Log file parser CLI and library (v.2)
+License: MIT
+Author: Bill.Avramenko
+Author-email: billavramenko@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: mysql-connector-python (>=8.1.0,<9.0.0)
+Requires-Dist: psycopg2 (>=2.9.7,<3.0.0)
+Requires-Dist: pymongo (>=4.4.1,<5.0.0)
+Requires-Dist: questionary (>=2.0.0,<3.0.0)
+Requires-Dist: redis (>=4.6.0,<5.0.0)
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <a href="https://gitlab.com/Bill-EPAM-DevOpsInt2023/devops-7-avramenko-bill">
+    <img src="https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/ecd2eb07b44c03c4bcdf5493b45fe46238a12e14/shared/images/title-logo-origin.svg" alt="EPAM DevOps-7 Internal Lab title logo" width="100%" height="300px">
+  </a>
+</p>
+
+<h1 align="center">
+  <div align="center" aria-colspan="0">Work with various DBMS in Python.</div>
+  <div align="center" aria-colspan="0">Module 2: Python. Task 5.</div>
+</h1>
+
+<p align="center">
+  <div align="center">
+    <a href="https://pypi.org/project/task_5/">
+      <img src="https://img.shields.io/pypi/v/task_5.svg?style=for-the-badge&label=task 5" alt="TASK 5" />
+    </a>&nbsp;
+    <a href="https://gitlab.com/Bill-EPAM-DevOpsInt2023/python/task5/-/blob/783fe98d0c073fb7de18c872eb6b2d9dfbe81dbc/LICENSE">
+      <img src="https://img.shields.io/pypi/l/task_5.svg?style=for-the-badge" alt="License" />
+    </a>&nbsp;
+    <a href="https://python-poetry.org/">
+      <img src="https://img.shields.io/pypi/v/poetry.svg?style=for-the-badge&label=poetry&color=green" alt="POETRY" />
+    </a>&nbsp;
+    <a href="https://www.python.org/downloads/">
+      <img src="https://img.shields.io/pypi/pyversions/task_5?style=for-the-badge" alt="PYTHON" />
+    </a>&nbsp;
+  </div>
+</p>
+
+
+## Preface
+
+This project contains a solution to one of the tasks of the EPAM DevOps Initial Internal Training Course #7 in 2023.
+Detailed information about the course, as well as reports on each of the completed tasks (including this one) can be found [here](https://gitlab.com/Bill-EPAM-DevOpsInt2023/devops-7-avramenko-bill) [![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://gitlab.com/Bill-EPAM-DevOpsInt2023/devops-7-avramenko-bill).
+<br>
+As mentioned above, the project contains a solution to task #5 as part of module #2 of learning the Python programming language.
+Below you will find a detailed description of the task, as well as a brief description of the implementation.
+
+## Table of Contents
+
+- [Conditions](#conditions)
+- [Implementation](#implementation)
+  - [Structure](#structure)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Library](#library)
+  - [CLI](#cli)
+  - [Pipes and files](#pipes-and-files)
+  - [Showcase](#showcase)
+- [General Provisions](#general-provisions)
+
+## Conditions
+
+Create a log parser based on Regex. For test reasons utilize the access.log file.
+The format of the access.log file is as follows: 
+LogFormat "%h (%{X-Forwarded-For}i) %l %u %t \"%r\" %>s %b %T %D \"%{Referer}i\" \"%{UserAgent}i\" \"%{BALANCER_WORKER_NAME}e\""
+Parse the Apache Tomcat access.log file and display the necessary records:
+
+| #  | Task                                                                                                                                                                                                                                | 
+|----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | Collect statistics on IP addresses of the browser, as a result, specify the N most frequent ones.                                                                                                                                   |
+| 2  | Find the frequency of requests in the time interval dT (minutes).                                                                                                                                                                   |
+| 3  | Find the N most frequent User-Agent.                                                                                                                                                                                                |
+| 4  | Statistics status code S (50x errors) in the time interval dT (minutes).                                                                                                                                                            |
+| 5  | Find N longest queries or shortest queries.                                                                                                                                                                                         |
+| 6  | N most frequent requests to the K slash. For instance, to the 2nd slash, if the request is "GET /merlin-servicesearch/rest/vehiclefamilyvalueslookup/117341 HTTP/1.1", then the statistics are collected for /merlin-servicesearch. |
+| 7  | Number of requests regarding upstream (workers).                                                                                                                                                                                    |
+| 8  | For the url link find conversion statistics. Display statistics for specific domain total request count.                                                                                                                            |
+| 9  | Number of outgoing requests (workers) in dT (30 sec, 1 minute, 5 min).                                                                                                                                                              |
+| 10 | Find the N time periods dT (1 min, 2 min, 3 min, etc.) for which the largest number of requests are executed.                                                                                                                       |
+
+## Implementation
+
+[Log_Parser](https://pypi.org/project/task4/)[![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://pypi.org/project/task4/)
+is a Python package that could be added to your global or virtual environment by preferable package manager pip, pipenv, poetry, etc.
+The project itself was managed and built using the [Poetry library](https://python-poetry.org/)[![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://python-poetry.org/),
+so if you intend to clone this repo and make some changes for your own purposes, please install [Poetry](https://python-poetry.org/docs/#installation)[![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://python-poetry.org/docs/#installation)
+or migrate to your preferred package management library.
+
+Based on the need to build and the possibility of using both the library and the CLI, the code was split into a library for importing and a script for execution
+via the command line. Additionally, the package contains a showcase that demonstrates all use cases when run through the command line.
+
+To enhance the command line's functionality and expand showcase capabilities, the [Questionary](https://questionary.readthedocs.io/en/stable/)[![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://questionary.readthedocs.io/en/stable/)
+library is used and will be installed through a dependency link upon package installation.
+
+### Structure
+
+```markdown
+task4/
+├── README.md (You are here now)
+├── pyproject.toml # Poetry package management file
+└── log_parser/ 
+    ├── __init__.py # library entry point
+    ├── __main__.py # CLI entry point
+    ├── __version__.py 
+    ├── log_parser.py # library implementation
+    ├── cli/
+    │   ├── __init__.py
+    │   ├── __main__.py
+    │   └── cli.py # CLI code implementation
+    └── showcase/
+            ├── __init__.py 
+            ├── __main__.py # showcase entry point when using python -m log_parser.showcase
+            ├── access.log # a sample CSV file
+            └── showcase.py # showcase implementation
+```
+
+## Installation
+
+Use your preferred installation method via different package installation managers to install Log_Parser.
+
+###### Pip
+
+To install Log_Parser packet to your environment using pip manager invoke `pip install task4`.
+
+```bash
+$ pip install task4
+Collecting task4
+  Using cached task4-1.0.N-py3-none-any.whl (62 kB)
+Collecting questionary<2.0.0,>=1.10.0 (from task3)
+  Downloading questionary-1.10.0-py3-none-any.whl (31 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31.1/31.1 kB N.N MB/s eta 0:00:00
+Collecting prompt_toolkit<4.0,>=2.0 (from questionary<2.0.0,>=1.10.0->task3)
+  Downloading prompt_toolkit-3.0.39-py3-none-any.whl (385 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 385.2/385.2 kB N.N MB/s eta 0:00:00
+Collecting wcwidth (from prompt_toolkit<4.0,>=2.0->questionary<2.0.0,>=1.10.0->task3)
+  Downloading wcwidth-0.2.6-py2.py3-none-any.whl (29 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.2/29.2 kB N.N MB/s eta 0:00:00
+Installing collected packages: wcwidth, prompt_toolkit, questionary, task3
+Successfully installed prompt_toolkit-3.0.39 questionary-1.10.0 task4-1.0.N wcwidth-0.2.6
+```
+
+To uninstall Log Parser from your environment invoke `pip uninstall task4`.
+It's important to note that the pip manager does not uninstall dependent packages. Therefore, if you wish to remove them, you'll need to take
+the initiative and perform the task yourself. You can do this by using the commands `pip uninstall questionary prompt-toolkit wcwidth`.
+
+###### Poetry
+
+To install Log Parser packet to your environment using poetry manager invoke `poetry add task4`.
+
+```bash
+$ poetry add task4
+Using version ^1.0.N for task4
+
+Updating dependencies
+Resolving dependencies...
+
+Package operations: 6 installs, 0 updates, 0 removals
+
+  • Installing wcwidth (0.2.6)
+  • Installing prompt-toolkit (3.0.39)
+  • Installing questionary (1.10.0)
+
+Writing lock file
+```
+
+By taking this action, a new dependency line will be added to your pyproject.toml file.
+
+```toml
+[tool.poetry.dependencies]
+task4 = "^1.0.N"
+```
+
+To uninstall Log Parser from your environment invoke `poetry remove task4`.
+One of the benefits of utilizing Poetry is that it allows for the removal of all dependent packages with a single command.
+
+## Usage
+
+There are various ways to use this library, as mentioned earlier.
+- Utilize it like a library you can just import it into your .py file and use LogHelper class within your code.
+- Utilize CLI via the command shell, either as a Python module or as a standalone command.
+- Utilize CLI command in a pipe by passing stdout of other commands to the stdin of the log_parser command, writing stdout and stderr to files, or passing them to following commands.
+- The library also contains rich showcase command that allows you to test all the use cases and even perform them in batches.
+
+
+### Library
+
+Below is a code snippet that demonstrates how to be able to use the log_parser library in your code.
+
+```python
+from log_parser.log_parser import logger, LogHandler
+import re
+
+with open('access.log', 'r') as f:
+    handler = LogHandler(log=f,
+                         extractor=re.compile(extractor, flags=re.I | re.X),
+                         selection=selection,
+                         aggregation=aggregation,
+                         filter_str=filter_str,
+                         rows=rows)
+
+print(handler.output)
+
+```
+
+### CLI
+
+The CLI interface has a single command called "log_parser". It can be invoked using two methods: `python3 -m log_parser` or simply `log_parser`.
+Log_parser accepts various arguments, which are described below.
+
+```text
+log_parser [-h] [--version] -e  [-s] [-a] [-f] [-r [INDEXES ...]] [-v] [file_name]
+
+positional arguments:
+  file_name             An input filename
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -e , --extractor      Specify a regular expression for extracting certain data from each log line. 
+                        The following expression patterns can be used to make      
+                        writing an expression easier and reduce its size. 
+                        For instance, "IP4\ \((?P<IP4_LIST>(?:(?:IP4|.*?),\ )*)(?:IP4|.*?)\)\ -\ -\
+                        \[DATE_TIME_SEC\]\ \"(?:REQUEST|-)\"" 
+                        
+                        IP4_OCTET, MASK_OCTET, IP4, IP4_CIDR, MASK, IP6, IP6_CIDR, MAC_PART, MAC, VERSION, AGENT_AGENT,   
+                        AGENT_OS, AGENT_DEVICE, AGENT_BROWSER, USER_AGENT, DOMAIN, EMAIL_NAME_CHARSET, EMAIL, URI, URL, 
+                        REQUEST_TYPES, REQUEST, DATE_TIME_SEC, UUID
+  -s , --selection      Specify a regular expression template to output selected data. To add previously extracted data
+                        via regular expression groups use template group naming like \g<group_name>. 
+                        It is allowed to use various transformation functions for substitution, extracting and even  
+                        splitting data.
+                        For instance, 
+                        "TO_MIN(\g<DATE_TIME>) \g<URL>" or "SPLIT(RE('(?<=\().+?(?=\))', \g<IP4>), ',\ ')" 
+                        
+                        The list of possible functions: MIN, MAX, SPLIT, SUB, INTERVAL, SUM, COUNT, RE
+  -a , --aggregation    The aggregate to be calculated during log parsing. It is used for sorting or summation.
+                        For instance, "MAX(\g<STATUS>,5)" or ..... 
+                        
+                        The list of possible functions: MIN, MAX, SPLIT, SUB, INTERVAL, SUM, COUNT, RE
+  -f , --filter         Specify a regular expression for filtering each line. It is supposed to used RE functions
+                        and group naming like \g<group_name>. If the result of using regular expression return None
+                        the line will be omitted. 
+                        
+                        For instance, 
+                        "RE('50\d', \g<STATUS>)" or "RE((?:/+[a-z\d\-._~%&\'()*+,;=:@{\'}{\'}]+){2}, \g<REQUEST_PATH>)"
+  -r [INDEXES ...], --rows [INDEXES ...]
+                        The row range from the log file to be parsed. You can pass values in the following formats: particular indexes: index1 index2 ...       
+                        indexN range of indexes: index1-index2 from the beginning up to index: -index from index to the end: index-
+  -v                    Increase verbosity level (add more v)
+```
+
+To handle the arguments, the [argparse](https://docs.python.org/3/library/argparse.html)[![/^](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/45ed5458fe7cf837b62a423fcdff6a52b8db3cdb/shared/images/external-link-blue-12.png)](https://docs.python.org/3/library/argparse.html)
+module is used. If you are already acquainted with it, you will have no difficulty in passing the arguments along with their values and comprehending their behavior.
+
+The examples in a more convenient form you could find in the [showcase](#showcase).
+
+### Pipes and files
+
+The log_parser command could be used inside the pipe of the BASH commands. It can be used in various ways within a pipeline:
+- receiving input
+- direct output to a file
+- direct logging also to a file
+
+This command isn't intended for use in pipe sequence due to the table output format but is allowed.
+
+### Showcase
+
+To showcase the behavior of the log_parser library, an interactive command called "log_parser_showcase" has been created.
+This command utilizes both the log_parser CLI and the log_parser library. It's an interactive command you can invoke via `log_parser_showcase` or `python3 -m log_parser.showcase`.
+It has an optional flag that allows you to view all use cases at once without any interaction.
+You can use the command `log_parser_showcase --all` to activate this feature.
+There are also a ready-made Apache Tomcat log file presents - `access.log`.
+You can use the showcase to test your own regular expressions and regular expression templates.
+
+![showcase_demo.gif](https://gitlab.com/EPAM-DevOpsInt2023/devops-7-assets/-/raw/9203e3f6dfceb75dde55d0f3886656f801a2ab24/m2-python/task-4/images/showcase_demo_task4.gif)
+
+## General provisions
+
+All materials provided and/or made available contain EPAM’s proprietary and confidential information and must not to be copied,
+reproduced or disclosed to any third party or to any other person, other than those persons who have a bona fide need to review it
+for the purpose of participation in the online courses being provided by EPAM.
+The intellectual property rights in all materials (including any trademarks) are owned by EPAM Systems Inc or its associated companies,
+and a limited license, terminable at the discretion of EPAM without notice, is hereby granted to you solely for the purpose of participating
+in the online courses being provided by EPAM. Neither you nor any other party shall acquire any intellectual property rights of any kind
+in such materials.
+
+
+
