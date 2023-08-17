@@ -1,0 +1,13 @@
+numpy
+qtpy
+pyimzml
+matplotlib
+vaex
+
+[testing]
+tox
+pytest
+pytest-cov
+pytest-qt
+napari
+pyqt5
