@@ -1,0 +1,16 @@
+itsdangerous
+redis
+werkzeug>=2.3
+
+[dev]
+black
+fakeredis
+flask
+flask-jwt-extended
+isort
+pip-tools
+pre-commit
+pydocstyle[toml]>=6
+pylint
+pytest
+pytest-cov
