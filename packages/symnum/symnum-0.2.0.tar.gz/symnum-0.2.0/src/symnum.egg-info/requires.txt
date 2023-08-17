@@ -1,0 +1,10 @@
+numpy>=1.22
+sympy>=1.8
+
+[dev]
+black
+build
+pytest
+ruff
+tox>=4
+twine
