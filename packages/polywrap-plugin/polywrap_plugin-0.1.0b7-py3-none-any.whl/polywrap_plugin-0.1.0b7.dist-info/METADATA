@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: polywrap-plugin
+Version: 0.1.0b7
+Summary: Polywrap Plugin package
+Author: Cesar
+Author-email: cesar@polywrap.io
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: polywrap-core (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-manifest (>=0.1.0b7,<0.2.0)
+Requires-Dist: polywrap-msgpack (>=0.1.0b7,<0.2.0)
+Description-Content-Type: text/x-rst
+
+Polywrap Plugin
+===============
+This package contains the runtime for the Polywrap plugin system.
+
+Quickstart
+----------
+
+Imports
+~~~~~~~
+
+>>> from typing import Any, Dict, List, Union, Optional, cast
+>>> from polywrap_manifest import AnyWrapManifest
+>>> from polywrap_plugin import PluginModule
+>>> from polywrap_core import InvokerClient, Uri
+
+Define a plugin module
+~~~~~~~~~~~~~~~~~~~~~~
+
+>>> class GreetingModule(PluginModule[None]):
+...     def __init__(self, config: None):
+...         super().__init__(config)
+...
+...     def greeting(self, args: Dict[str, Any], client: InvokerClient, env: Optional[Any] = None):
+...         return f"Greetings from: {args['name']}"
+
+Create a plugin wrapper
+~~~~~~~~~~~~~~~~~~~~~~~
+
+>>> greeting_module = GreetingModule(None)
+>>> manifest = cast(AnyWrapManifest, NotImplemented)
+>>> wrapper = PluginWrapper(greeting_module, manifest)
+
+Invocation
+~~~~~~~~~~
+
+>>> args = {
+...     "name": "Joe"
+... }
+>>> result = wrapper.invoke(
+...     uri=Uri.from_str("ens/greeting.eth"),
+...     method="greeting",
+...     args=args,
+...     client=cast(InvokerClient, NotImplemented),
+... )
+>>> assert result.result == "Greetings from: Joe"
+
