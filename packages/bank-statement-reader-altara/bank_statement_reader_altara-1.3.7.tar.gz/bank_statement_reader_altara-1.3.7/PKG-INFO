@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: bank-statement-reader-altara
+Version: 1.3.7
+Summary: 
+Author: harmlessprince
+Author-email: realolamilekan@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: openpyxl (>=3.1.2,<4.0.0)
+Requires-Dist: pandas (>=2.0.3,<3.0.0)
+Requires-Dist: pathlib (>=1.0.1,<2.0.0)
+Requires-Dist: pdfminer (>=20191125,<20191126)
+Requires-Dist: pdfminer-six (>=20221105,<20221106)
+Requires-Dist: pdfplumber (>=0.10.2,<0.11.0)
+Requires-Dist: pytest (>=7.4.0,<8.0.0)
+Description-Content-Type: text/markdown
+
+This bank statement reader can be used to read nigerian bank statement in pdf format.
+
+It helps to extract the following details
+
+Update Dependencies
+pip freeze > requirements.txt
+
+Run Test
+
+poetry run pytest -v 
+
+build for publishing 
+poetry build
+
+publish to pytest
+
+poetry publish 
+
+Build and Publish 
+
+poetry publish --build
+
+Run Test on Bank Statement
+python main.py
