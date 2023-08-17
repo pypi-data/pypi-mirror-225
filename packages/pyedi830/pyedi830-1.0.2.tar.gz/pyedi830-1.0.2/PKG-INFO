@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pyedi830
+Version: 1.0.2
+Summary: EDI 830 parser/converter
+Home-page: https://github.com/dev0088/pyedi830
+Author: Ninja Dev
+Author-email: ninjadev999@gmail.com
+License: MIT
+Keywords: x12 edi 830
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Text Processing
+License-File: LICENSE
+
+pyedi830 uses JSON format definitions to make it easy
+    to generate or read X12 EDI messages from/to Python dicts/lists.
