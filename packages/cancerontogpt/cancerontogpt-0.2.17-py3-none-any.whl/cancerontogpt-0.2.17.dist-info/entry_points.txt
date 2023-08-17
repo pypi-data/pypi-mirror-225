@@ -1,0 +1,4 @@
+[console_scripts]
+cancerontogpt=cancerontogpt.cli:main
+web-cancerontogpt=cancerontogpt.webapp.main:start
+
