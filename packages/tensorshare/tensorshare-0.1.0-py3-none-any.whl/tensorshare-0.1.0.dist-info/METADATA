@@ -1,0 +1,179 @@
+Metadata-Version: 2.1
+Name: tensorshare
+Version: 0.1.0
+Summary: 🤝 Trade any tensors over the network
+Project-URL: Documentation, https://chainyo.github.io/tensorshare
+Project-URL: Issues, https://github.com/chainyo/tensorshare/issues
+Project-URL: Source, https://github.com/chainyo/tensorshare
+Author-email: Thomas Chaigneau <t.chaigneau.tc@gmail.com>
+License-Expression: MIT
+License-File: LICENSE
+Keywords: artificial intelligence,deep learning,fastapi,jax,machine-learning,network,numpy,paddlepaddle,pydantic,pytorch,safetensors,tensorflow
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: <3.12,>=3.8
+Requires-Dist: pydantic>=2.1.1
+Requires-Dist: safetensors>=0.3.1
+Provides-Extra: all
+Requires-Dist: aiohttp>=3.8.5; extra == 'all'
+Requires-Dist: fastapi>=0.101.1; extra == 'all'
+Requires-Dist: flax>=0.6.3; extra == 'all'
+Requires-Dist: jax<0.4.14; extra == 'all'
+Requires-Dist: jaxlib<0.4.14; extra == 'all'
+Requires-Dist: numpy>=1.21.6; extra == 'all'
+Requires-Dist: paddlepaddle>=2.4.1; extra == 'all'
+Requires-Dist: torch>=1.10; extra == 'all'
+Provides-Extra: client
+Requires-Dist: aiohttp>=3.8.5; extra == 'client'
+Provides-Extra: dev
+Requires-Dist: black>=22.10.0; extra == 'dev'
+Requires-Dist: fastapi>=0.101.1; extra == 'dev'
+Requires-Dist: flax>=0.6.3; extra == 'dev'
+Requires-Dist: jax<0.4.14; extra == 'dev'
+Requires-Dist: jaxlib<0.4.14; extra == 'dev'
+Requires-Dist: mkdocs-git-revision-date-localized-plugin>=1.1.0; extra == 'dev'
+Requires-Dist: mkdocs-material>=8.5.4; extra == 'dev'
+Requires-Dist: mkdocs>=1.4.0; extra == 'dev'
+Requires-Dist: mkdocstrings[python]>=0.20.0; extra == 'dev'
+Requires-Dist: numpy>=1.21.6; extra == 'dev'
+Requires-Dist: paddlepaddle>=2.4.1; extra == 'dev'
+Requires-Dist: pre-commit>=2.20.0; extra == 'dev'
+Requires-Dist: pytest-cov>=4.1; extra == 'dev'
+Requires-Dist: pytest>=7.4; extra == 'dev'
+Requires-Dist: ruff>=0.0.263; extra == 'dev'
+Requires-Dist: torch>=1.10; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: mkdocs-git-revision-date-localized-plugin>=1.1.0; extra == 'docs'
+Requires-Dist: mkdocs-material>=8.5.4; extra == 'docs'
+Requires-Dist: mkdocs>=1.4.0; extra == 'docs'
+Requires-Dist: mkdocstrings[python]>=0.20.0; extra == 'docs'
+Provides-Extra: jax
+Requires-Dist: flax>=0.6.3; extra == 'jax'
+Requires-Dist: jax<0.4.14; extra == 'jax'
+Requires-Dist: jaxlib<0.4.14; extra == 'jax'
+Requires-Dist: numpy>=1.21.6; extra == 'jax'
+Provides-Extra: numpy
+Requires-Dist: numpy>=1.21.6; extra == 'numpy'
+Provides-Extra: paddlepaddle
+Requires-Dist: numpy>=1.21.6; extra == 'paddlepaddle'
+Requires-Dist: paddlepaddle>=2.4.1; extra == 'paddlepaddle'
+Provides-Extra: quality
+Requires-Dist: black>=22.10.0; extra == 'quality'
+Requires-Dist: mypy>=1.4; extra == 'quality'
+Requires-Dist: pre-commit>=2.20.0; extra == 'quality'
+Requires-Dist: ruff>=0.0.263; extra == 'quality'
+Provides-Extra: server
+Requires-Dist: fastapi>=0.101.1; extra == 'server'
+Provides-Extra: tests
+Requires-Dist: aiohttp>=3.8.5; extra == 'tests'
+Requires-Dist: aioresponses>=0.7.4; extra == 'tests'
+Requires-Dist: fastapi>=0.101.1; extra == 'tests'
+Requires-Dist: flax>=0.6.3; extra == 'tests'
+Requires-Dist: httpx>=0.23.0; extra == 'tests'
+Requires-Dist: jax<0.4.14; extra == 'tests'
+Requires-Dist: jaxlib<0.4.14; extra == 'tests'
+Requires-Dist: numpy>=1.21.6; extra == 'tests'
+Requires-Dist: paddlepaddle>=2.4.1; extra == 'tests'
+Requires-Dist: pytest-asyncio>=0.21.1; extra == 'tests'
+Requires-Dist: pytest-cov>=4.1; extra == 'tests'
+Requires-Dist: pytest>=7.4; extra == 'tests'
+Requires-Dist: torch>=1.10; extra == 'tests'
+Provides-Extra: torch
+Requires-Dist: numpy>=1.21.6; extra == 'torch'
+Requires-Dist: torch>=1.10; extra == 'torch'
+Description-Content-Type: text/markdown
+
+<h1 align="center">TensorShare</h1>
+
+<div align="center">
+	<a  href="https://pypi.org/project/tensorshare" target="_blank">
+		<img src="https://img.shields.io/pypi/v/tensorshare.svg" />
+	</a>
+	<a  href="https://pypi.org/project/tensorshare" target="_blank">
+		<img src="https://img.shields.io/pypi/pyversions/tensorshare" />
+	</a>
+	<a  href="https://github.com/chainyo/tensorshare/blob/main/LICENSE" target="_blank">
+		<img src="https://img.shields.io/pypi/l/tensorshare" />
+	</a>
+	<a  href="https://github.com/chainyo/tensorshare/actions?workflow=ci-cd" target="_blank">
+		<img src="https://github.com/chainyo/tensorshare/workflows/ci-cd/badge.svg" />
+	</a>
+	<a href="https://codecov.io/gh/chainyo/tensorshare" > 
+		<img src="https://codecov.io/gh/chainyo/tensorshare/branch/main/graph/badge.svg?token=IA2W48WCCN"/> 
+	</a>
+	<a  href="https://github.com/pypa/hatch" target="_blank">
+		<img src="https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg" />
+	</a>
+</div>
+
+<p align="center"><em>🤝 Trade any tensors over the network</em></p>
+
+---
+
+TensorShare is a powerful tool enabling ⚡ lightning-fast tensor sharing across networks.
+
+This project leverage the best open-source tools to provide a simple and easy-to-use interface for sharing tensors:
+
+* [safetensors](https://github.com/huggingface/safetensors) for secure tensor serialization and deserialization.
+* [pydantic](https://github.com/pydantic/pydantic) for data validation and settings management.
+* [fastapi](https://github.com/tiangolo/fastapi) for building APIs (and because it's too good to avoid it).
+
+__This project is heavily in development and is not ready for production use.__
+__Feel free to contribute to the project by opening issues and pull requests.__
+
+## Usage
+
+Example of tensors serialization with torch:
+
+```python
+import torch
+from tensorshare import TensorShare
+
+tensors = {
+    "embeddings": torch.zeros((2, 2)),
+    "labels": torch.zeros((2, 2)),
+}
+ts = TensorShare.from_dict(tensors, backend="torch")
+print(ts)
+# tensors=b'gAAAAAAAAAB7ImVtYmVkZGluZ3MiOnsiZHR5cGUiO...' size=168
+```
+
+You can now freely send the tensors over the network via any mean (e.g. HTTP, gRPC, ...).
+
+On the other side, when you receive the tensors, you can deserialize them in any supported backend:
+
+```python
+from tensorshare import Backend
+
+np_tensors = ts.to_tensors(backend=Backend.NUMPY)
+print(np_tensors)
+# {
+# 	'embeddings': array([[0., 0.], [0., 0.]], dtype=float32),
+# 	'labels': array([[0., 0.], [0., 0.]], dtype=float32)
+# }
+```
+
+For more examples and details, please refer to the [Usage section](https://chainyo.github.io/tensorshare/usage/).
+
+## Roadmap
+
+- [x] Pydantic schema for sharing tensors ~> [TensorShare](https://chainyo.github.io/tensorshare/usage/tensorshare.md)
+- [x] Serialization and deserialization ~> [tensorshare.serialization](https://chainyo.github.io/tensorshare/api/serialization)
+- [x] TensorProcessor for processing tensors ~> [TensorProcessor](https://chainyo.github.io/tensorshare/api/processor)
+- [x] Server for sharing tensors ~> [TensorShareServer](https://chainyo.github.io/tensorshare/usage/tensorshare_server.md)
+- [x] Client for sharing tensors ~> [TensorShareClient](https://chainyo.github.io/tensorshare/usage/tensorshare_client.md)
+- [ ] New incredible features! (Check the [issues](https://github.com/chainyo/tensorshare/issues))
