@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seismic-rna"
+version = "0.6.2"
+authors = [
+    {name="Matty Allan"},
+    {name="Yves Martin"},
+    {name="Scott Grote"},
+    {name="Alberic de Lajarte"},
+]
+description = "RNA Structure Ensemble Inference via Sequencing, Mutation Identification, and Clustering"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "GPL-3.0-only"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "brotli>=1.0",
+    "click>=8.1",
+    "cutadapt>=4.4",
+    "fastqsplitter>=1.2",
+    "matplotlib>=3.6",
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "plotly>=5.11",
+    "pyarrow>=10.0",
+    "pyyaml>=6.0",
+    "scipy>=1.9",
+    "sphinx>=4.5",
+    "sphinx-click>=4.4",
+]
+
+[project.scripts]
+seismic = "seismicrna.main:main_cli"
+
+[project.urls]
+"Homepage" = "https://github.com/rouskinlab/seismic-rna"
+"Bug Tracker" = "https://github.com/rouskinlab/seismic-rna/issues"
