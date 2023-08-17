@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "getise"
+version = "1.0.2"
+description = "Get networks from Cisco ISE"
+authors = ["Rob Woodward <rob@emailplus.org>"]
+
+license = "BSD-2-Clause"
+readme = "README.md"
+repository = "https://github.com/robwdwd/getise"
+include = ["README.md", "LICENSE"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+click = "^8.1.3"
+requests = "2.18.4"
+gitpython = "^3.1.31"
+netaddr = "^0.8.0"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+pytest = "^7.3.2"
+pydocstyle = "^6.3.0"
+pylint = "^2.17.4"
+
+
+[tool.poetry.scripts]
+getise = "getise.cli:cli"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
