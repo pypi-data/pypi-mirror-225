@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "django-mongoengine"
+version = "0.4.6"
+description = "Django support for MongoDB via MongoEngine"
+authors = ["Ross Lawley <ross.lawley@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+django = ">=3.2,<5"
+mongoengine = ">=0.14"
+
+[tool.poetry.dev-dependencies]
+sphinx = "*"
+pytest = "*"
+flake8 = "*"
+pdbpp = "*"
+pytest-django = "*"
+pytest-cov = "*"
+pytest-sugar = "*"
+
+[tool.black]
+line-length = 100
+skip-string-normalization = true
+
+[tool.isort]
+line_length = 100
+known_first_party = ["django_mongoengine"]
+multi_line_output = 3
+skip_gitignore = true
+include_trailing_comma = true
