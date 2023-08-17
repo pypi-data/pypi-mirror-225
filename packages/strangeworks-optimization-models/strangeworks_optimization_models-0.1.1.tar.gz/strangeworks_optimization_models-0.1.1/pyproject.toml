@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "strangeworks-optimization-models"
+version = "0.1.1"
+description = "Pydantic models for strangeworks optimization SDK and application"
+authors = ["Strange Devs <hello@strangeworks.com>"]
+license = "Apache-2"
+readme = "README.md"
+packages = [
+    {include = "strangeworks_optimization_models"},
+    {include = "strangeworks_optimization_models/py.typed"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
