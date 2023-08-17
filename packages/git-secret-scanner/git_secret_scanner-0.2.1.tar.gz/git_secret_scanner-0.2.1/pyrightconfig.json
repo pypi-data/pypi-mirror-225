@@ -1,0 +1,11 @@
+{
+    "include": ["src"],
+
+    "exclude": ["**/__pycache__"],
+
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+
+    "pythonVersion": "3.11",
+    "pythonPlatform": "All",
+}
