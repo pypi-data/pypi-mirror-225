@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ldgm"
+version = "0.0.1"
+authors = [
+  { name="Anthony Wilder Wohns", email="awohns@gmail.com" },
+  { name="Luke O'Connor", email="loconnor@broadinstitute.org" },
+  { name="Pouria Salehi Nowbandegani", email="psalehin@broadinstitute.org" },
+]
+description = "Sparse and accurate modeling of linkage disequilibrium"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/awohns/ldgm"
+"Bug Tracker" = "https://github.com/awohns/ldgm/issues"
+
