@@ -1,0 +1,14 @@
+# alias-js:
+#   filter: rjsmin
+#   output: ckanext-alias/%(version)s-alias.js
+#   contents:
+#     - js/alias.js
+#   extra:
+#     preload:
+#       - base/main
+
+# alias-css:
+#   filter: cssrewrite
+#   output: ckanext-alias/%(version)s-alias.css
+#   contents:
+#     - css/alias.css
