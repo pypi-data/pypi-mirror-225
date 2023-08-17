@@ -1,0 +1,45 @@
+readme.md
+setup.py
+.idea/.gitignore
+.idea/binance_candle.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/inspectionProfiles/profiles_settings.xml
+binance_candle/__init__.py
+binance_candle/utils.py
+binance_candle.egg-info/PKG-INFO
+binance_candle.egg-info/SOURCES.txt
+binance_candle.egg-info/dependency_links.txt
+binance_candle.egg-info/requires.txt
+binance_candle.egg-info/top_level.txt
+binance_candle/cmd/__init__.py
+binance_candle/code/__init__.py
+binance_candle/exception/__init__.py
+binance_candle/exception/_base.py
+binance_candle/exception/param.py
+binance_candle/exception/req.py
+binance_candle/exception/rule.py
+binance_candle/market/__init__.py
+binance_candle/market/_base.py
+binance_candle/market/exchange_info.py
+binance_candle/market/history_candle.py
+binance_candle/market/ticker.py
+binance_candle/server/__init__.py
+binance_candle/server/rule.py
+binance_candle/server/server.py
+example/1. Market 交易规范.py
+example/10. Server 维护实时历史K线数据.py
+example/2. Market  产品列表.py
+example/3. Market 最佳挂单.py
+example/4. Market 最新价格.py
+example/5. Market 产品深度.py
+example/6. Market 历史K线.py
+example/7. Utils candle与df的转化.py
+example/8. Server 下载历史K线.py
+example/9. Server 每日下载历史K线.py
+vx_images/176016628950838.png
+vx_images/244075001625094.png
+vx_images/480313210278479.png
+vx_images/495193492836002.png
