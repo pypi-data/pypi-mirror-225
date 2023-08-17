@@ -1,0 +1,29 @@
+model_type: llm
+base_model: {base_model}
+
+quantization:
+  bits: 4
+
+adapter:
+  type: lora
+
+prompt:
+  template: |
+    {template}
+
+input_features:
+  - name: prompt
+    type: text
+
+output_features:
+  - name: {target}
+    type: text
+
+trainer:
+  type: finetune
+  learning_rate: 0.0001
+  batch_size: 1
+  gradient_accumulation_steps: 16
+  epochs: 3
+  learning_rate_scheduler:
+    warmup_fraction: 0.01
