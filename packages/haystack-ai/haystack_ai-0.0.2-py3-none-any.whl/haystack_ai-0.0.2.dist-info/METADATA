@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: haystack-ai
+Version: 0.0.2
+Project-URL: Documentation, https://github.com/unknown/haystack-ai#readme
+Project-URL: Issues, https://github.com/unknown/haystack-ai/issues
+Project-URL: Source, https://github.com/unknown/haystack-ai
+Author-email: "deepset.ai" <malte.pietsch@deepset.ai>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.9
+Requires-Dist: canals
+Requires-Dist: pandas
+Requires-Dist: rank-bm25
+Requires-Dist: requests
+Requires-Dist: tenacity
+Requires-Dist: tqdm
+Description-Content-Type: text/markdown
+
+# haystack-preview-package
