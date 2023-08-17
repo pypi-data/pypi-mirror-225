@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "binmao_libs"
+version = "1.0.1"
+authors = [
+  { name="chishijie", email="chishijie85@gmail.com" },
+]
+description = "binmao linbs"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  'flasgger>=0.9.7.1',
+  'Flask>=2.3.2',
+  'peewee>=3.16.3',
+  'prometheus_flask_exporter>=0.22.4'
+]
