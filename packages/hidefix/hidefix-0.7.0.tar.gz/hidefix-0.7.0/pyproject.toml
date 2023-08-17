@@ -1,0 +1,30 @@
+[build-system]
+requires = ["maturin>=0.15,<0.16"]
+build-backend = "maturin"
+
+[project]
+name = "hidefix"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+dependencies = [
+    "numpy",
+    "xarray>=2023",
+    "netCDF4"
+]
+
+
+[tool.maturin]
+python-source = "python"
+features = [ "static", "python", "extension-module", "fast-index" ]
+
+[tool.pytest.ini_options]
+addopts = "--benchmark-disable"
+
+[project.entry-points."xarray.backends"]
+hidefix = "hidefix.xarray:HidefixBackendEntrypoint"
+
