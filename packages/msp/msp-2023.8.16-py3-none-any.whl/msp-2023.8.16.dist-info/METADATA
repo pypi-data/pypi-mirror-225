@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: msp
+Version: 2023.8.16
+Summary: MSP SDK
+Home-page: https://github.com/sktaiflow/msp-sdk
+Author: sktdmi
+Author-email: mls@sktai.io
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp ==3.8.4
+Requires-Dist: requests ==2.30.0
+Requires-Dist: opentelemetry-api ==1.13.0
+Requires-Dist: opentelemetry-sdk ==1.13.0
+Requires-Dist: opentelemetry-instrumentation-requests ==0.34b0
+Requires-Dist: opentelemetry-exporter-otlp ==1.13.0
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client ==0.34b0
+
+# msp-sdk
