@@ -1,0 +1,25 @@
+{
+  "results": {
+    "truthfulqa_mc": {
+      "mc1": 0.23133414932680538,
+      "mc1_stderr": 0.014761945174862671,
+      "mc2": 0.3544768096011558,
+      "mc2_stderr": 0.013647765833593504
+    }
+  },
+  "versions": {
+    "truthfulqa_mc": 1
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained='/data1/cgzhang6/models/open_llama_7b',trust_remote_code=True,use_accelerate=False",
+    "num_fewshot": 0,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}
