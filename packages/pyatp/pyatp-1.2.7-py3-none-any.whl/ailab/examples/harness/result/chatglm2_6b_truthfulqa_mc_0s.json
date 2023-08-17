@@ -1,0 +1,25 @@
+{
+  "results": {
+    "truthfulqa_mc": {
+      "mc1": 0.2521419828641371,
+      "mc1_stderr": 0.015201522246299948,
+      "mc2": 0.5018715993564407,
+      "mc2_stderr": 0.01653196624338093
+    }
+  },
+  "versions": {
+    "truthfulqa_mc": 1
+  },
+  "config": {
+    "model": "hf-chatglm",
+    "model_args": "pretrained='/home/sdk_models/chatglm2_6b',add_special_tokens=False,trust_remote_code=True,dtype='float16',use_accelerate=False",
+    "num_fewshot": 0,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda:2",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}

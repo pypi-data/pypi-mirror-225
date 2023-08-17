@@ -1,0 +1,26 @@
+{
+  "results": {
+    "arc_challenge": {
+      "acc": 0.44795221843003413,
+      "acc_stderr": 0.014532011498211666,
+      "acc_norm": 0.49829351535836175,
+      "acc_norm_stderr": 0.014611305705056983
+    }
+  },
+  "versions": {
+    "arc_challenge": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained='/data1/cgzhang6/models/Baichuan-13B-Base',trust_remote_code=True,use_accelerate=False",
+    "num_fewshot": 25,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda:7",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {},
+    "cost_time": "0:27:29.530110"
+  }
+}

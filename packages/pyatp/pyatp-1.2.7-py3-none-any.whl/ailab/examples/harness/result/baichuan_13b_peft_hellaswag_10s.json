@@ -1,0 +1,25 @@
+{
+  "results": {
+    "hellaswag": {
+      "acc": 0.5490938060147381,
+      "acc_stderr": 0.004965670398127346,
+      "acc_norm": 0.743079067914758,
+      "acc_norm_stderr": 0.0043604245361451195
+    }
+  },
+  "versions": {
+    "hellaswag": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained='/data1/cgzhang6/models/Baichuan-13B-Base',trust_remote_code=True,use_accelerate=False,peft=/data1/cgzhang6/finetuned_models/my_baichuan13b_model",
+    "num_fewshot": 10,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "cuda:7",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}

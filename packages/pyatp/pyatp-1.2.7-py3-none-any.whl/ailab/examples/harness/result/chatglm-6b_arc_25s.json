@@ -1,0 +1,25 @@
+{
+  "results": {
+    "arc_challenge": {
+      "acc": 0.24061433447098976,
+      "acc_stderr": 0.012491468532390576,
+      "acc_norm": 0.2960750853242321,
+      "acc_norm_stderr": 0.013340916085246264
+    }
+  },
+  "versions": {
+    "arc_challenge": 0
+  },
+  "config": {
+    "model": "hf-chatglm",
+    "model_args": "pretrained='/data1/cgzhang6/models/chatglm-6b',add_special_tokens=True,trust_remote_code=True,dtype='float16',use_accelerate=True",
+    "num_fewshot": 25,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": null,
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}
