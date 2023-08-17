@@ -1,0 +1,13 @@
+[Unit]
+After={{ brik_name }}-criscostack-web.service
+Description="{{ brik_name }}-node-socketio"
+PartOf={{ brik_name }}-web.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ node }} {{ brik_dir }}/apps/criscostack/socketio.js
+StandardOutput=file:{{ brik_dir }}/logs/node-socketio.log
+StandardError=file:{{ brik_dir }}/logs/node-socketio.error.log
+WorkingDirectory={{ brik_dir }}

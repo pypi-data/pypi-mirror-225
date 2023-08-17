@@ -1,0 +1,12 @@
+[Unit]
+Description="{{ brik_name }}-criscostack-schedule"
+PartOf={{ brik_name }}-workers.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ brik_cmd }} schedule
+StandardOutput=file:{{ brik_dir }}/logs/schedule.log
+StandardError=file:{{ brik_dir }}/logs/schedule.error.log
+WorkingDirectory={{ brik_dir }}

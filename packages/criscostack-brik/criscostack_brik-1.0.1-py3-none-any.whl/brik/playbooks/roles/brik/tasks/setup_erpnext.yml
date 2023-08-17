@@ -1,0 +1,29 @@
+---
+  - name: Check if Criscoerp App exists
+    stat: path="{{ brik_path }}/apps/criscoerp"
+    register: app
+
+  - name: Get the Criscoerp app
+    command: brik get-app criscoerp {{ criscoerp_repo_url }} --branch {{ criscoerp_branch }}
+    args:
+      creates: "{{ brik_path }}/apps/criscoerp"
+      chdir: "{{ brik_path }}"
+    when: not app.stat.exists and not without_criscoerp
+
+  - name: Check whether the site already exists
+    stat: path="{{ brik_path }}/sites/{{ site }}"
+    register: site_folder
+    when: not without_site
+
+  - name: Create a new site
+    command: "brik new-site {{ site }} --admin-password '{{ admin_password }}' --mariadb-root-password '{{ mysql_root_password }}'"
+    args:
+      chdir: "{{ brik_path }}"
+    when: not without_site and not site_folder.stat.exists
+
+  - name: Install Criscoerp to default site
+    command: "brik --site {{ site }} install-app criscoerp"
+    args:
+      chdir: "{{ brik_path }}"
+    when: not without_site and not without_criscoerp
+...
