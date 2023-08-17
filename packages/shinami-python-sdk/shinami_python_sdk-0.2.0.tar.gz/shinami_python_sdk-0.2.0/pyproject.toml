@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "shinami-python-sdk"
+version = "0.2.0"
+description = "This library provides easy access to Shinami APIs."
+authors = ["Studio Mirai, LLC <os@sm.xyz>"]
+readme = "README.md"
+packages = [{include = "shinami_python_sdk"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+httpx = "^0.24.1"
+pydantic = "^2.1.1"
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.0"
+pytest = "^7.4.0"
+ruff = "^0.0.280"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
