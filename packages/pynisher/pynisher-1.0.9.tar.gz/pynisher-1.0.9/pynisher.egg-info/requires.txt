@@ -1,0 +1,17 @@
+psutil
+typing_extensions
+
+[:platform_system == "Windows"]
+pywin32
+
+[test]
+pytest
+pre-commit
+pytest-cov
+pytest-forked
+pydocstyle[toml]
+isort
+black
+flake8
+mypy
+scikit-learn
