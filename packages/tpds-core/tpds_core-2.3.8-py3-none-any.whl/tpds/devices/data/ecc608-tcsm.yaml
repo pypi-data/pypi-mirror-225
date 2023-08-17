@@ -1,0 +1,46 @@
+---
+title: ECC608 TrustCustom Information
+devices:
+  ATECC608B-TCSM:
+    basePart: ATECC608B
+    partLink: https://www.microchip.com/wwwproducts/eN/ATECC608B-TCSM
+    toolLink: https://www.microchip.com/en-us/product/SW-ATECC608B
+    provisioningFlow: TrustCUSTOM
+    partType: Silicon
+    partInterface:
+      - i2c
+      - swi
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    ndaRequired: Yes
+  ATECC608B-RBHCZ:
+    basePart: ATECC608B
+    partLink: null
+    toolLink: null
+    provisioningFlow: TrustCUSTOM
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    ndaRequired: No
+parts:
+  - partNumber: ATECC608B-TCSMS
+    deviceName: ATECC608B-TCSM
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 4000
+    status: Under NDA
+  - partNumber: ATECC608B-TCSMU
+    deviceName: ATECC608B-TCSM
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 4000
+    status: Under NDA
+  - partNumber: ATECC608B-RBHCZ-T
+    deviceName: ATECC608B-RBHCZ
+    packagePin: RBH 3-pin contact
+    memory: N/A
+    media: Reel
+    moq: 30000
+    status: Production

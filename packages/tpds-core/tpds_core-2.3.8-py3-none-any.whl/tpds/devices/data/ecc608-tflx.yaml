@@ -1,0 +1,43 @@
+---
+title: ECC608 TrustFLEX Information
+devices:
+  ATECC608B-TFLXTLS:
+    basePart: ATECC608B
+    partLink: https://www.microchip.com/wwwproducts/eN/ATECC608B-TFLXTLS
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    partInterface:
+      - i2c
+      - swi
+    tpdsRelease: Yes
+    ndaRequired: No
+parts:
+  - partNumber: ATECC608B-TFLXTLSU-Proto
+    deviceName: ATECC608B-TFLXTLS
+    packagePin: UDFN-8
+    memory: N/A
+    media: Bag
+    moq: 10
+    status: Production
+  - partNumber: ATECC608B-TFLXTLSS-Proto
+    deviceName: ATECC608B-TFLXTLS
+    packagePin: SOIC-8
+    memory: N/A
+    media: Bag
+    moq: 10
+    status: Production
+  - partNumber: ATECC608B-TFLXTLSU
+    deviceName: ATECC608B-TFLXTLS
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Production
+  - partNumber: ATECC608B-TFLXTLSS
+    deviceName: ATECC608B-TFLXTLS
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Production
