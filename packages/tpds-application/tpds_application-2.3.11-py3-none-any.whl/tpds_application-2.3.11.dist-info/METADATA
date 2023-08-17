@@ -1,0 +1,110 @@
+Metadata-Version: 2.1
+Name: tpds-application
+Version: 2.3.11
+Summary: Microchip(SPG) Trust Platform Standalone Application
+Maintainer-email: Microchip Technology <SPG.Tools@microchip.com>
+License: (c) 2023 Microchip Technology Inc. and its subsidiaries.
+        
+        Subject to your compliance with these terms, you may use the Microchip Software
+        and any derivatives exclusively with Microchip products. It is your
+        responsibility to comply with third party license terms applicable to your
+        use of third party software (including open source software) that may
+        accompany Microchip Software.
+        
+        Redistribution of this Microchip Software in source or binary form is allowed
+        and must include the above terms of use and the following disclaimer with the
+        distribution and accompanying materials.
+        
+        THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+        EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+        WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+        PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT,
+        SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE
+        OF ANY KIND WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF
+        MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.
+        TO THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL
+        CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF
+        FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+        
+Classifier: License :: Other/Proprietary License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: tpds-core >2.3.2
+Requires-Dist: tpds-helper >2.3.2
+Requires-Dist: tpds-boards >2.2.6
+Requires-Dist: Markdown
+Requires-Dist: packaging
+Requires-Dist: PySide6
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Provides-Extra: ext
+Requires-Dist: tpds-extension-avnet-iotconnect ; extra == 'ext'
+Requires-Dist: tpds-extension-cec17xx-support ; extra == 'ext'
+Requires-Dist: tpds-extension-cryptoquantique-quarklink ; extra == 'ext'
+Requires-Dist: tpds-extension-ecc608-sip-support ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-asym-auth ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-cloud-connect[all] ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-fw-validation ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-ip-protection ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-public-key-rotation ; extra == 'ext'
+Requires-Dist: tpds-extension-spg-symmetric-auth ; extra == 'ext'
+Requires-Dist: tpds-extension-wpc-transmitter ; extra == 'ext'
+Provides-Extra: test
+Requires-Dist: responses ==0.23.1 ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-mock ; extra == 'test'
+Requires-Dist: pytest-integration ; extra == 'test'
+
+# Trust Platform Design Suite - Application
+
+[TOC]
+
+This application brings various pieces of the Trust Platform Design flow to a single GUI application. This package contains the WebView based GUI. This GUI will serve as a one stop solution for anything Trust Platform related.
+
+The Trust Platform for CryptoAuthentication™ is a combination of multiple elements to simplify the addition of security to any embedded design.
+ - Microchip Weblink - [Trust Platform](https://www.microchip.com/design-centers/security-ics/trust-platform)
+
+After successful installation of the package start menu (windows only) entry for the same will be created. The application can be launched directly from the start menu. The application can also be started through python installation in conda environment. From Anaconda command prompt you can start the application through the following command.
+
+
+## Release Notes
+
+### 2.2.0
+   - Conversion to modular system 
+
+### 2.1.1
+   - License Agreement window for MCHP packages
+   - Other minor bug fixes and updates
+
+### 2.1.0
+   - Updates/fixes for Linux support
+   - Other minor bug fixes and updates
+
+### 2.0.3
+   - MAC OSX Update bug fix
+
+### 2.0.2
+   - MAC OSX/Windows path updates
+   - Update to network check function
+   - Provosioning XML site code updates
+   - Updates to Webserver to support user messagebox
+   - Other minor bug fixes and updates
+
+### 2.0.1
+   - Updates added to suport OSX
+
+### 2.0.0
+   - Initial public release of Trust Platform Design Suite V2
+   - Integrated Notebooks, HTMLs (WebView) into one GUI
+   - Interactive Usecase Notebooks with options to run from transaction diagram
+   - Added update functionality. Now the application can self-update
+   - Ability to generate Secure Exchange packets within the tool
+   - Many other improvements from legacy version
