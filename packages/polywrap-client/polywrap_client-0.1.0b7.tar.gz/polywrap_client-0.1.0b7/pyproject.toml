@@ -1,0 +1,66 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "polywrap-client"
+version = "0.1.0b7"
+description = "Polywrap Client to invoke Polywrap Wrappers"
+authors = ["Cesar <cesar@polywrap.io>", "Niraj <niraj@polywrap.io>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+polywrap-manifest = "^0.1.0b7"
+polywrap-msgpack = "^0.1.0b7"
+polywrap-core = "^0.1.0b7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+polywrap-plugin = {path = "../polywrap-plugin", develop = true}
+polywrap-client-config-builder = {path = "../polywrap-client-config-builder", develop = true}
+polywrap-test-cases = {path = "../polywrap-test-cases", develop = true}
+pylint = "^2.15.4"
+black = "^22.10.0"
+bandit = { version = "^1.7.4", extras = ["toml"]}
+tox = "^3.26.0"
+tox-poetry = "^0.4.1"
+isort = "^5.10.1"
+pyright = "^1.1.275"
+pydocstyle = "^6.1.1"
+
+[tool.poetry.group.test.dependencies]
+pysha3 = "^1.0.2"
+pycryptodome = "^3.17"
+polywrap-sys-config-bundle = {path = "../config-bundles/polywrap-sys-config-bundle", develop = true}
+polywrap-web3-config-bundle = {path = "../config-bundles/polywrap-web3-config-bundle", develop = true}
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+
+[tool.black]
+target-version = ["py310"]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportShadowedImports = false
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+[tool.pylint]
+disable = [
+    "too-many-arguments",
+]
+ignore = [
+    "tests/"
+]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pydocstyle]
+# default
