@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: bppy
+Version: 0.0.7
+Summary: BPpy: Behavioral Programming In Python
+Home-page: https://github.com/bThink-BGU/BPpy
+Author: Tom Yaacov
+Author-email: tomyaacov1210@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: z3-solver >=4.8.5.0
+Provides-Extra: develop
+Requires-Dist: gymnasium >=0.28.1 ; extra == 'develop'
+Requires-Dist: stable-baselines3 >=2.0.0 ; extra == 'develop'
+Requires-Dist: Sphinx >=5.3.0 ; extra == 'develop'
+Requires-Dist: sphinx-rtd-theme >=1.2.1 ; extra == 'develop'
+Provides-Extra: gym
+Requires-Dist: gymnasium >=0.28.1 ; extra == 'gym'
+Requires-Dist: stable-baselines3 >=2.0.0 ; extra == 'gym'
+
+# BPpy: Behavioral Programming In Python
+A Python implementation for the Behavioral Programming paradigm
+
+## Installation
+You can install ``bppy`` with pip:
+
+```shell
+pip install bppy
+```
+
+This does not include dependencies for gym integration. To install ``bppy`` with gym integration, use:
+
+```shell
+pip install bppy[gym]
+```
+
+If installation is not working, you can try upgrading pip:
+
+```shell
+pip install --upgrade pip
+```
+
+before submitting an issue.
+
+
+## Documentation
+* [BPpy documentation](https://bppy.readthedocs.io/en/latest/)
+* General introduction to Behavioral Programming can be found in [this](https://bpjs.readthedocs.io/en/develop/) BPjs tutorial and others
+
+## Citing BPpy
+To cite this repository in publications:
+```
+@misc{bppy,
+  author = {Tom Yaacov},
+  title = {BPpy: Behavioral Programming In Python},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/bThink-BGU/BPpy}},
+}
+```
