@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+        "type": "string"
+        },
+        "bag_type": {
+        "type": "string",
+        "enum": ["mcap", "sqlite"]
+        },
+        "force_message": {
+            "type": "string"
+        },
+        "force_batch_name": {
+            "type": "string"
+        }
+    },
+    "required": ["name", "bag_type", "force_message", "force_batch_name"]
+}
+      
