@@ -1,0 +1,11 @@
+name: Basic
+original_tempo: 180
+parts:
+  - name: backbeat
+    bars: 16
+    clips:
+      - name: backbeat
+mix:
+  - name: segment
+    parts:
+      - name: backbeat

@@ -1,0 +1,16 @@
+bars: 8
+clips:
+- name: bass
+  path: clips/bass.wav
+mix:
+- name: intro0
+  parts:
+  - name: backbeat
+name: Basic
+original_tempo: 180
+parts:
+- bars: 8
+  clips:
+  - bars: 8
+    name: backbeat
+  name: backbeat
