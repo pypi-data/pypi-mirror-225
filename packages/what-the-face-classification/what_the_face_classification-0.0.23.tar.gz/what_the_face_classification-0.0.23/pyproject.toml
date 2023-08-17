@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "what_the_face_classification"
+version = "0.0.23"
+authors = [
+  { name="James Rodgers", email="jms.rdgrs@gmail.com" },
+]
+description = "CNN image classification trained on FER2013 for the 7 emotion categories. "
+readme = "README.md"
+dependencies = [
+  "numpy",
+  "opencv-python",
+  "torch",
+  "torchvision",
+  "setuptools",
+  "Pillow",
+  ]
+
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://gitlab.com/jms.rdgrs/inference_package"
+
+[tool.poetry]
+include = [
+  "/what_the_face_classification/*.pth",
+  "*.xml"
+]
+exclude = ["src"]
