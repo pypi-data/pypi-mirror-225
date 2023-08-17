@@ -1,0 +1,169 @@
+Metadata-Version: 2.1
+Name: mlplatformutils
+Version: 0.9.5.17
+Author: Keshav Singh
+Author-email: keshav_singh@hotmail.com
+License: MIT
+Keywords: mlplatformutils
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+
+# mlplatformutils
+
+<br />
+
+ **mlplatformutils package for observability and ML Pipeline Processing** <br />
+
+ <br />
+
+ **This framework supports Azure Machine Learning training Pipeline supporting across computes such as Azure Synapse Spark, Virtual Machines Clusters, Azure Kubernetes Cluster, Azure Databricks. It supports reading/writing data from Azure Data Lake Gen2 in parquet and DELTA format, Azure Data Explorer (Kusto), Azure Sql DB instnces. The framework suports Python and Spark scalably. Writes with Spark with capabilties such a dynamic partitition overwrites, repartitioning are fully supported. In operating data reads and writes from such sources, The framework integrates built-in lineage framework providing column level lineage across the systems on a scalable Graph leveraging Azure Cosmos Gremlin Graph DB service. This enables a robust upstream dependency tracking and proactive alerting & eventing.  All operations are suported over Service Principal (Client Id, Client Secrets) for applications and processing. The package also provides creating and managing computes, PIP dependecies for Azure Machine Learning Workspace and the training definitions.**
+
+## Description
+
+<br />
+
+**app_insights_logger** - Contains **telemetrylogger** Class with Functions to Manage and Log Telemetry into Azure Application Insights <br />
+
+<br />
+
+* trackEvent
+* trackTrace
+* trackException
+* logEvent
+* gather_event_details
+
+<br />
+
+**lineagegraph** - Contains **LineageGraph** Class with functions to manage Graph on Azure Cosmos DB enabled with Gremlin <br />
+
+<br />
+
+* add_vertex
+* get_vertices
+* is_vertex
+* update_vertex
+* insert_edges
+* drop_vertex
+* drop_edge
+* query_graph
+* update_lineage_graph
+* connect_lineage_graph
+
+**platformutils** - Contains platform utility functions to check, install depedencies, check Azure ML Compute 
+
+* is_package_installed
+* install_pip
+* get_environment
+* set_environment
+* assert_amlcompute
+* read_setup_ini
+
+**sparkutils** - Contains functions to read data from sources such as (Azure Data Lake Gen2, Azure Data Explorer (Kusto), Azure Sql Server) and write (Azure Data Lake Gen2)while ensuring integrated Lineage Graph Logging.
+
+* read_from_adls_gen2
+* write_to_adls_gen2
+* read_from_kusto
+* read_from_azsql
+
+**sparkcoreutils** - Contains functions to read data from sources such as (Azure Data Lake Gen2, Azure Data Explorer (Kusto), Azure Sql Server) and write (Azure Data Lake Gen2) **without** integrated Lineage Graph Logging.
+
+* read_from_adls_gen2
+* write_to_adls_gen2
+* read_from_kusto
+* read_from_azsql
+
+**pandasutils** - Contains functions to read data from Azure Data Lake Gen2 (from Delta Format or Parquet Format) into Pandas Dataframe without Spark while ensuring integrated Lineage Graph Logging.
+
+* read_from_delta_as_pandas
+* read_parquet_file_from_adlsgen2_as_pandas
+* read_parquet_directory_from_adlsgen2_as_pandas
+* write_pandas_as_parquet_file_to_adlsgen2
+
+**pandascoreutils** - Contains functions to read data from Azure Data Lake Gen2 (from Delta Format or Parquet Format) into Pandas Dataframe without Spark **without** integrated Lineage Graph Logging.
+
+* read_from_delta_as_pandas
+* read_parquet_file_from_adlsgen2_as_pandas
+* read_parquet_directory_from_adlsgen2_as_pandas
+* write_pandas_as_parquet_file_to_adlsgen2
+
+**freshnessutils** - Contains functions to add freshness details into Azure Cosmos (NoSQL) document db. This helps with the details on the freshness metrics on evaluating the SLA, and downstream processing. It captures and provides details on model, training dataset freshness for the most recent and historical processing.
+
+* add_freshness
+* upsert_freshness
+* query_freshness
+
+### Examples
+
+<br />
+
+**from mlplatformutils.core.platformutils import is_package_installed** <br />
+**print(is_package_installed("pandas"))** <br />
+**from mlplatformutils.core.app_insights_logger import telemetrylogger** <br />
+**from mlplatformutils.core.lineagegraph import LineageGraph** <br />
+**from mlplatformutils.core.sparkutils import write_to_adls_gen2, read_from_adls_gen2** <br />
+**from mlplatformutils.core.pandasutils import write_pandas_as_parquet_file_to_adlsgen2, read_parquet_directory_from_adlsgen2_as_pandas** <br />
+**from mlplatformutils.core.sparkcoreutils import write_to_adls_gen2, read_from_adls_gen2** <br />
+**from mlplatformutils.core.pandascoreutils import write_pandas_as_parquet_file_to_adlsgen2, read_parquet_directory_from_adlsgen2_as_pandas** <br />
+**from mlplatformutils.core.freshnessutils import add_freshness, upsert_freshness, query_freshness** <br />
+**import mlplatformutils.core.version as vr** <br />
+**print(vr.\_\_version\_\_)** <br />
+
+### Notes
+
+<br />
+
+When Running this Lineage Package from Jupyter Nootebook, the below 3 Lines Help overcome JupyterNotebook **RuntimeError: Cannot run the event loop while another loop is running** <br />
+**import asyncio** <br />
+**import nest_asyncio** <br />
+**nest_asyncio.apply()** <br />
+
+
+## Structure
+
+<br />
+.<br />
+|-- LICENSE.txt<br />
+|-- README.rst<br />
+|-- setup.cfg<br />
+|-- setup.py<br />
+|-- src<br />
+|   |-- mlplatformutils<br />
+|   |   |-- __init__.py<br />
+|   |   |-- core<br />
+|   |   |-- |-- __init__.py<br />
+|   |   |-- |-- sparkcoreutils.py<br />
+|   |   |-- |-- sparkutils.py<br />
+|   |   |-- |-- platformutils.py<br />
+|   |   |-- |-- pandascoreutils.py<br />
+|   |   |-- |-- pandasutils.py<br />
+|   |   |-- |-- lineagegraph.py<br />
+|   |   |-- |-- freshnessutils.py<br />
+|   |   |-- |-- app_insights_logger.py<br />
+|-- tests<br />
+|   |-- __init__.py<br />
+|   |-- core<br />
+|   |-- |--__init__.py<br />
+|   |-- |-- test_sparkcoreutils.py<br />
+|   |-- |-- test_sparkutils.py<br />
+|   |-- |-- test_platformutils.py<br />
+|   |-- |-- test_pandascoreutils.py<br />
+|   |-- |-- test_pandasutils.py<br />
+|   |-- |-- test_lineagegraph.py<br />
+|   |-- |-- test_freshnessutils.py<br />
+|   |-- |-- test_app_insights_logger.py<br />
+<br />
+
+## Instructions
+
+<br />
+ install twine - twine is a utility package that is used for publishing Python packages on PyPI <br />
+ 
+ **python -m pip install twine** <br />
+ 
+ Build Package - create the source distribution of the package <br />
+ 
+ **python setup.py sdist** <br />
+ 
+ Upload Package to PyPI <br />
+
+ ***python -m twine upload dist/* *** <br />
