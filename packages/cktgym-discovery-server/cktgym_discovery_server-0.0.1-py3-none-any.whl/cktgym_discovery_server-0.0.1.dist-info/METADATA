@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: cktgym-discovery-server
+Version: 0.0.1
+Summary: BWRC AMS ML Discovery Server
+Home-page: https://github.com/BWRC-AMS-ML-Discovery
+Author: The Regents of the University of California
+Author-email: haohanw@eecs.berkeley.edu
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7, <3.11
+Description-Content-Type: text/markdown
+Requires-Dist: python-dotenv (~=1.0)
+Requires-Dist: fastapi (~=0.99.1)
+Requires-Dist: GitPython (>=3.1.31)
+Requires-Dist: uvicorn (>=0.20.0)
+Requires-Dist: firebase-admin (>=6.0.1)
+Requires-Dist: cktgym-discovery-shared (==0.0.1)
+Provides-Extra: dev
+Requires-Dist: pytest (==7.1) ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pre-commit (==2.20) ; extra == 'dev'
+Requires-Dist: black (==22.6) ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+
+UNKNOWN
+
+
