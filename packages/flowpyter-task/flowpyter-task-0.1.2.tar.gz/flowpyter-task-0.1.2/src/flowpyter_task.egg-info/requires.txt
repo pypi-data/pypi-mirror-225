@@ -1,0 +1,9 @@
+apache_airflow>=2.6.3
+apache-airflow-providers-docker
+psycopg2
+
+[dev]
+versioneer
+
+[test]
+pytest
