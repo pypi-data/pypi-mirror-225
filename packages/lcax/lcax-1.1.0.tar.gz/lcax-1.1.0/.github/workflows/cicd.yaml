@@ -1,0 +1,40 @@
+name: "CI/CD"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  buildRust:
+    uses: ./.github/workflows/build_rust.yaml
+
+  releaseDocs:
+    if: github.event_name != 'pull_request'
+    needs:
+      - buildRust
+    uses: ./.github/workflows/release_docs.yaml
+
+  createRelease:
+    if: github.event_name != 'pull_request'
+    uses: ./.github/workflows/create_release.yaml
+    needs:
+      - buildRust
+      - releaseDocs
+    secrets:
+      cargo_token: ${{ secrets.CARGO_TOKEN }}
