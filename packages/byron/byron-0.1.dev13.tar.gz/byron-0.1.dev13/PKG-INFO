@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: byron
+Version: 0.1.dev13
+Summary: Multi-purpose extensible self-adaptive optimizer and fuzzer
+Home-page: https://github.com/cad-polito-it/byron
+License: Apache-2.0
+Keywords: Aritificial Intelligence,Evolutionary Computation,Approximate Optimization,Fuzzer
+Author: Giovanni Squillero
+Author-email: giovanni.squillero@polito.it
+Requires-Python: >=3.11,<3.13
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: arcade[plot] (>=2.6.17,<3.0.0)
+Requires-Dist: joblib[run] (>=1.3.2,<2.0.0)
+Requires-Dist: matplotlib[plot] (>=3.7.2,<4.0.0)
+Requires-Dist: networkx (>=3.1,<4.0)
+Requires-Dist: numpy (>=1.25.0,<2.0.0)
+Requires-Dist: psutil[info] (>=5.9.5,<6.0.0)
+Requires-Dist: scipy (>=1.11.1,<2.0.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Project-URL: Documentation, https://github.com/cad-polito-it/byron/tree/pre-alpha/examples/notebooks
+Project-URL: Repository, https://github.com/cad-polito-it/byron
+Description-Content-Type: text/markdown
+
+Byron is an [evolutionary tool](https://en.wikipedia.org/wiki/Evolutionary_algorithm): given a problem, it first generates a set of random solutions, then iteratively refines and improves them using the results of their evaluations together with structural information. It may be used as a coverage-driven [fuzzer](https://en.wikipedia.org/wiki/Fuzzing) and a general-purpose [optimizer](https://en.wikipedia.org/wiki/Engineering_optimization).
+
+Byron encodes candidate solutions as [directed](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph) [multigraphs](https://en.wikipedia.org/wiki/Multigraph) and can produce quite complex, highly structured results, such as a realistic program with loops, interrupts, and recursive subroutines. 
+
+Candidate solutions are evaluated by calling a user Python function or a shell script, that, for instance, may use proprietary tools. Different types of parallelization are supported out of the box, from simple multithreading to the creation of temporary directories where multiple subprocesses are concurrently [spawned](https://en.wikipedia.org/wiki/Spawn_(computing)).
+
+## Installation
+
+**⚠️ Byron is currently in [pre-alpha](https://en.wikipedia.org/wiki/Software_release_life_cycle#Pre-alpha) and under active development**
+
+```
+pip install --upgrade byron
+```
+
+Few optional dependencies can enhance Byron, but are not strictly required:
+
+```
+pip install --upgrade matplotlib
+pip install --upgrade joblib
+pip install --upgrade psutil
+```
+
+## Documentation
+
+Some HOWTO's and examples are available as Jupyter notebooks in the [examples directory](https://github.com/cad-polito-it/byron/tree/pre-alpha/examples/notebooks).
+
+## Contacts
+
+* Giovanni Squillero — <giovanni.squillero@polito.it>
+* Alberto Tonda — <alberto.tonda@inrae.fr>
+
+## License
+
+Copyright © 2023 [Giovanni Squillero](https://github.com/squillero) and [Alberto Tonda](https://github.com/albertotonda/)  
+Byron is [free and open-source software](https://en.wikipedia.org/wiki/Free_and_open-source_software), and it is distributed under the permissive [Apache License 2.0](https://opensource.org/license/apache-2-0/).
+
