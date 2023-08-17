@@ -1,0 +1,16 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+.github/workflows/publish-to-pypi.yml
+tag_from_spotify.egg-info/PKG-INFO
+tag_from_spotify.egg-info/SOURCES.txt
+tag_from_spotify.egg-info/dependency_links.txt
+tag_from_spotify.egg-info/entry_points.txt
+tag_from_spotify.egg-info/requires.txt
+tag_from_spotify.egg-info/top_level.txt
+tfsp/__init__.py
+tfsp/__main__.py
+tfsp/_version.py
+tfsp/tag_from_spotify.py
