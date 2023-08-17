@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: python-cli-jbcorco85
+Version: 0.1.10
+Summary: 
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+
+# Start virtual environment
+python3 -m venv env
+source env/bin/activate
+
+Increment version in pyproject.toml
+poetry build
+poetry publish -r testpypi
+
+# pip install
+pip3 install -i https://test.pypi.org/simple/ python-cli
+pip3 list
+
+# test build
+python3 -m pyton_cli
+python python_cli
+
+# uninstall
+pip3 uninstall python_cli
+pip3 list
+
+
