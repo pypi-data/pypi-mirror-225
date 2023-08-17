@@ -1,0 +1,27 @@
+from fairscape_cli.models.base import FairscapeBaseModel
+
+from typing import (
+    Optional,
+    List,
+    Union,
+    Dict,
+)
+from pydantic import (
+    Field,
+    AnyUrl
+)
+import re
+from datetime import datetime
+
+
+class Computation(FairscapeBaseModel):
+    metadataType: str = Field(default="https://w3id.org/EVI#Computation")
+    runBy: str
+    dateCreated: str 
+    description: str = Field(min_length=10, max_length=2056)
+    associatedPublication: Optional[str] = Field(default=None)
+    additionalDocumentation: Optional[str] = Field(default=None)
+    command: Optional[Union[List[str], str]] = Field(default="")
+    usedSoftware: Optional[List[str]] = Field(default=[])
+    usedDataset: Optional[Union[List[str], str]] = Field(default=[])
+    generated: Optional[Union[str,List[str]]] = Field(default=[])
