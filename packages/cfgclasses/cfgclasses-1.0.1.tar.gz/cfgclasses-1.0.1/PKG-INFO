@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: cfgclasses
+Version: 1.0.1
+Summary: Strongly typed tool configuration classes for argument parsing.
+Project-URL: Homepage, https://github.com/ollij93/cfgclasses
+Project-URL: Bug Tracker, https://github.com/ollij93/cfgclasses/issues
+Author-email: Olli Johnson <ollijohnson93@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# Config Classes
+
+Strongly typed tool configuration classes for argument parsing.
+
+Config classes are representations of a python tools CLI configuration options
+built on dataclasses. This allows individual tools to focus on specifying their
+configuration structure without the overhead of interacting with argparse and
+the typeless Namespace it returns.
