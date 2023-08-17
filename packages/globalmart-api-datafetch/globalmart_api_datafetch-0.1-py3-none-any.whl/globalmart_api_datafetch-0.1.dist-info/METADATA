@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: globalmart-api-datafetch
+Version: 0.1
+Summary: API package that provides us the method to fetch the data from the API, along with the method to convert that into proper dataframe
+Author: Aastha
+Author-email: aastha.r@fractal.ai
+License: MIT
+Requires-Dist: pandas
+Requires-Dist: requests
+
