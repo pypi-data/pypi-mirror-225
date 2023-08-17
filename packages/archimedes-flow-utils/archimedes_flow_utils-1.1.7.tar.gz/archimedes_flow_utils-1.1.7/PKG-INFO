@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: archimedes-flow-utils
+Version: 1.1.7
+Summary: Common code for all our prefect flows
+Author: Optimeering AS
+Author-email: dev@optimeering.com
+Requires-Python: >=3.9,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: GitPython (>=3.1.27,<4.0.0)
+Requires-Dist: azure-core (>=1.23.1,<2.0.0)
+Requires-Dist: azure-storage-blob (>=12.11.0,<13.0.0)
+Requires-Dist: prefect (>=1.2.0,<2.0.0)
+Requires-Dist: python-dotenv (>=0.20.0,<0.21.0)
+Requires-Dist: requests (>=2.27.1,<3.0.0)
