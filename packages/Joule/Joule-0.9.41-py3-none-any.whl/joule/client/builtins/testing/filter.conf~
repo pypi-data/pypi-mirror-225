@@ -1,0 +1,12 @@
+[Main]
+exec_cmd = /var/venv/joule/bin/joule-visualizer-filter
+name = Data App
+is_app = yes
+
+[Arguments]
+title = Quick Start Data Pipeline Test!
+
+[Inputs]
+#smoothed = /demo/smoothed
+#random = /demo/random
+LJV = /demo/labjack
