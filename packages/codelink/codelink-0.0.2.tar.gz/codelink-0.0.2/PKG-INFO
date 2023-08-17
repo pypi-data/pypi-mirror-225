@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: codelink
+Version: 0.0.2
+Summary: Node-based visual programming environment
+Project-URL: Homepage, https://github.com/j8sr0230/codelink
+Project-URL: Bug Tracker, https://github.com/j8sr0230/codelink/issues
+Author-email: Ronny Scharf-Wildenhain <ronny.scharf08@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Requires-Dist: awkward~=2.3.1
+Requires-Dist: dask>=2023.2.1
+Requires-Dist: networkx>=3.0
+Requires-Dist: pyside2>=5.15.5
+Description-Content-Type: text/markdown
+
+# Codelink
+
+Codelink is a node-based visual programming environment that can be easily and flexibly integrated into 
+[PySide2](https://pypi.org/project/PySide2/) applications as a widget. With Codelink, functions (so-called nodes) can 
+be logically linked to each other via wires, as in flowcharts, to create directed node graphs that can be used to 
+perform complex calculations or control other programs. A main application area is node-based modeling of 3D geometries 
+with the parametric CAD software [FreeCAD](https://www.freecad.org/).
+
+![Startup image](./img/start_up_image.png)
+
+
+It provides:
+* customizable nodes, sockets and data types
+* framing and commenting nodes
+* sub-graphs and group nodes
+* socket options
+* validation node connections (links)
+* full undo/redo implementation
+* framework for node developer
+* easy integration in [PySide2](https://pypi.org/project/PySide2/) applications
+* made for [FreeCAD](https://www.freecad.org/)
+
+## Installation
+Binary wheels for [codelink](https://pypi.org/project/codelink/) are available on 
+[PyPI](https://pypi.org/).  
+`pip install codelink`
