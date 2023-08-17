@@ -1,0 +1,10 @@
+mercury-engine-data-structures>=0.21.0
+jsonschema>=4.0.0
+ips.py>=0.1.2
+keystone-engine>=0.9.2
+
+[test]
+lupa
+pytest
+pytest-cov
+pytest-mock
