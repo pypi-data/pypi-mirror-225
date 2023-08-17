@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "macrometa-target-collection"
+version = "1.0.1"
+authors = [
+    "Macrometa <info@macrometa.co>",
+]
+description = "Singer.io target for writing to Macrometa GDN collections"
+readme = "README.md"
+license = "Apache-2.0"
+packages = [
+    { include = "macrometa_target_collection" },
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Operating System :: OS Independent",
+]
+
+keywords = [
+    "ELT",
+    "Connectors",
+    "Workflows",
+    "Macrometa",
+    "GDN",
+    "Collection",
+    "Target"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<3.11"
+pipelinewise-singer-python = "==1.2.0"
+adjust-precision-for-schema = "==0.3.4"
+pyc8 = "==1.0.1"
+c8connector = ">=0.0.31"
+prometheus-client = "==0.16.0"
+
+[tool.poetry.urls]
+"Homepage" = "https://www.macrometa.com/"
+"Bug Tracker" = "https://github.com/Macrometacorp/macrometa-target-collection/issues"
+
+[tool.poetry.scripts]
+macrometa-target-collection = "macrometa_target_collection.main:main"
+
+[tool.black]
+line-length = 88
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+skip = [
+    '.eggs', '.git', '.hg', '.mypy_cache', '.nox', '.pants.d', '.tox',
+    '.venv', '_build', 'buck-out', 'build', 'dist', 'node_modules', 'venv',
+]
+skip_gitignore = true
