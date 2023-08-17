@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools", "setuptools-git-versioning<2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+name = "handygenome"
+#version = "0.4.0"
+dynamic = ["version"]
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "biopython >= 1.80",
+    "pysam",
+    "pyranges",
+    "scipy",
+    "scikit-learn",
+    "PyYAML",
+    "ipython",
+]
+authors = [
+    {name="Ji-Hyung Park", email="p69180@gmail.com"},
+]
+description = "An integrated platform for genome sequencing analysis"
+readme = "README.rst"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Documentation = "https://handygenome.readthedocs.io/en/latest/"
+Repository = "https://github.com/p69180/handygenome.git"
