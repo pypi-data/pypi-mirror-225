@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: BenToTru
+Version: 0.0.16
+Summary: convert data from 22 (ben) sectors to 51 and 68 sectores (tru)
+Home-page: https://github.com/fms-1988
+Author: Felipe Morelli Da Silva
+Author-email: fms.morelli@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+#convert data from ben22 to tru and estimate emission by energy consumption
