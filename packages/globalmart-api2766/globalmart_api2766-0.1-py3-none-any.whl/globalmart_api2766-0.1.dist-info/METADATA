@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: globalmart-api2766
+Version: 0.1
+Summary: API package that provides us the method to fetch the data from the API, along with the method to convert that into proper dataframe
+Author: xavier
+Author-email: xavier@email.com
+License: MIT
+License-File: License.txt
+Requires-Dist: pandas
+Requires-Dist: requests
+
