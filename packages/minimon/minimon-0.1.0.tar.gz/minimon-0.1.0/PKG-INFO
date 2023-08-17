@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: minimon
+Version: 0.1.0
+Summary: minimon
+Home-page: https://projects.om-office.de/frans/minimon.git
+Author: Frans Fürst
+Author-email: frans.fuerst@protonmail.com
+Requires-Python: >=3.10,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: asyncinotify (>=4.0.1,<5.0.0)
+Requires-Dist: asyncssh (>=2.13.2,<3.0.0)
+Requires-Dist: bcrypt (>=4.0.1,<5.0.0)
+Requires-Dist: chime (>=0.7.0,<0.8.0)
+Requires-Dist: quart (>=0.18.4,<0.19.0)
+Requires-Dist: textual (>=0.32.0,<0.33.0)
+Project-URL: Repository, https://projects.om-office.de/frans/minimon.git
+Description-Content-Type: text/markdown
+
+# Minimon
+
+This is just a stub for a future Readme file
+
+Here are some buzz-phrases:
+
+- Minimal monitoring
+- textual/rich
+- async programming
+- asyncssh instead of paramiko
+- Configuration as application
+
+
+## Installation
+
+While you can just clone and use minimon, the intended way to use it is via
+`pip` or inside a virtual environment.
+
+Install it locally using `pip`:
+
+```sh
+[<PYTHON> -m] pip[3] install [--user] [--upgrade] minimon
+```
+
+
+## Todo
+
+TBD
+
+
+## Development & Contribution
+
+### Setup
+
+For active development you need to have `poetry` and `pre-commit` installed
+
+```sh
+python3 -m pip install --upgrade --user poetry pre-commit
+git clone git@projects.om-office.de:frans/minimon.io.git
+cd minimon.io
+pre-commit install
+# if you need a specific version of Python inside your dev environment
+poetry env use ~/.pyenv/versions/3.10.4/bin/python3
+poetry install
+```
+
+### Workflow
+
+* Create/commit changes and check commits via `pre-commit`
+* after work is done locally:
+  - adapt version in `pyproject.toml`
+  - build and check a package
+```sh
+poetry build && \
+twine check dist/* &&
+python3 -m pip uninstall -y minimon && \
+python3 -m pip install --user dist/minimon-$(grep -E "^version.?=" pyproject.toml | cut -d '"' -f 2)-py3-none-any.whl
+```
+  - check installed package
+  - go through review process
+  - publish the new package `poetry publish --build`
+  - commit new version && push
+
