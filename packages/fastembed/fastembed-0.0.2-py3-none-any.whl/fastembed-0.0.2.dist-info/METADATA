@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: fastembed
+Version: 0.0.2
+Summary: Fast, State of the Art Quantized Embedding Models
+Home-page: https://github.com/qdrant/fastembed
+License: Apache License
+Keywords: vector,embedding,neural,search,qdrant,sentence-transformers
+Author: NirantK
+Author-email: nirant.bits@gmail.com
+Requires-Python: >=3.8.0,<3.12
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: onnxruntime (>=1.15.1,<2.0.0)
+Requires-Dist: onnxruntime-silicon (>=1.15.0,<2.0.0) ; sys_platform == "darwin"
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: tokenizers (>=0.13.3,<0.14.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Project-URL: Repository, https://github.com/qdrant/fastembed
+Description-Content-Type: text/markdown
+
+# FastEmbed Library
+
+FastEmbed is a Python library that provides convenient methods for indexing and searching text documents using Qdrant, a high-dimensional vector indexing and search system.
+
+## Features
+
+- Batch document insertion with automatic embedding using SentenceTransformers. With support for OpenAI and custom embeddings.
+- Efficient batch searching with support for filtering by metadata.
+- Automatic generation of unique IDs for documents.
+- Convenient alias methods for adding documents and performing queries.
+
+## Installation
+
+To install the FastEmbed library, we install Qdrant client as well with pip:
+
+```bash
+pip install fastembed qdrant-client
+```
+
+## Usage
+
+Here's a simple usage example, which works as is:
+
+```python
+from qdrant_client import QdrantClient
+
+# Initialize the client
+client = QdrantClient(":memory:")  # or QdrantClient(path="path/to/db")
+
+# Prepare your documents, metadata, and IDs
+docs = ["Qdrant has Langchain integrations", "Qdrant also has Llama Index integrations"]
+metadatas = [
+    {"source": "Langchain-docs"},
+    {"source": "Linkedin-docs"},
+]
+ids = [42, 2]
+
+# Use the new add method
+client.add(collection_name="demo_collection", docs={"documents": docs, "metadatas": metadatas, "ids": ids})
+
+search_result = client.query(collection_name="demo_collection", query_texts=["This is a query document"])
+print(search_result)
+```
+
