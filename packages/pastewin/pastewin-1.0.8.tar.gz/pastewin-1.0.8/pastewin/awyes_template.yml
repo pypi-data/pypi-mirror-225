@@ -1,0 +1,79 @@
+# # -------------------------------------------------------------------
+# # roles
+# # -------------------------------------------------------------------
+
+${BUCKET_NAME}_role:
+  get_role:
+    client: iam
+    depends_on:
+      - ${BUCKET_NAME}_role.create_role
+    args:
+      RoleName: ${BUCKET_NAME}
+  create_role:
+    client: iam
+    args:
+      RoleName: ${BUCKET_NAME}
+      Description: Role for ${BUCKET_NAME}
+      AssumeRolePolicyDocument: >
+        {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Effect": "Allow",
+            "Principal": { "Service": "lambda.amazonaws.com" },
+            "Action": "sts:AssumeRole"
+          }]
+        }
+
+${BUCKET_NAME}_role_attach_s3:
+  attach_role_policy:
+    client: iam
+    depends_on:
+      - ${BUCKET_NAME}_role.get_role
+    args:
+      RoleName: ${BUCKET_NAME}
+      PolicyArn: arn:aws:iam::aws:policy/AmazonS3FullAccess
+
+# # -------------------------------------------------------------------
+# # s3
+# # -------------------------------------------------------------------
+
+${BUCKET_NAME}_bucket:
+  create_bucket:
+    client: s3
+    args:
+      Bucket: ${BUCKET_NAME}
+      CreateBucketConfiguration:
+        LocationConstraint: us-west-2
+  put_public_access_block:
+    client: s3
+    depends_on:
+      - ${BUCKET_NAME}_bucket.create_bucket
+    args:
+      Bucket: ${BUCKET_NAME}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: False
+        IgnorePublicAcls: False
+        BlockPublicPolicy: False
+        RestrictPublicBuckets: False
+  put_bucket_policy:
+    client: s3
+    depends_on:
+      - ${BUCKET_NAME}_bucket.create_bucket
+    args:
+      Bucket: ${BUCKET_NAME}
+      Policy: >
+        {
+          "Id": "Policy1655709303217",
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "Stmt1655709300574",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:s3:::${BUCKET_NAME}/*",
+              "Principal": "*"
+            }
+          ]
+        }
