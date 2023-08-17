@@ -1,0 +1,21 @@
+TaskWidget {
+
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 2fr 1fr;
+
+    border: solid $accent;
+
+    /*
+    padding: 1;
+    width: 80%;
+    width: 80;
+    */
+    height: 50%;
+}
+/*
+.box {
+    height: 100%;
+    border: solid green;
+}
+*/
