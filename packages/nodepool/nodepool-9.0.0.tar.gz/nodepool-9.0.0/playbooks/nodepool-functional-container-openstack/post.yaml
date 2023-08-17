@@ -1,0 +1,43 @@
+- hosts: all
+  tasks:
+    - name: Collect container logs
+      include_role:
+        name: collect-container-logs
+      vars:
+        container_command: podman
+    - name: Copy nodepool logs
+      ignore_errors: yes
+      block:
+        - name: Copy nodepool log files
+          synchronize:
+            src: /var/log/nodepool
+            dest: '{{ zuul.executor.log_root }}'
+            mode: pull
+        - name: Copy nodepool config files
+          synchronize:
+            src: /etc/nodepool
+            dest: '{{ zuul.executor.log_root }}'
+            mode: pull
+        - name: Copy instance console logs
+          become: true
+          synchronize:
+            src: /opt/stack/data/nova/instances
+            dest: '{{ zuul.executor.log_root }}'
+            mode: pull
+            rsync_opts:
+              - "--include=*/"
+              - "--include=console.log"
+              - "--exclude=*"
+        - name: Copy syslog
+          become: True
+          synchronize:
+            src: "/var/log/syslog"
+            dest: '{{ zuul.executor.log_root }}'
+            mode: pull
+
+        - name: Copy podman logs
+          become: True
+          synchronize:
+            src: '{{ ansible_user_dir }}/zuul-output/logs/podman'
+            dest: '{{ zuul.executor.log_root }}'
+            mode: pull
