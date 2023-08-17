@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "lucidwallet"
+version = "0.2.7"
+description = "A Graphical interface for FluxWallet"
+authors = ["David White <dr.white.nz@gmail.com>"]
+license = "bsd 3-clause"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fluxwallet = "^0.1.7"
+# for image stuff (also need numpy but fluxwallet pulls this in
+Pillow = "^10.0.0"
+textual = "^0.32.0"
+pyperclip = "^1.8.2"
+# until I fix message signing
+python-bitcoinlib = "0.12.2"
+keyring = "^24.2.0"
+packaging = "^23.1"
+# lock this version (latest 4.x) for explorer compatibility
+python-socketio = { version = "4.6.1", extras = ["asyncio_client"] }
+# for some reason, poetry won't install aiohttp for the above extra.
+aiohttp = "^3.8.5"
+
+
+# for image load
+importlib-resources = "^6.0.1"
+
+
+[tool.poetry.scripts]
+lucidwallet = "lucidwallet.entrypoint:run"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
