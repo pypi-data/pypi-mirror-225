@@ -1,0 +1,98 @@
+[tool.poetry]
+name = "yaenv"
+version = "1.6.4.dev1"
+readme = "README.rst"
+license = "BSD-3-Clause"
+description = "Yet another dotenv parser for Python."
+homepage = "https://github.com/ObserverOfTime/yaenv"
+documentation = "https://yaenv.readthedocs.io"
+authors = [
+    "ObserverOfTime <chronobserver@disroot.org>",
+]
+keywords = [
+    "12factor",
+    "config",
+    "configuration",
+    "django",
+    "dotenv",
+    "environment",
+    "variables",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+[[tool.poetry.packages]]
+include = "yaenv"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.1"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-pspec = "^0.0.4"
+sphinx = "~6.2.1"
+sphinx-rtd-theme = "^1.2.2"
+ruff = "^0.0.284"
+
+[tool.poetry.urls]
+"Bug tracker" = "https://github.com/ObserverOfTime/yaenv/issues"
+"Donations" = "https://github.com/sponsors/ObserverOfTime"
+
+[tool.coverage.run]
+source = ["yaenv"]
+
+[tool.coverage.report]
+fail_under = 90
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+required_plugins = ["pytest-cov", "pytest-pspec"]
+addopts = ["--pspec", "--cov", "--cov-report=term"]
+
+[tool.ruff]
+line-length = 80
+format = "grouped"
+select = ["F", "E", "W", "D", "I", "Q"]
+ignore = [
+    "D107",
+    "D203",
+    "D212",
+    "D402",
+    "D413",
+    "D416"
+]
+extend-select = [
+    "ANN001",
+    "ANN201",
+    "ANN204",
+    "ANN205",
+    "ANN206",
+    "RUF100"
+]
+
+[tool.ruff.isort]
+combine-as-imports = true
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+multiline-quotes = "single"
+
+[tool.mypy]
+pretty = true
+strict = true
+warn_return_any = false
+allow_any_generics = true
+
+[build-system]
+requires = ["poetry>=1.5"]
+build-backend = "poetry.masonry.api"
