@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: objectutils
+Version: 0.1.4
+Summary: Utils that extend default dict|list operations
+Home-page: https://github.com/Chmele/difflib/tree/main
+Author: Chmele
+License: MIT
+Keywords: dict,json,jq,jmespath
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.1
+License-File: LICENSE
+
+
+Tiny functions that extend python json-like objects functionality as highly customizable: 
+
+- diff
+- sum
+- flattening
+- traversing 
+
+operations on json-like python objects(lists, dicts)
+
+>Only python 3.10+ supported
+>Provided as python library and made to be used from python directly. 
+
+Inspired by:
+- [jmespath](https://jmespath.org)
+- [jq](https://jqlang.github.io/jq/)
