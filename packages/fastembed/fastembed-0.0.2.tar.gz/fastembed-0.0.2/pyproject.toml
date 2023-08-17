@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "fastembed"
+version = "0.0.2"
+description = "Fast, State of the Art Quantized Embedding Models"
+authors = ["NirantK <nirant.bits@gmail.com>"]
+license = "Apache License"
+readme = "README.md"
+packages = [{include = "fastembed"}]
+homepage = "https://github.com/qdrant/fastembed"
+repository = "https://github.com/qdrant/fastembed"
+keywords = ["vector", "embedding", "neural", "search", "qdrant", "sentence-transformers"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.0,<3.12"
+onnxruntime = "^1.15.1"
+tqdm = "^4.65.0"
+requests = "^2.31.0"
+tokenizers = "^0.13.3"
+
+[tool.poetry.dev-dependencies]
+ruff = "^0.0.277"
+isort = "^5.12.0"
+black = "^23.7.0"
+
+[tool.poetry.dependencies.onnxruntime-silicon]
+version = "^1.15.0"
+markers = "sys_platform == 'darwin'"  # This makes it macOS specific
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 120
