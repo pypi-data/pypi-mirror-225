@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: aiointeractions
+Version: 1.2.3
+Summary: An async Discord HTTP Interactions wrapper for discord.py.
+Author: The Master
+License: MIT
+Project-URL: Homepage, http://github.com/TheMaster3558/aiointeractions
+Project-URL: Documentation, http://aiointeractions.readthedocs.io/
+Keywords: discord
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+Provides-Extra: docs
+Provides-Extra: tests
+License-File: LICENSE
+
+aiointeractions
+===============
+
+An async Discord HTTP Interactions wrapper for `discord.py` built with `aiohttp`.
+
+
+Documentation
+-------------
+https://aiointeractions.readthedocs.io/
+
+
+Installing
+----------
+`aiointeractions` requires Python 3.8 or newer.
+
+.. code::
+
+    pip install aiointeractions
+
+
+Example
+-------
+
+.. code:: py
+
+    import asyncio
+    import discord
+    import aiointeractions
+
+    intents = discord.Intents.none()
+    # intents are not required because there is no gateway conenction
+
+    client = discord.Client(intents=intents)
+    tree = discord.app_commands.CommandTree(client)
+    app = aiointeractions.InteractionsApp(client)
+
+    discord.utils.setup_logging(root=True)
+
+    @tree.command()
+    async def ping(interaction: discord.Interaction) -> None:
+        await interaction.response.send_message('Pong!')
+
+    async def main():
+        async with client:
+            await app.start()
+            # your bot will now receive interactions
+
+    asyncio.run(main())
+
+
+Fork Support
+------------
+While some forks may be compatible, discord.py forks will not be supported.
