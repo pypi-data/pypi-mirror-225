@@ -1,0 +1,25 @@
+{
+  "results": {
+    "arc_challenge": {
+      "acc": 0.32593856655290104,
+      "acc_stderr": 0.013697432466693239,
+      "acc_norm": 0.3660409556313993,
+      "acc_norm_stderr": 0.014077223108470142
+    }
+  },
+  "versions": {
+    "arc_challenge": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "pretrained='/data1/cgzhang6/models/moss-moon-003-base',trust_remote_code=True,use_accelerate=True",
+    "num_fewshot": 25,
+    "batch_size": 16,
+    "batch_sizes": [],
+    "device": "auto",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}
