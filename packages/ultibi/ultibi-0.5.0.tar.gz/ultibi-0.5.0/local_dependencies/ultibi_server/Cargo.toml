@@ -1,0 +1,29 @@
+[package]
+name = "ultibi_server"
+version= "0.5.0"
+edition = "2021"
+publish = true
+license-file= "LICENSE"
+description= "Ultibi is a BI tool for no code data analysis"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ultibi_core = { path = "../ultibi_core", features=["openapi"]}
+dotenv = "0.15"
+actix-web = "4"
+anyhow = "1"
+tokio = { version = "1.21.0", features = ["full"] }
+tracing = { version = "0.1", features = ["log"] }
+pretty_env_logger = "0.4"
+log = "0.4"
+mime = "0.3"
+actix-web-static-files = "4.0"
+static-files = "0.2.1"
+utoipa = { version="3.3.0", features = ["actix_extras"] }
+utoipa-swagger-ui = { version="3.1.4", features = ["actix-web"] }
+serde = { version = "1.0", features = ["derive","derive", "rc"] }
+serde_json = "1.0"
+
+[build-dependencies]
+static-files = "0.2.1"

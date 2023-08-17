@@ -1,0 +1,20 @@
+[package]
+name = "ultibi"
+version= "0.5.0"
+edition = "2021"
+publish = true
+license-file= "LICENSE"
+description= "Ultibi is a BI tool for no code data analysis"
+repository= "https://github.com/ultima-ib/ultima/"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ultibi_core = {path = "../ultibi_core" }
+ultibi_server = {path = "../ultibi_server", optional = true}
+
+[features]
+default = []
+aws_s3 = ["ultibi_core/aws_s3"]
+ui = ["ultibi_server"]
+db = ["ultibi_core/db"]
