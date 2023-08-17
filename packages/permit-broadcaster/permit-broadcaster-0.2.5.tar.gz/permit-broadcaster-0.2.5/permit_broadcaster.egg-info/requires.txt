@@ -1,0 +1,13 @@
+
+[kafka]
+aiokafka
+
+[postgres]
+asyncpg
+
+[redis]
+asyncio-redis
+
+[test]
+pytest
+pytest-asyncio
