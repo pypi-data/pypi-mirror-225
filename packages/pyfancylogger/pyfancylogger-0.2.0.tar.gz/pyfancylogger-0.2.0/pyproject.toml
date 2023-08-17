@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyfancylogger"
+version = "0.2.0"
+authors = [
+  { name="Ashenguard", email="ashenguard@agmstudio.xyz" },
+]
+description = "A Fast & Fancy version of logging"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/agm-studio/fancylogger"
+"Bug Tracker" = "https://github.com/agm-studio/fancylogger/issues"
