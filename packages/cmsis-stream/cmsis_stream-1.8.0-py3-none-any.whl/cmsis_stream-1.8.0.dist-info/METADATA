@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: cmsis-stream
+Version: 1.8.0
+Summary: CMSIS-Stream graph description
+Home-page: https://github.com/ARM-software/CMSIS-Stream
+Author: Copyright (C) 2010-2023 ARM Limited or its affiliates. All rights reserved.
+Author-email: christophe.favergeon@arm.com
+License: License :: OSI Approved :: Apache Software License
+Project-URL: Bug Reports, https://github.com/ARM-software/CMSIS-Stream/issues
+Project-URL: Source, https://github.com/ARM-software/CMSIS-Stream
+Keywords: development,dsp,cmsis,CMSIS-Stream,Arm,signal processing,maths,ml,cortex-m,cortex-a
+Platform: any
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: C
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Software Development :: Embedded Systems
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: networkx >=3.0
+Requires-Dist: jinja2 <4.0,>=3.1.2
+Requires-Dist: sympy >=1.7.1
+Requires-Dist: MarkupSafe <3.0,>=2.1.2
+Requires-Dist: numpy
+Requires-Dist: PyYAML >=6.0
+
+# README
+
+This is a Python package for the Arm open source [CMSIS-Stream library](https://github.com/ARM-software/CMSIS-Stream).
+
+You can install it with:
+
+`pip install cmsis-stream`
+
+Then you can follow the [documentation](https://github.com/ARM-software/CMSIS-Stream) to learn how to:
+
+* Define new compute nodes
+* Connect them into a dataflow graph to process streams
+* Generate at build time a static C scheduler to run the graph on your target (no need of an RTOS)
+
+# Change history
+
+## Version 1.8.0:
+
+* Introduction of a new asynchronous mode : `fullyAsynchronous`
+* Previous asynchronous mode is deprecated and will be removed in a future version
+
+## Version 1.7.0:
+
+* Improvements to GenericNodes.h when building with gcc
+* `addLiteral` can now also use `bool` values from Python
+* Naming of the function to get a node was not consistent between the C and CPP APIs
+
+## Version 1.6.1:
+
+* Correction to 1.6.0 : Missing YAML module 
+
+## Version 1.6.0:
+
+* SDS sensor and recorder nodes to interact with the [Arm SDS Framework](https://github.com/ARM-software/SDS-Framework/tree/main) to record stream of samples and replay them in Arm Virtual Hardware
+* YAML import / export of a graph and its code generation settings
+
+## Version 1.5.1:
+
+* Wrong `GenericNodes.h` was included in version 1.5.0
+* 1.5.0 is no more available for download and has been replaced by 1.5.1 correction
+
+## Version 1.5.0:
+
+* Corrections to the heap mode
+* Added possibility to identify and access nodes from the outside of the scheduler (it implies the heap mode). See documentation for more information
+
+## Version 1.4.0:
+
+* Possibility to customize the style of the graph pictures (colors, fonts ...)
+* Graph picture can now also be generated before schedule computation (useful to debug an incorrect graph before trying to compute a schedule)
+* Possibility to use more **pure** C functions in the graph. The `GenericFunction` node can now easily be used to plug more kind of C functions without having to write a C++ wrapper
+* `Dsp` node has been removed. Instead use the `Unary`, `Binary` or the more flexible `GenericFunction` node
+
+## Version 1.3.0:
+
+* New nodes `GenericToMany`, `GenericFromMany`, `GenericManyToMany`
+* `Duplicate` node implementation now using `GenericToMany`
+* Possibility to change the name of IOs in `Binary`, `Unary` and `Dsp` nodes
+
+## Version 1.2.1:
+
+* Correct an issue in 1.2.0. Some templates needed
+by the new command line tool had not been included in the
+package.
+
+## Version 1.2.0:
+
+* The file cg_status.h can now also be created from
+the python package
+
+* A new heapAllocate option has been introduced. When true,
+FIFO and node objects are allocated on the heap and no more
+on the stack. Two new functions are generated in the scheduler to initialize or free those objects
+
+* A new command line tool cmsis-stream is available. It can be used to quickly create a project with : cmsis-stream create TestFolder. The folder will contain makefiles for windows, mac and linux. It will also contain a CMSIS build tool solution file to build for Arm Virtual Hardware CS 300
+
+## Version 1.1.0:
+
+* The file GenericNodes.h can now be created from the
+python package. Like that, it is possible to start using
+CMSIS-Stream by only installing the Python package.
+Of course, if other specifics nodes are required (FFT, MFCC) the CMSIS-Stream repository will have to be used to get the headers
+
+* Duplicate node and duplicate insertion has been improved: one-to-many connections are now fully supported. Before it was automatically supported up to 3 outputs and for more outputs, Duplicate nodes had to be inserted manually.
+
+
+## Version 1.0.0:
+
+* First version (originally it was the compute graph library part of the CMSIS-DSP library)
