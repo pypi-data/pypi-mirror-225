@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: ckanext-or-facet
+Version: 0.1.0
+Summary: Combine search facets using OR operator
+Home-page: https://github.com/DataShades/ckanext-or_facet
+Author: Sergey Motornyuk
+Author-email: sergey.motornyuk@linkdigital.com.au
+License: AGPL
+Keywords: CKAN extension facet
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ckantoolkit
+Requires-Dist: six
+
+[![Tests](https://github.com/DataShades/ckanext-or_facet/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/DataShades/ckanext-or_facet/actions)
+
+
+# ckanext-or_facet
+
+
+Change logic of applying facets. With a bit of extra configuration, search for
+datasets, including **any** of applied facets, not necessary **all** of them
+
+
+## Installation
+
+
+To install ckanext-or-facet:
+
+1. Install the ckanext-or_facet Python package:
+
+		pip install ckanext-or-facet
+
+1. Add ``or_facet`` to the ``ckan.plugins`` setting in your CKAN config file
+
+
+
+## Config Settings
+
+    # List of facets that are using OR when applied.
+    # (optional, default: empty list).
+    ckanext.or_facet.optional = tags res_format
