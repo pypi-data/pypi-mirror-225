@@ -1,0 +1,134 @@
+Metadata-Version: 2.1
+Name: binmao-libs
+Version: 1.0.0
+Summary: binmao linbs
+Author-email: chishijie <chishijie85@gmail.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# py脚手架
+
+## 安装
+### python版本号
+测试可用版本号: ```3.10.0```
+
+安装: ```pip install binmao_libs```
+
+## 相关模块
+### orm
+使用```peewee```orm框架
+
+代码样例:
+```
+from binmao_libs import db
+from peewee import *
+
+# 创建database实例
+mysql_db = db.connect(config.mysql_connection)
+# 创建orm对象(表访问对象)
+class MetaMoment(Model):
+	"""动态实体类
+    """
+	id = IntegerField(unique=True)
+	uid = CharField()
+	text = CharField()
+	category_id = IntegerField(column_name="categoryId")
+	created_at = DateTimeField(column_name="createdAt")
+	class Meta:
+		database = mysql_db
+		table_name = "moment__moment"
+
+class MetaUserInfo(Model):
+	"""用户信息
+	"""
+	id = IntegerField(unique=True)
+	nickname = CharField()
+	class Meta:
+		database = mysql_db
+		table_name = "metacat__user_info"
+
+# 表查询
+cursor = MetaMoment.select().limit(10)
+for record in cursor:
+	print(f"text: {record.text}")
+	
+# 设置特定返回字段(prject)
+cursor = MetaMoment.select(MetaMoment.id.alias("_id")).limit(10)
+for record in cursor:
+	print(f"_id: {record._id}")
+
+# 返回使用函数
+cursor = MetaMoment.select(fn.COUNT(MetaMoment.id))
+print(f"总数: {next(iter(cursor))}")
+
+# 带游标查询
+# 偏移10条数据，返回后续5条
+cursor = MetaMoment.select().offset(10).limit(5)
+for record in cursor:
+	print(f"id: {record.id}")
+
+# 简单的联合查询
+# 注意使用.dicts方法，将返回结果字典化
+cursor = MetaMoment.select(MetaUserInfo.nickname).join(MetaUserInfo, on=(MetaUserInfo.id == MetaMoment.uid)).limit(1).dicts()
+for record in cursor:
+	print(f"{record}")
+
+# 更新操作
+MetaMoment.update(text = "Hello World. 12345").where(MetaMoment.id == 1).execute()
+  
+# 插入
+# MetaMoment.create(text = "Hello World. 12345").execute()
+
+```
+参考：
+* [peewee orm使用文档](http://docs.peewee-orm.com/en/latest/peewee/quickstart.html)
+
+### http服务
+http服务包含对以下框架的封装：
+* Flask
+  http服务框架
+* Flasgger
+  swagger服务框架
+* prometheus_flask_exporter
+  发布prometheus格式指标
+
+举例：
+```
+from binmao_libs import https
+from flask import request
+
+# post请求
+@https.app.post("/hello")
+def hello():
+    """hello
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              description: name.
+              default: "csj"
+    response:
+        200:
+            description: 成功返回
+            examples:
+                {"state": "0", "msg": "success"}
+    """
+    name = request.json["name"]
+    return json.dumps({"state": "0", "msg": "success", "data": {"name": name}})
+
+https.run(application_name="binmaolibs")
+```
+参考：
+* [flasgger](https://github.com/flasgger/flasgger)
+* [prometheus-flask-exporter](https://pypi.org/project/prometheus-flask-exporter/)
