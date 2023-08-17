@@ -1,0 +1,66 @@
+/* stylelint-disable
+    number-max-precision,
+*/
+
+.shift-right {
+  position: relative;
+  animation-name: shift-right-anim;
+  animation-duration: 0.5s;
+}
+
+@keyframes shift-right-anim {
+  0% {
+    background-color: white;
+    left: 0;
+  }
+  50% {
+    background-color: deepskyblue;
+    left: 10px;
+  }
+  100% {
+    background-color: white;
+    left: 0;
+  }
+}
+
+.tight {
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-grid li {
+  display: block;
+  float: left;
+}
+
+.narrower {
+  /* TODO: To use common color? */
+  color: #592a71;
+}
+
+.broader {
+  /* TODO: To use common color `--common-error-color: #b00` */
+  color: #aa3c39;
+}
+
+.exact {
+  /* TODO: To use common color `--common-success-color: #181` */
+  color: #2d8632;
+}
+
+.approximate {
+  /* TODO: To use common color `--common-warn-color: #960` */
+  color: #a8aa39;
+}
+
+.selected-element {
+  box-shadow: 0 0 5px 5px #33c3f0;
+}
+
+.button.button-danger,
+button.button-danger {
+  color: #fff;
+  /* background-color: #592a71; */
+  /* border-color: #592a71; */
+  background-color: var(--common-error-color);
+  border-color: var(--common-error-color);
+}

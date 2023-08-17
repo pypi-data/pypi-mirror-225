@@ -1,0 +1,65 @@
+/* Basic styles */
+.process-detail {
+  /* Animation... */
+  transition: all var(--common-animation-time);
+  position: relative;
+}
+
+/* Info section */
+.process-detail .info-tableau {
+  position: relative;
+  /* margin: 10px 0; */
+  transition: all var(--common-animation-time);
+  min-height: 0;
+}
+.process-detail.loading .info-tableau {
+  min-height: 50px;
+}
+
+/* Error */
+.process-detail .info-tableau .error {
+  border-radius: 4px;
+  background-color: var(--common-error-color);
+  color: #fff;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+.process-detail:not(.has-error) .info-tableau .error {
+  display: none;
+}
+
+/* Loader splash */
+.process-detail .info-tableau .loader-splash {
+  padding: 20px;
+}
+.process-detail:not(.loading) .info-tableau .loader-splash {
+  /* Inherited from `.loader-splash.hidden`, see `bw_matchbox/assets/css/common.css` */
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Disabled buttons */
+.process-detail button.disabled,
+#mark-waitlist-dialog-modal button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
+}
+
+/* Table cell's widths */
+.process-detail .fixed-table .cell-amount {
+  width: var(--common-table-cell-amount-width);
+}
+.process-detail .fixed-table .cell-name {
+  width: var(--common-table-cell-name-width);
+}
+.process-detail .fixed-table .cell-location {
+  width: var(--common-table-cell-location-width);
+}
+.process-detail .fixed-table .cell-unit {
+  width: var(--common-table-cell-unit-width);
+}
+.process-detail .fixed-table .cell-matched {
+  width: var(--common-table-cell-matched-width);
+}
