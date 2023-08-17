@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: atonix
+Version: 0.1.4
+Summary: A user friendly client to retrieve data from the AtonixOI system.
+Author: Kolton Stimpert
+Author-email: Kolton Stimpert <stimpertk@bv.com>
+Project-URL: Homepage, https://github.com/kstimp/atonix
+Project-URL: Bug Tracker, https://github.com/kstimp/atonix/issues
+Platform: Python 3.7
+Platform: Python 3.8
+Platform: Python 3.9
+Platform: Python 3.10
+Platform: Python 3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: cryptography >=41.0.0
+Requires-Dist: setuptools >=66.1.1
+Requires-Dist: requests >=2.31.0
+Requires-Dist: openpyxl >=3.0.10
+Requires-Dist: pandas >=1.5.2
+
