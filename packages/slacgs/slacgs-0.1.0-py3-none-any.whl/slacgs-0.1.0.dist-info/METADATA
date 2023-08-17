@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: slacgs
+Version: 0.1.0
+Summary: A Simulator for Loss Analysis of Classifiers on Gaussian Samples.
+Home-page: https://github.com/paulorenatoaz/slacgs
+Author: Paulo Azevedo
+Author-email: paulorenatoaz@dcc.ufrj.br
+License-File: LICENSE
+Requires-Dist: numpy (>=1.19.5)
+Requires-Dist: matplotlib (>=3.3.3)
+Requires-Dist: shapely (>=2.0.1)
+Requires-Dist: ipython (>=7.34.0)
+Requires-Dist: scikit-learn (>=1.2.2)
+Requires-Dist: scipy (>=1.10.1)
+Requires-Dist: pygsheets (>=2.0.6)
+Requires-Dist: google-api-python-client (>=2.83.0)
+Requires-Dist: cryptography (>=41.0.2)
+Requires-Dist: Pillow (>=8.1.0)
+Requires-Dist: pandas (>=1.5.3)
+Requires-Dist: setuptools (>=51.3.3)
+Requires-Dist: tabulate (>=0.9.0)
+Requires-Dist: reportlab (>=4.0.4)
+
