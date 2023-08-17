@@ -1,0 +1,17 @@
+aiohttp>=3.8
+async_timeout>=4.0
+paho.mqtt>=1.6
+requests>=2.28
+
+[dev]
+black
+build
+bumpversion
+flake8
+twine
+
+[test]
+mypy
+pre-commit
+pytest
+pytest-cov
