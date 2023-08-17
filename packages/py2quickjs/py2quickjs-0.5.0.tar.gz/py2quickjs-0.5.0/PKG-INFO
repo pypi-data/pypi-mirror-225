@@ -1,0 +1,20 @@
+Metadata-Version: 1.2
+Name: py2quickjs
+Version: 0.5.0
+Summary: Wrapping the quickjs C library.
+Home-page: https://github.com/un44444444/py2quickjs
+Author: Stone C
+Author-email: un44444444@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: 
+        Python wrapper around https://bellard.org/quickjs/ .
+        
+        Translates types like `str`, `float`, `bool`, `list`, `dict` and combinations
+        thereof to and from Javascript.
+        
+        QuickJS is currently thread-hostile, so this wrapper makes sure that all calls
+        to the same JS runtime comes from the same thead.
+        
+Platform: UNKNOWN
+Requires-Python: >=2.7, <3
