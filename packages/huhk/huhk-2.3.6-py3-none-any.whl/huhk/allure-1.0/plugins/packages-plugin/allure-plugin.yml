@@ -1,0 +1,7 @@
+id: packages
+name: Packages aggregator
+description: The aggregator adds packages tab to the report
+extensions:
+  - io.qameta.allure-1.0.packages.PackagesPlugin
+jsFiles:
+  - index.js
