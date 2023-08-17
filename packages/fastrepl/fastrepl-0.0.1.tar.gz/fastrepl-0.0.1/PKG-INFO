@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: fastrepl
+Version: 0.0.1
+Summary: Simple Run-Eval-Polish Loop with LLM
+Author: yujonglee
+Author-email: yujonglee.dev@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: tui
+Requires-Dist: cuid2 (>=2.0.0,<3.0.0)
+Requires-Dist: evaluate (>=0.4.0,<0.5.0)
+Requires-Dist: graphviz (>=0.20.1,<0.21.0)
+Requires-Dist: iprogress (>=0.4,<0.5)
+Requires-Dist: ipywidgets (>=8.1.0,<9.0.0)
+Requires-Dist: litellm (>=0.1.392,<0.2.0)
+Requires-Dist: rich (>=13.5.2,<14.0.0)
+Requires-Dist: sqlalchemy (>=2.0.19,<3.0.0)
+Requires-Dist: textual (>=0.32.0,<0.33.0) ; extra == "tui"
+Description-Content-Type: text/markdown
+
+# FastREPL
+Fast `Run-Eval-Polish Loop` for LLM Application. Local-first and Framework agnostic.
+
+**Note: This project is still in early development stage.**
+
+## Quick Start
+More examples can be found in [/examples](/examples).
+
+```bash
+pip install fastrepl
+```
+
+## Contributing
+Any kind of contribution is welcome. 
+
+- Development: Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [tests](tests).
+- Bug reports: Use [Github Issues](https://github.com/yujonglee/fastrepl/issues).
+- Feature request and questions: Use [Github Discussions](https://github.com/yujonglee/fastrepl/discussions).
+
