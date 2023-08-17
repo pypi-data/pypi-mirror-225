@@ -1,0 +1,40 @@
+-GROUP TinySnbReadTest
+-DATASET CSV tinysnb
+
+--
+
+-CASE Call
+
+-LOG SetGetThread
+-STATEMENT CALL THREADS=4
+---- ok
+-STATEMENT CALL current_setting('threads') RETURN *
+-PARALLELISM 6
+---- 1
+6
+-STATEMENT CALL current_setting('threads') RETURN *
+-PARALLELISM 10
+---- 1
+10
+
+-LOG SetGetTimeout
+-STATEMENT CALL timeout=40000
+---- ok
+-STATEMENT CALL current_setting('timeout') RETURN *
+---- 1
+40000
+-STATEMENT CALL timeout=20000
+---- ok
+-STATEMENT CALL current_setting('timeout') RETURN *
+---- 1
+20000
+
+-LOG SetGetVarLengthMaxDepth
+-STATEMENT CALL var_length_extend_max_depth=10
+---- ok
+-STATEMENT CALL current_setting('var_length_extend_max_depth') RETURN *
+---- 1
+10
+-STATEMENT MATCH (a:person)-[:knows*1..28]->(b:person) RETURN COUNT(*);
+---- 1
+354290

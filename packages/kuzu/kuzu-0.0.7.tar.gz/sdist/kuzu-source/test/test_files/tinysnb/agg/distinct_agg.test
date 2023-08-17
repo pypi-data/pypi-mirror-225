@@ -1,0 +1,43 @@
+-GROUP TinySnbReadTest
+-DATASET CSV tinysnb
+
+--
+
+-CASE AggDistinct
+
+-LOG SingleNodeDistinctAggTest1
+-STATEMENT MATCH (a:person) RETURN COUNT(DISTINCT a.gender), COUNT(DISTINCT a.age)
+---- 1
+2|7
+
+-LOG SingleNodeDistinctAggTest2
+-STATEMENT MATCH (a:person) RETURN a.gender, COUNT(DISTINCT a.isStudent)
+---- 2
+1|2
+2|2
+
+-LOG TwoHopDistinctAggTest
+-STATEMENT MATCH (a:person)-[:knows]->(b:person)-[:knows]->(c:person) RETURN a.ID, SUM(DISTINCT a.age), SUM(DISTINCT c.age)
+-ENUMERATE
+---- 4
+0|35|130
+2|30|130
+3|45|130
+5|20|130
+
+-LOG OneHopDistinctAggTest
+-STATEMENT MATCH (p:person)-[:knows]->(:person) RETURN count(distinct p.ID)
+-ENUMERATE
+---- 1
+5
+
+-LOG SimpleDistinctCollectINT64Test
+-STATEMENT MATCH (p:person) RETURN collect(distinct p.age)
+---- 1
+[35,30,45,20,25,40,83]
+
+-LOG HashDistinctCollectDoubleTest
+-STATEMENT MATCH (p:person) RETURN p.gender, collect(distinct p.isStudent)
+---- 2
+1|[True,False]
+2|[True,False]

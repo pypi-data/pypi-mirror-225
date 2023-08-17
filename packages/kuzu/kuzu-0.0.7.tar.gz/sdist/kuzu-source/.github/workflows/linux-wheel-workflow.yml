@@ -1,0 +1,20 @@
+name: Build-Linux-Wheels
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build-linux-wheels:
+    runs-on: kuzu-self-hosted-linux-building
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Wheels
+        working-directory: ./scripts/pip-package/
+        run: bash build_all_packages.sh
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux-wheels
+          path: ./scripts/pip-package/wheelhouse/*.manylinux2014_x86_64.whl

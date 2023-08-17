@@ -1,0 +1,1 @@
+add_kuzu_test(npy_reader_test npy_reader_test.cpp)
