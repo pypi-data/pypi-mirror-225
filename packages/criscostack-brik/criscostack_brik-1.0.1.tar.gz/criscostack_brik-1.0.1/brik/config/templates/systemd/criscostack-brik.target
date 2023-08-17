@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Requires={{ brik_name }}-web.target {{ brik_name }}-workers.target {{ brik_name }}-redis.target
+
+[Install]
+WantedBy=multi-user.target
