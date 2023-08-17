@@ -1,0 +1,26 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "pybind11>=2.10.3,<3.0.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hexea"
+version = "0.2.2"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+description = "Python library for the games of Hex and Y"
+authors = [{ name = "Chip Hollingsworth", email = "cholling@gmail.com"},]
+requires-python = ">=3.11,<4.0"
+
+[project.urls]
+repository = "https://codeberg.org/cholling/hexea"
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "pylint", "pyright"]
