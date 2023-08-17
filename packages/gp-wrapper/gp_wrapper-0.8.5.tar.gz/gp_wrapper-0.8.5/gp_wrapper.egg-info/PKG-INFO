@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: gp-wrapper
+Version: 0.8.5
+Summary: A Google Photos API wrapper library
+Home-page: https://github.com/danielnachumdev/gp_wrapper
+Author: danielnachumdev
+Author-email: danielnachumdev <danielnachumdev@gmail.com>
+License: MIT License
+Project-URL: Homepage, https://github.com/danielnachumdev/gp_wrapper
+Project-URL: Bug Tracker, https://github.com/danielnachumdev/gp_wrapper/issues
+Keywords: functions,methods,classes,API
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.8.0
+Description-Content-Type: text/markdown
+
+# gp_wrapper v=0.8.5
+A Google Photos API wrapper library
+
+currently a work in progress.
+
+The target is to have all of the [official API](https://developers.google.com/photos/library/reference/rest) implemented and working in addition to convenience methods to simplify usage
+
+## Including
