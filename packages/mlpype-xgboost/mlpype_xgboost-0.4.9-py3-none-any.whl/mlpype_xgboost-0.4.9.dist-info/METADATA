@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: mlpype-xgboost
+Version: 0.4.9
+Requires-Dist: mlpype-base ==0.4.9
+Requires-Dist: mlpype-sklearn
+Requires-Dist: xgboost >=1.6.2
+Provides-Extra: dev
+Requires-Dist: mlpype-base ==0.4.9 ; extra == 'dev'
+Requires-Dist: mlpype-sklearn ; extra == 'dev'
+Requires-Dist: xgboost ==1.6.2 ; extra == 'dev'
+Provides-Extra: strict
+Requires-Dist: mlpype-base ==0.4.9 ; extra == 'strict'
+Requires-Dist: mlpype-sklearn ; extra == 'strict'
+Requires-Dist: xgboost ==1.6.2 ; extra == 'strict'
+
