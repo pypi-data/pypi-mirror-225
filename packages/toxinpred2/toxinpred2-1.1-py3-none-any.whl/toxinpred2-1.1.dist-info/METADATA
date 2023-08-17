@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: toxinpred2
+Version: 1.1
+Summary: A tool to predict toxic and non-toxic proteins
+Home-page: https://github.com/raghavagps/toxinpred2
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: argparse
+Requires-Dist: joblib
+Requires-Dist: onnxruntime
+
+# Toxinpred2.0
+# Introduction
+ToxinPred2.0 is developed for predicting, mapping and scanning toxic proteins. More information on ToxinPred2.0 is available from its web server http://webs.iiitd.edu.in/raghava/toxinpred2. This page provide information about standalone version of ToxinPred2.0. 
+
+
+## Installation
+To install the package, type the following command:
+```
+pip install toxinpred2
+```
+
+**Minimum USAGE** 
+
+To know about the available option for the package, type the following command:
+```
+toxinpred2.py -h
+```
+To run the example, type the following command:
+```
+toxinpred2.py -i peptide.fa
+
+```
+**Full Usage**: 
+```
+Following is complete list of all options, you may get these options by "toxinpred2.py -h" 
+
+usage: toxinpred2.py [-h] -i INPUT [-o OUTPUT] [-t THRESHOLD] [-m {1,2}] [-d {1,2}]
+```
+
+```
+Please provide following arguments
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input: protein or peptide sequence in FASTA format or
+                        single sequence per line in single letter code
+  -o OUTPUT, --output OUTPUT
+                        Output: File for saving results by default outfile.csv
+  -t THRESHOLD, --threshold THRESHOLD
+                        Threshold: Value between 0 to 1 by default 0.6
+  -m {1,2}, -- model Model
+                        Model: 1: AAC based RF, 2: Hybrid, by default 1
+  -d {1,2}, --display {1,2}
+                        Display: 1:Toxin peptide, 2: All peptides, by
+                        default 1
+```
+
+Input File: It allow users to provide input in two format; i) FASTA format (standard) (e.g. peptide.fa) and ii) Simple Format. In case of simple format, file should have one peptide sequence in a single line in single letter code (eg. peptide.seq). 
+
+Output File: Program will save result in CSV format, in case user do not provide output file name, it will be stored in outfile.csv.
+
+Threshold: User should provide threshold between 0 and 1, please note score is proportional to toxic potential of peptide.
+
+Models: In this program, two models have been incorporated;  i) Model1 for predicting given input peptide/protein sequence as toxic and non-toxic peptide/proteins using Random Forest based on amino-acid composition of the peptide/proteins; 
+
+ii) Model2 for predicting given input peptide/protein sequence as toxic and non-toxic peptide/proteins using Hybrid approach, which is the ensemble of Random Forest+ BLAST+ MERCI. It combines the scores generated from machine learning (RF), MERCI, and BLAST as Hybrid Score, and the prediction is based on Hybrid Score.
+
+
+
+
+
+
+
+
