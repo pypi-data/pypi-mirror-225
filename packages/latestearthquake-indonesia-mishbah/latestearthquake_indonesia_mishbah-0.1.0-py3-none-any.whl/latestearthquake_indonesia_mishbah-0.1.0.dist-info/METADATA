@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: latestearthquake-indonesia-mishbah
+Version: 0.1.0
+Summary: This package will get the latest earthquake from BMKG | Meteorological, Climatological, and Geophysical Agency
+Home-page: https://github.com/dLiverdworks/latest-indonesia-earthquake
+Author: Mishbahussuduri
+Author-email: mishbahussuduri@gmail.com
+Project-URL: Website, https://www.linkedin.com/in/mishbahussuduri/
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Latest Indonesia Earthquake
+This package will get the latest earthquake from BMKG | Meteorological, Climatological, and Geophysical Agency
+
+## HOW IT WORKS?
+This package will scrape from [BMKG](https://bmkg.go.id) to get latest quake happened in Indonesia.
+
+This package using BeautifulSoup4 and Request, for creating output JSON which ready to use in web or mobile applications.
+
+## HOW TO USE?
+```
+import gempaterkini
+
+if __name__ == '__main__':
+    print('Aplikasi utama')
+    result = gempaterkini.ekstraksi_data()
+    gempaterkini.tampilkan_data(result)
+```
+
+# AUTHOR
+Mishbahussuduri
