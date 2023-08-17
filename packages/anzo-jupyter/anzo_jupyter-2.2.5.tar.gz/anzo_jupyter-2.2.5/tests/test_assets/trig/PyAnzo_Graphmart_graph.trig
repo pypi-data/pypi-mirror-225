@@ -1,0 +1,220 @@
+
+<http://cambridgesemantics.com/File_Connection/local> {
+	<http://cambridgesemantics.com/File_Connection/local> a <http://cambridgesemantics.com/ontologies/DataSources#FileConnection> , <http://cambridgesemantics.com/ontologies/DataSources#LocalFileConnection> ;
+		<http://cambridgesemantics.com/ontologies/DataSources#fileConnectionBaseFolder> "/" ;
+		<http://cambridgesemantics.com/ontologies/DataSources#fileConnectionName> "Server Filesystem" ;
+		<http://cambridgesemantics.com/ontologies/DataSources#fileConnectionSupportsGlobalLoad> "true"^^<http://www.w3.org/2001/XMLSchema#Boolean> , "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://purl.org/dc/terms/created> "2017-04-13T13:21:17.561Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2017-04-13T13:21:17.561Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> {
+	<http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> a <http://cambridgesemantics.com/ontologies/Graphmarts#Graphmart> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#graphQueryEngineUri> <http://cambridgesemantics.com/GqeDatasource/guid_3af6a337ad444400a1f01dbe2e16b82b> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#ignoreErrors> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#layer> <http://cambridgesemantics.com/OrderedItem/7fb36c08abd647d1a77cabca6dc6f068> , <http://cambridgesemantics.com/OrderedItem/a62ead1d7ce64488b3c5162afdd7faf9> ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Graphmart" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-10-14T21:17:41.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+	
+	<http://cambridgesemantics.com/OrderedItem/7fb36c08abd647d1a77cabca6dc6f068> a <http://openanzo.org/ontologies/2008/07/Anzo#IndexedItem> , <http://openanzo.org/ontologies/2008/07/Anzo#OrderedValue> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#index> "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#orderedValue> <http://cambridgesemantics.com/Layer/dd29f470d8d44dad8e6cf9ce3b6322fd> ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+	
+	<http://cambridgesemantics.com/OrderedItem/a62ead1d7ce64488b3c5162afdd7faf9> a <http://openanzo.org/ontologies/2008/07/Anzo#IndexedItem> , <http://openanzo.org/ontologies/2008/07/Anzo#OrderedValue> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#index> "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#orderedValue> <http://cambridgesemantics.com/Layer/d2bb3f418d7942d8a85fdedad608ccb3> ;
+		<http://purl.org/dc/terms/created> "2020-10-14T21:17:41.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-10-14T21:17:41.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/Layer/d2bb3f418d7942d8a85fdedad608ccb3> {
+	<http://cambridgesemantics.com/Layer/d2bb3f418d7942d8a85fdedad608ccb3> a <http://cambridgesemantics.com/ontologies/Graphmarts#Layer> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#autoDeployOntologyChanges> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#canExclude> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#defaultSelected> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#enabled> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#exposed> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#step> <http://cambridgesemantics.com/OrderedItem/224f31a19df44a48adc1e8c3261a6031> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#visible> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://purl.org/dc/elements/1.1/title> "Layer 2" ;
+		<http://purl.org/dc/terms/created> "2020-10-14T21:17:41.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-10-14T21:19:23.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+	
+	<http://cambridgesemantics.com/OrderedItem/224f31a19df44a48adc1e8c3261a6031> a <http://openanzo.org/ontologies/2008/07/Anzo#IndexedItem> , <http://openanzo.org/ontologies/2008/07/Anzo#OrderedValue> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#index> "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#orderedValue> <http://cambridgesemantics.com/QueryStep/390e0618d5d04dd5ac57cbf26947f397> ;
+		<http://purl.org/dc/terms/created> "2020-10-14T21:19:23.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-10-14T21:19:23.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/Layer/dd29f470d8d44dad8e6cf9ce3b6322fd> {
+	<http://cambridgesemantics.com/Layer/dd29f470d8d44dad8e6cf9ce3b6322fd> a <http://cambridgesemantics.com/ontologies/Graphmarts#Layer> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#canExclude> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#defaultSelected> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#enabled> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#exposed> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#step> <http://cambridgesemantics.com/OrderedItem/a3cc920aabb34efc8ba8ed12cffa0ac6> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#visible> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Dataset" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+	
+	<http://cambridgesemantics.com/OrderedItem/a3cc920aabb34efc8ba8ed12cffa0ac6> a <http://openanzo.org/ontologies/2008/07/Anzo#IndexedItem> , <http://openanzo.org/ontologies/2008/07/Anzo#OrderedValue> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#index> "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#orderedValue> <http://cambridgesemantics.com/LoadDataStep/1347736407234bdc84f7b04991c70541> ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/LoadDataStep/1347736407234bdc84f7b04991c70541> {
+	<http://cambridgesemantics.com/LoadDataStep/1347736407234bdc84f7b04991c70541> a <http://cambridgesemantics.com/ontologies/Graphmarts#LayerChild> , <http://cambridgesemantics.com/ontologies/Graphmarts#LoadDataStep> , <http://cambridgesemantics.com/ontologies/Graphmarts#LoadLdsDataStep> , <http://cambridgesemantics.com/ontologies/Graphmarts#Step> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#enabled> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#linkedDataset> <http://openanzo.org/catEntry(%5Bhttp%3A%2F%2Fcsi.com%2FFileBasedLinkedDataSet%2Fbd05ae950df39757dfbb5a6fbc5c925e%5D%40%5Bhttp%3A%2F%2Fopenanzo.org%2Fdatasource%2FsystemDatasource%5D)> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#source> <http://cambridgesemantics.com/ontologies/Graphmarts#Self> ;
+		<http://purl.org/dc/elements/1.1/title> "Load PyAnzo Dataset" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:21:30.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/QueryStep/390e0618d5d04dd5ac57cbf26947f397> {
+	<http://cambridgesemantics.com/QueryStep/390e0618d5d04dd5ac57cbf26947f397> a <http://cambridgesemantics.com/ontologies/Graphmarts#LayerChild> , <http://cambridgesemantics.com/ontologies/Graphmarts#Step> , <http://cambridgesemantics.com/ontologies/Graphmarts#TransformStep> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#enabled> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#ontology> <http://openanzo.org/ontologies/2008/07/Anzo#na> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#source> <http://cambridgesemantics.com/ontologies/Graphmarts#AllPrevious> , <http://cambridgesemantics.com/ontologies/Graphmarts#Self> ;
+		<http://cambridgesemantics.com/ontologies/Graphmarts#transformQuery> """
+#targetGraph is replaced with the Layers URI at runtime
+#usingSources is replaced with the URIs of the Layer's Sources at runtime
+INSERT DATA {
+    GRAPH ${targetGraph}{
+        <http://csi.com/Person/879d629b-1015-45b9-8457-7271c0f2a9f0> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_City> \"Boston\";
+        <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Age> \"60\"^^<http://www.w3.org/2001/XMLSchema#int>;
+        <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Name> \"Diego\";
+        a <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> .
+
+        <http://csi.com/Person/ffbe9982-7491-42da-9398-e4c22fab5711> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_City> \"Medford\";
+        <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Age> \"70\"^^<http://www.w3.org/2001/XMLSchema#int>;
+        <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Name> \"Eve\";
+        a <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> .
+    }
+}
+""" ;
+		<http://purl.org/dc/elements/1.1/title> "Query Step that Inserts Data" ;
+		<http://purl.org/dc/terms/created> "2020-10-14T21:19:23.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-10-14T21:19:23.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> .
+}
+
+<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> {
+	<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> a <http://www.w3.org/2002/07/owl#Ontology> ;
+		<http://cambridgesemantics.com/ontologies/Tags#tags> <http://cambridgesemantics.com/Tag/Auto-Gen> ;
+		<http://purl.org/dc/elements/1.1/description> "Auto-generated ontology from PyAnzo Datasource in PyAnzo Datasource" ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Dictionary - PyAnzo Datasource - Auto" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:45:29.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:45:29.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://www.w3.org/2000/01/rdf-schema#comment> "Auto-generated ontology from PyAnzo Datasource in PyAnzo Datasource" ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "PyAnzo Dictionary - PyAnzo Datasource - Auto" .
+	
+	<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> a <http://www.w3.org/2000/01/rdf-schema#Class> , <http://www.w3.org/2000/01/rdf-schema#Resource> , <http://www.w3.org/2002/07/owl#Class> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "Person" .
+	
+	<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Age> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> , <http://www.w3.org/2000/01/rdf-schema#Resource> , <http://www.w3.org/2002/07/owl#DatatypeProperty> , <http://www.w3.org/2002/07/owl#FunctionalProperty> ;
+		<http://www.w3.org/2000/01/rdf-schema#domain> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "Age" ;
+		<http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#int> .
+	
+	<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_City> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> , <http://www.w3.org/2000/01/rdf-schema#Resource> , <http://www.w3.org/2002/07/owl#DatatypeProperty> , <http://www.w3.org/2002/07/owl#FunctionalProperty> ;
+		<http://www.w3.org/2000/01/rdf-schema#domain> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "City" ;
+		<http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+	
+	<http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person_Name> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> , <http://www.w3.org/2000/01/rdf-schema#Resource> , <http://www.w3.org/2002/07/owl#DatatypeProperty> , <http://www.w3.org/2002/07/owl#FunctionalProperty> ;
+		<http://www.w3.org/2000/01/rdf-schema#domain> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "Name" ;
+		<http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+}
+
+<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> {
+	<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#FileBasedLinkedDataSet> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataConfig> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataSet> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFilesOnly> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFormat> "ttl.gz" ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataLocation> <http://openanzo.org/DataLocation/948dc2b8-a0ad-40fe-afe0-c663ce1188d7> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataset> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexDocs> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexSnapshot> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#metrics> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e_metrics> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ontology> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#relatedJob> <http://cambridgesemantics.com/Project/a6a1e366-ae5c-76f0-56f4-d058405b669a/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/e440b314-272a-8455-001c-b12bddcd63d1/Job/4367cfa7-a58b-798b-dcd7-b2ec265a7f11> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#relatedProject> <http://cambridgesemantics.com/Project/a6a1e366-ae5c-76f0-56f4-d058405b669a/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/e440b314-272a-8455-001c-b12bddcd63d1> ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Dataset" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:45:29.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:45:29.980Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "PyAnzo Dataset" .
+	
+	<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e_metrics> a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#DatasetMetrics> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classUsageData> <http://openanzo.org/ClassInstanceCount/3be79371-d3e7-4e26-9884-5c1c6ffa648c> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#sizeInBytes> "406"^^<http://www.w3.org/2001/XMLSchema#long> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#statementCount> "20"^^<http://www.w3.org/2001/XMLSchema#long> .
+	
+	<http://openanzo.org/ClassInstanceCount/3be79371-d3e7-4e26-9884-5c1c6ffa648c> a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ClassInstanceCount> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classCount> "5"^^<http://www.w3.org/2001/XMLSchema#long> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classType> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> .
+	
+	<http://openanzo.org/DataLocation/948dc2b8-a0ad-40fe-afe0-c663ce1188d7> a <http://cambridgesemantics.com/ontologies/DataSources#DataLocation> , <http://cambridgesemantics.com/ontologies/DataSources#PathConnection> ;
+		<http://cambridgesemantics.com/ontologies/DataSources#fileConnection> <http://cambridgesemantics.com/File_Connection/local> ;
+		<http://cambridgesemantics.com/ontologies/DataSources#filePath> "/private/tmp/pyanzo/tests/test_assets/pyanzo_test_dataset/" ;
+		<http://cambridgesemantics.com/ontologies/DataSources#isPrimary> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+}
+
+<http://openanzo.org/catEntry(%5Bhttp%3A%2F%2Fcsi.com%2FFileBasedLinkedDataSet%2Fbd05ae950df39757dfbb5a6fbc5c925e%5D%40%5Bhttp%3A%2F%2Fopenanzo.org%2Fdatasource%2FsystemDatasource%5D)> {
+	<http://openanzo.org/catEntry(%5Bhttp%3A%2F%2Fcsi.com%2FFileBasedLinkedDataSet%2Fbd05ae950df39757dfbb5a6fbc5c925e%5D%40%5Bhttp%3A%2F%2Fopenanzo.org%2Fdatasource%2FsystemDatasource%5D)> a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataSetCatalogEntry> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataset> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#datasource> <http://openanzo.org/datasource/systemDatasource> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#isFileBased> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#isJournalBased> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#isRuleBased> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#isViewBased> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#isVirtual> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#linkedDataset> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#metrics> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e_metrics> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#online> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ontology> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#createdBy> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#lastModifiedByUser> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#modified> "2020-10-14T21:16:33.282Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Dataset" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:45:29.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:45:29.980Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "PyAnzo Dataset" .
+}
+
+<http://cambridgesemantics.com/namedgraph/1> {
+    <http://cambridgesemantics.com/namedgraph/1/sub> <http://cambridgesemantics.com/namedgraph/1/pred> <http://cambridgesemantics.com/namedgraph/1/obj> .
+}

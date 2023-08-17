@@ -1,0 +1,7 @@
+
+<http://cambridgesemantics.com/ontologies/2018/06/Export#ExportGraphResponse/9da211618a15476daa10cead2292d8e7> {
+	<http://cambridgesemantics.com/ontologies/2018/06/Export#ExportGraphResponse/9da211618a15476daa10cead2292d8e7> a <http://cambridgesemantics.com/ontologies/2018/06/Export#ExportGraphResponse> , <http://cambridgesemantics.com/ontologies/2018/06/Export#ExportResponse> , <http://openanzo.org/ontologies/2008/07/SemanticService#ServiceResponse> ;
+		<http://cambridgesemantics.com/ontologies/2018/06/Export#exportGraph> <http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> ;
+		<http://cambridgesemantics.com/ontologies/2018/06/Export#graphName> "PyAnzo Graphmart" ;
+		<http://openanzo.org/ontologies/2008/07/SemanticService#originatingRequest> <http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> .
+}

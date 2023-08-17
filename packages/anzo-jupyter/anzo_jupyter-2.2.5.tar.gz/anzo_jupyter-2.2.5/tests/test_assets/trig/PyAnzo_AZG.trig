@@ -1,0 +1,52 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix anzo: <http://openanzo.org/ontologies/2008/07/Anzo#> .
+@prefix system: <http://openanzo.org/ontologies/2008/07/System#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix registries: <http://openanzo.org/registries/> .
+
+registries:Datasources {
+    registries:Datasources anzo:defaultNamedGraph  <http://cambridgesemantics.com/GqeDatasource/guid_3af6a337ad444400a1f01dbe2e16b82b> .
+ }
+
+<http://cambridgesemantics.com/GqeDatasource/guid_3af6a337ad444400a1f01dbe2e16b82b> {
+	<http://cambridgesemantics.com/GqeDatasource/guid_3af6a337ad444400a1f01dbe2e16b82b> <http://cambridgesemantics.com/ontologies/2017/07/Gqe#deployDataOnStartup> "true"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#disableGatherStatistics> "false"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#disableVacuum> "false"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#host> "localhost" ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#httpPassword> "encrypted:Z9U2/E1HD1ZACeLb59zfaA=="^^anzo:password ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#httpUser> "admin" ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#isAccelerator> "true"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#keepAliveTimeout> "60"^^xsd:int ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#managementPort> "5600"^^xsd:int ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#port> "5700"^^xsd:int ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#quadMode> "false"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#reloadGqeOnStartup> "true"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#trustAll> "true"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#useAnzoGraphPersistence> "true"^^xsd:boolean ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#useGrpc> "true"^^xsd:boolean ;
+		system:concurrentQueries "10"^^xsd:int ;
+		system:created "2020-03-25T16:50:50.760Z"^^xsd:dateTime ;
+		system:enabled "true"^^xsd:boolean ;
+		system:isOnline "true"^^xsd:boolean ;
+		system:isPrimary "false"^^xsd:boolean ;
+		system:isSelfDescribing "true"^^xsd:boolean ;
+		system:lastUpdateTime "2020-05-16T14:26:21.275Z"^^xsd:dateTime ;
+		system:lastUpdateTimestamp "1589639181275"^^xsd:long ;
+		system:mountTime "2020-05-16T14:26:59.665Z"^^xsd:dateTime ;
+		system:path "grpc://localhost:5700" ;
+		system:readOnly "true"^^xsd:boolean ;
+		system:resetEnabled "false"^^xsd:boolean ;
+		system:serverId "12cb-9534-61af-4525-b43d-3565" ;
+		system:status system:Online ;
+		system:statusDetails "[2020-05-16 10:27:03] Reload completed in 65 seconds." ;
+		system:version "unknown" ;
+		<http://purl.org/dc/terms/created> "2020-03-25T16:50:50.758Z"^^xsd:dateTime ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://cambridgesemantics.com/ontologies/2017/07/Gqe#useFuturesQueryManager> "true"^^xsd:boolean ;
+		system:primaryServer "true"^^xsd:boolean ;
+		a system:Component , system:Datasource , system:GqeDatasource ;
+		<http://purl.org/dc/terms/modified> "2020-03-25T16:50:50.758Z"^^xsd:dateTime ;
+		dc:title "Pyanzo AZG" .
+}

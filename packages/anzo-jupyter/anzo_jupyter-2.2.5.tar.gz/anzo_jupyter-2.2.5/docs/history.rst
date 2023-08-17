@@ -1,0 +1,1 @@
+.. dminclude:: ../HISTORY.md

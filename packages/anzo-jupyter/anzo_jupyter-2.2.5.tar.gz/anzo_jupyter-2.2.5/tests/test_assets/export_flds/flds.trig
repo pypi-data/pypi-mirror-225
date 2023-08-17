@@ -1,0 +1,35 @@
+
+<http://cambridgesemantics.com/FileBackedLinkedDataSet/6d5c27f6bf80467db18b14a15e5b02e9> {
+	<http://cambridgesemantics.com/ComponentDatasetEdition/0985ed9a68664c4aad42d7d34fa41235> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#editionComponent> <http://openanzo.org/DatasetComponent/4f1799b5-d454-4ba3-9745-3df142c08ffa> ;
+		<http://purl.org/dc/terms/created> "2021-09-13T15:53:35.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2021-09-13T15:53:35.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#DatasetEdition> ;
+		<http://www.w3.org/2000/01/rdf-schema#comment> "Contains the latest successfully published data for all jobs" ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "Default Edition" .
+	
+	<http://cambridgesemantics.com/FileBackedLinkedDataSet/6d5c27f6bf80467db18b14a15e5b02e9> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFilesOnly> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFormat> "ttl" ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataset> <http://cambridgesemantics.com/FileBackedLinkedDataSet/6d5c27f6bf80467db18b14a15e5b02e9> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#datasetComponent> <http://openanzo.org/DatasetComponent/4f1799b5-d454-4ba3-9745-3df142c08ffa> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#edition> <http://cambridgesemantics.com/ComponentDatasetEdition/0985ed9a68664c4aad42d7d34fa41235> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexDocs> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexSnapshot> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ontology> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#workingEdition> <http://cambridgesemantics.com/ComponentDatasetEdition/0985ed9a68664c4aad42d7d34fa41235> ;
+		<http://purl.org/dc/elements/1.1/title> "export_flds" ;
+		<http://purl.org/dc/terms/created> "2021-09-13T15:53:35.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2021-09-13T15:53:36.933Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ComponentBasedLinkedDataSet> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#FileBasedLinkedDataSet> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataConfig> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataSet> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "export_flds" .
+	
+	<http://openanzo.org/DatasetComponent/4f1799b5-d454-4ba3-9745-3df142c08ffa> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#parentIsRoot> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#pathFromDatasetRoot> "onts" ;
+		<http://purl.org/dc/terms/created> "2021-09-13T15:53:34.746Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modified> "2021-09-13T15:53:35.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#DatasetComponent> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#MaterializedDatasetComponent> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#OntDatasetComponent> .
+}

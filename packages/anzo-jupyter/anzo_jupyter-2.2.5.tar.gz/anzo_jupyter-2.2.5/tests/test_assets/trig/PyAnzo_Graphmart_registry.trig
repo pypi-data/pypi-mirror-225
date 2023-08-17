@@ -1,0 +1,40 @@
+
+<http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> {
+	<http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> , <http://cambridgesemantics.com/Layer/d2bb3f418d7942d8a85fdedad608ccb3> , <http://cambridgesemantics.com/Layer/dd29f470d8d44dad8e6cf9ce3b6322fd> , <http://cambridgesemantics.com/LoadDataStep/1347736407234bdc84f7b04991c70541> , <http://cambridgesemantics.com/QueryStep/390e0618d5d04dd5ac57cbf26947f397> .
+}
+
+<http://cambridgesemantics.com/catalogs/LinkedDataSets> {
+	<http://cambridgesemantics.com/catalogs/LinkedDataSets> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://openanzo.org/catEntry(%5Bhttp%3A%2F%2Fcsi.com%2FFileBasedLinkedDataSet%2Fbd05ae950df39757dfbb5a6fbc5c925e%5D%40%5Bhttp%3A%2F%2Fopenanzo.org%2Fdatasource%2FsystemDatasource%5D)> .
+}
+
+<http://cambridgesemantics.com/registries/DataSets> {
+	<http://cambridgesemantics.com/registries/DataSets> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> .
+}
+
+<http://cambridgesemantics.com/registries/DataSources> {
+	<http://cambridgesemantics.com/registries/DataSources> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://cambridgesemantics.com/File_Connection/local> .
+}
+
+<http://cambridgesemantics.com/registries/GraphmartElements> {
+	<http://cambridgesemantics.com/registries/GraphmartElements> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://cambridgesemantics.com/Layer/d2bb3f418d7942d8a85fdedad608ccb3> , <http://cambridgesemantics.com/Layer/dd29f470d8d44dad8e6cf9ce3b6322fd> , <http://cambridgesemantics.com/LoadDataStep/1347736407234bdc84f7b04991c70541> , <http://cambridgesemantics.com/QueryStep/390e0618d5d04dd5ac57cbf26947f397> .
+}
+
+<http://cambridgesemantics.com/registries/Graphmarts> {
+	<http://cambridgesemantics.com/registries/Graphmarts> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://cambridgesemantics.com/Graphmart/9da211618a15476daa10cead2292d8e7> .
+}
+
+<http://cambridgesemantics.com/registries/LinkedDataSets> {
+	<http://cambridgesemantics.com/registries/LinkedDataSets> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> .
+}
+
+<http://cambridgesemantics.com/registries/Ontologies> {
+	<http://cambridgesemantics.com/registries/Ontologies> a <http://openanzo.org/ontologies/2008/07/Anzo#Dataset> ;
+		<http://openanzo.org/ontologies/2008/07/Anzo#defaultNamedGraph> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> .
+}

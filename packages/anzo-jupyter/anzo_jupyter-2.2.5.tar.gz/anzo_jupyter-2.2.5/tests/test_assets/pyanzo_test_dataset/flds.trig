@@ -1,0 +1,28 @@
+
+<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> {
+	<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFilesOnly> "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataFormat> "ttl.gz" ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#dataset> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexDocs> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#hasTextIndexSnapshot> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#metrics> <http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e_metrics> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ontology> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#relatedJob> <http://cambridgesemantics.com/Project/a6a1e366-ae5c-76f0-56f4-d058405b669a/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/e440b314-272a-8455-001c-b12bddcd63d1/Job/4367cfa7-a58b-798b-dcd7-b2ec265a7f11> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#relatedProject> <http://cambridgesemantics.com/Project/a6a1e366-ae5c-76f0-56f4-d058405b669a/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/4fb0f2e7-64a5-640c-ad7c-1a77ffd7f99d/e440b314-272a-8455-001c-b12bddcd63d1> ;
+		<http://purl.org/dc/elements/1.1/title> "PyAnzo Dataset" ;
+		<http://purl.org/dc/terms/created> "2020-05-16T14:45:29.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/creator> <http://openanzo.org/system/internal/sysadmin> ;
+		<http://purl.org/dc/terms/modified> "2020-05-16T14:45:29.980Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+		<http://purl.org/dc/terms/modifier> <http://openanzo.org/system/internal/sysadmin> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#FileBasedLinkedDataSet> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataConfig> , <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#LinkedDataSet> ;
+		<http://www.w3.org/2000/01/rdf-schema#label> "PyAnzo Dataset" .
+	
+	<http://csi.com/FileBasedLinkedDataSet/bd05ae950df39757dfbb5a6fbc5c925e_metrics> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classUsageData> <http://openanzo.org/ClassInstanceCount/3be79371-d3e7-4e26-9884-5c1c6ffa648c> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#sizeInBytes> "406"^^<http://www.w3.org/2001/XMLSchema#long> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#statementCount> "20"^^<http://www.w3.org/2001/XMLSchema#long> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#DatasetMetrics> .
+	
+	<http://openanzo.org/ClassInstanceCount/3be79371-d3e7-4e26-9884-5c1c6ffa648c> <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classCount> "5"^^<http://www.w3.org/2001/XMLSchema#long> ;
+		<http://cambridgesemantics.com/ontologies/2009/05/LinkedData#classType> <http://cambridgesemantics.com/ont/autogen/a69a/PyAnzo_Dictionary/PyAnzo_Datasource#Person> ;
+		a <http://cambridgesemantics.com/ontologies/2009/05/LinkedData#ClassInstanceCount> .
+}
