@@ -1,0 +1,14 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "setuptools_scm[toml]>=3.4",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "src/jacobi/_version.py"
+
+[tool.mypy]
+ignore_missing_imports = true
+allow_redefinition = true
+no_implicit_optional = false
