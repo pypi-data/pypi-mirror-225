@@ -1,0 +1,17 @@
+.version
+README.md
+pyproject.toml
+polyrepo/__init__.py
+polyrepo/__main__.py
+polyrepo/gitlab.py
+polyrepo/handler.py
+polyrepo.egg-info/PKG-INFO
+polyrepo.egg-info/SOURCES.txt
+polyrepo.egg-info/dependency_links.txt
+polyrepo.egg-info/entry_points.txt
+polyrepo.egg-info/requires.txt
+polyrepo.egg-info/top_level.txt
+polyrepo/command/__init__.py
+polyrepo/command/groups_command.py
+polyrepo/command/sync_command.py
+test/test_command_sync.py
