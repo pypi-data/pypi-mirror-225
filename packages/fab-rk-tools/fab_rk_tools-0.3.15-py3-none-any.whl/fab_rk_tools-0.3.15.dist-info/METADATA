@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: fab-rk-tools
+Version: 0.3.15
+Summary: Common tools and utilities for RK graphs
+Author: Optimeering AS
+Author-email: dev@optimeering.com
+Requires-Python: >=3.9,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: archimedes-python-client
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: plotly
