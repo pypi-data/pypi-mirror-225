@@ -1,0 +1,77 @@
+Metadata-Version: 2.1
+Name: templategen
+Version: 0.0.2
+Summary: Souce code generator from a given template
+Home-page: https://github.com/TediCreations/templategen
+Author: Kanelis Elias
+Author-email: hkanelhs@yahoo.gr
+License: MIT
+Download-URL: https://github.com/TediCreations/templategen/archive/Unknown.tar.gz
+Keywords: build,make,util
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/tedicreations/templategen">
+    <img src="./images/logo.jpeg" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">templategen</h3>
+
+  <p align="center">
+    Souce code generator from a given template
+  </p>
+</p>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+All it does is copy template file[s], replace predefined substrings and write the output as a new generated file.
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+
+### Installation
+
+Run the following command:
+
+```sh
+pip install templategen
+```
+
+### Usage
+
+Run the following command:
+
+```sh
+templategen --name=myName --template=c
+```
+
+<!-- LICENSE -->
+## License
+
+Distributed under the GNU3 License. See `LICENSE` for more information.
+
+
+<!-- CONTACT -->
+## Contact
+
+Kanelis Ilias - [email me](mailto:hkanelhs@yahoo.gr)
+
+GitHub Link: [https://github.com/TediCreations/templategen](https://github.com/TediCreations/templategen)
+
+PyPi Link: [https://pypi.org/project/templategen/](https://pypi.org/project/templategen/)
+
+
