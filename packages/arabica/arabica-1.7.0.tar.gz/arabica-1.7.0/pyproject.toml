@@ -1,0 +1,21 @@
+
+[project]
+name = "arabica"
+version = "1.7.0"
+authors = [
+  { name="Petr Korab", email="xpetrkorab@gmail.com" },
+]
+description = "Python package for exploratory text data analysis"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">3.9, <3.11"
+
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/PetrKorab/Arabica"
+"Bug Tracker" = "https://github.com/PetrKorab/Arabica/issues"
