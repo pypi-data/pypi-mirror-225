@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: radiens
+Version: 2.0.2
+Summary: provides python API to RADIENS analytics platform
+Home-page: http://neuronexus.github.io
+Author: NeuroNexus
+Author-email: dkipke@neuronexus.com
+License: MIT
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Installation 
+Installed with
+```bash
+$ pip install radiens
+``` 
+
+For details on usage and API calls, see the [documentation](https://neuronexus.github.io)
