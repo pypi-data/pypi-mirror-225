@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: pybaseanal
+Version: 0.0.3
+Summary: A package to import basic libraries and perform basic data analysis
+Home-page: http://pybaseanal.phaf.in
+Author: Ateendra Jha
+Author-email: jhaateendra@gmail.com
+Keywords: python,pandas,numpy,basic libraries,Null analysis
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# pybaseanal
+
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
+[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)   
+
+## Functionality of the pybaseanal
+
+- Importing basic libraries at once
+- Perform basic analysis 
+> - Null analysis
+
+## Usage
+
+- To read dataframe
+- To perform EDA
+- To annalyse the null
+```
+pip install pybasiclib
+```
+##### For Null Values
+```
+null_Analysis(dataframe)
+```
+
+## Note 
+- Please drop your suggestions on pydev@phaf.in 
+
+## More Information
+- Visit [pybaseanal.phaf.in](http://pybaseanal.phaf.in)
