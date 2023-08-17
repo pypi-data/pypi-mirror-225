@@ -1,0 +1,93 @@
+[tool.poetry]
+name = "pycmtensor"
+version = "1.6.4"
+description = "Python Tensor based package for discrete choice modelling."
+authors = ["Melvin Wong <m.j.w.wong@tue.nl>"]
+license = "MIT"
+readme = "README.md"
+
+homepage = ""
+repository = "https://github.com/mwong009/pycmtensor"
+documentation = ""
+
+keywords = []
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9, <3.12"
+pandas = "^1.4.1"
+scipy = "^1.7.1"
+watermark = "^2.3.1"
+
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.0"
+pytest-cov = "^4.1.0"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+isort = "^5.9.1"
+pre-commit = "^3.3.3"
+commitizen = "^3.3.0"
+ipykernel = "^6.24.0"
+
+[tool.poetry.group.doc]
+optional = true
+
+[tool.poetry.group.doc.dependencies]
+mkdocs = "^1.4.3"
+mkdocs-material = "^9.1.18"
+pymdown-extensions = "^10.0.1"
+mkdocstrings = {extras = ["python"], version = "^0.22.0"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+skip_glob = ".pytest_cache/*"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+quiet = false
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.6.4"
+tag_format = "v$version"
+version_files = [
+    "pyproject.toml:version",
+    "pycmtensor/__init__.py",
+]
+
+[tool.pytest]
+markers = []
+## poetry run pytest .
+
+[tool.pytest.ini_options]
+addopts = ["--cov=pycmtensor", "--cov-report=xml"]
+filterwarnings = ["error", "ignore::UserWarning", "ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+omit = [".*", "*/site-packages/*", "tests/*", "docs/*", "samples/*"]
+# poetry run coverage run -m pytest && poetry run coverage report
