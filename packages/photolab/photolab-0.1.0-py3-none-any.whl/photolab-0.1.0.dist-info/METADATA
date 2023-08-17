@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: photolab
+Version: 0.1.0
+Summary: An image processing tool
+Author: Bhamidipati Venkatakrishnasameer
+Author-email: sameer2020bvks@gmail.com
+License: CC BY-SA 4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+License-File: License.txt
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+
+Photolab is a set of image processing alagorithms which can be implemented in various
+      applications like machne learning, feature engineering, etc
