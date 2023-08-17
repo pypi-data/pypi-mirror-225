@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: corefinder
+Version: 1.1.5
+Summary: A module for my digital business card
+Home-page: https://github.com/Corefinder89/corefinder
+Author: Soumyajit Basu
+Author-email: soumyajit.basu62@gmail.com
+License: License :: OSI Approved :: MIT License
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# My Digital Business card
+
+Creating a digital business card for myself so that it can be used to give my digital information over the internet.
+Developed in python. The card would look like this:
+
+![image](image/calvin.png)
+
+To see my digital profile just run the command:
+
+`pip install --user corefinder`
+
+
+To get help run this command:
+
+`corefinder --help`
+
+
+To get version run this command:
+
+`corefinder --version`
+
+
