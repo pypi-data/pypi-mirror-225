@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "taskp5"
+version = "2.0.3"
+description = "Log file parser CLI and library (v.2)"
+authors = ["Bill.Avramenko <billavramenko@gmail.com>"]
+readme = "README.md"
+packages = [{include = "log_parser2"}]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+questionary = "^2.0.0"
+mysql-connector-python = "^8.1.0"
+psycopg2 = "^2.9.7"
+pymongo = "^4.4.1"
+redis = "^4.6.0"
+
+
+[tool.poetry.scripts]
+log_parser2 = "log_parser2:parse_cli"
+log_parser2_showcase = "log_parser2.showcase:parse_showcase"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
