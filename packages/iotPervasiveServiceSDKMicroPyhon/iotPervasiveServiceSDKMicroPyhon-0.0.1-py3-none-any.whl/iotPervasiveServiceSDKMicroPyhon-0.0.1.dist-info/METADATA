@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: iotPervasiveServiceSDKMicroPyhon
+Version: 0.0.1
+Summary: 设备端直连框架python
+Author: whu贾向阳团队-葛家和
+Author-email: 2898534520@qq.com
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: micropython-umqtt.simple
+Requires-Dist: micropython-ulogger
+Requires-Dist: micropython-urequests
+
+# Example Package
+
+测试
