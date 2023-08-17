@@ -1,0 +1,2194 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://www.microchip.com/schema/ECC204_TA010_Config_1.0" targetNamespace="https://www.microchip.com/schema/ECC204_TA010_Config_1.0" elementFormDefault="qualified">
+  <xs:element name="ECC204_Config" type="ECC204_TA010_Config_Type"/>
+  <xs:element name="TA010_Config" type="ECC204_TA010_Config_Type"/>
+  
+  <xs:complexType name="ECC204_TA010_Config_Type">
+    <xs:sequence>
+      <xs:element name="Config_Name" type="xs:string"/>
+      <xs:element name="Additional_Data" type="ClientDataType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Allows one to define public data to be sent to the client. This allows one to add data to the provisioning
+            config that the provisioning client can use that may not be part of the standard configuration.
+
+            This data can also be referenced in the Data_Sources section.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Configuration_Subzone_0" type="Configuration_Subzone_0_Type">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration Subzone 0 (CSZ0) contains information that can only be set by Microchip.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Configuration_Subzone_1" type="Configuration_Subzone_1_Type">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration Subzone 1 (CSZ1) contains the primary configuration options associated with the device.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Configuration_Subzone_2" type="Configuration_Subzone_2_Type">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration Subzone 2 (CSZ2) stores the value of the monotonic counter.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Configuration_Subzone_3" type="Configuration_Subzone_3_Type">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration Subzone 3 (CSZ3) is used to store the address of the device and compliance mode settings.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Slot_Locks" type="Slot_Locks_Type">
+        <xs:annotation>
+          <xs:documentation>
+            Controls which slots should be locked after provisioning.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Data_Sources" type="DataSourcesType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Configuration_Subzone_0_Type">
+    <xs:sequence>
+      <xs:element name="SN_0_1" type="DataHex-2bytes">
+        <xs:annotation>
+          <xs:documentation>
+            First two bytes of the manufacturing ID, which is also the first two bytes of the serial number (SN[0:1]).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SN_8" type="DataHex-1byte">
+        <xs:annotation>
+          <xs:documentation>
+            Third and last byte of the manufacturing ID, which is also the last byte of the serial number (SN[8]).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IO_Options">
+        <xs:annotation>
+          <xs:documentation>
+            Options for configuring device I/O.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Interface">
+              <xs:annotation>
+                <xs:documentation>
+                  Selects SWI-PWM or I2C interface options.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="SWI_PWM"/>
+                  <xs:enumeration value="I2C"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Reserved" type="NumberBinary-7bit">
+              <xs:annotation>
+                <xs:documentation>Must be zero.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Reserved_11" type="DataHex-2bytes">
+        <xs:annotation>
+          <xs:documentation>Must be zero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Primary_Deleted">
+        <xs:annotation>
+          <xs:documentation>
+            Indicates whether the data slots of the device are deleted using the Delete command. Must be zero
+            for provisioning.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union memberTypes="NumberHex-8bit">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="Normal"/>
+                <xs:enumeration value="Data_Slots_Deleted"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Reserved_14" type="DataHex-2bytes">
+        <xs:annotation>
+          <xs:documentation>Must be zero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Configuration_Subzone_1_Type">
+    <xs:sequence>
+      <xs:element name="Chip_Mode">
+        <xs:annotation>
+          <xs:documentation>
+            Mode settings that apply to device as a whole, instead of individual slots.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CMOS_En">
+              <xs:annotation>
+                <xs:documentation>
+                  Selects input level reference.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="Fixed_Reference"/>
+                  <xs:enumeration value="VCC_Referenced"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Clock_Divider">
+              <xs:annotation>
+                <xs:documentation>
+                  Selects the clock divider. Note that 0b11 will also result in a divide by 1 (fastest).
+                </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="4"/>
+                  <xs:enumeration value="2"/>
+                  <xs:enumeration value="1"/>
+                  <xs:enumeration value="0b11"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="RNG_NRBG_Health_Test_Auto_Clear" type="BooleanType">
+              <xs:annotation>
+                <xs:documentation>
+                  The RNG NRBG health test failure bit is set after any time that a command fails as a result of a
+                  health test failure. If this option is set to True and the failure symptom is transient, then when
+                  run a second time, the command may pass. Otherwise, if set to False, The RNG NRBG health test failure
+                  bit remains set until it is explicitly cleared by a wake, power-up or successful self-test (mode
+                  includes RNG) execution.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Reserved" type="NumberBinary-4bit">
+              <xs:annotation>
+                <xs:documentation>
+                  Must be zero.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Slot_Config0">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration settings specific to slot 0.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Limited_Use" type="BooleanType">
+              <xs:annotation>
+                <xs:documentation>
+                  If True, key usage is limited by the monotonic counter. Otherwise, if False, there are no usage
+                  limitations.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Reserved" type="NumberBinary-7bit">
+              <xs:annotation>
+                <xs:documentation>
+                  Must be zero.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Reserved_2" type="DataHex-1byte">
+        <xs:annotation>
+          <xs:documentation>
+            Must be zero.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reserved_3" type="DataHex-1byte">
+        <xs:annotation>
+          <xs:documentation>
+            Must be zero.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Slot_Config3">
+        <xs:annotation>
+          <xs:documentation>
+            Configuration settings specific to slot 0.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Write_Mode">
+              <xs:annotation>
+                <xs:documentation>
+                  If set to Clear, the key can be written in the clear. If set to Encrypted, the key must be encrypted
+                  and an authorizing input MAC is required.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="Clear"/>
+                  <xs:enumeration value="Encrypted"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Limited_Use" type="BooleanType">
+              <xs:annotation>
+                <xs:documentation>
+                  If True, key usage is limited by the monotonic counter. Otherwise, if False, there are no usage
+                  limitations.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Reserved" type="NumberBinary-6bit">
+              <xs:annotation>
+                <xs:documentation>
+                  Must be zero.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Reserved_5" type="DataHex-11bytes">
+        <xs:annotation>
+          <xs:documentation>Must be zero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Lock" type="BooleanType">
+        <xs:annotation>
+          <xs:documentation>
+            If True, Configuration Subzone 1 will be locked.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Configuration_Subzone_2_Type">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Counts_Remaining">
+          <xs:annotation>
+            <xs:documentation>
+              Number of counts remaining in the counter (10000 to 0). This will be converted to a count value
+              (10000 - Counts_Remaining) and then translated to the custom binary format in the device configuration
+              zone.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+              <xs:maxInclusive value="10000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Counter_Value">
+          <xs:annotation>
+            <xs:documentation>
+              Counter value in counts (0 to 10000). Counter is monotonic and counts up to a max of 10000. This will be
+              translated to the custom binary format in the device configuration zone.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+              <xs:maxInclusive value="10000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Counter" type="DataHex-16bytes">
+          <xs:annotation>
+            <xs:documentation>
+              Raw binary counter value in the custom binary format.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Lock" type="BooleanType">
+        <xs:annotation>
+          <xs:documentation>
+            If True, Configuration Subzone 2 will be locked.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Configuration_Subzone_3_Type">
+    <xs:sequence>
+      <xs:element name="Device_Address" type="NumberHex-8bit">
+        <xs:annotation>
+          <xs:documentation>
+            Address used to identify the device in either I2C or SWI mode. Address is the least significant 7-bits.
+            Most significant bit must be zero.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CMP_Mode" type="BooleanType">
+        <xs:annotation>
+          <xs:documentation>
+            If True, forces compliance to some certification regimes.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reserved_1" type="NumberBinary-7bit">
+        <xs:annotation>
+          <xs:documentation>
+            Must be 0.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reserved_2" type="DataHex-14bytes">
+        <xs:annotation>
+          <xs:documentation>
+            Must be 0.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Lock" type="BooleanType">
+        <xs:annotation>
+          <xs:documentation>
+            If True, Configuration Subzone 3 will be locked.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Slot_Locks_Type">
+    <xs:sequence>
+      <xs:element name="Slot_0" type="BooleanType"/>
+      <xs:element name="Slot_1" type="BooleanType"/>
+      <xs:element name="Slot_2" type="BooleanType"/>
+      <xs:element name="Slot_3" type="BooleanType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="DeviceTargetType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="Slot (0|[1-9][0-9]*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+<!-- Start https://www.microchip.com/schema/Provisioning_Data_Sources_1.3 Merge -->
+  <xs:simpleType name="BooleanType">
+    <xs:annotation>
+      <xs:documentation>
+        Boolean enumeration
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="True"/>
+      <xs:enumeration value="False"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Fixed size number types with hex formatting. -->
+  <xs:simpleType name="NumberHex-8bit">
+    <xs:annotation>
+      <xs:documentation>
+        8-bit number as a single hex octet (e.g. 0x4F).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0x0*[0-9a-fA-F]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Fixed size number types with binary formatting. -->
+  <xs:simpleType name="NumberBinary-1bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (1 bit) encoded as 1/0 bits (e.g. 0b1).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-2bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (2 bits) encoded as 1/0 bits (e.g. 0b10).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-3bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (3 bits) encoded as 1/0 bits (e.g. 0b101).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-4bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (4 bits) encoded as 1/0 bits (e.g. 0b1010).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-5bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (5 bits) encoded as 1/0 bits (e.g. 0b10101).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-6bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (6 bits) encoded as 1/0 bits (e.g. 0b101010).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberBinary-7bit">
+    <xs:annotation>
+      <xs:documentation>
+        Binary number (7 bits) encoded as 1/0 bits (e.g. 0b1010101).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0b0*[01]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Fixed length data (binary) with hex only encoding. -->
+  <xs:simpleType name="ValueHex-1byte">
+    <xs:annotation>
+      <xs:documentation>
+        1 byte of binary data encoded as a hex octet.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){1}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-1byte">
+    <xs:annotation>
+      <xs:documentation>
+        1 byte of binary data encoded as a hex octet.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-1byte">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-2bytes">
+    <xs:annotation>
+      <xs:documentation>
+        2 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-2bytes">
+    <xs:annotation>
+      <xs:documentation>
+        2 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-2bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-3bytes">
+    <xs:annotation>
+      <xs:documentation>
+        3 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-3bytes">
+    <xs:annotation>
+      <xs:documentation>
+        3 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-3bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-4bytes">
+    <xs:annotation>
+      <xs:documentation>
+        4 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-4bytes">
+    <xs:annotation>
+      <xs:documentation>
+        4 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-4bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-5bytes">
+    <xs:annotation>
+      <xs:documentation>
+        5 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-5bytes">
+    <xs:annotation>
+      <xs:documentation>
+        5 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-5bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-6bytes">
+    <xs:annotation>
+      <xs:documentation>
+        6 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-6bytes">
+    <xs:annotation>
+      <xs:documentation>
+        6 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-6bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-7bytes">
+    <xs:annotation>
+      <xs:documentation>
+        7 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-7bytes">
+    <xs:annotation>
+      <xs:documentation>
+        7 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-7bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-8bytes">
+    <xs:annotation>
+      <xs:documentation>
+        8 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){8}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-8bytes">
+    <xs:annotation>
+      <xs:documentation>
+        8 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-8bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-9bytes">
+    <xs:annotation>
+      <xs:documentation>
+        9 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-9bytes">
+    <xs:annotation>
+      <xs:documentation>
+        9 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-9bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-10bytes">
+    <xs:annotation>
+      <xs:documentation>
+        10 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-10bytes">
+    <xs:annotation>
+      <xs:documentation>
+        10 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-10bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-11bytes">
+    <xs:annotation>
+      <xs:documentation>
+        11 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){11}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-11bytes">
+    <xs:annotation>
+      <xs:documentation>
+        11 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-11bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-12bytes">
+    <xs:annotation>
+      <xs:documentation>
+        12 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-12bytes">
+    <xs:annotation>
+      <xs:documentation>
+        12 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-12bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-13bytes">
+    <xs:annotation>
+      <xs:documentation>
+        13 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){13}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-13bytes">
+    <xs:annotation>
+      <xs:documentation>
+        13 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-13bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-14bytes">
+    <xs:annotation>
+      <xs:documentation>
+        14 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){14}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-14bytes">
+    <xs:annotation>
+      <xs:documentation>
+        14 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-14bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-15bytes">
+    <xs:annotation>
+      <xs:documentation>
+        15 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-15bytes">
+    <xs:annotation>
+      <xs:documentation>
+        15 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-15bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ValueHex-16bytes">
+    <xs:annotation>
+      <xs:documentation>
+        16 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\s*([0-9a-fA-F]{2}\s*){16}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataHex-16bytes">
+    <xs:annotation>
+      <xs:documentation>
+        16 bytes of binary data encoded as hex octets.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueHex-16bytes">
+        <xs:attribute name="encoding" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Hex"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="ValueBase64">
+    <xs:annotation>
+      <xs:documentation>
+        Binary data encoded in Base64.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[\sA-Za-z0-9+/]*[\s=]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataBase64">
+    <xs:annotation>
+      <xs:documentation>
+        Binary data encoded in Base64.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ValueBase64">
+        <xs:attribute name="encoding" type="xs:token" use="required" fixed="Base64"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ClientDataType">
+    <xs:sequence>
+      <xs:element name="Data_Item" type="ClientDataItemType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClientDataItemType">
+    <xs:sequence>
+      <xs:element name="Name" type="DataSourceNameType"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Value" type="ValueType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValueType">
+    <xs:choice>
+      <xs:element name="Bytes" type="PublicBinaryDataType"/>
+      <xs:element name="Date_Time" type="xs:dateTime"/>
+      <xs:element name="ECC_Public_Key" type="StaticPublicKeyPublicType"/>
+      <xs:element name="RSA_Public_Key" type="StaticPublicKeyPublicType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="ReferenceMappingsType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Database_Record_Set_Name">
+          <xs:annotation>
+            <xs:documentation>
+              Customer database record set name
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="External" type="xs:string"/>
+              <xs:element name="Internal" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Counter_Name" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              Customer counter name
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="External" type="xs:string"/>
+              <xs:element name="Internal" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="DataSourceNameType">
+    <xs:annotation>
+      <xs:documentation>Data sources use c-function like naming conventions.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-zA-Z_][a-zA-Z0-9_]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataSourceReferenceType">
+    <xs:annotation>
+      <xs:documentation>Format used to refer to data sources and their outputs.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-zA-Z_][0-9a-zA-Z_]*(\.[a-zA-Z_][0-9a-zA-Z_]*)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PublicBinaryEncodingEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Hex"/>
+      <xs:enumeration value="Base64"/>
+      <xs:enumeration value="String_UTF8"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PublicBinaryDataType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="encoding" type="PublicBinaryEncodingEnum" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SecretBinaryDataBaseType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="encrypted" type="BooleanType" use="required"/>
+        <xs:attribute name="algorithm" type="EncryptionAlgorithmEnum" use="optional"/>
+        <xs:attribute name="key_name" type="DataSourceNameType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="SecretBinaryEncodingEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Hex"/>
+      <xs:enumeration value="Base64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SecretBinaryDataType">
+    <xs:simpleContent>
+      <xs:extension base="SecretBinaryDataBaseType">
+        <xs:attribute name="encoding" type="SecretBinaryEncodingEnum" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="AsymmetricSecretBinaryEncodingEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Hex"/>
+      <xs:enumeration value="Base64"/>
+      <xs:enumeration value="PEM"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AsymmetricSecretBinaryDataType">
+    <xs:simpleContent>
+      <xs:extension base="SecretBinaryDataBaseType">
+        <xs:attribute name="encoding" type="AsymmetricSecretBinaryEncodingEnum" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              PEM encoding is only intended to be specified when the config has unencrypted secret values. Once
+              encrypted, the encoding should be changed to one of the other options (Hex or Base64).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="EncryptionAlgorithmEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="AES256_GCM"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HashAlgorithmEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="SHA1"/>
+      <xs:enumeration value="SHA224"/>
+      <xs:enumeration value="SHA256"/>
+      <xs:enumeration value="SHA384"/>
+      <xs:enumeration value="SHA512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HashAlgorithmAndNoneEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="SHA1"/>
+      <xs:enumeration value="SHA224"/>
+      <xs:enumeration value="SHA256"/>
+      <xs:enumeration value="SHA384"/>
+      <xs:enumeration value="SHA512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DataSourcesType">
+    <xs:sequence>
+      <xs:element name="Data_Source" type="DataSourceType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Data source objects for specifying static and dynamic data along with functions affecting it.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Writer" type="DataSourcesWriterType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Writer types specify where named Data_Source items or Function results should be written to on a
+            device.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Wrapped_Key" type="DataSourcesWrappedKeyType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            A wrapped key item, which was used to encrypt one or more secret Data_Source items.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DataSourceType">
+    <xs:sequence>
+      <xs:element name="Name" type="DataSourceNameType">
+        <xs:annotation>
+          <xs:documentation>
+            The name of the Data_Source, which is directly referenced by either Functions or Writers.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            An arbitrary description of what this Data_Source is used for. Not required.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="Static_Bytes" type="StaticBytesType">
+          <xs:annotation>
+            <xs:documentation>
+              Static data that is sourced from this configuration.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Static_ECC_Private_Key" type="StaticPrivateKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Static ECC Private Key definition.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Static_ECC_Public_Key" type="StaticPublicKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Static ECC Public Key definition.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Static_RSA_Private_Key" type="StaticPrivateKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Static RSA Public Key definition.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Static_RSA_Public_Key" type="StaticPublicKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Static RSA Public Key definition.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Static_Date_Time">
+          <xs:annotation>
+            <xs:documentation>
+              Static date and time
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Public" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Database_Data" type="DatabaseDataType">
+          <xs:annotation>
+            <xs:documentation>
+              Data that is sourced from the database, such as Record Sets, counters, etc.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="HSM_Generate_Key" type="HSMGenerateKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Generates an asymmetric key pair in the HSM.
+              Has two outputs, Public_Key and Private_Key.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Force_Nonnegative_Fixed_Size">
+          <xs:annotation>
+            <xs:documentation>
+              Treats the input bytes as a big endian signed integer (e.g. ASN.1 format). Sets the upper most bits to
+              0b01 to make the value positive and fixed size (untrimmable).
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Input" type="DataSourceReferenceType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HSM_Random" type="HSMRandomType"/>
+        <xs:element name="Process_Info">
+          <xs:annotation>
+            <xs:documentation>
+              Provides information about the provisioning process and the device being provisioned. Device information
+              may depend on the device being provisioned.
+              - Serial_Number: Bytes - Also known as the Unique ID
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="Bytes_Encode" type="BytesEncodeType"/>
+        <xs:element name="Date_Time_Modify" type="DateTimeModifyType"/>
+        <xs:element name="Current_Date_Time">
+          <xs:complexType/>
+        </xs:element>
+        <xs:element name="Template" type="TemplateType"/>
+        <xs:element name="X509_Certificate" type="X509CertificateType"/>
+        <xs:element name="Counter" type="CounterType"/>
+        <xs:element name="Device_Generate_Key" type="DeviceGenerateKeyType">
+          <xs:annotation>
+            <xs:documentation>
+              Generates a command to have the device being provisioned internally generate an asymmetric key pair.
+              Single output is the public key generated and returned by the device.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Client_Device_Data" type="ClientDeviceDataType">
+          <xs:annotation>
+            <xs:documentation>
+              Per-device public data supplied by the provisioning client.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Bytes_Pad" type="BytesPadType">
+          <xs:annotation>
+            <xs:documentation>
+              Pads Bytes data out to a fixed size.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="KDF" type="KDFType">
+          <xs:annotation>
+            <xs:documentation>
+              Generate secret key using a Key Diversification Function (KDF).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MAC" type="MACType">
+          <xs:annotation>
+            <xs:documentation>
+              Generate a MAC using a key and text.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Hash" type="HashType">
+        </xs:element>
+        <xs:element name="Qi_Certificate_Chain" type="QiCertificateChainType">
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StaticBytesType">
+    <xs:choice>
+      <xs:element name="Public" type="PublicBinaryDataType"/>
+      <xs:element name="Secret" type="SecretBinaryDataType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="StaticPrivateKeyType">
+    <xs:choice>
+      <xs:element name="Secret" type="StaticPrivateKeySecretType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="StaticPrivateKeyPublicType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="encoding" fixed="PEM" use="required"/>
+        <xs:attribute name="format" fixed="PKCS8" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StaticPrivateKeySecretType">
+    <xs:complexContent>
+      <xs:extension base="AsymmetricSecretBinaryDataType">
+        <xs:attribute name="format" use="required" fixed="PKCS8"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StaticPublicKeyType">
+    <xs:choice>
+      <xs:element name="Public" type="StaticPublicKeyPublicType"/>
+      <xs:element name="Secret" type="StaticPublicKeySecretType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="StaticPublicKeyPublicType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="encoding" fixed="PEM" use="required"/>
+        <xs:attribute name="format" fixed="Subject_Public_Key_Info" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StaticPublicKeySecretType">
+    <xs:complexContent>
+      <xs:extension base="AsymmetricSecretBinaryDataType">
+        <xs:attribute name="format" use="required" fixed="Subject_Public_Key_Info"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DatabaseDataType">
+    <xs:sequence>
+      <xs:element name="Record_Set_Name" type="xs:token"/>
+      <xs:element name="Fields">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Field" type="DatabaseDataFieldType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatabaseDataFieldType">
+    <xs:simpleContent>
+      <xs:extension base="DataSourceNameType">
+        <xs:attribute name="type" type="DataTypeEnum" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="DataTypeEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Bytes"/>
+      <xs:enumeration value="ECC_Private_Key"/>
+      <xs:enumeration value="ECC_Public_Key"/>
+      <xs:enumeration value="RSA_Private_Key"/>
+      <xs:enumeration value="RSA_Public_Key"/>
+      <xs:enumeration value="Date_Time"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PublicDataTypeEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Bytes"/>
+      <xs:enumeration value="ECC_Public_Key"/>
+      <xs:enumeration value="RSA_Public_Key"/>
+      <xs:enumeration value="Date_Time"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="HSMGenerateKeyType">
+    <xs:choice>
+      <xs:element name="RSA" type="GenerateKeyRSAType"/>
+      <xs:element name="ECC" type="GenerateKeyECCType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="GenerateKeyRSAType">
+    <xs:sequence>
+      <xs:element name="Key_Size">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="512"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Exponent" type="BignumHexType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BignumHexType">
+    <xs:annotation>
+      <xs:documentation>
+        Arbitrary large integer in big endian twos-complement form.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="0x([0-9a-fA-F]{2})+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GenerateKeyECCType">
+    <xs:sequence>
+      <xs:element name="Curve" type="xs:token"/>
+      <xs:element name="Compact" type="BooleanType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            If True, the generated key pair will have a public key that can be represented by the ECC
+            Compact form as defined in https://tools.ietf.org/id/draft-jivsov-ecc-compact-05.html
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HSMRandomType">
+    <xs:sequence>
+      <xs:element name="Size">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Secret_Data" type="BooleanType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BytesEncodeType">
+    <xs:sequence>
+      <xs:element name="Input" type="DataSourceReferenceType"/>
+      <xs:element name="Algorithm">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Hex" type="BytesEncodeHexType"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BytesEncodeHexType">
+    <xs:sequence>
+      <xs:element name="Case" type="StringCaseType"/>
+      <xs:element name="Separator" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="StringCaseType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Upper"/>
+      <xs:enumeration value="Lower"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DateTimeModifyType">
+    <xs:sequence>
+      <xs:element name="Input" type="DataSourceReferenceType"/>
+      <xs:element name="Add_Period" type="xs:duration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemplateType">
+    <xs:sequence>
+      <xs:element name="Definition">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TemplateDefinition">
+              <xs:attribute name="encoding" use="required">
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="String_UTF8"/>
+                    <xs:enumeration value="Hex"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TemplateDefinition">
+    <xs:annotation>
+      <xs:documentation>
+        Restricts the template definition string to enforce matched curly brace references and double opening
+        curly brace to escape a litter opening curly brace.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([^{]+|\{[^}]+\}|\{\{)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="X509CertificateType">
+    <xs:sequence>
+      <xs:element name="TBS_Certificate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Version" type="X509VersionType"/>
+            <xs:element name="Serial_Number" type="X509SerialNumberType"/>
+            <xs:element name="Validity">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Not_Before" type="X509TimeType"/>
+                  <xs:element name="Not_After" type="X509TimeType"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Subject" type="X509NameType"/>
+            <xs:element name="Subject_Public_Key_Info" type="X509SubjectPublicKeyInfoType"/>
+            <xs:element name="Issuer_Unique_ID" type="X509IssuerUniqueIDType" minOccurs="0"/>
+            <xs:element name="Subject_Unique_ID" type="X509SubjectUniqueIDType" minOccurs="0"/>
+            <xs:element name="Extensions" type="X509ExtensionsType" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Signature_Algorithm" type="X509SignatureAlgorithmType"/>
+      <xs:element name="CA_Certificate_Chain" type="X509CACertificateChainType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="X509VersionType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="V1"/>
+      <xs:enumeration value="V2"/>
+      <xs:enumeration value="V3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="X509SerialNumberType">
+    <xs:simpleContent>
+      <xs:extension base="DataSourceReferenceType">
+        <xs:attribute name="from_source" type="BooleanType" fixed="True" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="X509TimeValueOrDataSourceReferenceType">
+    <xs:union memberTypes="xs:dateTime DataSourceReferenceType"/>
+  </xs:simpleType>
+  <xs:complexType name="X509TimeType">
+    <xs:simpleContent>
+      <xs:extension base="X509TimeValueOrDataSourceReferenceType">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Auto"/>
+              <xs:enumeration value="UTC_Time"/>
+              <xs:enumeration value="Generalized_Time"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="from_source" type="BooleanType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="X509NameType">
+    <xs:sequence>
+      <xs:element name="Relative_Distinguished_Name" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Attribute_Type_And_Value">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Type" type="OIDType"/>
+                  <xs:element name="Value" type="DERBinaryDataOrFromSourceType"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <!-- 2.5.4.3 -->
+            <xs:element name="Common_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.4 -->
+            <xs:element name="Surname" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.5 -->
+            <xs:element name="Serial_Number" type="X520PrintableStringOrFromSourceType"/>
+            <!-- 2.5.4.6 -->
+            <xs:element name="Country_Name" type="X520PrintableStringOrFromSourceType"/>
+            <!-- 2.5.4.7 -->
+            <xs:element name="Locality_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.8 -->
+            <xs:element name="State_Or_Province_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.10 -->
+            <xs:element name="Organization_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.11 -->
+            <xs:element name="Organizational_Unit_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.12 -->
+            <xs:element name="Title" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.42 -->
+            <xs:element name="Given_Name" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.43 -->
+            <xs:element name="Initials" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.44 -->
+            <xs:element name="Generation_Qualifier" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 2.5.4.46 -->
+            <xs:element name="DN_Qualifier" type="X520PrintableStringOrFromSourceType"/>
+            <!-- 2.5.4.65 -->
+            <xs:element name="Pseudonym" type="X520DirectoryStringOrFromSourceType"/>
+            <!-- 0.9.2342.19200300.100.1.25 from RFC 3039 -->
+            <xs:element name="Domain_Component" type="X520IA5StringOrFromSourceType"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="OIDType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]+(\.[0-9]+)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DERBinaryDataOrFromSourceType">
+    <xs:simpleContent>
+      <!-- Not extending from SecretBinaryDataType, since the encoding attribute is optional when from_source is True. -->
+      <xs:extension base="xs:string">
+        <xs:attribute name="from_source" type="BooleanType" use="required"/>
+        <!--
+          SecretBinaryEncodingEnum is used as we want to exclude the String_UTF8 option, since that doesn't make sense
+          for DER encoded data.
+         -->
+        <xs:attribute name="encoding" type="SecretBinaryEncodingEnum" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StringOrDataOrFromSourceType">
+    <xs:annotation>
+      <xs:documentation>
+        Base type for specifying static data or dynamic data from a data source.
+        When from_source attribute is set to False, this indicates static data and the encoding attribute must be used
+        to indicate how the data is encoded. Hex and Base64 are for expressing raw binary values. String_UTF8 indicates
+        the element contents should be used as is.
+        When from_source attribute is True, the element contains a data source reference for where to get the dynamic
+        data from. The encoding attribute has no meaning in this case and should be omitted.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="from_source" type="BooleanType" use="required"/>
+        <xs:attribute name="encoding" type="PublicBinaryEncodingEnum" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="X520DirectoryStringOrFromSourceType">
+    <xs:annotation>
+      <xs:documentation>
+        Express a string using either the PrintableString or UTF8String types. Also allows specifying a data source
+        as the data.
+        While technically this is meant to mirror the X520name definition, the rarely used TeletexString,
+        UniversalString, and BMPString types are unsupported.
+        The Raw type allows one to specify the raw ASN.1 data for the value. Data must include a properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StringOrDataOrFromSourceType">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Raw"/>
+              <xs:enumeration value="Printable_String"/>
+              <xs:enumeration value="UTF8_String"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="X520PrintableStringOrFromSourceType">
+    <xs:annotation>
+      <xs:documentation>
+        Express a string using the PrintableString type directly or from a data source.
+        The Raw type allows one to specify the raw ASN.1 data for the value. Data must include properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StringOrDataOrFromSourceType">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Raw"/>
+              <xs:enumeration value="Printable_String"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="X520IA5StringOrFromSourceType">
+    <xs:annotation>
+      <xs:documentation>
+        Express a string using the IA5String type directly or from a data source.
+        The Raw type allows one to specify the raw ASN.1 data for the value must include properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StringOrDataOrFromSourceType">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="Raw"/>
+              <xs:enumeration value="IA5_String"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="X509SubjectPublicKeyInfoType">
+    <xs:sequence>
+      <xs:element name="Key">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="DataSourceReferenceType">
+              <xs:attribute name="from_source" type="BooleanType" fixed="True" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Options" minOccurs="0">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="ECC">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Format">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:token">
+                        <xs:enumeration value="Uncompressed"/>
+                        <xs:enumeration value="Compressed"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="X509IssuerUniqueIDType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="From_CA_Subject_Unique_ID"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="X509SubjectUniqueIDType">
+    <xs:simpleContent>
+      <xs:extension base="DataSourceReferenceType">
+        <xs:attribute name="from_source" type="BooleanType" fixed="True" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="X509ExtensionsType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Extension" type="X509ExtensionType"/>
+      <xs:element name="Authority_Key_Identifier" type="X509AuthorityKeyIdentifierType"/>
+      <xs:element name="Subject_Key_Identifier" type="X509SubjectKeyIdentifierType"/>
+      <xs:element name="Key_Usage" type="X509KeyUsageType"/>
+      <xs:element name="Basic_Constraints" type="X509BasicConstraintsType"/>
+      <xs:element name="Extended_Key_Usage" type="X509ExtendedKeyUsageType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="X509ExtensionType">
+    <xs:sequence>
+      <xs:element name="Extn_ID" type="OIDType"/>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="Extn_Value" type="DERBinaryDataOrFromSourceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KeyIdentifierCalculatedType">
+    <xs:sequence>
+      <xs:element name="Method" type="KeyIdentifierCalculatedEnum"/>
+      <xs:element name="Truncated_Size" type="xs:positiveInteger" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Override the default key ID size for the chosen method.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="KeyIdentifierCalculatedEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="RFC5280_Method1"/>
+      <xs:enumeration value="RFC5280_Method2"/>
+      <xs:enumeration value="RFC7093_Method1"/>
+      <xs:enumeration value="RFC7093_Method2"/>
+      <xs:enumeration value="RFC7093_Method3"/>
+      <xs:enumeration value="RFC7093_Method4_SHA256"/>
+      <xs:enumeration value="RFC7093_Method4_SHA384"/>
+      <xs:enumeration value="RFC7093_Method4_SHA512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="X509AuthorityKeyIdentifierType">
+    <xs:sequence>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="ID_Method">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Key_Identifier">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element name="From_CA_Subject_Key_Identifier"/>
+                  <xs:element name="Calculated" type="KeyIdentifierCalculatedType"/>
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Issuer_And_Serial_Number">
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="From_CA"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509SubjectKeyIdentifierType">
+    <xs:sequence>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="Key_Identifier">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="From_Source" type="DataSourceReferenceType"/>
+            <xs:element name="Calculated" type="KeyIdentifierCalculatedType"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509KeyUsageType">
+    <xs:sequence>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="Digital_Signature" type="BooleanType"/>
+      <xs:element name="Content_Commitment" type="BooleanType"/>
+      <xs:element name="Key_Encipherment" type="BooleanType"/>
+      <xs:element name="Data_Encipherment" type="BooleanType"/>
+      <xs:element name="Key_Agreement" type="BooleanType"/>
+      <xs:element name="Key_Cert_Sign" type="BooleanType"/>
+      <xs:element name="CRL_Sign" type="BooleanType"/>
+      <xs:element name="Encipher_Only" type="BooleanType"/>
+      <xs:element name="Decipher_Only" type="BooleanType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509BasicConstraintsType">
+    <xs:sequence>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="CA" type="BooleanType"/>
+      <xs:element name="Path_Len_Constraint" minOccurs="0">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="No_Limit"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509ExtendedKeyUsageType">
+    <xs:sequence>
+      <xs:element name="Critical" type="BooleanType"/>
+      <xs:element name="Key_Purpose_Id" type="OIDType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509SignatureAlgorithmType">
+    <xs:choice>
+      <xs:element name="ECDSA" type="X509SignatureAlgorithmECDSAType"/>
+      <xs:element name="RSASSA_PKCS1_V1_5" type="X509SignatureAlgorithmRSA15Type"/>
+      <xs:element name="RSASSA_PSS" type="X509SignatureAlgorithmRSAPSSType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="X509SignatureAlgorithmECDSAType">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509SignatureAlgorithmRSA15Type">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509SignatureAlgorithmRSAPSSType">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmEnum"/>
+      <xs:element name="Mask_Generation_Function">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="MGF1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Hash" type="HashAlgorithmEnum"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Salt_Length" type="xs:nonNegativeInteger"/>
+      <xs:element name="Trailer_Field">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="0xBC"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignatureAlgorithmType">
+    <xs:annotation>
+      <xs:documentation>
+        Similar to X509SignatureAlgorithmType, except Hashes can be set to None to indicate a raw signing
+        operation.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="ECDSA" type="SignatureAlgorithmECDSAType"/>
+      <xs:element name="RSASSA_PKCS1_V1_5" type="SignatureAlgorithmRSA15Type"/>
+      <xs:element name="RSASSA_PSS" type="SignatureAlgorithmRSAPSSType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="SignatureAlgorithmECDSAType">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmAndNoneEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignatureAlgorithmRSA15Type">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignatureAlgorithmRSAPSSType">
+    <xs:sequence>
+      <xs:element name="Hash" type="HashAlgorithmEnum"/>
+      <xs:element name="Mask_Generation_Function">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="MGF1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Hash" type="HashAlgorithmEnum"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Salt_Length" type="xs:nonNegativeInteger"/>
+      <xs:element name="Trailer_Field">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="0xBC"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DataSourcesWriterType">
+    <xs:sequence>
+      <xs:element name="Source_Name" type="DataSourceReferenceType">
+        <xs:annotation>
+          <xs:documentation>
+            The name of the source of data, whether that is a named Data_Source item or Function.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Target" type="DeviceTargetType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DataSourcesWrappedKeyType">
+    <xs:sequence>
+      <xs:element name="Name" type="DataSourceNameType"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Key">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="algorithm" fixed="RSA_OAEP_SHA256" use="required"/>
+              <xs:attribute name="encoding" type="SecretBinaryEncodingEnum" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Wrapping_Public_Key">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="encoding" fixed="PEM" use="required"/>
+              <xs:attribute name="format" fixed="Subject_Public_Key_Info" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="X509CACertificateChainType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="encoding" fixed="PEM" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="X509CertificateOrFromSource">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="from_source" type="BooleanType" use="required"/>
+        <xs:attribute name="format" fixed="PEM" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CounterType">
+    <xs:sequence>
+      <xs:element name="Counter_Name" type="xs:token"/>
+      <xs:element name="Size" type="xs:positiveInteger"/>
+      <xs:element name="Byte_Order" type="ByteOrderType"/>
+      <xs:element name="Signed" type="BooleanType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ByteOrderType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Big"/>
+      <xs:enumeration value="Little"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DeviceGenerateKeyType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="RSA" type="GenerateKeyRSAType"/>
+        <xs:element name="ECC" type="GenerateKeyECCType"/>
+      </xs:choice>
+      <xs:element name="Target" type="DeviceTargetType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClientDeviceDataType">
+    <xs:sequence>
+      <xs:element name="Data_Item" type="ClientDeviceDataItem" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClientDeviceDataItem">
+    <xs:sequence>
+      <xs:element name="Name" type="DataSourceNameType"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Type" type="PublicDataTypeEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BytesPadType">
+    <xs:sequence>
+      <xs:element name="Input" type="DataSourceReferenceType"/>
+      <xs:element name="Fixed_Size">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Output_Size" type="xs:nonNegativeInteger"/>
+            <xs:element name="Pad_Byte" type="NumberHex-8bit"/>
+            <xs:element name="Alignment">
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="Pad_Right"/>
+                  <xs:enumeration value="Pad_Left"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KDFType">
+    <xs:choice>
+      <xs:element name="HKDF_Extract" type="HKDFExtractType"/>
+      <xs:element name="HKDF_Expand" type="HKDFExpandType"/>
+      <xs:element name="HMAC" type="HMACType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="HKDFExtractType">
+    <xs:annotation>
+      <xs:documentation>
+        Performs an HKDF-Extract operation as defined by RFC 5869 section 2.2.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Initial_Keying_Material" type="DataSourceReferenceType"/>
+      <xs:element name="Salt" type="StringOrDataOrFromSourceType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Optional salt value. If omitted, an all-zero value of the hash output length will be used.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Output_Size" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>
+            Size of the output in bytes. Max (and normal) size is the length of the hash algorithm specified. Smaller
+            sizes will be a truncation of the normal output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Hash" type="HashAlgorithmEnum">
+        <xs:annotation>
+          <xs:documentation>
+            Hash algorithm to use for the HKDF operation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HKDFExpandType">
+    <xs:annotation>
+      <xs:documentation>
+        Performs an HKDF-Expand operation as defined by RFC 5869 section 2.3.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Pseudorandom_Key" type="DataSourceReferenceType">
+        <xs:annotation>
+          <xs:documentation>
+            A key of at least the hash length. Typically, the output of an HKDF-Extract operation, however that step
+            can be skipped if the key supplied here is cryptographically strong. See discussion in RFC 5869
+            section 3.3.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Info" type="StringOrDataOrFromSourceType">
+        <xs:annotation>
+          <xs:documentation>
+            Context and/or application specific data.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Output_Size" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>
+            Size of the output in bytes. Maximum size is 255 * hash length.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Hash" type="HashAlgorithmEnum">
+        <xs:annotation>
+          <xs:documentation>
+            Hash algorithm to use for the HKDF operation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MACType">
+    <xs:choice>
+      <xs:element name="HMAC" type="HMACType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="HMACType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines an HMAC operation as defined by RFC 5869 section 2.3.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Key" type="DataSourceReferenceType"/>
+      <xs:element name="Text" type="StringOrDataOrFromSourceType"/>
+      <xs:element name="Output_Size" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>
+            Size of the output in bytes. Max (and normal) size is the length of the hash algorithm specified. Smaller
+            sizes will be a truncation of the normal output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Hash" type="HashAlgorithmEnum">
+        <xs:annotation>
+          <xs:documentation>
+            Hash algorithm to use for the HMAC operation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HashType">
+    <xs:sequence>
+      <xs:element name="Input" type="DataSourceReferenceType"/>
+      <xs:element name="Algorithm" type="HashAlgorithmEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QiCertificateChainType">
+    <xs:sequence>
+      <xs:element name="Root_CA_Certificate" type="DataSourceReferenceType"/>
+      <xs:element name="Manufacturer_CA_Certificate" type="DataSourceReferenceType"/>
+      <xs:element name="Product_Unit_Certificate" type="DataSourceReferenceType"/>
+    </xs:sequence>
+  </xs:complexType>
+<!-- End https://www.microchip.com/schema/Provisioning_Data_Sources_1.3 Merge -->
+</xs:schema>

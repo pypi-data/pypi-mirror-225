@@ -1,0 +1,3481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://www.microchip.com/schema/TA100_Config_1.1" targetNamespace="https://www.microchip.com/schema/TA100_Config_1.1" elementFormDefault="qualified">
+  <element name="TA100_Config">
+    <complexType>
+      <sequence>
+        <element name="Config_Name" type="string"/>
+        <element name="Internal">
+          <complexType>
+            <annotation>
+              <documentation>
+                Internal provisioning information for the TA100 device.
+              </documentation>
+            </annotation>
+            <sequence>
+              <element name="Group_Number" type="tns:NumberHex-16bit">
+                <annotation>
+                  <documentation>
+                    Common number for all devices in a group assigned by Microchip. Used for certain internal
+                    operations.
+                  </documentation>
+                </annotation>
+              </element>
+              <element name="Pull_Up_Map">
+                <annotation>
+                  <documentation>
+                    Pin pull-ups to be enabled.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <choice>
+                    <element name="SOIC8_SPI">
+                      <complexType>
+                        <sequence>
+                          <element name="CS_SCK_SI" type="tns:Boolean"/>
+                          <element name="SO" type="tns:Boolean"/>
+                          <element name="RESET" type="tns:Boolean"/>
+                          <element name="GPIO_3" type="tns:Boolean"/>
+                          <element name="Unbonded">
+                            <complexType>
+                              <sequence>
+                                <element name="SDA_SCL" type="tns:Boolean"/>
+                                <element name="GPIO_1" type="tns:Boolean"/>
+                                <element name="GPIO_2" type="tns:Boolean"/>
+                                <element name="RST" type="tns:Boolean"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="SOIC8_I2C">
+                      <complexType>
+                        <sequence>
+                          <element name="SDA_SCL" type="tns:Boolean"/>
+                          <element name="GPIO_1" type="tns:Boolean"/>
+                          <element name="GPIO_2" type="tns:Boolean"/>
+                          <element name="GPIO_3" type="tns:Boolean"/>
+                          <element name="RESET" type="tns:Boolean"/>
+                          <element name="Unbonded">
+                            <complexType>
+                              <sequence>
+                                <element name="CS_SCK_SI" type="tns:Boolean"/>
+                                <element name="RST2" type="tns:Boolean"/>
+                                <element name="SO" type="tns:Boolean"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="SOIC14_SPI_I2C" type="tns:PullUpConfig"/>
+                    <element name="VQFN24_SPI_I2C" type="tns:PullUpConfig"/>
+                    <element name="DIE">
+                      <complexType>
+                        <sequence>
+                          <element name="CS_SCK_SI" type="tns:Boolean"/>
+                          <element name="SDA_SCL" type="tns:Boolean"/>
+                          <element name="RST2" type="tns:Boolean"/>
+                          <element name="SO" type="tns:Boolean"/>
+                          <element name="GPIO_1" type="tns:Boolean"/>
+                          <element name="GPIO_2" type="tns:Boolean"/>
+                          <element name="GPIO_3" type="tns:Boolean"/>
+                          <element name="RST" type="tns:Boolean"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </choice>
+                </complexType>
+              </element>
+              <element name="Dev_Update">
+                <annotation>
+                  <documentation>
+                    TA100 firmware patch information.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Update_Pub_Key">
+                      <annotation>
+                        <documentation>
+                          Public key used to validate firmware patches to the TA100 itself (DevUpdate).
+                          Must be an ECC P256 public key.
+                        </documentation>
+                      </annotation>
+                      <complexType>
+                        <simpleContent>
+                          <extension base="string">
+                            <attribute name="format" type="string" fixed="Subject_Public_Key_Info" use="required"/>
+                            <attribute name="encoding" type="string" fixed="PEM" use="required"/>
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                    <element name="Info">
+                      <annotation>
+                        <documentation>
+                          Update package information. Must match what is in the actual package.
+                        </documentation>
+                      </annotation>
+                      <complexType>
+                        <sequence>
+                          <element name="Update_Major">
+                            <simpleType>
+                              <restriction base="int">
+                                <minInclusive value="0"/>
+                                <maxInclusive value="65535"/>
+                              </restriction>
+                            </simpleType>
+                          </element>
+                          <element name="Update_Minor">
+                            <simpleType>
+                              <restriction base="int">
+                                <minInclusive value="0"/>
+                                <maxInclusive value="65535"/>
+                              </restriction>
+                            </simpleType>
+                          </element>
+                          <element name="Update_ID" type="tns:NumberHex-16bit"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="Package" type="tns:BinaryData" minOccurs="0">
+                      <annotation>
+                        <documentation>
+                          Custom update package to be applied to the TA100. Omit element if there is no update package
+                          or managed by Microchip.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Options">
+                <annotation>
+                  <documentation>
+                    Internal options.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Disable_AES" type="tns:Boolean"/>
+                    <element name="Force_FIPS" type="tns:Boolean"/>
+                    <element name="BSD" type="tns:Boolean"/>
+                    <element name="Disable_RSA" type="tns:Boolean"/>
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Nonvolatile_Configuration_Memory">
+          <annotation>
+            <documentation>
+              TA100 configuration settings that apply to the device as a whole.
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Self_Test">
+                <annotation>
+                  <documentation>
+                    On particular events, the TA100 device automatically initiates a self-test of
+                    specified cryptographic elements within the device. Generally, they can be
+                    configured to run on wake, power-up, or before the first use, also known as
+                    on-demand.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Power_Up" type="tns:SelfTests">
+                      <annotation>
+                        <documentation>
+                          Determines which blocks within the TA100 device will be
+                          automatically tested when power is applied, on assertion of the
+                          input RESET pin, or after a brown-out, when VCC rises above VPOR.
+                          These tests are not run on a wake from sleep.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Wake" type="tns:SelfTests">
+                      <annotation>
+                        <documentation>
+                          Determines which blocks within the TA100 device will be
+                          automatically tested on a wake for I/O activity. These tests are
+                          not run on a power-up.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="On_Demand" type="tns:SelfTests">
+                      <annotation>
+                        <documentation>
+                          Tests in this list will not be automatically run until a command
+                          requiring the corresponding algorithm is executed.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Failure_Clear" type="tns:SelfTests">
+                      <annotation>
+                        <documentation>
+                          Determines which blocks within the TA100 device must pass any
+                          self-test instance before the device clears the Self_Test_Failure
+                          state. All tests indicated in this list must pass a single
+                          self-test instance to clear the Failure mode.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="I2C_Address">
+                <annotation>
+                  <documentation>
+                    Address on the I2C bus to which this TA100 will respond. The LSb of this byte is ignored.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="I2C_Address_7bit">
+                      <annotation>
+                        <documentation>
+                          7-bit address on the I2C bus to which this TA100 will respond.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <restriction base="token">
+                          <pattern value="0x[0-7][0-9a-fA-F]"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="LSB" type="tns:Binary-1bit">
+                      <annotation>
+                        <documentation>
+                          Least significant bit of the I2C_Address field. Ignored, but should be 0b0.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Idle">
+                <annotation>
+                  <documentation>
+                    Configuration for the idle timer
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <annotation>
+                    <documentation>
+                      The idle time delay should be set such that the host is sure to issue each command in a sequence
+                      before the timer expires, which causes the internal state of the TA100 device to be reset.
+                      Setting the idle timer to a low value will optimize the power consumption by ensuring that the
+                      device goes into Sleep mode at the earliest possible time.
+                    </documentation>
+                  </annotation>
+                  <sequence>
+                    <element name="Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Idle timer is disabled.
+                          True: Idle timer is enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Time">
+                      <annotation>
+                        <documentation>
+                          The number of seconds between command/instructions before the idle timer will expire.
+                          Time can be between 1 and 16 secs.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <restriction base="int">
+                          <minInclusive value="1"/>
+                          <maxInclusive value="16"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-3bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b000</documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Chip_Options">
+                <annotation>
+                  <documentation>
+                    Various chip configuration options
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Reset_Fail" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The Self-Test Failure condition can be reset via an explicit Self_Test command that
+                          includes in the map parameter all the bits that are set in the self_test_config.failure_clear
+                          map. The failure condition is always cleared on a power-up or RESET pin assertion.
+                          True: On a self-test failure only a power-up or RESET pin assertion will cause the Self-Test
+                          Failure state to be cleared. This value may be required for some certification regimes.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Copy_Vol_Reg" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Volatile registers cannot be copied to shared data elements.
+                          True: Under certain constraints, volatile registers can be copied to shared data elements.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Revoke_Locked" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Permanently locked elements cannot be deleted via the CRL process.
+                          True: The locking on permanently locked extracted certificate elements can be overridden if
+                          the certificate is found within a CRL.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Compliance" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: No specific compliance regime is enforced.
+                          True: Forces compliance to some certification regimes.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Power_Increment" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: If the time-based counter is enabled it will not increment on a power-up.
+                          True: If the time-based counter is enabled, then always increment the counter on a power-up.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Time_Count" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Disables the time-based counter.
+                          True: Enables the time-based counter.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Wake_GPIO" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: GPIO_3 transitions will be ignored during sleep.
+                          True: The chip will wake from sleep on a high to low transition of the GPIO_3 pin. GPIO_3
+                          must be configured as an input.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Transfer_Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: An attempt to perform this kind of transfer will result in an error return.
+                          True: The transfer modes of the Read and Write commands are enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Import_Cert" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The extracted cert may not be exported or imported.
+                          True: The extracted certificates may be exported from and imported to the chip.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="HDCP_Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The special HDCP features are disabled. Recommended for normal operation.
+                          True: Enables special HDCP features.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="ECBD_Disable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: ECBD function enabled.
+                          True: ECBD function is disabled. For best security, Microchip recommends that this bit always
+                          be set unless the ECBD computation function is known to be required for the application.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Sign_Internal_Auth" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The FCE or SHA commands can be used to calculate the digest for Sign if prop.Sign_Use
+                          is Message_Only (2). Write(SHA) is forbidden.
+                          True:  SHA commands run in an auth session must be used to calculate the digest for Sign if
+                          prop.Sign_Use is Message_Only (2). FCE use is forbidden.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="HKDF_Split_Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          KDF Command HKDF. Enable the extract and expand functions to run independently.
+                          False: HKDF will run extract and expand together. Zero length Salt or Info is an error.
+                          True: Split of HKDF extract and expand functions enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-3bit">
+                      <annotation>
+                        <documentation>
+                          Reserved, must be 0b000.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Passthrough">
+                <annotation>
+                  <documentation>
+                    Enable GPIO inputs to pass through the device to other GPIO outputs
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="GPIO_1_2" type="tns:PassthroughBehavior">
+                      <annotation>
+                        <documentation>
+                          Independent: GPIO_2 operation is independent of GPIO_1
+                          ANDed: GPIO_1 output is the GPIO_2 input ANDed with the configured function for the GPIO_1
+                          output
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="GPIO_1_3" type="tns:PassthroughBehavior">
+                      <annotation>
+                        <documentation>
+                          Independent: GPIO_3 operation is independent of GPIO_1
+                          ANDed: GPIO_1 output is the GPIO_3 input ANDed with the configured function for the GPIO_1
+                          output
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-6bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b000000.</documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Reserved_21">
+                <annotation>
+                  <documentation>
+                    Reserved, must be zeros.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <simpleContent>
+                    <extension base="tns:DataHex-1byte">
+                      <attribute name="encoding" fixed="Hex" use="required"/>
+                    </extension>
+                  </simpleContent>
+                </complexType>
+              </element>
+              <element name="GPIO">
+                <annotation>
+                  <documentation>
+                    Configures the modes of the 3 GPIO pins.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="GPIO_1" type="tns:GPIOPinType"/>
+                    <element name="GPIO_2" type="tns:GPIOPinType"/>
+                    <element name="GPIO_3" type="tns:GPIOPinType"/>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Revocation">
+                <annotation>
+                  <documentation>
+                    Enable revocation and set the size of the digest.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Revocation is disabled.
+                          True: Revocation is enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Size">
+                      <annotation>
+                        <documentation>
+                          The size of the possibly truncated identity digest used for
+                          revocation. Algorithm is always SHA256.
+                          The values can be 16 or 24 or 32.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <restriction base="int">
+                          <enumeration value="0"/>
+                          <enumeration value="16"/>
+                          <enumeration value="24"/>
+                          <enumeration value="32"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-5bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b00000</documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Compliance_Options">
+                <annotation>
+                  <documentation>
+                    Various options enabled when in compliance mode
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Power_Fail" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          If Config.chip_options.reset_fail is set to True
+                          Disabled: The self-test Failure state may only be cleared by a power cycle or assertion of the
+                          RESET pin.
+                          Enabled: The self-test Failure state may only be cleared by a power cycle. Assertion of the
+                          RESET pin will not suffice.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Chip_Erase" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: The Master_Delete function is disabled, attempts to execute this mode of the Delete
+                          command will return an error.
+                          Enabled: When authorized using the Master_Delete key, the entire chip contents can be erased.
+                          Configuration memory Master_Delete Enable must be True.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Config_Test" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: Self-test operations are not run when the configuration memory is locked.
+                          Enabled: Executes the self-test operation on all algorithms within the chip when the
+                          configuration memory is locked.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Always_Auth" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: Commands can optionally be run within an authorization session.
+                          Enabled: All commands other than Info, Power, Self_Test, Secure_Boot, and Manage_Cert must be
+                          run within an authorization session.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Use_HMAC" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: The integrity tests will use the CRC16 algorithm. This bit is honored even if not in
+                          Compliance mode.
+                          Enabled: Uses HMAC as the integrity test for the internal ROMs and code EEPROMs.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Update_Test" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: The self-test will not be automatically run but can be explicitly initiated by the
+                          host if desired.
+                          Enabled: Runs a complete self-test prior to any device update operation.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Public_Auth" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: No restrictions required to use, read or write Public keys or digest calculation for
+                          Verify, Manage_Cert and/or RSA_Enc.
+                          Enabled: All uses of any Public key for Verify, Manage_Cert and/or RSA_Enc must be authorized.
+                          None of Read_Perm, Write_Perm or Usage_Perm can be Always on element creation. Digest
+                          calculation for these commands must use a SHA context attached to an auth session. FCE cannot
+                          be used for digest creation.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="RW_SHA_CTX" type="tns:BooleanEnabled">
+                      <annotation>
+                        <documentation>
+                          Disabled: The Read(SHA) and Write(SHA) commands used to load/store a SHA context are forbidden
+                          if the digest is attached to an authorization session.
+                          Enabled: Contexts may be read within the authorization session in which it was created.
+                          Write(SHA) will result in the new context being attached to the current authorization
+                          session.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-8bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b0000000</documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Update_Options">
+                <annotation>
+                  <documentation>Options associated with device update.</documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Downgrade_OK" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: All updates must have a higher revision number than that currently or previously
+                          loaded.
+                          True: A new update may have a lower revision than that currently or previously loaded.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Erase_OK" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The currently loaded update may not be erased via a special erase-only update package.
+                          True: Special erase-only update packages are permitted.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Power_Up_Check" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: No check of the update is performed on a startup for fast operation.
+                          True: On power-up, any loaded update image is completely verified before command execution
+                          can start.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Update" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Device update commands can be run without authorization.
+                          True: Authorization required using the Update_Key
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Update_Key" type="tns:SpecialHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Update is True, then the key stored at the Update_Key handle must be used to
+                          initiate the Auth_Session in which the Dev_Update command is run.
+                          Valid values are 0x80F0 through 0x80FF.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Soft_Reboot">
+                <annotation>
+                  <documentation>
+                    Controls the availability of the soft reboot function. The TA100 device provides an optional method
+                    of forcing an internal reboot via the Power command. This may be useful for systems in which
+                    control of the RESET pin is unavailable to the host system, since the TA100 device is designed to
+                    be rebooted at the same time that the host MCU is rebooted.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Enable_Reboot" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The soft reboot function is disabled, attempts to execute this mode of the Power
+                          command will return an error.
+                          True: The soft reboot function is enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Reboot" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The soft reboot function does not require an authorization session.
+                          True: Execution of the soft reboot mode of the Power command requires that the command be run
+                          in an authorization session initiated by Reboot_Key.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-2bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b00</documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reboot_Key" type="tns:SpecialHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Reboot is True, then the key stored at the special handle value must be used to
+                          initiate the authorization session. Valid handles are between 0x80F0 and 0x80FF.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Master_Delete">
+                <annotation>
+                  <documentation>
+                    Controls the master delete function. The master delete function can be used to erase all
+                    confidential and private/secret key material within the device including those within Special
+                    Handles and any internal-only keys.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Enable" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The master delete function is disabled, attempts to execute this mode of the Delete
+                          command will return an error.
+                          True: The Master Delete function is enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-3bit">
+                      <annotation>
+                        <documentation>Reserved, m ust be 0b000</documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Key" type="tns:SpecialHandle">
+                      <annotation>
+                        <documentation>
+                          The key stored at this handle must be used to initiate an auth session prior to execution of
+                          the Master Delete operation. Valid handles are between 0x80F0 and 0x80FF.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="One_Time">
+                <annotation>
+                  <documentation>
+                    Controls the one-time function. When enabled, the one-time function can be used in conjunction with
+                    the Access_Limit field of the element attributes to limit use of a stored element to either portion
+                    of the power cycle before or after the setting of this bit.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Enable_One_Time" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The one-time function is disabled.
+                          True: The one-time function is enabled.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Req" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Setting the one-time bit does not require an authorization session.
+                          True: Execution of the one-time mode of the Lock command requires that the command be run in
+                          an authorization session initiated by Auth_Key.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-2bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b00</documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Key" type="tns:SpecialHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Req is True, then the key stored at this special handle must be used to initiate the
+                          authorization session. Valid handles are between 0x80F0 and 0x80FF.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Secure_Boot">
+                <annotation>
+                  <documentation>
+                    Configures the secure boot method.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Mode">
+                      <annotation>
+                        <documentation>
+                          Mode can be one of the following: Disabled, Full_Asymmetric, Full_Stored, or Partial
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <restriction base="string">
+                          <enumeration value="Disabled"/>
+                          <enumeration value="Full_Asymmetric"/>
+                          <enumeration value="Full_Stored"/>
+                          <enumeration value="Partial"/>
+                          <enumeration value="Reserved_4"/>
+                          <enumeration value="Reserved_5"/>
+                          <enumeration value="Reserved_6"/>
+                          <enumeration value="Reserved_7"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Clr_Brownout" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Brownout will not affect the state of the Secure_Boot latch.
+                          True: Brownout will cause the Secure_Boot latch bit to be cleared.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Update_Permit" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Host code updates are restricted/prohibited.
+                          True: Host code updates are permitted and stored digests/memory maps can be changed in the
+                          field.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Secure_Wake" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: A wake from sleep does not affect the secure boot or pre-boot latches.
+                          True: The secure_boot and pre-boot latches are cleared on every wake.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="POR_Timer" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Secure boot timer is not enabled upon power-up or chip reset.
+                          True: Enables the secure boot timer immediately upon power-up or chip reset if Timer_Repeat
+                          is nonzero.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Allow_Lock" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Host can send a Secure_Boot command at any time.
+                          True: Secure_Boot command can be locked for a period of time.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Portion_Count">
+                      <annotation>
+                        <documentation>
+                          For partial secure boot, the total number of portions in which the code should be split.
+                          Max legal value is 50. Min legal value is 1. The value of 0 is not legal.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <restriction base="int">
+                          <minInclusive value="0"/>
+                          <maxInclusive value="63"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Internal_SHA" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Code digest for the Boot phases can come from any source.
+                          True: Code digest for the Boot phases must come from the TA100 FCE or the SHA commands.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Pre_Boot" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The pre-boot phases are forbidden.
+                          True: Implement the pre-boot validation mechanism.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Timer_Repeat">
+                      <annotation>
+                        <documentation>
+                          Disabled: disable the timed repeat of the secure boot operation.
+                          If nonzero, after this many minutes, the secure boot operation must be repeated. Must be a
+                          multiple of 2 up to a max of 510 minutes.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <union>
+                          <simpleType>
+                            <restriction base="string">
+                              <enumeration value="Disabled"/>
+                            </restriction>
+                          </simpleType>
+                          <simpleType>
+                            <restriction base="int">
+                              <minInclusive value="2"/>
+                              <maxInclusive value="510"/>
+                              <pattern value="[0-9]*[02468]"/>
+                            </restriction>
+                          </simpleType>
+                        </union>
+                      </simpleType>
+                    </element>
+                    <element name="Boot_Key" type="tns:LinkableHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Boot is True, then this byte contains the handle of the key which must
+                          be used to initiate the address and boot phases. Values from 0x8000 to 0x80FF are permitted.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Retry">
+                      <annotation>
+                        <documentation>
+                          Number of failed attempts before secure boot attempts are locked out. If No_Limit, there are
+                          no limits on the number of retries. Otherwise can be a number between 1 and 15.
+                        </documentation>
+                      </annotation>
+                      <simpleType>
+                        <union>
+                          <simpleType>
+                            <restriction base="string">
+                              <enumeration value="No_Limit"/>
+                            </restriction>
+                          </simpleType>
+                          <simpleType>
+                            <restriction base="int">
+                              <minInclusive value="1"/>
+                              <maxInclusive value="15"/>
+                            </restriction>
+                          </simpleType>
+                        </union>
+                      </simpleType>
+                    </element>
+                    <element name="Latch_Clear" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: The latch is not cleared until the retry count is exhausted.
+                          True: On any failure of any run-time boot phase during retry, the secure boot VCC latch will
+                          be cleared.
+                          This bit is ignored if Retry is No_Limit.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Update" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Execution of the update and complete phases do not occur within an authorization
+                          session.
+                          True: Execution of the update and complete phases must occur within an authorization session
+                          initiated using Update_Key.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Boot" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Execution of the address and boot phases do not occur within an authorization session.
+                          True: Execution of the address and boot phases must occur within an authorization session
+                          initiated using Boot_Key.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Pre_Boot" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Execution of the pre-boot phase does not occur within an authorization session.
+                          True: Execution of the pre-boot phase must occur within an authorization session initiated
+                          using Boot_Key.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Update_Key" type="tns:LinkableHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Update is True, then handle of the key which must be used to initiate
+                          the authorization session containing the update operation. Values from 0x8000
+                          to 0x80FF are permitted.
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-16bit">
+                      <annotation>
+                        <documentation>Reserved, must be 0b0000000000000000</documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="GPIO_Auth_Key" type="tns:LinkableHandle">
+                <annotation>
+                  <documentation>
+                    If any of the GPIOs are configured to require authorization, this is the key
+                    that must be used to initiate that authorization session. Values from 0x8000
+                    to 0x80FF are permitted.
+                  </documentation>
+                </annotation>
+              </element>
+              <element name="Global_Export">
+                <annotation>
+                  <documentation>
+                    Control the functioning of the Import and Export commands.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <sequence>
+                    <element name="Forbid" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Import and Export commands are available
+                          True: Both the Import and Export commands are forbidden to be run
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Req" type="tns:Boolean">
+                      <annotation>
+                        <documentation>
+                          False: Import and Export does not require authorization
+                          True: Import and Export commands must be run within an authorization session initiated by
+                          Auth_Key
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Reserved" type="tns:Binary-2bit">
+                      <annotation>
+                        <documentation>
+                          Reserved, must be 0b00
+                        </documentation>
+                      </annotation>
+                    </element>
+                    <element name="Auth_Key" type="tns:SpecialHandle">
+                      <annotation>
+                        <documentation>
+                          If Auth_Req is True, then the key stored at the special handle of Auth_Key must be
+                          used to initiate the auth session in which the Import and/or Export commands are
+                          run. Handle value must be between 0x80F0 and 0x80FF.
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Reserved_42">
+                <annotation>
+                  <documentation>
+                    Reserved, must be zeros.
+                  </documentation>
+                </annotation>
+                <complexType>
+                  <simpleContent>
+                    <extension base="tns:DataHex-6byte">
+                      <attribute name="encoding" fixed="Hex" use="required"/>
+                    </extension>
+                  </simpleContent>
+                </complexType>
+              </element>
+              <element name="Configuration_Lock" type="tns:Boolean">
+                <annotation>
+                  <documentation>
+                    Set to True, if the config zone is to be locked. False if it should be left unlocked.
+                  </documentation>
+                </annotation>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Shared_Data_Memory">
+          <annotation>
+            <documentation>
+              List of elements to be created in the shared data memory.
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Element" type="tns:ElementType" maxOccurs="128" minOccurs="0"/>
+              <element name="Setup_Lock" type="tns:Boolean">
+                <annotation>
+                  <documentation>
+                    Set to True if the setup phase is completed once the specified elements are created and written.
+                  </documentation>
+                </annotation>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Data_Sources">
+          <annotation>
+            <documentation>
+              Data sources, actions, and destinations (elements) are defined here.
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Data_Source" type="tns:Data_Source_Item" minOccurs="0" maxOccurs="unbounded">
+                <annotation>
+                  <documentation>
+                    Data source objects for specifying static and dynamic data along with functions affecting it.
+                  </documentation>
+                </annotation>
+              </element>
+              <element name="Writer" type="tns:Writer_Item" minOccurs="0" maxOccurs="unbounded">
+                <annotation>
+                  <documentation>
+                    Writer types specify where named Data_Source items or Function results should be written to on a
+                    device.
+                  </documentation>
+                </annotation>
+              </element>
+              <element name="Wrapped_Key" type="tns:Wrapped_Key_Item" minOccurs="0" maxOccurs="unbounded">
+                <annotation>
+                  <documentation>
+                    A wrapped key item, which was used to encrypt one or more secret Data_Source items.
+                  </documentation>
+                </annotation>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+    <unique name="uniqueHandle">
+      <selector xpath="tns:Shared_Data_Memory/tns:Element/tns:Handle"/>
+      <field xpath="."/>
+    </unique>
+    <unique name="uniqueWrapKeyName">
+      <selector xpath="tns:Data_Sources/tns:Wrapped_Key/tns:Name"/>
+      <field xpath="."/>
+    </unique>
+    <unique name="uniqueTarget">
+      <selector xpath="tns:Data_Sources/tns:Writer/tns:Target"/>
+      <field xpath="."/>
+    </unique>
+  </element>
+  <complexType name="SelfTests">
+    <sequence>
+      <element name="FC_AES" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            AES-CMAC in the Fast Crypto Engine
+          </documentation>
+        </annotation>
+      </element>
+      <element name="FC_SHA" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            SHA and SHA-HMAC in the Fast Crypto Engine
+          </documentation>
+        </annotation>
+      </element>
+      <element name="CMAC" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            AES-CMAC in the main command Processor
+          </documentation>
+        </annotation>
+      </element>
+      <element name="GCM" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            AES-GCM in the main command processor
+          </documentation>
+        </annotation>
+      </element>
+      <element name="KDF" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            KDF - SP800-108 based on SHA256/HMAC Counter mode in the main command processor
+          </documentation>
+        </annotation>
+      </element>
+      <element name="SHA" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            SHA and SHA-HMAC in the main command processor
+          </documentation>
+        </annotation>
+      </element>
+      <element name="PRF" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            PRF based on SHA256/HMAC
+          </documentation>
+        </annotation>
+      </element>
+      <element name="HKDF" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            HKDF Based on SHA256/HMAC
+          </documentation>
+        </annotation>
+      </element>
+      <element name="NRBG" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            RNG health test of noise source
+          </documentation>
+        </annotation>
+      </element>
+      <element name="DRBG" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            RNG digital test using AES_CTR mode DRBG
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Reserved_10" type="tns:Binary-1bit">
+        <annotation>
+          <documentation>
+            Reserved, must be 0b0
+          </documentation>
+        </annotation>
+      </element>
+      <element name="ECDSA" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            ECC (ECDSA) sign and verify, P256 curve
+          </documentation>
+        </annotation>
+      </element>
+      <element name="ECDH" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            ECDH, P256 Curve
+          </documentation>
+        </annotation>
+      </element>
+      <element name="RSA" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            RSA sign and verify, 2048-bit modulus
+          </documentation>
+        </annotation>
+      </element>
+      <element name="ECBD" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            ECBD, P224 curve
+          </documentation>
+        </annotation>
+      </element>
+      <element name="KEY" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            Stored key integrity test using the CRC algorithm
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Reserved_16" type="tns:Binary-1bit">
+        <annotation>
+          <documentation>
+            Reserved, must be 0b0
+          </documentation>
+        </annotation>
+      </element>
+      <element name="ROM" type="tns:BooleanEnabled">
+        <annotation>
+          <documentation>
+            Integrity tests of all ROMs within the device and any loaded patch code in
+            the EEPROM.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Reserved_18" type="tns:Binary-14bit">
+        <annotation>
+          <documentation>
+            Reserved, must be 0b0000000000000
+          </documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <simpleType name="Boolean">
+    <annotation>
+      <documentation>
+        Boolean types used in TA100 config XML structure
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <enumeration value="True"/>
+      <enumeration value="False"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="BooleanEnabled">
+    <annotation>
+      <documentation>
+        Boolean types used in TA100 config XML structure
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <enumeration value="Enabled"/>
+      <enumeration value="Disabled"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="NumberHex-8bit">
+    <annotation>
+      <documentation>
+        8-bit number as a single hex octet (e.g. 0x4F).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x[0-9a-fA-F]{2}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="NumberHex-16bit">
+    <annotation>
+      <documentation>
+        16-bit number as a two hex octets (e.g. 0x80AF).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x[0-9a-fA-F]{4}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="NumberHex-24bit">
+    <annotation>
+      <documentation>
+        24-bit number as three hex octets (e.g. 0x64EF42).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x[0-9a-fA-F]{6}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="SpecialHandle">
+    <annotation>
+      <documentation>
+        16-bit special handle value between 0x80F0 and 0x80FF.
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x80[fF][0-9a-fA-F]"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="LinkableHandle">
+    <annotation>
+      <documentation>
+        16-bit linkable handle value between 0x8000 and 0x80FF.
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x80[0-9a-fA-F]{2}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="LinkableHandleOrRights">
+    <annotation>
+      <documentation>
+        This type is either a linkable handle as 16-bit value between 0x8000 and 0x80FF or
+        an 8-bit rights bit string (e.g. 0b01010101).
+      </documentation>
+    </annotation>
+    <union memberTypes="tns:LinkableHandle tns:Binary-8bit"/>
+  </simpleType>
+  <simpleType name="DataHex-1byte">
+    <annotation>
+      <documentation>
+        1 byte of binary data encoded as a hex octet.
+      </documentation>
+    </annotation>
+    <restriction base="string">
+      <pattern value="\s*([0-9a-fA-F]{2}\s*){1}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DataHex-6byte">
+    <annotation>
+      <documentation>
+        6 bytes of binary data encoded as hex octets. Whitespace between octets is optional.
+      </documentation>
+    </annotation>
+    <restriction base="string">
+      <pattern value="\s*([0-9a-fA-F]{2}\s*){6}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="BignumHex">
+    <annotation>
+      <documentation>
+        Arbitrary large integer in big endian twos-complement form.
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0x([0-9a-fA-F]{2})+"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="PassthroughBehavior">
+    <annotation>
+      <documentation>
+        Passthrough behavior options.
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <enumeration value="Independent"/>
+      <enumeration value="ANDed"/>
+    </restriction>
+  </simpleType>
+  <complexType name="GPIOPinType">
+    <annotation>
+      <documentation>
+      </documentation>
+    </annotation>
+    <choice>
+      <element name="GPIO_Input">
+        <annotation>
+          <documentation>
+            GPIO is configured as an input. Reading the corresponding GPIO always returns the current state. No
+            authorization is required to read a pin state.
+          </documentation>
+        </annotation>
+        <complexType>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Output">
+        <complexType>
+          <annotation>
+            <documentation>
+              GPIO is configured as an output controlled via the Write command.
+            </documentation>
+          </annotation>
+          <sequence>
+            <element name="Default_State">
+              <annotation>
+                <documentation>
+                  On power-up, brownout, RESET pin assertion, or other boot events, the pin will be forced to this
+                  default state. Low or High.
+                </documentation>
+              </annotation>
+              <simpleType>
+                <restriction base="token">
+                  <enumeration value="Low"/>
+                  <enumeration value="High"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element name="Auth_Required" type="tns:Boolean">
+              <annotation>
+                <documentation>
+                  If True, the Write command must be executed in an authorization session initiated with
+                  config.gpio_auth_key.
+                </documentation>
+              </annotation>
+            </element>
+            <element name="Reserved" type="tns:Binary-3bit">
+              <annotation>
+                <documentation>Reserved, must be 0b000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Secure_Boot">
+        <complexType>
+          <annotation>
+            <documentation>
+              GPIO will be configured to drive this pin to match the complement of the Secure_Boot VCC latch. On
+              power-up, brownout, RESET pin assertion, or other boot events, this pin will be driven high. When a
+              successful secure boot completes, this pin will be driven low.
+            </documentation>
+          </annotation>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Pulse">
+        <complexType>
+          <annotation>
+            <documentation>
+              GPIO_1 can effectively be configured to operate as an output following the Reset state of the device.
+              When configured to be in this mode with Command_Complete, Init_Complete, Secure_Boot_Warn, and
+              Secure_Boot_Clear set to False, the GPIO_1 output will be driven low during a POR, RESET pin assertion,
+              brown-out, soft reboot, or any internal fault. It will then be driven high after a short delay (~1.5 ms)
+              after the device reset source is released, as the device reboots. GPIO_1 will not be driven low when the
+              device is in Sleep mode.
+            </documentation>
+          </annotation>
+          <sequence>
+            <element name="Command_Complete" type="tns:Boolean">
+              <annotation>
+                <documentation>
+                  If True, the TA100 device will pulse this pin low for ~1 μs near the completion of a command. A
+                  short time after the rising edge of this pin, response data are available to be read. The host can
+                  begin polling the CSR.RRDY bit at this time to reduce the time spent polling for the completion of
+                  the command.
+                </documentation>
+              </annotation>
+            </element>
+            <element name="Init_Complete" type="tns:Boolean">
+              <annotation>
+                <documentation>
+                  If True, the TA100 device will pulse this pin low for ~2 μs when the initialization process has
+                  completed and the device is about ready to accept a command. This mode may not be useful for
+                  GPIO_1, which will be driven low immediately after reset/power-up, then driven high when the
+                  configuration memory is read from the internal EEPROM, then driven low a little later when the
+                  initialization process has completed.
+                </documentation>
+              </annotation>
+            </element>
+            <element name="Secure_Boot_Warn" type="tns:Boolean">
+              <annotation>
+                <documentation>
+                  If True, the TA100 device will pulse this GPIO pin low for ~3 μs when the secure boot warning timer
+                  expires, which occurs at 50% of the overall secure_boot timer. If the timer expires while the
+                  TA100 device is asleep, the pin will still be asserted without causing the device to wake up.
+                </documentation>
+              </annotation>
+            </element>
+            <element name="Secure_Boot_Clear" type="tns:Boolean">
+              <annotation>
+                <documentation>
+                  If True, the TA100 device will pulse this GPIO pin low for ~4 μs when the secure boot clear_timer
+                  expires, or the secure boot retry count is reached.
+                </documentation>
+              </annotation>
+            </element>
+            <element name="Reserved" type="tns:Binary-1bit">
+              <annotation>
+                <documentation>Reserved, must be 0b0</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Boot_Level">
+        <complexType>
+          <annotation>
+            <documentation>
+              Drive this GPIO pin high when the TA100 device has completed its initialization process and is about
+              ready to accept a command. It will be driven low on a power-up, brown-out, RESET pin assertion, soft
+              reboot, or other internal fault events. It is also driven low when the device is in Sleep mode. Do not
+              use this configuration for any pin other than GPIO_1.
+            </documentation>
+          </annotation>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Reserved_5">
+        <complexType>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Reserved_6">
+        <complexType>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GPIO_Reserved_7">
+        <complexType>
+          <sequence>
+            <element name="Reserved" type="tns:Binary-5bit">
+              <annotation>
+                <documentation>Reserved, must be 0b00000</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <complexType name="ElementType">
+    <sequence>
+      <element name="Name" type="string">
+        <annotation>
+          <documentation>
+            Customer-defined name for the element. Not programmed into the device, just for
+            reference within this configuration.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Handle" type="tns:NumberHex-16bit">
+        <annotation>
+          <documentation>
+            Element handle value. Value between 0x8000 and 0xBFFF. Note that values between 0x8000 and
+            0x80FF are linkable and can be referenced by an attribute link in an element attribute list.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Details">
+        <annotation>
+          <documentation>
+            Value of the Details parameter when using the Create command for this element.
+            Only HMAC_SHA256 keys have extra options here.
+          </documentation>
+        </annotation>
+        <complexType>
+          <choice>
+            <element name="HMAC_SHA256">
+              <complexType>
+                <sequence>
+                  <element name="Reserved_0" type="tns:Binary-8bit"/>
+                  <element name="Size">
+                    <annotation>
+                      <documentation>
+                        Size of the HMAC-SHA256 key from 16 to 64 bytes.
+                        Can also be From_Source to indicate that the size should be set from
+                        the data source that Writes into this element during personalization.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <union>
+                        <simpleType>
+                          <restriction base="int">
+                            <minInclusive value="0"/>
+                            <maxInclusive value="127"/>
+                          </restriction>
+                        </simpleType>
+                        <simpleType>
+                          <restriction base="token">
+                            <enumeration value="From_Source"/>
+                          </restriction>
+                        </simpleType>
+                      </union>
+                    </simpleType>
+                  </element>
+                  <element name="Reserved_15" type="tns:Binary-1bit"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Unused" type="tns:NumberHex-16bit"/>
+          </choice>
+        </complexType>
+      </element>
+      <element name="Class">
+        <simpleType>
+          <restriction base="token">
+            <enumeration value="Public_Key"/>
+            <enumeration value="Private_Key"/>
+            <enumeration value="Symmetric_Key"/>
+            <enumeration value="Data"/>
+            <enumeration value="Extracted_Certificate"/>
+            <enumeration value="Reserved"/>
+            <enumeration value="Fast_Crypto_Key_Group"/>
+            <enumeration value="CRL"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Key_Type">
+        <annotation>
+          <documentation>
+            The core algorithm and key size corresponding to this element. Use NA for Data and CRL
+            elements, however, the value is technically ignored for those classes.
+          </documentation>
+        </annotation>
+        <simpleType>
+          <union memberTypes="tns:Binary-4bit">
+            <simpleType>
+              <restriction base="token">
+                <enumeration value="ECC_P256"/>
+                <!-- 0 -->
+                <enumeration value="ECC_P224"/>
+                <!-- 1 -->
+                <enumeration value="ECC_P384"/>
+                <!-- 2 -->
+                <enumeration value="Reserved_3"/>
+                <!-- 3 -->
+                <enumeration value="RSA_1024"/>
+                <!-- 4 -->
+                <enumeration value="RSA_2048"/>
+                <!-- 5 -->
+                <enumeration value="RSA_3072"/>
+                <!-- 6 -->
+                <enumeration value="Reserved_7"/>
+                <!-- 7 -->
+                <enumeration value="HMAC_SHA256"/>
+                <!-- 8 -->
+                <enumeration value="ECC_SECP256K1"/>
+                <!-- 9 -->
+                <enumeration value="ECC_Brainpool_P256R1"/>
+                <!-- 10 -->
+                <enumeration value="Reserved_11"/>
+                <!-- 11 -->
+                <enumeration value="AES128"/>
+                <!-- 12 -->
+                <enumeration value="Reserved_13"/>
+                <!-- 13 -->
+                <enumeration value="Reserved_14"/>
+                <!-- 14 -->
+                <enumeration value="Reserved_15"/>
+                <!-- 15 -->
+              </restriction>
+            </simpleType>
+          </union>
+        </simpleType>
+      </element>
+      <element name="Alg_Mode">
+        <simpleType>
+          <union memberTypes="tns:Binary-1bit">
+            <simpleType>
+              <restriction base="string">
+                <enumeration value="Digest"/>
+                <!-- 0 -->
+                <enumeration value="HMAC"/>
+                <!-- 1 -->
+                <enumeration value="CMAC"/>
+                <!-- 0 -->
+                <enumeration value="GCM"/>
+                <!-- 1 -->
+                <enumeration value="SSA_1_5"/>
+                <!-- 0 -->
+                <enumeration value="SSA_PSS"/>
+                <!-- 1 -->
+                <enumeration value="ECDSA"/>
+                <!-- 0 -->
+                <enumeration value="ECDH"/>
+                <!-- 1 -->
+              </restriction>
+            </simpleType>
+          </union>
+        </simpleType>
+      </element>
+      <element name="Property">
+        <complexType>
+          <choice>
+            <element name="Public_Key">
+              <complexType>
+                <sequence>
+                  <element name="Path_Length">
+                    <annotation>
+                      <documentation>
+                        For root public keys, this field encodes the path length restrictions.
+                        0 means that no child can be a CA through 254. The value 'Unrestricted'
+                        means that there are no path length restrictions. This field must be
+                        set to 0 if all other bits in the property word are 0.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <union>
+                        <simpleType>
+                          <restriction base="token">
+                            <enumeration value="Unrestricted"/>
+                            <!-- Same as 255 -->
+                          </restriction>
+                        </simpleType>
+                        <simpleType>
+                          <restriction base="int">
+                            <minInclusive value="0"/>
+                            <maxInclusive value="254"/>
+                          </restriction>
+                        </simpleType>
+                      </union>
+                    </simpleType>
+                  </element>
+                  <element name="Secure_Boot" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, this key can be used to validate host code signatures on boot.
+                        If the "Root" field indicates that this is a root key, then it can also
+                        be used as a CA to sign certificates of keys that can be used for this
+                        purpose.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Root">
+                    <annotation>
+                      <documentation>
+                        False: A public key that can be used for the Verify command, but not the
+                        Manage_Cert command.
+                        True: A root public key which can be used by the Manage_Cert and/or
+                        Secure_Boot commands.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="token">
+                        <enumeration value="False"/>
+                        <!-- 0b00 -->
+                        <enumeration value="Reserved_1"/>
+                        <!-- 0b01 -->
+                        <enumeration value="Reserved_2"/>
+                        <!-- 0b10 -->
+                        <enumeration value="True"/>
+                        <!-- 0b11 -->
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="CRL_Sign" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, this key can sign a CRL. If the "Root" field indicates that
+                        this is a root key, then it can also be used as a CA to sign
+                        certificates that can do so.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Special_Only" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If False, this CA can be used to sign any type of X.509 certificate.
+                        If True, this CA can be used to sign only X.509 certificates that have
+                        one of the special properties (Secure_Boot or CRL_Sign) asserted in the
+                        extensions field.
+                        This field must be False if the "Root" property is not True.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-3bit"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Private_Key">
+              <complexType>
+                <sequence>
+                  <element name="Pub_Key" type="tns:LinkableHandle">
+                    <annotation>
+                      <documentation>
+                        Handle containing the corresponding public key. May point to either a
+                        public key or a certificate.
+                        This attribute is entirely advisory in nature, it is neither used nor
+                        checked by any internal TA100 operation. If the external system
+                        software depends on this field, then it should be properly filled out.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Session" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, it can be used by the Share_Key sequence to create/exchange
+                        session keys. Sign_Use must also be True.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Key_Gen" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, then regardless of the Write_Perm, the Write command cannot be
+                        used to load a key value into this element – keys with this bit set
+                        have always been generated within this TA100 device.
+                        If False, either the Write or Key_Gen command can be used to load this
+                        element.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Sign_Use">
+                    <annotation>
+                      <documentation>
+                        None: Key cannot be used for signature generation.
+                        All: Key can sign internally or externally generated digests.
+                        Message_Only: Key can be used to sign digests internally created from
+                        messages passed to the chip. It cannot be used to sign a digest
+                        supplied externally.
+                        Internal_Only: Key can be used to sign internally generated messages
+                        but cannot be used to sign externally supplied messages or digests.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="token">
+                        <enumeration value="None"/>
+                        <!-- 0 -->
+                        <enumeration value="All"/>
+                        <!-- 1 -->
+                        <enumeration value="Message_Only"/>
+                        <!-- 2 -->
+                        <enumeration value="Internal_Only"/>
+                        <!-- 3 -->
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="Agree_Use">
+                    <annotation>
+                      <documentation>
+                        None: Key cannot be used for Key Agreement if it is an ECC key. If it
+                        is an RSA key it cannot be used for RSA decrypt.
+                        Any_Target: The key agreement target can be the output buffer or any
+                        memory element without regard to the read/write/usage requirements.
+                        RW_Never: The key agreement target must be a the shared data element or
+                        volatile register with both Read_Perm and Write_Perm = Never
+                        Usage_Key: Usage restrictions for the key agreement target are related
+                        to the priv_key.usage_key, as above.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="token">
+                        <enumeration value="None"/>
+                        <!-- 0 -->
+                        <enumeration value="Any_Target"/>
+                        <!-- 1 -->
+                        <enumeration value="RW_Never"/>
+                        <!-- 2 -->
+                        <enumeration value="Usage_Key"/>
+                        <!-- 3 -->
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-2bit"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Symmetric_Key">
+              <complexType>
+                <sequence>
+                  <element name="Granted_Rights" type="tns:Binary-8bit">
+                    <annotation>
+                      <documentation>
+                        Rights that have been granted to this key, either through inheritance
+                        or during the manufacturing setup phase.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Sym_Usage">
+                    <annotation>
+                      <documentation>
+                        MAC: Key can only be used for MAC/CMAC/HMAC calculation/validation via
+                        the MAC, FC_Config and Authorize (CMAC or HMAC) commands.
+                        ENC: Key can only be used for AES encryption or decryption via the
+                        KDF (AES) or Authorize (GCM) commands.
+                        ANY: Key can be used for any purpose for which a symmetric key is
+                        appropriate.
+                        KDF_SHA: Key can only be used as the input to the SHA-based modes (HKDF
+                        or PRF) of the KDF command.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="token">
+                        <enumeration value="MAC"/>
+                        <!-- 0 -->
+                        <enumeration value="ENC"/>
+                        <!-- 1 -->
+                        <enumeration value="ANY"/>
+                        <!-- 2 -->
+                        <enumeration value="KDF_SHA"/>
+                        <!-- 3 -->
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="Session_Use">
+                    <annotation>
+                      <documentation>
+                        If this key can be used to establish an authorization session and
+                        restrictions on the session, if so.
+                      </documentation>
+                    </annotation>
+                    <complexType>
+                      <sequence>
+                        <element name="Use_For_Auth">
+                          <annotation>
+                            <documentation>
+                              Never: This key can never be used to establish an
+                              authorization session, regardless of the value of the usage
+                              field. Encrypted_Session must be NA, Session_Random_Nonce
+                              must be NA, and Use_For_Transfer must be No.
+                              Either: The key can be used for either session
+                              establishment or other symmetric key usage such as MAC,
+                              etc.
+                              Only: This key can only be used for authorization session
+                              establishment (the generate phase) and cannot be used for
+                              any other purpose.
+                            </documentation>
+                          </annotation>
+                          <simpleType>
+                            <restriction base="token">
+                              <enumeration value="Never"/>
+                              <enumeration value="Either"/>
+                              <enumeration value="Only"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                        <element name="Encrypted_Session">
+                          <annotation>
+                            <documentation>
+                              NA: Not applicable, use when Use_For_Auth is Never.
+                              Optional: The key can be used for either encrypted
+                              authorization sessions or MAC-only sessions.
+                              Mandatory: This key can only be used for encrypted
+                              authorization session. MAC-only session not allowed.
+                              Session_Random_Nonce must also be set to Mandatory.
+                            </documentation>
+                          </annotation>
+                          <simpleType>
+                            <restriction base="token">
+                              <enumeration value="NA"/>
+                              <enumeration value="Optional"/>
+                              <enumeration value="Mandatory"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                        <element name="Session_Random_Nonce">
+                          <annotation>
+                            <documentation>
+                              NA: Not applicable, use when Use_For_Auth is Never.
+                              Optional: Authorization sessions with this key may use
+                              specified or random nonce.
+                              Mandatory: Authorization sessions with this key must use
+                              an internally generated random nonce.
+                            </documentation>
+                          </annotation>
+                          <simpleType>
+                            <restriction base="token">
+                              <enumeration value="NA"/>
+                              <enumeration value="Optional"/>
+                              <enumeration value="Mandatory"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                        <element name="Use_For_Transfer">
+                          <annotation>
+                            <documentation>
+                              No: Transfer functions are not allowed.
+                              Only: Authorization session with this key may only be used
+                              for the transfer functions supported by the Read and Write
+                              commands. Use_For_Auth must be Only, Encrypted_Session must
+                              be Mandatory, and Session_Random_Nonce must be Mandatory.
+                            </documentation>
+                          </annotation>
+                          <simpleType>
+                            <restriction base="token">
+                              <enumeration value="No"/>
+                              <enumeration value="Only"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                      </sequence>
+                    </complexType>
+                  </element>
+                  <element name="Key_Group_OK" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: This key cannot be used as part of a key group.
+                        True: this key may be referenced as part of a handle-list based key
+                        group.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-1bit"/>
+                  <element name="Partial_Forbidden" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: Accesses of this element may read/write/use any number of bytes
+                        within the element.
+                        True: Accesses of this element must use all the bytes within the element.
+                      </documentation>
+                    </annotation>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Data">
+              <complexType>
+                <sequence>
+                  <element name="Size">
+                    <annotation>
+                      <documentation>
+                        Number of bytes within this data element.
+                        Can also be From_Source to indicate that the size should be set from
+                        the data source that Writes into this element during personalization.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <union>
+                        <simpleType>
+                          <restriction base="int">
+                            <minInclusive value="0"/>
+                            <maxInclusive value="4095"/>
+                          </restriction>
+                        </simpleType>
+                        <simpleType>
+                          <restriction base="token">
+                            <enumeration value="From_Source"/>
+                          </restriction>
+                        </simpleType>
+                      </union>
+                    </simpleType>
+                  </element>
+                  <element name="Template" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, this element can be used as a template with the Sign
+                        (Internal) command or for any other general purpose.
+                        If False, this is a general purpose element that cannot be used with
+                        Sign (Internal).
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-2bit"/>
+                  <element name="Partial_Forbidden" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, Accesses of this element may read/write/use any number of bytes within
+                        the element.
+                        If False, All accesses of this element must use all the bytes within the element.
+                      </documentation>
+                    </annotation>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Extracted_Certificate">
+              <complexType>
+                <sequence>
+                  <element name="Granted_Rights" type="tns:Binary-8bit">
+                    <annotation>
+                      <documentation>
+                        Rights that have been granted to this certificate, either through
+                        inheritance or during the manufacturing setup phase.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Secure_Boot" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, this key can be used to validate host code digests on boot.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="CA_OK" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If False, this element contains only a public key and identity digest.
+                        It cannot be used as the parent validating key for the Manage_Cert
+                        command.
+                        If True, this certificate can be the parent for Manage_Cert.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="CA_Parent" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: This element can be used as the parent for Manage_Cert, but the
+                        child (target) extracted certificate must have CA_OK set to False.
+                        True: OK for this key to be the parent of CA.
+                        Note: If CA_OK is False, this bit is ignored.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="CRL_Sign" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        If True, this key can be used to sign a CRL.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Special_Only" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: This CA can be used to sign any type of X.509 certificate.
+                        True: This CA can be used to sign only X.509 certificates that have one
+                        of the special properties (Secure_Boot or CRL_Sign) asserted in the
+                        extensions field.
+                        Note: This field must be False if CA_OK is False.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-3bit"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Reserved" type="tns:NumberHex-16bit">
+            </element>
+            <element name="Fast_Crypto_Key_Group">
+              <complexType>
+                <sequence>
+                  <element name="Num_Keys">
+                    <annotation>
+                      <documentation>
+                        Number of keys in the group (1 to 32).
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="int">
+                        <minInclusive value="1"/>
+                        <maxInclusive value="32"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="Handles" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: The element contains all the keys concatenated together.
+                        True: The element stores all the handles to the key group keys
+                        concatenated together.
+                      </documentation>
+                    </annotation>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-9bit"/>
+                  <element name="Partial_Forbidden" type="tns:Boolean">
+                    <annotation>
+                      <documentation>
+                        False: Accesses of this element may read/write/use any number of bytes
+                        within the element.
+                        True: All accesses of this element must use all the bytes within the element.
+                      </documentation>
+                    </annotation>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="CRL">
+              <complexType>
+                <sequence>
+                  <element name="Num_Digests">
+                    <annotation>
+                      <documentation>
+                        Number of identity digests in this list.
+                      </documentation>
+                    </annotation>
+                    <simpleType>
+                      <restriction base="int">
+                        <minInclusive value="1"/>
+                        <maxInclusive value="256"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element name="Reserved" type="tns:Binary-8bit"/>
+                </sequence>
+              </complexType>
+            </element>
+          </choice>
+        </complexType>
+      </element>
+      <element name="Usage_Key" type="tns:LinkableHandleOrRights">
+        <annotation>
+          <documentation>
+            Handle of key that must be used to initiate authorization
+            session for usage. Value between 0x8000 and 0x80FF.
+            If Usage_Perm is Rights, this field contains rights required
+            to use the key as an 8-bit bit string (e.g. 0b01010101).
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Write_Key" type="tns:LinkableHandleOrRights">
+        <annotation>
+          <documentation>
+            Handle of key that must be used to initiate authorization session for writing or deleting.
+            Value between 0x8000 and 0x80FF.
+            If Write_Perm is Rights, this field contains rights required to write the key as an 8-bit bit
+            string (e.g. 0b01010101).
+            If this key is a root public key, this field contains the rights that can be inherited by
+            children of this root as an 8-bit bit string (e.g. 0b01010101).
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Read_Key" type="tns:LinkableHandleOrRights">
+        <annotation>
+          <documentation>
+            Handle of key that must be used to initiate authorization session for reading. Value between
+            0x8000 and 0x80FF.
+            If Usage_Perm is Rights, this field contains rights required to read the key as an 8-bit bit
+            string (e.g. 0b01010101).
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Usage_Perm" type="tns:PermissionsType">
+        <annotation>
+          <documentation>
+            Never: Cannot be used in any command, but can be read or written if allowed.
+            Always: No usage restrictions, optional to run in authorization session.
+            Auth: Any command using this element must be run within an authorization session created with
+            "Usage_Key".
+            Rights: The use of the element requires rights in "Usage_Key".
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Write_Perm" type="tns:PermissionsType">
+        <annotation>
+          <documentation>
+            Never: This element can never be written with the Write command.
+            Always: Always legal to write.
+            Auth: Writes of this element must be run within an authorization session created with
+            "Write_Key".
+            Rights: Writes require rights in "Write_Key".
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Read_Perm" type="tns:PermissionsType">
+        <annotation>
+          <documentation>
+            Never: This element can never be read with the Read command.
+            Always: Always legal to read.
+            Auth: Read requires auth using "Read_Key".
+            Rights: Read requires rights in "Read_Key".
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Deletion_Perm" type="tns:PermissionsType">
+        <annotation>
+          <documentation>
+            Never: This element may not be deleted, only modified per write permissions.
+            Always: Always legal to delete.
+            Auth: Deletion requires authorization using "Write_Key".
+            Rights: Deletion requires rights in "Write_Key".
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Use_Count">
+        <annotation>
+          <documentation>
+            If False, use of this key is not tied to a monotonic counter.
+            Otherwise, set to the monotonic counter number (1 - 3) to be incremented when this key is used.
+            Counter 0 cannot be incremented via this mechanism.
+          </documentation>
+        </annotation>
+        <simpleType>
+          <union>
+            <simpleType>
+              <restriction base="token">
+                <enumeration value="False"/>
+              </restriction>
+            </simpleType>
+            <simpleType>
+              <restriction base="int">
+                <minInclusive value="1"/>
+                <maxInclusive value="3"/>
+              </restriction>
+            </simpleType>
+          </union>
+        </simpleType>
+      </element>
+      <element name="Reserved_58" type="tns:Binary-1bit"/>
+      <element name="Exportable" type="tns:Boolean">
+        <annotation>
+          <documentation>
+            If True, this element can be exported from the chip.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Lockable" type="tns:Boolean">
+        <annotation>
+          <documentation>
+            False: Permanently locking of this element is not permitted.
+            True: This element can be permanently locked - both writes and deletions are prohibited.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Access_Limit">
+        <annotation>
+          <documentation>
+            Limits access (usage, read, write, and delete) depending on the chip's state.
+            Always: Access unlimited.
+            Secure_Boot: Access prohibited until secure boot has been completed successfully.
+            One_Time_Clear: Access permitted if One_Time status bit is 0.
+            One_Time_Set: Access permitted if One_Time status bit is 1.
+          </documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="token">
+            <enumeration value="Always"/>
+            <!-- 0 -->
+            <enumeration value="Secure_Boot"/>
+            <!-- 1 -->
+            <enumeration value="One_Time_Clear"/>
+            <!-- 2 -->
+            <enumeration value="One_Time_Set"/>
+            <!-- 3 -->
+          </restriction>
+        </simpleType>
+      </element>
+      <element name="Reserved_63" type="tns:Binary-1bit"/>
+    </sequence>
+  </complexType>
+  <complexType name="Data_Source_Item">
+    <sequence>
+      <element name="Name" type="tns:DataSourceName">
+        <annotation>
+          <documentation>
+            The name of the Data_Source, which is directly referenced by either Functions or Writers.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Description" type="string" minOccurs="0">
+        <annotation>
+          <documentation>
+            An arbitrary description of what this Data_Source is used for. Not required.
+          </documentation>
+        </annotation>
+      </element>
+      <choice>
+        <element name="Static_Bytes">
+          <annotation>
+            <documentation>
+              Static data that is sourced from this configuration.
+            </documentation>
+          </annotation>
+          <complexType>
+            <choice>
+              <element name="Public" type="tns:PublicBinaryData"/>
+              <element name="Secret">
+                <complexType>
+                  <complexContent>
+                    <extension base="tns:BinaryData">
+                      <attribute name="encrypted" type="tns:Boolean" use="required"/>
+                      <attribute name="algorithm" use="optional">
+                        <simpleType>
+                          <restriction base="token">
+                            <enumeration value="AES256_GCM"/>
+                          </restriction>
+                        </simpleType>
+                      </attribute>
+                      <attribute name="key_name" type="tns:DataSourceName" use="required"/>
+                    </extension>
+                  </complexContent>
+                </complexType>
+              </element>
+            </choice>
+          </complexType>
+        </element>
+        <element name="Static_ECC_Private_Key" type="tns:StaticDataPrivateKey">
+          <annotation>
+            <documentation>
+              Static ECC Private Key definition.
+            </documentation>
+          </annotation>
+        </element>
+        <element name="Static_ECC_Public_Key" type="tns:StaticDataPublicKey">
+          <annotation>
+            <documentation>
+              Static ECC Public Key definition.
+            </documentation>
+          </annotation>
+        </element>
+        <element name="Static_RSA_Private_Key" type="tns:StaticDataPrivateKey">
+          <annotation>
+            <documentation>
+              Static RSA Public Key definition.
+            </documentation>
+          </annotation>
+        </element>
+        <element name="Static_RSA_Public_Key" type="tns:StaticDataPublicKey">
+          <annotation>
+            <documentation>
+              Static RSA Public Key definition.
+            </documentation>
+          </annotation>
+        </element>
+        <element name="Static_Date_Time">
+          <annotation>
+            <documentation>
+              Static date and time
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Public" type="dateTime"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Database_Data">
+          <annotation>
+            <documentation>
+              Data that is sourced from the database, such as Record Sets, counters, etc.
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Record_Set_Name" type="token"/>
+              <element name="Fields">
+                <complexType>
+                  <sequence>
+                    <element name="Field" maxOccurs="unbounded">
+                      <complexType>
+                        <simpleContent>
+                          <extension base="tns:DataSourceName">
+                            <attribute name="type" use="required">
+                              <simpleType>
+                                <restriction base="token">
+                                  <enumeration value="Bytes"/>
+                                  <enumeration value="ECC_Private_Key"/>
+                                  <enumeration value="ECC_Public_Key"/>
+                                  <enumeration value="RSA_Private_Key"/>
+                                  <enumeration value="RSA_Public_Key"/>
+                                  <enumeration value="Date_Time"/>
+                                </restriction>
+                              </simpleType>
+                            </attribute>
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <!-- /Database_Data -->
+        <element name="HSM_Generate_Key">
+          <annotation>
+            <documentation>
+              Generates an asymmetric key pair in the HSM.
+              Has two outputs, Public_Key and Private_Key.
+            </documentation>
+          </annotation>
+          <complexType>
+            <choice>
+              <element name="RSA">
+                <complexType>
+                  <sequence>
+                    <element name="Key_Size">
+                      <simpleType>
+                        <restriction base="integer">
+                          <minInclusive value="512"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Exponent" type="tns:BignumHex"/>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="ECC">
+                <complexType>
+                  <sequence>
+                    <element name="Curve" type="token"/>
+                    <element name="Compact" type="tns:Boolean" minOccurs="0">
+                      <annotation>
+                        <documentation>
+                          If True, the generated key pair will have a public key that can be represented by the ECC
+                          Compact form as defined in https://tools.ietf.org/id/draft-jivsov-ecc-compact-05.html
+                        </documentation>
+                      </annotation>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+            </choice>
+          </complexType>
+        </element>
+        <element name="Force_Nonnegative_Fixed_Size">
+          <annotation>
+            <documentation>
+              Treats the input bytes as a big endian signed integer (e.g. ASN.1 format). Sets the upper most bits to
+              0b01 to make the value positive and fixed size (untrimmable).
+            </documentation>
+          </annotation>
+          <complexType>
+            <sequence>
+              <element name="Input" type="tns:DataSourceReference"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="HSM_Random">
+          <complexType>
+            <sequence>
+              <element name="Size">
+                <simpleType>
+                  <restriction base="integer">
+                    <minInclusive value="1"/>
+                  </restriction>
+                </simpleType>
+              </element>
+              <element name="Secret_Data" type="tns:Boolean"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Process_Info">
+          <annotation>
+            <documentation>
+              Provides information about the provisioning process and the device being provisioned.  Device information
+              depends on the device being provisioned.
+              TA100
+              - Serial_Number: Bytes
+            </documentation>
+          </annotation>
+          <complexType/>
+        </element>
+        <element name="Bytes_Encode">
+          <complexType>
+            <sequence>
+              <element name="Input" type="tns:DataSourceReference"/>
+              <element name="Algorithm">
+                <complexType>
+                  <choice>
+                    <element name="Hex">
+                      <complexType>
+                        <sequence>
+                          <element name="Case">
+                            <simpleType>
+                              <restriction base="token">
+                                <enumeration value="Upper"/>
+                                <enumeration value="Lower"/>
+                              </restriction>
+                            </simpleType>
+                          </element>
+                          <element name="Separator" type="string"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </choice>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Date_Time_Modify">
+          <complexType>
+            <sequence>
+              <element name="Input" type="tns:DataSourceReference"/>
+              <element name="Add_Period" type="duration"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Current_Date_Time">
+          <complexType/>
+        </element>
+        <element name="Template">
+          <complexType>
+            <sequence>
+              <element name="Definition">
+                <complexType>
+                  <simpleContent>
+                    <extension base="string">
+                      <attribute name="encoding" use="required">
+                        <simpleType>
+                          <restriction base="token">
+                            <enumeration value="String_UTF8"/>
+                            <enumeration value="Hex"/>
+                          </restriction>
+                        </simpleType>
+                      </attribute>
+                    </extension>
+                  </simpleContent>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="X509_Certificate">
+          <complexType>
+            <sequence>
+              <element name="TBS_Certificate">
+                <complexType>
+                  <sequence>
+                    <element name="Version">
+                      <simpleType>
+                        <restriction base="string">
+                          <enumeration value="V1"/>
+                          <enumeration value="V2"/>
+                          <enumeration value="V3"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Serial_Number">
+                      <complexType>
+                        <simpleContent>
+                          <extension base="tns:DataSourceReference">
+                            <attribute name="from_source" type="tns:Boolean" fixed="True" use="required"/>
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                    <element name="Validity">
+                      <complexType>
+                        <sequence>
+                          <element name="Not_Before" type="tns:X509Time"/>
+                          <element name="Not_After" type="tns:X509Time"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="Subject" type="tns:X509Name"/>
+                    <element name="Subject_Public_Key_Info">
+                      <complexType>
+                        <sequence>
+                          <element name="Key">
+                            <complexType>
+                              <simpleContent>
+                                <extension base="tns:DataSourceReference">
+                                  <attribute name="from_source" type="tns:Boolean" fixed="True" use="required"/>
+                                </extension>
+                              </simpleContent>
+                            </complexType>
+                          </element>
+                          <element name="Options" minOccurs="0">
+                            <complexType>
+                              <choice>
+                                <element name="ECC">
+                                  <complexType>
+                                    <sequence>
+                                      <element name="Format">
+                                        <simpleType>
+                                          <restriction base="token">
+                                            <enumeration value="Uncompressed"/>
+                                            <enumeration value="Compressed"/>
+                                          </restriction>
+                                        </simpleType>
+                                      </element>
+                                    </sequence>
+                                  </complexType>
+                                </element>
+                              </choice>
+                            </complexType>
+                          </element>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="Issuer_Unique_ID" minOccurs="0">
+                      <simpleType>
+                        <restriction base="token">
+                          <enumeration value="From_CA_Subject_Unique_ID"/>
+                        </restriction>
+                      </simpleType>
+                    </element>
+                    <element name="Subject_Unique_ID" minOccurs="0">
+                      <complexType>
+                        <simpleContent>
+                          <extension base="tns:DataSourceReference">
+                            <attribute name="from_source" type="tns:Boolean" fixed="True" use="required"/>
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                    <element name="Extensions" minOccurs="0">
+                      <complexType>
+                        <choice maxOccurs="unbounded">
+                          <element name="Extension">
+                            <complexType>
+                              <sequence>
+                                <element name="Extn_ID" type="tns:OID"/>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="Extn_Value" type="tns:BinaryDataOrFromSource"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="Authority_Key_Identifier">
+                            <complexType>
+                              <sequence>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="ID_Method">
+                                  <complexType>
+                                    <choice>
+                                      <element name="Key_Identifier">
+                                        <complexType>
+                                          <choice>
+                                            <element name="From_CA_Subject_Key_Identifier"/>
+                                            <element name="Calculated">
+                                              <complexType>
+                                                <sequence>
+                                                  <element name="Method" type="tns:KeyIdentifierCalculatedTokens"/>
+                                                  <element name="Truncated_Size" type="positiveInteger" minOccurs="0">
+                                                    <annotation>
+                                                      <documentation>
+                                                        Override the default key ID size for the chosen method.
+                                                      </documentation>
+                                                    </annotation>
+                                                  </element>
+                                                </sequence>
+                                              </complexType>
+                                            </element>
+                                          </choice>
+                                        </complexType>
+                                      </element>
+                                      <element name="Issuer_And_Serial_Number">
+                                        <simpleType>
+                                          <restriction base="token">
+                                            <enumeration value="From_CA"/>
+                                          </restriction>
+                                        </simpleType>
+                                      </element>
+                                    </choice>
+                                  </complexType>
+                                </element>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="Subject_Key_Identifier">
+                            <complexType>
+                              <sequence>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="Key_Identifier">
+                                  <complexType>
+                                    <choice>
+                                      <element name="From_Source" type="tns:DataSourceReference"/>
+                                      <element name="Calculated">
+                                        <complexType>
+                                          <sequence>
+                                            <element name="Method" type="tns:KeyIdentifierCalculatedTokens"/>
+                                            <element name="Truncated_Size" type="positiveInteger" minOccurs="0">
+                                              <annotation>
+                                                <documentation>
+                                                  Override the default key ID size for the chosen method.
+                                                </documentation>
+                                              </annotation>
+                                            </element>
+                                          </sequence>
+                                        </complexType>
+                                      </element>
+                                    </choice>
+                                  </complexType>
+                                </element>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="Key_Usage">
+                            <complexType>
+                              <sequence>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="Digital_Signature" type="tns:Boolean"/>
+                                <element name="Content_Commitment" type="tns:Boolean"/>
+                                <element name="Key_Encipherment" type="tns:Boolean"/>
+                                <element name="Data_Encipherment" type="tns:Boolean"/>
+                                <element name="Key_Agreement" type="tns:Boolean"/>
+                                <element name="Key_Cert_Sign" type="tns:Boolean"/>
+                                <element name="CRL_Sign" type="tns:Boolean"/>
+                                <element name="Encipher_Only" type="tns:Boolean"/>
+                                <element name="Decipher_Only" type="tns:Boolean"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="Basic_Constraints">
+                            <complexType>
+                              <sequence>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="CA" type="tns:Boolean"/>
+                                <element name="Path_Len_Constraint" minOccurs="0">
+                                  <simpleType>
+                                    <union>
+                                      <simpleType>
+                                        <restriction base="int">
+                                          <minInclusive value="0"/>
+                                        </restriction>
+                                      </simpleType>
+                                      <simpleType>
+                                        <restriction base="token">
+                                          <enumeration value="No_Limit"/>
+                                        </restriction>
+                                      </simpleType>
+                                    </union>
+                                  </simpleType>
+                                </element>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="Extended_Key_Usage">
+                            <complexType>
+                              <sequence>
+                                <element name="Critical" type="tns:Boolean"/>
+                                <element name="Key_Purpose_Id" type="tns:OID" minOccurs="0" maxOccurs="unbounded"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                        </choice>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="Signature_Algorithm">
+                <complexType>
+                  <choice>
+                    <element name="ECDSA">
+                      <complexType>
+                        <sequence>
+                          <element name="Hash" type="tns:HashAlgorithms"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="RSASSA_PKCS1_V1_5">
+                      <complexType>
+                        <sequence>
+                          <element name="Hash" type="tns:HashAlgorithms"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </choice>
+                </complexType>
+              </element>
+              <element name="CA_Certificate_Chain">
+                <complexType>
+                  <simpleContent>
+                    <extension base="string">
+                      <attribute name="encoding" fixed="PEM" use="required"/>
+                    </extension>
+                  </simpleContent>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+		<element name="Counter">
+		  <complexType>
+		    <sequence>
+			  <element name="Counter_Name" type="token"/>
+			  <element name="Size" type="positiveInteger"/>
+			  <element name="Byte_Order" type="tns:ByteOrder"/>
+			  <element name="Signed" type="tns:Boolean"/> 	
+			</sequence>
+		  </complexType>	
+		</element>
+        <element name="Hash">
+          <complexType>
+            <sequence>
+              <element name="Input" type="tns:DataSourceReference"/>
+              <element name="Algorithm" type="tns:HashAlgorithms"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="Qi_Certificate_Chain">
+          <complexType>
+            <sequence>
+              <element name="Root_CA_Certificate" type="tns:DataSourceReference"/>
+              <element name="Manufacturer_CA_Certificate" type="tns:DataSourceReference"/>
+              <element name="Product_Unit_Certificate" type="tns:DataSourceReference"/>
+            </sequence>
+          </complexType>
+        </element>
+      </choice>
+    </sequence>
+  </complexType>
+  <simpleType name="KeyIdentifierCalculatedTokens">
+    <restriction base="token">
+      <enumeration value="RFC5280_Method1"/>
+      <enumeration value="RFC5280_Method2"/>
+      <enumeration value="RFC7093_Method1"/>
+      <enumeration value="RFC7093_Method2"/>
+      <enumeration value="RFC7093_Method3"/>
+      <enumeration value="RFC7093_Method4_SHA256"/>
+      <enumeration value="RFC7093_Method4_SHA384"/>
+      <enumeration value="RFC7093_Method4_SHA512"/>
+    </restriction>
+  </simpleType>
+  <complexType name="X509Name">
+    <sequence>
+      <element name="Relative_Distinguished_Name" minOccurs="0" maxOccurs="unbounded">
+        <complexType>
+          <choice>
+            <element name="Attribute_Type_And_Value">
+              <complexType>
+                <sequence>
+                  <element name="Type" type="tns:OID"/>
+                  <element name="Value" type="tns:BinaryDataOrFromSource"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element name="Common_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.3 -->
+            <element name="Surname" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.4 -->
+            <element name="Serial_Number" type="tns:PrintableStringOrFromSource"/>
+            <!-- 2.5.4.5 -->
+            <element name="Country_Name" type="tns:PrintableStringOrFromSource"/>
+            <!-- 2.5.4.6 -->
+            <element name="Locality_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.7 -->
+            <element name="State_Or_Province_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.8 -->
+            <element name="Organization_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.10 -->
+            <element name="Organizational_Unit_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.11 -->
+            <element name="Title" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.12 -->
+            <element name="Given_Name" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.42 -->
+            <element name="Initials" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.43 -->
+            <element name="Generation_Qualifier" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.44 -->
+            <element name="DN_Qualifier" type="tns:PrintableStringOrFromSource"/>
+            <!-- 2.5.4.46 -->
+            <element name="Pseudonym" type="tns:DirectoryStringOrFromSource"/>
+            <!-- 2.5.4.65 -->
+            <element name="Domain_Component" type="tns:IA5StringOrFromSource"/>
+            <!-- 0.9.2342.19200300.100.1.25 from RFC 3039 -->
+          </choice>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="IA5StringOrFromSource">
+    <annotation>
+      <documentation>
+        Express a string using the IA5String type directly or from a data source.
+        The Raw type allows one to specify the raw ASN.1 data for the value must include properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="tns:StringOrDataOrFromSource">
+        <attribute name="type" use="required">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Raw"/>
+              <enumeration value="IA5_String"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PrintableStringOrFromSource">
+    <annotation>
+      <documentation>
+        Express a string using the PrintableString type directly or from a data source.
+        The Raw type allows one to specify the raw ASN.1 data for the value. Data must include properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="tns:StringOrDataOrFromSource">
+        <attribute name="type" use="required">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Raw"/>
+              <enumeration value="Printable_String"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="DirectoryStringOrFromSource">
+    <annotation>
+      <documentation>
+        Express a string using either the PrintableString or UTF8String types. Also allows specifying a data source
+        as the data.
+        While technically this is meant to mirror the X520name definition, the rarely used TeletexString,
+        UniversalString, and BMPString types are unsupported.
+        The Raw type allows one to specify the raw ASN.1 data for the value. Data must include a properly formed tag,
+        length, and value in DER encoding. encoding attribute must be Hex or Base64 for this type.
+      </documentation>
+    </annotation>
+    <complexContent>
+      <extension base="tns:StringOrDataOrFromSource">
+        <attribute name="type" use="required">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Raw"/>
+              <enumeration value="Printable_String"/>
+              <enumeration value="UTF8_String"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="StringOrDataOrFromSource">
+    <annotation>
+      <documentation>
+        Base type for specifying static data or dynamic data from a data source.
+        When from_source attribute is set to False, this indicates static data and the encoding attribute must be used
+        to indicate how the data is encoded. Hex and Base64 are for expressing raw binary values. String indicates the
+        element contents should be used as is.
+        When from_source attribute is True, the element contains a data source reference for where to get the dynamic
+        data from. The encoding attribute has no meaning in this case and should be omitted.
+      </documentation>
+    </annotation>
+    <simpleContent>
+      <extension base="string">
+        <attribute name="from_source" type="tns:Boolean" use="required"/>
+        <attribute name="encoding" use="optional">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Hex"/>
+              <enumeration value="Base64"/>
+              <enumeration value="String_UTF8"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="OID">
+    <restriction base="token">
+      <pattern value="[0-9]+(\.[0-9]+)*"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="X509TimeValueOrDataSourceReference">
+    <union memberTypes="dateTime tns:DataSourceReference"/>
+  </simpleType>
+  <complexType name="X509Time">
+    <simpleContent>
+      <extension base="tns:X509TimeValueOrDataSourceReference">
+        <attribute name="type" use="required">
+          <simpleType>
+            <restriction base="string">
+              <enumeration value="Auto"/>
+              <enumeration value="UTC_Time"/>
+              <enumeration value="Generalized_Time"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+        <attribute name="from_source" type="tns:Boolean" use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="StaticDataPrivateKey">
+    <choice>
+      <element name="Secret">
+        <complexType>
+          <complexContent>
+            <extension base="tns:BinaryData">
+              <attribute name="encrypted" type="tns:Boolean" use="required"/>
+              <attribute name="algorithm" use="optional">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="AES256_GCM"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+              <attribute name="format" use="required">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="TA100_Write"/>
+                    <enumeration value="PKCS8"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+              <attribute name="key_name" type="tns:DataSourceName" use="required"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <complexType name="StaticDataPublicKey">
+    <choice>
+      <element name="Public">
+        <complexType>
+          <simpleContent>
+            <extension base="token">
+              <attribute name="encoding" fixed="PEM" use="required"/>
+              <attribute name="format" fixed="Subject_Public_Key_Info" use="required"/>
+            </extension>
+          </simpleContent>
+        </complexType>
+      </element>
+      <element name="Secret">
+        <complexType>
+          <complexContent>
+            <extension base="tns:BinaryData">
+              <attribute name="encrypted" type="tns:Boolean" use="required"/>
+              <attribute name="algorithm" use="optional">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="AES256_GCM"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+              <attribute name="format" use="required">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="TA100_Write"/>
+                    <enumeration value="Subject_Public_Key_Info"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+              <attribute name="key_name" type="tns:DataSourceName" use="required"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <complexType name="Writer_Item">
+    <sequence>
+      <element name="Source_Name" type="tns:DataSourceReference">
+        <annotation>
+          <documentation>
+            The name of the source of data, whether that is a named Data_Source item or Function.
+          </documentation>
+        </annotation>
+      </element>
+      <element name="Description" type="string" minOccurs="0"/>
+      <element name="Target" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Wrapped_Key_Item">
+    <sequence>
+      <element name="Name" type="tns:DataSourceName"/>
+      <element name="Description" type="string" minOccurs="0"/>
+      <element name="Key">
+        <complexType>
+          <complexContent>
+            <extension base="tns:BinaryData">
+              <attribute name="algorithm" use="required">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="RSA_OAEP_SHA256"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="Wrapping_Public_Key">
+        <complexType>
+          <simpleContent>
+            <extension base="string">
+              <attribute name="encoding" use="required">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="PEM"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+              <attribute name="format" use="required">
+                <simpleType>
+                  <restriction base="token">
+                    <enumeration value="Subject_Public_Key_Info"/>
+                  </restriction>
+                </simpleType>
+              </attribute>
+            </extension>
+          </simpleContent>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <simpleType name="PermissionsType">
+    <restriction base="token">
+      <enumeration value="Never"/>
+      <enumeration value="Always"/>
+      <enumeration value="Auth"/>
+      <enumeration value="Rights"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-1bit">
+    <annotation>
+      <documentation>
+        1 bits of binary data encoded as 1/0 bits (e.g. 0b0).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-2bit">
+    <annotation>
+      <documentation>
+        2 bits of binary data encoded as 1/0 bits (e.g. 0b01).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{2}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-3bit">
+    <annotation>
+      <documentation>
+        3 bits of binary data encoded as 1/0 bits (e.g. 0b010).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{3}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-4bit">
+    <annotation>
+      <documentation>
+        4 bits of binary data encoded as 1/0 bits (e.g. 0b0101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{4}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-5bit">
+    <annotation>
+      <documentation>
+        5 bits of binary data encoded as 1/0 bits (e.g. 0b01010).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{5}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-6bit">
+    <annotation>
+      <documentation>
+        6 bits of binary data encoded as 1/0 bits (e.g. 0b010101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{6}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-7bit">
+    <annotation>
+      <documentation>
+        7 bits of binary data encoded as 1/0 bits (e.g. 0b0101010).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{7}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-8bit">
+    <annotation>
+      <documentation>
+        8 bits of binary data encoded as 1/0 bits (e.g. 0b01010101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{8}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-9bit">
+    <annotation>
+      <documentation>
+        9 bits of binary data encoded as 1/0 bits (e.g. 0b010101010).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{9}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-10bit">
+    <annotation>
+      <documentation>
+        10 bits of binary data encoded as 1/0 bits (e.g. 0b0101010101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{10}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-14bit">
+    <annotation>
+      <documentation>
+        14 bits of binary data encoded as 1/0 bits (e.g. 0b01010101010101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{14}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="Binary-16bit">
+    <annotation>
+      <documentation>
+        168 bits of binary data encoded as 1/0 bits (e.g. 0b0101010101010101).
+      </documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="0b[01]{16}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DataBase64">
+    <annotation>
+      <documentation>Base64 encoded binary data.</documentation>
+    </annotation>
+    <restriction base="string">
+      <pattern value="[\sA-Za-z0-9+/]+[\s=]*"/>
+    </restriction>
+  </simpleType>
+  <complexType name="BinaryDataOrFromSource">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="from_source" type="tns:Boolean" use="required"/>
+        <attribute name="encoding" use="optional">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Hex"/>
+              <enumeration value="Base64"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="BinaryData">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="encoding" use="required">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Hex"/>
+              <enumeration value="Base64"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="PublicBinaryData">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="encoding" use="required">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="Hex"/>
+              <enumeration value="Base64"/>
+              <enumeration value="String_UTF8"/>
+            </restriction>
+          </simpleType>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="DataSourceName">
+    <annotation>
+      <documentation>Data sources use c-function like naming conventions.</documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="[a-zA-Z_][a-zA-Z0-9_]*"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DataSourceReference">
+    <annotation>
+      <documentation>Format used to refer to data sources and their outputs.</documentation>
+    </annotation>
+    <restriction base="token">
+      <pattern value="[a-zA-Z_][0-9a-zA-Z_]*(\.[a-zA-Z_][0-9a-zA-Z_]*)?"/>
+    </restriction>
+  </simpleType>
+  <complexType name="PullUpConfig">
+    <sequence>
+      <element name="CS_SCK_SI" type="tns:Boolean"/>
+      <element name="SDA_SCL" type="tns:Boolean"/>
+      <element name="SO" type="tns:Boolean"/>
+      <element name="GPIO_1" type="tns:Boolean"/>
+      <element name="GPIO_2" type="tns:Boolean"/>
+      <element name="GPIO_3" type="tns:Boolean"/>
+      <element name="RESET" type="tns:Boolean"/>
+      <element name="Unbonded">
+        <complexType>
+          <sequence>
+            <element name="RST2" type="tns:Boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <simpleType name="HashAlgorithms">
+    <restriction base="token">
+      <enumeration value="SHA1"/>
+      <enumeration value="SHA224"/>
+      <enumeration value="SHA256"/>
+      <enumeration value="SHA384"/>
+      <enumeration value="SHA512"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="ByteOrder">
+	<restriction base="token">
+      <enumeration value="Big"/>
+	  <enumeration value="Little"/>
+    </restriction>
+  </simpleType>
+</schema>
