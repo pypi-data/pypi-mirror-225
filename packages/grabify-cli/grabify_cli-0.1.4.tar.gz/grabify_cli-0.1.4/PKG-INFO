@@ -1,0 +1,91 @@
+Metadata-Version: 2.1
+Name: grabify-cli
+Version: 0.1.4
+Summary: A command-line tool that allows you to download artwork and metadata from Spotify tracks and albums.
+License: MIT
+Keywords: console,cli,command-line,grabify,spotify,spotipy
+Author: woidzero
+Author-email: woidzerov@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: BeautifulSoup4 (>=4.0.0,<5.0.0)
+Requires-Dist: requests (>=2.0.0,<3.0.0)
+Requires-Dist: rich (>=13.0.0,<14.0.0)
+Project-URL: Homepage, https://github.com/woidzero/grabify#readme
+Project-URL: Issues, https://github.com/woidzero/grabify/issues
+Project-URL: Source, https://github.com/woidzero/grabify
+Description-Content-Type: text/markdown
+
+# Grabify
+
+[![PyPI - Version](https://img.shields.io/pypi/v/grabify-cli.svg)](https://pypi.org/project/grabify-cli)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/grabify-cli)](https://pypi.org/project/grabify-cli)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/grabify-cli.svg)](https://pypi.org/project/grabify-cli)
+
+Command-line tool that allows you to download images and metadata from Spotify.
+
+## Installation
+
+To install Grabify, run the following command:
+
+```
+pip install grabify-cli
+```
+
+## Usage
+
+To use Grabify, run the following command:
+
+```
+grabify [OPTIONS] [data/art] <url>
+```
+
+Where `<url>` is the Spotify URL of the track or album you want to download.
+
+## Example
+
+### Data
+
+There is example how to download data for the track "Bending Hectic" by The Smile
+
+```
+grabify data https://open.spotify.com/track/2tA4gq8tO9TPPPpbgK5n4
+```
+
+This will save the data to the file `Downloads/grabify/bending_hectic.json`.
+
+### Artwork
+
+For example, to download the artwork for the album "Currents" by Tame Impala, you would run the following command:
+
+```
+grabify art https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv
+```
+
+This will save the artwork to the file `Downloads/grabify/Currents.jpg`.
+
+## Contributing
+
+Contributions are welcome! Please submit pull requests to the [GitHub repository](https://github.com/woidzero/grabify).
+
+## Support
+
+For support, email <a href="mailto://woidzerov@gmail.com">woidzerov@gmail.com</a>
+
+## License
+
+`grabify` is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
