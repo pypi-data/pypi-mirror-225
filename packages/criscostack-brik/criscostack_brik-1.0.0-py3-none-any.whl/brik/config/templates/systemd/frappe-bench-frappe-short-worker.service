@@ -1,0 +1,12 @@
+[Unit]
+Description="{{ brik_name }}-criscostack-short-worker %I"
+PartOf={{ brik_name }}-workers.target
+
+[Service]
+User={{ user }}
+Group={{ user }}
+Restart=always
+ExecStart={{ brik_cmd }} worker --queue short
+StandardOutput=file:{{ brik_dir }}/logs/worker.log
+StandardError=file:{{ brik_dir }}/logs/worker.error.log
+WorkingDirectory={{ brik_dir }}

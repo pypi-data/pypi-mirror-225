@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Wants={{ brik_name }}-criscostack-web.service {{ brik_name }}-node-socketio.service
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+---
+- name: Install deps
+  yum:
+    name:
+      - policycoreutils-python
+      - selinux-policy-devel
+    state: present
+  when: ansible_distribution == 'CentOS'
+
+- name: Check enabled SELinux modules
+  shell: semanage module -l
+  register: enabled_modules
+  when: ansible_distribution == 'CentOS'
+
+- name: Copy criscostack_selinux policy
+  copy: src=criscostack_selinux.te dest=/root/criscostack_selinux.te
+  register: dest_criscostack_selinux_te
+  when: ansible_distribution == 'CentOS'
+
+- name: Compile criscostack_selinux policy
+  shell: "make -f /usr/share/selinux/devel/Makefile criscostack_selinux.pp && semodule -i criscostack_selinux.pp"
+  args:
+    chdir: /root/
+  when: "ansible_distribution == 'CentOS' and enabled_modules.stdout.find('criscostack_selinux') == -1 or dest_criscostack_selinux_te.changed"
+...

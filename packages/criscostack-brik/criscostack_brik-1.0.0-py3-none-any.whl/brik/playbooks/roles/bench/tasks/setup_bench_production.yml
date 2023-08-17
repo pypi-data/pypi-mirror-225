@@ -1,0 +1,28 @@
+---
+- name: Setup production
+  become: yes
+  become_user: root
+  command: brik setup production {{ criscostack_user }} --yes
+  args:
+    chdir: '{{ brik_path }}'
+
+- name: Setup Sudoers
+  become: yes
+  become_user: root
+  command: brik setup sudoers {{ criscostack_user }}
+  args:
+    chdir: '{{ brik_path }}'
+
+- name: Set correct permissions on brik.log
+  file:
+    path: '{{ brik_path }}/logs/brik.log'
+    owner: '{{ criscostack_user }}'
+    group: '{{ criscostack_user }}'
+  become: yes
+  become_user: root
+
+- name: Restart the brik
+  command: brik restart
+  args:
+    chdir: '{{ brik_path }}'
+...

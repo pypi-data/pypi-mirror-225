@@ -1,0 +1,10 @@
+brik.patches.v3.deprecate_old_config
+brik.patches.v3.celery_to_rq
+brik.patches.v3.redis_bind_ip
+brik.patches.v4.update_node
+brik.patches.v4.update_socketio
+brik.patches.v4.install_yarn #2
+brik.patches.v5.fix_user_permissions
+brik.patches.v5.fix_backup_cronjob
+brik.patches.v5.set_live_reload_config
+brik.patches.v5.update_archived_sites
