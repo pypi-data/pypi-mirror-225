@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: SimpleNode
+Version: 0.2
+Summary: Package for working with Neural Networks for small projects
+Home-page: https://github.com/Rkaid0/SimpleNode
+Download-URL: https://github.com/Rkaid0/SimpleNode/archive/refs/tags/v_0.1.tar.gz
+Author: Artyom Yesayan
+Author-email: yesart8@gmail.com
+License: MIT
+Keywords: NeuralNetwork,GradientDescent,AI
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+
+# SimpleNode
+
+SimpleNode is a small package for working with Neural Networks in python
+
+## Features
+
+- Easily create a Neural Network
+- Create Labled Data
+- Train the Neural Network using Labled Data
+- Save trained models
+- Load previously saved models
+- Make predictions with new inputs
