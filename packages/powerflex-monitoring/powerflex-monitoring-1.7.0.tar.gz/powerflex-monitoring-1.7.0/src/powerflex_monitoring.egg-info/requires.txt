@@ -1,0 +1,13 @@
+backoff>=2
+colorlog>=6
+nats-py>=2.2.0
+prometheus_client>=0.14
+pydantic>=1.9
+requests>=2
+starlette>=0.20
+types-requests>=2
+uvicorn>=0.18
+redis>=4.3.4
+
+[pydantic2]
+pydantic_settings>=2
