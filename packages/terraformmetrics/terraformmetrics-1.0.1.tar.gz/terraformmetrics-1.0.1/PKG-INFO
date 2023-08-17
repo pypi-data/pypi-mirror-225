@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: terraformmetrics
+Version: 1.0.1
+Summary: A module to extract metrics from Terrafor, scripts
+Home-page: https://github.com/GerardoBrescia/radon-terraform-metrics.git
+Download-URL: https://github.com/radon-h2020/radon-ansible-metrics/archive/1.0.1.tar.gz
+Author: Gerardo Brescia
+Author-email: gerrybrescia99@gmail.com
+Maintainer: Gerardo Brescia
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+<p align="center" width="100%">
+    <img src="logo.png"> 
+</p>
+
+
+<h2 align="center">The static source code measurement tool for Terraform</h2>
