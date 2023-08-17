@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: skysurvey
+Version: 0.8.4
+Summary: Simulating Transient in the sky and how to observe them
+Home-page: https://github.com/MickaelRigault/skysurvey
+Author: Mickael Rigault
+Author-email: m.rigault@ipnl.in2p3.fr
+License: Apache Software License
+Keywords: astronomy,astrophysics
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+Provides-Extra: docs
+Provides-Extra: tests
+License-File: LICENSE
