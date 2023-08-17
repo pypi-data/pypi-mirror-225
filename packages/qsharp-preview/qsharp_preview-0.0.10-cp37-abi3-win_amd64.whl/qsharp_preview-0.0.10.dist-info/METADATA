@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: qsharp-preview
+Version: 0.0.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Rust
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Requires-Dist: qsharp_jupyterlab; extra == 'jupyterlab'
+Provides-Extra: jupyterlab
+Summary: Q# Python Bindings
+Home-Page: https://github.com/microsoft/qsharp
+Author: Microsoft
+License: MIT
+Requires-Python: >= 3.7
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Source Code, https://github.com/microsoft/qsharp
+
+# Q# Python Bindings
+
