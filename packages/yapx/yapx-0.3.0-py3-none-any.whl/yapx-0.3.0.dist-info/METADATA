@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: yapx
+Version: 0.3.0
+Summary: The next generation of Python's Argparse.
+Author-email: Donald Mellenbruch <hello@f2dv.com>
+License: Copyright 2023 Donald Mellenbruch
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Project-URL: Homepage, https://www.f2dv.com/r/yapx
+Project-URL: Repository, https://www.github.com/fresh2dev/yapx
+Project-URL: Funding, https://www.f2dv.com/fund
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typing-extensions ; python_version < "3.10"
+Provides-Extra: build
+Requires-Dist: build ==0.* ; extra == 'build'
+Requires-Dist: wheel ==0.* ; extra == 'build'
+Requires-Dist: twine ==4.* ; extra == 'build'
+Provides-Extra: dev
+Requires-Dist: python-lsp-server[rope] ==1.* ; extra == 'dev'
+Requires-Dist: pylint ==2.* ; extra == 'dev'
+Requires-Dist: pylint-pytest ==1.* ; extra == 'dev'
+Requires-Dist: mypy[reports] ==1.* ; extra == 'dev'
+Requires-Dist: ruff ==0.* ; extra == 'dev'
+Requires-Dist: black[jupyter] ==23.* ; extra == 'dev'
+Requires-Dist: isort ==5.* ; extra == 'dev'
+Requires-Dist: bump2version ==1.* ; extra == 'dev'
+Requires-Dist: pdbpp ; extra == 'dev'
+Requires-Dist: ipykernel ; extra == 'dev'
+Requires-Dist: ipywidgets ; extra == 'dev'
+Requires-Dist: ipython ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: mkdocs ==1.* ; extra == 'docs'
+Requires-Dist: mkdocs-material ==9.* ; extra == 'docs'
+Requires-Dist: mkdocs-jupyter ==0.24.* ; extra == 'docs'
+Requires-Dist: mkdocstrings[python] ==0.20.* ; extra == 'docs'
+Requires-Dist: mkdocs-autorefs ==0.* ; extra == 'docs'
+Requires-Dist: mkdocs-include-dir-to-nav ==1.* ; extra == 'docs'
+Provides-Extra: extras
+Requires-Dist: pydantic <3,>=1.10.3 ; extra == 'extras'
+Requires-Dist: shtab ==1.6.2 ; extra == 'extras'
+Requires-Dist: rich-argparse ==1.* ; extra == 'extras'
+Requires-Dist: argparse-tui <1,>=0.2.0 ; extra == 'extras'
+Provides-Extra: pydantic
+Requires-Dist: pydantic <3,>=1.10.3 ; extra == 'pydantic'
+Provides-Extra: rich
+Requires-Dist: rich-argparse ==1.* ; extra == 'rich'
+Provides-Extra: shtab
+Requires-Dist: shtab ==1.6.* ; extra == 'shtab'
+Provides-Extra: tests
+Requires-Dist: pytest ==7.* ; extra == 'tests'
+Requires-Dist: pytest-cov ==4.* ; extra == 'tests'
+Requires-Dist: pytest-html ==3.* ; extra == 'tests'
+Requires-Dist: pytest-sugar ==0.* ; extra == 'tests'
+Requires-Dist: pytest-custom-exit-code ==0.3.* ; extra == 'tests'
+Requires-Dist: pylint ==2.* ; extra == 'tests'
+Requires-Dist: pylint-pytest ==1.* ; extra == 'tests'
+Requires-Dist: packaging ==23.* ; extra == 'tests'
+Requires-Dist: pydantic <3,>=1.10.3 ; extra == 'tests'
+Requires-Dist: shtab ==1.6.* ; extra == 'tests'
+Requires-Dist: rich-argparse ==1.* ; extra == 'tests'
+Provides-Extra: tui
+Requires-Dist: argparse-tui <1,>=0.2.0 ; extra == 'tui'
+
+[https://www.f2dv.com/r/yapx](https://www.f2dv.com/r/yapx)
