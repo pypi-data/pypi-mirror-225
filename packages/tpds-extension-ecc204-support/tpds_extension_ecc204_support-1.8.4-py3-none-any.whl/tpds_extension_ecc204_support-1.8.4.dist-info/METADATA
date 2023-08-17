@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: tpds-extension-ecc204-support
+Version: 1.8.4
+Summary: Microchip(SPG) Trust Platform - ECC204 Device Support
+Home-page: https://www.microchip.com/TrustPlatform
+Author: Microchip Technology
+Author-email: SPG.Tools@microchip.com
+Classifier: License :: Other/Proprietary License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: tpds-core >=2.3.4
+Requires-Dist: tpds-helper >=2.3.6
+
+# NextGen ECC204-TFLXAUT Configurator
+
+- ECC204 Configurator Package is distributed under NDA
+
+## Release Notes
+
+### 1.0.1
+    - Added Provision Prototype Samples to configurator page
+    - other minor updates
+
+### 1.0.0
+    - Initial version with options to generate provisioning files and Proto Provisioning Device.

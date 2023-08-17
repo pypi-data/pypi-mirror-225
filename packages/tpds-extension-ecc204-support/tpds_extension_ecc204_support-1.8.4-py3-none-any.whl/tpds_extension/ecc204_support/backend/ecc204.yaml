@@ -1,0 +1,65 @@
+---
+title: ECC204 Device Information
+devices:
+  ECC204A-TFLXAUTH:
+    basePart: ECC204A
+    partLink: https://www.microchip.com/en-us/product/ECC204
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    partInterface:
+      - i2c
+      - swi
+  ECC204A-TFLXWPC:
+    basePart: ECC204A
+    partLink: https://www.microchip.com/en-us/product/ECC204
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+    partInterface:
+      - i2c
+  ECC204A-RBVCZ:
+    basePart: ECC204A
+    partLink: https://www.microchip.com/en-us/product/ECC204
+    provisioningFlow: TrustFLEX
+    partType: Silicon
+    productCategory: Secure Element
+    tpdsRelease: Yes
+parts:
+  - partNumber: ECC204A-TFLXAUTHU
+    deviceName: ECC204A-TFLXAUTH
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: ECC204A-TFLXAUTHS
+    deviceName: ECC204A-TFLXAUTH
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: ECC204A-TFLXWPCU
+    deviceName: ECC204A-TFLXWPC
+    packagePin: UDFN-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: ECC204A-TFLXWPCS
+    deviceName: ECC204A-TFLXWPC
+    packagePin: SOIC-8
+    memory: N/A
+    media: Reel
+    moq: 2000
+    status: Introduction
+  - partNumber: ECC204A-RBVCZ
+    deviceName: ECC204A-RBVCZ
+    packagePin: RBH 3-pin contact
+    memory: N/A
+    media: Reel
+    moq:
+    status: Introduction
