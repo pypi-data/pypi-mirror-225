@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: yocto
+Version: 0.1.2
+Summary: yocto library, need to include MIA attack
+Home-page: https://yocto.readthedocs.io/
+Author: Nathan Brunet
+Author-email: nathan.brunet@inria.fr
+License: MIT
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+
+# yocto lib
+This is a demo
+### Installation 
+```commandline
+pip install yocto 
+```
+
+### Get started
+How to use the library
+```Python
+from yocto import Multiplication
+
+# Instantiate a Multiplication object
+multiplication = Multiplication(0)
+
+# Call the multiply method
+result = multiplication.multiplpy(1)
+```

@@ -1,0 +1,1 @@
+from yocto.myClass import Multiplication
