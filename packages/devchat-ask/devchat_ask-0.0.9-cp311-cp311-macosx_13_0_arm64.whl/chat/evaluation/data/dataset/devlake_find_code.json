@@ -1,0 +1,78 @@
+{
+    "name": "DevLake",
+    "description": "Find code case for DevLake",
+    "cases": [
+        {
+            "id": "devlake-01",
+            "question": "Give relevant code verbatim about how to cal lead time",
+            "reference_answer": "func calcLeadTimeMinutes(task *models.TeambitionTask) int64 {\n        if !task.IsDone || task.StartDate == nil || task.AccomplishTime == nil {\n                return 0\n        }\n        startTime := task.StartDate.ToTime()\n        endTime := task.AccomplishTime.ToTime()\n\n        return int64(endTime.Sub(startTime).Minutes())\n}\n",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-02",
+            "question": "Give relevant golang code verbatim about blueprint edit",
+            "reference_answer": "func PatchBlueprint(id uint64, body map[string]interface{}) (*models.Blueprint, errors.Error) {\n",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-03",
+            "question": "Give relevant golang code verbatim about blueprint runner",
+            "reference_answer": "func (p *pipelineRunner) runPipelineStandalone() errors.Error {\n        return runner.RunPipeline(\n                basicRes.ReplaceLogger(p.logger),\n                p.pipeline.ID,\n                func(taskIds []uint64) errors.Error {\n                        return RunTasksStandalone(p.logger, taskIds)\n                },\n        )\n}\n",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-04",
+            "question": "Give relevant golang code verbatim about github issue collector",
+            "reference_answer": "func CollectIssue(taskCtx plugin.SubTaskContext) errors.Error {\n\tdb := taskCtx.GetDal()\n\tdata := taskCtx.GetData().(*githubTasks.GithubTaskData)\n\tconfig := data.Options.ScopeConfig\n\tissueRegexes, err := githubTasks.NewIssueRegexes(config)\n\tif err != nil {\n\t\treturn nil\n\t}\n\n\tmilestoneMap, err := getMilestoneMap(db, data.Options.GithubId, data.Options.ConnectionId)\n\tif err != nil {\n\t\treturn nil\n\t}\n\n\tcollectorWithState, err := helper.NewStatefulApiCollector(helper.RawDataSubTaskArgs{\n\t\tCtx: taskCtx,\n\t\tParams: githubTasks.GithubApiParams{\n\t\t\tConnectionId: data.Options.ConnectionId,\n\t\t\tName:         data.Options.Name,\n\t\t},\n\t\tTable: RAW_ISSUES_TABLE,\n\t}, data.TimeAfter)……",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-05",
+            "question": "Give relevant golang code verbatim about the jira request error handler",
+            "reference_answer": "func ignoreHTTPStatus404(res *http.Response) errors.Error {\n\tif res.StatusCode == http.StatusUnauthorized {\n\t\treturn errors.Unauthorized.New(\"authentication failed, please check your AccessToken\")\n\t}\n\tif res.StatusCode == http.StatusNotFound {\n\t\treturn api.ErrIgnoreAndContinue\n\t}\n\treturn nil\n}",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-06",
+            "question": "Give relevant ts code verbatim about the blueprint upgrade",
+            "reference_answer": "No relevant ts code",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-07",
+            "question": "Give relevant ts code verbatim about the github plugin config",
+            "reference_answer": "export const GitHubConfig: PluginConfigType = {\n  type: PluginType.Connection,\n  plugin: 'github',\n  name: 'GitHub',\n  icon: Icon,\n  sort: 1,\n  connection: {\n    docLink: 'https://devlake.apache.org/docs/Configuration/GitHub',\n    initialValues: {\n      endpoint: 'https://api.github.com/',\n      authMethod: 'AccessToken',\n      enableGraphql: true,\n    },\n    fields: [\n      'name',\n      {\n        key: 'endpoint',\n        multipleVersions: {\n          cloud: 'https://api.github.com/',\n          server: ' ',\n        },\n      },\n      ({ initialValues, values, setValues }: any) => (\n        <Authentication\n          key=\"authMethod\"\n          initialValue={initialValues.authMethod ?? ''}\n          value={values.authMethod ?? ''}\n          setValue={(value) => setValues({ authMethod: value })}\n        />\n      ),\n      ({ initialValues, values, errors, setValues, setErrors }: any) =>\n        (values.authMethod || initialValues.authMethod) === 'AccessToken' ? (\n          <Token\n            key=\"token\"\n            endpoint={values.endpoint}\n            proxy={values.proxy}\n            initialValue={initialValues.token ?? ''}\n            value={values.token ?? ''}\n            error={errors.token ?? ''}\n            setValue={(value) => setValues({ token: value })}\n            setError={(value) => setErrors({ token: value })}\n          />\n        ) : (\n          <GithubApp\n            endpoint={values.endpoint}\n            proxy={values.proxy}\n            initialValue={initialValues ? pick(initialValues, ['appId', 'secretKey', 'installationId']) : {}}\n            value={values ? pick(values, ['appId', 'secretKey', 'installationId']) : {}}\n            error={errors ?? {}}\n            setValue={(value) => setValues(value)}\n            setError={(value) => setErrors(value)}\n          />\n        ),\n      'proxy',\n      ({ initialValues, values, setValues }: any) => (\n        <Graphql\n          key=\"graphql\"\n          initialValue={initialValues.enableGraphql ?? false}\n          value={values.enableGraphql ?? false}\n          setValue={(value) => setValues({ enableGraphql: value })}\n        />\n      ),\n      {\n        key: 'rateLimitPerHour',\n        subLabel:\n          'By default, DevLake uses dynamic rate limit for optimized data collection for GitHub. But you can adjust the collection speed by entering a fixed value. Please note: the rate limit setting applies to all tokens you have entered above.',\n        learnMore: 'https://devlake.apache.org/docs/Configuration/GitHub/#fixed-rate-limit-optional',\n        externalInfo:\n          'Rate Limit Value Reference\\nGitHub: 0-5,000 requests/hour\\nGitHub Enterprise: 0-15,000 requests/hour',\n        defaultValue: 4500,\n      },\n    ],\n  },\n  dataScope: {\n    millerColumns: {\n      title: 'Select Repositories *',\n      subTitle: 'You can either add repositories by searching or selecting from the following directory.',\n      firstColumnTitle: 'Organizations/Owners',\n      columnCount: 2,\n    },\n    search: {\n      title: 'Add Repositories by Searching',\n      subTitle:\n        'If you would like to add repositories outside of your organizations, you can add them through this method.',\n    },\n  },\n  scopeConfig: {\n    entities: ['CODE', 'TICKET', 'CODEREVIEW', 'CROSS', 'CICD'],\n    transformation: {\n      issueTypeRequirement: '(feat|feature|proposal|requirement)',\n      issueTypeBug: '(bug|broken)',\n      issueTypeIncident: '(incident|failure)',\n      issuePriority: '(highest|high|medium|low|p0|p1|p2|p3)',\n      issueComponent: 'component(.*)',\n      issueSeverity: 'severity(.*)',\n      deploymentPattern: '(deploy|push-image)',\n      productionPattern: 'prod(.*)',\n      prType: 'type(.*)',\n      prComponent: 'component(.*)',\n      prBodyClosePattern:\n        '(?mi)(fix|close|resolve|fixes|closes|resolves|fixed|closed|resolved)[s]*.*(((and )?(#|https://github.com/%s/%s/issues/)d+[ ]*)+)',\n      refdiff: {\n        tagsLimit: 10,\n        tagsPattern: '/v\\\\d+\\\\.\\\\d+(\\\\.\\\\d+(-rc)*\\\\d*)*$/',\n      },\n    },\n  },\n};",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        },
+        {
+            "id": "devlake-08",
+            "question": "Give relevant golang code verbatim about csv importer in e2e test",
+            "reference_answer": "func (t *DataFlowTester) importCsv(csvRelPath string, dst schema.Tabler, nullable bool) {\n\tcsvIter, err := pluginhelper.NewCsvFileIterator(csvRelPath)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tdefer csvIter.Close()\n\tt.FlushTabler(dst)\n\t// load rows and insert into target table\n\tfor csvIter.HasNext() {\n\t\ttoInsertValues := csvIter.Fetch()\n\t\tfor i := range toInsertValues {\n\t\t\tif nullable {\n\t\t\t\tif toInsertValues[i].(string) == `NULL` {\n\t\t\t\t\ttoInsertValues[i] = nil\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif toInsertValues[i].(string) == `` {\n\t\t\t\t\ttoInsertValues[i] = nil\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tresult := t.Db.Model(dst).Create(toInsertValues)\n\t\tif result.Error != nil {\n\t\t\tpanic(result.Error)\n\t\t}\n\t\tassert.Equal(t.T, int64(1), result.RowsAffected)\n\t}\n}",
+            "answer_properties": [],
+            "notes": {
+                "level": "mid"
+            }
+        }
+    ]
+}
