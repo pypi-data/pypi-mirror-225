@@ -1,0 +1,7 @@
+numpy
+
+[:platform_system == "Windows"]
+msvc-runtime
+
+[test]
+pytest
