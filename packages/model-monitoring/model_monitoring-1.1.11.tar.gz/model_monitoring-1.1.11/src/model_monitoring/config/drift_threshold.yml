@@ -1,0 +1,110 @@
+#Classification
+roc_auc_score:
+  logic: decrease
+  relative :
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: 0.65
+    yellow: 0.75
+
+balanced_accuracy_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: 0.65
+    yellow: 0.75
+
+accuracy_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: None
+    yellow: None
+
+precision_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: None
+    yellow: None
+
+recall_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: None
+    yellow: None
+
+f1_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: None
+    yellow: None
+
+#Regression
+r2_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: 0.05
+    yellow: 0.2
+
+median_absolute_error:
+  logic: increase
+  relative:
+    red: 2
+    yellow: 0.5
+  absolute:
+    red: None
+    yellow: None
+
+mean_squared_error:
+  logic: increase
+  relative:
+    red: 2
+    yellow: 0.5
+  absolute:
+    red: None
+    yellow: None
+
+explained_variance_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: None
+    yellow: None
+
+#Other Metrics
+lift_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: 1.5
+    yellow: 2
+
+gain_score:
+  logic: decrease
+  relative:
+    red: -0.5
+    yellow: -0.25
+  absolute:
+    red: 0.25
+    yellow: 0.4
