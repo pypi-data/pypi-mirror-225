@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: dl-matrix
+Version: 2.0
+Summary: A Divergent Language Matrix package
+Home-page: http://github.com/diomandeee/dl_matrix
+Author: Mohamed Diomande
+Author-email: gdiomande7907@gmail.com
+License: MIT
+Keywords: divergent language matrix
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp ==3.8.5
+Requires-Dist: aiosignal ==1.3.1
+Requires-Dist: annotated-types ==0.5.0
+Requires-Dist: ansi2html ==1.8.0
+Requires-Dist: async-timeout ==4.0.3
+Requires-Dist: attrs ==23.1.0
+Requires-Dist: certifi ==2023.7.22
+Requires-Dist: charset-normalizer ==3.2.0
+Requires-Dist: click ==8.1.6
+Requires-Dist: Cython ==0.29.36
+Requires-Dist: dash ==2.11.1
+Requires-Dist: dash-core-components ==2.0.0
+Requires-Dist: dash-html-components ==2.0.0
+Requires-Dist: dash-table ==5.0.0
+Requires-Dist: datasets ==2.14.4
+Requires-Dist: dill ==0.3.7
+Requires-Dist: filelock ==3.12.2
+Requires-Dist: Flask ==2.2.5
+Requires-Dist: frozenlist ==1.4.0
+Requires-Dist: fsspec ==2023.6.0
+Requires-Dist: hdbscan ==0.8.33
+Requires-Dist: huggingface-hub ==0.16.4
+Requires-Dist: idna ==3.4
+Requires-Dist: itsdangerous ==2.1.2
+Requires-Dist: Jinja2 ==3.1.2
+Requires-Dist: joblib ==1.3.2
+Requires-Dist: llvmlite ==0.40.1
+Requires-Dist: MarkupSafe ==2.1.3
+Requires-Dist: mpmath ==1.3.0
+Requires-Dist: multidict ==6.0.4
+Requires-Dist: multiprocess ==0.70.15
+Requires-Dist: nest-asyncio ==1.5.7
+Requires-Dist: networkx ==3.1
+Requires-Dist: nltk ==3.8.1
+Requires-Dist: numba ==0.57.1
+Requires-Dist: numpy ==1.24.4
+Requires-Dist: openai ==0.27.8
+Requires-Dist: packaging ==23.1
+Requires-Dist: pandas ==2.0.3
+Requires-Dist: Pillow ==10.0.0
+Requires-Dist: plotly ==5.16.0
+Requires-Dist: prompt-toolkit ==3.0.39
+Requires-Dist: pyarrow ==12.0.1
+Requires-Dist: pydantic ==1.10.12
+Requires-Dist: pydantic-core ==2.4.0
+Requires-Dist: Pygments ==2.16.1
+Requires-Dist: pynndescent ==0.5.10
+Requires-Dist: python-dateutil ==2.8.2
+Requires-Dist: pytz ==2023.3
+Requires-Dist: PyYAML ==6.0.1
+Requires-Dist: regex ==2023.8.8
+Requires-Dist: requests ==2.31.0
+Requires-Dist: retrying ==1.3.4
+Requires-Dist: safetensors ==0.3.2
+Requires-Dist: scikit-learn ==1.3.0
+Requires-Dist: scipy ==1.11.1
+Requires-Dist: sentence-transformers ==2.2.2
+Requires-Dist: sentencepiece ==0.1.99
+Requires-Dist: six ==1.16.0
+Requires-Dist: sklearn ==0.0.post7
+Requires-Dist: sympy ==1.12
+Requires-Dist: tenacity ==8.2.3
+Requires-Dist: threadpoolctl ==3.2.0
+Requires-Dist: tiktoken ==0.4.0
+Requires-Dist: tokenizers ==0.13.3
+Requires-Dist: torch ==2.0.1
+Requires-Dist: torchvision ==0.15.2
+Requires-Dist: tqdm ==4.66.1
+Requires-Dist: transformers ==4.31.0
+Requires-Dist: typing-extensions ==4.7.1
+Requires-Dist: tzdata ==2023.3
+Requires-Dist: umap-learn ==0.5.3
+Requires-Dist: urllib3 ==2.0.4
+Requires-Dist: wcwidth ==0.2.6
+Requires-Dist: Werkzeug ==2.2.3
+Requires-Dist: xxhash ==3.3.0
+Requires-Dist: yarl ==1.9.2
+
+# Divergent Language Matrix
+
+## Description
+The Divergent Language Matrix (dl_matrix) is a sophisticated Python package developed to enable powerful manipulation and analysis of linguistic matrices. It is designed to facilitate computational linguistics, natural language processing, and data science tasks, offering users an efficient and flexible toolkit for handling complex language-based operations.
+
+One of the fundamental goals of the dl_matrix package is to simplify and enhance language matrix manipulations. At its core, dl_matrix uses high-level data structures and functions, making the manipulation of structured data both rapid and expressive. Whether you're transforming linguistic data or performing complex analyses, dl_matrix helps streamline these tasks with its intuitive design and implementation.
+
+The package was built with compatibility in mind, integrating seamlessly with many well-known data analysis and manipulation libraries. This cross-compatibility allows users to incorporate dl_matrix into their existing data processing pipelines smoothly, without the need for extensive reworking or reformatting.
+
+The dl_matrix package also includes built-in functions for advanced language matrix operations, reducing the need for external tools and libraries. These in-built functionalities range from basic data transformations to more complex operations like matrix factorization and language divergence calculations.
+
+To ensure ease of use, dl_matrix's APIs are well-structured and thoroughly documented. This thorough documentation makes it easy for both newcomers and experienced users to understand how to utilize the package to its full potential.
+
+By offering a wide range of functionalities wrapped in a user-friendly package, dl_matrix aims to be the go-to tool for researchers and professionals working in computational linguistics, natural language processing, and related fields.
+
+## Features
+* Powerful Matrix Manipulation: At its core, dl_matrix uses high-level data structures and functions, enabling rapid and expressive manipulation of structured data.
+
+* Broad Compatibility: The package was built with seamless integration in mind. It can be readily used in combination with many well-known data analysis and manipulation libraries.
+
+* Advanced Functions: With dl_matrix, users have access to a range of built-in functions for advanced language matrix operations, reducing the need for external tools and libraries.
+
+* User-friendly APIs: For ease of use, dl_matrix's APIs are well-structured and thoroughly documented. This ensures that both newcomers and experienced users can understand and utilize the package effectively.
+
