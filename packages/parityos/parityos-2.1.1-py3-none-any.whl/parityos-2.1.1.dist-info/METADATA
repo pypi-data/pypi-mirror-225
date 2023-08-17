@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: parityos
+Version: 2.1.1
+Summary: Python bindings to the ParityOS API
+Home-page: https://parityqc.com/
+Requires-Python: >=3.7
+License-File: License.txt
+Requires-Dist: requests
+Provides-Extra: all
+Requires-Dist: qiskit ; extra == 'all'
+Requires-Dist: cirq ; extra == 'all'
+Requires-Dist: qiskit-aer ; extra == 'all'
+Requires-Dist: sympy ; extra == 'all'
+Provides-Extra: cirq
+Requires-Dist: cirq ; extra == 'cirq'
+Provides-Extra: qiskit
+Requires-Dist: qiskit ; extra == 'qiskit'
+Requires-Dist: qiskit-aer ; extra == 'qiskit'
+Provides-Extra: spinz
+Requires-Dist: sympy ; extra == 'spinz'
+
