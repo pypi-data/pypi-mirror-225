@@ -1,0 +1,19 @@
+[package]
+name = "qdx-derive"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "*"
+syn = "*"
+qdx-types = { path = "../qdx-types", default-features = false }
+quote = "*"
+
+[features]
+default = ["graphql", "serde", "sqlx"]
+graphql = ["qdx-types/graphql"]
+serde = ["qdx-types/serde"]
+sqlx = ["qdx-types/sqlx"]
