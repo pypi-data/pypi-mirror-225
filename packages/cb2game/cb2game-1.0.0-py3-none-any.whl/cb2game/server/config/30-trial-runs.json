@@ -1,0 +1,7 @@
+{
+    "name": "30-trial-runs",
+    "comment": "This is a data analysis config. DO NOT RUN A SERVER WITH THIS. 200-games is used as prefix since it's a superset of this data.",
+    "data_prefix": "~/data/200-games",
+    "analysis_game_id_ranges": [[27, 215]],
+    "map_cache_size": 0
+}
