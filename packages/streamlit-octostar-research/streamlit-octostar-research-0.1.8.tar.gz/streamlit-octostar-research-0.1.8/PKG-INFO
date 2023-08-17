@@ -1,0 +1,123 @@
+Metadata-Version: 2.1
+Name: streamlit-octostar-research
+Version: 0.1.8
+Summary: Streamlit component that connects to the Octostar Research App
+Author: Octostar Research
+Author-email: developer@octostarresearch.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# streamlit-octostar-research
+
+Streamlit component that connects to the Octostar Research App
+
+## Installation instructions
+
+```sh
+pip install streamlit-octostar-research
+```
+
+## Usage instructions
+
+```import streamlit as st
+from streamlit_octostar_research.desktop import searchXperience, result, get_open_workspace_ids, close_workspace, get_current_workspace_id, show_notification, open
+from streamlit_octostar_research.ontology import send_query
+from streamlit_octostar_research.extras import create_link_chart
+import csv
+from io import StringIO
+
+
+st.header("This is a streamlit app")
+st.subheader("Connected to the Octostar")
+
+current_workspace_id = get_current_workspace_id();
+open_workspaces = get_open_workspace_ids()
+
+
+if st.button("Search Xperience"):
+    searchXperience(key='search1')
+
+search1 = result(key='search1')
+if search1 is not None:
+    st.header("Search Result")
+    st.json(search1, expanded=True)
+    if len(search1) > 0:
+        show_notification(f"Search result is available: {len(search1)} items")
+
+query = st.text_area('Search', '''
+    select count(*) from dtimbr.person where entity_label like '%Robert%'
+    ''')
+
+if query and st.button("Run Query"):
+    send_query(query, key='search2')
+
+search2 = result(key='search2')
+if search2 is not None:
+        st.header("Query Result")
+        st.json(search2, expanded=True)
+
+chartdata = st.text_area('New Link Chart Data', '''
+node|Giovanni|person|Giovanni
+node|Robert|person|Robert
+node|Simone|person|Simone
+node|Octostar Research|company|Octostar Research
+node|Investigation Software|product|Investigation Software
+node|Investricor|company|Investricor
+node|John|person|John
+edge|Giovanni|Octostar Research|owns
+edge|Robert|Octostar Research|works for
+edge|Simone|Octostar Research|works for
+edge|John|Investricor|works for
+edge|Investricor|Octostar Research|invests in
+edge|Octostar Research|Investigation Software|develops
+
+    ''')
+linkchart1 = result(key='linkchart1')
+if chartdata and st.button("Create Link Chart"):
+    column_names = ['type', 'entity_id', 'entity_type', 'entity_label']
+
+    # Create a DictReader to parse the input string and map the column names
+    csv_reader = csv.DictReader(StringIO(chartdata), delimiter='|', fieldnames=column_names)
+
+    nodes = [{key: value for key, value in row.items() if key != 'type'}
+             for row in csv_reader if row['type'] == "node"]
+
+    column_names = ['type', 'from', 'to', 'label']
+    csv_reader = csv.DictReader(StringIO(chartdata), delimiter='|', fieldnames=column_names)
+    edges = [{key: value for key, value in row.items() if key != 'type'}
+             for row in csv_reader if row['type'] == "edge"]
+
+    create_link_chart(key='linkchart1', nodes=nodes, edges=edges, name="Octostar Research", draft=True, path="linkcharts")
+
+if linkchart1 is not None:
+    open(linkchart1)
+    st.header("Link Chart")
+    st.json(linkchart1, expanded=True)
+
+
+if st.button("Error Notification"):
+    show_notification({"message": "From Streamlit", "description": "Example of an error notification", "level": "error"})
+
+
+st.header("About the Desktop")
+st.write(f"Current workspace id: {current_workspace_id}")
+
+if open_workspaces is not None:
+    st.header("Open Workspaces (ids)")
+    st.subheader("See what can happen, with the right permissions")
+    cols = st.columns((1, 1))
+    fields = ['uid', "action"]
+    for col, field_name in zip(cols, fields):
+        col.write(field_name)
+
+    for ws in open_workspaces:
+        col1, col2  = st.columns((1, 1))
+        col1.write(ws)
+        if col2.button(label='Remove from Desktop',key=f"del-{ws}", disabled=ws == current_workspace_id):
+            close_workspace(ws)
+
+else:
+    st.write('No open workspaces found')
+
+```
