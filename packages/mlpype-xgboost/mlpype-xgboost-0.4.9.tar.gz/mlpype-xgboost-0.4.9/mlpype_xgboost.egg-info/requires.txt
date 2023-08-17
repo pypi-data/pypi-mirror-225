@@ -1,0 +1,13 @@
+mlpype-base==0.4.9
+mlpype-sklearn
+xgboost>=1.6.2
+
+[dev]
+mlpype-base==0.4.9
+mlpype-sklearn
+xgboost==1.6.2
+
+[strict]
+mlpype-base==0.4.9
+mlpype-sklearn
+xgboost==1.6.2
