@@ -1,0 +1,1269 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>progress &mdash; progress 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="progress 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">progress 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for progress</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c">#</span>
+<span class="c"># Copyright notice</span>
+<span class="c"># ----------------</span>
+<span class="c">#</span>
+<span class="c"># Copyright (C) 2011-2014 Daniel Jung</span>
+<span class="c"># Contact: djungbremen@gmail.com</span>
+<span class="c">#</span>
+<span class="c"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c"># under the terms of the GNU General Public License as published by the Free</span>
+<span class="c"># Software Foundation; either version 2 of the License, or (at your option)</span>
+<span class="c"># any later version.</span>
+<span class="c">#</span>
+<span class="c"># This program is distributed in the hope that it will be useful, but WITHOUT</span>
+<span class="c"># ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</span>
+<span class="c"># FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for</span>
+<span class="c"># more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU General Public License along</span>
+<span class="c"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c"># 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.</span>
+<span class="c">#</span>
+<span class="sd">&quot;&quot;&quot;This module offers different methods for showing the current status of an</span>
+<span class="sd">iterative algorithm, or to control its execution, for example to abort it as</span>
+<span class="sd">soon as certain abort criterions are met.&quot;&quot;&quot;</span>
+<span class="c">#</span>
+<span class="c"># To do:</span>
+<span class="c"># --&gt; write variant of Converge or extend Converge to use standard error as</span>
+<span class="c">#     criterion</span>
+<span class="c">#</span>
+<span class="n">__created__</span> <span class="o">=</span> <span class="s">&#39;2011-09-13&#39;</span>
+<span class="n">__modified__</span> <span class="o">=</span> <span class="s">&#39;2014-01-14&#39;</span>
+
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">import</span> <span class="nn">commands</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">termios</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">tty</span>
+
+
+<div class="viewcode-block" id="Bar"><a class="viewcode-back" href="../index.html#progress.Bar">[docs]</a><span class="k">class</span> <span class="nc">Bar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Display progress bar of a certain loop. Instantiate it before loop. Call</span>
+<span class="sd">    the method &quot;step&quot; at the end of each loop (don&#39;t forget to do the same</span>
+<span class="sd">    before any occurence of &quot;continue&quot;). If loop is left early (break), or if</span>
+<span class="sd">    you want to make sure the line break is done after the loop, call the</span>
+<span class="sd">    method &quot;end&quot;. To reset the counter, call the method &quot;reset&quot;.</span>
+
+<span class="sd">    On initialization, the number of iterations &quot;nstep&quot; must be specified.</span>
+<span class="sd">    Additional keyword arguments: text    : User-defined text message (instead</span>
+<span class="sd">    of &quot;Progress&quot;) width   : Width of the current shell window. Default: 80</span>
+<span class="sd">    verbose : If set to False, the progress bar isn&#39;t shown etc     : If set to</span>
+<span class="sd">    True, show estimated time to complete</span>
+
+<span class="sd">    This class is only meant to be used in loops where the number of steps is</span>
+<span class="sd">    known before entering the loop. This excludes all iterative algorithms that</span>
+<span class="sd">    leave the loop only on some convergence criterions after a variable number</span>
+<span class="sd">    of steps (e.g., while-loops). Of course, one could &quot;estimate&quot; the number of</span>
+<span class="sd">    loops that will probably be used, but this is not the way this class is</span>
+<span class="sd">    intended to be used.</span>
+
+<span class="sd">    Future ideas:</span>
+<span class="sd">    --&gt; multiple progress bars at once, to show status of multiple subprocesses</span>
+<span class="sd">    --&gt; allow nested progress bars, passing and multiplying step numbers to the</span>
+<span class="sd">        inner-next instance</span>
+<span class="sd">    --&gt; report elapsed time instead of printing &quot;ETC 0 sec&quot;</span>
+<span class="sd">    --&gt; save start and end times (and duration), to check them later</span>
+
+<span class="sd">    Written by Daniel Jung, Jacobs University Bremen, Germany (2011-2012).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__created__</span> <span class="o">=</span> <span class="s">&#39;2011-09-13&#39;</span>
+    <span class="n">__modified__</span> <span class="o">=</span> <span class="s">&#39;2012-09-04&#39;</span>
+    <span class="c"># former tb.Progress from 2011-02-13 until 2011-06-09</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nstep</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&#39;progress&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">etc</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span> <span class="o">=</span> <span class="n">nstep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_etc</span> <span class="o">=</span> <span class="n">etc</span>  <span class="c"># show estimated time of completion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_starttime</span> <span class="o">=</span> <span class="n">now</span>  <span class="c"># starting time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastcall</span> <span class="o">=</span> <span class="n">now</span>  <span class="c"># time when step or jump was last called</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jumptime</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># count time that was used only for jumping</span>
+
+        <span class="c"># do not show the error bar if number of steps is zero</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># get width of the terminal window</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">get_columns</span><span class="p">()</span>
+
+        <span class="c"># print initial status to the screen</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Bar.step"><a class="viewcode-back" href="../index.html#progress.Bar.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">howmany</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move one or several steps forward.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">+=</span> <span class="n">howmany</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span>
+
+        <span class="c"># print new status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+        <span class="c"># note time of this call</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastcall</span> <span class="o">=</span> <span class="n">now</span>
+</div>
+<div class="viewcode-block" id="Bar.jump"><a class="viewcode-back" href="../index.html#progress.Bar.jump">[docs]</a>    <span class="k">def</span> <span class="nf">jump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">howmany</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Skip one or several steps. Using this instead of step is only</span>
+<span class="sd">        important for the correct calculation of the estimated time to complete</span>
+<span class="sd">        (ETC).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">+=</span> <span class="n">howmany</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">+=</span> <span class="n">howmany</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span>
+
+        <span class="c"># add time difference since last call to the jump time counter</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jumptime</span> <span class="o">+=</span> <span class="n">now</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_lastcall</span>
+
+        <span class="c"># print new status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+        <span class="c"># remember time of this call</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastcall</span> <span class="o">=</span> <span class="n">now</span>
+</div>
+<div class="viewcode-block" id="Bar.write"><a class="viewcode-back" href="../index.html#progress.Bar.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c"># just say &quot;done&quot; when finished</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="o">+</span><span class="s">&#39;: &#39;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">+=</span> <span class="s">&#39;Done.&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># calculate progress</span>
+            <span class="n">progress</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_step</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span>
+
+            <span class="c"># calculate estimated time to complete (ETC), use linear</span>
+            <span class="c"># extrapolation</span>
+            <span class="n">etcstring</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_etc</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">jprogress</span> <span class="o">=</span> \
+                        <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_step</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_jump</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_jump</span><span class="p">)</span>
+                    <span class="n">jelapsed</span> <span class="o">=</span> <span class="n">now</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_starttime</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_jumptime</span>
+                    <span class="k">if</span> <span class="n">jprogress</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">jestimate</span> <span class="o">=</span> <span class="n">jelapsed</span><span class="o">/</span><span class="n">jprogress</span>
+                        <span class="n">jdiff</span> <span class="o">=</span> <span class="n">jestimate</span><span class="o">-</span><span class="n">jelapsed</span>
+                        <span class="n">etcstring</span> <span class="o">=</span> <span class="s">&#39; ETC </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">_nicetime</span><span class="p">(</span><span class="n">jdiff</span><span class="p">)</span>
+
+            <span class="c"># calculate length of the progress bar</span>
+            <span class="n">barlen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">-</span> <span class="mi">9</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">etcstring</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+            <span class="c"># create the new line</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">:</span><span class="si">% 4i%%</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span> <span class="n">progress</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">barlen</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">+=</span> <span class="s">&#39; [</span><span class="si">%- *s</span><span class="s">]&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">barlen</span><span class="p">,</span> <span class="s">&#39;=&#39;</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">progress</span><span class="o">*</span><span class="n">barlen</span><span class="p">))</span>
+            <span class="n">line</span> <span class="o">+=</span> <span class="n">etcstring</span>
+
+        <span class="c"># if line has changed, overwrite the old one</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="o">+</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+        <span class="c"># remember old line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="n">line</span>
+
+        <span class="c"># check if progress bar is complete</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nstep</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Bar.end"><a class="viewcode-back" href="../index.html#progress.Bar.end">[docs]</a>    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Bar.reset"><a class="viewcode-back" href="../index.html#progress.Bar.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jump</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_starttime</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastcall</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jumptime</span> <span class="o">=</span> <span class="mi">0</span>
+</div>
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+</div>
+<div class="viewcode-block" id="OpenBar"><a class="viewcode-back" href="../index.html#progress.OpenBar">[docs]</a><span class="k">class</span> <span class="nc">OpenBar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Display progress bar of an unlimited iteration process (&quot;open-end&quot;). Use</span>
+<span class="sd">    this if the total number of iterations is unclear, i.e. the loop may be</span>
+<span class="sd">    exited at any point (e.g., while loop). However, to display a progress bar,</span>
+<span class="sd">    some measure of progress must still be defined (start and target values).</span>
+<span class="sd">    If the start value is None, use the value given by the first call of step.</span>
+
+<span class="sd">    Intended use: For example, an iterative averaging process will be aborted</span>
+<span class="sd">    as soon as a certain accuracy has been reached. The progress measure will</span>
+<span class="sd">    be this accuracy.</span>
+
+<span class="sd">    Future plans:</span>
+<span class="sd">    --&gt; use something different than linear extrapolation&quot;&quot;&quot;</span>
+    <span class="c"># 2012-03-05</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&#39;progress&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">etc</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+</div>
+<div class="viewcode-block" id="Monitor"><a class="viewcode-back" href="../index.html#progress.Monitor">[docs]</a><span class="k">class</span> <span class="nc">Monitor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Monitor the values of certain variables within a loop (e.g., for</span>
+<span class="sd">    iterative algorithms). Uses the class StatusLine.</span>
+
+<span class="sd">    Update the line by using carriage return each time the method &quot;step&quot; is</span>
+<span class="sd">    called. Do this until the method &quot;end&quot; is called (then, a line break is</span>
+<span class="sd">    issued).</span>
+
+<span class="sd">    Future plans:</span>
+<span class="sd">    --&gt; support complex numbers&quot;&quot;&quot;</span>
+    <span class="c"># 2011-09-13 - 2012-07-16</span>
+    <span class="c"># former tb.Monitor from 2011-05-26 - 2011-06-09</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c"># define standard formats for some types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stdformats</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%i</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">&#39;</span><span class="p">,</span>
+                            <span class="nb">long</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%lo</span><span class="s">&#39;</span><span class="p">}</span>  <span class="c"># complex: &#39;%.2f+%.2fi&#39; ??</span>
+
+        <span class="c"># fetch special keyword arguments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stdformats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;stdformats&#39;</span><span class="p">,</span> <span class="p">{}))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;verbose&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sep</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;sep&#39;</span><span class="p">,</span> <span class="s">&#39;  &#39;</span><span class="p">)</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;cols&#39;</span><span class="p">,</span> <span class="n">get_columns</span><span class="p">())</span>
+        <span class="n">delay</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;delay&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_formats</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;formats&#39;</span><span class="p">,</span> <span class="p">{})</span>  <span class="c"># formats dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_order</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;order&#39;</span><span class="p">,</span> <span class="p">[])</span>  <span class="c"># force a certain display order</span>
+
+        <span class="c"># store remaining keyword arguments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="c"># define additional attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># lengths dictionary</span>
+
+        <span class="c"># initialize status line object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="n">StatusLine</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+
+        <span class="c"># first output is already displayed at initialisation</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Monitor.update"><a class="viewcode-back" href="../index.html#progress.Monitor.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update one or more values, or add new variables to monitor.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">values</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">()</span>
+
+    <span class="c">#def update_value(self, name, value):</span>
+        <span class="c"># &quot;&quot;&quot;Update one value, or add a new variable to monitor. This is for</span>
+        <span class="c"># calls from other Cython modules only, as Cython cannot handle</span>
+        <span class="c"># variable argument lists. So, for each value to update, a separate</span>
+        <span class="c"># call of this method must be made.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-25 - 2012-04-26</span>
+        <span class="c">#if not self._verbose:</span>
+        <span class="c">#return</span>
+        <span class="c">#self._values[name] = value</span>
+        <span class="c">#self._write()</span>
+</div>
+<div class="viewcode-block" id="Monitor.end"><a class="viewcode-back" href="../index.html#progress.Monitor.end">[docs]</a>    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finish monitoring values, make the line break (if not already done).</span>
+<span class="sd">        Update the line one last time.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Monitor.reset"><a class="viewcode-back" href="../index.html#progress.Monitor.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset this object. Empty the list of values and begin a new status</span>
+<span class="sd">        line.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-26</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">()</span>
+</div>
+    <span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write new line to stdout (overwrite existing line using carriage</span>
+<span class="sd">        return). If now is True, tell the StatusLine instance to ignore the</span>
+<span class="sd">        delay.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c"># create list of keys. Begin with ordered keys, sort the rest by</span>
+        <span class="c"># alphabet</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order</span><span class="p">[:]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[:]:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">:</span>
+                <span class="n">keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">restkeys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">restkeys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">restkeys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+                <span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="c"># collect all string representations in a dictionary</span>
+        <span class="n">strings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">valuetype</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formats</span><span class="p">:</span>
+                <span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">=</span><span class="si">%s</span><span class="s">&#39;</span> \
+                    <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formats</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">__mod__</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">valuetype</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stdformats</span><span class="p">:</span>
+                <span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">=</span><span class="si">%s</span><span class="s">&#39;</span> \
+                    <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stdformats</span><span class="p">[</span><span class="n">valuetype</span><span class="p">]</span><span class="o">.</span><span class="n">__mod__</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">=</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="c"># update maximal lengths of the strings</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span> \
+                    <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+        <span class="c"># create resulting line and pass it to the status line object</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%- *s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">strings</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                              <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Monitor.remove"><a class="viewcode-back" href="../index.html#progress.Monitor.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop monitoring the specified variables.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formats</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Monitor.remove_value"><a class="viewcode-back" href="../index.html#progress.Monitor.remove_value">[docs]</a>    <span class="k">def</span> <span class="nf">remove_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop monitoring the specified variable.&quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lengths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formats</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">()</span>
+</div>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Monitor.set_delay"><a class="viewcode-back" href="../index.html#progress.Monitor.set_delay">[docs]</a>    <span class="k">def</span> <span class="nf">set_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the delay of the StatusLine instance.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="k">if</span> <span class="n">delay</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;delay must be non-negative float&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="Abort"><a class="viewcode-back" href="../index.html#progress.Abort">[docs]</a><span class="k">class</span> <span class="nc">Abort</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check keyboard buffer if a certain key has been pressed.</span>
+
+<span class="sd">    Initialize before your loop (e.g., of an iterative algorithm). Check within</span>
+<span class="sd">    the loop body (e.g., break the loop on positive check). Finalize (end)</span>
+<span class="sd">    after the loop. Do not forget to finalize, so that your terminal is put</span>
+<span class="sd">    back into normal mode! Or use it as context manager (use the with</span>
+<span class="sd">    statement), then finalization should be done automatically.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    &gt; import time</span>
+<span class="sd">    &gt; with Abort() as a:</span>
+<span class="sd">    &gt;     for i in range(10):</span>
+<span class="sd">    &gt;         time.sleep(1)  # do stuff</span>
+<span class="sd">    &gt;         if a.check():</span>
+<span class="sd">    &gt;             break  # leave loop early, because &quot;q&quot; has been pressed</span>
+<span class="sd">    &gt; print e.buff&quot;&quot;&quot;</span>
+    <span class="c"># 2012-01-18 - 2013-07-24</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize. Specify key and timeout. Put terminal into cbreak mode.</span>
+
+<span class="sd">        Future plans:</span>
+<span class="sd">        --&gt; enable key combinations (e.g., CTRL+q)</span>
+<span class="sd">        --&gt; enable special keys (e.g., ESC)&quot;&quot;&quot;</span>
+
+        <span class="c"># get key</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;invalid key&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="c">### how to use the ESC key?</span>
+
+        <span class="c"># enable this class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># initialize the &quot;aborted&quot; flag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aborted</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># initialize other attributes</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">oldattr</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c"># disable, probably does not work with nohup</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">buff</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>  <span class="c"># collect all other pressed keys, in case needed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># count the total number of checks made</span>
+
+        <span class="c"># enter cbreak mode</span>
+        <span class="n">tty</span><span class="o">.</span><span class="n">setcbreak</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+
+<div class="viewcode-block" id="Abort.check"><a class="viewcode-back" href="../index.html#progress.Abort.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if the key has been pressed in the meanwhile. All other</span>
+<span class="sd">        contents of the keyboard buffer will be lost and cannot be</span>
+<span class="sd">        recovered.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">aborted</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">char</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">aborted</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buff</span> <span class="o">+=</span> <span class="n">char</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="Abort.end"><a class="viewcode-back" href="../index.html#progress.Abort.end">[docs]</a>    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finalize. Put terminal back into normal mode. Return string</span>
+<span class="sd">        buffer.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">disabled</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">oldattr</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>  <span class="c"># should we issue a warning?</span>
+
+        <span class="k">return</span>  <span class="c"># self.buff  # creates a lot of output (&quot;qqqqqqqqqqqqq&quot;)</span>
+</div>
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Abort.reset"><a class="viewcode-back" href="../index.html#progress.Abort.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset the abort handler.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aborted</span> <span class="o">=</span> <span class="bp">False</span>
+</div>
+<div class="viewcode-block" id="Abort.report"><a class="viewcode-back" href="../index.html#progress.Abort.report">[docs]</a>    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If this handler was triggered, display a message.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">aborted</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;Process has been aborted by key press (</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span>
+
+</div></div>
+<div class="viewcode-block" id="Until"><a class="viewcode-back" href="../index.html#progress.Until">[docs]</a><span class="k">class</span> <span class="nc">Until</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if a certain date/time has been reached. Can be used to</span>
+<span class="sd">    conveniently confine the execution time of an iterative algorithm.</span>
+
+<span class="sd">    To do:</span>
+<span class="sd">    --&gt; define word &quot;next&quot;, excluding the present day, to allow something like</span>
+<span class="sd">        &quot;next tuesday&quot; ==&gt; even if it is tuesday right now, run until next</span>
+<span class="sd">        tuesday&quot;&quot;&quot;</span>
+    <span class="c"># 2012-06-19 - 2013-07-23</span>
+
+    <span class="n">MONTHS</span> <span class="o">=</span> <span class="p">[</span><span class="n">month</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="n">MONTHS_SHORT</span> <span class="o">=</span> <span class="p">[</span><span class="n">month</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">calendar</span><span class="o">.</span><span class="n">month_abbr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="n">DAYS</span> <span class="o">=</span> <span class="p">[</span><span class="n">day</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">]</span>
+    <span class="n">DAYS_SHORT</span> <span class="o">=</span> <span class="p">[</span><span class="n">day</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_abbr</span><span class="p">]</span>
+    <span class="n">DAYNUM</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">DAYS</span><span class="o">+</span><span class="n">DAYS_SHORT</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">+</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)))</span>
+    <span class="n">MONTHNUM</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">MONTHS</span><span class="o">+</span><span class="n">MONTHS_SHORT</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span><span class="o">+</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)))</span>
+    <span class="n">SPECIAL</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tomorrow&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">until</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize. Specify datetime or duration.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25 - 2012-07-05</span>
+
+        <span class="c"># remember time when object was created</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">created</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c"># [seconds since begin of epoch]</span>
+
+        <span class="c"># initialize timestamp which will be determined from &quot;until&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">created</span>  <span class="c"># [seconds since begin of epoch]</span>
+
+        <span class="k">if</span> <span class="n">until</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="c"># assume that timestamp is directly given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">until</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+            <span class="c"># support datetime.datetime objects</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">until</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">):</span>
+            <span class="c"># support datetime.timedelta objects</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">created</span><span class="o">+</span><span class="n">until</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">until</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+            <span class="c"># parse string</span>
+            <span class="c"># decide if a date-time combination or a duration is given</span>
+            <span class="c"># criterion: for a date/time, at least one character out of &quot;/-:.&quot;</span>
+            <span class="c"># or some known phrases (for weekdays or months) must be given</span>
+            <span class="k">if</span> <span class="n">until</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                <span class="c"># run infinitely</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isdatetime</span><span class="p">(</span><span class="n">until</span><span class="p">):</span>
+                <span class="c"># parse datetime</span>
+                <span class="n">until</span> <span class="o">=</span> <span class="n">until</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">until</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">one_eq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DAYS</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">DAYS_SHORT</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_day</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">one_eq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MONTHS</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">MONTHS_SHORT</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_month</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">word</span> <span class="o">==</span> <span class="s">&#39;tomorrow&#39;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_tomorrow</span><span class="p">()</span>
+                    <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_digits</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_year</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_digits</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_mday</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="c">### also respect korean dates here, e.g. 10/29/2012</span>
+                        <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="n">mday</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+                        <span class="c">#year = None if year == &#39;&#39;</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">goto_date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;bad datetime word: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c"># parse duration</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+                <span class="n">dur</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># duration in seconds</span>
+                <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">until</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">char</span> <span class="ow">is</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">&#39;hmsayMwd&#39;</span><span class="p">:</span>
+                        <span class="c"># process current value</span>
+                        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;s&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;m&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;h&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">3600</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;d&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">86400</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;w&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">604800</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s">&#39;M&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">2592000</span>  <span class="c"># 1 month == 30 days</span>
+                        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">&#39;ay&#39;</span><span class="p">:</span>
+                            <span class="n">dur</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">*</span><span class="mi">31104000</span>  <span class="c"># 1 year == 360 days</span>
+
+                        <span class="c"># reset current word</span>
+                        <span class="n">current</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+                    <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">&#39;0123456789&#39;</span><span class="p">:</span>
+                        <span class="n">current</span> <span class="o">+=</span> <span class="n">char</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;bad character: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">char</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">current</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;bad duration word (missing unit): </span><span class="si">%s</span><span class="s">&#39;</span>
+                                     <span class="o">%</span> <span class="n">current</span><span class="p">)</span>
+
+                <span class="c"># set timestamp</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">+=</span> <span class="n">dur</span>
+
+        <span class="c"># check if timestamp is in the past</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">created</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;given timestamp is in the past: </span><span class="si">%s</span><span class="s">&#39;</span>
+                             <span class="o">%</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Until.goto_tomorrow"><a class="viewcode-back" href="../index.html#progress.Until.goto_tomorrow">[docs]</a>    <span class="k">def</span> <span class="nf">goto_tomorrow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the next day.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+        <span class="n">tdict</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+        <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tlist</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goback_midnight</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Until.goto_date"><a class="viewcode-back" href="../index.html#progress.Until.goto_date">[docs]</a>    <span class="k">def</span> <span class="nf">goto_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp to the given date.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+
+        <span class="c"># get timestamp</span>
+        <span class="n">tdict</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+
+        <span class="c"># force integer values</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+        <span class="n">mday</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mday</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">year</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">tlist</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">month</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_mon</span><span class="p">:</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span>
+            <span class="k">elif</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_mon</span><span class="p">:</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next year</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">month</span><span class="p">,</span> <span class="n">mday</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">mday</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_mday</span><span class="p">:</span>
+                    <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mday</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next year</span>
+                    <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mday</span>
+
+        <span class="c"># overwrite timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tlist</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goback_midnight</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Until.goto_year"><a class="viewcode-back" href="../index.html#progress.Until.goto_year">[docs]</a>    <span class="k">def</span> <span class="nf">goto_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the given year.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+
+        <span class="c"># get timestamp</span>
+        <span class="n">tdict</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_year</span><span class="p">:</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span>
+        <span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_year</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;given year is in the past: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="c"># overwrite timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tlist</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Until.goto_mday"><a class="viewcode-back" href="../index.html#progress.Until.goto_mday">[docs]</a>    <span class="k">def</span> <span class="nf">goto_mday</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mday</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the given day of the month.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+
+        <span class="c"># get timestamp</span>
+        <span class="n">tdict</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+
+        <span class="n">mday</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mday</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mday</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_mday</span><span class="p">:</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mday</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next month</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mday</span>
+
+        <span class="c"># overwrite timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tlist</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Until.goto_time"><a class="viewcode-back" href="../index.html#progress.Until.goto_time">[docs]</a>    <span class="k">def</span> <span class="nf">goto_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the next given time.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+
+        <span class="c"># force integer values</span>
+        <span class="n">hours</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>
+        <span class="n">minutes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">minutes</span><span class="p">)</span>
+        <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span> <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">else</span> <span class="bp">None</span>
+
+        <span class="c"># get timestamp</span>
+        <span class="n">tdict</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+
+        <span class="c"># case study: go to next day or not?</span>
+        <span class="k">if</span> <span class="n">hours</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_hour</span><span class="p">:</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">seconds</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">hours</span> <span class="o">&lt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_hour</span><span class="p">:</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next day</span>
+            <span class="n">tlist</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">seconds</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">minutes</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_min</span><span class="p">:</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">minutes</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">seconds</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">minutes</span> <span class="o">&lt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_min</span><span class="p">:</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next day</span>
+                <span class="n">tlist</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">minutes</span><span class="p">,</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">seconds</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">seconds</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next day</span>
+                    <span class="n">tlist</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">seconds</span> <span class="o">&gt;</span> <span class="n">tdict</span><span class="o">.</span><span class="n">tm_sec</span><span class="p">:</span>
+                        <span class="n">tlist</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">seconds</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">tlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c"># go to next day</span>
+                        <span class="n">tlist</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">seconds</span>
+
+        <span class="c"># overwrite timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tlist</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Until.goto_day"><a class="viewcode-back" href="../index.html#progress.Until.goto_day">[docs]</a>    <span class="k">def</span> <span class="nf">goto_day</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the next given day of the week.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25</span>
+
+        <span class="c"># move forward a certain number of days</span>
+        <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">tm_wday</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DAYNUM</span><span class="p">[</span><span class="n">day</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">+=</span> <span class="mi">86400</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goback_midnight</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Until.goback_midnight"><a class="viewcode-back" href="../index.html#progress.Until.goback_midnight">[docs]</a>    <span class="k">def</span> <span class="nf">goback_midnight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move backward to the beginning of that day (midnight).&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25</span>
+        <span class="n">timetuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span>
+        <span class="n">timetuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">timetuple</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">timetuple</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c">#timetuple[8] = -1 # because of summertime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timetuple</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Until.goto_month"><a class="viewcode-back" href="../index.html#progress.Until.goto_month">[docs]</a>    <span class="k">def</span> <span class="nf">goto_month</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">month</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move timestamp forward to the next given month.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25 - 2012-06-26</span>
+
+        <span class="c"># move forward a certain number of months</span>
+        <span class="n">timetuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span>
+        <span class="k">while</span> <span class="n">timetuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MONTHNUM</span><span class="p">[</span><span class="n">month</span><span class="p">]:</span>
+            <span class="n">timetuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">timetuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timetuple</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timetuple</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goback_first</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goback_midnight</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="Until.goback_first"><a class="viewcode-back" href="../index.html#progress.Until.goback_first">[docs]</a>    <span class="k">def</span> <span class="nf">goback_first</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move backward to the beginning of the first day of the month.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+        <span class="n">timetuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span>
+        <span class="n">timetuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c">#timetuple[8] = -1 # because of summertime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">timetuple</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Until.check"><a class="viewcode-back" href="../index.html#progress.Until.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if the specified time has already been passed.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25 - 2012-06-27</span>
+        <span class="k">return</span> <span class="bp">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="ow">is</span> <span class="bp">None</span> \
+            <span class="k">else</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span>
+</div>
+<div class="viewcode-block" id="Until.isdatetime"><a class="viewcode-back" href="../index.html#progress.Until.isdatetime">[docs]</a>    <span class="k">def</span> <span class="nf">isdatetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decide if the given string contains a date-time combination. If so,</span>
+<span class="sd">        return True. Otherwise, it will contain a duration, and False is</span>
+<span class="sd">        returned.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25 - 2012-06-26</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">one_in</span><span class="p">([</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39;tomorrow&#39;</span><span class="p">]</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">MONTHS</span> <span class="o">+</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">MONTHS_SHORT</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">DAYS</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">DAYS_SHORT</span><span class="p">,</span>
+                           <span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Until.one_in"><a class="viewcode-back" href="../index.html#progress.Until.one_in">[docs]</a>    <span class="k">def</span> <span class="nf">one_in</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if at least one element of the given sequence &quot;seq&quot; is</span>
+<span class="sd">        contained in the given object &quot;obj&quot;. Otherwise, return False.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Until.one_is"><a class="viewcode-back" href="../index.html#progress.Until.one_is">[docs]</a>    <span class="k">def</span> <span class="nf">one_is</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if at least one element of the given sequence &quot;seq&quot; is</span>
+<span class="sd">        identical to the object &quot;obj&quot;. Otherwise, return False.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elem</span> <span class="ow">is</span> <span class="n">obj</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Until.one_eq"><a class="viewcode-back" href="../index.html#progress.Until.one_eq">[docs]</a>    <span class="k">def</span> <span class="nf">one_eq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if at least one element of the given sequence &quot;seq&quot; is</span>
+<span class="sd">        equal to the object &quot;obj&quot;. Otherwise, return False.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-25</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="n">obj</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Until.only_digits"><a class="viewcode-back" href="../index.html#progress.Until.only_digits">[docs]</a>    <span class="k">def</span> <span class="nf">only_digits</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if the given string contains only digits. Otherwise,</span>
+<span class="sd">        return False.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">&#39;0123456789&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</div>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return iterator.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-06-26 - 2012-09-04</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)):</span>
+            <span class="k">yield</span> <span class="n">element</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># 2012-06-26 - 2012-12-10</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">()&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">(&quot;</span><span class="si">%s</span><span class="s">&quot;)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span>
+                                 <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%a %b </span><span class="si">%d</span><span class="s"> </span><span class="si">%X</span><span class="s"> %Z %Y&#39;</span><span class="p">,</span>
+                                               <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># 2012-06-26</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="c"># 2012-06-26</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Until.report"><a class="viewcode-back" href="../index.html#progress.Until.report">[docs]</a>    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If this handler was triggered, display a message.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">():</span>
+            <span class="k">print</span> <span class="s">&#39;Timelimit has been reached (</span><span class="si">%s</span><span class="s">).&#39;</span> \
+                <span class="o">%</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="Converge"><a class="viewcode-back" href="../index.html#progress.Converge">[docs]</a><span class="k">class</span> <span class="nc">Converge</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check data for convergence criterion in some sort of iteration step of</span>
+<span class="sd">    an interative algorithm. Specify a certain tolerance (accuracy) that should</span>
+<span class="sd">    be reached. Increase the &quot;smooth value&quot; to average over the last few</span>
+<span class="sd">    Deltas.</span>
+
+<span class="sd">    Future plans:</span>
+<span class="sd">    --&gt; choose from various convergence criterions (also based on standard</span>
+<span class="sd">        error)</span>
+<span class="sd">    --&gt; could choose from mean, gmean, min, max, max-min (peak-to-peak), ...</span>
+<span class="sd">        (find more under http://en.wikipedia.org/wiki/Average)</span>
+<span class="sd">    --&gt; offer relative and absolute versions of each criterion</span>
+<span class="sd">    --&gt; let the user specify his own criterion (as a function object)</span>
+<span class="sd">    --&gt; use Cython, write version that is callable from C, support OpenMP</span>
+<span class="sd">    --&gt; add feature to remember several values (e.g., 5) and check that all the</span>
+<span class="sd">        deltas are small enough (then, it is not enought that &quot;by chance&quot; the</span>
+<span class="sd">        delta value drops below the tolerance)&quot;&quot;&quot;</span>
+    <span class="c"># 2012-03-02 - 2014-01-14</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c"># active=True, criterion=None</span>
+                                             <span class="c"># dtype=None, shape=None</span>
+                                             <span class="c"># relative=False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>             <span class="c"># requested tolerance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">smooth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">smooth</span><span class="p">)</span>  <span class="c"># smooth level (average over this number of</span>
+                                   <span class="c"># deltas)</span>
+
+        <span class="c"># initialize old-data buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_old</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c"># initialize delta list</span>
+        <span class="c"># the list will be filled with the number of delta values given by</span>
+        <span class="c"># smooth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="Converge.check"><a class="viewcode-back" href="../index.html#progress.Converge.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check convergence criterion. Return True if the requested accuracy</span>
+<span class="sd">        is reached, False otherwise. If data is None, return False.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># if requested tolerance is None or non-positive, do not check anything</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># force numpy array</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c"># force float datatype?</span>
+
+        <span class="c"># on first call, cannot yet check for convergence, return always False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_old</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c"># write to old-data buffer for the first time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_old</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># calculate new delta (use quadratic mean for now)</span>
+        <span class="c">#self._delta.append(numpy.linalg.norm((data-self._data_old)/data)/ \</span>
+                        <span class="c">#numpy.sqrt(data.size))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">data</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_old</span><span class="p">)</span><span class="o">/</span><span class="n">data</span><span class="p">)))</span>
+
+        <span class="c"># only check the criterion if the number of deltas given by smooth is</span>
+        <span class="c"># already reached</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">smooth</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="c"># forget oldest delta</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">smooth</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c"># check convergence criterion (average all available deltas)</span>
+        <span class="n">converged</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">)</span> \
+            <span class="ow">or</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="p">))</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span>
+
+        <span class="c"># update old-data buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_old</span> <span class="o">=</span> <span class="n">data</span>
+
+        <span class="c"># return truth value</span>
+        <span class="k">return</span> <span class="n">converged</span>
+</div>
+<div class="viewcode-block" id="Converge.delta"><a class="viewcode-back" href="../index.html#progress.Converge.delta">[docs]</a>    <span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the current mean delta (based on the last call of &quot;check&quot;).</span>
+<span class="sd">        Return -1 if the delta list is still empty.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">mdelta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">mdelta</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">mdelta</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</div>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="c">#if self._data_old is not None:</span>
+            <span class="c">#del self._data_old[:] ## difficult in Cython...</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Converge.report"><a class="viewcode-back" href="../index.html#progress.Converge.report">[docs]</a>    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If this handler was triggered, display a message.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">():</span>
+            <span class="k">print</span> <span class="s">&#39;Data converged within a tolerance of </span><span class="si">%g</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span>
+
+</div></div>
+<div class="viewcode-block" id="get_columns"><a class="viewcode-back" href="../index.html#progress.get_columns">[docs]</a><span class="k">def</span> <span class="nf">get_columns</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Try to get number of columns of the current terminal window. Otherwise,</span>
+<span class="sd">    return standard (80 columns).&quot;&quot;&quot;</span>
+    <span class="c"># 2012-03-05</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c"># then try environment variable</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;COLUMNS&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="c"># try tput</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">columns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">getoutput</span><span class="p">(</span><span class="s">&#39;tput cols&#39;</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="c"># otherwise, assume standard width</span>
+            <span class="n">columns</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="k">return</span> <span class="n">columns</span>
+
+</div>
+<div class="viewcode-block" id="StatusLine"><a class="viewcode-back" href="../index.html#progress.StatusLine">[docs]</a><span class="k">class</span> <span class="nc">StatusLine</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Show a status line that is updated by the user every once in a while</span>
+<span class="sd">    using &quot;carriage return&quot;.&quot;&quot;&quot;</span>
+    <span class="c"># 2012-04-10 - 2012-07-16</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize status line object. Can be given an initial line, a</span>
+<span class="sd">        minimum delay time and a custom number of columns (terminal width, will</span>
+<span class="sd">        be obtained automatically on Unix systems).&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-10 - 2012-04-26</span>
+
+        <span class="c"># set delay</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+        <span class="c"># get number of columns (terminal width)</span>
+        <span class="k">if</span> <span class="n">cols</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">get_columns</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span>
+
+        <span class="c"># initialize old line buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldtime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c"># remember if line break already occured</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ended</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># only reset status line if it was already used</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_started</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># print line for the first time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the given line, replacing the old one.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-10 - 2012-04-26</span>
+
+        <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_started</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">oldlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span><span class="p">)</span>
+        <span class="n">newlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">spaces_needed</span> <span class="o">=</span> <span class="n">oldlen</span><span class="o">-</span><span class="n">newlen</span> <span class="k">if</span> <span class="n">oldlen</span> <span class="o">&gt;</span> <span class="n">newlen</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="o">+</span><span class="n">line</span><span class="p">[:(</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">+</span><span class="s">&#39; &#39;</span><span class="o">*</span><span class="n">spaces_needed</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+        <span class="c"># update old line buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldtime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<div class="viewcode-block" id="StatusLine.update"><a class="viewcode-back" href="../index.html#progress.StatusLine.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the line by the given string, replacing the old line.</span>
+<span class="sd">        The line only gets printed if the line has changed, and if the given</span>
+<span class="sd">        delay time has been passed. If now is True, ignore the delay.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-10 - 2012-07-16</span>
+
+        <span class="c"># respect delay time</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_oldtime</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c"># check if line has changed</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c"># ok, then replace the old line by the new one</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="StatusLine.end"><a class="viewcode-back" href="../index.html#progress.StatusLine.end">[docs]</a>    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;End status line, make line break (only if this status line has</span>
+<span class="sd">        already been used).&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-10 - 2012-04-26</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_started</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ended</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ended</span> <span class="o">=</span> <span class="bp">True</span>
+</div>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="StatusLine.reset"><a class="viewcode-back" href="../index.html#progress.StatusLine.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset status line (make a line break if neccessary and begin a new</span>
+<span class="sd">        status line).&quot;&quot;&quot;</span>
+        <span class="c"># 2012-04-26</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_oldline</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_started</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ended</span> <span class="o">=</span> <span class="bp">False</span>
+
+</div></div>
+<div class="viewcode-block" id="Terminate"><a class="viewcode-back" href="../index.html#progress.Terminate">[docs]</a><span class="k">class</span> <span class="nc">Terminate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Trap the TERM signal (15). For example, you can stop an interative</span>
+<span class="sd">    algorithm in a controlled way, leaving the loop after the next iteration</span>
+<span class="sd">    and still saving the results. This is done by sending the TERM signal to</span>
+<span class="sd">    the process (also remotely), i.e. in the shell you can do &quot;kill 12345&quot;, or</span>
+<span class="sd">    you can use &quot;top&quot;.</span>
+
+<span class="sd">    Works on Unix systems (Linux etc.).&quot;&quot;&quot;</span>
+    <span class="c"># 2012-07-16 - 2012-07-17</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the terminate handler.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+
+        <span class="c"># initialize the flag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c"># set up the signal trap</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Terminate.terminate"><a class="viewcode-back" href="../index.html#progress.Terminate.terminate">[docs]</a>    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If the TERM signal is received, this method is executed, setting the</span>
+<span class="sd">        flag to True.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="c"># former tb.kpm.__init__._Ados.terminate and</span>
+        <span class="c"># tb.kpm.__init__._Gdos.terminate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span> <span class="o">=</span> <span class="bp">True</span>
+</div>
+<div class="viewcode-block" id="Terminate.check"><a class="viewcode-back" href="../index.html#progress.Terminate.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if a TERM signal has been received, otherwise False.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span>
+</div>
+<div class="viewcode-block" id="Terminate.reset"><a class="viewcode-back" href="../index.html#progress.Terminate.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset the terminate handler, setting the flag back to False and</span>
+<span class="sd">        waiting for a new TERM signal.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Terminate.end"><a class="viewcode-back" href="../index.html#progress.Terminate.end">[docs]</a>    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove the trap. Set the action for the TERM signal back to system</span>
+<span class="sd">        standard.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="k">if</span> <span class="n">signal</span><span class="o">.</span><span class="n">getsignal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">)</span> <span class="o">!=</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_DFL</span><span class="p">:</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_DFL</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove the trap, set action back to system defaults before the</span>
+<span class="sd">        handler is deleted.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Enable context manager functionality, enter context.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Leave context.&quot;&quot;&quot;</span>
+        <span class="c"># 2012-07-16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Terminate.report"><a class="viewcode-back" href="../index.html#progress.Terminate.report">[docs]</a>    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If this handler was triggered, display a message.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;Process has been terminated&#39;</span>
+
+</div></div>
+<div class="viewcode-block" id="_nicetime"><a class="viewcode-back" href="../index.html#progress._nicetime">[docs]</a><span class="k">def</span> <span class="nf">_nicetime</span><span class="p">(</span><span class="n">seconds</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return nice string representation of the given number of seconds in a</span>
+<span class="sd">    human-readable format (approximated). Example: 3634 s --&gt; 1 h.&quot;&quot;&quot;</span>
+    <span class="c"># 2012-09-04</span>
+    <span class="c"># copied from tb.misc.nicetime (written 2012-02-17)</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip</span>
+
+    <span class="c"># create list of time units (must be sorted from small to large units)</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;sec&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;min&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;hrs&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;dys&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;wks&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;mns&#39;</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&#39;factor&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;yrs&#39;</span><span class="p">}]</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">unit1</span><span class="p">,</span> <span class="n">unit2</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">units</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">units</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">/</span><span class="n">unit2</span><span class="p">[</span><span class="s">&#39;factor&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&#39;</span><span class="si">%i</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">unit1</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">/=</span> <span class="n">unit2</span><span class="p">[</span><span class="s">&#39;factor&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%i</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">unit2</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">])</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">progress 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Daniel Jung.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

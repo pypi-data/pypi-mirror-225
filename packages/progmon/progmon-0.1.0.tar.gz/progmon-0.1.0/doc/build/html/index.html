@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>progress &mdash; progress 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="progress 0.1 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">progress 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="progress">
+<h1>progress<a class="headerlink" href="#progress" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<span class="target" id="module-progress"></span><p>This module offers different methods for showing the current status of an
+iterative algorithm, or to control its execution, for example to abort it as
+soon as certain abort criterions are met.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="progress.Bar">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Bar</tt><big>(</big><em>nstep=1</em>, <em>text='progress'</em>, <em>width=None</em>, <em>verbose=True</em>, <em>etc=True</em><big>)</big><a class="reference internal" href="_modules/progress.html#Bar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a progress bar when executing a loop with a fixed number of
+iterations.</p>
+<p>Usage:</p>
+<p>Instantiate this class before loop. Call the method <em>step()</em> at the end of
+each loop (do not forget to do the same before any occurence of
+<em>continue</em>). If the loop is left early (i.e., if <em>break</em> is called), or if
+you want to make sure the line break is done after the loop, call the
+method <em>end()</em>. To reset the counter, call the method <em>reset()</em>.</p>
+<p>On initialization, the number of iterations <em>nstep</em> must be specified.
+Additional keyword arguments include:</p>
+<dl class="docutils">
+<dt><em>text</em></dt>
+<dd>User-defined text message (instead of &#8220;Progress&#8221;).</dd>
+<dt><em>width</em></dt>
+<dd>Width of the current shell window. Default: 80.</dd>
+<dt><em>verbose</em></dt>
+<dd>If set to <em>False</em>, the progress bar is not displayed.</dd>
+<dt><em>etc</em></dt>
+<dd>If set to <em>True</em>, show &#8220;Estimated Time to Complete&#8221;. The remaining time
+the loop will need to finish is calculated by linear extrapolation of
+the time that already passed since the loop has been entered.</dd>
+</dl>
+<p>This class is meant to be used in loops where the number of iteration steps
+is already known before entering the loop (i.e., for-loops). This excludes
+all iterative algorithms that leave the loop on some convergence criterions
+after a variable number of steps (e.g., while-loops). Of course, the number
+of loops that will probably be used could be estimated, but this is not the
+way this class is intended to be used. See the class <em>OpenBar</em> for that.</p>
+<dl class="method">
+<dt id="progress.Bar.end">
+<tt class="descname">end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Bar.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leave the progress bar, insert a line break on the screen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Bar.jump">
+<tt class="descname">jump</tt><big>(</big><em>howmany=1</em><big>)</big><a class="reference internal" href="_modules/progress.html#Bar.jump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar.jump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skip one or several steps. Using this instead of <em>step()</em> is only
+important for the correct calculation of the estimated time to complete
+(ETC).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Bar.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Bar.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the counter, start over with the progress bar.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Bar.step">
+<tt class="descname">step</tt><big>(</big><em>howmany=1</em><big>)</big><a class="reference internal" href="_modules/progress.html#Bar.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move one or several steps forward.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Bar.write">
+<tt class="descname">write</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Bar.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Bar.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the progress bar on the screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.Monitor">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Monitor</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Monitor the values of certain variables as they change within a loop
+(e.g., for iterative algorithms). Depends on the class <em>StatusLine</em>.</p>
+<p>Update the line by using carriage return each time the method <em>step()</em> is
+called. Do this until the method <em>end()</em> is called (then, a line break is
+issued).</p>
+<dl class="method">
+<dt id="progress.Monitor.end">
+<tt class="descname">end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finish monitoring values, issue a line break (if not already done).
+Update the status line one last time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Monitor.remove">
+<tt class="descname">remove</tt><big>(</big><em>*names</em><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop monitoring the specified variables.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Monitor.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the status line. Empty the list of values and begin a new
+status line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Monitor.set_delay">
+<tt class="descname">set_delay</tt><big>(</big><em>delay</em><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor.set_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor.set_delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the delay of the StatusLine instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Monitor.update">
+<tt class="descname">update</tt><big>(</big><em>**values</em><big>)</big><a class="reference internal" href="_modules/progress.html#Monitor.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Monitor.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the values of one or more variables, or add new variables to
+the status line.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.Abort">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Abort</tt><big>(</big><em>key='q'</em>, <em>timeout=0</em><big>)</big><a class="reference internal" href="_modules/progress.html#Abort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Abort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check keyboard buffer for a certain key to be pressed.</p>
+<p>Initialize before your loop (e.g., of an iterative algorithm). Check within
+the loop body (e.g., break the loop on positive check). Finalize (end)
+after the loop. Do not forget to finalize, so that your terminal is put
+back into normal mode! Or use it as context manager (use the <em>with</em>
+statement), then finalization is done automatically.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Abort</span><span class="p">()</span> <span class="k">as</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># do something</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">check</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="k">break</span>  <span class="c"># leave loop early, because &quot;q&quot; has been pressed</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="progress.Abort.check">
+<tt class="descname">check</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Abort.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Abort.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the key has been pressed by now. All other contents of the
+keyboard buffer are ignored.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Abort.end">
+<tt class="descname">end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Abort.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Abort.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalize. Put the terminal back into normal mode. Return string
+buffer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Abort.report">
+<tt class="descname">report</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Abort.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Abort.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the handler was triggered, display a message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Abort.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Abort.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Abort.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the abort handler.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.Until">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Until</tt><big>(</big><em>until=None</em><big>)</big><a class="reference internal" href="_modules/progress.html#Until"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Until" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a certain date/time has been reached. Can be used to
+conveniently confine the execution time of an iterative algorithm.</p>
+<p>You can specify either a maximum duration (execution time) or a specific
+date.</p>
+<dl class="method">
+<dt id="progress.Until.check">
+<tt class="descname">check</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Until.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Until.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the specified time has already been reached.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.Converge">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Converge</tt><big>(</big><em>tol=None</em>, <em>smooth=1</em><big>)</big><a class="reference internal" href="_modules/progress.html#Converge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Converge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check data for convergence criterion within an interative algorithm.
+Specify a certain tolerance (accuracy) that should be reached. Increase the
+&#8220;smooth value&#8221; to average over the last few deltas.</p>
+<dl class="method">
+<dt id="progress.Converge.check">
+<tt class="descname">check</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/progress.html#Converge.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Converge.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check convergence criterion. Return <em>True</em> if the requested accuracy
+has been reached, otherwise <em>False</em>. If <em>data</em> is <em>None</em>, return
+<em>False</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Converge.delta">
+<tt class="descname">delta</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Converge.delta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Converge.delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current mean delta (based on the last call of <em>check()</em>).
+Return -1 if the delta list is still empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Converge.report">
+<tt class="descname">report</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Converge.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Converge.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the handler was triggered, display a message.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.StatusLine">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">StatusLine</tt><big>(</big><em>line=''</em>, <em>delay=0.0</em>, <em>cols=None</em><big>)</big><a class="reference internal" href="_modules/progress.html#StatusLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.StatusLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a status line that is updated by the user every once in a while
+using &#8220;carriage return&#8221;.</p>
+<dl class="method">
+<dt id="progress.StatusLine.end">
+<tt class="descname">end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#StatusLine.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.StatusLine.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>End status line, issue a line break (only if the status line has
+already been used).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.StatusLine.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#StatusLine.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.StatusLine.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the status line (make a line break if neccessary and begin a
+new status line).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.StatusLine.update">
+<tt class="descname">update</tt><big>(</big><em>line</em><big>)</big><a class="reference internal" href="_modules/progress.html#StatusLine.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.StatusLine.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the line by the given string, replacing the old line.
+The line only gets printed if the line has changed, and if the given
+delay time has been passed. If <em>now</em> is <em>True</em>, ignore the delay.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="progress.Terminate">
+<em class="property">class </em><tt class="descclassname">progress.</tt><tt class="descname">Terminate</tt><a class="reference internal" href="_modules/progress.html#Terminate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trap the TERM signal (15). For example, you can stop an interative
+algorithm in a controlled way, leaving the loop after the next iteration
+and still saving the results. This is done by sending the TERM signal to
+the process (also possible remotely), i.e. in a Unix shell you can do <cite>kill
+12345</cite>, or you can use the program <em>top</em>.</p>
+<p>Note: Works only on Unix-based systems (Linux etc.).</p>
+<dl class="method">
+<dt id="progress.Terminate.check">
+<tt class="descname">check</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Terminate.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>True</em> if a TERM signal has been received, otherwise
+<em>False</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Terminate.end">
+<tt class="descname">end</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Terminate.end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the trap. Set the action for the TERM signal back to system
+standard.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Terminate.report">
+<tt class="descname">report</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Terminate.report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this handler was triggered, display a message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Terminate.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#Terminate.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the terminate handler, setting the flag back to <em>False</em> and
+waiting for a new TERM signal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="progress.Terminate.terminate">
+<tt class="descname">terminate</tt><big>(</big><em>signal</em>, <em>frame</em><big>)</big><a class="reference internal" href="_modules/progress.html#Terminate.terminate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.Terminate.terminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the TERM signal has been received, this method is executed,
+setting the flag to <em>True</em>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="progress.get_columns">
+<tt class="descclassname">progress.</tt><tt class="descname">get_columns</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/progress.html#get_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress.get_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to get the number of columns of the current terminal window. If
+failing, return standard width (80 columns).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="progress._nicetime">
+<tt class="descclassname">progress.</tt><tt class="descname">_nicetime</tt><big>(</big><em>seconds</em><big>)</big><a class="reference internal" href="_modules/progress.html#_nicetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#progress._nicetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return nice string representation of the given number of seconds in a
+human-readable format (approximated). Example: 3634 s &#8211;&gt; 1 h.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">progress</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">progress 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Daniel Jung.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

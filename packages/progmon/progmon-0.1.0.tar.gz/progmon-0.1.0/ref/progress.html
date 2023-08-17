@@ -1,0 +1,501 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package progress</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>progress</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/djung/lib/progress/__init__.py">/home/djung/lib/progress/__init__.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;offers&nbsp;different&nbsp;methods&nbsp;to&nbsp;show&nbsp;the&nbsp;current&nbsp;status&nbsp;of&nbsp;an<br>
+iterative&nbsp;calculation&nbsp;algorithm,&nbsp;or&nbsp;to&nbsp;control&nbsp;its&nbsp;execution,&nbsp;i.e.&nbsp;abort&nbsp;it<br>
+when&nbsp;certain&nbsp;criterions&nbsp;are&nbsp;met.<br>
+&nbsp;<br>
+To&nbsp;do:<br>
+--&gt;&nbsp;write&nbsp;variant&nbsp;of&nbsp;<a href="#Converge">Converge</a>&nbsp;or&nbsp;extend&nbsp;<a href="#Converge">Converge</a>&nbsp;to&nbsp;use&nbsp;standard&nbsp;error&nbsp;as<br>
+&nbsp;&nbsp;&nbsp;&nbsp;criterion<br>
+&nbsp;<br>
+Written&nbsp;by&nbsp;Daniel&nbsp;Jung,&nbsp;Jacobs&nbsp;University&nbsp;Bremen,&nbsp;Germany&nbsp;(2011-2012).</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Package Contents</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="progress.html#Abort">Abort</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#Bar">Bar</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#Converge">Converge</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#Monitor">Monitor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#OpenBar">OpenBar</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#StatusLine">StatusLine</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#Terminate">Terminate</a>
+</font></dt><dt><font face="helvetica, arial"><a href="progress.html#Until">Until</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Abort">class <strong>Abort</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Check&nbsp;keyboard&nbsp;buffer&nbsp;if&nbsp;a&nbsp;certain&nbsp;key&nbsp;has&nbsp;been&nbsp;pressed.<br>
+&nbsp;<br>
+Initialize&nbsp;before&nbsp;your&nbsp;loop&nbsp;(e.g.,&nbsp;of&nbsp;an&nbsp;iterative&nbsp;algorithm).&nbsp;Check&nbsp;within<br>
+the&nbsp;loop&nbsp;body&nbsp;(e.g.,&nbsp;break&nbsp;the&nbsp;loop&nbsp;on&nbsp;positive&nbsp;check).&nbsp;Finalize&nbsp;(end)<br>
+after&nbsp;the&nbsp;loop.&nbsp;Do&nbsp;not&nbsp;forget&nbsp;to&nbsp;finalize,&nbsp;so&nbsp;that&nbsp;your&nbsp;terminal&nbsp;is&nbsp;put<br>
+back&nbsp;into&nbsp;normal&nbsp;mode!&nbsp;Or&nbsp;use&nbsp;it&nbsp;as&nbsp;context&nbsp;manager&nbsp;(use&nbsp;the&nbsp;with<br>
+statement),&nbsp;then&nbsp;finalization&nbsp;should&nbsp;be&nbsp;done&nbsp;automatically.<br>
+&nbsp;<br>
+Example:<br>
+&gt;&nbsp;import&nbsp;time<br>
+&gt;&nbsp;with&nbsp;<a href="#Abort">Abort</a>()&nbsp;as&nbsp;a:<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(10):<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(1)&nbsp;&nbsp;#&nbsp;do&nbsp;stuff<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;a.<a href="#Abort-check">check</a>():<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break&nbsp;&nbsp;#&nbsp;leave&nbsp;loop&nbsp;early,&nbsp;because&nbsp;"q"&nbsp;has&nbsp;been&nbsp;pressed<br>
+&gt;&nbsp;print&nbsp;e.buff<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Abort-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Abort-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Abort-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="Abort-__init__"><strong>__init__</strong></a>(self, key<font color="#909090">='q'</font>, timeout<font color="#909090">=0</font>)</dt><dd><tt>Initialize.&nbsp;Specify&nbsp;key&nbsp;and&nbsp;timeout.&nbsp;Put&nbsp;terminal&nbsp;into&nbsp;cbreak&nbsp;mode.<br>
+&nbsp;<br>
+Future&nbsp;plans:<br>
+--&gt;&nbsp;enable&nbsp;key&nbsp;combinations&nbsp;(e.g.,&nbsp;CTRL+q)<br>
+--&gt;&nbsp;enable&nbsp;special&nbsp;keys&nbsp;(e.g.,&nbsp;ESC)</tt></dd></dl>
+
+<dl><dt><a name="Abort-check"><strong>check</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;key&nbsp;has&nbsp;been&nbsp;pressed&nbsp;in&nbsp;the&nbsp;meanwhile.&nbsp;All&nbsp;other<br>
+contents&nbsp;of&nbsp;the&nbsp;keyboard&nbsp;buffer&nbsp;will&nbsp;be&nbsp;lost&nbsp;and&nbsp;cannot&nbsp;be<br>
+recovered.</tt></dd></dl>
+
+<dl><dt><a name="Abort-end"><strong>end</strong></a>(self)</dt><dd><tt>Finalize.&nbsp;Put&nbsp;terminal&nbsp;back&nbsp;into&nbsp;normal&nbsp;mode.&nbsp;Return&nbsp;string<br>
+buffer.</tt></dd></dl>
+
+<dl><dt><a name="Abort-report"><strong>report</strong></a>(self)</dt><dd><tt>If&nbsp;this&nbsp;handler&nbsp;was&nbsp;triggered,&nbsp;display&nbsp;a&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Abort-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;abort&nbsp;handler.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bar">class <strong>Bar</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Display&nbsp;progress&nbsp;bar&nbsp;of&nbsp;a&nbsp;certain&nbsp;loop.&nbsp;Instantiate&nbsp;it&nbsp;before&nbsp;loop.&nbsp;Call<br>
+the&nbsp;method&nbsp;"step"&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;each&nbsp;loop&nbsp;(don't&nbsp;forget&nbsp;to&nbsp;do&nbsp;the&nbsp;same<br>
+before&nbsp;any&nbsp;occurence&nbsp;of&nbsp;"continue").&nbsp;If&nbsp;loop&nbsp;is&nbsp;left&nbsp;early&nbsp;(break),&nbsp;or&nbsp;if<br>
+you&nbsp;want&nbsp;to&nbsp;make&nbsp;sure&nbsp;the&nbsp;line&nbsp;break&nbsp;is&nbsp;done&nbsp;after&nbsp;the&nbsp;loop,&nbsp;call&nbsp;the<br>
+method&nbsp;"end".&nbsp;To&nbsp;reset&nbsp;the&nbsp;counter,&nbsp;call&nbsp;the&nbsp;method&nbsp;"reset".<br>
+&nbsp;<br>
+On&nbsp;initialization,&nbsp;the&nbsp;number&nbsp;of&nbsp;iterations&nbsp;"nstep"&nbsp;must&nbsp;be&nbsp;specified.<br>
+Additional&nbsp;keyword&nbsp;arguments:&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;User-defined&nbsp;text&nbsp;message&nbsp;(instead<br>
+of&nbsp;"Progress")&nbsp;width&nbsp;&nbsp;&nbsp;:&nbsp;Width&nbsp;of&nbsp;the&nbsp;current&nbsp;shell&nbsp;window.&nbsp;Default:&nbsp;80<br>
+verbose&nbsp;:&nbsp;If&nbsp;set&nbsp;to&nbsp;False,&nbsp;the&nbsp;progress&nbsp;bar&nbsp;isn't&nbsp;shown&nbsp;etc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;If&nbsp;set&nbsp;to<br>
+True,&nbsp;show&nbsp;estimated&nbsp;time&nbsp;to&nbsp;complete<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;is&nbsp;only&nbsp;meant&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;loops&nbsp;where&nbsp;the&nbsp;number&nbsp;of&nbsp;steps&nbsp;is<br>
+known&nbsp;before&nbsp;entering&nbsp;the&nbsp;loop.&nbsp;This&nbsp;excludes&nbsp;all&nbsp;iterative&nbsp;algorithms&nbsp;that<br>
+leave&nbsp;the&nbsp;loop&nbsp;only&nbsp;on&nbsp;some&nbsp;convergence&nbsp;criterions&nbsp;after&nbsp;a&nbsp;variable&nbsp;number<br>
+of&nbsp;steps&nbsp;(e.g.,&nbsp;while-loops).&nbsp;Of&nbsp;course,&nbsp;one&nbsp;could&nbsp;"estimate"&nbsp;the&nbsp;number&nbsp;of<br>
+loops&nbsp;that&nbsp;will&nbsp;probably&nbsp;be&nbsp;used,&nbsp;but&nbsp;this&nbsp;is&nbsp;not&nbsp;the&nbsp;way&nbsp;this&nbsp;class&nbsp;is<br>
+intended&nbsp;to&nbsp;be&nbsp;used.<br>
+&nbsp;<br>
+Future&nbsp;ideas:<br>
+--&gt;&nbsp;multiple&nbsp;progress&nbsp;bars&nbsp;at&nbsp;once,&nbsp;to&nbsp;show&nbsp;status&nbsp;of&nbsp;multiple&nbsp;subprocesses<br>
+--&gt;&nbsp;allow&nbsp;nested&nbsp;progress&nbsp;bars,&nbsp;passing&nbsp;and&nbsp;multiplying&nbsp;step&nbsp;numbers&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inner-next&nbsp;instance<br>
+--&gt;&nbsp;report&nbsp;elapsed&nbsp;time&nbsp;instead&nbsp;of&nbsp;printing&nbsp;"ETC&nbsp;0&nbsp;sec"<br>
+--&gt;&nbsp;save&nbsp;start&nbsp;and&nbsp;end&nbsp;times&nbsp;(and&nbsp;duration),&nbsp;to&nbsp;check&nbsp;them&nbsp;later<br>
+&nbsp;<br>
+Written&nbsp;by&nbsp;Daniel&nbsp;Jung,&nbsp;Jacobs&nbsp;University&nbsp;Bremen,&nbsp;Germany&nbsp;(2011-2012).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Bar-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Bar-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Bar-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="Bar-__init__"><strong>__init__</strong></a>(self, nstep<font color="#909090">=1</font>, text<font color="#909090">='progress'</font>, width<font color="#909090">=None</font>, verbose<font color="#909090">=True</font>, etc<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="Bar-end"><strong>end</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Bar-jump"><strong>jump</strong></a>(self, howmany<font color="#909090">=1</font>)</dt><dd><tt>Skip&nbsp;one&nbsp;or&nbsp;several&nbsp;steps.&nbsp;Using&nbsp;this&nbsp;instead&nbsp;of&nbsp;step&nbsp;is&nbsp;only<br>
+important&nbsp;for&nbsp;the&nbsp;correct&nbsp;calculation&nbsp;of&nbsp;the&nbsp;estimated&nbsp;time&nbsp;to&nbsp;complete<br>
+(ETC).</tt></dd></dl>
+
+<dl><dt><a name="Bar-reset"><strong>reset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Bar-step"><strong>step</strong></a>(self, howmany<font color="#909090">=1</font>)</dt><dd><tt>Move&nbsp;one&nbsp;or&nbsp;several&nbsp;steps&nbsp;forward.</tt></dd></dl>
+
+<dl><dt><a name="Bar-write"><strong>write</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__created__</strong> = '2011-09-13'</dl>
+
+<dl><dt><strong>__modified__</strong> = '2012-09-04'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Converge">class <strong>Converge</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Check&nbsp;data&nbsp;for&nbsp;convergence&nbsp;criterion&nbsp;in&nbsp;some&nbsp;sort&nbsp;of&nbsp;iteration&nbsp;step&nbsp;of<br>
+an&nbsp;interative&nbsp;algorithm.&nbsp;Specify&nbsp;a&nbsp;certain&nbsp;tolerance&nbsp;(accuracy)&nbsp;that&nbsp;should<br>
+be&nbsp;reached.&nbsp;Increase&nbsp;the&nbsp;"smooth&nbsp;value"&nbsp;to&nbsp;average&nbsp;over&nbsp;the&nbsp;last&nbsp;few<br>
+Deltas.<br>
+&nbsp;<br>
+Future&nbsp;plans:<br>
+--&gt;&nbsp;choose&nbsp;from&nbsp;various&nbsp;convergence&nbsp;criterions&nbsp;(also&nbsp;based&nbsp;on&nbsp;standard<br>
+&nbsp;&nbsp;&nbsp;&nbsp;error)<br>
+--&gt;&nbsp;could&nbsp;choose&nbsp;from&nbsp;mean,&nbsp;gmean,&nbsp;min,&nbsp;max,&nbsp;max-min&nbsp;(peak-to-peak),&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(find&nbsp;more&nbsp;under&nbsp;<a href="http://en.wikipedia.org/wiki/Average">http://en.wikipedia.org/wiki/Average</a>)<br>
+--&gt;&nbsp;offer&nbsp;relative&nbsp;and&nbsp;absolute&nbsp;versions&nbsp;of&nbsp;each&nbsp;criterion<br>
+--&gt;&nbsp;let&nbsp;the&nbsp;user&nbsp;specify&nbsp;his&nbsp;own&nbsp;criterion&nbsp;(as&nbsp;a&nbsp;function&nbsp;<a href="__builtin__.html#object">object</a>)<br>
+--&gt;&nbsp;use&nbsp;Cython,&nbsp;write&nbsp;version&nbsp;that&nbsp;is&nbsp;callable&nbsp;from&nbsp;C,&nbsp;support&nbsp;OpenMP<br>
+--&gt;&nbsp;add&nbsp;feature&nbsp;to&nbsp;remember&nbsp;several&nbsp;values&nbsp;(e.g.,&nbsp;5)&nbsp;and&nbsp;check&nbsp;that&nbsp;all&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;deltas&nbsp;are&nbsp;small&nbsp;enough&nbsp;(then,&nbsp;it&nbsp;is&nbsp;not&nbsp;enought&nbsp;that&nbsp;"by&nbsp;chance"&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delta&nbsp;value&nbsp;drops&nbsp;below&nbsp;the&nbsp;tolerance)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Converge-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Converge-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="Converge-__init__"><strong>__init__</strong></a>(self, tol<font color="#909090">=None</font>, smooth<font color="#909090">=1</font>)</dt></dl>
+
+<dl><dt><a name="Converge-check"><strong>check</strong></a>(self, data)</dt><dd><tt>Check&nbsp;convergence&nbsp;criterion.&nbsp;Return&nbsp;True&nbsp;if&nbsp;the&nbsp;requested&nbsp;accuracy<br>
+is&nbsp;reached,&nbsp;False&nbsp;otherwise.&nbsp;If&nbsp;data&nbsp;is&nbsp;None,&nbsp;return&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Converge-delta"><strong>delta</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;current&nbsp;mean&nbsp;delta&nbsp;(based&nbsp;on&nbsp;the&nbsp;last&nbsp;call&nbsp;of&nbsp;"check").<br>
+Return&nbsp;-1&nbsp;if&nbsp;the&nbsp;delta&nbsp;list&nbsp;is&nbsp;still&nbsp;empty.</tt></dd></dl>
+
+<dl><dt><a name="Converge-report"><strong>report</strong></a>(self)</dt><dd><tt>If&nbsp;this&nbsp;handler&nbsp;was&nbsp;triggered,&nbsp;display&nbsp;a&nbsp;message.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Monitor">class <strong>Monitor</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Monitor">Monitor</a>&nbsp;the&nbsp;values&nbsp;of&nbsp;certain&nbsp;variables&nbsp;within&nbsp;a&nbsp;loop&nbsp;(e.g.,&nbsp;for<br>
+iterative&nbsp;algorithms).&nbsp;Uses&nbsp;the&nbsp;class&nbsp;<a href="#StatusLine">StatusLine</a>.<br>
+&nbsp;<br>
+Update&nbsp;the&nbsp;line&nbsp;by&nbsp;using&nbsp;carriage&nbsp;return&nbsp;each&nbsp;time&nbsp;the&nbsp;method&nbsp;"step"&nbsp;is<br>
+called.&nbsp;Do&nbsp;this&nbsp;until&nbsp;the&nbsp;method&nbsp;"end"&nbsp;is&nbsp;called&nbsp;(then,&nbsp;a&nbsp;line&nbsp;break&nbsp;is<br>
+issued).<br>
+&nbsp;<br>
+Future&nbsp;plans:<br>
+--&gt;&nbsp;support&nbsp;complex&nbsp;numbers<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Monitor-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Monitor-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Monitor-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="Monitor-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="Monitor-end"><strong>end</strong></a>(self)</dt><dd><tt>Finish&nbsp;monitoring&nbsp;values,&nbsp;make&nbsp;the&nbsp;line&nbsp;break&nbsp;(if&nbsp;not&nbsp;already&nbsp;done).<br>
+Update&nbsp;the&nbsp;line&nbsp;one&nbsp;last&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="Monitor-remove"><strong>remove</strong></a>(self, *names)</dt><dd><tt>Stop&nbsp;monitoring&nbsp;the&nbsp;specified&nbsp;variables.</tt></dd></dl>
+
+<dl><dt><a name="Monitor-remove_value"><strong>remove_value</strong></a>(self, name)</dt><dd><tt>Stop&nbsp;monitoring&nbsp;the&nbsp;specified&nbsp;variable.</tt></dd></dl>
+
+<dl><dt><a name="Monitor-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Reset&nbsp;this&nbsp;<a href="__builtin__.html#object">object</a>.&nbsp;Empty&nbsp;the&nbsp;list&nbsp;of&nbsp;values&nbsp;and&nbsp;begin&nbsp;a&nbsp;new&nbsp;status<br>
+line.</tt></dd></dl>
+
+<dl><dt><a name="Monitor-set_delay"><strong>set_delay</strong></a>(self, delay)</dt><dd><tt>Set&nbsp;the&nbsp;delay&nbsp;of&nbsp;the&nbsp;<a href="#StatusLine">StatusLine</a>&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Monitor-update"><strong>update</strong></a>(self, **values)</dt><dd><tt>Update&nbsp;one&nbsp;or&nbsp;more&nbsp;values,&nbsp;or&nbsp;add&nbsp;new&nbsp;variables&nbsp;to&nbsp;monitor.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="OpenBar">class <strong>OpenBar</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Display&nbsp;progress&nbsp;bar&nbsp;of&nbsp;an&nbsp;unlimited&nbsp;iteration&nbsp;process&nbsp;("open-end").&nbsp;Use<br>
+this&nbsp;if&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;iterations&nbsp;is&nbsp;unclear,&nbsp;i.e.&nbsp;the&nbsp;loop&nbsp;may&nbsp;be<br>
+exited&nbsp;at&nbsp;any&nbsp;point&nbsp;(e.g.,&nbsp;while&nbsp;loop).&nbsp;However,&nbsp;to&nbsp;display&nbsp;a&nbsp;progress&nbsp;bar,<br>
+some&nbsp;measure&nbsp;of&nbsp;progress&nbsp;must&nbsp;still&nbsp;be&nbsp;defined&nbsp;(start&nbsp;and&nbsp;target&nbsp;values).<br>
+If&nbsp;the&nbsp;start&nbsp;value&nbsp;is&nbsp;None,&nbsp;use&nbsp;the&nbsp;value&nbsp;given&nbsp;by&nbsp;the&nbsp;first&nbsp;call&nbsp;of&nbsp;step.<br>
+&nbsp;<br>
+Intended&nbsp;use:&nbsp;For&nbsp;example,&nbsp;an&nbsp;iterative&nbsp;averaging&nbsp;process&nbsp;will&nbsp;be&nbsp;aborted<br>
+as&nbsp;soon&nbsp;as&nbsp;a&nbsp;certain&nbsp;accuracy&nbsp;has&nbsp;been&nbsp;reached.&nbsp;The&nbsp;progress&nbsp;measure&nbsp;will<br>
+be&nbsp;this&nbsp;accuracy.<br>
+&nbsp;<br>
+Future&nbsp;plans:<br>
+--&gt;&nbsp;use&nbsp;something&nbsp;different&nbsp;than&nbsp;linear&nbsp;extrapolation<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="OpenBar-__init__"><strong>__init__</strong></a>(self, target, start<font color="#909090">=None</font>, text<font color="#909090">='progress'</font>, width<font color="#909090">=None</font>, verbose<font color="#909090">=True</font>, etc<font color="#909090">=False</font>)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StatusLine">class <strong>StatusLine</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Show&nbsp;a&nbsp;status&nbsp;line&nbsp;that&nbsp;is&nbsp;updated&nbsp;by&nbsp;the&nbsp;user&nbsp;every&nbsp;once&nbsp;in&nbsp;a&nbsp;while<br>
+using&nbsp;"carriage&nbsp;return".<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="StatusLine-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StatusLine-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StatusLine-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="StatusLine-__init__"><strong>__init__</strong></a>(self, line<font color="#909090">=''</font>, delay<font color="#909090">=0.0</font>, cols<font color="#909090">=None</font>)</dt><dd><tt>Initialize&nbsp;status&nbsp;line&nbsp;<a href="__builtin__.html#object">object</a>.&nbsp;Can&nbsp;be&nbsp;given&nbsp;an&nbsp;initial&nbsp;line,&nbsp;a<br>
+minimum&nbsp;delay&nbsp;time&nbsp;and&nbsp;a&nbsp;custom&nbsp;number&nbsp;of&nbsp;columns&nbsp;(terminal&nbsp;width,&nbsp;will<br>
+be&nbsp;obtained&nbsp;automatically&nbsp;on&nbsp;Unix&nbsp;systems).</tt></dd></dl>
+
+<dl><dt><a name="StatusLine-end"><strong>end</strong></a>(self)</dt><dd><tt>End&nbsp;status&nbsp;line,&nbsp;make&nbsp;line&nbsp;break&nbsp;(only&nbsp;if&nbsp;this&nbsp;status&nbsp;line&nbsp;has<br>
+already&nbsp;been&nbsp;used).</tt></dd></dl>
+
+<dl><dt><a name="StatusLine-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Reset&nbsp;status&nbsp;line&nbsp;(make&nbsp;a&nbsp;line&nbsp;break&nbsp;if&nbsp;neccessary&nbsp;and&nbsp;begin&nbsp;a&nbsp;new<br>
+status&nbsp;line).</tt></dd></dl>
+
+<dl><dt><a name="StatusLine-update"><strong>update</strong></a>(self, line)</dt><dd><tt>Update&nbsp;the&nbsp;line&nbsp;by&nbsp;the&nbsp;given&nbsp;string,&nbsp;replacing&nbsp;the&nbsp;old&nbsp;line.<br>
+The&nbsp;line&nbsp;only&nbsp;gets&nbsp;printed&nbsp;if&nbsp;the&nbsp;line&nbsp;has&nbsp;changed,&nbsp;and&nbsp;if&nbsp;the&nbsp;given<br>
+delay&nbsp;time&nbsp;has&nbsp;been&nbsp;passed.&nbsp;If&nbsp;now&nbsp;is&nbsp;True,&nbsp;ignore&nbsp;the&nbsp;delay.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Terminate">class <strong>Terminate</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Trap&nbsp;the&nbsp;TERM&nbsp;signal&nbsp;(15).&nbsp;For&nbsp;example,&nbsp;you&nbsp;can&nbsp;stop&nbsp;an&nbsp;interative<br>
+algorithm&nbsp;in&nbsp;a&nbsp;controlled&nbsp;way,&nbsp;leaving&nbsp;the&nbsp;loop&nbsp;after&nbsp;the&nbsp;next&nbsp;iteration<br>
+and&nbsp;still&nbsp;saving&nbsp;the&nbsp;results.&nbsp;This&nbsp;is&nbsp;done&nbsp;by&nbsp;sending&nbsp;the&nbsp;TERM&nbsp;signal&nbsp;to<br>
+the&nbsp;process&nbsp;(also&nbsp;remotely),&nbsp;i.e.&nbsp;in&nbsp;the&nbsp;shell&nbsp;you&nbsp;can&nbsp;do&nbsp;"kill&nbsp;12345",&nbsp;or<br>
+you&nbsp;can&nbsp;use&nbsp;"top".<br>
+&nbsp;<br>
+Works&nbsp;on&nbsp;Unix&nbsp;systems&nbsp;(Linux&nbsp;etc.).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Terminate-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;trap,&nbsp;set&nbsp;action&nbsp;back&nbsp;to&nbsp;system&nbsp;defaults&nbsp;before&nbsp;the<br>
+handler&nbsp;is&nbsp;deleted.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Enable&nbsp;context&nbsp;manager&nbsp;functionality,&nbsp;enter&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt><dd><tt>Leave&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;the&nbsp;terminate&nbsp;handler.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-check"><strong>check</strong></a>(self)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;a&nbsp;TERM&nbsp;signal&nbsp;has&nbsp;been&nbsp;received,&nbsp;otherwise&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-end"><strong>end</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;trap.&nbsp;Set&nbsp;the&nbsp;action&nbsp;for&nbsp;the&nbsp;TERM&nbsp;signal&nbsp;back&nbsp;to&nbsp;system<br>
+standard.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-report"><strong>report</strong></a>(self)</dt><dd><tt>If&nbsp;this&nbsp;handler&nbsp;was&nbsp;triggered,&nbsp;display&nbsp;a&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;terminate&nbsp;handler,&nbsp;setting&nbsp;the&nbsp;flag&nbsp;back&nbsp;to&nbsp;False&nbsp;and<br>
+waiting&nbsp;for&nbsp;a&nbsp;new&nbsp;TERM&nbsp;signal.</tt></dd></dl>
+
+<dl><dt><a name="Terminate-terminate"><strong>terminate</strong></a>(self, signal, frame)</dt><dd><tt>If&nbsp;the&nbsp;TERM&nbsp;signal&nbsp;is&nbsp;received,&nbsp;this&nbsp;method&nbsp;is&nbsp;executed,&nbsp;setting&nbsp;the<br>
+flag&nbsp;to&nbsp;True.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Until">class <strong>Until</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Check&nbsp;if&nbsp;a&nbsp;certain&nbsp;date/time&nbsp;has&nbsp;been&nbsp;reached.&nbsp;Can&nbsp;be&nbsp;used&nbsp;to<br>
+conveniently&nbsp;confine&nbsp;the&nbsp;execution&nbsp;time&nbsp;of&nbsp;an&nbsp;iterative&nbsp;algorithm.<br>
+&nbsp;<br>
+To&nbsp;do:<br>
+--&gt;&nbsp;define&nbsp;word&nbsp;"next",&nbsp;excluding&nbsp;the&nbsp;present&nbsp;day,&nbsp;to&nbsp;allow&nbsp;something&nbsp;like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"next&nbsp;tuesday"&nbsp;==&gt;&nbsp;even&nbsp;if&nbsp;it&nbsp;is&nbsp;tuesday&nbsp;right&nbsp;now,&nbsp;run&nbsp;until&nbsp;next<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tuesday<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Until-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Until-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, exc_traceback)</dt></dl>
+
+<dl><dt><a name="Until-__init__"><strong>__init__</strong></a>(self, until<font color="#909090">=None</font>)</dt><dd><tt>Initialize.&nbsp;Specify&nbsp;datetime&nbsp;or&nbsp;duration.</tt></dd></dl>
+
+<dl><dt><a name="Until-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><tt>Return&nbsp;iterator.</tt></dd></dl>
+
+<dl><dt><a name="Until-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Until-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Until-check"><strong>check</strong></a>(self)</dt><dd><tt>Check&nbsp;if&nbsp;the&nbsp;specified&nbsp;time&nbsp;has&nbsp;already&nbsp;been&nbsp;passed.</tt></dd></dl>
+
+<dl><dt><a name="Until-goback_first"><strong>goback_first</strong></a>(self)</dt><dd><tt>Move&nbsp;backward&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;first&nbsp;day&nbsp;of&nbsp;the&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="Until-goback_midnight"><strong>goback_midnight</strong></a>(self)</dt><dd><tt>Move&nbsp;backward&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;that&nbsp;day&nbsp;(midnight).</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_date"><strong>goto_date</strong></a>(self, year, month, mday)</dt><dd><tt>Move&nbsp;timestamp&nbsp;to&nbsp;the&nbsp;given&nbsp;date.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_day"><strong>goto_day</strong></a>(self, day)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;next&nbsp;given&nbsp;day&nbsp;of&nbsp;the&nbsp;week.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_mday"><strong>goto_mday</strong></a>(self, mday)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;given&nbsp;day&nbsp;of&nbsp;the&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_month"><strong>goto_month</strong></a>(self, month)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;next&nbsp;given&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_time"><strong>goto_time</strong></a>(self, hours<font color="#909090">=0</font>, minutes<font color="#909090">=0</font>, seconds<font color="#909090">=None</font>)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;next&nbsp;given&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_tomorrow"><strong>goto_tomorrow</strong></a>(self)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;next&nbsp;day.</tt></dd></dl>
+
+<dl><dt><a name="Until-goto_year"><strong>goto_year</strong></a>(self, year)</dt><dd><tt>Move&nbsp;timestamp&nbsp;forward&nbsp;to&nbsp;the&nbsp;given&nbsp;year.</tt></dd></dl>
+
+<dl><dt><a name="Until-isdatetime"><strong>isdatetime</strong></a>(self, string)</dt><dd><tt>Decide&nbsp;if&nbsp;the&nbsp;given&nbsp;string&nbsp;contains&nbsp;a&nbsp;date-time&nbsp;combination.&nbsp;If&nbsp;so,<br>
+return&nbsp;True.&nbsp;Otherwise,&nbsp;it&nbsp;will&nbsp;contain&nbsp;a&nbsp;duration,&nbsp;and&nbsp;False&nbsp;is<br>
+returned.</tt></dd></dl>
+
+<dl><dt><a name="Until-report"><strong>report</strong></a>(self)</dt><dd><tt>If&nbsp;this&nbsp;handler&nbsp;was&nbsp;triggered,&nbsp;display&nbsp;a&nbsp;message.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Until-one_eq"><strong>one_eq</strong></a>(seq, obj)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;at&nbsp;least&nbsp;one&nbsp;element&nbsp;of&nbsp;the&nbsp;given&nbsp;sequence&nbsp;"seq"&nbsp;is<br>
+equal&nbsp;to&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;"obj".&nbsp;Otherwise,&nbsp;return&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Until-one_in"><strong>one_in</strong></a>(seq, obj)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;at&nbsp;least&nbsp;one&nbsp;element&nbsp;of&nbsp;the&nbsp;given&nbsp;sequence&nbsp;"seq"&nbsp;is<br>
+contained&nbsp;in&nbsp;the&nbsp;given&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;"obj".&nbsp;Otherwise,&nbsp;return&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Until-one_is"><strong>one_is</strong></a>(seq, obj)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;at&nbsp;least&nbsp;one&nbsp;element&nbsp;of&nbsp;the&nbsp;given&nbsp;sequence&nbsp;"seq"&nbsp;is<br>
+identical&nbsp;to&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;"obj".&nbsp;Otherwise,&nbsp;return&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="Until-only_digits"><strong>only_digits</strong></a>(string)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;given&nbsp;string&nbsp;contains&nbsp;only&nbsp;digits.&nbsp;Otherwise,<br>
+return&nbsp;False.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DAYNUM</strong> = {'fri': 4, 'friday': 4, 'mon': 0, 'monday': 0, 'sat': 5, 'saturday': 5, 'sun': 6, 'sunday': 6, 'thu': 3, 'thursday': 3, ...}</dl>
+
+<dl><dt><strong>DAYS</strong> = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']</dl>
+
+<dl><dt><strong>DAYS_SHORT</strong> = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']</dl>
+
+<dl><dt><strong>MONTHNUM</strong> = {'apr': 4, 'april': 4, 'aug': 8, 'august': 8, 'dec': 12, 'december': 12, 'feb': 2, 'february': 2, 'jan': 1, 'january': 1, ...}</dl>
+
+<dl><dt><strong>MONTHS</strong> = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']</dl>
+
+<dl><dt><strong>MONTHS_SHORT</strong> = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']</dl>
+
+<dl><dt><strong>SPECIAL</strong> = ['tomorrow']</dl>
+
+<dl><dt><strong>day</strong> = 'Sun'</dl>
+
+<dl><dt><strong>month</strong> = 'Dec'</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_columns"><strong>get_columns</strong></a>()</dt><dd><tt>Try&nbsp;to&nbsp;get&nbsp;number&nbsp;of&nbsp;columns&nbsp;of&nbsp;the&nbsp;current&nbsp;terminal&nbsp;window.&nbsp;Otherwise,<br>
+return&nbsp;standard&nbsp;(80&nbsp;columns).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__created__</strong> = '2011-09-13'<br>
+<strong>__modified__</strong> = '2014-01-14'</td></tr></table>
+</body></html>
