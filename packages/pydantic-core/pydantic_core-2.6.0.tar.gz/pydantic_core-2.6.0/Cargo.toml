@@ -1,0 +1,73 @@
+[package]
+name = "pydantic-core"
+version = "2.6.0"
+edition = "2021"
+license = "MIT"
+homepage = "https://github.com/pydantic/pydantic-core"
+repository = "https://github.com/pydantic/pydantic-core.git"
+readme = "README.md"
+include = [
+    "/pyproject.toml",
+    "/README.md",
+    "/LICENSE",
+    "/Makefile",
+    "/build.rs",
+    "/generate_self_schema.py",
+    "/rust-toolchain",
+    "/src",
+    "!/src/self_schema.py",
+    "/python/pydantic_core",
+    "/tests",
+    "/.cargo",
+    "!__pycache__",
+    "!tests/.hypothesis",
+    "!tests/.pytest_cache",
+    "!*.so",
+]
+
+[dependencies]
+pyo3 = { version = "0.19.2", features = ["generate-import-lib", "num-bigint"] }
+regex = "1.9.3"
+strum = { version = "0.25.0", features = ["derive"] }
+strum_macros = "0.25.2"
+serde_json = {version = "1.0.104", features = ["arbitrary_precision", "preserve_order"]}
+enum_dispatch = "0.3.8"
+serde = { version = "1.0.183", features = ["derive"] }
+# disabled for benchmarks since it makes microbenchmark performance more flakey
+mimalloc = { version = "0.1.30", optional = true, default-features = false, features = ["local_dynamic_tls"] }
+speedate = "0.12.0"
+smallvec = "1.11.0"
+ahash = "0.8.0"
+url = "2.3.1"
+# idna is already required by url, added here to be explicit
+idna = "0.4.0"
+base64 = "0.21.2"
+num-bigint = "0.4.3"
+python3-dll-a = "0.2.7"
+uuid = "1.4.1"
+
+[lib]
+name = "_pydantic_core"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# must be enabled when building with `cargo build`, maturin enables this automatically
+extension-module = ["pyo3/extension-module"]
+default = ["mimalloc"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
+
+[profile.bench]
+debug = true
+strip = false
+
+[dev-dependencies]
+pyo3 = { version= "0.19.2", features = ["auto-initialize"] }
+
+[build-dependencies]
+version_check = "0.9.4"
+# used where logic has to be version/distribution specific, e.g. pypy
+pyo3-build-config = { version = "0.19.2" }
