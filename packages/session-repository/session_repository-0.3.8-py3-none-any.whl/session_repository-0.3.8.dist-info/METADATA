@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: session-repository
+Version: 0.3.8
+Summary: A project to have a base repository class to permform select/insert/update/delete with dynamtic syntaxe
+Home-page: https://github.com/Impro02/session-repository
+Download-URL: https://github.com/Impro02/session-repository/archive/refs/tags/0.3.8.tar.gz
+Author: Maxime MARTIN
+Author-email: maxime.martin02@hotmail.fr
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: sqlalchemy
+
