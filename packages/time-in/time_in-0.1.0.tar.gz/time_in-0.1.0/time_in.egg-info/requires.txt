@@ -1,0 +1,10 @@
+click>=8.1.6
+tzdata
+tabulate
+pyfzf_iter
+tzlocal>=5.0
+dateparser
+
+[testing]
+mypy
+flake8
