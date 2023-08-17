@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        body {
+            /*margin: 2% 0 0 0;*/
+            padding: 0 5% 0 5%;
+        }
+
+        .file_size {
+            /*margin: 0 10% 10% 0;*/
+            width: 48%;
+            height: 500px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        table tr th,
+        table tr td {
+            /*table {*/
+            border: 1px solid #000000;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            width: 50%;
+            /*width: 100px;*/
+        }
+
+        .input_agreement_protocol {
+            border: 2px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <div style="text-align:center;margin: auto">
+        <h1>雪情通告（湿和污染跑道通报）原始资料通知单</h1>
+        <h2>序列号：____________ （注：机场管理机构无需填写）</h2>
+    </div>
+    <br>
+    <div class="left file_size">
+        <table>
+            <!--colspan="2"-->
+            <tr>
+                <td colspan="2">1．湿和污染跑道通报原始资料提供人</td>
+            </tr>
+            <tr>
+                <td>提供人:provide_people</td>
+                <td>联系电话:tel</td>
+            </tr>
+            <tr>
+                <td>提供单位:airport_name</td>
+                <td>提供日期和时间(北京时间):</td>
+            </tr>
+            <tr>
+                <td colspan="2">2．雪情通告签发人（注：机场管理机构无需填写）</td>
+            </tr>
+            <tr>
+                <td>签发人:</td>
+                <td>联系电话:</td>
+            </tr>
+            <tr>
+                <td>签发单位:</td>
+                <td>联系传真:</td>
+            </tr>
+            <tr>
+                <td>签发时间:</td>
+                <td>雪情通告系列报号:</td>
+            </tr>
+            <tr>
+                <td colspan="2">3．提供内容</td>
+            </tr>
+            <tr>
+                <td colspan="2">填写说明:<br/>
+                    1. 单位为米（F 项除外）。<br/>
+                    2. 每份通知单填写一条跑道相关内容，多跑道机场可填报多份通知单。<br/>
+                    3. D）-G）项填写顺序：跑道代号较小/中段/跑道代号较大。
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">性能计算部分:<br/>A）-G）为必填项，无内容请填"无"</td>
+            </tr>
+            <tr>
+                <td>A )机场地名代码（四字地名代码）</td>
+                <td>airport_code</td>
+            </tr>
+            <tr>
+                <td>B )评估日期和时间<br/>（用北京时间表示完成评估的时间,BJT）</td>
+                <td>assessment_datetime</td>
+            </tr>
+            <tr>
+                <td>C )跑道代号（较小的跑道代号）</td>
+                <td>track_code</td>
+            </tr>
+            <tr>
+                <td>D )跑道每三分之一段的状况代码<br/>（来自跑道状况评估矩阵（RCA）,<br/>0,1,2,3,4,5或者6）</td>
+                <td>status_code</td>
+            </tr>
+            <tr>
+                <td>E )跑道每三分之一段的污染物覆盖百分比<br/>25,50,75,100或者无）</td>
+                <td>degree</td>
+            </tr>
+            <tr>
+                <td>F )跑道每三分之一段的松散污染物深度（毫米）</td>
+                <td>degree_deep</td>
+            </tr>
+            <!-- <tr>
+            <td><input class="input_agreement_protocol" type="checkbox" >提供单位:</td>
+            <td>提供日期和时间(北京时间):</td>
+        </tr> -->
+        </table>
+    </div>
+    <div class="right file_size">
+        <table>
+            <tr>
+                <td>G )跑道每三分之一段的状况说明 <br/>(自跑道代号较小一端的着陆入口开始, 在跑道上的每个三分之一地方观察) 压实的雪,干,干雪,压实的雪面上有干雪, 冰面上有干雪,霜,冰,雪浆,积水,
+                    压实的雪面上有水,潮湿,湿冰,湿雪, 压实的雪面上有湿雪,冰面上有湿雪
+                </td>
+                <td>pavement_status</td>
+            </tr>
+            <tr>
+                <td>H )跑道状况代码所指跑道的宽度（米）</td>
+                <td>_______米</td>
+            </tr>
+            <tr>
+                <td colspan="2">情景意识部分：选填</td>
+            </tr>
+            <tr>
+                <td>I )跑道长度变短（米）</td>
+                <td>变短至_______米</td>
+            </tr>
+            <tr>
+                <td>J )跑道上有吹积的雪堆</td>
+                <td><input class="input_agreement_protocol" type="checkbox"/>有吹积雪堆</td>
+            </tr>
+            <tr>
+                <td>K )跑道上有散沙</td>
+                <td><input class="input_agreement_protocol" type="checkbox"/>有散沙</td>
+            </tr>
+            <tr>
+                <td>L )跑道有除冰防冰液（经过化学处理）</td>
+                <td><input class="input_agreement_protocol" type="checkbox"/>有化学处理</td>
+            </tr>
+            <tr>
+                <td>M )跑道上有雪</td>
+                <td><input class="input_agreement_protocol" type="checkbox"/>左侧 <input
+                        class="input_agreement_protocol" type="checkbox"/>
+                    右侧 <input class="input_agreement_protocol" type="checkbox"/>两侧
+                    <br/>
+                    _______米 距跑道中线
+                </td>
+            </tr>
+            <tr>
+                <td>N )滑行道上有雪堤</td>
+                <td>滑行道编号___________</td>
+            </tr>
+            <tr>
+                <td>O )跑道附近有雪堤</td>
+                <td><input class="input_agreement_protocol" type="checkbox"/>有雪堤</td>
+            </tr>
+            <tr>
+                <td>P )滑行道状况</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>R )机坪状况</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>S )测定的摩擦系数</td>
+                <td>无需填写</td>
+            </tr>
+            <tr>
+                <td>T )明语说明</td>
+                <td><br/><br/></td>
+            </tr>
+
+            <!--  -->
+            <!-- <tr>
+            <td><input class="input_agreement_protocol" type="checkbox" >提供单位:</td>
+            <td>提供日期和时间(北京时间):</td>
+        </tr> -->
+        </table>
+        <p>
+        <td colspan="2" style="border:none;"><input class="input_agreement_protocol control_tower" checked="checked"
+                                                    type="checkbox"/>仅发塔台
+        </td>
+        </p>
+        <p>
+        <td colspan="2" style="border:none;"><input class="input_agreement_protocol control_tower_other" checked="checked"
+                                                    type="checkbox"/>发塔台并发布航空情报
+        </td>
+        </p>
+    </div>
+</div>
+
+</body>
+
+</html>
