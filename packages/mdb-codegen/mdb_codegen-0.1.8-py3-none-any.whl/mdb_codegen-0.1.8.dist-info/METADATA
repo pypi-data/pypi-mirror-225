@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: mdb-codegen
+Version: 0.1.8
+Summary: 
+Author: Josh Brooks
+Author-email: josh@catalpa.io
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pydantic (>=1.10.2,<2.0.0)
+Requires-Dist: pytz (>=2022.6,<2023.0)
+Requires-Dist: rich (>=12.6.0,<13.0.0)
+Description-Content-Type: text/markdown
+
+# mdb-codegen
+
+A static file generator to create Django model definitions and Pydantic BaseModels from an MS Access database.
+
+This reads data from an Access file using [mdbtools](https://github.com/mdbtools/mdbtools), see the [installation](https://github.com/mdbtools/mdbtools#installation) instructions on how to install for your os.
+
+
+## Howto
+
+ This parser is based on different classes to determine the Django model name, Pydantic "BaseModel" name, and the fields for Django and/or Pydantic.
+
+There is a command line tool to generate files, `mdb-codegen.py`
+
+ - Run `poetry install`
+ - Then run `cd mdb_codegen`
+ - Then run `./mdb-codegen.py path_to_your_db`
+
