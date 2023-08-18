@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: pycman-dna
+Version: 0.5.2
+Summary: Python Pacman Tool
+Author: Liam Burns
+Author-email: l.burns@dundeeandangus.ac.uk
+Keywords: python,pacman
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: pygame
+
+A teaching tool based on arcade icon Pacman, written in Python. Requires Python 3.10 or above.
