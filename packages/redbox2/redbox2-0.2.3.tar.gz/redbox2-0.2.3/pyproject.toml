@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "redbox2"
+version = "0.2.3"
+description = ""
+authors = ["asolana <asolana@deloitte.es>"]
+readme = "README.md"
+packages = [{include = "redbox"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+tomli = "^2.0.1"
+pydantic = "^2.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
