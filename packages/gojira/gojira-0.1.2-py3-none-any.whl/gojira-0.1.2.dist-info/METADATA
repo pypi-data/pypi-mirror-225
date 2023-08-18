@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: gojira
+Version: 0.1.2
+Summary: Lightweight framework to build a RESTful applications
+Author: Dimash
+Author-email: d.igisinov@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: classy-fastapi (>=0.2.12,<0.3.0)
+Requires-Dist: fastapi (>=0.85.1,<0.86.0)
+Requires-Dist: ormar (>=0.12.0,<0.13.0)
+Requires-Dist: passlib[bcrypt] (>=1.7.4,<2.0.0)
+Requires-Dist: python-jose[cryptography] (>=3.3.0,<4.0.0)
