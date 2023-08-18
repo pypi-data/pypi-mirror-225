@@ -1,0 +1,14 @@
+django-jsignature>=0.9
+django-markdownify
+django-qr-code
+huscy.projects
+huscy.subjects
+jsonschema>=3.2
+weasyprint
+
+[development]
+psycopg2-binary
+
+[testing]
+tox
+watchdog
