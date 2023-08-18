@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: find_aws_regions
+Version: 0.0.3
+Summary: Find the closest/best AWS region from your code bassed on latency
+Home-page: https://github.com/junderhill/py-find-aws-region
+Author: Jason Underhill
+Author-email: jason@junderhill.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# py-find-aws-region
+Python package to choose the best AWS region based on latency.
+
+## Basic Usage
+
+```python
+from find_aws_regions import get_regions_by_latency
+
+results = get_regions_by_latency()
+
+print(results)
+```
+
+`get_regions_by_latency()` will return a list of dictionaries with the following keys:
+
+- `region_name`: The AWS region code (e.g. `us-east-1`)
+- `latency`: The latency in milliseconds (e.g. `47.345`)
+
+### Limit the tested regions
+
+You can limit the tested regions by passing a list of region codes to `get_regions_by_latency()`:
+
+```python
+from find_aws_regions import get_regions_by_latency
+
+results = get_regions_by_latency(['us-east-1', 'us-west-2'])
+```
