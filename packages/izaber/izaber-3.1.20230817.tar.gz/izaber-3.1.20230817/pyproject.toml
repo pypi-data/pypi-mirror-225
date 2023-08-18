@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "izaber"
+description = "Base load point for iZaber code"
+version = '3.1.20230817'
+authors = ["Aki Mimoto <aki@zaber.com>"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.6.0,<4.0"
+# https://stackoverflow.com/questions/76708329/docker-compose-no-longer-building-image-attributeerror-cython-sources
+PyYAML = ">=5.3.0,!=5.4.1,!=6.0"
+#PyYAML = ">=6.0.1"
+pytz = ">=2021.1"
+python-dateutil = ">=2.8.1"
+#appdirs = "^1.4.4"
+appdirs = ">=1.4.4"
+six = ">=1.15.0"
+Jinja2 = ">=2.11.3"
+docopt = ">=0.6.2"
+
+# A list of all of the optional dependencies, some of which are included in the
+# below `email`. They can be opted into by apps.
+beautifulsoup4 = { version = ">=4.9.3", optional = true }
+lxml = { version = ">=4.6.2", optional = true }
+
+[tool.poetry.extras]
+email = ["beautifulsoup4", "lxml"]
+
+[tool.poetry.dev-dependencies]
+pytest = ">=4.6.11"
+beautifulsoup4 = ">=4.9.3"
+lxml = ">=4.6.2"
+pytest-xdist = "2.5.0"
+
