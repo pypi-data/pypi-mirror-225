@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: ApiRack
+Version: 0.1.1
+License-File: LICENSE
+Requires-Dist: faiss-cpu
+Requires-Dist: datasets
+Requires-Dist: transformers
+Requires-Dist: sentence-transformers
+Requires-Dist: InstructorEmbedding
+Requires-Dist: questionary
+
