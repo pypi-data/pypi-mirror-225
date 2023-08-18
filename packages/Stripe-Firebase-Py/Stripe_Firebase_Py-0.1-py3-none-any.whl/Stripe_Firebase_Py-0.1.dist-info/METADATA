@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: Stripe-Firebase-Py
+Version: 0.1
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: stripe
+Requires-Dist: google-cloud-firestore
+
+# Stripe-Firebase-Py
+
+Inside stripe_models.py you can find Python classes to be used to interact with Stripe/Firebase e.g. Customers and Subscriptions
+
+Expects "STRIPE_API_KEY" in the os environment
+
+This although simple, has helped me immensely. If you have found any value, I appreciate a star, maintenance, or even buy me some diapers for my daughter (or a cup of coffee for me ...) 
+
+Best, 
+Ruben Fernandez Carbon
