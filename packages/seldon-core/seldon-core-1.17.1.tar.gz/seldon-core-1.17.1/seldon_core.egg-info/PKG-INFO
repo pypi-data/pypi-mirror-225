@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: seldon-core
+Version: 1.17.1
+Summary: Seldon Core client and microservice wrapper
+Home-page: https://github.com/SeldonIO/seldon-core
+Author: Seldon Technologies Ltd.
+Author-email: hello@seldon.io
+License: Apache 2.0
+Requires-Python: >=3.6
+Provides-Extra: tensorflow
+Provides-Extra: all
+License-File: LICENSE
