@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>VisionScript Notebook</title>
+
+        <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
+
+        <link rel="stylesheet" href="/static/styles.css" />
+
+        <link rel="manifest" href="/static/manifest.json" />
+
+        <meta name="description" content="VisionScript Notebook lets you write VisionScript code in your browser." />
+    
+        <meta property="og:title" content="VisionScript Notebook" />
+        
+        <meta property="og:description" content="VisionScript Notebook lets you write VisionScript code in your browser." />
+        
+        <meta property="og:image" content="https://screenshot.jamesg.blog?url={{ url_root }}" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <script>
+            const STATE_ID = "{{ state_id }}";
+            const API_URL = "{{ api_url }}";
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script type="text/javascript" src="/static/purify.min.js"></script>
+    </head>
+    <body>
+        <nav>
+            <p>
+                VisionScript <span class="hide_on_mobile">Notebook</span>
+            </p>
+            <ul>
+                <li onclick="switch_paper_mode()"><a id="paper_mode">Paper <span class="hide_on_mobile">Code</span> 📝</a></li>
+                <div id="nav_menu">
+                    <li onclick="switch_mode()"><a id="mode_switch">Code Mode 💻</a></li>
+                    <li><a href="https://visionscript.dev/docs" target="_blank">Docs 📚</a></li>
+                    <li><a onclick="exportNotebook();">Export 💾</a></li>
+                    <li onclick="deploy()"><a>Use as Web App ☁️</a></li>
+                    <li id="reset" onclick="resetNotebook()"><a>Reset 🔄</a></li>
+                    <li id="toggle_menu" onclick="toggle_menu()"><a>Close</a></li>
+                </div>
+                <li id="run"><a>Run All 🟢</a></li>
+                <li id="menu" onclick="toggle_menu()" class="hide_on_desktop"><a>Menu</a></li>
+            </ul>
+        </nav>
+        <main>
+            <aside id="function_box">
+                <p class="hide_tab hide_on_desktop"><a onclick="hideFunctionBox()" id="hide_function_box">Hide Blocks</a></p>
+                <h2 style="font-size: 24px;">Code Blocks</h2>
+                <input type="text" id="search" name="search" placeholder="Search functions" style="width: 100%; padding: 10px; border: 1px solid lightgrey; border-radius: 5px; margin-bottom: 10px;" onkeyup="processSearch()" />
+            </aside>
+            <div id="notebook">
+                <section id="interactive_mode">
+                    <h2>Make something cool</h2>
+                    <p class="hide_on_mobile">Drag and drop functions in the box below to build your program.</p>
+                    <div id="drag_drop_notebook"></div>
+                    <div id="output">Output</div>
+                </section>
+                <section id="code_mode">
+                    <h2>Notebook</h2>
+                    <p style="margin-bottom: 20px;">Write your program in the boxes below.</p>
+                    <ul id="cells">
+                    </ul>
+                    <form class="cell" id="new">
+                        <p id="current_count">#1</p>
+                        <textarea name="jscode" id="jscode" rows="3">
+    Load["./folder/abbey.jpg"]
+    Detect["person"]
+    Say[]</textarea>
+                        <input type="submit" value="Run Code">
+                        <button id="create_comment" style="background-color: initial; color: darkgreen; border: 2px solid darkgreen;">Save as Comment</button>
+                    </form>
+                </section>
+                <p class="error" id="error"></p>
+                <p class="loading" id="loading" style="display: none;">Loading...</p>
+            </div>
+            <aside id="files_section">
+                <h2>Files</h2>
+                <p style="margin-bottom: 20px;">Drag and drop files here to load them.</p>
+                <p>If you are using a file in your program, drag it to the appropriate box in your code.</p>
+                <ul id="files"></ul>
+                <h2>Examples</h2>
+                <select id="examples">
+                    <option value="Classify an image">Classify an image</option>
+                    <option value="Detect objects in an image">Detect objects in an image</option>
+                    <option value="Build a search engine">Build a search engine</option>
+                    <option value="Rotate and greyscale an image">Rotate and greyscale an image</option>
+                </select>
+            </aside>
+            <dialog id="dialog">
+                <p onclick="this.parentNode.close()" style="float: right; cursor: pointer; color: coral;">Close</p>
+                <div>
+                    <h2>Message</h2>
+                    <p id="error_message"></p>
+                </div>
+            </dialog>
+            <dialog id="deploy">
+                <p onclick="this.parentNode.close()" style="float: right; cursor: pointer; color: coral;">Close</p>
+                <div style="line-height: 1.5em;">
+                    <h2>Deploy your app</h2>
+                    <p id="deploy_message"></p>
+                    <p>You can deploy your app as a web app or a notebook.</p>
+                    <p>People can use your apps, and you can use them in your own projects.</p>
+                    <p>Notebooks, on the other hand, are a great way to share your code with others.</p>
+                    <p style="margin-bottom: 20px;">Learn more in the <a href="https://visionscript.dev/docs/deploy" target="_blank">VisionScript documentation</a>.</p>
+                    <form id="deploy_form">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Name" />
+                        <label for="api_url">API URL</label>
+                        <input type="text" name="api_url" id="api_url" placeholder="https://example.com" value="http://localhost:6999/create" />
+                        <label for="api_key">API key</label>
+                        <input type="text" name="api_key" id="api_key" placeholder="API key" />
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" placeholder="Description" />
+                        <input type="submit" value="Publish as App" />
+                        <button onclick="deploy_code(true);" style="background-color: initial; color: darkgreen; border: 2px solid darkgreen;">Publish as Notebook</button>
+                    </form>
+                </div>
+            </dialog>
+            <dialog id="export">
+                <p onclick="this.parentNode.close()" style="float: right; cursor: pointer; color: coral;">Close</p>
+                <div>
+                    <h2>Export your app</h2>
+                    <p id="export_message"></p>
+                    <p>You can export your app as a .vic file (a script), or a .vicnb file (a notebook).</p>
+                    <p style="margin-bottom: 20px;">These files can be used in your own projects, or shared with others.</p>
+                    <ul>
+                        <p><a onclick="export_vic()" style="cursor: pointer;">Export your app as a .vic file</a>.</p>
+                        <p><a onclick="export_vicnb()" style="cursor: pointer">Export your app as a .vicnb file</a>.</p>
+                    </ul>
+                </div>
+            </dialog>
+            <dialog id="paper_mode_dialog">
+                <p onclick="this.parentNode.close()" style="float: right; cursor: pointer; color: coral;">Close</p>
+                <h2>Take a photo</h2>
+                <p>Take a photo of VisionScript code to bring it into your notebook.</p>
+                <video id="paper_mode_video" style="width: 100%; min-height: 300px;"></video>
+                <canvas id="paper_mode_canvas" style="display: none;"></canvas>
+                <img id="paper_mode_image" style="display: none;" />
+                <button id="run_paper_mode" onclick="run_paper_code();" style="display: none;">Run code</button>
+                <button id="retake_paper_mode_button" onclick="take_photo();" style="display: none;">Retake photo</button>
+                <button id="paper_mode_button" onclick="take_photo();">Take photo</button>
+            </dialog>
+            <dialog id="fill_inputs">
+                <h2>Prepare your code</h2>
+                <p>Fill in the inputs below to run your code.</p>
+                <form id="fill_inputs_form">
+                    <p id="fill_inputs_message"></p>
+                    <div id="fill_inputs_inputs"></div>
+                    <input type="submit" value="Run Code" id="fill_inputs_submit" />
+                </form>
+            </dialog>
+            <div id="toast"></div>
+        </main>
+        <script src="/static/functions.js"></script>
+        <script src="/static/renderCells.js"></script>
+        <script src="/static/main.js"></script>
+        <script src="/static/examples.js"></script>
+    </body>
+</html>

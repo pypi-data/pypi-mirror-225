@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{{ title }} - VisionScript Notebook</title>
+        
+        <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
+
+        <link rel="stylesheet" href="/static/deploy_styles.css" />
+
+        <link rel="manifest" href="/static/manifest.json" />
+
+        <meta name="description" content="{{ description }}" />
+
+        <meta property="og:title" content="{{ title }} - VisionScript Notebook" />
+        <meta property="og:description" content="{{ description }}" />
+        
+        <meta property="og:image" content="https://screenshot.jamesg.blog?url={{ url_root }}/notebook/{{ id }}" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+    <body>
+        <main>
+            <h2>{{ title }}</h2>
+            <p style="margin-bottom: 20px;">{{ description }}</p>
+            <ul id="cells">
+                {% for cell in cells %}
+                    <li {% if cell.data.type != "editable_text" %} class="cell" {% endif %}>
+                        {% if cell.data.type != "editable_text" %}
+                            <p>Cell #{{ cell.id + 1 }}</p>
+                            <textarea rows="3" disabled style="margin-bottom: 20px;">{{ cell.data.data }}</textarea>
+                        {% else %}
+                            <p style="margin-bottom: 20px;">{{ cell.data.data | safe }}</p>
+                        {% endif %}
+                        {% if cell.output %}
+                            {% if cell.output.image %}
+                                <img src="data:image/png;base64,{{ cell.output.image }}" />
+                            {% elif cell.output.text %}
+                                <pre>{{ cell.output.text }}</pre>
+                            {% endif %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <p><a href="{{ notebook_url }}" class="small_link">View notebook</a></p>
+            <p class="small_link">Made with <a href="https://visionscript.dev">VisionScript</a></p>
+        </main>
+    </body>
+</html>
