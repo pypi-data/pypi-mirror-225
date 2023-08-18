@@ -1,0 +1,35 @@
+supervisor<5,>=4.2.4
+
+[all]
+psutil>=5.7.3
+pyparsing<3,>=2.0.2
+matplotlib>=3.3.3
+lxml>=4.6.2
+flask-restx>=1.1.0
+pyzmq>=20.0.0
+websockets>=10.2
+
+[flask:python_version < "3.7"]
+flask-restx==0.5.1
+Werkzeug==2.0.3
+
+[flask:python_version >= "3.7"]
+flask-restx>=1.1.0
+
+[statistics]
+psutil>=5.7.3
+pyparsing<3,>=2.0.2
+matplotlib>=3.3.3
+
+[testing]
+pytest>=2.5.2
+pytest-cov
+
+[ws:python_version >= "3.7"]
+websockets>=10.2
+
+[xml_valid]
+lxml>=4.6.2
+
+[zmq]
+pyzmq>=20.0.0
