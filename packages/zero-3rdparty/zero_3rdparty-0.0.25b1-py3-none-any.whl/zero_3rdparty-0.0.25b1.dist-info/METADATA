@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: zero-3rdparty
+Version: 0.0.25b1
+Summary: Modules without 3rd-party dependencies
+Home-page: https://github.com/EspenAlbert/py-libs
+Author: Espen Albert
+License: MIT
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic (<3,>=1.10.2)
+Requires-Dist: typing-extensions (>=4.3.0)
+Provides-Extra: pydantic_v1
+Requires-Dist: pydantic (<=2,>=1.10.2) ; extra == 'pydantic_v1'
+Provides-Extra: pydantic_v2
+Requires-Dist: pydantic (<=3,>=2.1.1) ; extra == 'pydantic_v2'
+Requires-Dist: pydantic-settings (>=2.0.3) ; extra == 'pydantic_v2'
+
+# Zero 3rd-party
+- May add some examples here...
