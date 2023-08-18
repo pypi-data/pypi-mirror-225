@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "vecnom"
+version = "0.1.2"
+description = ""
+authors = ["Ray <rejojer@gmail.com>"]
+include = ["*"]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+httpx = "^0.24.1"
+pydantic = "^1.10.7"
+requests = "^2.26.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
