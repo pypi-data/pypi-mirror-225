@@ -1,0 +1,50 @@
+defaults:
+  - __init__
+  - tagger: nltk
+  - override /normalizer: formal_en
+
+_config_name_: nltk
+_target_: lexikanon.tokenizers.NLTKTokenizer
+noun_postags:
+  - NN
+  - NNP
+  - NNS
+  - NNPS
+postags:
+  - NN
+  - NNP
+  - NNS
+  - NNPS
+  - JJ
+  - JJR
+  - JJS
+  - RB
+  - RBR
+  - RBS
+  - VB
+  - VBD
+  - VBG
+  - VBN
+  - VBP
+  - VBZ
+punct_postags:
+  - "."
+stop_postags:
+  - CC
+  - CD
+  - DT
+  - EX
+  - IN
+  - LS
+  - MD
+  - PDT
+  - POS
+  - PRP
+  - PRP$
+  - RP
+  - TO
+  - UH
+  - WDT
+  - WP
+  - WP$
+  - WRB
