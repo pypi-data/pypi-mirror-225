@@ -1,0 +1,127 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [{name = "Wordcab"}]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "aiofiles>=23.2.1",
+  "aiohttp>=3.8.5",
+  "rich>=13.5.2",
+  "rich-argparse>=1.2.0",
+]
+description = "🏆 Run benchmarks against the most common ASR tools on the market."
+dynamic = ["version"]
+keywords = []
+license = "MIT"
+name = "rtasr"
+readme = "README.md"
+requires-python = ">=3.8,<3.12"
+
+[project.scripts]
+rtasr = "rtasr.__main__:main"
+
+[project.urls]
+Documentation = "https://Wordcab.github.io/rtasr"
+Issues = "https://github.com/Wordcab/rtasr/issues"
+Source = "https://github.com/Wordcab/rtasr"
+
+[tool.hatch.version]
+path = "src/rtasr/__init__.py"
+
+[project.optional-dependencies]
+docs = [
+  "mkdocs~=1.4.0",
+  "mkdocs-material~=8.5.4",
+  "mkdocs-git-revision-date-localized-plugin~=1.1.0",
+  "mkdocstrings[python]~=0.19.0",
+]
+quality = [
+  "black~=22.10.0",
+  "ruff~=0.0.263",
+  "pre-commit~=2.20.0",
+]
+tests = [
+  "pytest~=7.1.2",
+]
+
+[tool.hatch.envs.quality]
+features = [
+  "quality",
+]
+
+[tool.hatch.envs.quality.scripts]
+check = [
+  "black --check --diff --preview src tests",
+  "ruff src tests",
+]
+format = [
+  "black --preview src tests",
+  "ruff --fix src tests",
+  "check",
+]
+
+[tool.ruff]
+ignore = [
+  "E501", # line too long, handled by black
+  "B008", # do not perform function calls in argument defaults
+  "C901", # too complex
+]
+select = [
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # pyflakes
+  "I", # isort
+  "C", # flake8-comprehensions
+  "B", # flake8-bugbear
+]
+
+[tool.ruff.isort]
+known-first-party = ["rtasr"]
+
+[tool.hatch.envs.tests]
+features = [
+  "tests",
+]
+
+[tool.hatch.envs.tests.scripts]
+run = "pytest tests/ --durations 0 -s"
+
+[[tool.hatch.envs.tests.matrix]]
+python = ["38", "39", "310", "311"]
+
+[tool.hatch.envs.docs]
+features = [
+  "docs",
+]
+
+[tool.hatch.envs.docs.scripts]
+build = [
+  "mkdocs build",
+]
+serve = [
+  "mkdocs serve",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/.vscode",
+  "/docs",
+  "/.devcontainer",
+  "/.pre-commit-config.yaml",
+  "/.gitignore",
+  "/tests",
+  "/Dockerfile",
+  "/.dockerignore",
+]
