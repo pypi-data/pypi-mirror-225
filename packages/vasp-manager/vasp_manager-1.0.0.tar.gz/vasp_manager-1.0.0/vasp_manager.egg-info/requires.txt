@@ -1,0 +1,9 @@
+numpy>=1.22
+pandas>=1.4
+pymatgen>=2022.5
+
+[dev]
+black
+isort
+pre-commit
+pytest
