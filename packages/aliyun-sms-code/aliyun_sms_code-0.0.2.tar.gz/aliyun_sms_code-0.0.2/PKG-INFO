@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: aliyun_sms_code
+Version: 0.0.2
+Summary: Sending verification codes through Aliyun SMS service.
+Author: chentianbo
+Author-email: chentianbo@xmov.ai
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# aliyun_sms_code 
+---
+## Documentation
+---
+	Send mobile verfication code using Aliyun SMS service. 
+
+	First make sure you get your access key, and set your access key id and access key secret as environment variables ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET. 
+	See [创建AccessKey][https://help.aliyun.com/zh/ram/user-guide/create-an-accesskey-pair]
+
+	Then activate Aliyun short message service(sms), submit your sign and template sms, and wait for audit results. After approval, sign name and template code will be given to you.
+	In the same way, set sign name and template code as environment variables SIGN_NAME and TEMPLATE_CODE.
+	See [短信服务][https://www.aliyun.com/product/sms?spm=5176.28055625.J_4VYgf18xNlTAyFFbOuOQe.1401.3a0d154aqByyEX&scm=20140722.X_data-954b757d33204a0b9538._.V_1&accounttraceid=efef673de6404a5bb9347b359c468a2fvhfe]
+
+## Install 
+---
+	Run 
+```python
+	pip install aliyun_sms_code
+```
