@@ -1,0 +1,13 @@
+# Copyright Log10, Inc 2023
+
+defaults:
+  - tests/math
+name: math
+model: gpt-4-16k
+temperature: 0.0
+variables:
+  - name: a
+  - name: b
+messages:
+  - role: "human"
+    content: "What is {a} + {b}? Only return the answer without any explanation"
