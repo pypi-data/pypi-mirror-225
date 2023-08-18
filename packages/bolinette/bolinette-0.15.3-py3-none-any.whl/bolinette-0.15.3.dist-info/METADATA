@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: bolinette
+Version: 0.15.3
+Summary: The Bolinette core package, an inversion of control framework
+Home-page: https://github.com/bolinette/bolinette
+Author: Pierre Chat
+Author-email: pierrechat@outlook.com
+License: MIT
+Keywords: Bolinette,Framework,IoC,Dependency Injection
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: pyyaml ==6.0.1
+Requires-Dist: typing-extensions ==4.7.1
+
+# Bolinette
+
+Huge refactoring in progress
