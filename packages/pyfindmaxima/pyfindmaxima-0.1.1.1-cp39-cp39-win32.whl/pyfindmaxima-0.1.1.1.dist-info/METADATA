@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: pyfindmaxima
+Version: 0.1.1.1
+Home-page: https://github.com/cwood1967/pyfindmaxima
+Author: Chris Wood
+License: APACHE
+License-File: LICENSE
+Requires-Dist: numpy
+
+Find local maxima in a 2D image, similar to ImageJ Find Maxima.
