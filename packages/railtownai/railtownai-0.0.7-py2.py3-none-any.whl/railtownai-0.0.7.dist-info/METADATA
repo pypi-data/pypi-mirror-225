@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: railtownai
+Version: 0.0.7
+Summary: Railtown AI Python SDK for tracking errors and exceptions in your Python applications
+Author-email: Guan Zheng Huang <guan@railtown.ai>, Jaime Bueza <jaime@railtown.ai>
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: requests == 2.31.0
+Requires-Dist: pydantic == 1.10.7
+Requires-Dist: requests-mock == 1.11.0
+Requires-Dist: python-dotenv
+Requires-Dist: pytest >=7.1.2 ; extra == "test"
+Project-URL: Home, https://railtown.ai
+Provides-Extra: test
+
+# Railtown AI Logging Python Package
+
+## Setup
+
+1. Sign up for [Railtown AI](https://railtown.ai)
+1. Create a project, navigate to the Project Configuration page, and copy your API key
+1. In your app...
+   1. install the Railtown AI SDK: `pip install railtownai`
+   1. Set `RAILTOWN_API_KEY` in your environment variables or manually set it in your app: `railtownai.init('YOUR_RAILTOWN_API_KEY')`
+   1. Log errors with the following example
+
+```python
+
+import railtownai
+
+railtownai.init('YOUR_RAILTOWN_API_KEY')
+
+try:
+   some_code_that_throws_an_error()
+
+except Exception as e:
+   railtownai.log(e)
+```
+
+## Contributing
+
+See the [contributing guide](./CONTRIBUTING.md) for more information.
+
