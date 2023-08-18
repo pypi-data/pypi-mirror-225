@@ -1,0 +1,4 @@
+[console_scripts]
+mcodegpt=mcodegpt.cli:main
+web-mcodegpt=mcodegpt.webapp.main:start
+
