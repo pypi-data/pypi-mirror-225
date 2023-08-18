@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: pywebhk
+Version: 1.0.0
+Summary: An ultra small Discord webhook handler
+Home-page: https://github.com/LapisPhoenix/Pywebhk
+Author: Lapis Pheonix
+License-File: LICENSE
+Requires-Dist: certifi (==2023.7.22)
+Requires-Dist: charset-normalizer (==3.2.0)
+Requires-Dist: idna (==3.4)
+Requires-Dist: requests (==2.31.0)
+Requires-Dist: urllib3 (==2.0.4)
+Requires-Dist: validators (==0.21.2)
+
