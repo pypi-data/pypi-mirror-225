@@ -1,0 +1,351 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/amix",
+  "definitions": {
+    "amix": {
+      "title": "Amix",
+      "type": "object",
+      "description": "The Amix configuration",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The project name with which the output will be named"
+        },
+        "original_tempo": {
+          "title": "Original Tempo",
+          "type": "number",
+          "description": "The original tempo of the clip files, like e.g. 120",
+          "exclusiveMinimum": 0
+        },
+        "bars": {
+          "title": "Bars",
+          "type": "integer",
+          "description": "The number of bars to quantize to, like e.g. 16",
+          "exclusiveMinimum": 0
+        },
+        "clips": {
+          "title": "Clips",
+          "type": "array",
+          "description": "List of clips",
+          "items": {
+            "$ref": "#/definitions/clip"
+          },
+          "uniqueItems": true
+        },
+        "filters": {
+          "title": "Filters",
+          "type": "array",
+          "description": "List of filters",
+          "items": {
+            "$ref": "#/definitions/filter"
+          },
+          "uniqueItems": true
+        },
+        "parts": {
+          "title": "Parts",
+          "type": "array",
+          "description": "List of parts",
+          "items": {
+            "$ref": "#/definitions/part"
+          },
+          "uniqueItems": true
+        },
+        "mix": {
+          "title": "Mix",
+          "type": "array",
+          "description": "List of mix segments",
+          "items": {
+            "$ref": "#/definitions/segment"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": ["mix", "name", "original_tempo"]
+    },
+    "clip": {
+      "title": "Clip",
+      "type": "object",
+      "description": "A clip representing an audio file",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The name of the clip"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string",
+          "description": "The file path of the clip"
+        }
+      },
+      "required": ["name", "path"],
+      "$$target": ["#/definitions/clip"]
+    },
+    "filter": {
+      "title": "Filter",
+      "type": "object",
+      "description": "A filter to adjust audio",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The name of the filter"
+        },
+        "type": {
+          "title": "Type",
+          "enum": ["volume", "fade", "pitch"],
+          "description": "The type of the filter"
+        },
+        "from": {
+          "title": "From",
+          "type": "number",
+          "description": "Filter effect from in bars",
+          "minimum": 0
+        },
+        "to": {
+          "title": "To",
+          "type": "number",
+          "description": "Filter effect to in bars",
+          "minimum": 0
+        },
+        "start_time": {
+          "title": "Start time",
+          "type": "number",
+          "description": "Start time for fade effect in bars",
+          "minimum": 0
+        },
+        "duration": {
+          "title": "Duration",
+          "type": "number",
+          "description": "Duration for fade effect in bars",
+          "minimum": 0
+        },
+        "direction": {
+          "title": "Direction",
+          "enum": ["in", "out"],
+          "description": "Direction for fade effect"
+        },
+        "curve": {
+          "title": "Curve",
+          "enum": [
+            "tri",
+            "qsin",
+            "hsin",
+            "esin",
+            "log",
+            "ipar",
+            "qua",
+            "cub",
+            "squ",
+            "cbr",
+            "par",
+            "exp",
+            "iqsin",
+            "ihsin",
+            "dese",
+            "desi",
+            "losi",
+            "sinc",
+            "isinc",
+            "nofade"
+          ],
+          "description": "The interploation function to use with the fade filter"
+        },
+        "pitch": {
+          "title": "Pitch",
+          "type": "number",
+          "description": "The factor to adjust the pitch",
+          "exclusiveMinimum": 0
+        },
+        "tempo": {
+          "title": "Tempo",
+          "type": "number",
+          "description": "The factor to adjust the tempo",
+          "exclusiveMinimum": 0
+        },
+        "transients": {
+          "title": "Transients",
+          "enum": ["crisp", "mixed", "smooth"],
+          "description": "Transients regarding the pitch filter"
+        },
+        "detector": {
+          "title": "Detector",
+          "enum": ["compound", "percussive", "soft"],
+          "description": "Detector regarding the pitch filter"
+        },
+        "phase": {
+          "title": "Phase",
+          "enum": ["laminar", "independent"],
+          "description": "Phase regarding the pitch filter"
+        },
+        "window": {
+          "title": "Window",
+          "enum": ["standard", "short", "long"],
+          "description": "Window regarding the pitch filter"
+        },
+        "smoothing": {
+          "title": "Smoothing",
+          "enum": ["on", "off"],
+          "description": "Smoothing regarding the pitch filter"
+        },
+        "formant": {
+          "title": "Formant",
+          "enum": ["shifted", "preserved"],
+          "description": "Formant regarding the pitch filter"
+        },
+        "pitchq": {
+          "title": "Pitch quality",
+          "enum": ["quality", "speed", "consistency"],
+          "description": "Pitch quality regarding the pitch filter"
+        },
+        "channels": {
+          "title": "Channels",
+          "enum": ["apart", "together"],
+          "description": "Channels regarding the pitch filter"
+        },
+        "volume": {
+          "title": "Volume",
+          "type": "number",
+          "description": "The factor to adjust the volume",
+          "minimum": 0
+        }
+      },
+      "required": ["name", "type"],
+      "$$target": ["#/definitions/filter"]
+    },
+    "part": {
+      "title": "Part",
+      "type": "object",
+      "description": "Reusable part, which can contain several clips",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The name of the part"
+        },
+        "bars": {
+          "title": "Bars",
+          "type": "integer",
+          "description": "The bars to fit the part into"
+        },
+        "clips": {
+          "type": "array",
+          "items": {
+            "title": "Clip reference",
+            "type": "object",
+            "description": "A clip reference",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string",
+                "description": "The name of the original clip"
+              },
+              "weight": {
+                "title": "Weight",
+                "type": "number",
+                "description": "The weight of the clip",
+                "exclusiveMinimum": 0
+              },
+              "bars": {
+                "title": "Bars",
+                "type": "integer",
+                "description": "The bars to fit the clip into",
+                "exclusiveMinimum": 0
+              },
+              "loop": {
+                "title": "Loops",
+                "type": "integer",
+                "description": "Number of loops the clip will be repeated",
+                "exclusiveMinimum": 0
+              },
+              "offset": {
+                "title": "Offset",
+                "type": "integer",
+                "description": "Offset in bars to delay the clip",
+                "exclusiveMinimum": 0
+              },
+              "filters": {
+                "title": "Filters",
+                "type": "array",
+                "description": "List of filters",
+                "items": {
+                  "title": "Filter reference",
+                  "description": "A filter reference",
+                  "$ref": "#/definitions/reference"
+                }
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "filters": {
+          "title": "Filters",
+          "type": "array",
+          "description": "List of filters",
+          "items": {
+            "title": "Filter reference",
+            "description": "A filter reference",
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "required": ["name", "clips"],
+      "$$target": ["#/definitions/part"]
+    },
+    "segment": {
+      "title": "Segment",
+      "type": "object",
+      "description": "Segments will be concatenated",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The name of the segment"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "title": "Part reference",
+            "description": "A part reference",
+            "$ref": "#/definitions/reference"
+          },
+          "uniqueItems": true
+        },
+        "filters": {
+          "title": "Filters",
+          "type": "array",
+          "description": "List of filters",
+          "items": {
+            "title": "Filter reference",
+            "description": "A filter reference",
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "required": ["name"],
+      "$$target": ["#/definitions/segment"]
+    },
+    "reference": {
+      "title": "Reference",
+      "type": "object",
+      "description": "A reference",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "The name of the original instance"
+        }
+      },
+      "required": ["name"],
+      "$$target": ["#/definitions/reference"]
+    }
+  }
+}
