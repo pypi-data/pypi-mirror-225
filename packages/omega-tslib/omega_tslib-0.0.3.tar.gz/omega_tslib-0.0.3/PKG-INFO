@@ -1,0 +1,117 @@
+Metadata-Version: 2.1
+Name: omega-tslib
+Version: 0.0.3
+Summary: An intuitive Python library for time series analysis and forecasting models. Simplify the complexity of time series tasks with comprehensive preprocessing, exploratory analysis, and accurate forecasting model building.
+Home-page: https://github.com/omega-energia-analytics/comercializacao-ml
+Author: Diego Neri
+Author-email: diego.neri@omegaenergia.com.br
+Requires-Python: >=3.8,<3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: matplotlib (>=3.7.2,<4.0.0)
+Requires-Dist: numpy (==1.23.3)
+Requires-Dist: pandas (>=1.5.0,<2.0.0)
+Requires-Dist: plotly (>=5.16.1,<6.0.0)
+Requires-Dist: python-dotenv (>=0.19.1,<0.20.0)
+Requires-Dist: pyyaml (>=6.0.1,<7.0.0)
+Requires-Dist: scikit-learn (>=1.3.0,<2.0.0)
+Requires-Dist: statsmodels (>=0.14.0,<0.15.0)
+Project-URL: Repository, https://github.com/omega-energia-analytics/comercializacao-ml
+Description-Content-Type: text/markdown
+
+# Omega_TSlib: Machine Learning Library
+
+Omega_TSlib is a Python library for Machine Learning tasks, specifically tailored for Time Series Analysis. It provides a variety of tools and functionalities to perform exploratory analysis on time series data. The library includes a class called ExploratoryAnalysis, which encompasses a range of methods designed to assist in understanding and analyzing time series datasets.
+
+## Features
+
+- Perform in-depth Exploratory Analysis on time series data.
+- Access 16 methods within the `ExploratoryAnalysis` class.
+- Gain insights into the temporal patterns of your data.
+- Handle common time series preprocessing tasks.
+
+## Installation
+
+Since this is a private library, in order to install it in your project you will be prompted to enter your GitHub credentials.
+
+**Note**: Only members of the [Omega Energia Analytics](https://github.com/omega-energia-analytics) GitHub organization have access to this library.
+
+> **Important**: Do not share `omega_tslib` with people which have no access to our github. Use [GitHub Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for authentication.
+
+### PyPi
+
+> Remember to always supply a version when installing the library. As we will be developing new versions very frequently, fixing a specific version is important to keep your code prune to version error.
+
+```Shell
+export GITHUB_TOKEN=...
+
+pip install git+https://${GITHUB_TOKEN}@github.com/omega-energia-analytics/omega_tslib.git@{version}
+```
+
+> Remember, you must have a personal access token in order to interact with Github. Store it in a safe place export it as an environment variable in your machine, for example using Linux Shell.
+
+### Poetry
+
+```Shell
+poetry add git+https://${GITHUB_TOKEN}@github.com/omega-energia-analytics/omega_tslib.git@{version}
+```
+
+## Usage
+
+Import the `ExploratoryAnalysis` class from Omega_TSlib and create an instance to start exploring your time series data:
+
+```python
+from omega_tslib import ExploratoryAnalysis
+
+# Load your time series data
+data = [...]
+
+# Create an instance of ExploratoryAnalysis
+explorer = ExploratoryAnalysis(data)
+
+# Access check_date_column method
+trends = explorer.detect_trends()
+seasonal_patterns = explorer.check_date_column()
+```
+
+## ExploratoryAnalysis Methods
+
+1. `__init__(self, data)`: constructor to initialize the analysis object;
+2. `check_date_column(self)`: check columns in dataframe with datetime type;
+3. `check_timestamp(self)`: check time interval of series;
+4. `check_frequency(self)`: get most importants frequencies in the series;
+5. `check_reference_frequencies(self)`: check if the most important frequencies are in a reference;
+6. `check_frequencies_interval(self)`: check if the most important frequencies are in a interval reference;
+7. `multiple_frequncies(self)`: check if the most important frequencies are multiples of reference frequencies;
+8. `plot_series(self)`: plot time series in many aggregations;
+9. `plot_date(self, year: int, month: int=None, day: int=None)`: plot time series in a specif period;
+10. `missing_status(self)`: check if the time series has missing values;
+11. `decompose(self, plot=True, period=False)`: decompose series in trend, sazo and residuals;
+12. `export_file(self)`: export time series to csv files;
+13. `export_raw_df(self, file_name=None))`: export raw time series;
+14. `check_kind_freq(self))`: check if the frequencies are in the reference, interval or multiples;
+15. `check_stationarity(self, agg: str, plot=True)`: check if the time series is stationary;
+16. `check_autocorrelation(self, agg: str, lags=False, plot=True)`: check autocorrelation of the series;
+17. `calculate_trend(self, plot=False)`: calculate trend line.
+
+## Example
+
+Here's a quick example of how you can use the Omega_TSlib library:
+
+```python
+from omega_tslib import ExploratoryAnalysis
+
+# Load your time series data
+data = [...]
+
+# Create an instance of ExploratoryAnalysis
+explorer = ExploratoryAnalysis(data)
+
+# Get result tuple of the calculate_trend method
+trend = explorer.calculate_trend(plot=False)
+
+print(f'The trend line is: y = {trend[0]}*x + {trend[1]}')
+```
+

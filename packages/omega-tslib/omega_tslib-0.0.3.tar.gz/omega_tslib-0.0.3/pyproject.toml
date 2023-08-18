@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "omega_tslib"
+version = "0.0.3"
+description = "An intuitive Python library for time series analysis and forecasting models. Simplify the complexity of time series tasks with comprehensive preprocessing, exploratory analysis, and accurate forecasting model building."
+authors = ["Diego Neri <diego.neri@omegaenergia.com.br>"]
+repository = "https://github.com/omega-energia-analytics/comercializacao-ml"
+readme = "README.md"
+packages = [
+  {include = "omega_tslib"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+numpy = "1.23.3"
+pandas = "^1.5.0"
+statsmodels = "^0.14.0"
+matplotlib = "^3.7.2"
+plotly = "^5.16.1"
+pyyaml = "^6.0.1"
+scikit-learn = "^1.3.0"
+python-dotenv = "^0.19.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+preview = true
+
+[tool.deptry]
+ignore_notebooks = 'True'
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+files = ["omega_tslib"]
+check_untyped_defs = "True"
+ignore_errors = "False"
+ignore_missing_imports = "True"
+strict_optional = "True"
+warn_unused_ignores = "True"
+warn_redundant_casts = "True"
+warn_unused_configs = "True"
