@@ -1,0 +1,82 @@
+{
+  "identifier": "Phrase 1 contenant une annotation.txt",
+  "title": "Phrase 1 contenant une annotation.txt",
+  "metadata": {},
+  "categories": [],
+  "createdBy": "oterrier",
+  "createdDate": "2021-11-26T08:06:59.488Z",
+  "modifiedDate": "2021-11-26T08:06:59.488Z",
+  "text": "Phrase 1 contenant une annotation.\nPhrase 2 ne contenant pas d'annotation.\nPhrase 3 contenant une annotation.\nPhrase 4 ne contenant pas d'annotation.\nPhrase 5 contenant une annotation.\nPhrase 6 ne contenant pas d'annotation.\n\n",
+  "sentences": [
+    {
+      "start": 0,
+      "end": 34
+    },
+    {
+      "start": 35,
+      "end": 74
+    },
+    {
+      "start": 75,
+      "end": 109
+    },
+    {
+      "start": 110,
+      "end": 149
+    },
+    {
+      "start": 150,
+      "end": 184
+    },
+    {
+      "start": 185,
+      "end": 224
+    }
+  ],
+  "annotations": [
+    {
+      "end": 6,
+      "start": 0,
+      "createdBy": "oterrier",
+      "createdDate": "2021-11-26T08:07:57.438Z",
+      "labelName": "wiki1",
+      "modifiedDate": "2021-11-26T08:07:57.438Z",
+      "status": "OK",
+      "text": "Phrase",
+      "label": "Wikidata1"
+    },
+    {
+      "end": 8,
+      "start": 7,
+      "createdBy": "oterrier",
+      "createdDate": "2021-11-26T08:07:57.438Z",
+      "labelName": "wiki3",
+      "modifiedDate": "2021-11-26T08:07:57.438Z",
+      "status": "OK",
+      "text": "1",
+      "label": "Wikidata3"
+    },
+    {
+      "end": 83,
+      "start": 82,
+      "createdBy": "oterrier",
+      "createdDate": "2021-11-26T08:08:04.385Z",
+      "labelName": "wiki2",
+      "modifiedDate": "2021-11-26T08:08:04.385Z",
+      "status": "OK",
+      "text": "3",
+      "label": "Wikidata2"
+    },
+    {
+      "end": 183,
+      "start": 173,
+      "createdBy": "oterrier",
+      "createdDate": "2021-11-26T08:08:09.44Z",
+      "labelName": "wiki3",
+      "modifiedDate": "2021-11-26T08:08:09.44Z",
+      "status": "OK",
+      "text": "annotation",
+      "label": "Wikidata3"
+    }
+  ]
+}

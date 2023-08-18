@@ -1,0 +1,87 @@
+[
+  {
+    "text": "Phrase 1 contenant une annotation.\nPhrase 2 ne contenant pas d'annotation.\nPhrase 3 contenant une annotation.\nPhrase 4 ne contenant pas d'annotation.\nPhrase 5 contenant une annotation.\nPhrase 6 ne contenant pas d'annotation.\n\n",
+    "identifier": "Phrase 1 contenant une annotation.txt",
+    "title": "Phrase 1 contenant une annotation.txt",
+    "metadata": {},
+    "altTexts": [
+      {
+        "name": "Grille de lecture",
+        "text": "Phrase 1 contenant une annotation.\n\u22ee\nPhrase 3 contenant une annotation.\n\u22ee\nPhrase 5 contenant une annotation."
+      }
+    ],
+    "sentences": [
+      {
+        "start": 0,
+        "end": 34
+      },
+      {
+        "start": 35,
+        "end": 74
+      },
+      {
+        "start": 75,
+        "end": 109
+      },
+      {
+        "start": 110,
+        "end": 149
+      },
+      {
+        "start": 150,
+        "end": 184
+      },
+      {
+        "start": 185,
+        "end": 224
+      }
+    ],
+    "annotations": [
+      {
+        "start": 0,
+        "end": 6,
+        "labelName": "wiki1",
+        "label": "Wikidata1",
+        "text": "Phrase",
+        "createdBy": "oterrier",
+        "createdDate": "2021-11-26T08:07:57.438Z",
+        "modifiedDate": "2021-11-26T08:07:57.438Z",
+        "status": "OK"
+      },
+      {
+        "start": 7,
+        "end": 8,
+        "labelName": "wiki3",
+        "label": "Wikidata3",
+        "text": "1",
+        "createdBy": "oterrier",
+        "createdDate": "2021-11-26T08:07:57.438Z",
+        "modifiedDate": "2021-11-26T08:07:57.438Z",
+        "status": "OK"
+      },
+      {
+        "start": 82,
+        "end": 83,
+        "labelName": "wiki2",
+        "label": "Wikidata2",
+        "text": "3",
+        "createdBy": "oterrier",
+        "createdDate": "2021-11-26T08:08:04.385Z",
+        "modifiedDate": "2021-11-26T08:08:04.385Z",
+        "status": "OK"
+      },
+      {
+        "start": 173,
+        "end": 183,
+        "labelName": "wiki3",
+        "label": "Wikidata3",
+        "text": "annotation",
+        "createdBy": "oterrier",
+        "createdDate": "2021-11-26T08:08:09.44Z",
+        "modifiedDate": "2021-11-26T08:08:09.44Z",
+        "status": "OK"
+      }
+    ],
+    "categories": []
+  }
+]
