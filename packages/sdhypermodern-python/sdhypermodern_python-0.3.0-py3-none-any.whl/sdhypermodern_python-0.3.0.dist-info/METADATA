@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: sdhypermodern-python
+Version: 0.3.0
+Summary: The hypermodern Python project
+Home-page: https://github.com/semiod/sdhypermodern-python
+License: MIT
+Keywords: sdhypermodern
+Author: Semio Dsouza
+Author-email: semiod@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: click (>=8.1.6,<9.0.0)
+Requires-Dist: desert (>=2022.9.22,<2023.0.0)
+Requires-Dist: importlib-metadata (>=1.5.0,<2.0.0) ; python_version < "3.8"
+Requires-Dist: marshmallow (>=3.20.1,<4.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Project-URL: Documentation, https://sdhypermodern-python.readthedocs.io
+Project-URL: Repository, https://github.com/semiod/sdhypermodern-python
+Description-Content-Type: text/markdown
+
+[![Tests](https://github.com/semiod/sdhypermodern-python/workflows/Tests/badge.svg)](https://github.com/semiod/sdhypermodern-python/actions?workflow=Tests)
+[![Codecov](https://codecov.io/gh/semiod/sdhypermodern-python/branch/master/graph/badge.svg)](https://codecov.io/gh/semiod/sdhypermodern-python)
+[![PyPI](https://img.shields.io/pypi/v/sdhypermodern-python.svg)](https://pypi.org/project/sdhypermodern-python/)
+[![Read the Docs](https://readthedocs.org/projects/sdhypermodern-python/badge/)](https://sdhypermodern-python.readthedocs.io/)
