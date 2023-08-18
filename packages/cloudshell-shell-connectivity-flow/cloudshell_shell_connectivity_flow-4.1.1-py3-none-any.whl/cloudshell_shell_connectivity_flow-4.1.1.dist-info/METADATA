@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: cloudshell-shell-connectivity-flow
+Version: 4.1.1
+Summary: QualiSystems Shells Connectivity Flow Package
+Home-page: https://www.quali.com/
+Author: QualiSystems
+Author-email: info@qualisystems.com
+Requires-Python: ~=3.9
+Description-Content-Type: text/x-rst
+Requires-Dist: cloudshell-logging ~=2.0
+Requires-Dist: pydantic ~=1.7
+Requires-Dist: attrs <23.2,>=22
+Requires-Dist: typing-extensions >=4
+
+QualiSystems Shells Connectivity Flow Package
