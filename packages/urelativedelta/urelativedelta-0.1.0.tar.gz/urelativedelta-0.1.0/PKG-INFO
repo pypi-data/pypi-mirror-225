@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: urelativedelta
+Version: 0.1.0
+Summary: A small fast implementation of urelativedeltas
+Project-URL: Homepage, https://github.com/olliemath/urelativedelta
+Project-URL: Bug Tracker, https://github.com/olliemath/urelativedelta
+Author-email: Oliver Margetts <oliver.margetts@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+# urelativedelta
+A small fast implementation of relativedeltas
+
+# benchmarks
+
+Shifting 5mn datetime objects gives us:
+
+| interpreter | urelativedelta | python-dateutil | speedup |
+| ------ | ------ | ------ | ------ |
+| cpython 3.11 | 6.72s | 20.36s | 3.03x |
+| pypy 3.9 | 0.72s | 3.13s | 4.34x |
