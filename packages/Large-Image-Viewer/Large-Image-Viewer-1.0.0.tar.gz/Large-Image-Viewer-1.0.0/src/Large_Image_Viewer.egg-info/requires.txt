@@ -1,0 +1,12 @@
+numpy
+dask
+aicsimageio[base-imageio,czi,dv,lif,nd2]
+aicspylibczi>=3.1.1
+fsspec>=2022.8.0
+readlif>=0.6.4
+scikit-image
+
+[testing]
+tox
+pytest
+pytest-cov
