@@ -1,0 +1,51 @@
+# CellCover
+
+This is the python version of CellCover. To run CellCover, Gurobi installation is necessary. Please follow the README.md in [lanlanji/CoveringPackage (github.com)](https://github.com/lanlanji/CoveringPackage) to acquire and install the Gurobi academic liscence.
+
+### Installing CellCover:
+
+```python
+pip install CellCover
+```
+
+### Using CellCover to obtain marker panel
+
+To run the CelCover, the following python variables need to be define first: 
+
+- **data**: a numpy array of your single cell RNA-seq data with shape (N,G) where N is the number of cells and G is the size of the gene portfolio.
+
+- **gene**: a numpy array of gene names with shape (G,)
+
+- **CellTypeLabels**: a numpy array of cell types with shape (N,)
+
+- **CellTypeNames**: a numpy array of distinct cell type names (string)
+
+- **ct**: a single string of the cell type name that user want to find covering markers for, e.g. "CD4"
+
+What is more, there is a list of hyperparameters that need to be defined before running the covering:
+
+- **binarization_threshold**: the threshold above which we binarize the gene expression to 1, below which we binarize the gene expression to 0 
+
+- **minSize**: the depth of covering
+
+- **alpha**: 1 - covering rate. The default is $0.05$
+
+- **te**: This is a parameter for pruning the data. For each cell type, the gene expressing more than te * 100 percent of time are selected for finding the covering markers. The default is $0.1$.
+
+- **top_num_gene**: This is another pruning parameter. In each class, **top_num_gene** number of genes with the highest margin score will be selected for marker selection. The default is $6000$.
+
+The pipeline of getting the covering marker panel of the user defined cell type **ct** is
+
+```python
+from CellCover import binarization
+from CellCover import SensList
+from CellCover import weight
+from CellCover import covering
+from CellCover import getCoveringVariables
+data = binarization(mat = data, binarization_threshold =  binarization_threshold)
+sens = SensList(mat = data, CellTypeLabels =  CellTypeLabels, CellTypeNames=CellTypeNames)
+X,w,g = weight(mat = data,sens =sens, CellTypeLabels = CellTypeLabels, CellTypeNames = CellTypeNames, ct = ct,gene = gene)
+cov = covering(Z=X, minSize = minSize, alpha = alpha,weights = w)
+marker = getCoveringVariables(cov, ngenes = len(g), geneNames = g, nlevels = 1)
+
+```
