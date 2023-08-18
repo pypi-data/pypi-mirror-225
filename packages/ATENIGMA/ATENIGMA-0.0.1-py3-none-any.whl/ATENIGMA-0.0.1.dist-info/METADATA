@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: ATENIGMA
+Version: 0.0.1
+Summary: ATENIGMA is a versatile CLI utility that offers basic file encryption and decryption functionalities. This tool leverages the `cryptography` Python library to provide a user-friendly way to secure your files through AES encryption. With ATENIGMA, you can encrypt files with your custom password, adding an extra layer of protection to your sensitive data.
+Author: Prasaanth
+Author-email: prasaanth2k@gmail.com
+Requires-Dist: colored (==2.2.3)
+Requires-Dist: cryptography (==41.0.3)
+Requires-Dist: setuptools (==65.5.0)
+
