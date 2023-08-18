@@ -1,0 +1,651 @@
+## GitLab CI configuration.
+#
+# Available runners: https://computing.docs.ligo.org/guide/gitlab-ci/
+#
+# Some general advice:
+#
+#   - The idea here is to build and test Finesse on a minimal subset of common
+#     platforms. A good strategy is typically to test the earliest and latest supported
+#     Python release across the various platforms and distribution channels.
+#   - Documentation should be built using the earliest supported Python release.
+#   - Documentation for the syntax here can be found at
+#     https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html.
+#   - IGWN CI templates are used here for convenience. More information can be found at
+#     https://computing.docs.ligo.org/gitlab-ci-templates/.
+
+# Include IGWN computing templates. These set up common testing environments such as
+# conda. Use a fixed git commit for forward compatibility. This can be periodically
+# changed to pull in later enhancements to the templates.
+include:
+  - remote: 'https://git.ligo.org/computing/gitlab-ci-templates/-/raw/caf6297a42b914d9a59649e3fcace383062f4d21/conda.yml'  # 2022-01-27
+  - remote: 'https://git.ligo.org/computing/gitlab-ci-templates/-/raw/caf6297a42b914d9a59649e3fcace383062f4d21/macports.yml'  # 2022-01-27
+
+
+# Provide a default project prefix for multi-project jobs
+variables:
+  PROJECT_PREFIX: "finesse"
+
+workflow:
+  rules:
+    - if: $CI_SERVER_HOST == "gitlab.com"
+      variables:
+        PROJECT_PREFIX: "ifosim/finesse"
+    - when: always
+
+stages:
+  - build
+  - windows
+  - test
+  - docs
+  - deploy
+
+##########################
+# Build and test Windows #
+##########################
+
+.template/windows: &template-windows
+  stage: windows
+  image: mcr.microsoft.com/azure-cli
+  tags: [ saas-linux-small-amd64 ]
+  rules:
+    - if: $CI_SERVER_HOST == "gitlab.com" # only run from gitlab.com not git.ligo.org
+  script:
+    - az extension add --upgrade -n azure-devops
+    - az devops configure --defaults organization=https://dev.azure.com/a1223695 project=finesse
+    - echo ${CI_COMMIT_REF_NAME}
+    - echo ${CI_COMMIT_TAG}
+    # Save returned output json to parse some useful information from
+    - |
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        az pipelines run --name=${AZURE_PIPELINE} --branch=refs/tags/${CI_COMMIT_TAG} --variables pyminor=${PYMIN} >> json
+      else
+        az pipelines run --name=${AZURE_PIPELINE} --branch=${CI_COMMIT_REF_NAME} --variables pyminor=${PYMIN} >> json
+      fi
+    # NOTE: USE NEXT LINE FOR DEBUGGING ONLY, IT MOST PROBABLY WILL CAUSE THE PIPELINE TO FAIL
+    #- az pipelines run --name=${AZURE_PIPELINE} --branch=${CI_COMMIT_REF_NAME} --variables pyminor=${PYMIN} --debug | tee json
+    - cat json | jq
+    - ID=$(cat json | jq '.id')
+    - echo "https://dev.azure.com/a1223695/finesse/_build/results?buildId=${ID}&view=logs"
+    - |
+      while true; do
+        az pipelines build show --id $ID > status
+        STATUS=$(cat status | jq '.status')
+        echo $STATUS
+        if [[ "$STATUS" == "\"completed\"" ]]; then
+          break
+        else
+          sleep 10
+        fi
+      done
+      # check final result
+      az pipelines build show --id $ID > status
+      RESULT=$(cat status | jq '.result')
+      if [[ "$RESULT" != "\"succeeded\"" ]]; then
+        echo "FAILED CHECK AZURE LINK"
+        echo "https://dev.azure.com/a1223695/finesse/_build/results?buildId=${ID}&view=logs"
+        exit 1
+      fi
+
+build/windows/x64/py38:
+  <<: *template-windows
+  needs: []
+  variables:
+    PYMIN: 8
+
+build/windows/x64/py39:
+  <<: *template-windows
+  needs: []
+  variables:
+    PYMIN: 9
+
+build/windows/x64/py310:
+  <<: *template-windows
+  needs: []
+  variables:
+    PYMIN: 10
+
+###############
+# Build stage #
+###############
+
+.template/build/manylinux: &template-build-manylinux
+  stage: build
+  image: quay.io/pypa/manylinux2014_x86_64
+  before_script:
+    - yum install -y suitesparse-devel
+    - git fetch --tags --prune --unshallow
+    - git tag
+    - git branch
+    - ${PYBIN}/python -V
+  script:
+    - ${PYBIN}/pip wheel . --no-deps -w wheelhouse
+    - cat src/finesse/version.py
+    - auditwheel repair wheelhouse/*.whl
+  artifacts:
+    paths:
+      - wheelhouse
+
+# Various many Linux flavours based on manylinux2014_x86_64
+build/manylinux/x86_64/py38:
+  <<: *template-build-manylinux
+  needs: []
+  variables:
+    PYBIN: /opt/python/cp38-cp38/bin
+
+build/manylinux/x86_64/py39:
+  <<: *template-build-manylinux
+  needs: []
+  variables:
+    PYBIN: /opt/python/cp39-cp39/bin
+
+build/manylinux/x86_64/py310:
+  <<: *template-build-manylinux
+  needs: []
+  variables:
+    PYBIN: /opt/python/cp310-cp310/bin
+
+build/manylinux/x86_64/py311:
+  <<: *template-build-manylinux
+  needs: []
+  variables:
+    PYBIN: /opt/python/cp311-cp311/bin
+
+# Check the Conda development environment builds on Linux, since it's a common way to
+# develop Finesse (no tests get run).
+build/conda-linux/x86_64/py310:
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  stage: build
+  extends:
+    - .conda:base
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    - git fetch --tags
+    # Set up the environment.
+    - mamba create -n finesse python=3.10
+    - conda activate finesse
+    - mamba env update -f environment.yml
+    - python --version
+    - make install-conda
+  script:
+    # Simply check it can be imported.
+    - python -c "import finesse"
+
+# A build with special flags set on Cython extensions to enable debugging.
+build/linux-debug/x86_64/py38:
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  stage: build
+  image: python:3.8
+  needs: []
+  before_script:
+    - git fetch --tags
+    - apt update
+    - apt install -y libsuitesparse-dev
+    # Install editable mode so in-place pyx files are picked up by coverage.
+    - pip3 install -e .
+  script:
+    # Make a platform-specific wheel (with Cython coverage support)
+    - CYTHON_COVERAGE=1 CYTHON_DEBUG=1 pip3 wheel . --no-deps -w wheelhouse
+  artifacts:
+    paths:
+      - wheelhouse
+
+
+.template/build/osx: &template-build-osx
+  stage: build
+  extends:
+    - .conda:base
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    # Set up the environment. On macOS conda is preconfigured in /opt/conda (mambaforge;
+    # only has conda-forge channel).
+    - git fetch --tags
+    - git tag
+    - mamba create -n finesse python=${PYBIN}
+    - conda activate finesse
+    - mamba env update -f environment.yml
+    - mamba install delocate
+    - python --version
+  script:
+    # Hack to try and fix codesigning issues (137 SIGKILL), see issue #460
+    - python ./scripts/osx_fix_so.py
+    # The isolated build wants to compile scipy and others from source
+    - mamba install -y gfortran pkg-config
+    - export FINESSE3_DISABLE_OPENMP=1 # see $450
+    # Do an in-tree build here to prevent PyPI packages clobbering conda-forge ones.
+    - pip wheel . --no-deps --no-build-isolation -w wheelhouse
+    - delocate-listdeps wheelhouse/*.whl
+    - delocate-wheel -vv wheelhouse/*.whl
+  artifacts:
+    paths:
+      - wheelhouse
+
+build/conda-osx/x86_64/py38:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_x86_64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.8"
+
+build/conda-osx/arm64/py38:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_arm64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.8"
+
+build/conda-osx/x86_64/py39:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_x86_64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.9"
+
+build/conda-osx/arm64/py39:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_arm64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.9"
+
+build/conda-osx/x86_64/py310:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_x86_64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.10"
+
+build/conda-osx/arm64/py310:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_arm64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.10"
+
+build/conda-osx/x86_64/py311:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_x86_64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.11"
+
+build/conda-osx/arm64/py311:
+  <<: *template-build-osx
+  needs: []
+  tags:
+    - macos_arm64
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  variables:
+    PYBIN: "3.11"
+
+##############
+# Test stage #
+##############
+
+.template/test/linux-debian: &template-test-linux-debian
+  stage: test
+  before_script:
+    - python3 scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - python3 -m pip install -r requirements-test.txt
+    - python3 -m pip install wheelhouse/finesse-*manylinux*.whl
+  script:
+    - python3 -V
+    - python3 -m pytest tests
+    - python3 -V
+    # test if any child processes left dangling
+    - ps
+    - top -bn1
+
+test/linux-debian/x86_64/py38:
+  needs:
+    - build/manylinux/x86_64/py38
+  image: python:3.8
+  <<: *template-test-linux-debian
+
+test/linux-debian/x86_64/py310:
+  needs:
+    - build/manylinux/x86_64/py310
+  image: python:3.10.9 # use 3.10.9 specifically to stop hanging, see #544
+  <<: *template-test-linux-debian
+
+test/linux-debian/x86_64/py311:
+  needs:
+    - build/manylinux/x86_64/py311
+  image: python:3.11
+  <<: *template-test-linux-debian
+
+# Test on OSX on x86_64.
+test/conda-osx/x86_64/py38:
+  stage: test
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  needs:
+    - build/conda-osx/x86_64/py38
+  extends:
+    - .conda:base
+  tags:
+    - macos_x86_64
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    # Set up the environment. On OSX conda is preconfigured in /opt/conda (mambaforge;
+    # only has conda-forge channel).
+    - mamba env create -n finesse_test
+    - conda activate finesse_test
+    - mamba install python=3.8
+    - python --version
+    - python scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - pip install -r requirements-test.txt
+    - pip install wheelhouse/finesse-*macosx*.whl
+  script:
+    # Temporary - debugging
+    - mamba list --name finesse_test
+    - pytest tests
+
+test/conda-osx/x86_64/py311:
+  stage: test
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  needs:
+    - build/conda-osx/x86_64/py311
+  extends:
+    - .conda:base
+  tags:
+    - macos_x86_64
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    # Set up the environment. On OSX conda is preconfigured in /opt/conda (mambaforge;
+    # only has conda-forge channel).
+    - mamba env create -n finesse_test
+    - conda activate finesse_test
+    - mamba install python=3.11
+    - python --version
+    - python scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - pip install -r requirements-test.txt
+    - pip install wheelhouse/finesse-*macosx*.whl
+  script:
+    # Temporary - debugging
+    - mamba list --name finesse_test
+    - pytest tests
+
+# Test on OSX on ARM64 (M1).
+test/conda-osx/arm64/py38:
+  stage: test
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  needs:
+    - build/conda-osx/arm64/py38
+  extends:
+    - .conda:base
+  tags:
+    - macos_arm64
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    # Set up the environment. On macOS conda is preconfigured in /opt/conda (mambaforge;
+    # only has conda-forge channel).
+    - mamba env create -n finesse_test
+    - conda activate finesse_test
+    - mamba install python=3.8
+    - python --version
+    - python scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - pip install -r requirements-test.txt
+    - pip install wheelhouse/finesse-*macosx*.whl
+  script:
+    # Temporary - debugging
+    - mamba list --name finesse_test
+    - pytest tests
+
+# Test on OSX on ARM64 (M1).
+test/conda-osx/arm64/py311:
+  stage: test
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  needs:
+    - build/conda-osx/arm64/py311
+  extends:
+    - .conda:base
+  tags:
+    - macos_arm64
+  before_script:
+    # Run the `before_script` from the template.
+    - !reference [".conda:base", before_script]
+    # Set up the environment. On macOS conda is preconfigured in /opt/conda (mambaforge;
+    # only has conda-forge channel).
+    - mamba env create -n finesse_test
+    - conda activate finesse_test
+    - mamba install python=3.11
+    - python --version
+    - python scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - pip install -r requirements-test.txt
+    - pip install wheelhouse/finesse-*macosx*.whl
+  script:
+    # Temporary - debugging
+    - mamba list --name finesse_test
+    - pytest tests
+
+# Test coverage report generation. The report is used to show coverage details in merge
+# request diff views. See https://docs.gitlab.com/ee/user/project/merge_requests/test_coverage_visualization.html.
+test/coverage:
+  stage: test
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  needs:
+    - build/linux-debug/x86_64/py38
+  image: python:3.8
+  before_script:
+    - apt update
+    - apt install -y libsuitesparse-dev
+    # Dependencies for running the tests.
+    - python3 scripts/extract_extra_requirements.py setup.cfg test > requirements-test.txt
+    - pip3 install -r requirements-test.txt
+    - pip3 install wheelhouse/finesse-*.whl
+    # Install coverage extras. The pinned coverage version is due to a Cython
+    # incompatibility with newer versions: https://github.com/cython/cython/issues/3515.
+    - pip3 install pytest-cov pycobertura coverage[toml]==4.5.4
+  script:
+    # Run all tests and generate Cobertura XML formatted coverage report.
+    - pytest --cov=finesse --cov-config=pyproject.toml --cov-report=xml tests
+    # Generate human readable coverage report.
+    - pycobertura show coverage.xml  # Necessary so the GitLab CI regex picks up the total.
+  coverage: '/^TOTAL\s+.*\s+(\d+\.?\d*)%/'  # Regex to allow GitLab to extract and display coverage.
+  artifacts:
+    when: always
+    reports:
+      # Displays coverage in MR diffs.
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    # paths:
+    #   - debug
+
+test/finesse-ligo:
+  stage: test
+  trigger:
+    project: ${PROJECT_PREFIX}/finesse-ligo
+    branch: main
+    strategy: depend # ensure this job fails if the downstream fails
+  variables:
+    # need to pass the current ref so downstream knows where to pull it from
+    INCOMING_REF: $CI_COMMIT_REF_NAME
+  needs:
+    - build/manylinux/x86_64/py310
+
+test/finesse-virgo:
+  stage: test
+  trigger:
+    project: ${PROJECT_PREFIX}/finesse-virgo
+    branch: main
+    strategy: depend # ensure this job fails if the downstream fails
+  variables:
+    # need to pass the current ref so downstream knows where to pull it from
+    INCOMING_REF: $CI_COMMIT_REF_NAME
+  needs:
+    - build/manylinux/x86_64/py310
+
+# Run test suite in random order. This can help to identify problems associated with
+# memory leaks, dangling references, etc. that often occur with the use of singleton
+# patterns as used in Finesse.
+test/random-order:
+  needs:
+    - build/manylinux/x86_64/py310
+  image: python:3.10.9 # use 3.10.9 specifically to stop hanging, see #544
+  <<: *template-test-linux-debian
+  allow_failure: true  # This job is mainly for observation only.
+  script:
+    - pytest tests --random-order
+
+##############
+# Docs stage #
+##############
+
+docs/html:
+  stage: docs
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org"
+  #tags: [ saas-linux-medium-amd64 ]
+  needs:
+    - build/manylinux/x86_64/py311
+  image: python:3.11
+  before_script:
+    - python scripts/extract_extra_requirements.py setup.cfg docs > requirements-doc.txt
+    - pip install -r requirements-doc.txt
+    # Sphinx autodoc needs to be able to import finesse and finesse_sphinx.
+    - pip install wheelhouse/finesse-*manylinux*.whl
+    # Unknown why but python3 kernel doesn't seemed to be installed after some
+    # package update? Fixes errors started happening around Aug 2, 2023 5:36pm ACST:
+    # `Unable to find kernel (exception: No such kernel named python3)`
+    - pip install ipykernel
+    - ipython kernel install --name=python3 --user
+  script:
+    - cd docs
+    - make html
+    - cd ..
+  # Temporary, see #270
+  after_script:
+    - mkdir sphinxlogs
+    - mv /tmp/sphinx-*.log sphinxlogs
+  artifacts:
+    when: always
+    paths:
+      - docs/build/html
+      - sphinxlogs  # Temporary, see #270
+
+# NOTE: the Sphinx docker image used here itself uses python:slim, which is periodically
+# updated to the latest Python release, requiring the `needs` below to be periodically
+# updated to point to the job that produces the wheel for the latest release as well.
+docs/pdf:
+  stage: docs
+  needs:
+    - build/manylinux/x86_64/py310  # See note above.
+  image: sphinxdoc/sphinx-latexpdf
+  allow_failure: true  # Don't force people to fix LaTeX errors that fail the pipeline.
+  before_script:
+    - apt update
+    - apt install -y texlive-latex-base librsvg2-bin  # See #234.
+    - python scripts/extract_extra_requirements.py setup.cfg docs > requirements-doc.txt
+    - pip install -r requirements-doc.txt
+    # Sphinx autodoc needs to be able to import finesse and finesse_sphinx.
+    - pip install wheelhouse/finesse-*manylinux*.whl
+    # Unknown why but python3 kernel doesn't seemed to be installed after some
+    # package update? Fixes errors started happening around Aug 2, 2023 5:36pm ACST:
+    # `Unable to find kernel (exception: No such kernel named python3)`
+    - pip install ipykernel
+    - ipython kernel install --name=python3 --user
+  script:
+    - cd docs
+    - make latexpdf
+    - cd ..
+  artifacts:
+    when: always
+    paths:
+      - docs/build/latex/Finesse3.*
+
+################
+# Deploy stage #
+################
+
+# Publish the documentation only for changes to the develop branch, and only when all
+# tests pass.
+#
+# Useful reading:
+#   https://git.ligo.org/lscsoft/example-ci-project/wikis/automatically-produce-documentation
+#   https://wiki.ligo.org/viewauth/DASWG/GitLigoOrg#Accessing_GitLab_Pages
+pages:
+  rules:
+    - if: $CI_SERVER_HOST == "git.ligo.org" && $CI_COMMIT_BRANCH == "develop"
+  stage: deploy
+  needs:
+    - job: docs/html
+  script:
+    - mv docs/build/html public
+  artifacts:
+    paths:
+      - public
+
+pypi:
+  stage: deploy
+  rules:
+    # Only run on LIGO finesse project for the Linux and OSX runners, not forks and when a tag is commited
+    - if: $CI_SERVER_HOST == "git.ligo.org" && $CI_COMMIT_TAG
+  image: python:slim
+  needs: [
+    build/manylinux/x86_64/py38,
+    build/manylinux/x86_64/py39,
+    build/manylinux/x86_64/py310,
+    build/manylinux/x86_64/py311,
+    build/conda-osx/x86_64/py38,
+    build/conda-osx/x86_64/py39,
+    build/conda-osx/x86_64/py310,
+    build/conda-osx/x86_64/py311,
+    build/conda-osx/arm64/py38,
+    build/conda-osx/arm64/py39,
+    build/conda-osx/arm64/py310,
+    build/conda-osx/arm64/py311,
+    test/finesse-ligo,
+    test/finesse-virgo,
+    test/conda-osx/x86_64/py38,
+    test/conda-osx/x86_64/py311,
+    test/conda-osx/arm64/py38,
+    test/conda-osx/arm64/py311,
+    test/linux-debian/x86_64/py38,
+    test/linux-debian/x86_64/py310,
+    test/linux-debian/x86_64/py311,
+  ]
+  script:
+  # Suggest we don't push sdist here as people just get confusing error messages
+  # when the sdist can't compile
+    - echo $CI_COMMIT_TAG
+    - echo $CI_COMMIT_BRANCH
+    - echo $CI_PROJECT_PATH
+    - python -V
+    - python -m pip install twine
+    - ls wheelhouse
+    - python -m twine upload -u=$TWINE_USERNAME -p=$TWINE_PASSWORD wheelhouse/*manylinux*.whl
+    - python -m twine upload -u=$TWINE_USERNAME -p=$TWINE_PASSWORD wheelhouse/*macosx*.whl

@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: finesse
+Version: 3.0a18
+Summary: Simulation tool for modelling laser interferometers
+Home-page: https://www.gwoptics.org/finesse
+Author-email: finesse-support@nikhef.nl
+License: GPL
+Project-URL: Bug Tracker, https://gitlab.com/ifosim/finesse/finesse3/issues
+Project-URL: Source Code, https://gitlab.com/ifosim/finesse/finesse3
+Project-URL: Documentation, https://finesse.ifosim.org/docs/
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: test
+Provides-Extra: docs
+Provides-Extra: lint
+Provides-Extra: inplacebuild
+Provides-Extra: graphviz
+License-File: LICENSE.md
+
+# Finesse 3
+
+Finesse 3 is a Python based interferometer simulation software. It is currently in an early
+development stage. For modelling interferometers we currently recommend that you use our mature packages:
+* Finesse 2 http://www.gwoptics.org/finesse
+* Pykat http://www.gwoptics.org/pykat
+
+At the same time we invite participation to the development of Finesse. You can find the Finesse 3 resources at:
+* Source code, issue tracker etc. https://gitlab.com/ifosim/finesse/finesse3
+* Documentation https://finesse.ifosim.org/docs/
+
+## Installation
+
+For guides on the installation of Finesse 3 see: https://finesse.ifosim.org/docs/develop/getting_started/install/index.html

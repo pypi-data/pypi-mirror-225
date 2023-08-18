@@ -1,0 +1,45 @@
+{
+	"folders": [
+		//{
+		//	"path": "."
+		//},
+		{
+			// source code
+			"name": "Source Code",
+			"path": "./finesse/"
+		},
+		{
+			// docs
+			"name": "Documentation",
+			"path": "./docs/"
+		},
+		{
+			// tests
+			"name": "Tests",
+			"path": "./tests/"
+		},
+		{
+			// examples
+			"name": "Examples",
+			"path": "./examples"
+		},
+		{
+			// playground
+			"name": "Playground",
+			"path": "./playground"
+		}
+	],
+	"settings": {
+		"files.insertFinalNewline": true,
+		"files.trimTrailingWhitespace": true,
+		"editor.rulers": [100],
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintArgs": [
+			"--rcfile", ".pylintrc"
+		],
+		"python.testing.pytestEnabled": true
+	}
+}

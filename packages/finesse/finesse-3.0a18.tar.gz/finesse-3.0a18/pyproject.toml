@@ -1,0 +1,26 @@
+[build-system]
+# See https://finesse.ifosim.org/docs/develop/finesse3/developer/codeguide/requirements.html.
+#
+# NOTE:
+#   - Numpy and h5py requirements should match that in setup.cfg install_requires.
+#   - Cython requirement should match that in setup.cfg extra_requires.
+# Annoyingly, can't use a multi-line TOML list here because of old pinned Coverage
+# version due to Cython incompatiblity not containing a TOML v1.0.0 parser...
+requires = ["setuptools >= 45", "setuptools_scm >= 6.2", "wheel", "numpy >= 1.20", "cython < 3.0", "scipy >= 1.4", "tqdm >= 4.40"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "src/finesse/version.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs= ["tests/testutils"]
+addopts = "--import-mode=importlib"  # Avoids need for __init__.py in test directories.
+
+[tool.doc8]
+# Documentation line length consistent with Black, and roughly maximum to avoid
+# horizontal scrollbars appearing in code/preformatted blocks.
+max-line-length = 88
+
+[tool.coverage.run]
+plugins = "Cython.Coverage"

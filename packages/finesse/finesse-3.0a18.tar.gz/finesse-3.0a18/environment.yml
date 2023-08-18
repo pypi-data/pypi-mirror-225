@@ -1,0 +1,60 @@
+# Conda development environment for Linux and macOS.
+
+channels:
+  - conda-forge
+dependencies:
+  ## System dependencies.
+  - make
+  - c-compiler
+  - suitesparse
+  #- python >= 3.8 # no specific python requirement here as it forcibly overwrites chosen python version, default will use more recent python possible
+  - pip
+  ## Python dependencies.
+  # Build dependencies. Keep these up-to-date with the build-system requires section in
+  # `pyproject.toml`.
+  - setuptools >= 45
+  - wheel
+  - setuptools_scm >= 6.2
+  - cython < 3.0
+  - numpy >= 1.20
+  - scipy >= 1.4
+  - tqdm >= 4.40
+  - h5py >= 3.0
+  # Runtime dependencies. Keep these up-to-date with the install_requires section in
+  # `setup.cfg`.
+  - matplotlib >= 3.5
+  - networkx >= 2.4
+  - sly >= 0.4
+  - click >= 7.1
+  - click-default-group >= 1.2.2
+  - tabulate >= 0.8.7
+  - control >= 0.9
+  - sympy >= 1.6
+  - deprecated >= 1.2
+  - pyspellchecker >= 0.6
+  - more-itertools >= 8.7
+  # - blockdiag >= 3.0.0 # Needs 3.11 fixing on conda forge first
+  # Extra dependencies. Keep these up-to-date with the options.extras_require section in
+  # `setup.cfg`.
+  # We install most of these with pip to avoid conda getting itself into a mess.
+  - pytest
+  - faker
+  - hypothesis
+  - sphinx < 6
+  - sphinx_rtd_theme
+  - sphinxcontrib-bibtex
+  - sphinxcontrib-programoutput
+  - jupyter-sphinx
+  - numpydoc
+  - black
+  - pre-commit
+  - pylint
+  - flake8
+  - flake8-bugbear
+  - doc8
+  - pygraphviz
+  - pip:  # Packages not on conda-forge needing installed via pip.
+    - reslate
+    - sphinxcontrib-katex
+    - sphinxcontrib-svg2pdfconverter
+    - quantiphy
