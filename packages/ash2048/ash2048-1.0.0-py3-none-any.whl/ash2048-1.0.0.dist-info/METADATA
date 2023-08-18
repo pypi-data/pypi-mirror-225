@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: ash2048
+Version: 1.0.0
+Summary: A gym environment for playing 2048.
+Author: Ashrit Yarava
+Author-email: ashdragon95@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: gymnasium (>=0.29.0,<0.30.0)
+Requires-Dist: numpy (>=1.25.1,<2.0.0)
+Requires-Dist: pillow (>=10.0.0,<11.0.0)
+Requires-Dist: pygame (>=2.5.1,<3.0.0)
+Description-Content-Type: text/markdown
+
+# ash2048
+---
+
+> Implementation of the 2048 Game for Gym Environments with state rendering through PyGame.
+
+## Usage and Notes:
+
+The package follows gymnasium conventions.
+To render the board while playing, set `display=True` in the constructor.
+To save the render to a gif, set `save_animation=True` in the constructor.
+To save the generated animation to a file, call `save_render(filename)` where the filaname is the outfile gif file.
+The animation is reset upon calling `reset()`.
