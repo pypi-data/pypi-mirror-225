@@ -1,0 +1,32 @@
+# Copyright Log10, Inc 2023
+
+metrics:
+  - name: contains_summary
+    code: |
+      from langchain.evaluation import load_evaluator, EvaluatorType
+
+      custom_criterion = {"numeric": f"Does the output contain a summary?"}
+
+      eval_chain = load_evaluator(
+          EvaluatorType.CRITERIA,
+          criteria=custom_criterion,
+      )
+      eval_result = eval_chain.evaluate_strings(prediction=actual, input=prompt)
+      metric = eval_result["score"]
+      result = metric > 0.5
+references:
+  - input:
+      text: |
+        Bilbo Baggins was having a quiet morning at his hobbit-hole in the Shire. He had just sat down for second breakfast when there was a knock at his round green door. Bilbo opened the door to find his friend Gandalf standing there.
+
+        "My dear Bilbo! I'm glad I caught you at home," Gandalf said as he let himself in. "I'm looking for someone to join me on an adventure."
+
+        Bilbo was quite taken aback. Adventures were nasty disturbing uncomfortable things that made one late for dinner. But Gandalf insisted this would be a grand adventure indeed. Before he knew it, Bilbo was rushing out the door with a walking stick and his pipe in hand.
+
+        Gandalf led Bilbo out of the Shire towards the Misty Mountains. As they climbed higher into the mountains, Bilbo worried he had made a terrible mistake. Gandalf assured him this adventure would lead to all manner of magical and wondrous things.
+
+        Just then, they stumbled upon a cave entrance and were immediately surrounded by a band of scruffy dwarves. Gandalf laughed merrily at the surprise on Bilbo's face.
+
+        "My dear Bilbo, may I introduce you to the leader of our company, Thorin Oakenshield. We have much to discuss regarding our quest to reclaim the lost dwarf kingdom of Erebor!"
+
+        And so began Bilbo's grand adventure with thirteen dwarves and a wizard. Despite his many complaints and homesickness for his hobbit-hole, Bilbo found courage he never knew he had. And though the journey was long and treacherous, in the end the quest was a success. Bilbo returned home a very different hobbit, with memories and friendships that would last his whole long life.
