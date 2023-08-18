@@ -1,0 +1,6 @@
+[console_scripts]
+example-bot = dsbot.example.manage:main [example]
+
+[dsbot.commands]
+defaults = dsbot.commands.default
+
