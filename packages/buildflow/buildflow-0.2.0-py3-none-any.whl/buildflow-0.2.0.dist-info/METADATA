@@ -1,0 +1,111 @@
+Metadata-Version: 2.1
+Name: buildflow
+Version: 0.2.0
+Summary: BuildFlow, is an open source framework for building large scale systems using Python. All you need to do is describe where your input is coming from and where your output should be written, and BuildFlow handles the rest.
+Author-email: Caleb Van Dyke <caleb@launchflow.com>, Josh Tanke <josh@launchflow.com>
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: black
+Requires-Dist: boto3
+Requires-Dist: dacite
+Requires-Dist: duckdb
+Requires-Dist: gcsfs
+Requires-Dist: google-auth
+Requires-Dist: google-cloud-bigquery
+Requires-Dist: google-cloud-bigquery-storage
+Requires-Dist: google-cloud-monitoring
+Requires-Dist: google-cloud-pubsub
+Requires-Dist: google-cloud-storage
+Requires-Dist: grpcio !=1.49.1
+Requires-Dist: fastparquet
+Requires-Dist: opentelemetry-api
+Requires-Dist: opentelemetry-sdk
+Requires-Dist: opentelemetry-exporter-otlp
+Requires-Dist: opentelemetry-exporter-jaeger
+Requires-Dist: pandas
+Requires-Dist: pulumi ==3.35.3
+Requires-Dist: pulumi-aws
+Requires-Dist: pulumi-gcp
+Requires-Dist: pulumi-snowflake
+Requires-Dist: pyarrow
+Requires-Dist: pydantic <2.0.2
+Requires-Dist: pyyaml !=5.4.0,!=5.4.1,!=6.0.0
+Requires-Dist: s3fs
+Requires-Dist: snowflake-ingest
+Requires-Dist: ray[default] >=2.4.0
+Requires-Dist: ray[serve] >=2.4.0
+Requires-Dist: typer
+Requires-Dist: redis
+Requires-Dist: watchdog
+Provides-Extra: dev
+Requires-Dist: aiobotocore ; extra == 'dev'
+Requires-Dist: aiohttp ; extra == 'dev'
+Requires-Dist: botocore ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: moto ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: setuptools ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+
+# ⚒️ BuildFlow
+
+![CI](https://github.com/launchflow/buildflow/actions/workflows/python_ci.yaml/badge.svg)
+![Release Tests](https://github.com/launchflow/buildflow/actions/workflows/release_tests.yaml/badge.svg)
+[![Python version](https://badge.fury.io/py/buildflow.svg)](https://pypi.org/project/buildflow)
+[![codecov](https://codecov.io/gh/launchflow/buildflow/branch/main/graph/badge.svg?token=AO0TP8XG7X)](https://codecov.io/gh/launchflow/buildflow)
+[![Discord Shield](https://discordapp.com/api/guilds/1082821064180117575/widget.png?style=shield)](https://discordapp.com/invite/wz7fjHyrCA)
+
+
+## Overview
+**BuildFlow**, is an open source framework for building large scale systems using Python. All you need to do is describe where your input is coming from and where your output should be written, and BuildFlow handles the rest. **No configuration outside of the code is required**.
+
+Key Features (all provided out-of-the-box):
+
+- Automatic [resource creation / management](https://www.buildflow.dev/docs/features/infrastructure-from-code) (Infrastructure as Code) powered by [Pulumi](https://github.com/pulumi/pulumi) (Infrastructure from Code)
+- Automatic [parallelism & concurrency](https://www.buildflow.dev/docs/features/parallelism) powered by [Ray](https://github.com/ray-project/ray)
+- [Dynamic autoscaling](https://www.buildflow.dev/docs/features/autoscaling): scale up during high traffic / reduce costs during low traffic
+- [Schema validation](https://www.buildflow.dev/docs/features/schema-validation) powered by Python dataclasses and type hints
+
+## Installation
+
+```bash
+pip install buildflow
+```
+
+### Extra Dependencies
+
+#### Pulumi Installation
+
+BuildFlow uses Pulumi to manage resources used by your BuildFlow Nodes and Processors. To install Pulumi visit: https://www.pulumi.com/docs/install/
+
+Installing Pulumi unlocks:
+- allows BuildFlow to manage resource creation and destruction
+- full access to Pulumi API / CLI
+- fine-grained control over Pulumi Stacks & Resources
+
+
+## Quick Links
+
+- **Docs**: https://www.buildflow.dev/docs
+- **Walkthroughs**: https://www.buildflow.dev/docs/walkthroughs/realtime-image-classification
+- **Discord**: https://discordapp.com/invite/wz7fjHyrCA
+- **Contribute**: https://www.buildflow.dev/docs/contribute
+
+## Code Health Checks
+
+We use [black](https://github.com/psf/black) and [ruff](https://github.com/charliermarsh/ruff) with [pre-commit](https://pre-commit.com/) hooks to perform health checks.
+To setup these locally:
+
+- Clone the repo
+- Install the `dev` dependencies like `python -m pip install .[dev]
+- Check if pre-commit is installed correctly by running `pre-commit --version`
+- Setup pre-commit to run before every commit on staged changes by running `pre-commit install`
+- Pre-commit can also be ran manually as `pre-commit run --all-files`
