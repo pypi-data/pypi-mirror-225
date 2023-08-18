@@ -1,0 +1,3 @@
+[console_scripts]
+initialize_rack = rack_pkg.initialize_rack:initialize_rack
+rack = rack_pkg.rack:main
