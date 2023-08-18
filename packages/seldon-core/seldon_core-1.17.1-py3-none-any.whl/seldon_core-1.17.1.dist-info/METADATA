@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: seldon-core
+Version: 1.17.1
+Summary: Seldon Core client and microservice wrapper
+Home-page: https://github.com/SeldonIO/seldon-core
+Author: Seldon Technologies Ltd.
+Author-email: hello@seldon.io
+License: Apache 2.0
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: Flask (<3.0.0,>=2.0.0)
+Requires-Dist: jsonschema (<4.0.0)
+Requires-Dist: Flask-cors (<4.0.0)
+Requires-Dist: requests (<3.0.0)
+Requires-Dist: numpy (<2.0.0)
+Requires-Dist: protobuf (<4.0.0,>=3.20.2)
+Requires-Dist: grpcio (<2.0.0)
+Requires-Dist: Flask-OpenTracing (<1.2.0,>=1.1.0)
+Requires-Dist: opentracing (<2.5.0,>=2.2.0)
+Requires-Dist: jaeger-client (<4.5.0,>=4.1.0)
+Requires-Dist: grpcio-opentracing (<1.2.0,>=1.1.4)
+Requires-Dist: grpcio-reflection (<2.0.0)
+Requires-Dist: gunicorn (<20.2.0,>=19.9.0)
+Requires-Dist: setuptools (>=65.5.1)
+Requires-Dist: prometheus-client (<0.9.0,>=0.7.1)
+Requires-Dist: werkzeug (<2.3,>=2.1.1)
+Requires-Dist: cryptography (<41.1,>=39.0.1)
+Requires-Dist: PyYAML (<=6.0.1,>=5.4)
+Requires-Dist: click (<8.1,>=8.0.0a1)
+Requires-Dist: urllib3 (<1.27,>=1.26.5)
+Requires-Dist: importlib-metadata (<5) ; python_version < "3.8"
+Provides-Extra: all
+Requires-Dist: tensorflow ; extra == 'all'
+Provides-Extra: tensorflow
+Requires-Dist: tensorflow ; extra == 'tensorflow'
+
