@@ -1,0 +1,10 @@
+torch
+
+[dev]
+numpy
+pre-commit
+pytest
+pyright
+scikit-learn
+datasets
+transformers>=4.0.0
