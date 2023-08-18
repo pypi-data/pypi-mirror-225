@@ -1,0 +1,4 @@
+[console_scripts]
+openlane = openlane.__main__:cli
+openlane.steps = openlane.steps.__main__:cli
+
