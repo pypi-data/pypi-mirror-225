@@ -1,0 +1,14 @@
+<div class="row" style="margin-top: 5%">
+    <div class="three columns"><a href="{{ url_for('index') }}">home</a></div>
+    <div class="three columns">User: {{ config.user }} | <a href="">Logout</a></div>
+    <div class="three columns">Role: {{ config.role }}</div>
+    <div class="three columns">Configuration: {{ config.config_label }} | <a href="{{ url_for('select_config') }}">Change</a></div>
+</div>
+<div class="row">
+    {% if config.project %}<div class="three columns">Project: {{ config.project }}</div>{% endif %}
+    {% if config.source %}
+    <div class="three columns">Source: {{ config.source }}</div>
+    <div class="three columns">Target: {{ config.target }}</div>
+    <div class="three columns">Proxy: {{ config.proxy }}</div>
+    {% endif %}
+</div>
