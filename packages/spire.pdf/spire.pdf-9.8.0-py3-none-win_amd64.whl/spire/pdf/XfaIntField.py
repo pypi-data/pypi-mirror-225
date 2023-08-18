@@ -1,0 +1,27 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class XfaIntField (  XfaField) :
+    """
+
+    """
+    @property
+    def Value(self)->int:
+        """
+
+        """
+        GetDllLibPdf().XfaIntField_get_Value.argtypes=[c_void_p]
+        GetDllLibPdf().XfaIntField_get_Value.restype=c_int
+        ret = GetDllLibPdf().XfaIntField_get_Value(self.Ptr)
+        return ret
+
+    @Value.setter
+    def Value(self, value:int):
+        GetDllLibPdf().XfaIntField_set_Value.argtypes=[c_void_p, c_int]
+        GetDllLibPdf().XfaIntField_set_Value(self.Ptr, value)
+

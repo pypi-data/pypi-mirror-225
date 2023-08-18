@@ -1,0 +1,100 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfSectionTemplate (  PdfDocumentTemplate) :
+    """
+    <summary>
+        Encapsulates a page template for all the pages in the section.
+    </summary>
+    """
+    @property
+    def ApplyDocumentLeftTemplate(self)->bool:
+        """
+    <summary>
+        Gets or sets value indicating whether parent Left page template should be used or not.
+    </summary>
+        """
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentLeftTemplate.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentLeftTemplate.restype=c_bool
+        ret = GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentLeftTemplate(self.Ptr)
+        return ret
+
+    @ApplyDocumentLeftTemplate.setter
+    def ApplyDocumentLeftTemplate(self, value:bool):
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentLeftTemplate.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentLeftTemplate(self.Ptr, value)
+
+    @property
+    def ApplyDocumentTopTemplate(self)->bool:
+        """
+    <summary>
+        Gets or sets value indicating whether parent Top page template should be used or not.
+    </summary>
+        """
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentTopTemplate.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentTopTemplate.restype=c_bool
+        ret = GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentTopTemplate(self.Ptr)
+        return ret
+
+    @ApplyDocumentTopTemplate.setter
+    def ApplyDocumentTopTemplate(self, value:bool):
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentTopTemplate.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentTopTemplate(self.Ptr, value)
+
+    @property
+    def ApplyDocumentRightTemplate(self)->bool:
+        """
+    <summary>
+        Gets or sets value indicating whether parent Right page template should be used or not.
+    </summary>
+        """
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentRightTemplate.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentRightTemplate.restype=c_bool
+        ret = GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentRightTemplate(self.Ptr)
+        return ret
+
+    @ApplyDocumentRightTemplate.setter
+    def ApplyDocumentRightTemplate(self, value:bool):
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentRightTemplate.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentRightTemplate(self.Ptr, value)
+
+    @property
+    def ApplyDocumentBottomTemplate(self)->bool:
+        """
+    <summary>
+        Gets or sets value indicating whether parent Bottom page template should be used or not.
+    </summary>
+        """
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentBottomTemplate.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentBottomTemplate.restype=c_bool
+        ret = GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentBottomTemplate(self.Ptr)
+        return ret
+
+    @ApplyDocumentBottomTemplate.setter
+    def ApplyDocumentBottomTemplate(self, value:bool):
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentBottomTemplate.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentBottomTemplate(self.Ptr, value)
+
+    @property
+    def ApplyDocumentStamps(self)->bool:
+        """
+    <summary>
+        Gets or sets value indicating whether 
+            the parent stamp elements should be used or not.
+    </summary>
+        """
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentStamps.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentStamps.restype=c_bool
+        ret = GetDllLibPdf().PdfSectionTemplate_get_ApplyDocumentStamps(self.Ptr)
+        return ret
+
+    @ApplyDocumentStamps.setter
+    def ApplyDocumentStamps(self, value:bool):
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentStamps.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfSectionTemplate_set_ApplyDocumentStamps(self.Ptr, value)
+

@@ -1,0 +1,70 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfStringLayoutResult (SpireObject) :
+    """
+    <summary>
+        Layouter result.
+    </summary>
+    """
+    @property
+
+    def Remainder(self)->str:
+        """
+    <summary>
+        Gets the text which is not layouted
+    </summary>
+        """
+        GetDllLibPdf().PdfStringLayoutResult_get_Remainder.argtypes=[c_void_p]
+        GetDllLibPdf().PdfStringLayoutResult_get_Remainder.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfStringLayoutResult_get_Remainder(self.Ptr))
+        return ret
+
+
+    @property
+
+    def ActualSize(self)->'SizeF':
+        """
+    <summary>
+        Gets the actual layouted text bounds
+    </summary>
+        """
+        GetDllLibPdf().PdfStringLayoutResult_get_ActualSize.argtypes=[c_void_p]
+        GetDllLibPdf().PdfStringLayoutResult_get_ActualSize.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfStringLayoutResult_get_ActualSize(self.Ptr)
+        ret = None if intPtr==None else SizeF(intPtr)
+        return ret
+
+
+    @property
+
+    def Lines(self)->List['LineInfo']:
+        """
+    <summary>
+        Gets layouted lines information.
+    </summary>
+        """
+        GetDllLibPdf().PdfStringLayoutResult_get_Lines.argtypes=[c_void_p]
+        GetDllLibPdf().PdfStringLayoutResult_get_Lines.restype=IntPtrArray
+        intPtrArray = GetDllLibPdf().PdfStringLayoutResult_get_Lines(self.Ptr)
+        ret = GetObjVectorFromArray(intPtrArray, LineInfo)
+        return ret
+
+
+    @property
+    def LineHeight(self)->float:
+        """
+    <summary>
+        Gets the height of the line.
+    </summary>
+        """
+        GetDllLibPdf().PdfStringLayoutResult_get_LineHeight.argtypes=[c_void_p]
+        GetDllLibPdf().PdfStringLayoutResult_get_LineHeight.restype=c_float
+        ret = GetDllLibPdf().PdfStringLayoutResult_get_LineHeight(self.Ptr)
+        return ret
+

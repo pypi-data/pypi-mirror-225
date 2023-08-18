@@ -1,0 +1,45 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfDocumentLinkAnnotationWidget (  PdfStyledAnnotationWidget) :
+    """
+    <summary>
+        Represents the loaded document link annotation class.
+    </summary>
+    """
+    @property
+
+    def Destination(self)->'PdfDestination':
+        """
+    <summary>
+        Gets or Sets the destination of the annotation.
+    </summary>
+        """
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_get_Destination.argtypes=[c_void_p]
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_get_Destination.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfDocumentLinkAnnotationWidget_get_Destination(self.Ptr)
+        ret = None if intPtr==None else PdfDestination(intPtr)
+        return ret
+
+
+    @Destination.setter
+    def Destination(self, value:'PdfDestination'):
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_set_Destination.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_set_Destination(self.Ptr, value.Ptr)
+
+    def ObjectID(self)->int:
+        """
+    <summary>
+        Represents the Form field identifier
+    </summary>
+        """
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_ObjectID.argtypes=[c_void_p]
+        GetDllLibPdf().PdfDocumentLinkAnnotationWidget_ObjectID.restype=c_int
+        ret = GetDllLibPdf().PdfDocumentLinkAnnotationWidget_ObjectID(self.Ptr)
+        return ret
+

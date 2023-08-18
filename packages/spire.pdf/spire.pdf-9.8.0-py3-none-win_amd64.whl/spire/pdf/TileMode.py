@@ -1,0 +1,18 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class TileMode(Enum):
+    """
+<remarks />
+    """
+    none = 0
+    Tile = 1
+    FlipX = 2
+    FlipY = 3
+    FlipXY = 4
+

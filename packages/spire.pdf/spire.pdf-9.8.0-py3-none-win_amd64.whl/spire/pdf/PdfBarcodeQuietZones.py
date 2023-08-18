@@ -1,0 +1,111 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfBarcodeQuietZones (SpireObject) :
+    """
+    <summary>
+        Represents the Class for specifying Quiet zones around the barcode.
+    </summary>
+    """
+    @property
+    def Right(self)->float:
+        """
+    <summary>
+        Gets or sets the quiet zones at the right side of the barcode.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Right.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Right.restype=c_float
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_Right(self.Ptr)
+        return ret
+
+    @Right.setter
+    def Right(self, value:float):
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Right.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Right(self.Ptr, value)
+
+    @property
+    def Top(self)->float:
+        """
+    <summary>
+         Gets or sets the quiet zones at Top of the barcode.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Top.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Top.restype=c_float
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_Top(self.Ptr)
+        return ret
+
+    @Top.setter
+    def Top(self, value:float):
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Top.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Top(self.Ptr, value)
+
+    @property
+    def Left(self)->float:
+        """
+    <summary>
+         Gets or sets the quiet zones at the left side of the barcode.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Left.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Left.restype=c_float
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_Left(self.Ptr)
+        return ret
+
+    @Left.setter
+    def Left(self, value:float):
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Left.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Left(self.Ptr, value)
+
+    @property
+    def Bottom(self)->float:
+        """
+    <summary>
+         Gets or sets the quiet zones at bottom of the barcode.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Bottom.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_Bottom.restype=c_float
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_Bottom(self.Ptr)
+        return ret
+
+    @Bottom.setter
+    def Bottom(self, value:float):
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Bottom.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().PdfBarcodeQuietZones_set_Bottom(self.Ptr, value)
+
+    @property
+    def All(self)->float:
+        """
+    <summary>
+         Gets or sets the quiet zones around the bar code.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_All.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_All.restype=c_float
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_All(self.Ptr)
+        return ret
+
+    @All.setter
+    def All(self, value:float):
+        GetDllLibPdf().PdfBarcodeQuietZones_set_All.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().PdfBarcodeQuietZones_set_All(self.Ptr, value)
+
+    @property
+    def IsAll(self)->bool:
+        """
+    <summary>
+        Check whether all the margin values are equal.
+    </summary>
+        """
+        GetDllLibPdf().PdfBarcodeQuietZones_get_IsAll.argtypes=[c_void_p]
+        GetDllLibPdf().PdfBarcodeQuietZones_get_IsAll.restype=c_bool
+        ret = GetDllLibPdf().PdfBarcodeQuietZones_get_IsAll(self.Ptr)
+        return ret
+

@@ -1,0 +1,136 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class Pdf3DCrossSection (SpireObject) :
+    """
+    <summary>
+        Represents the clipping portion of the 3D artwork for the purpose of showing artwork cross sections.
+    </summary>
+    """
+    @property
+
+    def Center(self)->List[float]:
+        """
+    <summary>
+        Gets or sets the center of the cutting plane. 
+            <remarks>A three element array specifying the center of rotation on the cutting plane in world space coordinates.</remarks></summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_Center.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_Center.restype=IntPtrArray
+        intPtrArray = GetDllLibPdf().Pdf3DCrossSection_get_Center(self.Ptr)
+        ret = GetVectorFromArray(intPtrArray, c_float)
+        return ret
+
+    @Center.setter
+    def Center(self, value:List[float]):
+        vCount = len(value)
+        ArrayType = c_float * vCount
+        vArray = ArrayType()
+        for i in range(0, vCount):
+            vArray[i] = value[i]
+        GetDllLibPdf().Pdf3DCrossSection_set_Center.argtypes=[c_void_p, ArrayType, c_int]
+        GetDllLibPdf().Pdf3DCrossSection_set_Center(self.Ptr, vArray, vCount)
+
+    @property
+
+    def Color(self)->'PdfRGBColor':
+        """
+    <summary>
+        Gets or sets the cutting plane color. 
+    </summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_Color.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_Color.restype=c_void_p
+        intPtr = GetDllLibPdf().Pdf3DCrossSection_get_Color(self.Ptr)
+        ret = None if intPtr==None else PdfRGBColor(intPtr)
+        return ret
+
+
+    @Color.setter
+    def Color(self, value:'PdfRGBColor'):
+        GetDllLibPdf().Pdf3DCrossSection_set_Color.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_set_Color(self.Ptr, value.Ptr)
+
+    @property
+
+    def IntersectionColor(self)->'PdfRGBColor':
+        """
+    <summary>
+        Gets or sets the intersection color.
+    </summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_IntersectionColor.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_IntersectionColor.restype=c_void_p
+        intPtr = GetDllLibPdf().Pdf3DCrossSection_get_IntersectionColor(self.Ptr)
+        ret = None if intPtr==None else PdfRGBColor(intPtr)
+        return ret
+
+
+    @IntersectionColor.setter
+    def IntersectionColor(self, value:'PdfRGBColor'):
+        GetDllLibPdf().Pdf3DCrossSection_set_IntersectionColor.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_set_IntersectionColor(self.Ptr, value.Ptr)
+
+    @property
+    def IntersectionIsVisible(self)->bool:
+        """
+    <summary>
+        Gets or sets a value indicating whether the intersection of cutting plane with 3D artwork is visible.
+    </summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_IntersectionIsVisible.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_IntersectionIsVisible.restype=c_bool
+        ret = GetDllLibPdf().Pdf3DCrossSection_get_IntersectionIsVisible(self.Ptr)
+        return ret
+
+    @IntersectionIsVisible.setter
+    def IntersectionIsVisible(self, value:bool):
+        GetDllLibPdf().Pdf3DCrossSection_set_IntersectionIsVisible.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().Pdf3DCrossSection_set_IntersectionIsVisible(self.Ptr, value)
+
+    @property
+    def Opacity(self)->float:
+        """
+    <summary>
+        Gets or sets the cutting plane opacity. 
+            <remarks>The opacity is given in percents, 100 is full opacity, 0 is no opacity.</remarks></summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_Opacity.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_Opacity.restype=c_float
+        ret = GetDllLibPdf().Pdf3DCrossSection_get_Opacity(self.Ptr)
+        return ret
+
+    @Opacity.setter
+    def Opacity(self, value:float):
+        GetDllLibPdf().Pdf3DCrossSection_set_Opacity.argtypes=[c_void_p, c_float]
+        GetDllLibPdf().Pdf3DCrossSection_set_Opacity(self.Ptr, value)
+
+    @property
+
+    def Orientation(self)->List['SpireObject']:
+        """
+    <summary>
+        Gets or sets the orientation of the cutting plane. 
+            <value>A three-element array specifying the orientation of the cutting plane in world space, where each value represents the orientation in relation to the X, Y, and Z axes, respectively. </value><remarks>If the array has more than 3 elements, only the first 3 will be considered. Exactly one of the values must be null, indicating an initial state of the cutting plane that is perpendicular to the corresponding axis and clipping all geometry on the positive side of that axis. The other two values must be numbers indicating the rotation of the plane, in degrees, around their corresponding axes. The order in which these rotations are applied should match the order in which the values appear in the array. </remarks></summary>
+        """
+        GetDllLibPdf().Pdf3DCrossSection_get_Orientation.argtypes=[c_void_p]
+        GetDllLibPdf().Pdf3DCrossSection_get_Orientation.restype=IntPtrArray
+        intPtrArray = GetDllLibPdf().Pdf3DCrossSection_get_Orientation(self.Ptr)
+        ret = GetVectorFromArray(intPtrArray, SpireObject)
+        return ret
+
+    @Orientation.setter
+    def Orientation(self, value:List['SpireObject']):
+        vCount = len(value)
+        ArrayType = c_void_p * vCount
+        vArray = ArrayType()
+        for i in range(0, vCount):
+            vArray[i] = value[i].Ptr
+        GetDllLibPdf().Pdf3DCrossSection_set_Orientation.argtypes=[c_void_p, ArrayType, c_int]
+        GetDllLibPdf().Pdf3DCrossSection_set_Orientation(self.Ptr, vArray, vCount)
+

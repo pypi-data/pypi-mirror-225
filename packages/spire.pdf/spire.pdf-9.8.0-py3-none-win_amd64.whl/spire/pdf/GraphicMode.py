@@ -1,0 +1,20 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class GraphicMode(Enum):
+    """
+    <summary>
+        Modes to determine what and how to dispay the signature infomation.
+    </summary>
+    """
+    SignDetail = 0
+    SignImageOnly = 1
+    SignNameOnly = 2
+    SignNameAndSignDetail = 3
+    SignImageAndSignDetail = 4
+

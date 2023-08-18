@@ -1,0 +1,53 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfFileAnnotation (  PdfAnnotation) :
+    """
+    <summary>
+        Represents a base class for file attachment annotation. 
+    </summary>
+    """
+    @property
+
+    def FileName(self)->str:
+        """
+    <summary>
+        Gets or sets file name of the annotation.
+    </summary>
+        """
+        GetDllLibPdf().PdfFileAnnotation_get_FileName.argtypes=[c_void_p]
+        GetDllLibPdf().PdfFileAnnotation_get_FileName.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfFileAnnotation_get_FileName(self.Ptr))
+        return ret
+
+
+    @FileName.setter
+    def FileName(self, value:str):
+        GetDllLibPdf().PdfFileAnnotation_set_FileName.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().PdfFileAnnotation_set_FileName(self.Ptr, value)
+
+    @property
+
+    def Appearance(self)->'PdfAppearance':
+        """
+    <summary>
+        Gets or sets appearance of the annotation.
+    </summary>
+        """
+        GetDllLibPdf().PdfFileAnnotation_get_Appearance.argtypes=[c_void_p]
+        GetDllLibPdf().PdfFileAnnotation_get_Appearance.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfFileAnnotation_get_Appearance(self.Ptr)
+        ret = None if intPtr==None else PdfAppearance(intPtr)
+        return ret
+
+
+    @Appearance.setter
+    def Appearance(self, value:'PdfAppearance'):
+        GetDllLibPdf().PdfFileAnnotation_set_Appearance.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().PdfFileAnnotation_set_Appearance(self.Ptr, value.Ptr)
+

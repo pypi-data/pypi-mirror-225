@@ -1,0 +1,29 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfCode39Barcode (  PdfUnidimensionalBarcode) :
+    @dispatch
+    def __init__(self):
+        GetDllLibPdf().PdfCode39Barcode_CreatePdfCode39Barcode.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCode39Barcode_CreatePdfCode39Barcode()
+        super(PdfCode39Barcode, self).__init__(intPtr)
+
+    @dispatch
+    def __init__(self, text:str):
+        GetDllLibPdf().PdfCode39Barcode_CreatePdfCode39BarcodeT.argtypes=[c_wchar_p]
+        GetDllLibPdf().PdfCode39Barcode_CreatePdfCode39BarcodeT.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCode39Barcode_CreatePdfCode39BarcodeT(text)
+        super(PdfCode39Barcode, self).__init__(intPtr)
+    """
+    <summary>
+        Represents a Code39 barcode.
+    </summary>
+<remarks> Only the following symbols are allowed in a Code 39 barcode:Only the following symbols are allowed in a Code 39 barcode: 1 2 3 4 5 6 7 8 9 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z - . $ / + % SPACE
+            All alphabetic characters are uppercase. If lowercase characters are required, then a Code 39 Extended barcode must be used.
+            </remarks>
+    """
