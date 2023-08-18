@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: utilitybox
+Version: 0.0.0.2a0
+Summary: Utility Box - A collection of useful Python utilities.
+Home-page: https://github.com/Josecolin99/utilitybox
+Author: Jose Angel Colin Najera
+Author-email: josecolin99@gmail.com
+License: MIT
+Keywords: utilities,tools,python,utilitybox
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# UtilityBox
+
+UtilityBox is a collection of useful tools and utilities for Python.
+
+![Version](https://img.shields.io/badge/version-0.0.0.2--alpha-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+## Features
+
+- Generation of random number lists.
+- Sorting algorithms like Bubble Sort and Selection Sort.
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install utilitybox.
+
+```bash
+pip install utilitybox
+```
+## Basic Usage
+```python
+from utilitybox import generals
+from utilitybox import ordering
+
+# Example of generating a random number list
+numbers = generals.random_number_list(10)
+
+# Example of sorting using Bubble Sort
+sorted_numbers = ordering.bubble_sort(numbers)
+```
+
+## Development
+Developed by **Jose Angel Colin Najera**.
+
+
+## License
+This project is licensed under the MIT License
+
+
