@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mago"
+dynamic = ["version"]
+authors = [
+    { name="Wookjin Jang", email="wookjinjang95@gmail.com" },
+]
+description = "Open Source general testing framework"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "numpy",
+    "django"
+]
+
+[tool.setuptools_scm]
