@@ -1,0 +1,37 @@
+input, textarea {
+  background-color: @InBgClr;
+  color: @InTClr;
+  border: solid 0.1em @InBClr;
+  text-decoration: none;
+  border-radius: 0.3em;
+  padding: 0.2em 0.8em 0.2em 0.8em;
+  margin: 0.2em;
+  font-size: 1rem;
+
+  + span.validity {
+    height: 1.5em;
+    width: 1.5ex;
+
+    &:invalid {
+      border: solid 0.12em @AeBClr;
+    }
+    &:focus {
+      border: solid 0.1em @InBClr;
+    }
+    + span.validity::after {
+      content: "✘";
+      color: @AeBClr;
+    }
+  }
+
+  &:valid {
+    border: solid 0.12em @AsBClr;
+    &:focus {
+      border: solid 0.1em @InBClr;
+    }
+    + span.validity::after {
+      content: "✓";
+      color: @AsBClr;
+    }
+  }
+}

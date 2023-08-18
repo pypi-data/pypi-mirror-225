@@ -1,0 +1,186 @@
+@import './wrapper.less';
+@import './common.less';
+@import './input.less';
+@import './sidebar.less';
+@import './mobile.less';
+@import './config.less';
+
+@sidebarWidth: @basesidebarWidth;
+@contentWidth: @basecontentWidth;
+
+@lineNumbersWrapperWidth: @baselineNumbersWrapperWidth;
+
+@AClr: @darkHighContrastBaseAClr;
+@SdA2Clr: @darkHighContrastBaseSdA2Clr;
+@FClr: @darkHighContrastBaseFClr;
+@BgClr: @darkHighContrastBaseBgClr;
+@TClr: @darkHighContrastBaseTClr;
+@T2Clr: @darkHighContrastBaseT2Clr;
+@SdT2Clr: @darkHighContrastBaseSdT2Clr;
+@TrClr: @darkHighContrastBaseTrClr;
+@BClr: @darkHighContrastBaseBClr;
+@LClr: @darkHighContrastBaseLClr;
+@LHClr: @darkHighContrastBaseLHClr;
+@ArBgClr: @darkHighContrastBaseArBgClr;
+
+@NvAClr: @darkHighContrastBaseNvAClr;
+@NvBgClr: @darkHighContrastBaseNvBgClr;
+@NvBClr: @darkHighContrastBaseNvBClr;
+@NvTClr: @darkHighContrastBaseNvTClr;
+@NvLClr: @darkHighContrastBaseNvLClr;
+@NvLHClr: @darkHighContrastBaseNvLHClr;
+
+@InBgClr: @darkHighContrastBaseInBgClr;
+@InBClr: @darkHighContrastBaseInBClr;
+
+@BtnBgAClr: @darkHighContrastBaseBtnBgAClr;
+@BtnBgClr: @darkHighContrastBaseBtnBgClr;
+@BtnBClr: @darkHighContrastBaseBtnBClr;
+@BtnTClr: @darkHighContrastBaseBtnTClr;
+
+@AaBgClr: @darkHighContrastBaseAaBgClr;
+@AaBClr: @darkHighContrastBaseAaBClr;
+@AaTClr: @darkHighContrastBaseAaTClr;
+@AaLClr: @darkHighContrastBaseAaLClr;
+@AaLHClr: @darkHighContrastBaseAaLHClr;
+
+@AtBgClr: @darkHighContrastBaseAtBgClr;
+@AtBClr: @darkHighContrastBaseAtBClr;
+@AtTClr: @darkHighContrastBaseAtTClr;
+@AtLClr: @darkHighContrastBaseAtLClr;
+@AtLHClr: @darkHighContrastBaseAtLHClr;
+
+@AwBgClr: @darkHighContrastBaseAwBgClr;
+@AwBClr: @darkHighContrastBaseAwBClr;
+@AwTClr: @darkHighContrastBaseAwTClr;
+@AwLClr: @darkHighContrastBaseAwLClr;
+@AwLHClr: @darkHighContrastBaseAwLHClr;
+
+@AdBgClr: @darkHighContrastBaseAdBgClr;
+@AdBClr: @darkHighContrastBaseAdBClr;
+@AdTClr: @darkHighContrastBaseAdTClr;
+@AdLClr: @darkHighContrastBaseAdLClr;
+@AdLHClr: @darkHighContrastBaseAdLHClr;
+
+@AsBgClr: @darkHighContrastBaseAsBgClr;
+@AsBClr: @darkHighContrastBaseAsBClr;
+@AsTClr: @darkHighContrastBaseAsTClr;
+@AsLClr: @darkHighContrastBaseAsLClr;
+@AsLHClr: @darkHighContrastBaseAsLHClr;
+
+@AhBgClr: @darkHighContrastBaseAhBgClr;
+@AhBClr: @darkHighContrastBaseAhBClr;
+@AhTClr: @darkHighContrastBaseAhTClr;
+@AhLClr: @darkHighContrastBaseAhLClr;
+@AhLHClr: @darkHighContrastBaseAhLHClr;
+
+@AiBgClr: @darkHighContrastBaseAiBgClr;
+@AiBClr: @darkHighContrastBaseAiBClr;
+@AiTClr: @darkHighContrastBaseAiTClr;
+@AiLClr: @darkHighContrastBaseAiLClr;
+@AiLHClr: @darkHighContrastBaseAiLHClr;
+
+@AnBgClr: @darkHighContrastBaseAnBgClr;
+@AnBClr: @darkHighContrastBaseAnBClr;
+@AnTClr: @darkHighContrastBaseAnTClr;
+@AnLClr: @darkHighContrastBaseAnLClr;
+@AnLHClr: @darkHighContrastBaseAnLHClr;
+
+@AcBgClr: @darkHighContrastBaseAcBgClr;
+@AcBClr: @darkHighContrastBaseAcBClr;
+@AcTClr: @darkHighContrastBaseAcTClr;
+@AcLClr: @darkHighContrastBaseAcLClr;
+@AcLHClr: @darkHighContrastBaseAcLHClr;
+
+@AeBgClr: @darkHighContrastBaseAeBgClr;
+@AeBClr: @darkHighContrastBaseAeBClr;
+@AeTClr: @darkHighContrastBaseAeTClr;
+@AeLClr: @darkHighContrastBaseAeLClr;
+@AeLHClr: @darkHighContrastBaseAeLHClr;
+
+@BqAClr: @darkHighContrastBaseBqAClr;
+@BqBgClr: @darkHighContrastBaseBqBgClr;
+@BqBClr: @darkHighContrastBaseBqBClr;
+@BqTClr: @darkHighContrastBaseBqTClr;
+@BqLClr: @darkHighContrastBaseBqLClr;
+@BqLHClr: @darkHighContrastBaseBqLHClr;
+
+@CdAClr: @darkHighContrastBaseCdAClr;
+@CdBgAClr: @darkHighContrastBaseCdBgAClr;
+@CdBgClr: @darkHighContrastBaseCdBgClr;
+@CdBClr: @darkHighContrastBaseCdBClr;
+@TClr: @darkHighContrastBaseTClr;
+@T2Clr: @darkHighContrastBaseT2Clr;
+@SdT2Clr: @darkHighContrastBaseSdT2Clr;
+@CdT2Clr: @darkHighContrastBaseCdT2Clr;
+@CdTClr: @darkHighContrastBaseCdTClr;
+@CdLClr: @darkHighContrastBaseCdLClr;
+@CdLHClr: @darkHighContrastBaseCdLHClr;
+@CdLnTClr: @darkHighContrastBaseCdLnTClr;
+@CdLnBClr: @darkHighContrastBaseCdLnBClr;
+@CdLnBgClr: @darkHighContrastBaseCdLnBgClr;
+
+
+@PrAClr: @darkHighContrastBasePrAClr;
+@PrBgAClr: @darkHighContrastBasePrBgAClr;
+@PrBgClr: @darkHighContrastBasePrBgClr;
+@PrBClr: @darkHighContrastBasePrBClr;
+@PrB2Clr: @darkHighContrastBasePrB2Clr;
+@PrTClr: @darkHighContrastBasePrTClr;
+@PrLNClr: @darkHighContrastBasePrLNClr;
+@PrLClr: @darkHighContrastBasePrLClr;
+@PrLHClr: @darkHighContrastBasePrLHClr;
+
+@TeAClr: @darkHighContrastBaseTeAClr;
+@TeBgAClr: @darkHighContrastBaseTeBgAClr;
+@TeBgClr: @darkHighContrastBaseTeBgClr;
+@TeBClr: @darkHighContrastBaseTeBClr;
+@TeTClr: @darkHighContrastBaseTeTClr;
+@TeLClr: @darkHighContrastBaseTeLClr;
+@TeLHClr: @darkHighContrastBaseTeLHClr;
+
+@ToAClr: @darkHighContrastBaseToAClr;
+@ToBgAClr: @darkHighContrastBaseToBgAClr;
+@ToBgClr: @darkHighContrastBaseToBgClr;
+@ToBClr: @darkHighContrastBaseToBClr;
+@ToTClr: @darkHighContrastBaseToTClr;
+@ToLClr: @darkHighContrastBaseToLClr;
+@ToLHClr: @darkHighContrastBaseToLHClr;
+
+@SdAClr: @darkHighContrastBaseSdAClr;
+@SdBgClr: @darkHighContrastBaseSdBgClr;
+@SdBClr: @darkHighContrastBaseSdBClr;
+@SdTClr: @darkHighContrastBaseSdTClr;
+@SdLClr: @darkHighContrastBaseSdLClr;
+@SdLHClr: @darkHighContrastBaseSdLHClr;
+
+@FoAClr: @darkHighContrastBaseFoAClr;
+@FoBClr: @darkHighContrastBaseFoBClr;
+@FoBgClr: @darkHighContrastBaseFoBgClr;
+@FoTClr: @darkHighContrastBaseFoTClr;
+@FoLClr: @darkHighContrastBaseFoLClr;
+@FoLHClr: @darkHighContrastBaseFoLHClr;
+
+@InAClr: @darkHighContrastBaseInAClr;
+@InTClr: @darkHighContrastBaseInTClr;
+@InHClr: @darkHighContrastBaseInHClr;
+
+@BtnAClr: @darkHighContrastBaseBtnAClr;
+@BtnHClr: @darkHighContrastBaseBtnHClr;
+@BhBgClr: @darkHighContrastBaseBhBgClr;
+
+@SEmailClr: @darkHighContrastBaseSEmailClr;
+@SContactClr: @darkHighContrastBaseSContactClr;
+@SFacebookClr: @darkHighContrastBaseSFacebookClr;
+@SGithubClr: @darkHighContrastBaseSGithubClr;
+@SGoogleClr: @darkHighContrastBaseSGoogleClr;
+@SLinkedinClr: @darkHighContrastBaseSLinkedinClr;
+@SPinterestClr: @darkHighContrastBaseSPinterestClr;
+@SRedditClr: @darkHighContrastBaseSRedditClr;
+@SRssClr: @darkHighContrastBaseSRssClr;
+@SSoundcloudClr: @darkHighContrastBaseSSoundcloudClr;
+@SStackOverflowClr: @darkHighContrastBaseSStackOverflowClr;
+@STwitterClr: @darkHighContrastBaseSTwitterClr;
+@SMastodonClr: @darkHighContrastBaseSMastodonClr;
+@SDiasporaClr: @darkHighContrastBaseSDiasporaClr;
+@SYoutubeClr: @darkHighContrastBaseSYoutubeClr;

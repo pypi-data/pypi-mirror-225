@@ -1,0 +1,192 @@
+@media print {
+  @page {
+    margin: 0mm !important;
+    size: A4;
+    orphans:4;
+    widows:3;
+  }
+
+  .print-only {
+    display: block;
+  }
+  .no-print {
+    display: none !important;
+    div, section, span {
+      display: none !important;
+    }
+  }
+
+  main.content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar, .sidebar-mask, .nav-links,
+  .sidebar-button {
+    display: none;
+  }
+  html, body {
+    padding: 0;
+    margin: 0;
+    font-size: 11pt;
+    size: A4;
+    height: 297mm;
+    width: 210mm;
+    hyphens: auto;
+    hyphenate-character: "\2013";
+    -webkit-hyphenate-character: "\2013";
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: justify;
+  }
+
+  #app {
+    display: block !important;
+    flex-flow: row nowrap !important;
+    justify-content: normal !important;
+    > * {
+      flex-grow: 0 !important;
+      flex-basis: auto !important;
+      flex-shrink: 0 !important;
+    }
+    #appflex {
+      display: block !important;
+      flex-flow: row nowrap !important;
+      flex-grow: 0 !important;
+      flex-basis: auto !important;
+      justify-content: normal !important;
+      > * {
+        flex-grow: 0 !important;
+        flex-basis: auto !important;
+        flex-shrink: 0 !important;
+      }
+    }
+
+    footer.footer {
+      position: fixed !important;
+      bottom: 0;
+      left: 0;
+      margin: 0 10mm 0 10mm;
+      padding: 0 0 10mm 0;
+      width: calc(100% - 20mm);
+      height: @PrintFooterHeight;
+      z-index: 1000;
+      box-shadow: none;
+      p {
+        margin: 0;
+        padding: 0.5em 0 0 0;
+        line-height: 1.2em !important;
+      }
+      p, h1, h2, h3, h4, h5, h6 {
+        text-indent: 0;
+      }
+      a[href*='//']:after {
+        content:"";
+      }
+      #pagecount {
+        float: right;
+        height: 2em;
+        font-weight: bold;
+        content: counter(page) "/" counter(pages);
+      }
+    }
+
+    header.navbar {
+      position: fixed !important;
+      box-shadow: none;
+      top: 0;
+      left: 0;
+      width: calc(100% - 20mm);
+      height: calc(@PrintHeaderHeight + 10mm);
+      overflow: hidden;
+      z-index: 1000;
+      margin: 0 10mm 0 10mm;
+      padding: 10mm 0 0 0;
+
+      .home-link {
+        display: none;
+      }
+    }
+    h1 {
+      column-span: all;
+      break-after: right;
+      text-align: center;
+      margin-top: 25%;
+      font-size: 3em;
+    }
+    h2 {
+      text-align: right;
+      column-span: all;
+      break-before: page;
+      break-after: avoid;
+      padding-top: 0;
+    }
+
+    img, svg, h1, h2, h3, h4, h5, h6, span, a[data-lightbox] {
+      break-inside: avoid !important;
+    }
+    h3, h4, h5, h6 {
+      break-before: auto;
+      break-after: avoid-page;
+      margin-bottom: 1.2em;
+    }
+    pre, table, form, svg, .colspan {
+      column-span: all;
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+    }
+    .flexgroup, .postlist-style-flex {
+      display: block !important;
+      flex-flow: row nowrap !important;
+      justify-content: normal !important;
+      > * {
+        border: none !important;
+        box-shadow: none !important;
+        flex-grow: 0 !important;
+        flex-basis: auto !important;
+        flex-shrink: 0 !important;
+      }
+    }
+    p, li, span, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+      hyphens: auto !important;
+      hyphenate-character: "\2013";
+      -webkit-hyphenate-character: "\2013";
+      word-break: break-word;
+    }
+    p, h1, h2, h3, h4, h5, h6 {
+      text-indent: 1.2em;
+    }
+
+    a[href*='//']:after {
+      content:" [" attr(href) "]";
+      font-style: italic;
+      text-decoration: underline;
+    }
+
+    .toctree-wrapper.compound, div.section, ul, ol, pre, blockquote, .admonition, form {
+      display: block;
+    }
+    .toctree-wrapper.compound, div.section, ul, ol, pre, blockquote, .admonition, table, form {
+      height: min-content;
+      justify-self: normal;
+      justify-content: normal;
+      break-inside: auto;
+      break-before: auto;
+      break-after: auto;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+  
+    main.content {
+      // * Need to remove layout table, waiting for better support from browsers
+      //column-count: 3;
+      //column-fill: auto;
+      //column-gap: 3em;
+      //column-rule: solid 0.2em @AaBgClr;
+      //box-decoration-break: clone;
+      //-webkit-box-decoration-break: clone;
+    }
+  }
+}
