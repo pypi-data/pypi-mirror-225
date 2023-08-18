@@ -1,0 +1,135 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:53:58",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"users\": [{\"id\": 13119640076178, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076306, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076434, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076562, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076690, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076818, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640076946, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077074, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077202, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077330, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077458, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077586, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077714, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077842, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640077970, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078098, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078226, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078354, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078482, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078610, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078738, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078866, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640078994, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079122, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079250, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079378, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079506, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079634, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079762, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640079890, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080018, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080146, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080274, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080402, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080530, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080658, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080786, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640080914, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081042, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081170, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081298, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081426, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081554, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081682, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081810, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640081938, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640082066, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640082194, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640082322, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119640082450, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}]}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "4211"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=d9c58c0c9072ab51ac5c03dd76987670bc55912c-1692197537; _zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "DELETE",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/users/destroy_many.json?ids=13119640076178,13119640076306,13119640076434,13119640076562,13119640076690,13119640076818,13119640076946,13119640077074,13119640077202,13119640077330,13119640077458,13119640077586,13119640077714,13119640077842,13119640077970,13119640078098,13119640078226,13119640078354,13119640078482,13119640078610,13119640078738,13119640078866,13119640078994,13119640079122,13119640079250,13119640079378,13119640079506,13119640079634,13119640079762,13119640079890,13119640080018,13119640080146,13119640080274,13119640080402,13119640080530,13119640080658,13119640080786,13119640080914,13119640081042,13119640081170,13119640081298,13119640081426,13119640081554,13119640081682,13119640081810,13119640081938,13119640082066,13119640082194,13119640082322,13119640082450"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAAA43OPRKCMBCG4btsDQT5EYaD2DpJdkEwJEg2FDLc3RQyttb7zL7fDpNTd8+Sg4duhxGhg1uZqkq2fdOrutDUFv2lUfqKWCE1lKu2VpBAWE20D+bFd0JguaXOMunsTRbJPzPtZiGXUWyF+DXIiz++Z5N3NibYsYyROk9gWd2wko8jbTAmgXMyvAIFwojneJUDnSDiYPjrj+MDYfI9nukAAAA=",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a8288ab8c0d46-ARN"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:53:58 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=8ufI%2B7yhoRtVSfoKK1ytT9jsJZkqAqwaj3kf%2FHPv5X0PPhGzVSKMiDHOSJN9VTZlbVB1YwilE2%2FPzR0RRfIGivWJVlkxEWLcx%2FrOIFkpr4tY3h7blo3k2zDaCc1wh9oIrNazGYO6EA%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "etag": [
+            "W/\"de30f48ad71e1bd52366690c6351901e\""
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "675"
+          ],
+          "rate-limit-reset": [
+            "2"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "675"
+          ],
+          "x-request-id": [
+            "7f7a8288ab8c0d46-ARN",
+            "7f7a8288ab8c0d46-ARN"
+          ],
+          "x-runtime": [
+            "0.084613"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-api-warn": [
+            "{:allowed_parameters=>{:controller=>\"users\", :action=>\"destroy_many\", :unpermitted_keys=>[\"users\"], :invalid_values=>[]}}"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-v7hdv"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/users/destroy_many.json?ids=13119640076178,13119640076306,13119640076434,13119640076562,13119640076690,13119640076818,13119640076946,13119640077074,13119640077202,13119640077330,13119640077458,13119640077586,13119640077714,13119640077842,13119640077970,13119640078098,13119640078226,13119640078354,13119640078482,13119640078610,13119640078738,13119640078866,13119640078994,13119640079122,13119640079250,13119640079378,13119640079506,13119640079634,13119640079762,13119640079890,13119640080018,13119640080146,13119640080274,13119640080402,13119640080530,13119640080658,13119640080786,13119640080914,13119640081042,13119640081170,13119640081298,13119640081426,13119640081554,13119640081682,13119640081810,13119640081938,13119640082066,13119640082194,13119640082322,13119640082450"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

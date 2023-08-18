@@ -1,0 +1,135 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:53:36",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"users\": [{\"id\": 13119435966482, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435966610, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435966738, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435966866, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435966994, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967122, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967250, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967378, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967506, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967634, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967762, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435967890, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968018, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968146, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968274, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968402, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968530, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968658, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968786, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435968914, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969042, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969170, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969298, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969426, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969554, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969682, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969810, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435969938, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970066, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970194, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970322, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970450, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970578, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970706, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970834, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435970962, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971090, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971218, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971346, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971474, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971602, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971730, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971858, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435971986, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435972114, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435972242, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435972370, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435972498, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119435972626, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458066, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458194, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458322, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458450, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458578, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458706, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458834, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635458962, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459090, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459218, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459346, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459474, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459602, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459730, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459858, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635459986, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460114, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460242, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460370, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460498, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460626, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460754, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635460882, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461010, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461138, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461266, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461394, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461522, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461650, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461778, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635461906, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462034, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462162, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462290, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462418, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462546, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462674, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462802, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635462930, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463058, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463186, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463314, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463442, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463570, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463698, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463826, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635463954, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635464082, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635464210, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635464338, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}, {\"id\": 13119635464466, \"name\": \"testUserfe5b6e22eb30cdad08b2d6f62c722ba8e1f6cc15\"}]}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "8411"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=d9c58c0c9072ab51ac5c03dd76987670bc55912c-1692197537; _zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "DELETE",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/users/destroy_many.json?ids=13119435966482,13119435966610,13119435966738,13119435966866,13119435966994,13119435967122,13119435967250,13119435967378,13119435967506,13119435967634,13119435967762,13119435967890,13119435968018,13119435968146,13119435968274,13119435968402,13119435968530,13119435968658,13119435968786,13119435968914,13119435969042,13119435969170,13119435969298,13119435969426,13119435969554,13119435969682,13119435969810,13119435969938,13119435970066,13119435970194,13119435970322,13119435970450,13119435970578,13119435970706,13119435970834,13119435970962,13119435971090,13119435971218,13119435971346,13119435971474,13119435971602,13119435971730,13119435971858,13119435971986,13119435972114,13119435972242,13119435972370,13119435972498,13119435972626,13119635458066,13119635458194,13119635458322,13119635458450,13119635458578,13119635458706,13119635458834,13119635458962,13119635459090,13119635459218,13119635459346,13119635459474,13119635459602,13119635459730,13119635459858,13119635459986,13119635460114,13119635460242,13119635460370,13119635460498,13119635460626,13119635460754,13119635460882,13119635461010,13119635461138,13119635461266,13119635461394,13119635461522,13119635461650,13119635461778,13119635461906,13119635462034,13119635462162,13119635462290,13119635462418,13119635462546,13119635462674,13119635462802,13119635462930,13119635463058,13119635463186,13119635463314,13119635463442,13119635463570,13119635463698,13119635463826,13119635463954,13119635464082,13119635464210,13119635464338,13119635464466"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAAA42OQQ6CMBBF7zJroKU1aDiIW9MyEwRLi3TKQsLdrYnErcvJvPz3NhiDvUU2nCK0GwwILVx1iarTxlxQ1qrBfOBJWk3mXFtStlEIBaTFZfbOPMdWCNRrGTxTV73II8VH1YVJmHkQqxI/B0Xxx3o1xuCzggObLKmlLGBeQr9QzJU+OVfA0QzPRIk+QVP+mp4OIMPJ8Zff9zdICVM46gAAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a81fe1d670d46-ARN"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:53:36 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=gVdLBTC4rmQLSMPt%2FtiW4SpkL%2BopcG%2B97xji5Md7Vh1u8NQVzjfa6wrisRRSaRJdJDpIGOHIB2eBso9UQAd4BKRJybqdSRJLSAPo%2BHZiekerGMCzunFyUHeqXdXdwDfB9xtdumWSZQ%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "etag": [
+            "W/\"5ae7e3f639cc3c5323222aae1db74608\""
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "683"
+          ],
+          "rate-limit-reset": [
+            "24"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "683"
+          ],
+          "x-request-id": [
+            "7f7a81fe1d670d46-ARN",
+            "7f7a81fe1d670d46-ARN"
+          ],
+          "x-runtime": [
+            "0.132793"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-api-warn": [
+            "{:allowed_parameters=>{:controller=>\"users\", :action=>\"destroy_many\", :unpermitted_keys=>[\"users\"], :invalid_values=>[]}}"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-w72d2"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/users/destroy_many.json?ids=13119435966482,13119435966610,13119435966738,13119435966866,13119435966994,13119435967122,13119435967250,13119435967378,13119435967506,13119435967634,13119435967762,13119435967890,13119435968018,13119435968146,13119435968274,13119435968402,13119435968530,13119435968658,13119435968786,13119435968914,13119435969042,13119435969170,13119435969298,13119435969426,13119435969554,13119435969682,13119435969810,13119435969938,13119435970066,13119435970194,13119435970322,13119435970450,13119435970578,13119435970706,13119435970834,13119435970962,13119435971090,13119435971218,13119435971346,13119435971474,13119435971602,13119435971730,13119435971858,13119435971986,13119435972114,13119435972242,13119435972370,13119435972498,13119435972626,13119635458066,13119635458194,13119635458322,13119635458450,13119635458578,13119635458706,13119635458834,13119635458962,13119635459090,13119635459218,13119635459346,13119635459474,13119635459602,13119635459730,13119635459858,13119635459986,13119635460114,13119635460242,13119635460370,13119635460498,13119635460626,13119635460754,13119635460882,13119635461010,13119635461138,13119635461266,13119635461394,13119635461522,13119635461650,13119635461778,13119635461906,13119635462034,13119635462162,13119635462290,13119635462418,13119635462546,13119635462674,13119635462802,13119635462930,13119635463058,13119635463186,13119635463314,13119635463442,13119635463570,13119635463698,13119635463826,13119635463954,13119635464082,13119635464210,13119635464338,13119635464466"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

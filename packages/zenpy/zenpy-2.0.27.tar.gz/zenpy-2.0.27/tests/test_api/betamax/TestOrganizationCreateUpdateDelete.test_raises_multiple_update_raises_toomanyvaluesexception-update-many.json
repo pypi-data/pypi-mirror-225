@@ -1,0 +1,125 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:57:26",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"organizations\": [{\"id\": null, \"name\": \"testOrganization63e57778-589c-4f1d-854a-f56397aea2da\"}, {\"id\": null, \"name\": \"testOrganizationb51e3c86-5ec1-4275-ac28-bfe955e2818b\"}, {\"id\": null, \"name\": \"testOrganizationa185380b-07b0-4d24-bc04-cef6f153b697\"}, {\"id\": null, \"name\": \"testOrganizationec260f50-0cdd-4630-aab0-decc7420ad93\"}, {\"id\": null, \"name\": \"testOrganization4bd5a2ef-24d7-4c33-b0e9-ba10d54f382d\"}, {\"id\": null, \"name\": \"testOrganization3edd2395-73cd-492c-8bee-de2423a943ac\"}, {\"id\": null, \"name\": \"testOrganization961500a6-4657-4457-95f5-3d95c0f10ad9\"}, {\"id\": null, \"name\": \"testOrganization176c8906-5836-499d-8cc8-3c6c12056ae9\"}, {\"id\": null, \"name\": \"testOrganization64852ad7-0104-4574-80c8-5ae69acfaf36\"}, {\"id\": null, \"name\": \"testOrganizationab388289-322a-4983-88bb-0f0894a260ce\"}, {\"id\": null, \"name\": \"testOrganization99edf4bf-2e66-45a1-b531-21b7095ed28c\"}, {\"id\": null, \"name\": \"testOrganization0ae1967b-aa6e-458a-8e8c-57e5eb917e9e\"}, {\"id\": null, \"name\": \"testOrganization7e52ac05-fd2a-4da9-8299-519dec599202\"}, {\"id\": null, \"name\": \"testOrganization60b67127-9fdf-4b23-adad-f9d5612dd17c\"}, {\"id\": null, \"name\": \"testOrganizationac44a70d-f263-4ab0-b299-3fc25004dded\"}, {\"id\": null, \"name\": \"testOrganizatione72a4faa-42f3-4900-8030-5680953412ad\"}, {\"id\": null, \"name\": \"testOrganization4cc9c7ad-b14b-4d37-862e-c1e4c8904a4f\"}, {\"id\": null, \"name\": \"testOrganization0d59c2d9-44d6-4501-af6f-e9294cc055b5\"}, {\"id\": null, \"name\": \"testOrganizationb9aa2380-e134-42eb-a935-a96ab73201ac\"}, {\"id\": null, \"name\": \"testOrganization4b388be9-464e-420d-a522-d166ee7b93bd\"}, {\"id\": null, \"name\": \"testOrganizationcd5526a1-9f06-4a75-b71d-fe6ab1287890\"}, {\"id\": null, \"name\": \"testOrganization377fa3bf-547e-4f92-b546-de0a106f721e\"}, {\"id\": null, \"name\": \"testOrganizationd3c7c8b1-bd23-4214-8d89-30db31c2d388\"}, {\"id\": null, \"name\": \"testOrganizationf17c386c-d409-43b3-b2c3-06d6e8738d2c\"}, {\"id\": null, \"name\": \"testOrganization2e4ccaec-85e6-40e0-a939-f336a6074cb7\"}, {\"id\": null, \"name\": \"testOrganizatione632c773-10f2-49bb-bc36-69e334268262\"}, {\"id\": null, \"name\": \"testOrganization5b16f468-3d14-4842-87b8-5ebd362f633e\"}, {\"id\": null, \"name\": \"testOrganization47d3d934-5016-4105-911a-ee2a7c9bf8c2\"}, {\"id\": null, \"name\": \"testOrganization4ac54b6f-f9cd-435c-b902-ce457c23078b\"}, {\"id\": null, \"name\": \"testOrganizatione71870c6-6f23-4acc-9eb1-20acf436a85c\"}, {\"id\": null, \"name\": \"testOrganizationf47e53ba-56e5-43a9-b5ed-9e908b107837\"}, {\"id\": null, \"name\": \"testOrganizationa40fe0e5-5e97-4642-8f0e-59e2ad38260b\"}, {\"id\": null, \"name\": \"testOrganizationb5d47969-f391-4154-a659-901d11b5daf7\"}, {\"id\": null, \"name\": \"testOrganizationa2373626-ab36-445d-8b4b-0db67c098c26\"}, {\"id\": null, \"name\": \"testOrganizationb31c30b9-97d1-4643-b2b0-3e405ba0b0fe\"}, {\"id\": null, \"name\": \"testOrganization00300c69-de6f-4269-9b53-a9feeb047fe6\"}, {\"id\": null, \"name\": \"testOrganization3d071c66-9a74-47ac-8081-7349b12921ef\"}, {\"id\": null, \"name\": \"testOrganization114a6568-8f95-44b4-99fa-8ec1069d0f89\"}, {\"id\": null, \"name\": \"testOrganizatione3ccd849-f0bf-4ed0-bfe1-bf48cd89e8fd\"}, {\"id\": null, \"name\": \"testOrganizatione174c022-a222-4c4c-8c1a-97ae3bda7306\"}, {\"id\": null, \"name\": \"testOrganization281659ae-04b4-459e-b8c6-1cc95e63e128\"}, {\"id\": null, \"name\": \"testOrganizationdcbf06ec-a394-4de2-8c6a-02a6c95016b0\"}, {\"id\": null, \"name\": \"testOrganizationb158b314-39e9-49b9-9ffe-7bfb11d53858\"}, {\"id\": null, \"name\": \"testOrganization6c77224e-2724-4b9c-b85a-b0712df81d3f\"}, {\"id\": null, \"name\": \"testOrganization804c9882-2028-4486-90be-d4b21df0e7e8\"}, {\"id\": null, \"name\": \"testOrganizationee6e1bf1-8e59-4041-b4f1-bb1bd751125e\"}, {\"id\": null, \"name\": \"testOrganizationfda9a522-a847-4341-993b-a0285d93ebc1\"}, {\"id\": null, \"name\": \"testOrganization447da403-ec40-4603-8f96-344efb019e80\"}, {\"id\": null, \"name\": \"testOrganizatione9b5fca7-652a-4349-a891-3a4f2bf40be4\"}, {\"id\": null, \"name\": \"testOrganization4c5edb32-b22a-48d9-a16b-e5ca975a9173\"}, {\"id\": null, \"name\": \"testOrganizationca433799-cd3d-41be-8521-ba28a408246a\"}, {\"id\": null, \"name\": \"testOrganizationab8da90c-31a9-4824-90c5-fd312a8a302c\"}, {\"id\": null, \"name\": \"testOrganization6b7f286a-e02a-453d-9704-ee3756bed06f\"}, {\"id\": null, \"name\": \"testOrganization69baad06-1ddd-40d5-916b-2e81daa329ea\"}, {\"id\": null, \"name\": \"testOrganizationdb97871e-f50c-4d5c-966d-dd22e9a1c53f\"}, {\"id\": null, \"name\": \"testOrganization54ab34c7-0a47-4b7b-bc55-9f0f4fa23d29\"}, {\"id\": null, \"name\": \"testOrganization7658bb38-b232-4e56-8f30-ceb1e02abd90\"}, {\"id\": null, \"name\": \"testOrganization96c9d039-80ed-40c0-92c0-7e339c5a2b28\"}, {\"id\": null, \"name\": \"testOrganizationfecb1574-6d68-4cae-8416-de561625c24e\"}, {\"id\": null, \"name\": \"testOrganization9834674b-855b-4391-94c0-03cb6130565d\"}, {\"id\": null, \"name\": \"testOrganization0889937f-0ac7-4177-b7d2-25726b86d00a\"}, {\"id\": null, \"name\": \"testOrganization36b3a62e-7cfe-4d94-be44-e088964d46c4\"}, {\"id\": null, \"name\": \"testOrganization17707bcf-f89c-44ff-a897-0b89d596d3e9\"}, {\"id\": null, \"name\": \"testOrganization209bdb38-ea8f-4c1d-8f76-245040e66392\"}, {\"id\": null, \"name\": \"testOrganizatione1a4e1e6-d365-4011-b11e-1b4ca7ab4a57\"}, {\"id\": null, \"name\": \"testOrganization10adabe6-ceea-4b4c-bb2c-bfa7ffe8534d\"}, {\"id\": null, \"name\": \"testOrganization0e0f5f9c-7fc0-469f-9657-a15613c245f9\"}, {\"id\": null, \"name\": \"testOrganization6ba67553-daae-4dcd-882a-95fd0b6fc64d\"}, {\"id\": null, \"name\": \"testOrganizationf6c0bcca-3411-42d0-891c-55753f032817\"}, {\"id\": null, \"name\": \"testOrganization13ec5960-baa3-4b69-aeeb-81e00562043f\"}, {\"id\": null, \"name\": \"testOrganization9b837ee4-30d9-4346-996b-5482d0966b58\"}, {\"id\": null, \"name\": \"testOrganization3e959ebe-205a-4199-bf80-780c01a0ed29\"}, {\"id\": null, \"name\": \"testOrganization453e3bf6-616b-4f2b-a227-6178edcdc0cb\"}, {\"id\": null, \"name\": \"testOrganization7d08a84b-0147-40fc-981d-99025453cd3f\"}, {\"id\": null, \"name\": \"testOrganizatione045887a-655c-46f6-99c7-9a65a8a1f881\"}, {\"id\": null, \"name\": \"testOrganizatione8799ef3-6e43-43a9-8126-bd6544db9e3a\"}, {\"id\": null, \"name\": \"testOrganization0da6d037-dc11-4a9b-9130-59b34dca0b7d\"}, {\"id\": null, \"name\": \"testOrganization9fc8c3ea-8753-4e96-ad43-b242aae49581\"}, {\"id\": null, \"name\": \"testOrganization5c7d0df3-ee96-47ad-aef8-8efa1864018e\"}, {\"id\": null, \"name\": \"testOrganizationc375b61a-733b-4857-bb97-fd170ef3bbad\"}, {\"id\": null, \"name\": \"testOrganization15885895-c30c-489a-8fa5-23d64208fe3b\"}, {\"id\": null, \"name\": \"testOrganization69b221a8-5197-494a-bd74-2fe47e0ebcc7\"}, {\"id\": null, \"name\": \"testOrganizationecb2a4dd-22b4-441e-b80f-f3fbae16cfd8\"}, {\"id\": null, \"name\": \"testOrganizationeb6ccb38-ced9-4788-8b5a-45ccec7a1134\"}, {\"id\": null, \"name\": \"testOrganizationba4388c6-e799-4299-9a86-b656c8007a89\"}, {\"id\": null, \"name\": \"testOrganization4ff9ff10-5959-49bb-a2b6-2d76db2d7d21\"}, {\"id\": null, \"name\": \"testOrganization325b56b0-d493-49c5-b9ed-c3fc0f3ca8e0\"}, {\"id\": null, \"name\": \"testOrganization39ee2feb-f0c4-4b31-98f9-8e4e75bff3ce\"}, {\"id\": null, \"name\": \"testOrganizationc14d4e78-f694-44f8-b3d3-b16e6f5a762f\"}, {\"id\": null, \"name\": \"testOrganizationb74c7330-c80f-4013-bb5d-cef8890dc9e4\"}, {\"id\": null, \"name\": \"testOrganizationd67fc9be-15f5-4e24-b00b-8a44d91623ae\"}, {\"id\": null, \"name\": \"testOrganization6c09e3f0-2e18-4419-9dd8-adceb07b4125\"}, {\"id\": null, \"name\": \"testOrganization97f8caa0-279a-41ec-ad44-9727d1f4114f\"}, {\"id\": null, \"name\": \"testOrganization45963349-c7f6-45db-a32d-6b426ac2d645\"}, {\"id\": null, \"name\": \"testOrganizationdc9899b4-2170-4166-bf3c-1bc93c521f17\"}, {\"id\": null, \"name\": \"testOrganizationd501a5ca-d1d9-44b1-9138-4cc6e239aef7\"}, {\"id\": null, \"name\": \"testOrganization76b0c9cc-915c-4e2f-ad34-8ba9f898a893\"}, {\"id\": null, \"name\": \"testOrganizationdc0b5297-4b72-49a8-b92b-d4e7648c8832\"}, {\"id\": null, \"name\": \"testOrganization3687db9d-e19f-44e1-a4d2-69575450b884\"}, {\"id\": null, \"name\": \"testOrganizationd6688ded-3266-477f-bb6a-d6a04f87f743\"}, {\"id\": null, \"name\": \"testOrganization5f6460b7-32a0-45d8-bc2c-fbd05911030b\"}, {\"id\": null, \"name\": \"testOrganization08f16652-ebb5-4e4d-b308-35a787c839c3\"}, {\"id\": null, \"name\": \"testOrganization5907006a-1a0e-4811-9e60-28a427244060\"}, {\"id\": null, \"name\": \"testOrganizationd9360e75-adf7-4101-864c-b0176fae58a4\"}, {\"id\": null, \"name\": \"testOrganizationaa51abc6-b02b-401a-84ad-eb60c69428aa\"}, {\"id\": null, \"name\": \"testOrganizationcc70b8d6-3c5c-4588-93ba-334aa76e9630\"}, {\"id\": null, \"name\": \"testOrganization406aba24-339c-4f1e-ae64-331bb76a8c0f\"}, {\"id\": null, \"name\": \"testOrganizatione0ed52cf-2996-469e-969b-8230bbd54c66\"}, {\"id\": null, \"name\": \"testOrganizationdb32d4ed-3b64-4c2f-be73-ecf58b219640\"}, {\"id\": null, \"name\": \"testOrganization2e4a47c8-373a-450d-b41f-16639b487dc2\"}, {\"id\": null, \"name\": \"testOrganization6d2eaff4-f972-4957-a5a4-727d43d61e4f\"}, {\"id\": null, \"name\": \"testOrganizatione16ec305-4bad-4d26-9f0d-8e291043cae4\"}, {\"id\": null, \"name\": \"testOrganizationf9db8f68-7409-4a7c-b3e7-fc0422fe3aa6\"}, {\"id\": null, \"name\": \"testOrganization846a7065-f684-4a6b-9c77-690982f8c940\"}, {\"id\": null, \"name\": \"testOrganization7e35f725-ce68-4eb1-8e5b-fa5edafbe968\"}, {\"id\": null, \"name\": \"testOrganizationfc332915-539e-468b-9a09-1d263c7da944\"}, {\"id\": null, \"name\": \"testOrganizationb4ad813e-3fa0-44c2-a2e9-dcb9f8606826\"}, {\"id\": null, \"name\": \"testOrganization2c42b534-cf0c-4ace-8e90-81e78c5e4c9a\"}, {\"id\": null, \"name\": \"testOrganization99997a55-d214-457a-be56-033032116ba0\"}, {\"id\": null, \"name\": \"testOrganizationf2021907-88e5-45e5-bd51-151e3d773739\"}, {\"id\": null, \"name\": \"testOrganization38de71fe-10fa-44c8-bd26-d1f9f240988b\"}, {\"id\": null, \"name\": \"testOrganizationfb59a0a0-842d-461a-8422-878b5e762639\"}, {\"id\": null, \"name\": \"testOrganization62feb1d7-c3a5-49c1-86d5-95406055e4c3\"}, {\"id\": null, \"name\": \"testOrganizationb83a38af-beae-44fd-986d-9e6260bcd99a\"}, {\"id\": null, \"name\": \"testOrganization9b3f5931-4231-492d-9a70-e43f41f8402f\"}, {\"id\": null, \"name\": \"testOrganizationbc03e85b-3151-4175-a5ca-979d779d0e85\"}, {\"id\": null, \"name\": \"testOrganization5dbc0567-5954-4d2b-badd-821016853d8f\"}, {\"id\": null, \"name\": \"testOrganizationda03dc55-e907-4a32-bd6b-5fec2bf05790\"}, {\"id\": null, \"name\": \"testOrganizationfc9a9e6e-978f-4603-830f-8920bbcd8dc7\"}, {\"id\": null, \"name\": \"testOrganization0eca84f2-7a05-4868-9e2a-5ef24237ddd8\"}, {\"id\": null, \"name\": \"testOrganization16da6a89-d328-49dd-af52-1572566bfb0e\"}, {\"id\": null, \"name\": \"testOrganization0a4fcb74-10d1-40d8-939d-0955ac939741\"}, {\"id\": null, \"name\": \"testOrganizationf0401511-9b83-419f-9e7a-02ab6e017cc9\"}, {\"id\": null, \"name\": \"testOrganizationbe739e43-15a4-4dbe-8e1a-e022c124686e\"}, {\"id\": null, \"name\": \"testOrganizationb9cabe89-60e6-4763-9101-d86d6810ebe4\"}, {\"id\": null, \"name\": \"testOrganization96e8a3a4-ddca-4663-a8b5-6b1003cf1663\"}, {\"id\": null, \"name\": \"testOrganizationbcc7ff29-c1b9-4fee-908b-d5b527dcebfb\"}, {\"id\": null, \"name\": \"testOrganizationb1620784-c2e5-41af-88b1-10eebf7e5f3b\"}, {\"id\": null, \"name\": \"testOrganizationc8877aa8-66b1-4b99-a0f6-22f64eda880b\"}, {\"id\": null, \"name\": \"testOrganizationddc4b169-11dd-4b75-92aa-400c824591c4\"}, {\"id\": null, \"name\": \"testOrganization5f544d7c-2c24-4a0e-9504-e773e9626d0e\"}, {\"id\": null, \"name\": \"testOrganizationa7b29069-e4d4-4db7-9ddf-2d6e6a6404f4\"}, {\"id\": null, \"name\": \"testOrganization22b7c288-3cb3-465f-8758-2838c7aac212\"}, {\"id\": null, \"name\": \"testOrganizationed9294d4-dbb8-4ef6-8254-c046ab647549\"}, {\"id\": null, \"name\": \"testOrganizationd9801054-889b-447a-bdb2-aea27bc14995\"}, {\"id\": null, \"name\": \"testOrganizationdeed7270-794d-4896-b2f3-a08e6154d510\"}, {\"id\": null, \"name\": \"testOrganization703124c3-6d82-464c-aee0-009b4cbdcd2f\"}, {\"id\": null, \"name\": \"testOrganizationd8fbbe85-2c02-4519-b483-218fbde2dc40\"}, {\"id\": null, \"name\": \"testOrganizationd494838b-0dbe-429e-a17f-5defa7fa27ac\"}, {\"id\": null, \"name\": \"testOrganization3731751d-4e66-4788-8550-ca4c65f58c13\"}]}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "11719"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=4c113fc1f4ee28ee96964ff14f1c9ed9be4febc3-1692197755; _zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/organizations/create_many.json"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"error\":\"TooManyValues\",\"description\":\"Parameter  cannot specify more than 100 values\",\"max_count\":100}"
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a879cfc0784c8-LED"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "104"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:57:26 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=WK4rHDJ5yVyoPA90K3jpGRnm79CavNfq0zQoxx0Z4dFPuiPbde7CPB%2F5OppvcZDKUgp49OsNxxJnmLb8HSEySQMZqR%2F081UHwRMaPp02r%2B9NeCZpuLm8kW9wqWM5JvjEGKikemgmLA%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "no-cache"
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "675"
+          ],
+          "rate-limit-reset": [
+            "34"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "675"
+          ],
+          "x-request-id": [
+            "7f7a879cfc0784c8-LED",
+            "7f7a879cfc0784c8-LED"
+          ],
+          "x-runtime": [
+            "0.087940"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-hgp56"
+          ]
+        },
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/organizations/create_many.json"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

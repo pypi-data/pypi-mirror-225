@@ -1,0 +1,127 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:54:36",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/tickets/19578.json"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAAA+1XS47bOBC9i9ZOmx+JH59jVjMYCDRF20xLooakOpM0vJkrBblHcqMUKbdjJDKznYUFA4KKr74s8rleq2j1s4nV7rWafV/tqlOMU9httx19eefGaPTTJzN2Jjw/aTds1WS3L2S7KIUtlg0XT++DG6tNZbtqlwWbyvwbjR9V3ybZOPf9pnqxKjnRJzWOJjkCU6AU3Oy1SSsH7wZ4nzdVdMvbJ1zSPsOH9kZF07UKYq0IIvQdEvD7g6AdYjvE/wRj89QVMBglTPw4mbeYwrx/b3QCRxMiLHr1of1FCMlrb6doIcurcPLWeRs/Xk1FFecA624yqRjeaDtZM8Y3gDf/zKBqfK4JbpiQEsOToxhsXFtRIdjjaMxNGZ0/qtF+UimaLKaCUCQZB/jRu3m6wWrX92rvvIou2Ybo/vp7Ux1A6j5kbxeJGZTtW61vMX4e2ugmm4Rv9ibv9r0ZbiQnFVo7attBoqB6UH0w0AihneZ9b3W1i34GQTebvCeLUlTH5AZ2tDW6db4zPrTt1Cttli8o37f/vn75+rmCUPQcohvagzV9ju419xllCB7eYEYQ9Jbq58umnjcLQDSI1QRRjrCs1xGkFqLGhBKJ1xFSMFajhqNkZhWRvDSU1Q0jeB3B6hpxIRpJa8KuiELuV9M1ExxTRDEWPxR/dl4TjlFDpFhFpCphyQT01Hp0uYwYYYGpvAsgCDVg4j4A4QbVRReI1hTiLAFyqUsAsEAKAEopb0pBZhcFC4RwAptUzII0/I4FLBMAMSYbut5NeTMQI5TWRR+8pqIA4BTaCd0HLGmUXUAa9XoaSykxtBYulVJCJX9bKVZwwTFLfXUfkF3cyQKOvUASgz6u148GRkg0FE5uIzhah2QvmMC5LbU+4XCyS53NqSy3nWSUFLcDSs1RoZgESejcQpBLFoUY4NxIuEkKLnKaha7DUmC4bQsuUmOXLCxB8vsWEPQ9JyUAdAxvfs4CGCIAGYaD0pkSgezseEz/J4J2HlDVPLrDwXjTwdVahZPysN6qozdmANb6wXkXolmIPHNcI+HWThE9yOcX0w/yuQU8yOc2jbKLB/lcvDzI5ybNQtf9r8lnmaby2HXhkWU2bmGEWiYlOJQMb6q9V2O3CAjmlMB0lzTby0C8V/r5OkAtKypGpU+JpMLbIJVm5HYwIahjYrHrMJ31zufveQ6UPM4PAAA=",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a83749b6ac3f7-LED"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:54:36 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=1%2F68aLVLrjWdQkjnFaRGU5E8LKaOaTlJ3WNwaCyta%2FZg4zdTqf3gdZRtmok77Nd4Q%2BethiUKvDT6vEiKCJNr1v3ryiBw5JUEKRi3qyCy5BLCzxX141k%2B4s27gj2DzKY4OoHfKJLBaw%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "etag": [
+            "W/\"e283776c9c1999e9712796a8def0cbda\""
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "642"
+          ],
+          "rate-limit-reset": [
+            "24"
+          ],
+          "set-cookie": [
+            "_zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca; path=/; expires=Fri, 16 Aug 2024 14:08:59 GMT; secure; HttpOnly; SameSite=None",
+            "__cfruid=4bc2230d2025571242247d04e72d3f3b9b91d03f-1692197676; path=/; domain=.d3v-ontec.zendesk.com; HttpOnly; Secure; SameSite=None"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "642"
+          ],
+          "x-request-id": [
+            "7f7a83749b6ac3f7-LED",
+            "7f7a83749b6ac3f7-LED"
+          ],
+          "x-runtime": [
+            "0.139897"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-nx8x4"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/tickets/19578.json"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

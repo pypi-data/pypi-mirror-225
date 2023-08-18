@@ -1,0 +1,135 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:57:04",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"organizations\": [{\"id\": 13120661053586}, {\"id\": 13120661053330}, {\"id\": 13120661056146}, {\"id\": 13120661057170}, {\"id\": 13120661058834}, {\"id\": 13120661056402}, {\"id\": 13120661057042}, {\"id\": 13120661056530}, {\"id\": 13120661054226}, {\"id\": 13120661055250}, {\"id\": 13120661054866}, {\"id\": 13120661058322}, {\"id\": 13120661055762}, {\"id\": 13120661056018}, {\"id\": 13120661052946}, {\"id\": 13120661056658}, {\"id\": 13120661054098}, {\"id\": 13120661056786}, {\"id\": 13120661053842}, {\"id\": 13120661055122}, {\"id\": 13120661057426}, {\"id\": 13120661053970}, {\"id\": 13120661055506}, {\"id\": 13120661056914}, {\"id\": 13120661057810}, {\"id\": 13120661056274}, {\"id\": 13120661054354}, {\"id\": 13120661055634}, {\"id\": 13120661058706}, {\"id\": 13120661058578}, {\"id\": 13120661053074}, {\"id\": 13120661055890}, {\"id\": 13120661058962}, {\"id\": 13120661052818}, {\"id\": 13120661058066}, {\"id\": 13120661058450}, {\"id\": 13120661054610}, {\"id\": 13120661059090}, {\"id\": 13120661057298}, {\"id\": 13120661058194}, {\"id\": 13120661055378}, {\"id\": 13120661053202}, {\"id\": 13120661057938}, {\"id\": 13120661054482}, {\"id\": 13120661053458}, {\"id\": 13120661054994}, {\"id\": 13120661053714}, {\"id\": 13120661057554}, {\"id\": 13120661054738}, {\"id\": 13120661057682}]}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "1219"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=4c113fc1f4ee28ee96964ff14f1c9ed9be4febc3-1692197755; _zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "DELETE",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/organizations/destroy_many.json?ids=13120661053586,13120661053330,13120661056146,13120661057170,13120661058834,13120661056402,13120661057042,13120661056530,13120661054226,13120661055250,13120661054866,13120661058322,13120661055762,13120661056018,13120661052946,13120661056658,13120661054098,13120661056786,13120661053842,13120661055122,13120661057426,13120661053970,13120661055506,13120661056914,13120661057810,13120661056274,13120661054354,13120661055634,13120661058706,13120661058578,13120661053074,13120661055890,13120661058962,13120661052818,13120661058066,13120661058450,13120661054610,13120661059090,13120661057298,13120661058194,13120661055378,13120661053202,13120661057938,13120661054482,13120661053458,13120661054994,13120661053714,13120661057554,13120661054738,13120661057682"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAAA43OOxKDMAxF0b2oBsxnCJ+F0GZsLAjE2ATLFGHYe1SESZtaZ3TfAbNTd0+Sgof2gElDC10Rq7qoao15NmQ3VSmJWVXWDZapTJuhGXKIIGyG7YNo9a0QuthjZwn75I1Wo38mvVuEXCex5+LXQC/++J7M3llOkCPJkTKNYN3cuKHnkTYYE8E1GV4BA2rGC1/liBdgHAx9/Xl+AMYkNobpAAAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a87169a9184c8-LED"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:57:05 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=iGO8bU%2FNdJyylGnLA5cEGpOGbHjadbOtUfkxusgR4z4vnQGf6T0FspxWUoHdh5%2FOBI92IGSZeto4YoUufCFqL1slh%2BVl%2FAyQv9kvOK6k9maXmUdPQr8PkGvUxnB%2F5GaQKJ1ymwDdWg%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "etag": [
+            "W/\"15ebf6eb53ff318112248cdb01b9e228\""
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "698"
+          ],
+          "rate-limit-reset": [
+            "55"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "698"
+          ],
+          "x-request-id": [
+            "7f7a87169a9184c8-LED",
+            "7f7a87169a9184c8-LED"
+          ],
+          "x-runtime": [
+            "0.108192"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-api-warn": [
+            "{:allowed_parameters=>{:controller=>\"organizations\", :action=>\"destroy_many\", :unpermitted_keys=>[\"organizations\"], :invalid_values=>[]}}"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-94587"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/organizations/destroy_many.json?ids=13120661053586,13120661053330,13120661056146,13120661057170,13120661058834,13120661056402,13120661057042,13120661056530,13120661054226,13120661055250,13120661054866,13120661058322,13120661055762,13120661056018,13120661052946,13120661056658,13120661054098,13120661056786,13120661053842,13120661055122,13120661057426,13120661053970,13120661055506,13120661056914,13120661057810,13120661056274,13120661054354,13120661055634,13120661058706,13120661058578,13120661053074,13120661055890,13120661058962,13120661052818,13120661058066,13120661058450,13120661054610,13120661059090,13120661057298,13120661058194,13120661055378,13120661053202,13120661057938,13120661054482,13120661053458,13120661054994,13120661053714,13120661057554,13120661054738,13120661057682"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

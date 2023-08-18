@@ -1,0 +1,94 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:59:14",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"webhook\": {\"id\": \"01H7ZDQ90AAYFF15CG6NZJ81PP\"}}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "49"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=2f11c7a4c054d61ebc21f3cd8d4d72b68225025c-1692197946"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "DELETE",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/webhooks/01H7ZDQ90AAYFF15CG6NZJ81PP"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a8a40dbdec3c5-LED"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:59:14 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=%2FYRuAEWW7sE7QWWn9CSc23EIkLHYaijYG9cC5fmEot4altCM%2B5sEw7hBBraXQntPFcoxNuoypmBLjULipO41SREllPvxXQegeez3gIJhov3xR6llawwXti%2F8TZuUkq6jjL0DeuECLw%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "X-Request-ID": [
+            "7f7a8a40dbdec3c5-LED"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "x-rate-limit": [
+            "100"
+          ],
+          "x-rate-limit-remaining": [
+            "65"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ]
+        },
+        "status": {
+          "code": 204,
+          "message": "No Content"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/webhooks/01H7ZDQ90AAYFF15CG6NZJ81PP"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

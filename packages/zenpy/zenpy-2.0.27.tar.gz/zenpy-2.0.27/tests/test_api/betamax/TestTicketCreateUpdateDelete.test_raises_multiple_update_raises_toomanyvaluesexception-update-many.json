@@ -1,0 +1,125 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2023-08-16T14:51:58",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"tickets\": [{\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}, {\"description\": \"test\", \"id\": null, \"subject\": \"test\"}]}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Basic <ZENPY-CREDENTIALS>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "8413"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Cookie": [
+            "__cfruid=aba02e8304e140c0a47e9eb1d8a2c9d0e9cb48e6-1692197182; _zendesk_cookie=BAhJIhl7ImRldmljZV90b2tlbnMiOnt9fQY6BkVU--0bf2100788cb010d0183feca16aaf88ccaf719ca"
+          ],
+          "User-Agent": [
+            "Zenpy/2.0.27"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://d3v-zenpydev.zendesk.com/api/v2/tickets/create_many.json"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"error\":\"TooManyValues\",\"description\":\"Parameter  cannot specify more than 100 values\",\"max_count\":100}"
+        },
+        "headers": {
+          "CF-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "CF-RAY": [
+            "7f7a7f9b0ecc84bc-LED"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "104"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 16 Aug 2023 14:51:58 GMT"
+          ],
+          "NEL": [
+            "{\"success_fraction\":0.01,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Report-To": [
+            "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=gGq6rhXHKPNsEuCyOHR5WPtyl7fgn26FXJ7vgMoz9HDt2iwXbwP6xCUDPgSjbsDXncFBfKUSpXoQG4Ek5J3gZUtaMS2onmFK1pLcD06zTrU4yYRZ%2Bc7afbyd%2BafddatE4otIN%2FSlSQ%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "X-Zendesk-Zorg": [
+            "yes"
+          ],
+          "cache-control": [
+            "no-cache"
+          ],
+          "rate-limit": [
+            "700"
+          ],
+          "rate-limit-remaining": [
+            "577"
+          ],
+          "rate-limit-reset": [
+            "2"
+          ],
+          "strict-transport-security": [
+            "max-age=31536000; includeSubDomains"
+          ],
+          "x-frame-options": [
+            "SAMEORIGIN"
+          ],
+          "x-rate-limit": [
+            "700"
+          ],
+          "x-rate-limit-remaining": [
+            "577"
+          ],
+          "x-request-id": [
+            "7f7a7f9b0ecc84bc-LED",
+            "7f7a7f9b0ecc84bc-LED"
+          ],
+          "x-runtime": [
+            "0.082120"
+          ],
+          "x-zendesk-api-version": [
+            "v2"
+          ],
+          "x-zendesk-application-version": [
+            "v17988"
+          ],
+          "x-zendesk-origin-server": [
+            "classic-app-server-8589bd8f84-qlwxz"
+          ]
+        },
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "url": "https://d3v-zenpydev.zendesk.com/api/v2/tickets/create_many.json"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}
