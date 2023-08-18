@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: graphix-ibmq
+Version: 0.0.3
+Summary: IBMQ interface for graphix library, the MBQC compiler 
+Home-page: https://graphix.readthedocs.io
+Author: Daichi Sasaki, Shinichi Sunami
+Author-email: shinichi.sunami@gmail.com
+Maintainer: Daichi Sasaki, Shinichi Sunami
+Maintainer-email: shinichi.sunami@gmail.com
+License: Apache License 2.0
+Project-URL: Bug Tracker, https://github.com/TeamGraphix/graphix-ibmq/issues
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8,<3.11
+Description-Content-Type: text/markdown
+Provides-Extra: test
+License-File: LICENSE
+
+# Graphix IBMQ interface
+
+![PyPI](https://img.shields.io/pypi/v/graphix-ibmq)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/graphix-ibmq)
+
+Provides an interface to run MBQC pattern (`graphix.Pattern`) on IBM quantum devices as well as the Aer simulators.
+
+Requires [graphix](https://github.com/TeamGraphix/graphix) to generate the measurement pattern.
+
+## Installation
+install with `pip`
+```
+ $ pip install graphix-ibmq
+```
+<!-- This can be installed as part of graphix, by
+```
+ $ pip install graphix[extra]
+``` -->
+
+## License
+
+[Apache License 2.0](LICENSE)
+
+## Note
+
+this project is not associated with IBM or IBMQuantum.
+
+
+
