@@ -1,0 +1,12 @@
+
+[dev]
+build
+twine
+tox
+lona==1.15
+lona-picocss==0.4.1
+coverage==7.2.7
+pytest==7.4.0
+pytest-aiohttp==1.0.4
+pytest-timeout==2.1.0
+playwright==1.36.0
