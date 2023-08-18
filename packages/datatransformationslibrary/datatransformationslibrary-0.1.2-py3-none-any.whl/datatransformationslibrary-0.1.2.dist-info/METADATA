@@ -1,0 +1,151 @@
+Metadata-Version: 2.1
+Name: datatransformationslibrary
+Version: 0.1.2
+Summary: 
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.18.0,<2.0.0)
+Requires-Dist: pytest (>=7.4.0,<8.0.0)
+Description-Content-Type: text/markdown
+
+# Data Transformations Library
+
+This library provides essential functions for manipulating and transforming data structures commonly used in data science and machine learning.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Functions](#functions)
+  - [transpose2d](#transpose2d)
+  - [window1d](#window1d)
+  - [convolution2d](#convolution2d)
+- [Running Tests](#running-tests)
+- [Contribution](#contribution)
+- [License](#license)
+
+## Installation
+
+
+# Clone the repository
+```bash
+git clone git@github.com:TuringCollegeSubmissions/smizak-DE2.1.git
+```
+
+# Navigate to the directory
+``` bash
+cd smizak-DE2.1
+```
+
+# Install necessary packages
+``` bash
+pip install -r requirements.txt
+```
+
+# Install from pypi
+Alternatively one can install the package from version published on pypi.
+package can be found on https://pypi.org/project/datatransformationslibrary/
+``` bash
+pip install datatransformationslibrary
+```
+
+## Functions
+
+### transpose2d
+
+Transposes a 2D matrix.
+
+**Usage:**
+
+```python
+from src.DataTransformationsLibrary import transpose2d
+result = transpose2d(input_matrix)
+```
+
+**Arguments:**
+
+- `input_matrix (list[list[float]])`: A 2D matrix to transpose.
+
+**Returns:**
+
+- A list representing the transposed matrix.
+
+**Raises:**
+
+- `ValueError`: If the input matrix is empty.
+- `ValueError`: If all rows of the matrix do not have the same length.
+
+### window1d
+
+Generates windows of the specified size, shift, and stride from the input array.
+
+**Usage:**
+
+```python
+from src.DataTransformationsLibrary import window1d
+result = window1d(input_array, size, shift=1, stride=1)
+```
+
+**Arguments:**
+
+- `input_array (Union[list, np.ndarray])`: 1D list or numpy array to generate windows from.
+- `size (int)`: The size of each window.
+- `shift (int, optional)`: Number of positions to move the window each iteration. Defaults to 1.
+- `stride (int, optional)`: The step between consecutive elements within each window. Defaults to 1.
+
+**Returns:**
+
+- A list of windows.
+
+**Raises:**
+
+- `ValueError`: If input_array is not a list or 1D numpy array.
+- `ValueError`: If input_array is not 1D.
+
+### convolution2d
+
+Performs a 2D convolution operation on the input matrix with a specified kernel.
+
+**Usage:**
+
+```python
+from src.DataTransformationsLibrary import convolution2d
+result = convolution2d(input_matrix, kernel, stride=1)
+```
+
+**Arguments:**
+
+- `input_matrix (np.ndarray)`: A 2D input matrix for convolution.
+- `kernel (np.ndarray)`: A 2D kernel for convolution.
+- `stride (int, optional)`: The step size to use when applying the kernel. Defaults to 1.
+
+**Returns:**
+
+- A matrix resulting from the convolution operation.
+
+**Raises:**
+
+- `ValueError`: If stride is less than or equal to 0.
+
+## Running Tests
+
+To ensure the integrity of this library, a comprehensive set of tests are provided. To run the tests:
+
+# Ensure pytest is installed
+```bash
+pip install pytest
+```
+
+# Navigate to the tests directory
+``` bash
+# Navigate to tests directory
+cd test
+
+# Run the tests
+pytest
+```
+
