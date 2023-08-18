@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: lmetric
+Version: 0.0.4
+Summary: Large Model Metrics
+Author: deciding
+Author-email: zhangzn710@gmail.com
+License: MIT
+Keywords: conversion
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Provides-Extra: dev
+Provides-Extra: attention
+
+A tool for measuring training/inference of large models

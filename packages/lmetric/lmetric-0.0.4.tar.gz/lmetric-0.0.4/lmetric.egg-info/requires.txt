@@ -1,0 +1,15 @@
+huggingface_hub
+triton
+scipy
+bitsandbytes
+pymeten
+einops
+
+[attention]
+flash-attn
+xformers
+
+[dev]
+sphinx
+sphinx_rtd_theme
+pytest
