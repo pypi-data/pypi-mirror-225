@@ -1,0 +1,24 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel", 'pandas', 'fuzzywuzzy', 'numpy', 'spacy', 'sklearn', 'tfidf_matcher']
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sudulunu"
+version = "0.1.1"
+authors = [
+  { name="Josh", email="josh@thambi.li" },
+]
+description = "A package with some helper scripts"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/joshnicholas/sudulunu"
+"Bug Tracker" = "https://github.com/joshnicholas/sudulunu"
