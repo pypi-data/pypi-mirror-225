@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: autoqtl
+Version: 0.1.1a0
+Summary: Automated Quantitative Trait Locus Analysis Tool
+Home-page: https://github.com/EpistasisLab/autoqtl
+Author: Attri Ghosh
+Author-email: attri.ghosh@cshs.org
+License: GNU/LGPLv3
+Keywords: qtl analysis,pipeline optimization,hyperparameter optimization,data science,genetic programming,evolutionary computation
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Provides-Extra: skrebate
+Provides-Extra: mdr
+Provides-Extra: imblearn
+License-File: LICENSE
+
+
+AutoQTL: A Python package for automated quantitative trait locus analysis.
+
