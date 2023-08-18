@@ -1,0 +1,13 @@
+cement==3.0.8
+cement[jinja2]
+cement[colorlog]
+cement[tabulate]
+gql>=3.4.0
+jsonschema>=4.17.3
+lupa>=2.0
+python-graphql-client>=0.4.3
+python-hcl2>=4.3.0
+pyYAML>=6.0
+requests>=2.28.1
+rich>=13.0.0
+tinydb>=4.7.0
