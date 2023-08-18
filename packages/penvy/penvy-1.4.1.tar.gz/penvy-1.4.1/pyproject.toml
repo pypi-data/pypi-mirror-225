@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "penvy"
+version = "1.4.1"
+description = "Pyfony framework development environment initializer"
+readme = "README.md"
+repository = "https://github.com/pyfony/penvy"
+
+license = "MIT"
+
+authors = [
+    "Jiri Koutny <jiri.koutny@datasentics.com>"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+include = ["penvy/**/*.sh", "penvy/conda/conda_executable_paths.txt"]
+
+packages = [
+    { include = "penvy", from = "src" },
+]
+
+[tool.poetry.scripts]
+"penvy-init" = "penvy.init:main"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.12.2"
+black = "^22.0.0"
+poethepoet = "^0.9.0"
+
+[tool.black]
+line-length = 140
+exclude="src/penvy/toml|src/penvy/logger/colorlog"
+
+[tool.pylint.basic]
+module-rgx = "(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$"
+ignore-paths="src/penvy/toml|src/penvy/logger/colorlog"
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-docstring",
+    "wrong-import-order",
+    "duplicate-code",
+    "line-too-long",
+    "bad-continuation",
+    "too-many-arguments",
+    "too-few-public-methods",
+    "ungrouped-imports",
+    "no-self-use",
+]
+good-names = ["a", "b", "e", "i", "k", "n", "f", "v", "df", "sc"]
+
+[tool.poe.tasks]
+pylint = "pylint src"
+black = "black src"
+black-check = "black --check src"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
