@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: netwix
+Version: 0.1.0
+Summary: Netwix is a python client for Netflix. With netwix by simply entering the Netflix ID the user can access data related to movies and tv shows available on Netflix
+Home-page: https://www.github.com/new92/netwix
+Author: new92
+Author-email: new92github@gmail.com
+Maintainer: new92
+Maintainer-email: new92github@gmail.com
+License: MIT
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: bs4
+
