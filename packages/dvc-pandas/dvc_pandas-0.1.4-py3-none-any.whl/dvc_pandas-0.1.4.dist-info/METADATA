@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: dvc-pandas
+Version: 0.1.4
+Summary: Wrapper for DVC and git to easily fetch Pandas dataframes
+Home-page: https://github.com/kausaltech/dvc-pandas
+Author: Bernhard Bliem
+Author-email: bernhard.bliem@kausal.tech
+Project-URL: Bug Tracker, https://github.com/kausaltech/dvc-pandas/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: GitPython
+Requires-Dist: appdirs
+Requires-Dist: dvc
+Requires-Dist: dvc-s3
+Requires-Dist: filelock
+Requires-Dist: pandas
+Requires-Dist: pint-pandas
+Requires-Dist: pyarrow
+Requires-Dist: python-snappy
+Requires-Dist: ruamel.yaml
+
+# dvc-pandas
