@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: sapientml
+Version: 0.2.1
+Summary: Generative AutoML for Tabular Data
+Home-page: https://github.com/sapientml/sapientml
+License: Apache-2.0
+Keywords: automl
+Author: The SapientML Authors
+Maintainer: Kosaku Kimura
+Maintainer-email: kimura.kosaku@fujitsu.com
+Requires-Python: >=3.10,<3.13
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.19.5,<2.0.0)
+Requires-Dist: pandas (>=2.0.3,<3.0.0)
+Requires-Dist: pydantic (>=2.1.1,<3.0.0)
+Requires-Dist: sapientml-core (>=0.1.13,<0.2.0)
+Project-URL: Repository, https://github.com/sapientml/sapientml
+Description-Content-Type: text/markdown
+
+# SapientML
+
+
+[![PyPI version](https://badge.fury.io/py/sapientml.svg)](https://badge.fury.io/py/sapientml) ![Static Badge](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue) [![Release](https://github.com/sapientml/sapientml/actions/workflows/release.yml/badge.svg)](https://github.com/sapientml/sapientml/actions/workflows/release.yml) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+
+
+# Getting Started
+
+## Installation
+
+```
+pip install sapientml
+```
+
+### Generate Code in a notebook
+
+Please download [housing-prices.csv](https://github.com/sapientml/sapientml/files/12374429/housing-prices.csv) to execute the following code.
+
+```py
+import pandas as pd
+
+df = pd.read_csv("housing-prices.csv")
+
+from sapientml import SapientML
+
+sml = SapientML()
+
+ret = sml.generate_code(
+    training_data=df,
+    task_type="regression",
+    target_columns=["SalePrice"],
+    ignore_columns=["Id"],
+    adaptation_metric="RMSE",
+    hyperparameter_tuning=False,
+    id_columns_for_prediction=["Id"]
+)
+ret.save(
+    "outputs",
+    save_dev_scripts=True,
+    save_user_scripts=True,
+    save_datasets=True,
+    save_running_arguments=True,
+)
+```
+
+### Run Generated Code
+
+```
+cd outputs/
+python final_script.py
+```
+
+
+
