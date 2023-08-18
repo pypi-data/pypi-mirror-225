@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: pushcart
+Version: 1.7.2
+Summary: Metadata transformations for Spark
+License: GPL-3.0-or-later
+Author: Georgel Preput
+Author-email: georgelpreput@mailbox.org
+Requires-Python: ==3.9.*
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Database :: Database Engines/Servers
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: authlib (>=1.2.1,<2.0.0)
+Requires-Dist: httpx (>=0.24.1,<0.25.0)
+Requires-Dist: ipydatagrid (>=1.1.16,<2.0.0)
+Requires-Dist: ipywidgets (>=8.0.7,<9.0.0)
+Requires-Dist: loguru (>=0.7.0,<0.8.0)
+Requires-Dist: pandas (>=2.0.2,<3.0.0)
+Requires-Dist: pyspark (>=3.4.1,<4.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Requires-Dist: validators (>=0.20.0,<0.21.0)
+Description-Content-Type: text/markdown
+
+# pushcart
+
+Helps with moving potatoes, bricks and data around.
+
+Pushcart is a metadata-based solution accelerator running on top of Spark. It also provides a set of ready-made functionalities for data transformations which might otherwise take a lot of code to put together using only `pyspark.sql.functions`.
+
+## Who is this for
+
+- Data engineers writing pure Spark code
+- Data engineers working with Databricks Delta Live Tables
+
+## How does the metadata look like?
+
+Useful for transforming data from bronze to silver, a metadata specification looks as such:
+
+column_order|source_column_name|source_column_type|dest_column_name|dest_column_type|transform_function|default_value|validation_rule|validation_action
+------------|------------------|------------------|----------------|----------------|------------------|-------------|---------------|-----------------
+0|id|string|Id|int|||Id IS NOT NULL|DROP
+1|first_name|string||||||
+2|surname|string||||||
+3|||Name|string|"F.concat_ws(' ', F.col('first_name'), F.col('surname'))",F.lit('John Doe')||
+4|dob|string|DateOfBirth|date|"F.to_date(F.col('dob'), 'yyyy-MM-dd')"|||
+5|record_ts|string|RecordDateTime|timestamp|"F.to_timestamp(F.col('record_ts'), 'yyyy-MM-dd HH:mm:ss')"||RecordDateTime IS NOT NULL|DROP
+
