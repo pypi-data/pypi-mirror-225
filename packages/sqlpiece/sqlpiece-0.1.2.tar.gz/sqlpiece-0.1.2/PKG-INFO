@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: sqlpiece
+Version: 0.1.2
+Summary: An SQL tokenization package for use with HuggingFace
+Home-page: https://github.com/MaveriQ/SQLPiece
+Author: Haris Jabbar
+Author-email: harisjabbar@gmail.com
+License: Free for non-commercial use
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+
+# SQLPiece
+Split vocabulary tokenization on SQL
