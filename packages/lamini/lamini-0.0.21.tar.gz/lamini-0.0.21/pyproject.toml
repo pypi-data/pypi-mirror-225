@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=65.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lamini"
+version = "0.0.21"
+authors = [
+  { name="PowerML", email="info@powerml.co" },
+]
+description = "Build on large language models faster"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pydantic==1.10.*",
+    "lamini-configuration[yaml]",
+    "requests",
+    "tokenizers",
+    "tqdm",
+    "numpy",
+    "scikit-learn",
+    "jsonlines",
+    "pandas"
+]
+
+[tool.setuptools]
+packages = [
+    "llama",
+    "llama.metrics",
+    "llama.program",
+    "llama.types",
+    "llama.program.operations",
+    "llama.program.util",
+    "llama.error",
+    "llama.tools",
+    "llama.runners",
+    "llama.prompts",
+    "llama.engine"
+]
+
+[tool.autopep8]
+max_line_length = 127
+in-place = true
+recursive = true
+aggressive = 3
