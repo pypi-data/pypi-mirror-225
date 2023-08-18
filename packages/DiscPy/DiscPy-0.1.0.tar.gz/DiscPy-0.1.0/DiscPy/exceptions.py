@@ -1,0 +1,2 @@
+class DiscuitAPIException(Exception):
+    pass
