@@ -1,0 +1,53 @@
+%YAML 1.2
+---
+training_type: "transformer" # Type of training to run. Either "diffuser" or "transformer".
+
+name: your-llama-13b-name-here # Name of the experiment.
+api_key: Your Cerebrium API key.
+
+# Model params:
+hf_model_path: "decapoda-research/llama-13b-hf"
+model_type: "AutoModelForCausalLM"
+dataset_path: /path/to/your/dataset.json # path to your local JSON dataset.
+custom_tokenizer: "LlamaTokenizer" # custom tokenizer from AutoTokenizer if required.
+seed: 42 # random seed for reproducibility.
+log_level: "INFO" # log_level level for logging.
+
+# Training params:
+training_args:
+  logging_steps: 10
+  per_device_train_batch_size: 6 # Note, these numbers are optimised for an A10 GPU. If you have a different GPU, you may need to change these.
+  per_device_eval_batch_size: 6
+  warmup_steps: 0
+  gradient_accumulation_steps: 4
+  num_train_epochs: 50
+  learning_rate: 0.0001
+  group_by_length: False
+
+base_model_args: # args for loading in the base model.
+  # load_in_8bit: True # if you have hardware with ~40GB of VRAM, you can use this. Otherwise, use load_in_4bit.
+  load_in_4bit: True
+  device_map: "auto"
+
+peft_lora_args: # peft lora args.
+  r: 8
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: ["q_proj", "v_proj"]
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+dataset_args:
+  # if you would like a custom prompt template it's possible to specify it here as below:
+  prompt_template:
+    description: "A shorter template to experiment with."
+    prompt_input: "### Instruction:\n{instruction}\n\n### Input:\n{input}\n\n### Response:\n"
+    prompt_no_input: "### Instruction:\n{instruction}\n\n### Response:\n"
+    response_split: "### Response:"
+  # otherwise use `prompt_template: "short"`
+  # if your dataset has data labelled differently, you can set the labels here:
+  instruction_column: "prompt"
+  label_column: "completion"
+  context_column: "context"
+  cutoff_len: 512
+  train_val_ratio: 0.9
