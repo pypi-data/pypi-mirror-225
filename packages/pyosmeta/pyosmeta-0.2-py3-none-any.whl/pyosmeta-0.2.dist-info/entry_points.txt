@@ -1,0 +1,5 @@
+[console_scripts]
+update-contributors = pyosmeta.cli.update_contributors:main
+update-reviewers = pyosmeta.cli.update_review_contribs:main
+update-reviews = pyosmeta.cli.update_reviews:main
+
