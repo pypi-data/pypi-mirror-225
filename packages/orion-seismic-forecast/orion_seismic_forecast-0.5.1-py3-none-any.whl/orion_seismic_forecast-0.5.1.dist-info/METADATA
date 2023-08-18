@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: orion-seismic-forecast
+Version: 0.5.1
+Summary: Operational Forecasting of Induced Seismicity
+Author: Christopher Sherman, Kayla Kroll, Corinne Layland-Bachmann, Keurfon Luu
+Author-email: Christopher Sherman <sherman27@llnl.gov>, Kayla Kroll <kroll5@llnl.gov>, Corinne Layland-Bachmann <cebachmann@lbl.gov>, Keurfon Luu <keurfonluu@lbl.gov>
+License: MIT
+Project-URL: Homepage, https://edx.netl.doe.gov/dataset/orion-operational-forecasting-of-induced-seismicity
+Project-URL: Documentation, https://nrap.gitlab.io/orion/
+Project-URL: Repository, https://gitlab.com/NRAP/orion
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+License-File: NOTICE
+Requires-Dist: numpy >=1.15.0
+Requires-Dist: scipy >=1.0.0
+Requires-Dist: matplotlib
+Requires-Dist: h5py
+Requires-Dist: utm >=0.6.0
+Requires-Dist: scikit-learn >=0.24
+Requires-Dist: openpyxl
+Requires-Dist: tqdm
+Requires-Dist: numba
+Requires-Dist: pandas
+Requires-Dist: contextily
+Requires-Dist: sv-ttk
+Requires-Dist: bruces >=0.5.0
+Provides-Extra: ml_models
+Requires-Dist: tensorflow ; extra == 'ml_models'
+Provides-Extra: pyscep
+Requires-Dist: pyscep ; extra == 'pyscep'
+Requires-Dist: pyproj >=3.0.0 ; extra == 'pyscep'
+
+# Welcome to the ORION Toolkit!
+
+Coming soon!
+
+## Documentation
+
+Our documentation is hosted [here](https://nrap.gitlab.io/orion/index.html).
+
+
+## Who develops Orion?
+
+- Lawrence Livermore National Laboratory
+- Lawrence Berkeley National Laboratory
+
+
+## License
+
+Orion is distributed under the terms of the MIT license.
+See [LICENSE](https://gitlab.com/NRAP/orion/-/blob/develop/LICENSE),
+[COPYRIGHT](https://gitlab.com/NRAP/orion/-/blob/develop/COPYRIGHT),
+[NOTICE](https://gitlab.com/NRAP/orion/-/blob/develop/NOTICE), and 
+[ACKNOWLEDGEMENTS](https://gitlab.com/NRAP/orion/-/blob/develop/ACKNOWLEDGEMENTS), for details.
+
+LLNL-CODE-842148
