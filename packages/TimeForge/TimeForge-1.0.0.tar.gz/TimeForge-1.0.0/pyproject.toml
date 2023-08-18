@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TimeForge"
+version = "1.0.0"
+authors = [
+	{ name="Michael Hohenstein", email="michael@hohenste.in" },
+]
+description = "Create realistic looking but fake time documentation for your student job at KIT"
+readme = "README.md"
+requires-python= ">=3.7"
+classifiers = [
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3",
+	"Natural Language :: German",
+	"Topic :: Office/Business",
+	"Topic :: Office/Business :: Scheduling",
+	"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+	"License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
+dependencies = [
+	"argcomplete >= 3.0.5",
+	"prettytable >= 3.6.0",
+	"feiertage-de >= 0.1.0",
+	"requests >= 2.31.0",
+	"pypdf >= 3.10.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/MitchiLaser/timeforge"
+"Repository" = "https://github.com/MitchiLaser/timeforge"
+
+[project.scripts]
+timeforge = "timeforge.__main__:main"
+timeforge-tui = "timeforge.gui:main"
