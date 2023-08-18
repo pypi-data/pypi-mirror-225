@@ -1,0 +1,48 @@
+syntax = "proto3";
+package user;
+import "google/protobuf/empty.proto";
+
+service UserService {
+    rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse) {}
+    rpc SaveAuditLog(SaveAuditLogRequest) returns (google.protobuf.Empty) {}
+    rpc GenerateEnumerationCode(GenerateEnumerationCodeRequest) returns (GenerateEnumerationCodeResponse) {}
+}
+
+
+message User {
+    string id = 1;
+    string firstname = 2;
+    string lastname = 3;
+    string middlename = 4;
+    string image = 5;
+    string phone = 6;
+    string email = 7;
+}
+
+message AuditLog {
+    string user_id = 1;
+    string activity_type = 2;
+    string description = 3;
+}
+
+message GetUserByIdRequest {
+    string id = 1;
+}
+
+message GetUserByIdResponse {
+    User user = 1;
+}
+
+message SaveAuditLogRequest {
+    AuditLog audit_log = 1;
+}
+
+message GenerateEnumerationCodeRequest {
+    string reg_code = 1;
+    string enumeration_type = 2;
+    int64 length = 3;
+}
+
+message GenerateEnumerationCodeResponse {
+    string code = 1;
+}
