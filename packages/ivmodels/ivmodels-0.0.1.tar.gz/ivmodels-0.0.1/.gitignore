@@ -1,0 +1,14 @@
+*.egg
+*.egg-info
+.pytest_cache
+__pycache__
+.ipynb_checkpoints
+*.DS_Store
+.mypy_cache
+*.png
+*.eps
+
+# Sphinx documentation
+docs/_build/
+docs/api/
+docs/modules.rst
