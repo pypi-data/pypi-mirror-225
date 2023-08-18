@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: cleandoc
+Version: 0.0.3
+Summary: Python package leveraging doq, black, pylint, mypy and sphinx to automatically clean and document python code.
+Home-page: https://github.com/jkrist2696/cleandoc
+Author: Jason Krist
+Author-email: jkrist2696@gmail.com
+License: GNU GPLv3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: black (>=23.3.0)
+Requires-Dist: Sphinx (>=6.2.1)
+Requires-Dist: doq (>=0.9.1)
+Requires-Dist: m2r2
+Requires-Dist: mypy (>=1.4.1)
+Requires-Dist: pylint (>=2.17.4)
+Requires-Dist: sphinx-rtd-theme (>=1.2.2)
+
+# cleandoc
+
+Python package leveraging doq, black, pylint, mypy and sphinx to automatically clean and document python code.
+
+## Install
+
+pip install cleandoc
+
+## Usage
+
+cleandoc [-h] [-file FILE] [-dir DIR] [-write] [-ignore] [-noclean] [-nodoc] [-release]
+
+optional arguments:
+* -h, --help\
+    * show this help message and exit\
+* -file FILE,-f FILE\
+    * Python (.py) file to clean\
+* -dir DIR, -d DIR\
+    * Directory containing Python (.py) files to clean and/or document\
+* -write, -w\
+    * Flag to write changes to files in-place\
+* -ignore, -i\
+    * Flag to continue through warnings\
+* -noclean, -nc\
+    * Flag to prevent cleaning of py files\
+* -nodoc, -nd\
+    * Flag to prevent html doc creation\
+* -release RELEASE, -r RELEASE\
+    * Release or version number of documentation (X.Y.Z)
+
+## Read The Docs
+
+Download "docs" folder or [check preview](https://htmlpreview.github.io/?https://github.com/jkrist2696/cleandoc/blob/main/docs/index.html).
+
+## Contributing
+
+Message me on Github.
+
+## License
+
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
+## Copyright:
+
+(c) 2023, Jason Krist
