@@ -1,0 +1,12 @@
+aiohttp
+pydantic==2.*
+
+[aes]
+pycryptodome
+
+[all]
+rsa
+pycryptodome
+
+[rsa]
+rsa
