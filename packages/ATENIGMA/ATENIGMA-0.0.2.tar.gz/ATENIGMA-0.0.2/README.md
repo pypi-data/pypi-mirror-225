@@ -1,0 +1,95 @@
+
+# ATENIGMA
+
+## Introduction
+
+ATENIGMA is a versatile CLI utility that offers basic file encryption and decryption functionalities. This tool leverages the `cryptography` Python library to provide a user-friendly way to secure your files through AES encryption. With ATENIGMA, you can encrypt files with your custom password, adding an extra layer of protection to your sensitive data.
+
+## Installation
+
+To install ATENIGMA, follow these steps:
+
+Clone the Repository: Clone the ATENIGMA repository from GitHub using the following command:
+
+```
+git clone https://github.com/yourusername/atenigma.git
+
+```
+Navigate to the Directory: Enter the cloned repository directory
+
+```
+cd atenigma
+
+```
+Install Dependencies: Install the required dependencies using `pip`:
+
+```
+pip install -r requirements.txt
+
+```
+## Usage/Examples
+
+ATENIGMA supports the following command-line options:
+
+* `--file`: Path to the file to be processed (required).
+* `--key`: The password for encryption/decryption (required).
+* `--encrypt`: Flag to encrypt the file or data.
+* `--decrypt`: Flag to decrypt the file or data.
+* `--showbanner`: Display the tool's banner.
+* `--exten`: File extension for encrypted/decrypted files (default is .enc).
+## Encryption
+
+To encrypt a file, use the `--encrypt` flag:
+
+```
+python main.py --file <path_to_file> --key <your_password> --encrypt
+
+```
+The encrypted file will be saved with the `.enc `extension
+
+
+## Decryption
+To decrypt an encrypted file, use the `--decrypt` flag:
+
+```
+python main.py --file <path_to_encrypted_file> --key <your_password> --decrypt --exten .txt
+
+```
+The decrypted file will be saved with the extension specified by the --exten flag (default is `.enc`).
+## Show Banner
+
+You can display the tool's banner using the `--showbanner` flag
+
+```
+python main.py --showbanner
+
+```
+## Modules Used
+
+* `cryptography`: A library for secure cryptography and encryption.
+* `argparse`: A library for parsing command-line arguments.
+* `base64`: A library for encoding and decoding binary data using base64 encoding.
+* `os`: A library for interacting with the operating system, used for file operations.
+* `secrets`: A library for generating cryptographically secure random numbers and strings.
+* `colored`: A library for adding colors to terminal text output.
+## Contributing
+
+ATENIGMA is an open-source project, and contributions are welcome. Feel free to fork the repository, make improvements, and create a PR
+## License
+
+ATENIGMA is released under the MIT License. See the LICENSE file for more details.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
+## Contact
+
+For any inquiries or feedback, please reach out to the author, Prasaanth, via email: `prasaanth2k@gmail.com`
+## Author
+
+- [@mrintroverrt](https://github.com/mrintroverrt)
+
+My mentor Grand wizard of technology [@Sibidharan](https://sibidharan.me/)
