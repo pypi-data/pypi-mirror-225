@@ -1,0 +1,4 @@
+[console_scripts]
+foamstream-debye = foamstream.sls.debye:main
+foamstream-euxfel = foamstream.euxfel.app:application
+foamstream-tomcat = foamstream.sls.tomcat:main

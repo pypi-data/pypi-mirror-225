@@ -1,0 +1,12 @@
+h5py>=3.7.0
+numpy
+foamclient>=0.2.0
+
+[euxfel]
+foamgraph
+extra-data
+karabo-bridge
+
+[test]
+pytest
+pytest-cov
