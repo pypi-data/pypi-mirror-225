@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: arz-api
+Version: 1.6.0.0
+Summary: Модуль для взаимодействия с форумом без Xenforo ключей
+Home-page: https://github.com/TastyBread123/Arizona-API/
+Author: TastyBread123
+Author-email: ermakovglebyt@gmail.com
+Project-URL: Documentation, https://tastybread123.github.io/Arizona-API/arz_api.html
+Keywords: python xenforo arizona roleplay samp
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests >=2.25.1
+Requires-Dist: bs4 >=0.0.1
+
+# Arizona-API
+API для взаимодействия с ресурсами Arizona без необходимости в получении API ключа xenforo у администраторов форума. Вы можете просто найти ваши куки (рекомендую для этого отдельные расширения) и начинать разработку!
+
+# Описание проекта
+API поддерживает около 35 методов, которые помогают в решении 90% задач. API легко масштабируется, а также имеет удобную [документацию](https://tastybread123.github.io/Arizona-API/arz_api.html).  
+Также рекомендую ознакомиться с [примерами](https://github.com/TastyBread123/Arizona-API/tree/main/examples), дабы возникало меньше вопросов по использованию API.  
+Удачи!
