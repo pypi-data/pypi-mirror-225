@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "django-xsl-templates"
+version = "0.0.1.dev0"
+description = "XSLT and XSD powered templates engine for Django framework."
+authors = ["Josiah Kaviani <proofit404@gmail.com>"]
+license = "BSD-2-Clause"
+readme = "README.md"
+packages = [{include = "django_xsl_templates"}]
+
+[tool.poetry.dependencies]
+python = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
