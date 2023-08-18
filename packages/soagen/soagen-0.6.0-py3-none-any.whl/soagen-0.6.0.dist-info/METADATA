@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: soagen
+Version: 0.6.0
+Summary: Struct-of-Arrays for C++.
+Author-email: Mark Gillard <mark.gillard@outlook.com.au>
+License: MIT
+Project-URL: Source, https://github.com/marzer/soagen
+Project-URL: Tracker, https://github.com/marzer/soagen/issues
+Project-URL: Funding, https://github.com/sponsors/marzer
+Keywords: c++,soa,struct-of-arrays,structure-of-arrays,struct of arrays,structure of arrays,parallel-arrays,parallel arrays,std::vector
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: C++
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Utilities
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: misk >=0.8.1
+Requires-Dist: tomli
+Requires-Dist: schema !=0.7.5
+Requires-Dist: colorama
+Requires-Dist: trieregex
+
+# soagen
+
+Struct-of-Arrays for C++.
+
+[![Sponsor](docs/images/badge-sponsor.svg)][sponsor]
+[![Gitter](docs/images/badge-gitter.svg)][gitter]
+
+<br><br>
+
+<p align="center">
+	<strong>✨&#xFE0F; This README is a stub. Please see the HTML documentation: <a href="https://marzer.github.io/soagen/">marzer.github.io/soagen</a>✨&#xFE0F;</strong>
+</p>
+
+<br><br>
+
+[gitter]: https://gitter.im/marzer/community
+[sponsor]: https://github.com/sponsors/marzer
+
+# Changelog
+
+## v0.6.0
+
+-   Fixed `swap_columns()` fast-path breaking `data()`
+-   Added spans
+    -   Added `span`
+    -   Added `is_span<>`
+    -   Added `table::subspan()` and `table::const_subspan()`
+    -   Added `span_type<>` and `const_span_type<>`
+-   Added `soa_type<>`
+-   Added `const_iterator_type<>`
+-   Added `const_row_type<>`
+-   Added `column_indices<>`
+-   Added `soagen::for_each_column()`
+-   Added `row::for_each_column()`
+-   Added generic names `first`, `second`, ..., `sixteenth` for unnamed columns 0-15
+-   Binary size improvements
+-   Documentation improvements
+
+## v0.5.0
+
+-   Added rows to `soagen::table`
+-   Added iterators to `soagen::table`
+-   Added `soagen::table::for_each_column()`
+
+## v0.4.0
+
+-   Fixed `soagen::is_table<>`
+-   Added support for emplace-constructing column values by unpacking all `std::tuple`-like types (not just the `emplacer`)
+-   Added support for taking `std::integral_constants` in `for_each_column()`
+-   Added `soagen::same_table_type<>`
+-   Added conversions between `soagen::row<>` specializations
+-   Optimized instantiation overhead for most type-traits
+
+## v0.3.0
+
+-   Added `hpp.combined`
+-   Added `std::integral_constant<size_t>` to the overload set used by `for_each_column()`
+-   Added support for constructing rows from all `std::tuple`-like types
+-   Optimized bulk-swap operations
+
+## v0.2.0
+
+-   Added `structs.annotations`
+-   Added `structs.attributes`
+-   Added `auto` option for `structs.default_constructible`
+-   Added `soagen::row_base`
+-   Added `soagen::table_base`
+-   Added `soagen::iterator_base`
+-   Added `Base` template argument to `soagen::table` for CRTP
+-   Added `swap_columns<>()`
+-   Made `column_indices` member struct into `enum class columns`
+
+## v0.1.2
+
+-   Minor refactors.
+
+## v0.1.1
+
+-   Minor refactors.
+
+## v0.1.0
+
+-   First public release 🎉&#xFE0F;
