@@ -1,0 +1,11 @@
+
+[dev]
+pre-commit
+build
+twine
+
+[test]
+hypothesis
+numpy
+pytest
+PyYaml
