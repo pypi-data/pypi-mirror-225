@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: error-simplesqlite
+Version: 0.0.1
+Summary: Simplesqlite is a sqlite3 based python library that provides a simple interface to communicate with a sqlite database
+Home-page: https://github.com/carterror/simplesqlite
+Download-URL: https://github.com/carterror/simplesqlite/tarbal/0.0.1
+Author: Carlos Brayan
+Author-email: carlos.bramila98@gmail.com
+License: Creative Commons
+Keywords: db,sqlite
+Description-Content-Type: text/markdown
+
+## SimpleSQLite Library
+
+### Simplesqlite is a sqlite3 based python library that provides a simple interface to communicate with a sqlite database
+
+```python
+from simplesqlite import SSQLite, Field
+
+def example():
+    db = SSQLite()
+
+    db.create('user', Field('name').primary().text(), Field('age').integer().null())
+
+    db.insert('user', {
+        "name": "Carlos1",
+        "age": 24
+    })
+```
+
