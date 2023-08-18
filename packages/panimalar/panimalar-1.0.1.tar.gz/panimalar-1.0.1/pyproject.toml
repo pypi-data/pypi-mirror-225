@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "panimalar"
+version = "1.0.1"
+authors = [
+    { name="aviiciii (Laaveshwaran Parthiban)", email="laavesh1@gmail.com" },
+    { name="The Coding Society", email="codingsociety@psdc.org.in"},
+]
+description = "A package of function created by and for The Coding Society, Panimalar Engineering College"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "regex>=2022.10.31",
+    "pytest>=7.2.2",
+    "texttable>=1.6.4",
+]
+
+
+
+[project.urls]
+"Homepage" = "https://github.com/thecoding-society/package"
+"Bug Tracker" = "https://github.com/thecoding-society/package/issues"
