@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: bliss
+Version: 1.11.0
+Summary: BeamLine Instrumentation Support Software
+Home-page: https://gitlab.esrf.fr/bliss/bliss
+Author: BCU (ESRF)
+Maintainer: bliss developers
+Maintainer-email: bliss@esrf.fr
+License: LGPLv3
+Project-URL: Documentation, https://bliss.gitlab-pages.esrf.fr/bliss/master
+Project-URL: Source Code, https://gitlab.esrf.fr/bliss/bliss
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: doc
+License-File: LICENSE
+
+[![build status](https://gitlab.esrf.fr/bliss/bliss/badges/master/pipeline.svg)](https://gitlab.esrf.fr/bliss/bliss/pipelines/master/latest)
+<!-- [![coverage report](https://gitlab.esrf.fr/bliss/bliss/badges/master/coverage.svg)](https://bliss.gitlab-pages.esrf.fr/bliss/master/htmlcov) -->
+
+
+# Documentation
+
+- [latest](https://bliss.gitlab-pages.esrf.fr/bliss/master)
+- [1.10.x](https://bliss.gitlab-pages.esrf.fr/bliss/1.10.x)
+
+# How to install
+
+Installation at an ESRF beamline: **https://bliss.gitlab-pages.esrf.fr/bliss/master/installation_esrf.html**
+
+Installation anywhere else: **https://bliss.gitlab-pages.esrf.fr/bliss/master/installation.html**
