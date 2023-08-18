@@ -1,0 +1,85 @@
+from .ai_building_task import AiBuildingTask
+from .chat_message import ChatMessage
+from .return_class import AbstractApiClass
+
+
+class ChatSession(AbstractApiClass):
+    """
+        A chat session with Abacus AI Chat.
+
+        Args:
+            client (ApiClient): An authenticated API Client instance
+            answer (str): The response from the chatbot
+            chatSessionId (str): The chat session id
+            projectId (str): The project id associated with the chat session
+            name (str): The name of the chat session
+            createdAt (str): The timestamp at which the chat session was created
+            status (str): The status of the chat sessions
+            aiBuildingInProgress (bool): Whether the AI building is in progress or not
+            chatHistory (ChatMessage): The chat history for the conversation
+            nextAiBuildingTask (AiBuildingTask): The next AI building task for the chat session
+    """
+
+    def __init__(self, client, answer=None, chatSessionId=None, projectId=None, name=None, createdAt=None, status=None, aiBuildingInProgress=None, chatHistory={}, nextAiBuildingTask={}):
+        super().__init__(client, chatSessionId)
+        self.answer = answer
+        self.chat_session_id = chatSessionId
+        self.project_id = projectId
+        self.name = name
+        self.created_at = createdAt
+        self.status = status
+        self.ai_building_in_progress = aiBuildingInProgress
+        self.chat_history = client._build_class(ChatMessage, chatHistory)
+        self.next_ai_building_task = client._build_class(
+            AiBuildingTask, nextAiBuildingTask)
+
+    def __repr__(self):
+        return f"ChatSession(answer={repr(self.answer)},\n  chat_session_id={repr(self.chat_session_id)},\n  project_id={repr(self.project_id)},\n  name={repr(self.name)},\n  created_at={repr(self.created_at)},\n  status={repr(self.status)},\n  ai_building_in_progress={repr(self.ai_building_in_progress)},\n  chat_history={repr(self.chat_history)},\n  next_ai_building_task={repr(self.next_ai_building_task)})"
+
+    def to_dict(self):
+        """
+        Get a dict representation of the parameters in this class
+
+        Returns:
+            dict: The dict value representation of the class parameters
+        """
+        return {'answer': self.answer, 'chat_session_id': self.chat_session_id, 'project_id': self.project_id, 'name': self.name, 'created_at': self.created_at, 'status': self.status, 'ai_building_in_progress': self.ai_building_in_progress, 'chat_history': self._get_attribute_as_dict(self.chat_history), 'next_ai_building_task': self._get_attribute_as_dict(self.next_ai_building_task)}
+
+    def get(self):
+        """
+        Gets a chat session from Abacus AI Chat.
+
+        Args:
+            chat_session_id (str): Unique ID of the chat session.
+
+        Returns:
+            ChatSession: The chat session with Abacus AI Chat
+        """
+        return self.client.get_chat_session(self.chat_session_id)
+
+    def delete_chat_message(self, message_index: int):
+        """
+        Deletes a message in a chat session and its associated response.
+
+        Args:
+            message_index (int): The index of the chat message within the UI.
+        """
+        return self.client.delete_chat_message(self.chat_session_id, message_index)
+
+    def export(self):
+        """
+        Exports a chat session to an HTML file
+
+        Args:
+            chat_session_id (str): Unique ID of the chat session.
+        """
+        return self.client.export_chat_session(self.chat_session_id)
+
+    def rename(self, name: str):
+        """
+        Renames a chat session with Abacus AI Chat.
+
+        Args:
+            name (str): The new name of the chat session.
+        """
+        return self.client.rename_chat_session(self.chat_session_id, name)
