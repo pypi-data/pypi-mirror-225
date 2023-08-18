@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: grad-tts
+Version: 0.0.1
+Summary: A fork of the official implementation of the Grad-TTS model.
+Home-page: https://github.com/liwangd/Grad-TTS
+Author: Li Wang
+Author-email: li@liwang.info
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+License-File: LICENSE
+Requires-Dist: Cython
+Requires-Dist: numpy
+
