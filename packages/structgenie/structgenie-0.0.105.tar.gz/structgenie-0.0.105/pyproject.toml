@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "structgenie"
+version = "0.0.105"
+description = "StructGenie: A streamlined engine for generating and validating structured outputs from language models using a single, adaptable template."
+authors = [
+    {name = "elokus", email = "lukas.kowejsza@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "langchain~=0.0.231",
+    "uuid>=1.30",
+    "pydantic~=1.10.8",
+    "pyyaml~=6.0",
+    "openai>=0.10.0",
+    "tiktoken==0.4.0"
+]
