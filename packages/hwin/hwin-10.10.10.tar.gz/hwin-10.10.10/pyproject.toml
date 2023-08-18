@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hwin"
+version = "10.10.10"
+description = "Project description"
+authors = ["Tadeusz Miszczyk <42252259+8tm@users.noreply.github.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.scripts]
+hwin = 'hwin.main:main'
+
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
