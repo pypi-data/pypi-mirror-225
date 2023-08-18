@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "gitreview-gpt"
+version = "0.1.1"
+description = "CLI tool that reviews your git changes with GPT-3.5 and GPT-4"
+authors = ["fynnfluegge <fynnfluegge@gmx.de>"]
+readme = "README.md"
+packages = [{ include = "gitreview_gpt" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+tiktoken = "^0.4.0"
+yaspin = "^2.3.0"
+
+[tool.poetry.scripts]
+rgpt = "gitreview_gpt.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
