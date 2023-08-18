@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django-handy-admin"
+version = "0.0.0"
+description = "Set of handy addons to Django Admin."
+authors = ["Michał Sut <sut.michal@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_handy_admin"}]
+
+[tool.poetry.dependencies]
+django = "4.2"
+python = "^3.8"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+pytest-mock = "^3.11.1"
+pytest-django = "^4.5.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "base.settings"
+pythonpath = ". tests"
