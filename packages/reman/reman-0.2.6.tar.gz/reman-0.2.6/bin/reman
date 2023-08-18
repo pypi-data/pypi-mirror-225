@@ -1,0 +1,199 @@
+#!/usr/bin/python3
+
+from reman import ReMan
+from conanDefs import Variants
+from aptly_api import Client
+import argparse, textwrap
+import sys
+import importlib.util
+
+reman = ReMan.ReMan()
+variants = Variants.Variants()
+
+
+parser = argparse.ArgumentParser(
+	usage='%(prog)s --help for more information',
+	formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument("action", help='''The action to perform:
+	- getUserChannels
+	- getChannel
+	- createConanData
+	- createVariants
+	- createPlatforms
+	- createRelease
+	- createChannel
+	- linkReleaseChannel
+	- isExistingSnapshot
+	- publishSnapshot
+	- listSnapshots''')
+parser.add_argument("-r", "--releaseName", type=str, help="The release name")
+parser.add_argument("-u", "--userName", type=str, help="The user name")
+parser.add_argument("-c", "--channelName", type=str, help="The channel name")
+parser.add_argument("-t", "--targetName", type=str, help="target name")
+parser.add_argument("-fr", "--fromReleaseName", type=str, help="The release name to copy from")
+parser.add_argument("-s", "--snapshotName", type=str, help="snapshot name")
+parser.add_argument("-st", "--storage", type=str, help="storage name")
+
+
+def checkReleaseName():
+	if (args.releaseName is None):
+		print(f"Release name not specified")
+		sys.exit(1)
+
+def checkUserName():
+	if (args.userName is None):
+		print(f"User name not specified")
+		sys.exit(1)
+
+def checkChannel():
+	if (args.channelName is None):
+		print(f"Channel name not specified")
+		sys.exit(1)
+
+def checkTargetName():
+	if (args.targetName is None):
+		print(f"Target name not specified")
+		sys.exit(1)
+
+def checkFromReleaseName():
+	if (args.fromReleaseName is None):
+		print(f"From release name name not specified")
+		sys.exit(1)
+
+def checkSnapshotName():
+	if (args.snapshotName is None):
+		print(f"Snapshot name not specified")
+		sys.exit(1)
+
+def getUserChannels(releaseName):
+	print(reman.getUserChannels(releaseName))
+
+def getChannel(releaseName, userName):
+	print(reman.getChannel(releaseName, userName))
+
+def createConanData(releaseName):
+	data = reman.getUserChannels(releaseName)
+	print("create conandata.yml")
+	f = open("conandata.yml", "w")
+	f.write("repositories:\n")
+	for row in data:
+		f.write(f"  {row[0]}: \"{row[1]}\"\n")
+	f.close()
+
+def createVariants(target):
+	variants.createVariantsFile(target)
+	"""
+	print("create variants.yml")
+	spec = importlib.util.spec_from_file_location("conanfile", "./conanfile.py")
+	if  spec:
+		module = importlib.util.module_from_spec(spec)
+		spec.loader.exec_module(module)
+		f = open("variants.yml", "w")
+		f.write("variants:\n")
+		if  hasattr( module, "build_variants" ):
+			# some specific build are defined
+			for key in module.build_variants:
+				variant = module.build_variants[key]
+				# if target is present
+				if target in variant['targets']:
+					for option in variant['options']:
+						f.write(f"  - \"{option}\"\n")
+		else:
+			# Add default build  ( no options )
+ 			f.write(f"  - \"\"\n")
+		f.close()
+	
+	"""
+
+def createBoards(target):
+	print("create boards.yml")
+	spec = importlib.util.spec_from_file_location("conanfile", "./conanfile.py")
+	if  spec:
+		module = importlib.util.module_from_spec(spec)
+		spec.loader.exec_module(module)
+		f = open("boards.yml", "w")
+		f.write("boards:\n")
+		if  hasattr( module, "build_variants" ):
+			# some specific build are defined
+			for key in module.build_boards:
+				f.write(f"  - \"{key}\"\n")
+	        # Add default build  ( no options )
+		f.write(f"  - \"\"\n")
+		f.close()
+
+def createRelease(releaseName, newReleaseName):
+	reman.createRelease(releaseName, newReleaseName)
+
+def createChannel(channelName, userName):
+	reman.createChannel(channelName, userName)
+
+def linkReleaseChannel(releaseName, userName, channelName):
+	reman.linkReleaseChannel(releaseName, userName, channelName)
+
+def isExistingSnapshots(snapshot):
+	aptly = Client("http://aptly.kuba.aprogsys.com:8000")
+	existingSnaps = aptly.snapshots.list()
+	for snap in existingSnaps:
+		if snap.name == snapshot:
+			print(f"Snapshot already exists: {snap}")
+			return True
+	return False
+
+def publishSnapshot(snapshot, storageName):
+	aptly = Client("http://aptly.kuba.aprogsys.com:8000")
+	aptly.publish.publish(distribution=snapshot,
+		source_kind="snapshot",
+		sources=[{"Component": "main", "Name":f"{snapshot}"}],
+		architectures=["kp6tab","armhf","VIPER2","COBRA2"], 
+		force_overwrite=True,
+		prefix=storageName
+	)
+
+def listSnapshots():
+	aptly = Client("http://aptly.kuba.aprogsys.com:8000")
+	snapsObjs = aptly.snapshots.list()
+	snaps = []
+	for snap in snapsObjs:
+		snaps.insert(0, snap.name)
+	print(snaps)
+
+args = parser.parse_args()
+
+if (args.action == "getUserChannels"):
+	checkReleaseName()
+	getUserChannels(args.releaseName)
+elif (args.action == "getChannel"):
+	checkReleaseName()
+	checkUserName()
+	getChannel(args.releaseName, args.userName)
+elif (args.action == "createConanData"):
+	checkReleaseName()
+	createConanData(args.releaseName)
+elif (args.action == "createVariants"):
+	checkTargetName()
+	createVariants(args.targetName)
+elif (args.action == "createBoards"):
+	checkTargetName()
+	createBoards(args.targetName)
+elif args.action == "createRelease":
+	checkReleaseName()
+	checkFromReleaseName()
+	reman.createRelease(args.releaseName, args.fromReleaseName)
+elif args.action == "createChannel":
+	checkUserName()
+	checkChannel()
+	createChannel(args.channelName, args.userName)
+elif args.action == "linkReleaseChannel":
+	checkReleaseName()
+	checkUserName()
+	linkReleaseChannel(args.releaseName, args.userName, args.channelName)
+elif args.action == "isExistingSnapshot":
+	checkSnapshotName()
+	if isExistingSnapshots(args.snapshotName):
+		sys.exit(1)
+elif (args.action == "publishSnapshot"):
+	checkSnapshotName()
+	publishSnapshot(args.snapshotName, args.storage)
+elif (args.action == "listSnapshots"):
+	listSnapshots()
+
