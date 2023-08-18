@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object
+    i18n:domain="plone"
+    meta_type="Dexterity FTI"
+    name="Collection"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <property name="view_methods" purge="False">
+    <element value="tabular_label_override_view"/>
+  </property>
+
+  <property name="behaviors" purge="false">
+    <element value="collective.tabularlabeloverrides.tabular_label_overrides"/>
+  </property>
+
+</object>
