@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: infretis
+Version: 2023.3.dev1
+Summary: Infinite swapping parallel RETIS
+License: MIT
+Author: Daniel Zhang
+Author-email: daniel.t.zhang@ntnu.no
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: dask (==2023.3.0)
+Requires-Dist: distributed (==2023.3.0)
+Requires-Dist: matplotlib (>=3.7.2,<4.0.0)
+Requires-Dist: numpy (>=1.25.2,<2.0.0)
+Requires-Dist: tomli (>=2.0.1,<3.0.0)
+Requires-Dist: tomli-w (>=1.0.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+# infretis
+![Tests](https://github.com/infretis/infretis/actions/workflows/test.yaml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/infretis/infretis/badge.svg?branch=main)](https://coveralls.io/github/infretis/infretis?branch=main)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
+## Installation 
+
+1. Clone the repository
+2. (Optional) Create a virtual environment
+3. Install with:
+   ```bash   
+   python -m pip install -e .
+   ```
+
