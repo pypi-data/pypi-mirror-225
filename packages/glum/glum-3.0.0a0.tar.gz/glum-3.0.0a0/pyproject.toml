@@ -1,0 +1,62 @@
+[build-system]
+requires = [
+  'setuptools',
+  'setuptools-scm',
+  'wheel',
+  'Cython',
+  'oldest-supported-numpy',
+  'scikit-learn',
+]
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+ensure_newline_before_comments = true
+line_length = 88
+known_first_party = "glum"
+skip_glob = '\.eggs/*,\.git/*,\.venv/*,build/*,dist/*'
+default_section = 'THIRDPARTY'
+
+[tool.cibuildwheel]
+skip = [
+  "*-win32",
+  "*-manylinux_i686",
+  "pp*", 
+  "*-musllinux_*"
+]
+test-requires = ["pytest", "pytest-xdist"]
+
+[tool.cibuildwheel.macos]
+before-build = [
+  "bash build_tools/prepare_macos_wheel.sh",
+]
+
+[tool.cibuildwheel.macos.environment]
+LDFLAGS="-Wl,-rpath,$CONDA/envs/build/lib -L$CONDA/envs/build/lib"
+CFLAGS="-I$CONDA/envs/build/include"
+CXXFLAGS="-I$CONDA/envs/build/include"
+CXX="/usr/bin/clang++"
+CC="/usr/bin/clang"
+
+[tool.cibuildwheel.windows.environment]
+SETUPTOOLS_USE_DISTUTILS="stdlib"
+
+[tool.pytest.ini_options]
+# Filters are standard python warning filters as described here:
+# https://docs.python.org/3/library/warnings.html#the-warnings-filter
+filterwarnings = [
+    "ignore:.*distutils.*:DeprecationWarning:.*",
+    "ignore:.*distutils.*:UserWarning:.*",
+    "ignore:.*The 'u' format is deprecated.*:DeprecationWarning:pywintypes",
+]
