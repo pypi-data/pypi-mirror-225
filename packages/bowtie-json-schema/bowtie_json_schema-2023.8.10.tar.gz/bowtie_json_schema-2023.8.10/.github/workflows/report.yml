@@ -1,0 +1,61 @@
+name: Test Suite Report
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+  schedule:
+    # Daily at 2:15
+    - cron: "15 2 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - draft2020-12
+          - draft2019-09
+          - draft7
+          - draft6
+          - draft4
+          - draft3
+
+    steps:
+      # FIXME: we can skip checking out if we are able to list all images in
+      #        the image repository
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install Bowtie
+        run: python3 -m pip install bowtie-json-schema
+
+      - name: Generate the Report
+        run: |
+          bowtie suite $(find implementations/ -mindepth 1 -maxdepth 1 -type d | sed 's/implementations\//-i /') https://github.com/json-schema-org/JSON-Schema-Test-Suite/tree/main/tests/${{ matrix.version }} | tee ${{ matrix.version }}.json | bowtie report --badges badges --generate-dialect-navigation --out ${{ matrix.version }}.html
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: |
+            ${{ matrix.version }}.json
+            badges/
+
+  deploy-frontend:
+    needs: test
+    uses: ./.github/workflows/deploy-frontend.yml
+    with:
+      report_artifact_in_scope: true
