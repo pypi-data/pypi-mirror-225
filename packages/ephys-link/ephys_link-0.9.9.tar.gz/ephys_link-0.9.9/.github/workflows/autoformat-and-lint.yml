@@ -1,0 +1,50 @@
+name: Autoformat and Lint
+
+on:
+  pull_request:
+  merge_group:
+
+jobs:
+  autoformat:
+    name: Autoformat and Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 🛎 Checkout
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.WORKFLOW_COMMIT }}
+
+      - name: 🤖🛎 Bot Checkout
+        if: github.event.pull_request.user.login == 'dependabot[bot]'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: pip install -r .github/auto-formatters.txt
+
+      - name: 🔃 Sort Imports
+        run: isort .
+
+      - name: 📝 Format Code
+        run: black .
+
+      - name: ✅ Commit code format changes
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Autoformat code"
+
+      - name: 🔍 Lint
+        run: pylama
