@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ai-creator"
+version = "0.0.1"
+description = ""
+authors = ["Kevin Pflaumer <kevin@pflaumer.at>"]
+readme = "README.md"
+packages = [{include = "ai_creator"}]
+
+[tool.poetry.scripts]
+ai-creator = "ai_creator.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
