@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "thonny-pololu"
+version = "1.1.0"
+authors = [
+  { name="Paul Grayson", email="dev-paul@pololu.com" },
+]
+description = "Pololu 3pi+ 2040 Robot and Zumo 2040 Robot support for Thonny."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "thonny>4.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pololu/thonny-pololu"
+"Bug Tracker" = "https://github.com/pololu/thonny-pololu/issues"
