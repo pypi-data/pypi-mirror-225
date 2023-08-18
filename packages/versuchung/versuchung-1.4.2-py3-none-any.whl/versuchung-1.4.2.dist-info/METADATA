@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: versuchung
+Version: 1.4.2
+Summary: A toolbox for experiments
+Home-page: http://github.de/stettberger/versuchung
+Author: Christian Dietrich
+Author-email: stettberger@dokucode.de
+License: GPLv3
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.5
+Description-Content-Type: text/markdown
+License-File: COPYING
+Requires-Dist: papermill
+Requires-Dist: luadata
+
+versuchung - a toolbox for experiments
+======================================
+
+In some fields of science it is common practice to not publish any
+experiment descriptions or the raw measurement results of the
+experiment. This is not only opposed to the idea of science, where
+results should be reproducible to verify them by a larger audience,
+but also harmful for other researchers, who want to extend the results
+in the field.
+
+This lack of experiment descriptions and raw data is not necessary a
+result of mean intention by the original researcher, more a lack of
+tools for documenting and specifying experiements and the raw data
+analysis. This is especially true for some fields of computer
+science. But as these people are experts in using formal descriptions
+(also known as programming languages) it is surprising that there is
+no easy-to-use tool for specifying experiments and analyses.
+
+Versuchung tries to fill this gap, by providing such a tool, where
+experiments can be specified with proper input and output parameter
+declarations, versioned result sets and the possibility to process the
+result sets further.
+
+Documentation
+=============
+
+For the documentation, please refer to https://versuchung.readthedocs.io
+
+Getting the latest version
+==========================
+
+versuchung is hosted at github: https://github.com/stettberger/versuchung
