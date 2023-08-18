@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <include package="plone.rest" file="meta.zcml" />
+
+  <include package=".kitsearch" />
+
+  <plone:service
+      accept="application/json"
+      factory=".schema.SchemaService"
+      for="*"
+      method="GET"
+      name="@cesp-schema"
+      permission="zope2.View"
+  />
+
+  <adapter
+    name="collectiveelastic"
+    for="plone.dexterity.interfaces.IDexterityContent *"
+    factory=".expansions.CollectiveElastic"
+  />
+
+  <adapter name="accordion" factory=".blocks.AccordionBlockSearchableText" />
+  <adapter name="teaser" factory=".blocks.TeaserBlockSearchableText" />
+
+</configure>

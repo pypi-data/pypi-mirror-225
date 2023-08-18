@@ -1,0 +1,157 @@
+Metadata-Version: 2.1
+Name: collective.elastic.plone
+Version: 1.1.4
+Summary: Addon for ElasticSearch integration with Plone
+Home-page: https://github.com/collective/collective.elastic.plone
+Author: Jens W. Klein
+Author-email: jk@kleinundpartner.at
+License: GPL version 2
+Project-URL: PyPI, https://pypi.python.org/pypi/collective.elastic.plone
+Project-URL: Source, https://github.com/collective/collective.elastic.plone
+Project-URL: Tracker, https://github.com/collective/collective.elastic.plone/issues
+Keywords: Python Plone
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: Addon
+Classifier: Framework :: Plone :: 5.2
+Classifier: Framework :: Plone :: 6.0
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Requires-Python: >=3.7
+Provides-Extra: test
+License-File: LICENSE.GPL
+License-File: LICENSE.rst
+
+.. This README is meant for consumption by humans and pypi. Pypi can render rst files so please do not use Sphinx features.
+   If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
+   This text does not appear on pypi or github. It is a comment.
+
+========================
+collective.elastic.plone
+========================
+
+ElasticSearch Integration for Plone content
+
+- indexer passing content to a separate running `collective.elastic.ingest <https://github.com/collective/collective.elastic.ingest>`_ service.
+- index acting as a proxy to ElasticSearch, integrates with ZCatalog
+- custom plugins for `plone.restapi` to provide structural information for the ingestions service
+- REST api endpoint @kitsearch accepting Elasticsearch query returning results with Plone permission check.
+
+
+Installation
+------------
+
+**mxdev**
+
+Add `collective.elastic.plone` to your `requirements.txt`.
+Provide an environments variable file `.env` in your backend directory with::
+
+    export CELERY_BROKER=redis://localhost:6379/0
+    export ELASTICSEARCH_INDEX={{elasticsearchindex}}
+    export ELASTICSEARCH_QUERY_SERVER={{elasticsearch_address}}
+
+
+**buildout**
+
+Install `collective.elastic.plone` by adding it to your buildout::
+
+    [buildout]
+
+    ...
+
+    eggs =
+        ...
+        collective.elastic.plone
+
+    environment-vars +=
+        CELERY_BROKER redis://localhost:6379/0
+        ELASTICSEARCH_INDEX plone
+        ELASTICSEARCH_QUERY_SERVER http://localhost:9200
+        ELASTICSEARCH_QUERY_USE_SSL 0
+
+
+
+and then running ``bin/buildout``
+
+
+Source Code
+-----------
+
+The sources are in a GIT DVCS with its main branches at `github <http://github.com/collective/collective.elastic.index>`_.
+There you can report issue too.
+
+We'd be happy to see many forks and pull-requests to make this addon even better.
+
+Maintainers are `Jens Klein <mailto:jk@kleinundpartner.at>`_, `Peter Holzer <mailto:peter.holzer@agitator.com>`_ and the BlueDynamics Alliance developer team.
+We appreciate any contribution and if a release is needed to be done on pypi, please just contact one of us.
+We also offer commercial support if any training, coaching, integration or adaptions are needed.
+
+
+Contributions
+-------------
+
+Initial implementation was made possible by `Evangelisch-reformierte Landeskirche des Kantons Zürich <http://zhref.ch/>`_.
+
+Idea and testing: Peter Holzer
+
+Concept & code by Jens W. Klein
+
+Authors:
+
+- Katja Süss (Github: @ksuess)
+
+
+License
+-------
+
+The project is licensed under the GPLv2.
+
+
+Changelog
+=========
+
+
+1.1.4 (2023-08-17)
+------------------
+
+- Get elastic client getter from collective.elastic.ingest. [ksuess]
+- Refactor to one single IExpandableElement adapter. [ksuess]
+- Add IBlockSearchableText adapter for accordion block. [ksuess]
+- Add IBlockSearchableText adapter for teaser block. [ksuess]
+
+
+1.1.3 (2023-04-22)
+------------------
+
+- Step back from ElasticSearch scroll API for deep pagination.
+
+
+1.1.2 (2023-03-04)
+------------------
+
+-  Enhance response of @kitsearch on unavailable ElasticSearch or not found index [ksuess]
+
+
+1.1.1 (2023-03-03)
+------------------
+
+- Nothing changed yet.
+
+
+1.1 (2023-03-03)
+----------------
+
+- Search REST API service @kitsearch for ElasticSearch querying with Plone security check. [ksuess]
+
+
+1.0 (2022-11-08)
+----------------
+
+- Initial release.
+  [jensens]
