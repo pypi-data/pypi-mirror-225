@@ -1,0 +1,32 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "curtxt-reader"
+version = "1.2.4"
+description = "A simple ncurses-based plain text reader"
+readme = "README.md"
+authors = [{ name = "1256-bits" , email = "128bit@eclipso.eu" }]
+classifiers = [
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: End Users/Desktop"
+]
+keywords = ["reader", "plain text", "txt", "text", "ncurses"]
+requires-python = ">=3.10"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/1256-bits/curses-txt-reader" 
+Source = "https://github.com/1256-bits/curses-txt-reader"
+
+[project.scripts]
+curtxt = "curtxt:init"
