@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: sinum
+Version: 0.1
+Summary: A Python package for various number-related operations.
+Home-page: https://github.com/Saurav-TB-Pandey/sinum-package
+Author: Saurav Pandey
+Author-email: pandeysaurav878@gmail.com
+License: MIT
+Keywords: sinum
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# sinum Package
+
+Welcome to the sinum Package! This package provides a collection of Python modules for performing various operations related to numbers. Whether you need to check for prime numbers, generate Fibonacci sequences, or find factors, this package has you covered.
+
+## Installation
+
+You can install the package using pip:
+- pip install sinum
+
+# Modules and Features
+Explore the versatile features of this package, divided into separate modules:
+
+- Armstrong Numbers
+- Even Numbers
+- Odd Numbers
+- Factors
+- Fibonacci Numbers
+- Natural Numbers
+- Palindrome Numbers
+- Prime Numbers
+- Whole Numbers
+
+Each module includes functions to perform specific number-related operations.
+
+# Armstrong Numbers
+The armstrong module allows you to work with Armstrong numbers, which are numbers that are equal to the sum of their own digits raised to the power of the number of digits.
+
+- isArmstrong(number): Check if a number is an Armstrong number.
+- listArmstrong(limit): Generate a list of Armstrong numbers up to a specified limit.
+- listArmstrongBetween(start, end): Generate a list of Armstrong numbers within a specified range.
+
+# Even and Odd Numbers
+The even and odd modules provide functions to work with even and odd numbers, respectively.
+
+- isEven(number): Check if a number is even.
+- listEven(limit): Generate a list of even numbers up to a specified limit.
+- listEvenBetween(start, end): Generate a list of even numbers within a specified range.
+
+- isOdd(number): Check if a number is odd.
+- listOdd(limit): Generate a list of odd numbers up to a specified limit.
+- listOddBetween(start, end): Generate a list of odd numbers within a specified range.
+
+# Factors
+The factor module assists in finding factors of a given number.
+
+- isFactor(divider, number): Check if a number is a factor of another number.
+- factors(number): Generate a list of factors of a given number.
+
+# Fibonacci Numbers
+The fibonacci module allows you to generate Fibonacci sequences.
+
+- listFibonacci(limit): Generate a list of Fibonacci numbers up to a specified limit.
+
+# Natural Numbers
+The natural module deals with natural numbers (positive integers).
+
+- isNatural(number): Check if a number is a natural number.
+- listNatural(limit): Generate a list of natural numbers up to a specified limit.
+- listNaturalBetween(start, end): Generate a list of natural numbers within a specified range.
+
+# Palindrome Numbers
+The palindrome module provides functions to work with palindrome numbers.
+
+- isPalindrome(number): Check if a number is a palindrome.
+- listPalindrome(limit): Generate a list of palindrome numbers up to a specified limit.
+- listPalindromeBetween(start, end): Generate a list of palindrome numbers within a specified range.
+
+# Prime Numbers
+The primes module includes functions related to prime numbers.
+
+- isPrime(number): Check if a number is prime.
+- listPrimeBetween(start, end): Generate a list of prime numbers within a specified range.
+- listPrime(limit): Generate a list of prime numbers up to a specified limit.
+
+# Whole Numbers
+The whole module deals with whole numbers (non-negative integers).
+
+- isWhole(number): Check if a number is a whole number.
+- listWhole(limit): Generate a list of whole numbers up to a specified limit.
+- listWholeBetween(start, end): Generate a list of whole numbers within a specified range.
+
+# Examples
+Here's a quick example of how you can use the primes module to check if a number is prime:
+
+        from sinum import primes
+        
+        num = 17
+        if primes.isPrime(num):
+            print(f"{num} is a prime number.")
+        else:
+            print(f"{num} is not a prime number.")
+
+Explore the different modules and functions to perform a wide range of number-related operations!
+
+# Contributing
+Contributions to this project are welcome! If you find any bugs or want to add new features, feel free to submit a pull request.
+
+# License
+This project is licensed under the MIT License.
+
+# Created by Saurav Pandey
+
+<p align="center">
+    <strong>I hope you love using this package!</strong>
+</p>
+
