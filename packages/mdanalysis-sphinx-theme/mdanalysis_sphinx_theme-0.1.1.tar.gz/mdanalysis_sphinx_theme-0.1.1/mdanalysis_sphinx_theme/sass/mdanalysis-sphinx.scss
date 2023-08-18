@@ -1,0 +1,71 @@
+.wy-nav-content-wrap {
+    background: #fcfcfc;
+}
+
+.wy-nav-top {
+    background: $readthedocs-dark-gray;
+}
+
+.wy-side-nav-search {
+    background-color: $mdanalysis-white;
+
+    > a {
+        color: $readthedocs-dark-gray;
+    }
+
+    > div.version {
+        color: $mdanalysis-gray;
+    }
+
+    input[type="text"] {
+        border-color: $mdanalysis-gray;
+    }
+}
+
+.wy-menu {
+    overflow-wrap: break-word;
+    white-space: inherit;
+
+    .caption-text {
+        color: $mdanalysis-orange;
+    }
+
+    a:hover, a:hover:not(.is-active) code {
+        color: $mdanalysis-orange;
+    }
+}
+
+code {
+    white-space: inherit;
+}
+
+
+.rst-content {
+
+    .guilabel {
+        background: $mdanalysis-orange-light;
+        border: 1px solid $mdanalysis-gray;
+    }
+
+    code.literal {
+        color: $mdanalysis-code-orange;
+        background-color: $mdanalysis-white;
+
+        
+    }
+
+    dt {
+        code.literal {
+            font-weight: 700;
+        }
+    }
+}
+
+
+.wy-table-responsive {
+    table {
+        td {
+            white-space: inherit;
+        }
+    }
+}
