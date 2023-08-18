@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: autora-synthetic-abstract-equation
+Version: 0.0.3
+Summary: An experiment runner from arbitrary equations
+Author-email: Younes Strittmatter <younes_strtittmatter@brown.edu>
+License: MIT license
+Project-URL: homepage, http://www.empiricalresearch.ai
+Project-URL: repository, https://github.com/AutoResearch/autora-synthetic-abstract-equation
+Project-URL: documentation, https://autoresearch.github.io/autora/
+Requires-Python: <4,>=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+
+# autora-synthetic-abstract-equation
+
+Initializes an AutoRA experiment from sympy equations (https://www.sympy.org/en/index.html)
+
+ 
+
+
