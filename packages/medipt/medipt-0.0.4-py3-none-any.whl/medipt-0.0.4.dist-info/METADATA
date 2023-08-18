@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: medipt
+Version: 0.0.4
+Summary: Stuff
+Author: Geoff Klein
+License: BSD 3-Clause
+Project-URL: repository, https://github.com/kleingeo/ImageProcessingTools
+Keywords: medical-imaging
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy >=1.24
+Requires-Dist: SimpleITK >=2.2.0
+Requires-Dist: scipy >=1.6.0
+
+# Image Processing Tools for Python with SimpleITK
+
+## Work in progress
