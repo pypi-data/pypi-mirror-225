@@ -1,0 +1,5 @@
+# Uncomment it when ds libe v2 will be released
+#th2-data-services>=2,<3  # ds core 2.*
+
+th2-data-services~=2.0.0.dev 
+orjson>=3,<4
