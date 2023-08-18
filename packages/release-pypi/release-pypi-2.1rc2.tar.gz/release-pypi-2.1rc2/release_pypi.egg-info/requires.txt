@@ -1,0 +1,12 @@
+build
+twine
+packaging
+simple-cmd
+urllib3<2.0
+
+[dev]
+ipdb
+ipython
+
+[test]
+pytest-cov
