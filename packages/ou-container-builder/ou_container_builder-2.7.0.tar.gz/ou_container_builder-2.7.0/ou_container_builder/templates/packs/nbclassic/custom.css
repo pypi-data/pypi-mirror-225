@@ -1,0 +1,12 @@
+#ipython_notebook a:last-child::before {
+    content: URL('logo.svg');
+    display: inline-block;
+    height: 28px;
+    width: 86px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#ipython_notebook img {
+    display: none;
+}

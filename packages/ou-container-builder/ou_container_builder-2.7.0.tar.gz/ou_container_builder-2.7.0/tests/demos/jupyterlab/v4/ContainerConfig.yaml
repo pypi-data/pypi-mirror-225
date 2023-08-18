@@ -1,0 +1,11 @@
+module:
+  code: JupyterlabDemo
+  presentation: "1"
+image:
+  user: test
+packs:
+  - name: jupyterlab
+    options:
+      version: 4
+server:
+  access_token: test

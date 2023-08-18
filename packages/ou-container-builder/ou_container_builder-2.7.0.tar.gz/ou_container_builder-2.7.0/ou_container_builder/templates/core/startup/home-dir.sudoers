@@ -1,0 +1,1 @@
+{{ image.user }} ALL=(ALL:ALL) NOPASSWD:/bin/chown {{ image.user }}\:100 /home/{{ image.user }}/{{ module.code }}-{{ module.presentation }}

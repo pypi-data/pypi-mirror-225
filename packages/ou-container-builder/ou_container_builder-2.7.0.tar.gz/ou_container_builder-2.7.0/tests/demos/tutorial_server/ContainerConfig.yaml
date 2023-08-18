@@ -1,0 +1,19 @@
+module:
+  code: NotebookDemo
+  presentation: "1"
+image:
+  user: test
+packs:
+  - name: tutorial_server
+    options:
+      parts:
+        - name: content
+          type: tutorial
+          path: content
+      default: content
+content:
+  - source: content
+    target: content
+    overwrite: always
+server:
+  access_token: test

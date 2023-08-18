@@ -1,0 +1,23 @@
+module:
+  code: OpenRefineDemo
+  presentation: "1"
+image:
+  user: test
+packages:
+  apt:
+   - wget
+   - openjdk-11-jdk
+scripts:
+  build:
+    - commands: |
+        wget --no-check-certificate https://github.com/OpenRefine/OpenRefine/releases/download/3.5.2/openrefine-linux-3.5.2.tar.gz
+        mkdir /var/openrefine
+        tar -xzf openrefine-linux-3.5.2.tar.gz --directory /var/openrefine
+        rm openrefine-linux-3.5.2.tar.gz
+web_apps:
+  - path: openrefine
+    cmdline: /var/openrefine/openrefine-3.5.2/refine -i 0.0.0.0 -p "{port}" -d /home/ou-user/OpenRefine-21J
+    timeout: 120
+    default: true
+server:
+  access_token: test

@@ -1,0 +1,13 @@
+module:
+  code: NotebookDemo
+  presentation: "1"
+image:
+  user: test
+packs:
+  - name: nbclassic
+content:
+  - source: content
+    target: content
+    overwrite: if-unchanged
+server:
+  access_token: test
