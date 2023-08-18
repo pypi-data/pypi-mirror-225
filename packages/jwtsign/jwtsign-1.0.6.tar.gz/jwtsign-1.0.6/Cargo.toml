@@ -1,0 +1,20 @@
+[package]
+name = "jwtsign"
+version = "1.0.6"
+edition = "2021"
+description = "Rust python bindings for signing JWT claims"
+
+[lib]
+name = "jwtsign"
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+jsonwebtoken = "8.3.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+pyo3 = { version = "0.15", features = ["extension-module"] }
+
+[dev-dependencies]
+cargo-tarpaulin = "0.22.0"
+rstest = "0.15.0"
