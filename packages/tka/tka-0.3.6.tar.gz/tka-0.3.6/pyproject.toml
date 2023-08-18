@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "tka"
+version = "0.3.6"
+description = "An SDK full of utility functions in drug discovery and loaded external open-source models"
+authors = ["Filip Cvetko"]
+readme = "README.md"
+homepage = "https://github.com/tkanalytics/tka"
+repository = "https://github.com/tkanalytics/tka.git"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.metadata.files]
+# Specify the package data files
+includes = ["data/*.csv", "data/*.txt"]
