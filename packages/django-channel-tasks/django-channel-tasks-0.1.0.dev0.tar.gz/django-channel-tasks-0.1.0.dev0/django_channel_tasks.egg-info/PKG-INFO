@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: django-channel-tasks
+Version: 0.1.0.dev0
+Summary: Running background tasks trhough REST API and websocket, with channels-redis
+Home-page: https://bitbucket.org/coleopter/django-tasks
+Author: Daniel Farré Manzorro
+Author-email: d.farre.m@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: mypy
+Provides-Extra: test
+License-File: LICENSE
+
+# Django Channel Tasks
+[![PyPI version](https://badge.fury.io/py/django-channel-tasks.svg)](https://badge.fury.io/py/django-channel-tasks) [![PyPI downloads](https://img.shields.io/pypi/dm/django-channel-tasks.svg)](https://img.shields.io/pypi/dm/django-channel-tasks)
+
+A background task runner using `channels-redis` package.
+It features:
+* A REST API allowing to run defined tasks and store the results in PostgreSQL
+* A simple implementation of asynchronous Django Admin tasks, scheduled through websocket
