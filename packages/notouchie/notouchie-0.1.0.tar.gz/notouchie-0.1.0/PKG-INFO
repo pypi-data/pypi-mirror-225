@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: notouchie
+Version: 0.1.0
+Summary: A tiny tool for not picking your face
+License: MIT
+Author: Erik Bjäreholt
+Author-email: erik@bjareho.lt
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: mediapipe (>=0.10.3,<0.11.0)
+Requires-Dist: opencv-python (>=4.8.0.76,<5.0.0.0)
+Description-Content-Type: text/markdown
+
+notouchie
+=========
+
+A tiny tool to tell you not to touch your face.
+
+Uses the webcam and mediapipe to detect when you touch your face.
+
+This is just a MVP. Actual UX is a work in progress.
+
+## Usage
+
+```
+pip install notouchie
+notouchie --help
+```
+
