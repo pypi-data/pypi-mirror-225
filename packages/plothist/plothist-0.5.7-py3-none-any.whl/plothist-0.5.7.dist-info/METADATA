@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: plothist
+Version: 0.5.7
+Summary: Plot histograms in a scalable way and a beautiful style.
+Author-email: Cyrille Praz <code.cyrraz@protonmail.com>, Tristan Fillinger <tristan.github@gmail.com>
+Requires-Python: >=3.7
+Classifier: License :: OSI Approved :: BSD License
+Requires-Dist: boost-histogram~=1.3.1
+Requires-Dist: numpy>=1.14.5
+Requires-Dist: matplotlib>=3.0
+Requires-Dist: pyyaml>=5.3.1
+Requires-Dist: pandas>=1.3.5
+Requires-Dist: scikit-learn>=1.0.2
+Requires-Dist: scipy>=1.6.0
+Project-URL: Bug Tracker, https://github.com/cyrraz/plothist/issues
+Project-URL: Documentation, https://plothist.readthedocs.io/
+Project-URL: Homepage, https://github.com/cyrraz/plothist
