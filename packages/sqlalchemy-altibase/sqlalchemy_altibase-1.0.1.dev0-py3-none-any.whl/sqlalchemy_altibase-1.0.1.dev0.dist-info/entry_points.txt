@@ -1,0 +1,2 @@
+[sqlalchemy.dialects]
+altibase.pyodbc = sqlalchemy_altibase.pyodbc:AltibaseDialect_pyodbc
