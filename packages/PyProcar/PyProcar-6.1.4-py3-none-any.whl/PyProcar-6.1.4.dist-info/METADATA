@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: PyProcar
+Version: 6.1.4
+Summary: A Python library for electronic structure pre/post-processing. 
+Home-page: https://github.com/romerogroup/pyprocar
+Author: Francisco MuÃ±oz, Aldo Romero, Sobhit Singh, Uthpala Herath, Pedram Tavadze, Eric Bousquet, Xu He, Reese Boucher, Logan Lang, Freddy Farah
+Author-email: fvmunoz@gmail.com, alromero@mail.wvu.edu, smsingh@mix.wvu.edu, ukh0001@mix.wvu.edu, petavazohi@mix.wvu.edu, eric.bousquet@uliege.be, mailhexu@gmail.com
+License: LICENSE
+Download-URL: https://github.com/romerogroup/pyprocar/archive/6.1.4.tar.gz
+Platform: UNKNOWN
+Requires-Dist: gdown
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pyvista
+Requires-Dist: scikit-image
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: seekpath
+Requires-Dist: spglib
+Requires-Dist: trimesh
+Requires-Dist: ase
+Requires-Dist: sympy
+Requires-Dist: PyYAML
+
+UNKNOWN
+
+
