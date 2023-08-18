@@ -1,0 +1,1 @@
+Show a paragraph or a list in double columns, for a more compact presentation.

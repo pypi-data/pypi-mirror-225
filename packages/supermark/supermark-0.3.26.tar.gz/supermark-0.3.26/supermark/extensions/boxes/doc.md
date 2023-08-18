@@ -1,0 +1,1 @@
+Boxes to highlight tips, warnings, milestones, guidelines or definitions.

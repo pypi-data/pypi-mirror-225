@@ -1,0 +1,1 @@
+Paragraph style to show tips in a box.

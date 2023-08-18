@@ -1,0 +1,1 @@
+Format a list with learning goals.
