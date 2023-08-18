@@ -1,0 +1,14 @@
+[package]
+name = "feco3_python"
+version = "0.5.0"
+edition = "2021"
+
+[lib]
+name = "feco3_python"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.18.1", features = ["extension-module"] }
+feco3 = { path = "../../local_dependencies/feco3" }
+pyo3-log = "0.8.1"
+arrow = { version = "40.0.0", features = ["pyarrow"] }
