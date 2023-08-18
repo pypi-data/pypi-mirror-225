@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: release-pypi
+Version: 2.0.dev1
+Summary: Simple PyPI uploader using twine
+Home-page: https://bitbucket.org/coleopter/release-pypi
+Author: Daniel Farré Manzorro
+Author-email: d.farre.m@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: twine
+Requires-Dist: packaging
+Requires-Dist: simple-cmd
+Requires-Dist: urllib3 (<2.0)
+Provides-Extra: dev
+Requires-Dist: ipdb ; extra == 'dev'
+Requires-Dist: ipython ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: pytest-cov ; extra == 'test'
+
+Simple PyPI uploader using [twine](https://pypi.org/project/twine), supporting version increase and qualification (see the tiny [repository](https://bitbucket.org/coleopter/release-pypi))
