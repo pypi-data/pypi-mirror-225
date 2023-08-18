@@ -1,0 +1,175 @@
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
+
+[project]
+authors = [
+  {name = "gdsfactory", email = "contact@gdsfactory.com"}
+]
+classifiers = [
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent"
+]
+dependencies = [
+  "gdsfactory[cad]>=7.0.2",
+  "pint"
+]
+description = "gdsfactory plugins"
+keywords = ["python"]
+license = {file = "LICENSE"}
+name = "gplugins"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.3.0"
+
+[project.optional-dependencies]
+database = [
+  "sqlalchemy",
+  "sqlalchemy-utils",
+  "dagster",
+  "dagit",
+  "sqlmodel",
+  "boto3",
+  "pymysql"
+]
+dev = [
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "pytest_regressions",
+  "jsondiff",
+  "mypy",
+  "pyswarms",
+  "autograd",
+  "ray[tune,air]",
+  "hyperopt"
+]
+devsim = [
+  "devsim",
+  "pyvista",
+  "tidy3d"
+]
+docs = [
+  "jupytext",
+  "autodoc_pydantic",
+  "matplotlib",
+  "jupyter-book==0.15.1"
+]
+femwell = [
+  "femwell>=0.1.6,<0.3.0"
+]
+gmsh = [
+  "gmsh",
+  "h5py",
+  "mapbox_earcut",
+  "meshio",
+  "pygmsh",
+  "pyvista",
+  "trimesh",
+  "shapely",
+  "meshwell>=0.0.9,<0.3.0"
+]
+klayout = [
+  "kfactory[git,ipy]==0.7.5"
+]
+meow = [
+  "meow-sim>=0.7.1,<0.8.0",
+  "tidy3d>=2.3.3,<2.4.0"
+]
+sax = [
+  "sax>=0.8.8,<0.9.0",
+  "jaxlib",
+  "jax",
+  "scikit-learn"
+]
+schematic = [
+  "bokeh",
+  "natsort"
+]
+tidy3d = [
+  "tidy3d>=2.3.3,<2.4.0"
+]
+web = [
+  "jinja2",
+  "python-multipart",
+  "fastapi",
+  "uvicorn[standard]"
+]
+
+[tool.black]
+exclude = '''  # Specify the files/dirs that should be ignored by the black formatter
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | env
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+include = '\.pyi?$'
+line-length = 88
+target-version = ['py310']
+
+[tool.codespell]
+ignore-words-list = "te, te/tm, te, ba, fpr, fpr_spacing, ro, nd, donot, schem"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.pylsp-mypy]
+enabled = true
+live_mode = true
+strict = true
+
+[tool.pytest.ini_options]
+addopts = '--tb=short'
+norecursedirs = [
+  "extra/*.py",
+  'gplugins/devsim',
+  'gplugins/sax/integrations',
+  'gplugins/tidy3d/tests/tests_sparameters'
+]
+python_files = ["gplugins/*.py", "notebooks/*.ipynb", "tests/*.py"]
+testpaths = ["gplugins/", "tests"]
+
+[tool.ruff]
+fix = true
+ignore = [
+  "E501",  # line too long, handled by black
+  "B008",  # do not perform function calls in argument defaults
+  "C901",  # too complex
+  "B905",  # `zip()` without an explicit `strict=` parameter
+  "C408",  # C408 Unnecessary `dict` call (rewrite as a literal)
+  "E402",  # module level import not at top of file
+  "B018",  # found useless expression
+  "B028"  # no explicit stacklevel
+]
+select = [
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",  # pyflakes
+  "I",  # isort
+  "C",  # flake8-comprehensions
+  "B",  # flake8-bugbear
+  "UP"
+]
+
+[tool.ruff.per-file-ignores]
+"docs/notebooks/meep_01_sparameters.py" = ["F821", 'E402']
+"docs/notebooks/tcad_02_analytical_process.py" = ["F821", 'E402', 'F405', 'F403']
+
+[tool.setuptools.package-data]
+mypkg = ["*.csv", "*.yaml"]
+
+[tool.setuptools.packages]
+find = {}
