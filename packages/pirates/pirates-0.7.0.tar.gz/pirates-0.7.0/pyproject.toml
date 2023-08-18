@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "pirates"
+version = "0.7.0"
+description = "Django app for users, teams and groups."
+authors = ["Jan Bednařík <jan.bednarik@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://gitlab.pirati.cz/to/pirates"
+repository = "https://gitlab.pirati.cz/to/pirates"
+keywords = ["django", "openid", "sso"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Framework :: Django",
+    "Framework :: Django :: 3.0",
+    "Framework :: Django :: 3.1",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Topic :: Utilities",
+]
+packages = [
+    { include = "pirates" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mozilla-django-oidc = ">=3.0.0,<4"
+
+[tool.poetry.dev-dependencies]
+tox = "^3.25.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-factoryboy = "^2.5.0"
+pytest-django = "^4.5.2"
+pytest-mock = "^3.8.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+python_files = "test_*.py"
+addopts = "--ds=tests.settings"
+
+[tool.isort]
+# config compatible with Black
+line_length = 88
+multi_line_output = 3
+default_section = "THIRDPARTY"
+include_trailing_comma = true
+known_third_party = ["django", "factory", "faker", "mozilla_django_oidc", "pytest", "pytest_factoryboy"]
