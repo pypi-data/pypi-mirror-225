@@ -1,0 +1,65 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lamin_env:
+          - "local"
+          - "staging"
+          # - "prod"
+        group:
+          - "lnhub-ui"
+          - "lamindb-setup"
+
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          token: ${{ secrets.ACCESS_TOKEN_ALEX }}
+          fetch-depth: 0
+      - uses: supabase/setup-cli@v1
+        if: ${{ matrix.lamin_env == 'local' }}
+      - name: setup local lamin_env
+        if: ${{ matrix.lamin_env == 'local' }}
+        run: |
+          supabase start
+          echo "$(supabase status -o env)" >> $GITHUB_ENV
+      - name: setup staging lamin_env
+        if: ${{ matrix.lamin_env == 'staging' }}
+        run: echo "${{ secrets.LNHUB_REST_STAGING_ENV }}" >> $GITHUB_ENV
+      - name: setup prod lamin_env
+        if: ${{ matrix.lamin_env == 'prod' }}
+        run: echo "${{ secrets.LNHUB_REST_PROD_ENV }}" >> $GITHUB_ENV
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: install CI deps
+        run: |
+          python -m pip install -U pip
+          pip install -U laminci
+      # - nox -s lint
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - run: nox -s "test_lamindb_setup(lamin_env='${{ matrix.lamin_env}}')"
+        if: ${{ matrix.group == 'lamindb-setup' }}
+      - run: nox -s "test_lnhub_ui"
+        if: ${{ matrix.lamin_env == 'local' && matrix.group == 'lnhub-ui' }}
