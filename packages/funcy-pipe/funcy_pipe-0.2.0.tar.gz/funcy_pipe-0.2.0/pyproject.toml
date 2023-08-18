@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "funcy-pipe"
+version = "0.2.0"
+description = "If Funcy and Pipe had a baby. Decorates all Funcy methods with Pipe superpowers."
+authors = ["Michael Bianco <mike@mikebian.co>"]
+keywords = ["functional-programming", "pipe", "funcy", "data-manipulation"]
+homepage = "https://github.com/iloveitaly/funcy-pipe"
+license = "MIT"
+readme = "README.md"
+packages = [{include = "funcy_pipe"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+funcy = "^2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
