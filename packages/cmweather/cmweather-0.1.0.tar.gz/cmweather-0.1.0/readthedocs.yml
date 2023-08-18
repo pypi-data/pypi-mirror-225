@@ -1,0 +1,11 @@
+version: 2
+conda:
+  environment: ci/environment-docs.yml
+build:
+  os: 'ubuntu-20.04'
+  tools:
+    python: 'mambaforge-4.10'
+
+# Build documentation in the "docs/" directory with Sphinx
+sphinx:
+  configuration: docs/source/conf.py
