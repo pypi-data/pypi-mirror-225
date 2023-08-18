@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ash2048"
+version = "1.0.0"
+description = "A gym environment for playing 2048."
+authors = ["Ashrit Yarava <ashdragon95@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.25.1"
+gymnasium = "^0.29.0"
+pygame = "^2.5.1"
+pillow = "^10.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pygame = "^2.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
