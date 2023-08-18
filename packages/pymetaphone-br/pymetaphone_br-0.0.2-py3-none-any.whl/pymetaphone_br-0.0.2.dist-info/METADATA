@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: pymetaphone-br
+Version: 0.0.2
+Summary: Pacote do algoritmo Metaphone para a língua portuguesa 
+License: LGPL
+Author: Bruno
+Author-email: bruno@escavador.com
+Requires-Python: >=3.10,<3.13
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: unidecode
