@@ -1,0 +1,3 @@
+[console_scripts]
+frida = frida_tools.repl:main
+frida-uiopen = frida_uiopen.uiopen:main
