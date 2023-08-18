@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+
+name = "cis_checks_2023_u1"
+version = "2.1.1"
+authors = [
+  { name="Dheeraj Banodha", email="dheeraj.banodha@impetus.com" },
+  { name="Ravish Sharma", email="ravish.sharma@impetus.com"}
+]
+description = "Provides AWS compliance details"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "boto3",
+    "pytz"
+]
+
+#[project.urls]
+#"Homepage" = ""
+#"Bug Tracker" = ""
