@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: retnet-torch
+Version: 0.0.1
+Summary: Strongly typed implementation of the Paper "Retentive Network: A Successor to Transformer for Large Language Models" in Pytorch.
+Home-page: UNKNOWN
+Author: juvi21
+Author-email: juv121@skiff.com
+License: MIT
+Keywords: retnet,retention,pytorch
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE
+Requires-Dist: torch (>=1.8.0)
+
+# retnet-torch
+Strongly typed implementation of the Paper "Retentive Network: A Successor to Transformer for Large Language Models" in Pytorch. https://arxiv.org/pdf/2307.08621.pdf
+
+WORK IN PROGRESS BETTER README SOON
+
+
