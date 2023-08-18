@@ -1,0 +1,12 @@
+.gitignore
+LICENSE
+README.md
+pyproject.toml
+.github/workflows/pypi-publish.yml
+nonebot_plugin_sudo/__init__.py
+nonebot_plugin_sudo/config.py
+nonebot_plugin_sudo.egg-info/PKG-INFO
+nonebot_plugin_sudo.egg-info/SOURCES.txt
+nonebot_plugin_sudo.egg-info/dependency_links.txt
+nonebot_plugin_sudo.egg-info/requires.txt
+nonebot_plugin_sudo.egg-info/top_level.txt
