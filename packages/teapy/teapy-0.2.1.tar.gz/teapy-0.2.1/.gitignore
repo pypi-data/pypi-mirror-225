@@ -1,0 +1,13 @@
+*.pyc
+*.pyd
+.DS_Store
+.hypothesis/
+.pytest_cache/
+**/__pycache__
+target/
+data/
+wheels/
+venv/
+Cargo.lock
+**/*_bak.rs
+
