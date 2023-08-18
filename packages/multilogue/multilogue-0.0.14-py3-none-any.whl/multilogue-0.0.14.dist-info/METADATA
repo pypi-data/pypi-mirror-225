@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: multilogue
+Version: 0.0.14
+Summary: Multilogue is a cooperative game of reasoning entities against ignorance, confusion and misunderstanding.
+Author-email: Alexander Fedotov <alex.fedotov@aol.com>
+Project-URL: Homepage, https://github.com/multilogue/multilogue
+Project-URL: Bug Tracker, https://github.com/multilogue/multilogue/issues
+Keywords: multilogue,multilectic,conversation,ai
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests >=2.30.0
+Requires-Dist: PyGithub >=1.59.0
+Requires-Dist: urllib3 >=2.0.4
+Requires-Dist: openai >=0.27.8
+Requires-Dist: tiktoken >=0.4.0
+
+# multilogue
+Multilogue is a cooperative game of reasoning entities against ignorance, confusion and misunderstanding.
