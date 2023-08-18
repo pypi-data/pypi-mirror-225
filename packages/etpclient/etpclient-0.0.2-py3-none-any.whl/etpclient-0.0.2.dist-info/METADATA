@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: etpclient
+Version: 0.0.2
+Summary: ETP client
+Home-page: http://www.geosiris.com
+License: Apache-2.0
+Keywords: ETP
+Author: Valentin Gauthier
+Author-email: valentin.gauthier@geosiris.com
+Maintainer: Valentin Gauthier
+Maintainer-email: valentin.gauthier@geosiris.com
+Requires-Python: >=3.9,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Requires-Dist: etpproto (>=1.0.2,<2.0.0)
+Requires-Dist: etptypes (>=1.0.1,<2.0.0)
+Requires-Dist: h5py (>=3.7.0,<4.0.0)
+Requires-Dist: ipykernel (>=6.5.1,<7.0.0)
+Requires-Dist: lxml (>=4.6.3,<5.0.0)
+Requires-Dist: requests (>=2.25.1,<3.0.0)
+Requires-Dist: websocket-client (>=1.0.0,<2.0.0)
+Requires-Dist: xmljson (>=0.2.1,<0.3.0)
+Project-URL: Repository, https://github.com/geosiris-technologies/etpclient-python
+Description-Content-Type: text/markdown
+
+<!--
+Copyright (c) 2022-2023 Geosiris.
+SPDX-License-Identifier: Apache-2.0
+-->
+# Etpclient
+==========
+
+
+[![License](https://img.shields.io/pypi/l/etpclient)](https://github.com/geosiris-technologies/etpclient-python/blob/main/LICENSE)
+[![Documentation Status](https://readthedocs.org/projects/etpclient-python/badge/?version=latest)](https://etpclient-python.readthedocs.io/en/latest/?badge=latest)
+[![Python CI](https://github.com/geosiris-technologies/etpclient-python/actions/workflows/ci-tests.yml/badge.svg)](https://github.com/geosiris-technologies/etpclient-python/actions/workflows/ci-tests.yml)
+![Python version](https://img.shields.io/pypi/pyversions/etpclient)
+[![PyPI](https://img.shields.io/pypi/v/etpclient)](https://badge.fury.io/py/etpclient)
+![Status](https://img.shields.io/pypi/status/etpclient)
+[![codecov](https://codecov.io/gh/geosiris-technologies/etpclient-python/branch/main/graph/badge.svg)](https://codecov.io/gh/geosiris-technologies/etpclient-python)
+
+
+## Installation : 
+
+Poetry is required to use the client. [Poetry documentation](https://python-poetry.org/docs/)
+
+```bash
+poetry update
+poetry install
+```
+
+## Sample commands :
+
+```bash
+poetry run python client --host RDDMS_HOST --port 9002 -t MY_TOKEN
+
+poetry run python client --host MY_HOST --port 80 --sub-path etp -t MY_TOKEN
+
+poetry run python client --host 127.0.0.1 --port 17000 --sub-path etp --username login --password passwordTest
+
+poetry run python client --host 127.0.0.1 --port 5432 --username testerlogin --password passwordtester
+```
+
+
+## ETP supported commands : 
+
+When the client is connected you can send your request.
+
+This is the help menu :
+```bash
+[XXX] : replace XXX with your value
+[XXX=Y] : replace XXX with your value, default is Y
+[[XXX]] : optional parameter
+
+Help : show this menu
+
+Quit : hard quit (no CloseSession sent)
+CloseSession : close this session
+
+GetDataArrayMetadata  [URI] [PATH_IN_RESOURCE]
+GetDataArray          [URI] [PATH_IN_RESOURCE]
+GetDataSubArray       [URI] [PATH_IN_RESOURCE] [START] [COUNT]
+PutDataArray          [[UUIDS]]* [DATASPACE_NAME] [EPC_FILE_PATH] [H5_FILE_PATH]
+
+GetDataObject         [URI_1] [...] [URI_N]
+PutDataObject         [FILE_PATH] [[DATASPACE_NAME]]
+GetResources          [[uri=eml:/// or notUri=DataspaceName]] [[depth=1]] [[SCOPE]]
+
+GetDataspaces
+PutDataspace          [NAME]
+DeleteDataspace       [NAME]
+```
+
+## Configuration
+
+It is possible to change the "capabilities" of your client in the prefilled RequestSession object in [etpclient/etp/requester.py](https://github.com/geosiris-technologies/etpclient-python/blob/main/etpclient/etp/requester.py#L180)
+
+To add/remove supported protocols and request, modify the file [etpclient/etp/serverprotocols.py](https://github.com/geosiris-technologies/etpclient-python/blob/main/etpclient/etp/serverprotocols.py#L166). Do not forget to decorate your protocols to allow the class ETPConnection to use your protocol.
+Example : 
+```python
+@ETPConnection.on(CommunicationProtocol.CORE)
+class myCoreProtocol(CoreHandler):
+    ...
+```
