@@ -1,0 +1,786 @@
+{
+  "#a-note-on-feature-detection": {
+    "current": {
+      "number": "2",
+      "spec": "Compute Pressure 1",
+      "text": "A Note on Feature Detection",
+      "url": "https://w3c.github.io/compute-pressure/#a-note-on-feature-detection"
+    },
+    "snapshot": {
+      "number": "2",
+      "spec": "Compute Pressure 1",
+      "text": "A Note on Feature Detection",
+      "url": "https://www.w3.org/TR/compute-pressure/#a-note-on-feature-detection"
+    }
+  },
+  "#acknowledgments": {
+    "current": {
+      "number": "A",
+      "spec": "Compute Pressure 1",
+      "text": "Acknowledgments",
+      "url": "https://w3c.github.io/compute-pressure/#acknowledgments"
+    },
+    "snapshot": {
+      "number": "A",
+      "spec": "Compute Pressure 1",
+      "text": "Acknowledgments",
+      "url": "https://www.w3.org/TR/compute-pressure/#acknowledgments"
+    }
+  },
+  "#break-calibration": {
+    "current": {
+      "number": "11.2.4",
+      "spec": "Compute Pressure 1",
+      "text": "Break calibration",
+      "url": "https://w3c.github.io/compute-pressure/#break-calibration"
+    },
+    "snapshot": {
+      "number": "11.2.4",
+      "spec": "Compute Pressure 1",
+      "text": "Break calibration",
+      "url": "https://www.w3.org/TR/compute-pressure/#break-calibration"
+    }
+  },
+  "#concepts": {
+    "current": {
+      "number": "3",
+      "spec": "Compute Pressure 1",
+      "text": "Concepts",
+      "url": "https://w3c.github.io/compute-pressure/#concepts"
+    },
+    "snapshot": {
+      "number": "3",
+      "spec": "Compute Pressure 1",
+      "text": "Concepts",
+      "url": "https://www.w3.org/TR/compute-pressure/#concepts"
+    }
+  },
+  "#conformance": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "13. Conformance",
+      "url": "https://w3c.github.io/compute-pressure/#conformance"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "13. Conformance",
+      "url": "https://www.w3.org/TR/compute-pressure/#conformance"
+    }
+  },
+  "#contributing-factors": {
+    "current": {
+      "number": "9",
+      "spec": "Compute Pressure 1",
+      "text": "Contributing Factors",
+      "url": "https://w3c.github.io/compute-pressure/#contributing-factors"
+    },
+    "snapshot": {
+      "number": "9",
+      "spec": "Compute Pressure 1",
+      "text": "Contributing Factors",
+      "url": "https://www.w3.org/TR/compute-pressure/#contributing-factors"
+    }
+  },
+  "#cross-site-covert-channel": {
+    "current": {
+      "number": "11.1.2",
+      "spec": "Compute Pressure 1",
+      "text": "Cross-site covert channel",
+      "url": "https://w3c.github.io/compute-pressure/#cross-site-covert-channel"
+    },
+    "snapshot": {
+      "number": "11.1.2",
+      "spec": "Compute Pressure 1",
+      "text": "Cross-site covert channel",
+      "url": "https://www.w3.org/TR/compute-pressure/#cross-site-covert-channel"
+    }
+  },
+  "#data-delivery": {
+    "current": {
+      "number": "10.6.2",
+      "spec": "Compute Pressure 1",
+      "text": "Data delivery",
+      "url": "https://w3c.github.io/compute-pressure/#data-delivery"
+    },
+    "snapshot": {
+      "number": "10.6.2",
+      "spec": "Compute Pressure 1",
+      "text": "Data delivery",
+      "url": "https://www.w3.org/TR/compute-pressure/#data-delivery"
+    }
+  },
+  "#data-minimization": {
+    "current": {
+      "number": "11.2.1",
+      "spec": "Compute Pressure 1",
+      "text": "Data minimization",
+      "url": "https://w3c.github.io/compute-pressure/#data-minimization"
+    },
+    "snapshot": {
+      "number": "11.2.1",
+      "spec": "Compute Pressure 1",
+      "text": "Data minimization",
+      "url": "https://www.w3.org/TR/compute-pressure/#data-minimization"
+    }
+  },
+  "#examples": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "12. Examples",
+      "url": "https://w3c.github.io/compute-pressure/#examples"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "12. Examples",
+      "url": "https://www.w3.org/TR/compute-pressure/#examples"
+    }
+  },
+  "#handling-change-of-fully-active": {
+    "current": {
+      "number": "10.6.6",
+      "spec": "Compute Pressure 1",
+      "text": "Handling change of fully active",
+      "url": "https://w3c.github.io/compute-pressure/#handling-change-of-fully-active"
+    },
+    "snapshot": {
+      "number": "10.6.6",
+      "spec": "Compute Pressure 1",
+      "text": "Handling change of fully active",
+      "url": "https://www.w3.org/TR/compute-pressure/#handling-change-of-fully-active"
+    }
+  },
+  "#idl-index": {
+    "current": {
+      "number": "B",
+      "spec": "Compute Pressure 1",
+      "text": "IDL Index",
+      "url": "https://w3c.github.io/compute-pressure/#idl-index"
+    },
+    "snapshot": {
+      "number": "B",
+      "spec": "Compute Pressure 1",
+      "text": "IDL Index",
+      "url": "https://www.w3.org/TR/compute-pressure/#idl-index"
+    }
+  },
+  "#informative-references": {
+    "current": {
+      "number": "C.2",
+      "spec": "Compute Pressure 1",
+      "text": "Informative references",
+      "url": "https://w3c.github.io/compute-pressure/#informative-references"
+    },
+    "snapshot": {
+      "number": "C.2",
+      "spec": "Compute Pressure 1",
+      "text": "Informative references",
+      "url": "https://www.w3.org/TR/compute-pressure/#informative-references"
+    }
+  },
+  "#internal-slot-definitions": {
+    "current": {
+      "number": "7",
+      "spec": "Compute Pressure 1",
+      "text": "Internal Slot Definitions",
+      "url": "https://w3c.github.io/compute-pressure/#internal-slot-definitions"
+    },
+    "snapshot": {
+      "number": "7",
+      "spec": "Compute Pressure 1",
+      "text": "Internal Slot Definitions",
+      "url": "https://www.w3.org/TR/compute-pressure/#internal-slot-definitions"
+    }
+  },
+  "#introduction": {
+    "current": {
+      "number": "1",
+      "spec": "Compute Pressure 1",
+      "text": "Introduction",
+      "url": "https://w3c.github.io/compute-pressure/#introduction"
+    },
+    "snapshot": {
+      "number": "1",
+      "spec": "Compute Pressure 1",
+      "text": "Introduction",
+      "url": "https://www.w3.org/TR/compute-pressure/#introduction"
+    }
+  },
+  "#life-cycle": {
+    "current": {
+      "number": "10.5",
+      "spec": "Compute Pressure 1",
+      "text": "Life-cycle and garbage collection",
+      "url": "https://w3c.github.io/compute-pressure/#life-cycle"
+    },
+    "snapshot": {
+      "number": "10.5",
+      "spec": "Compute Pressure 1",
+      "text": "Life-cycle and garbage collection",
+      "url": "https://www.w3.org/TR/compute-pressure/#life-cycle"
+    }
+  },
+  "#mitigation-strategies": {
+    "current": {
+      "number": "11.2",
+      "spec": "Compute Pressure 1",
+      "text": "Mitigation strategies",
+      "url": "https://w3c.github.io/compute-pressure/#mitigation-strategies"
+    },
+    "snapshot": {
+      "number": "11.2",
+      "spec": "Compute Pressure 1",
+      "text": "Mitigation strategies",
+      "url": "https://www.w3.org/TR/compute-pressure/#mitigation-strategies"
+    }
+  },
+  "#normative-references": {
+    "current": {
+      "number": "C.1",
+      "spec": "Compute Pressure 1",
+      "text": "Normative references",
+      "url": "https://w3c.github.io/compute-pressure/#normative-references"
+    },
+    "snapshot": {
+      "number": "C.1",
+      "spec": "Compute Pressure 1",
+      "text": "Normative references",
+      "url": "https://www.w3.org/TR/compute-pressure/#normative-references"
+    }
+  },
+  "#notify-observers": {
+    "current": {
+      "number": "10.6.5",
+      "spec": "Compute Pressure 1",
+      "text": "Notify Pressure Observers",
+      "url": "https://w3c.github.io/compute-pressure/#notify-observers"
+    },
+    "snapshot": {
+      "number": "10.6.5",
+      "spec": "Compute Pressure 1",
+      "text": "Notify Pressure Observers",
+      "url": "https://www.w3.org/TR/compute-pressure/#notify-observers"
+    }
+  },
+  "#platform-primitives": {
+    "current": {
+      "number": "4",
+      "spec": "Compute Pressure 1",
+      "text": "Platform primitives",
+      "url": "https://w3c.github.io/compute-pressure/#platform-primitives"
+    },
+    "snapshot": {
+      "number": "4",
+      "spec": "Compute Pressure 1",
+      "text": "Platform primitives",
+      "url": "https://www.w3.org/TR/compute-pressure/#platform-primitives"
+    }
+  },
+  "#policy-control": {
+    "current": {
+      "number": "6",
+      "spec": "Compute Pressure 1",
+      "text": "Policy control",
+      "url": "https://w3c.github.io/compute-pressure/#policy-control"
+    },
+    "snapshot": {
+      "number": "6",
+      "spec": "Compute Pressure 1",
+      "text": "Policy control",
+      "url": "https://www.w3.org/TR/compute-pressure/#policy-control"
+    }
+  },
+  "#pressure-observer": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "10. Pressure Observer",
+      "url": "https://w3c.github.io/compute-pressure/#pressure-observer"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "10. Pressure Observer",
+      "url": "https://www.w3.org/TR/compute-pressure/#pressure-observer"
+    }
+  },
+  "#pressure-states": {
+    "current": {
+      "number": "8",
+      "spec": "Compute Pressure 1",
+      "text": "Pressure States",
+      "url": "https://w3c.github.io/compute-pressure/#pressure-states"
+    },
+    "snapshot": {
+      "number": "8",
+      "spec": "Compute Pressure 1",
+      "text": "Pressure States",
+      "url": "https://www.w3.org/TR/compute-pressure/#pressure-states"
+    }
+  },
+  "#processing-model": {
+    "current": {
+      "number": "10.6",
+      "spec": "Compute Pressure 1",
+      "text": "Processing Model",
+      "url": "https://w3c.github.io/compute-pressure/#processing-model"
+    },
+    "snapshot": {
+      "number": "10.6",
+      "spec": "Compute Pressure 1",
+      "text": "Processing Model",
+      "url": "https://www.w3.org/TR/compute-pressure/#processing-model"
+    }
+  },
+  "#processing-units": {
+    "current": {
+      "number": "3.1",
+      "spec": "Compute Pressure 1",
+      "text": "Processing Units",
+      "url": "https://w3c.github.io/compute-pressure/#processing-units"
+    },
+    "snapshot": {
+      "number": "3.1",
+      "spec": "Compute Pressure 1",
+      "text": "Processing Units",
+      "url": "https://www.w3.org/TR/compute-pressure/#processing-units"
+    }
+  },
+  "#queue-a-pressure-observer-task": {
+    "current": {
+      "number": "10.6.4",
+      "spec": "Compute Pressure 1",
+      "text": "Queue a Pressure Observer Task",
+      "url": "https://w3c.github.io/compute-pressure/#queue-a-pressure-observer-task"
+    },
+    "snapshot": {
+      "number": "10.6.4",
+      "spec": "Compute Pressure 1",
+      "text": "Queue a Pressure Observer Task",
+      "url": "https://www.w3.org/TR/compute-pressure/#queue-a-pressure-observer-task"
+    }
+  },
+  "#queue-a-pressurerecord": {
+    "current": {
+      "number": "10.6.3",
+      "spec": "Compute Pressure 1",
+      "text": "Queue a PressureRecord",
+      "url": "https://w3c.github.io/compute-pressure/#queue-a-pressurerecord"
+    },
+    "snapshot": {
+      "number": "10.6.3",
+      "spec": "Compute Pressure 1",
+      "text": "Queue a PressureRecord",
+      "url": "https://www.w3.org/TR/compute-pressure/#queue-a-pressurerecord"
+    }
+  },
+  "#rate-limiting-change-notifications": {
+    "current": {
+      "number": "11.2.2",
+      "spec": "Compute Pressure 1",
+      "text": "Rate-limiting change notifications",
+      "url": "https://w3c.github.io/compute-pressure/#rate-limiting-change-notifications"
+    },
+    "snapshot": {
+      "number": "11.2.2",
+      "spec": "Compute Pressure 1",
+      "text": "Rate-limiting change notifications",
+      "url": "https://www.w3.org/TR/compute-pressure/#rate-limiting-change-notifications"
+    }
+  },
+  "#rate-obfuscation": {
+    "current": {
+      "number": "11.2.3",
+      "spec": "Compute Pressure 1",
+      "text": "Rate obfuscation",
+      "url": "https://w3c.github.io/compute-pressure/#rate-obfuscation"
+    },
+    "snapshot": {
+      "number": "11.2.3",
+      "spec": "Compute Pressure 1",
+      "text": "Rate obfuscation",
+      "url": "https://www.w3.org/TR/compute-pressure/#rate-obfuscation"
+    }
+  },
+  "#references": {
+    "current": {
+      "number": "C",
+      "spec": "Compute Pressure 1",
+      "text": "References",
+      "url": "https://w3c.github.io/compute-pressure/#references"
+    },
+    "snapshot": {
+      "number": "C",
+      "spec": "Compute Pressure 1",
+      "text": "References",
+      "url": "https://www.w3.org/TR/compute-pressure/#references"
+    }
+  },
+  "#same-origin-restriction": {
+    "current": {
+      "number": "11.2.5",
+      "spec": "Compute Pressure 1",
+      "text": "Same-origin restriction",
+      "url": "https://w3c.github.io/compute-pressure/#same-origin-restriction"
+    },
+    "snapshot": {
+      "number": "11.2.5",
+      "spec": "Compute Pressure 1",
+      "text": "Same-origin restriction",
+      "url": "https://www.w3.org/TR/compute-pressure/#same-origin-restriction"
+    }
+  },
+  "#sampling-and-reporting-rate": {
+    "current": {
+      "number": "3.3",
+      "spec": "Compute Pressure 1",
+      "text": "Sampling and Reporting Rate",
+      "url": "https://w3c.github.io/compute-pressure/#sampling-and-reporting-rate"
+    },
+    "snapshot": {
+      "number": "3.3",
+      "spec": "Compute Pressure 1",
+      "text": "Sampling and Reporting Rate",
+      "url": "https://www.w3.org/TR/compute-pressure/#sampling-and-reporting-rate"
+    }
+  },
+  "#security-and-privacy-considerations": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "11. Security and privacy considerations",
+      "url": "https://w3c.github.io/compute-pressure/#security-and-privacy-considerations"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "11. Security and privacy considerations",
+      "url": "https://www.w3.org/TR/compute-pressure/#security-and-privacy-considerations"
+    }
+  },
+  "#supported-sources": {
+    "current": {
+      "number": "3.2",
+      "spec": "Compute Pressure 1",
+      "text": "Supported sources",
+      "url": "https://w3c.github.io/compute-pressure/#supported-sources"
+    },
+    "snapshot": {
+      "number": "3.2",
+      "spec": "Compute Pressure 1",
+      "text": "Supported sources",
+      "url": "https://www.w3.org/TR/compute-pressure/#supported-sources"
+    }
+  },
+  "#supporting-algorithms": {
+    "current": {
+      "number": "10.6.1",
+      "spec": "Compute Pressure 1",
+      "text": "Supporting algorithms",
+      "url": "https://w3c.github.io/compute-pressure/#supporting-algorithms"
+    },
+    "snapshot": {
+      "number": "10.6.1",
+      "spec": "Compute Pressure 1",
+      "text": "Supporting algorithms",
+      "url": "https://www.w3.org/TR/compute-pressure/#supporting-algorithms"
+    }
+  },
+  "#the-constructor-method": {
+    "current": {
+      "number": "10.2.1",
+      "spec": "Compute Pressure 1",
+      "text": "The constructor() method",
+      "url": "https://w3c.github.io/compute-pressure/#the-constructor-method"
+    },
+    "snapshot": {
+      "number": "10.2.1",
+      "spec": "Compute Pressure 1",
+      "text": "The constructor() method",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-constructor-method"
+    }
+  },
+  "#the-disconnect-method": {
+    "current": {
+      "number": "10.2.4",
+      "spec": "Compute Pressure 1",
+      "text": "The disconnect() method",
+      "url": "https://w3c.github.io/compute-pressure/#the-disconnect-method"
+    },
+    "snapshot": {
+      "number": "10.2.4",
+      "spec": "Compute Pressure 1",
+      "text": "The disconnect() method",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-disconnect-method"
+    }
+  },
+  "#the-observe-method": {
+    "current": {
+      "number": "10.2.2",
+      "spec": "Compute Pressure 1",
+      "text": "The observe() method",
+      "url": "https://w3c.github.io/compute-pressure/#the-observe-method"
+    },
+    "snapshot": {
+      "number": "10.2.2",
+      "spec": "Compute Pressure 1",
+      "text": "The observe() method",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-observe-method"
+    }
+  },
+  "#the-pressureobserver-object": {
+    "current": {
+      "number": "10.2",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureObserver object",
+      "url": "https://w3c.github.io/compute-pressure/#the-pressureobserver-object"
+    },
+    "snapshot": {
+      "number": "10.2",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureObserver object",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-pressureobserver-object"
+    }
+  },
+  "#the-pressureobserveroptions-dictionary": {
+    "current": {
+      "number": "10.4",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureObserverOptions dictionary",
+      "url": "https://w3c.github.io/compute-pressure/#the-pressureobserveroptions-dictionary"
+    },
+    "snapshot": {
+      "number": "10.4",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureObserverOptions dictionary",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-pressureobserveroptions-dictionary"
+    }
+  },
+  "#the-pressurerecord-interface": {
+    "current": {
+      "number": "10.3",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureRecord interface",
+      "url": "https://w3c.github.io/compute-pressure/#the-pressurerecord-interface"
+    },
+    "snapshot": {
+      "number": "10.3",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureRecord interface",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-pressurerecord-interface"
+    }
+  },
+  "#the-pressureupdatecallback-callback": {
+    "current": {
+      "number": "10.1",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureUpdateCallback callback",
+      "url": "https://w3c.github.io/compute-pressure/#the-pressureupdatecallback-callback"
+    },
+    "snapshot": {
+      "number": "10.1",
+      "spec": "Compute Pressure 1",
+      "text": "The PressureUpdateCallback callback",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-pressureupdatecallback-callback"
+    }
+  },
+  "#the-samplerate-member": {
+    "current": {
+      "number": "10.4.1",
+      "spec": "Compute Pressure 1",
+      "text": "The sampleRate member",
+      "url": "https://w3c.github.io/compute-pressure/#the-samplerate-member"
+    },
+    "snapshot": {
+      "number": "10.4.1",
+      "spec": "Compute Pressure 1",
+      "text": "The sampleRate member",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-samplerate-member"
+    }
+  },
+  "#the-source-attribute": {
+    "current": {
+      "number": "10.3.1",
+      "spec": "Compute Pressure 1",
+      "text": "The source attribute",
+      "url": "https://w3c.github.io/compute-pressure/#the-source-attribute"
+    },
+    "snapshot": {
+      "number": "10.3.1",
+      "spec": "Compute Pressure 1",
+      "text": "The source attribute",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-source-attribute"
+    }
+  },
+  "#the-state-attribute": {
+    "current": {
+      "number": "10.3.2",
+      "spec": "Compute Pressure 1",
+      "text": "The state attribute",
+      "url": "https://w3c.github.io/compute-pressure/#the-state-attribute"
+    },
+    "snapshot": {
+      "number": "10.3.2",
+      "spec": "Compute Pressure 1",
+      "text": "The state attribute",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-state-attribute"
+    }
+  },
+  "#the-supportedsources-attribute": {
+    "current": {
+      "number": "10.2.6",
+      "spec": "Compute Pressure 1",
+      "text": "The supportedSources attribute",
+      "url": "https://w3c.github.io/compute-pressure/#the-supportedsources-attribute"
+    },
+    "snapshot": {
+      "number": "10.2.6",
+      "spec": "Compute Pressure 1",
+      "text": "The supportedSources attribute",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-supportedsources-attribute"
+    }
+  },
+  "#the-takerecords-method": {
+    "current": {
+      "number": "10.2.5",
+      "spec": "Compute Pressure 1",
+      "text": "The takeRecords() method",
+      "url": "https://w3c.github.io/compute-pressure/#the-takerecords-method"
+    },
+    "snapshot": {
+      "number": "10.2.5",
+      "spec": "Compute Pressure 1",
+      "text": "The takeRecords() method",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-takerecords-method"
+    }
+  },
+  "#the-time-attribute": {
+    "current": {
+      "number": "10.3.3",
+      "spec": "Compute Pressure 1",
+      "text": "The time attribute",
+      "url": "https://w3c.github.io/compute-pressure/#the-time-attribute"
+    },
+    "snapshot": {
+      "number": "10.3.3",
+      "spec": "Compute Pressure 1",
+      "text": "The time attribute",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-time-attribute"
+    }
+  },
+  "#the-tojson-member": {
+    "current": {
+      "number": "10.3.4",
+      "spec": "Compute Pressure 1",
+      "text": "The toJSON member",
+      "url": "https://w3c.github.io/compute-pressure/#the-tojson-member"
+    },
+    "snapshot": {
+      "number": "10.3.4",
+      "spec": "Compute Pressure 1",
+      "text": "The toJSON member",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-tojson-member"
+    }
+  },
+  "#the-unobserve-method": {
+    "current": {
+      "number": "10.2.3",
+      "spec": "Compute Pressure 1",
+      "text": "The unobserve() method",
+      "url": "https://w3c.github.io/compute-pressure/#the-unobserve-method"
+    },
+    "snapshot": {
+      "number": "10.2.3",
+      "spec": "Compute Pressure 1",
+      "text": "The unobserve() method",
+      "url": "https://www.w3.org/TR/compute-pressure/#the-unobserve-method"
+    }
+  },
+  "#timing-attacks": {
+    "current": {
+      "number": "11.1.1",
+      "spec": "Compute Pressure 1",
+      "text": "Timing attacks",
+      "url": "https://w3c.github.io/compute-pressure/#timing-attacks"
+    },
+    "snapshot": {
+      "number": "11.1.1",
+      "spec": "Compute Pressure 1",
+      "text": "Timing attacks",
+      "url": "https://www.w3.org/TR/compute-pressure/#timing-attacks"
+    }
+  },
+  "#title": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "Compute Pressure Level 1",
+      "url": "https://w3c.github.io/compute-pressure/#title"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "Compute Pressure Level 1",
+      "url": "https://www.w3.org/TR/compute-pressure/#title"
+    }
+  },
+  "#toc": {
+    "current": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "Table of Contents",
+      "url": "https://w3c.github.io/compute-pressure/#toc"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Compute Pressure 1",
+      "text": "Table of Contents",
+      "url": "https://www.w3.org/TR/compute-pressure/#toc"
+    }
+  },
+  "#types-of-privacy-and-security-threats": {
+    "current": {
+      "number": "11.1",
+      "spec": "Compute Pressure 1",
+      "text": "Types of privacy and security threats",
+      "url": "https://w3c.github.io/compute-pressure/#types-of-privacy-and-security-threats"
+    },
+    "snapshot": {
+      "number": "11.1",
+      "spec": "Compute Pressure 1",
+      "text": "Types of privacy and security threats",
+      "url": "https://www.w3.org/TR/compute-pressure/#types-of-privacy-and-security-threats"
+    }
+  },
+  "#unload-observers": {
+    "current": {
+      "number": "10.6.7",
+      "spec": "Compute Pressure 1",
+      "text": "Handle unloading document and closing of workers",
+      "url": "https://w3c.github.io/compute-pressure/#unload-observers"
+    },
+    "snapshot": {
+      "number": "10.6.7",
+      "spec": "Compute Pressure 1",
+      "text": "Handle unloading document and closing of workers",
+      "url": "https://www.w3.org/TR/compute-pressure/#unload-observers"
+    }
+  },
+  "#user-notifications": {
+    "current": {
+      "number": "5",
+      "spec": "Compute Pressure 1",
+      "text": "User notifications",
+      "url": "https://w3c.github.io/compute-pressure/#user-notifications"
+    },
+    "snapshot": {
+      "number": "5",
+      "spec": "Compute Pressure 1",
+      "text": "User notifications",
+      "url": "https://www.w3.org/TR/compute-pressure/#user-notifications"
+    }
+  }
+}

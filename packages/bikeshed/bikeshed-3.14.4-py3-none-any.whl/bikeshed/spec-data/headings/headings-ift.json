@@ -1,0 +1,900 @@
+{
+  "#AxisInterval": {
+    "current": {
+      "number": "4.3.2",
+      "spec": "Incremental Font Transfer",
+      "text": "AxisInterval",
+      "url": "https://w3c.github.io/IFT/Overview.html#AxisInterval"
+    },
+    "snapshot": {
+      "number": "4.3.2",
+      "spec": "Incremental Font Transfer",
+      "text": "AxisInterval",
+      "url": "https://www.w3.org/TR/IFT/#AxisInterval"
+    }
+  },
+  "#AxisSpace": {
+    "current": {
+      "number": "4.2.8",
+      "spec": "Incremental Font Transfer",
+      "text": "AxisSpace",
+      "url": "https://w3c.github.io/IFT/Overview.html#AxisSpace"
+    },
+    "snapshot": {
+      "number": "4.2.8",
+      "spec": "Incremental Font Transfer",
+      "text": "AxisSpace",
+      "url": "https://www.w3.org/TR/IFT/#AxisSpace"
+    }
+  },
+  "#ClientState": {
+    "current": {
+      "number": "4.3.4",
+      "spec": "Incremental Font Transfer",
+      "text": "ClientState",
+      "url": "https://w3c.github.io/IFT/Overview.html#ClientState"
+    },
+    "snapshot": {
+      "number": "4.3.4",
+      "spec": "Incremental Font Transfer",
+      "text": "ClientState",
+      "url": "https://www.w3.org/TR/IFT/#ClientState"
+    }
+  },
+  "#CompressedSet": {
+    "current": {
+      "number": "4.3.1",
+      "spec": "Incremental Font Transfer",
+      "text": "CompressedSet",
+      "url": "https://w3c.github.io/IFT/Overview.html#CompressedSet"
+    },
+    "snapshot": {
+      "number": "4.3.1",
+      "spec": "Incremental Font Transfer",
+      "text": "CompressedSet",
+      "url": "https://www.w3.org/TR/IFT/#CompressedSet"
+    }
+  },
+  "#PatchRequest": {
+    "current": {
+      "number": "4.3.3",
+      "spec": "Incremental Font Transfer",
+      "text": "PatchRequest",
+      "url": "https://w3c.github.io/IFT/Overview.html#PatchRequest"
+    },
+    "snapshot": {
+      "number": "4.3.3",
+      "spec": "Incremental Font Transfer",
+      "text": "PatchRequest",
+      "url": "https://www.w3.org/TR/IFT/#PatchRequest"
+    }
+  },
+  "#abstract": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Abstract",
+      "url": "https://w3c.github.io/IFT/Overview.html#abstract"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Abstract",
+      "url": "https://www.w3.org/TR/IFT/#abstract"
+    }
+  },
+  "#changes": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Changes",
+      "url": "https://w3c.github.io/IFT/Overview.html#changes"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Changes",
+      "url": "https://www.w3.org/TR/IFT/#changes"
+    }
+  },
+  "#checksum-and-possible-fingerprinting": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Checksums and possible fingerprinting",
+      "url": "https://w3c.github.io/IFT/Overview.html#checksum-and-possible-fingerprinting"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Checksums and possible fingerprinting",
+      "url": "https://www.w3.org/TR/IFT/#checksum-and-possible-fingerprinting"
+    }
+  },
+  "#client": {
+    "current": {
+      "number": "4.4",
+      "spec": "Incremental Font Transfer",
+      "text": "Client",
+      "url": "https://w3c.github.io/IFT/Overview.html#client"
+    },
+    "snapshot": {
+      "number": "4.4",
+      "spec": "Incremental Font Transfer",
+      "text": "Client",
+      "url": "https://www.w3.org/TR/IFT/#client"
+    }
+  },
+  "#codepoint-grouping": {
+    "current": {
+      "number": "4.4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Adding Codepoint Groups to a Request",
+      "url": "https://w3c.github.io/IFT/Overview.html#codepoint-grouping"
+    }
+  },
+  "#codepoint-reordering": {
+    "current": {
+      "number": "4.7",
+      "spec": "Incremental Font Transfer",
+      "text": "Codepoint Reordering",
+      "url": "https://w3c.github.io/IFT/Overview.html#codepoint-reordering"
+    },
+    "snapshot": {
+      "number": "4.7",
+      "spec": "Incremental Font Transfer",
+      "text": "Codepoint Reordering",
+      "url": "https://www.w3.org/TR/IFT/#codepoint-reordering"
+    }
+  },
+  "#computing-checksums": {
+    "current": {
+      "number": "4.6",
+      "spec": "Incremental Font Transfer",
+      "text": "Computing Checksums",
+      "url": "https://w3c.github.io/IFT/Overview.html#computing-checksums"
+    },
+    "snapshot": {
+      "number": "4.6",
+      "spec": "Incremental Font Transfer",
+      "text": "Computing Checksums",
+      "url": "https://www.w3.org/TR/IFT/#computing-checksums"
+    }
+  },
+  "#content-inference-from-character-set": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Content inference from character set",
+      "url": "https://w3c.github.io/IFT/Overview.html#content-inference-from-character-set"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Content inference from character set",
+      "url": "https://www.w3.org/TR/IFT/#content-inference-from-character-set"
+    }
+  },
+  "#data-types": {
+    "current": {
+      "number": "4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Data Types",
+      "url": "https://w3c.github.io/IFT/Overview.html#data-types"
+    },
+    "snapshot": {
+      "number": "4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Data Types",
+      "url": "https://www.w3.org/TR/IFT/#data-types"
+    }
+  },
+  "#encoding": {
+    "current": {
+      "number": "4.2.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Encoding",
+      "url": "https://w3c.github.io/IFT/Overview.html#encoding"
+    },
+    "snapshot": {
+      "number": "4.2.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Encoding",
+      "url": "https://www.w3.org/TR/IFT/#encoding"
+    }
+  },
+  "#evaluation-report": {
+    "current": {
+      "number": "1.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Technical Motivation: Evaluation Report",
+      "url": "https://w3c.github.io/IFT/Overview.html#evaluation-report"
+    },
+    "snapshot": {
+      "number": "1.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Technical Motivation: Evaluation Report",
+      "url": "https://www.w3.org/TR/IFT/#evaluation-report"
+    }
+  },
+  "#extend-subset": {
+    "current": {
+      "number": "4.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Extending the Font Subset",
+      "url": "https://w3c.github.io/IFT/Overview.html#extend-subset"
+    },
+    "snapshot": {
+      "number": "4.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Extending the Font Subset",
+      "url": "https://www.w3.org/TR/IFT/#extend-subset"
+    }
+  },
+  "#fallback": {
+    "current": {
+      "number": "3.2",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Fallback",
+      "url": "https://w3c.github.io/IFT/Overview.html#fallback"
+    },
+    "snapshot": {
+      "number": "3.2",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Fallback",
+      "url": "https://www.w3.org/TR/IFT/#fallback"
+    }
+  },
+  "#feature-tag-list": {
+    "current": {
+      "number": "A",
+      "spec": "Incremental Font Transfer",
+      "text": "Default Feature Tags and Encoding IDs",
+      "url": "https://w3c.github.io/IFT/Overview.html#feature-tag-list"
+    },
+    "snapshot": {
+      "number": "A",
+      "spec": "Incremental Font Transfer",
+      "text": "Default Feature Tags and Encoding IDs",
+      "url": "https://www.w3.org/TR/IFT/#feature-tag-list"
+    }
+  },
+  "#featuretagset-object": {
+    "current": {
+      "number": "4.2.7",
+      "spec": "Incremental Font Transfer",
+      "text": "FeatureTagSet",
+      "url": "https://w3c.github.io/IFT/Overview.html#featuretagset-object"
+    },
+    "snapshot": {
+      "number": "4.2.7",
+      "spec": "Incremental Font Transfer",
+      "text": "FeatureTagSet",
+      "url": "https://www.w3.org/TR/IFT/#featuretagset-object"
+    }
+  },
+  "#font-subset-info": {
+    "current": {
+      "number": "4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Font Subset",
+      "url": "https://w3c.github.io/IFT/Overview.html#font-subset-info"
+    },
+    "snapshot": {
+      "number": "4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Font Subset",
+      "url": "https://www.w3.org/TR/IFT/#font-subset-info"
+    }
+  },
+  "#handling-patch-request": {
+    "current": {
+      "number": "4.5",
+      "spec": "Incremental Font Transfer",
+      "text": "Server: Responding to a PatchRequest",
+      "url": "https://w3c.github.io/IFT/Overview.html#handling-patch-request"
+    },
+    "snapshot": {
+      "number": "4.5",
+      "spec": "Incremental Font Transfer",
+      "text": "Server: Responding to a PatchRequest",
+      "url": "https://www.w3.org/TR/IFT/#handling-patch-request"
+    }
+  },
+  "#handling-patch-response": {
+    "current": {
+      "number": "4.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Handling Server Response",
+      "url": "https://w3c.github.io/IFT/Overview.html#handling-patch-response"
+    },
+    "snapshot": {
+      "number": "4.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Handling Server Response",
+      "url": "https://www.w3.org/TR/IFT/#handling-patch-response"
+    }
+  },
+  "#index": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Index",
+      "url": "https://w3c.github.io/IFT/Overview.html#index"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Index",
+      "url": "https://www.w3.org/TR/IFT/#index"
+    }
+  },
+  "#index-defined-elsewhere": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Terms defined by reference",
+      "url": "https://w3c.github.io/IFT/Overview.html#index-defined-elsewhere"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Terms defined by reference",
+      "url": "https://www.w3.org/TR/IFT/#index-defined-elsewhere"
+    }
+  },
+  "#index-defined-here": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Terms defined by this specification",
+      "url": "https://w3c.github.io/IFT/Overview.html#index-defined-here"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Terms defined by this specification",
+      "url": "https://www.w3.org/TR/IFT/#index-defined-here"
+    }
+  },
+  "#informative": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Informative References",
+      "url": "https://w3c.github.io/IFT/Overview.html#informative"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Informative References",
+      "url": "https://www.w3.org/TR/IFT/#informative"
+    }
+  },
+  "#integerlist-deltas": {
+    "current": {
+      "number": "4.2.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Delta Encoding",
+      "url": "https://w3c.github.io/IFT/Overview.html#integerlist-deltas"
+    },
+    "snapshot": {
+      "number": "4.2.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Delta Encoding",
+      "url": "https://www.w3.org/TR/IFT/#integerlist-deltas"
+    }
+  },
+  "#integerlist-object": {
+    "current": {
+      "number": "4.2.4",
+      "spec": "Incremental Font Transfer",
+      "text": "IntegerList",
+      "url": "https://w3c.github.io/IFT/Overview.html#integerlist-object"
+    },
+    "snapshot": {
+      "number": "4.2.4",
+      "spec": "Incremental Font Transfer",
+      "text": "IntegerList",
+      "url": "https://www.w3.org/TR/IFT/#integerlist-object"
+    }
+  },
+  "#integerlist-uintbase128": {
+    "current": {
+      "number": "4.2.4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "UIntBase128 Encoding",
+      "url": "https://w3c.github.io/IFT/Overview.html#integerlist-uintbase128"
+    },
+    "snapshot": {
+      "number": "4.2.4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "UIntBase128 Encoding",
+      "url": "https://www.w3.org/TR/IFT/#integerlist-uintbase128"
+    }
+  },
+  "#integerlist-zigzag": {
+    "current": {
+      "number": "4.2.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Zig-Zag Encoding",
+      "url": "https://w3c.github.io/IFT/Overview.html#integerlist-zigzag"
+    },
+    "snapshot": {
+      "number": "4.2.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Zig-Zag Encoding",
+      "url": "https://www.w3.org/TR/IFT/#integerlist-zigzag"
+    }
+  },
+  "#intro": {
+    "current": {
+      "number": "1",
+      "spec": "Incremental Font Transfer",
+      "text": "Introduction",
+      "url": "https://w3c.github.io/IFT/Overview.html#intro"
+    },
+    "snapshot": {
+      "number": "1",
+      "spec": "Incremental Font Transfer",
+      "text": "Introduction",
+      "url": "https://www.w3.org/TR/IFT/#intro"
+    }
+  },
+  "#load-a-font": {
+    "current": {
+      "number": "4.4.4",
+      "spec": "Incremental Font Transfer",
+      "text": "Load a Font in a User Agent with a HTTP Cache",
+      "url": "https://w3c.github.io/IFT/Overview.html#load-a-font"
+    },
+    "snapshot": {
+      "number": "4.4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Load a Font in a User Agent with a HTTP Cache",
+      "url": "https://www.w3.org/TR/IFT/#load-a-font"
+    }
+  },
+  "#method-negotiation": {
+    "current": {
+      "number": "3.1",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Negotiation",
+      "url": "https://w3c.github.io/IFT/Overview.html#method-negotiation"
+    },
+    "snapshot": {
+      "number": "3.1",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Negotiation",
+      "url": "https://www.w3.org/TR/IFT/#method-negotiation"
+    }
+  },
+  "#method-selection": {
+    "current": {
+      "number": "3",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Selection",
+      "url": "https://w3c.github.io/IFT/Overview.html#method-selection"
+    },
+    "snapshot": {
+      "number": "3",
+      "spec": "Incremental Font Transfer",
+      "text": "IFT Method Selection",
+      "url": "https://www.w3.org/TR/IFT/#method-selection"
+    }
+  },
+  "#normative": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Normative References",
+      "url": "https://w3c.github.io/IFT/Overview.html#normative"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Normative References",
+      "url": "https://www.w3.org/TR/IFT/#normative"
+    }
+  },
+  "#obfuscation-codepoints": {
+    "current": {
+      "number": "B",
+      "spec": "Incremental Font Transfer",
+      "text": "Codepoints Requiring Obfuscation",
+      "url": "https://w3c.github.io/IFT/Overview.html#obfuscation-codepoints"
+    }
+  },
+  "#objects": {
+    "current": {
+      "number": "4.2.9",
+      "spec": "Incremental Font Transfer",
+      "text": "Objects",
+      "url": "https://w3c.github.io/IFT/Overview.html#objects"
+    },
+    "snapshot": {
+      "number": "4.2.9",
+      "spec": "Incremental Font Transfer",
+      "text": "Objects",
+      "url": "https://www.w3.org/TR/IFT/#objects"
+    }
+  },
+  "#offline-usage": {
+    "current": {
+      "number": "3.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Offline Usage",
+      "url": "https://w3c.github.io/IFT/Overview.html#offline-usage"
+    },
+    "snapshot": {
+      "number": "3.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Offline Usage",
+      "url": "https://www.w3.org/TR/IFT/#offline-usage"
+    }
+  },
+  "#opt-in": {
+    "current": {
+      "number": "2",
+      "spec": "Incremental Font Transfer",
+      "text": "Opt-In Mechanism",
+      "url": "https://w3c.github.io/IFT/Overview.html#opt-in"
+    },
+    "snapshot": {
+      "number": "2",
+      "spec": "Incremental Font Transfer",
+      "text": "Opt-In Mechanism",
+      "url": "https://www.w3.org/TR/IFT/#opt-in"
+    }
+  },
+  "#patch-encodings": {
+    "current": {
+      "number": "4.8",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Encodings",
+      "url": "https://w3c.github.io/IFT/Overview.html#patch-encodings"
+    },
+    "snapshot": {
+      "number": "4.8",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Encodings",
+      "url": "https://www.w3.org/TR/IFT/#patch-encodings"
+    }
+  },
+  "#patch-incxfer": {
+    "current": {
+      "number": "4",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Based Incremental Transfer",
+      "url": "https://w3c.github.io/IFT/Overview.html#patch-incxfer"
+    },
+    "snapshot": {
+      "number": "4",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Based Incremental Transfer",
+      "url": "https://www.w3.org/TR/IFT/#patch-incxfer"
+    }
+  },
+  "#patch-subset": {
+    "current": {
+      "number": "1.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Subset",
+      "url": "https://w3c.github.io/IFT/Overview.html#patch-subset"
+    },
+    "snapshot": {
+      "number": "1.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Patch Subset",
+      "url": "https://www.w3.org/TR/IFT/#patch-subset"
+    }
+  },
+  "#patchsubset-vs-rangerequest": {
+    "current": {
+      "number": "1.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Deciding between Patch Subset and Range Request",
+      "url": "https://w3c.github.io/IFT/Overview.html#patchsubset-vs-rangerequest"
+    },
+    "snapshot": {
+      "number": "1.4.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Deciding between Patch Subset and Range Request",
+      "url": "https://www.w3.org/TR/IFT/#patchsubset-vs-rangerequest"
+    }
+  },
+  "#per-origin": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Per-origin restriction avoids fingerprinting",
+      "url": "https://w3c.github.io/IFT/Overview.html#per-origin"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Per-origin restriction avoids fingerprinting",
+      "url": "https://www.w3.org/TR/IFT/#per-origin"
+    }
+  },
+  "#performance-considerations": {
+    "current": {
+      "number": "1.4",
+      "spec": "Incremental Font Transfer",
+      "text": "Performance Considerations and the use of Incremental Font Transfer",
+      "url": "https://w3c.github.io/IFT/Overview.html#performance-considerations"
+    },
+    "snapshot": {
+      "number": "1.4",
+      "spec": "Incremental Font Transfer",
+      "text": "Performance Considerations and the use of Incremental Font Transfer",
+      "url": "https://www.w3.org/TR/IFT/#performance-considerations"
+    }
+  },
+  "#primitives": {
+    "current": {
+      "number": "4.2.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Primitives",
+      "url": "https://w3c.github.io/IFT/Overview.html#primitives"
+    },
+    "snapshot": {
+      "number": "4.2.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Primitives",
+      "url": "https://www.w3.org/TR/IFT/#primitives"
+    }
+  },
+  "#priv": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Privacy Considerations",
+      "url": "https://w3c.github.io/IFT/Overview.html#priv"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Privacy Considerations",
+      "url": "https://www.w3.org/TR/IFT/#priv"
+    }
+  },
+  "#range-request": {
+    "current": {
+      "number": "1.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request",
+      "url": "https://w3c.github.io/IFT/Overview.html#range-request"
+    },
+    "snapshot": {
+      "number": "1.2",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request",
+      "url": "https://www.w3.org/TR/IFT/#range-request"
+    }
+  },
+  "#range-request-incxfer": {
+    "current": {
+      "number": "5",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request Incremental Transfer",
+      "url": "https://w3c.github.io/IFT/Overview.html#range-request-incxfer"
+    },
+    "snapshot": {
+      "number": "5",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request Incremental Transfer",
+      "url": "https://www.w3.org/TR/IFT/#range-request-incxfer"
+    }
+  },
+  "#range-request-support": {
+    "current": {
+      "number": "4.5.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request Support",
+      "url": "https://w3c.github.io/IFT/Overview.html#range-request-support"
+    },
+    "snapshot": {
+      "number": "4.5.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Range Request Support",
+      "url": "https://www.w3.org/TR/IFT/#range-request-support"
+    }
+  },
+  "#rangelist-object": {
+    "current": {
+      "number": "4.2.6",
+      "spec": "Incremental Font Transfer",
+      "text": "RangeList",
+      "url": "https://w3c.github.io/IFT/Overview.html#rangelist-object"
+    },
+    "snapshot": {
+      "number": "4.2.6",
+      "spec": "Incremental Font Transfer",
+      "text": "RangeList",
+      "url": "https://www.w3.org/TR/IFT/#rangelist-object"
+    }
+  },
+  "#reduce-requests": {
+    "current": {
+      "number": "1.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Reducing the Number of Network Requests",
+      "url": "https://w3c.github.io/IFT/Overview.html#reduce-requests"
+    },
+    "snapshot": {
+      "number": "1.4.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Reducing the Number of Network Requests",
+      "url": "https://www.w3.org/TR/IFT/#reduce-requests"
+    }
+  },
+  "#references": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "References",
+      "url": "https://w3c.github.io/IFT/Overview.html#references"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "References",
+      "url": "https://www.w3.org/TR/IFT/#references"
+    }
+  },
+  "#reordering-checksum": {
+    "current": {
+      "number": "4.7.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Codepoint Reordering Checksum",
+      "url": "https://w3c.github.io/IFT/Overview.html#reordering-checksum"
+    },
+    "snapshot": {
+      "number": "4.7.1",
+      "spec": "Incremental Font Transfer",
+      "text": "Codepoint Reordering Checksum",
+      "url": "https://www.w3.org/TR/IFT/#reordering-checksum"
+    }
+  },
+  "#schemas": {
+    "current": {
+      "number": "4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Object Schemas",
+      "url": "https://w3c.github.io/IFT/Overview.html#schemas"
+    },
+    "snapshot": {
+      "number": "4.3",
+      "spec": "Incremental Font Transfer",
+      "text": "Object Schemas",
+      "url": "https://www.w3.org/TR/IFT/#schemas"
+    }
+  },
+  "#sec": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Security Considerations",
+      "url": "https://w3c.github.io/IFT/Overview.html#sec"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Security Considerations",
+      "url": "https://www.w3.org/TR/IFT/#sec"
+    }
+  },
+  "#sortedintegerlist-object": {
+    "current": {
+      "number": "4.2.5",
+      "spec": "Incremental Font Transfer",
+      "text": "SortedIntegerList",
+      "url": "https://w3c.github.io/IFT/Overview.html#sortedintegerlist-object"
+    },
+    "snapshot": {
+      "number": "4.2.5",
+      "spec": "Incremental Font Transfer",
+      "text": "SortedIntegerList",
+      "url": "https://www.w3.org/TR/IFT/#sortedintegerlist-object"
+    }
+  },
+  "#sotd": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Status of this document",
+      "url": "https://w3c.github.io/IFT/Overview.html#sotd"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Status of this document",
+      "url": "https://www.w3.org/TR/IFT/#sotd"
+    }
+  },
+  "#sparsebitset-object": {
+    "current": {
+      "number": "4.2.3",
+      "spec": "Incremental Font Transfer",
+      "text": "SparseBitSet",
+      "url": "https://w3c.github.io/IFT/Overview.html#sparsebitset-object"
+    },
+    "snapshot": {
+      "number": "4.2.3",
+      "spec": "Incremental Font Transfer",
+      "text": "SparseBitSet",
+      "url": "https://www.w3.org/TR/IFT/#sparsebitset-object"
+    }
+  },
+  "#title": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Incremental Font Transfer",
+      "url": "https://w3c.github.io/IFT/Overview.html#title"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Incremental Font Transfer",
+      "url": "https://www.w3.org/TR/IFT/#title"
+    }
+  },
+  "#toc": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Table of Contents",
+      "url": "https://w3c.github.io/IFT/Overview.html#toc"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Table of Contents",
+      "url": "https://www.w3.org/TR/IFT/#toc"
+    }
+  },
+  "#w3c-conformance": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Conformance",
+      "url": "https://w3c.github.io/IFT/Overview.html#w3c-conformance"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Conformance",
+      "url": "https://www.w3.org/TR/IFT/#w3c-conformance"
+    }
+  },
+  "#w3c-conformant-algorithms": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Conformant Algorithms",
+      "url": "https://w3c.github.io/IFT/Overview.html#w3c-conformant-algorithms"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Conformant Algorithms",
+      "url": "https://www.w3.org/TR/IFT/#w3c-conformant-algorithms"
+    }
+  },
+  "#w3c-conventions": {
+    "current": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Document conventions",
+      "url": "https://w3c.github.io/IFT/Overview.html#w3c-conventions"
+    },
+    "snapshot": {
+      "number": "",
+      "spec": "Incremental Font Transfer",
+      "text": "Document conventions",
+      "url": "https://www.w3.org/TR/IFT/#w3c-conventions"
+    }
+  }
+}

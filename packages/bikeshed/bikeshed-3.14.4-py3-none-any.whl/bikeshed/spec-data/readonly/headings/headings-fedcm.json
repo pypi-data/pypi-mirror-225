@@ -1,0 +1,370 @@
+{
+  "#abstract": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Abstract",
+      "url": "https://fedidcg.github.io/FedCM/#abstract"
+    }
+  },
+  "#acknowledgements": {
+    "current": {
+      "number": "8",
+      "spec": "Federated Credential Management API",
+      "text": "Acknowledgements",
+      "url": "https://fedidcg.github.io/FedCM/#acknowledgements"
+    }
+  },
+  "#attack-scenarios": {
+    "current": {
+      "number": "6.3",
+      "spec": "Federated Credential Management API",
+      "text": "Attack Scenarios",
+      "url": "https://fedidcg.github.io/FedCM/#attack-scenarios"
+    }
+  },
+  "#attack-scenarios-by-rp-cross-site-correlation": {
+    "current": {
+      "number": "6.3.4",
+      "spec": "Federated Credential Management API",
+      "text": "Cross-Site Correlation",
+      "url": "https://fedidcg.github.io/FedCM/#attack-scenarios-by-rp-cross-site-correlation"
+    }
+  },
+  "#browser-api": {
+    "current": {
+      "number": "2",
+      "spec": "Federated Credential Management API",
+      "text": "The Browser API",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api"
+    }
+  },
+  "#browser-api-backwards-compatibility": {
+    "current": {
+      "number": "3.6",
+      "spec": "Federated Credential Management API",
+      "text": "Backwards Compatibility",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api-backwards-compatibility"
+    }
+  },
+  "#browser-api-credential-request-options": {
+    "current": {
+      "number": "2.2.1",
+      "spec": "Federated Credential Management API",
+      "text": "The CredentialRequestOptions ## {#browser-api-credential-request-options}",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api-credential-request-options"
+    }
+  },
+  "#browser-api-identity-credential-interface": {
+    "current": {
+      "number": "2.2",
+      "spec": "Federated Credential Management API",
+      "text": "The IdentityCredential Interface",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api-identity-credential-interface"
+    }
+  },
+  "#browser-api-rp-sign-in": {
+    "current": {
+      "number": "2.2.2",
+      "spec": "Federated Credential Management API",
+      "text": "The [[DiscoverFromExternalSource]](origin, options, sameOriginWithAncestors) internal method ## {#browser-api-rp-sign-in}",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in"
+    }
+  },
+  "#browser-api-state-machine": {
+    "current": {
+      "number": "2.1",
+      "spec": "Federated Credential Management API",
+      "text": "The State Machine",
+      "url": "https://fedidcg.github.io/FedCM/#browser-api-state-machine"
+    }
+  },
+  "#browser-surface-impersonation": {
+    "current": {
+      "number": "5.3",
+      "spec": "Federated Credential Management API",
+      "text": "Browser Surface Impersonation",
+      "url": "https://fedidcg.github.io/FedCM/#browser-surface-impersonation"
+    }
+  },
+  "#content-security-policy": {
+    "current": {
+      "number": "5.1",
+      "spec": "Federated Credential Management API",
+      "text": "Content Security Policy",
+      "url": "https://fedidcg.github.io/FedCM/#content-security-policy"
+    }
+  },
+  "#extensibility": {
+    "current": {
+      "number": "7",
+      "spec": "Federated Credential Management API",
+      "text": "Extensibility",
+      "url": "https://fedidcg.github.io/FedCM/#extensibility"
+    }
+  },
+  "#idl-index": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "IDL Index",
+      "url": "https://fedidcg.github.io/FedCM/#idl-index"
+    }
+  },
+  "#idp-api": {
+    "current": {
+      "number": "3",
+      "spec": "Federated Credential Management API",
+      "text": "Identity Provider HTTP API",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api"
+    }
+  },
+  "#idp-api-accounts-endpoint": {
+    "current": {
+      "number": "3.3",
+      "spec": "Federated Credential Management API",
+      "text": "Accounts List",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api-accounts-endpoint"
+    }
+  },
+  "#idp-api-client-id-metadata-endpoint": {
+    "current": {
+      "number": "3.4",
+      "spec": "Federated Credential Management API",
+      "text": "Client Metadata",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api-client-id-metadata-endpoint"
+    }
+  },
+  "#idp-api-id-assertion-endpoint": {
+    "current": {
+      "number": "3.5",
+      "spec": "Federated Credential Management API",
+      "text": "Identity Assertions",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api-id-assertion-endpoint"
+    }
+  },
+  "#idp-api-manifest": {
+    "current": {
+      "number": "3.2",
+      "spec": "Federated Credential Management API",
+      "text": "Manifest",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api-manifest"
+    }
+  },
+  "#idp-api-well-known": {
+    "current": {
+      "number": "3.1",
+      "spec": "Federated Credential Management API",
+      "text": "The Well-Known File",
+      "url": "https://fedidcg.github.io/FedCM/#idp-api-well-known"
+    }
+  },
+  "#idp-intrusion": {
+    "current": {
+      "number": "6.3.3",
+      "spec": "Federated Credential Management API",
+      "text": "IDP Intrusion",
+      "url": "https://fedidcg.github.io/FedCM/#idp-intrusion"
+    }
+  },
+  "#index": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Index",
+      "url": "https://fedidcg.github.io/FedCM/#index"
+    }
+  },
+  "#index-defined-elsewhere": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Terms defined by reference",
+      "url": "https://fedidcg.github.io/FedCM/#index-defined-elsewhere"
+    }
+  },
+  "#index-defined-here": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Terms defined by this specification",
+      "url": "https://fedidcg.github.io/FedCM/#index-defined-here"
+    }
+  },
+  "#informative": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Informative References",
+      "url": "https://fedidcg.github.io/FedCM/#informative"
+    }
+  },
+  "#introduction": {
+    "current": {
+      "number": "1",
+      "spec": "Federated Credential Management API",
+      "text": "Introduction",
+      "url": "https://fedidcg.github.io/FedCM/#introduction"
+    }
+  },
+  "#issues-index": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Issues Index",
+      "url": "https://fedidcg.github.io/FedCM/#issues-index"
+    }
+  },
+  "#manifest-fingerprinting": {
+    "current": {
+      "number": "6.3.1",
+      "spec": "Federated Credential Management API",
+      "text": "Manifest Fingerprinting",
+      "url": "https://fedidcg.github.io/FedCM/#manifest-fingerprinting"
+    }
+  },
+  "#network-requests": {
+    "current": {
+      "number": "6.2",
+      "spec": "Federated Credential Management API",
+      "text": "Network requests",
+      "url": "https://fedidcg.github.io/FedCM/#network-requests"
+    }
+  },
+  "#normative": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Normative References",
+      "url": "https://fedidcg.github.io/FedCM/#normative"
+    }
+  },
+  "#permissions-policy-integration": {
+    "current": {
+      "number": "4",
+      "spec": "Federated Credential Management API",
+      "text": "Permissions Policy Integration",
+      "url": "https://fedidcg.github.io/FedCM/#permissions-policy-integration"
+    }
+  },
+  "#privacy": {
+    "current": {
+      "number": "6",
+      "spec": "Federated Credential Management API",
+      "text": "Privacy",
+      "url": "https://fedidcg.github.io/FedCM/#privacy"
+    }
+  },
+  "#privacy-principals": {
+    "current": {
+      "number": "6.1",
+      "spec": "Federated Credential Management API",
+      "text": "Principals",
+      "url": "https://fedidcg.github.io/FedCM/#privacy-principals"
+    }
+  },
+  "#references": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "References",
+      "url": "https://fedidcg.github.io/FedCM/#references"
+    }
+  },
+  "#rp-fingerprinting": {
+    "current": {
+      "number": "6.3.6",
+      "spec": "Federated Credential Management API",
+      "text": "RP Fingerprinting",
+      "url": "https://fedidcg.github.io/FedCM/#rp-fingerprinting"
+    }
+  },
+  "#sec-fetch-dest-header": {
+    "current": {
+      "number": "5.2",
+      "spec": "Federated Credential Management API",
+      "text": "Sec-Fetch-Dest Header",
+      "url": "https://fedidcg.github.io/FedCM/#sec-fetch-dest-header"
+    }
+  },
+  "#secondary-use": {
+    "current": {
+      "number": "6.3.7",
+      "spec": "Federated Credential Management API",
+      "text": "Secondary Use",
+      "url": "https://fedidcg.github.io/FedCM/#secondary-use"
+    }
+  },
+  "#security": {
+    "current": {
+      "number": "5",
+      "spec": "Federated Credential Management API",
+      "text": "Security",
+      "url": "https://fedidcg.github.io/FedCM/#security"
+    }
+  },
+  "#status": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Status of this document",
+      "url": "https://fedidcg.github.io/FedCM/#status"
+    }
+  },
+  "#timing-attacks": {
+    "current": {
+      "number": "6.3.2",
+      "spec": "Federated Credential Management API",
+      "text": "Timing Attacks",
+      "url": "https://fedidcg.github.io/FedCM/#timing-attacks"
+    }
+  },
+  "#title": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Federated Credential Management API",
+      "url": "https://fedidcg.github.io/FedCM/#title"
+    }
+  },
+  "#toc": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Table of Contents",
+      "url": "https://fedidcg.github.io/FedCM/#toc"
+    }
+  },
+  "#unauthorized-data-usage": {
+    "current": {
+      "number": "6.3.5",
+      "spec": "Federated Credential Management API",
+      "text": "Unauthorized Data Usage",
+      "url": "https://fedidcg.github.io/FedCM/#unauthorized-data-usage"
+    }
+  },
+  "#w3c-conformance": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Conformance",
+      "url": "https://fedidcg.github.io/FedCM/#w3c-conformance"
+    }
+  },
+  "#w3c-conformant-algorithms": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Conformant Algorithms",
+      "url": "https://fedidcg.github.io/FedCM/#w3c-conformant-algorithms"
+    }
+  },
+  "#w3c-conventions": {
+    "current": {
+      "number": "",
+      "spec": "Federated Credential Management API",
+      "text": "Document conventions",
+      "url": "https://fedidcg.github.io/FedCM/#w3c-conventions"
+    }
+  }
+}
