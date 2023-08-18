@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "BubbleDet"
+authors = [
+    {name = "Andreas Ekstedt", email = "andreas.ekstedt@desy.de"},
+    {name = "Oliver Gould", email = "oliver.gould@nottingham.ac.uk"},
+    {name = "Joonas Hirvonen", email = "joonas.o.hirvonen@helsinki.fi"},
+]
+description = "A package for computing functional determinants"
+license = {text = "MIT"}
+classifiers = [
+    "Topic :: Scientific/Engineering :: Physics",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "cosmoTransitions>=2.0.6",
+    "findiff>=0.9.2",
+    "numpy>=1.21.5",
+    "packaging>=21.3",
+    "scipy>=1.8.0",
+]
+readme = "README.rst"
+dynamic = ["version"]
+
+[tool.setuptools_scm]
+
+[project.optional-dependencies]
+tests = [
+    "pytest>=7.2.2",
+    "matplotlib>=3.5.1",
+]
+docs = [
+    "graphviz",
+    "sphinx",
+    "sphinx-rtd-theme",
+    "sphinx-automodapi",
+]
+
+[project.urls]
+Homepage = "https://bubbledet.readthedocs.io/"
+Repository = "https://bitbucket.org/og113/bubbledet/"
