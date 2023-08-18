@@ -1,0 +1,1 @@
+from .shortners import Slink
