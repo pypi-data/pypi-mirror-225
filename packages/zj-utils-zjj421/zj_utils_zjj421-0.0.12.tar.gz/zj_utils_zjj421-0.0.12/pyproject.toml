@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "zj_utils_zjj421"
+version = "0.0.12"
+authors = [
+  { name="zjj421", email="zhangjian421wo@outlook.com" },
+]
+description = "A personal kit"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/zjj421/zj_utils"
+"Bug Tracker" = "https://github.com/zjj421/zj_utils/issues"
