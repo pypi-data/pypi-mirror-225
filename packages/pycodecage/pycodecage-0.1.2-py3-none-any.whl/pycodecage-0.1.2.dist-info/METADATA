@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: pycodecage
+Version: 0.1.2
+Summary: 
+Author: iYasha
+Author-email: 33287747+iYasha@users.noreply.github.com
+Requires-Python: >=3.6,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: restrictedpython (>=6.1,<7.0)
+Description-Content-Type: text/markdown
+
+# PyCodeCage
+
+PyCodeCage is a Python library for running code in a sandboxed environment.
+
+## Installation
+
+Use the package manager pip to install PyCodeCage.
+
+```bash
+pip install PyCodeCage
+```
+
+## Example
+
+```python
+from pycodecage import TestCase, TrustedEnvironment, run_tests
+
+code = """
+a = int(input("Enter an integer:"))
+
+if a % 2 != 0 and a > 20:
+    print("Not Weird")
+elif a % 2 != 0:
+    print("Weird")
+elif a % 2 == 0 and 2 <= a <= 5:
+    print("Not Weird")
+elif a % 2 == 0 and 6 <= a <= 20:
+    print("Weird")
+"""
+
+env = TrustedEnvironment(code)
+tests = [
+    TestCase('test1', [1], ['Weird']),
+    TestCase('test2', [3], ['Weird']),
+    TestCase('test3', [2], ['Not Weird']),
+    TestCase('test4', [4], ['Not Weird']),
+    TestCase('test5', [6], ['Weird']),
+    TestCase('test6', [8], ['Weird']),
+    TestCase('test7', [20], ['Weird']),
+    TestCase('test8', [39], ['Not Weird']),
+]
+run_tests(tests, env)
+```
+
+
+
