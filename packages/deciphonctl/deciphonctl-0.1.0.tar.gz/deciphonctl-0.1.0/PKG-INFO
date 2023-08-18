@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: deciphonctl
+Version: 0.1.0
+Summary: Control Deciphon server.
+License: MIT
+Author: Danilo Horta
+Author-email: horta@ebi.ac.uk
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: deciphon (>=0,<1)
+Requires-Dist: deciphon-core (>=0,<1)
+Requires-Dist: deciphon-sched (>=0.4.1,<0.5.0)
+Requires-Dist: fasta-reader (>=3,<4)
+Requires-Dist: loguru (>=0,<1)
+Requires-Dist: paho-mqtt (>=1.6.1,<2.0.0)
+Requires-Dist: pydantic (>=2,<3)
+Requires-Dist: pydantic-settings (>=2,<3)
+Requires-Dist: requests (>=2,<3)
+Requires-Dist: typer (>=0,<1)
+Description-Content-Type: text/markdown
+
+# deciphon-ctl
+
