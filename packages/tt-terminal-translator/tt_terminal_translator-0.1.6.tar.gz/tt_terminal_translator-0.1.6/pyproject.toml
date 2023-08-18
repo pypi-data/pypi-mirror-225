@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "tt-terminal-translator"
+version = "0.1.6"
+description = "Terminal Translator is a translation CLI that uses the Google Cloud API. "
+authors = ["gbPagano <guilhermebpagano@gmail.com>"]
+readme = "README.md"
+packages = [{include = "terminal_translator", from = "src"}]
+classifiers = [  
+    "Environment :: Console",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.urls]
+"Documentation" = "https://terminal-translator.readthedocs.io/en/latest/"
+"Code" = "https://github.com/gbPagano/terminal-translator"
+
+
+[tool.poetry.scripts]
+tt = "terminal_translator.main:app"
+tt-configure = "terminal_translator.config:app_config"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-cloud-translate = "^3.11.0"
+dynaconf = "^3.1.12"
+toml = "^0.10.2"
+typer = "^0.7.0"
+rich = "^13.3.2"
+pyperclip = "^1.8.2"
+requests = "^2.31.0"
+pymdown-extensions = "^10.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+isort = "^5.12.0"
+ruff = "^0.0.259"
+pip-audit = "^2.5.3"
+taskipy = "^1.10.4"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^9.1.5"
+mkdocstrings-python = "^0.8.3"
+mkdocs-pymdownx-material-extras = "^2.4.2"
+mkdocs-macros-plugin = "^0.7.0"
+jinja2 = "^3.1.2"
+mkdocstrings = "^0.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.taskipy.tasks]
+lint = { cmd = "ruff src", help = "Performs a static analysis of the source code"}
+format = { cmd = "isort src && black src", help = "Formats the source code of the project, following PEP 8 standards" }
+security = { cmd = "pip-audit", help = "Performs a security analysis of the libraries used" }
+docs = { cmd = "mkdocs serve", help = "Run the documentation"}
