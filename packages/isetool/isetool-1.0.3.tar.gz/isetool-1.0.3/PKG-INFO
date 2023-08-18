@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: isetool
+Version: 1.0.3
+Summary: Command line for querying a Cisco ISE server
+Home-page: https://github.com/robwdwd/isetool
+License: BSD-2-Clause
+Author: Rob Woodward
+Author-email: rob@emailplus.org
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: click (>=8.0.1,<9.0.0)
+Requires-Dist: requests (>=2.26.0,<3.0.0)
+Requires-Dist: urllib3 (>=1.26.6,<2.0.0)
+Project-URL: Repository, https://github.com/robwdwd/isetool
+Description-Content-Type: text/markdown
+
+# isetool
