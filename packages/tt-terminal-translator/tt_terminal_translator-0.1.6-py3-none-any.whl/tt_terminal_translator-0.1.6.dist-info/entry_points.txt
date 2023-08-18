@@ -1,0 +1,4 @@
+[console_scripts]
+tt=terminal_translator.main:app
+tt-configure=terminal_translator.config:app_config
+
