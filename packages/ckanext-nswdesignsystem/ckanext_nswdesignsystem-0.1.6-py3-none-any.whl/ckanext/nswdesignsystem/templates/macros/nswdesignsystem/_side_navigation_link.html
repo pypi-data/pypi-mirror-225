@@ -1,0 +1,14 @@
+{% macro link(details, is_current=false) %}
+    {% set class = details.setdefault("attrs", {}).setdefault("class", "") %}
+
+    {% if is_current and "current" not in class %}
+        {% do details.attrs.update(class=[class, "current"]|join(" ")|trim) %}
+    {% endif %}
+
+    {% if caller is defined %}
+        {{ caller(details, is_current) }}
+    {% else %}
+        <a href="{{ details.href }}" {{ details.attrs | xmlattr if details.attrs }}>{{ details.label }}</a>
+    {% endif %}
+
+{% endmacro %}

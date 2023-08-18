@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+{% from "macros/nswdesignsystem/side_navigation.html" import side_navigation with context  %}
+
+{% set links = h.nswdesignsystem_demo_links() %}
+
+{% set active_path = h.nswdesignsystem_get_active_path(links, request.path) %}
+
+{% block styles %}
+    {{ super() }}
+    {% asset 'nswdesignsystem/hljs-css' %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {% asset 'nswdesignsystem/hljs-js' %}
+    <script>
+     window.addEventListener("load", () => hljs.highlightAll())
+    </script>
+{% endblock %}
+
+{% block secondary_content %}
+    <div class="m-2">
+        {{ side_navigation(links, active_path) }}
+    </div>
+{% endblock %}
+
+{% block primary_content %}
+
+{% endblock %}

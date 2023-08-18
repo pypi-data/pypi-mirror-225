@@ -1,0 +1,45 @@
+{% extends "nswdesignsystem/components.html" %}
+{% from "macros/nswdesignsystem/tabs.html" import tabs with context  %}
+
+{% block primary_content %}
+
+    <div class="p-2">
+        {% for variant in h.nswdesignsystem_demo_variants(component) %}
+            {% set embed_url = h.url_for("nswdesignsystem.embed", component=variant) %}
+
+            <p class="nsw-h4">
+                <a href="{{ embed_url }}" target="_blank" rel="nofollow" class="js-link">
+                    <span>{{ variant.split("_") | join(" ") | capitalize }}</span>
+                    <span class="material-icons nsw-material-icons" title="Open in new tab">open_in_new</span>
+                </a>
+            </p>
+
+            {% call(idx) tabs(["Preview", "Code", "Details"]) %}
+            {% if idx == 0 %}
+                {% if use_iframe %}
+                    <iframe frameborder="0" src="{{ embed_url }}" class="w-100" ></iframe>
+
+                {% else %}
+                    <section>
+                        {% include h.nswdesignsystem_demo_template(variant) %}
+                    </section>
+
+                {% endif %}
+
+            {% elif idx == 1 %}
+                <pre><code class="language-django">{{ h.nswdesignsystem_demo_code(variant) }}</code></pre>
+
+            {% elif idx == 2 %}
+                {% include [h.nswdesignsystem_demo_details(variant), "nswdesignsystem/snippets/missing_demo_details.html"] %}
+
+            {% endif %}
+            {% endcall %}
+            <hr/>
+
+        {% else %}
+            {% include "nswdesignsystem/snippets/missing_demo.html" %}
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
