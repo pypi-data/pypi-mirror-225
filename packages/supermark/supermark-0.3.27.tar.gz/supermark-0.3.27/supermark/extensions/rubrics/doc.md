@@ -1,0 +1,1 @@
+Table style for rubrics.

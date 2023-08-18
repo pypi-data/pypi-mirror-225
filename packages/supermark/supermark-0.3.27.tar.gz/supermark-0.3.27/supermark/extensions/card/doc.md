@@ -1,0 +1,1 @@
+Cards provide links with additional elements like text or arrows.

@@ -1,0 +1,13 @@
+:tree:
+- course/
+    - pages/
+        - index.md
+        - hello.md
+    - templates/
+        - page.html
+    - assets/
+        - ...
+    - figures/
+        - ...
+    - index.html
+    - hello.html

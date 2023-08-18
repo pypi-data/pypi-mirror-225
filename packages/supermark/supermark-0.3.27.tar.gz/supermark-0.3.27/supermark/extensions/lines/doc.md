@@ -1,0 +1,1 @@
+A set of lines as placeholder for handwritten notes.
