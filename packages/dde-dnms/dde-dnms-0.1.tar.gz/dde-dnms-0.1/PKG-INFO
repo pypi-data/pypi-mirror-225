@@ -1,0 +1,132 @@
+Metadata-Version: 2.1
+Name: dde-dnms
+Version: 0.1
+Summary: 给希望使用deep-time.org中注册数据用户提供的sdk
+Author: suncong
+Author-email: csun@elemparticle.com
+License: BSD License
+License-File: LICENSE
+
+dde_dnms
+========
+
+|Version| ### `README of Chinese <README-CN.md>`__
+
+Introduction
+------------
+
+The dde_dnms library provides a convenient way for applications written
+in Python to access the Geological Data API of the Deep-Time Digital
+Earth (DDE) data network management system. You can find usage examples
+for the dde_dnms library in our API reference documentation.
+
+Features
+--------
+
+-  Provide a synchronous API interface to call and retrieve the result
+   based on the data_address.
+-  Provide a synchronous API interface to call ODPS with data_address
+   and SQL, and return the result.
+-  Provide a synchronous API interface to call ODPS with data_address
+   and SQL, and return the result in dataframe format.
+-  Provide an asynchronous API interface to submit a task to ODPS based
+   on data_address and SQL.
+-  Provide an asynchronous API interface to check the status of an ODPS
+   task using the task ID.
+-  Provide an asynchronous API interface to check the result of an ODPS
+   task using the task ID.
+
+Installation
+------------
+
+To install a package from PyPI, you can use the following command:
+
+.. code:: buildoutcfg
+
+   pip install --upgrade dde_dnms
+
+Install from source with:
+
+.. code:: buildoutcfg
+
+   python setup.py install
+
+Example
+-------
+
+Setting the Endpoint
+
+.. code:: buildoutcfg
+
+   import os
+
+   os.environ['DDE_DNMS_ADDRESS'] =http://manager-system-openapi
+   os.environ['DDE_DNMS_ENDPOINT'] = 'http://114.55.32.117'
+   os.environ['DDE_DNMS_API_TOKEN'] = '*****************'
+
+Requesting API AK/SK
+
+.. code:: buildoutcfg
+
+   from dde_dnms import create_ak_sk
+
+   key_data = create_ak_sk(account='zhangsan')
+
+Requesting API Token
+
+.. code:: buildoutcfg
+
+   from dde_dnms import create_token
+
+   token = create_token(ak='*****************', sk='*****************')
+
+Requesting to Invoke HTTP Resource
+
+.. code:: buildoutcfg
+
+   from dde_dnms.api_client import call_api
+
+   # The parameters are in the form of api path
+   response = call_api(data_address='177B444889021000',content_type='path',api_path='api/now/58457')
+
+   # The parameters are in the form of params
+   response = call_api(data_address='177A1BB558021000',content_type='params',api_path='api/common/teladress',payload={"mobile": "15257117182"})
+
+   # The parameters are in the form of json
+   response = call_api(data_address='177B444889021000',content_type='json',api_path='api/login', payload={'account': '123456@qq.com', 'password': '123456'})
+
+Synchronous request to call odps resource
+
+.. code:: buildoutcfg
+
+   from dde_dnms.odps_client import call_result, call_result_dataframe
+
+   # Obtain the odps execution result according to data_address and sql synchronous request
+   data = call_result(data_address='16A31439EBC21000', sql='select * from traffic limit 5')
+
+   # According to the data_address and sql synchronous request, the odps execution result is returned in the form of dataframe
+   df_data = call_result_dataframe(data_address='16A31439EBC21000', sql='select * from traffic limit 5')
+
+Asynchronous request calls odps resources
+
+.. code:: buildoutcfg
+
+   from dde_dnms.odps_client import async_call, async_call_resuly, call_task_status
+
+   # Obtain odps and task id according to data_address and sql asynchronous request
+   task_id = async_call(data_address='16A31439EBC21000', sql='select * from traffic limit 5')
+
+   # Query task running status according to data_address and task_id
+   status = call_task_status(data_address='16A31439EBC21000', task_id='***********')
+
+   # Query task running results based on data_address and task_id
+   data = async_call(data_address='16A31439EBC21000', task_id='***********')
+
+Contact us
+----------
+
+-  `Deep-time Digital Earth <https://deep-time.org/>`__
+-  `DDE Data-Network-Manager System <https://dnms.deep-time.org/>`__
+-  `developer email <csun@elemparticle.com>`__
+
+.. |Version| image:: https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&r=r&ts=1683906897&type=6e&v=0.0.1&x2=0
