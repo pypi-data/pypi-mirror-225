@@ -1,0 +1,118 @@
+Metadata-Version: 2.1
+Name: virtual-cursor
+Version: 0.1
+Summary: Write responsive web apps in full python
+Author-email: Florian Scherf <mail@florianscherf.de>
+License: MIT License
+        
+        Copyright (c) 2023 Florian Scherf
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/fscherf/virtual-cursor
+Project-URL: Repository, https://github.com/fscherf/virtual-cursor
+Project-URL: Bug Tracker, https://github.com/fscherf/virtual-cursor/issues
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: AsyncIO
+Classifier: Framework :: Django
+Classifier: Framework :: Pytest
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Provides-Extra: dev
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: lona ==1.15 ; extra == 'dev'
+Requires-Dist: lona-picocss ==0.4.1 ; extra == 'dev'
+Requires-Dist: coverage ==7.2.7 ; extra == 'dev'
+Requires-Dist: pytest ==7.4.0 ; extra == 'dev'
+Requires-Dist: pytest-aiohttp ==1.0.4 ; extra == 'dev'
+Requires-Dist: pytest-timeout ==2.1.0 ; extra == 'dev'
+Requires-Dist: playwright ==1.36.0 ; extra == 'dev'
+
+# virtual-cursor
+
+![license MIT](https://img.shields.io/pypi/l/virtual-cursor.svg)
+![Python Version](https://img.shields.io/pypi/pyversions/virtual-cursor.svg)
+![Latest Version](https://img.shields.io/pypi/v/virtual-cursor.svg)
+
+virtual-cursor adds human-like cursor animations to your browser tests.
+
+Browser test libraries like [Selenium](https://www.selenium.dev/) or [Playwright](https://playwright.dev/) can be used to generate screenshots or videos of websites, which are great for debugging or as media for documentation.
+Most of the times, these videos are not very useful, because the test code clicks much faster than a human and the cursor is invisible.
+
+virtual-cursor emulates a cursor by injecting a custom JavaScript payload into the test browser, which animates a mocked, second cursor, and adds delays to slow down the [test code](tests/test_virtual_cursor.py).
+
+![](doc/popup-desktop-chrome-dark.gif)
+
+[Gallery](doc/gallery.md)
+
+
+## Installation
+
+virtual-cursor can be installed via pip
+
+```
+pip install virtual-cursor
+```
+
+## Usage
+
+### pytest + playwright
+
+See a full [example](tests/test_virtual_cursor.py) which produces the clip above.
+
+```python
+async def test_virtual_cursor():
+    from playwright.async_api import async_playwright
+
+    from virtual_cursor.playwright import click, fill, check, selectOption
+
+    async with async_playwright() as playwright:
+        browser = await playwright.chromium.launch()
+
+        browser_context = await browser.new_context(
+            record_video_dir='/tmp/videos/',
+        )
+
+        page = await browser_context.new_page()
+        await page.goto('http://localhost')
+
+        # click element
+        await click(page, '#button')
+
+        # fill out a text-input
+        await fill(page, '#text-input', 'Lorem Ipsum')
+
+        # select an option of a select
+        await selectOption(page, '#select', 'Option 17')
+
+        # check a checkbox
+        await check(page, '#check-box')
+```
