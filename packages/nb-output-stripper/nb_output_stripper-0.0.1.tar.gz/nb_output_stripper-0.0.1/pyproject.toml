@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nb_output_stripper"
+version = "0.0.1"
+authors = [ {name="W Vrielink", email="w.l.j.vrielink@uva.nl"}]
+description = "A package that can empty output cells in a notebook by parsing line by line"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
