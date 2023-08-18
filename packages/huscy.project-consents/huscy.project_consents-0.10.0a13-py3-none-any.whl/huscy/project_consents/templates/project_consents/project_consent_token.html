@@ -1,0 +1,29 @@
+{% load qr_code %}
+
+<html>
+    <head>
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.errors }}
+            <table>
+                <tr>
+                    <td>{{ form.project.label }}:</td>
+                    <td>{{ form.project }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.subject.label }}:</td>
+                    <td>{{ form.subject }}</td>
+                </tr>
+            </table>
+            <button>submit</button>
+        </form>
+
+        {% if sign_project_consent_url %}
+        {% qr_from_text sign_project_consent_url size="l" %}
+        <a href="{{ sign_project_consent_url }}">sign</a>
+        {% endif %}
+
+    </body>
+</html>
