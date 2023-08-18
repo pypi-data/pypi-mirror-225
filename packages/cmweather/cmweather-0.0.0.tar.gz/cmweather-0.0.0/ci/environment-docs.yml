@@ -1,0 +1,16 @@
+name: cmweather-docs
+channels:
+  - conda-forge
+dependencies:
+  - numpydoc
+  - pydata-sphinx-theme
+  - nbsphinx
+  - ipython
+  - ipykernel
+  - netcdf4
+  - xarray
+  - pooch
+  - pip
+  - pip:
+      - sphinxext-opengraph
+      - -e ..
