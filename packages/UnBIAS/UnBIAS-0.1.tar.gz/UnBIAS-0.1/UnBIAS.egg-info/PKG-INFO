@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: UnBIAS
+Version: 0.1
+Summary: A package for detecting bias, performing named entity, and debiasing text.
+Home-page: https://github.com/VectorInstitute/NewsMediaBias/UnBIAS
+Author: Shaina Raza
+Author-email: shaina.raza@utoronto.ca
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: License.txt
+
+# UnBIAS
+
+A Python package for detecting bias, performing NER, and debiasing text. Developed based on the Huggingface transformers library.
+
+## Installation
+
+You can install UnBIAS using pip:
+
+```bash
+pip install UnBIAS
