@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: habushu-mixology
+Version: 2.5.1.dev1692267512
+Summary: Example of how to use the habushu-maven-plugin
+License: MIT
+Author: Eric Konieczny
+Author-email: ekoniec1@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: cryptography (>=39.0.1,<40.0.0)
+Requires-Dist: krausening (==16)
+Requires-Dist: uvicorn[standard] (>=0.18.0,<0.19.0)
