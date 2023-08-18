@@ -1,0 +1,31 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfStateWidgetItem (  PdfFieldWidgetItem) :
+    """
+    <summary>
+        Represents the loaded state item.
+    </summary>
+    """
+    @property
+    def Checked(self)->bool:
+        """
+    <summary>
+        Gets or sets a value indicating whether this  is checked.
+    </summary>
+        """
+        GetDllLibPdf().PdfStateWidgetItem_get_Checked.argtypes=[c_void_p]
+        GetDllLibPdf().PdfStateWidgetItem_get_Checked.restype=c_bool
+        ret = GetDllLibPdf().PdfStateWidgetItem_get_Checked(self.Ptr)
+        return ret
+
+    @Checked.setter
+    def Checked(self, value:bool):
+        GetDllLibPdf().PdfStateWidgetItem_set_Checked.argtypes=[c_void_p, c_bool]
+        GetDllLibPdf().PdfStateWidgetItem_set_Checked(self.Ptr, value)
+

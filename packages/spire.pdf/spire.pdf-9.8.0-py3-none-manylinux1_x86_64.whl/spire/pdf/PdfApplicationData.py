@@ -1,0 +1,30 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfApplicationData (SpireObject) :
+    """
+    <summary>
+        Represents the pdf application data, used to store private data.
+    </summary>
+    """
+    @property
+
+    def Private(self)->'SpireObject':
+        """
+    <summary>
+        The private data of application data dictionary.
+            The vaild type: string  Dictionary.
+    </summary>
+        """
+        GetDllLibPdf().PdfApplicationData_get_Private.argtypes=[c_void_p]
+        GetDllLibPdf().PdfApplicationData_get_Private.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfApplicationData_get_Private(self.Ptr)
+        ret = None if intPtr==None else SpireObject(intPtr)
+        return ret
+
+

@@ -1,0 +1,43 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfSignatureFieldWidget (  PdfStyledFieldWidget) :
+    """
+    <summary>
+        Represents the signature field of an existing PDF document`s form.
+    </summary>
+    """
+    @property
+
+    def Signature(self)->'PdfSignature':
+        """
+
+        """
+        GetDllLibPdf().PdfSignatureFieldWidget_get_Signature.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignatureFieldWidget_get_Signature.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfSignatureFieldWidget_get_Signature(self.Ptr)
+        ret = None if intPtr==None else PdfSignature(intPtr)
+        return ret
+
+
+    @Signature.setter
+    def Signature(self, value:'PdfSignature'):
+        GetDllLibPdf().PdfSignatureFieldWidget_set_Signature.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().PdfSignatureFieldWidget_set_Signature(self.Ptr, value.Ptr)
+
+    def ObjectID(self)->int:
+        """
+    <summary>
+        Form field identifier
+    </summary>
+        """
+        GetDllLibPdf().PdfSignatureFieldWidget_ObjectID.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignatureFieldWidget_ObjectID.restype=c_int
+        ret = GetDllLibPdf().PdfSignatureFieldWidget_ObjectID(self.Ptr)
+        return ret
+

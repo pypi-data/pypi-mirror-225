@@ -1,0 +1,33 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfKnownColor (  PdfComplexColor) :
+    """
+    <summary>
+        Represents an indexed color, based on an indexed colorspace. 
+    </summary>
+    """
+    @property
+    def SelectColorIndex(self)->int:
+        """
+    <summary>
+        Gets or sets the color index
+    </summary>
+<value>The index of the select color.</value>
+<remarks>The acceptable range for this value is 0 - MaxColorIndex.</remarks>
+        """
+        GetDllLibPdf().PdfKnownColor_get_SelectColorIndex.argtypes=[c_void_p]
+        GetDllLibPdf().PdfKnownColor_get_SelectColorIndex.restype=c_int
+        ret = GetDllLibPdf().PdfKnownColor_get_SelectColorIndex(self.Ptr)
+        return ret
+
+    @SelectColorIndex.setter
+    def SelectColorIndex(self, value:int):
+        GetDllLibPdf().PdfKnownColor_set_SelectColorIndex.argtypes=[c_void_p, c_int]
+        GetDllLibPdf().PdfKnownColor_set_SelectColorIndex(self.Ptr, value)
+

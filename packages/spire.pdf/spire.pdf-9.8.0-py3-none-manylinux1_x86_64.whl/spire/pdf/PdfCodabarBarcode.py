@@ -1,0 +1,28 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfCodabarBarcode (  PdfUnidimensionalBarcode) :
+    @dispatch
+    def __init__(self):
+        GetDllLibPdf().PdfCodabarBarcode_CreatePdfCodabarBarcode.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCodabarBarcode_CreatePdfCodabarBarcode()
+        super(PdfCodabarBarcode, self).__init__(intPtr)
+    @dispatch
+    def __init__(self, text:str):
+        GetDllLibPdf().PdfCodabarBarcode_CreatePdfCodabarBarcodeT.argtypes=[c_wchar_p]
+        GetDllLibPdf().PdfCodabarBarcode_CreatePdfCodabarBarcodeT.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCodabarBarcode_CreatePdfCodabarBarcodeT(text)
+        super(PdfCodabarBarcode, self).__init__(intPtr)
+    """
+    <summary>
+          Represents a Codabar barcode.
+     </summary>
+<remarks> This symbology allows the encoding of strings of up to 16 digits, 10 numeric digits (0 through 9) and 
+             6 special non alpha characters ("+", "-", "$", "/", ":", "."). 
+             </remarks>
+    """

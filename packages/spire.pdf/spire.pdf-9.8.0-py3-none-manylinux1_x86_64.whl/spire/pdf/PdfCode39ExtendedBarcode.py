@@ -1,0 +1,28 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfCode39ExtendedBarcode (  PdfCode39Barcode) :
+    @dispatch
+    def __init__(self):
+        GetDllLibPdf().PdfCode39ExtendedBarcode_CreatePdfCode39ExtendedBarcode.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCode39ExtendedBarcode_CreatePdfCode39ExtendedBarcode()
+        super(PdfCode39ExtendedBarcode, self).__init__(intPtr)
+
+    @dispatch
+    def __init__(self, text:str):
+        GetDllLibPdf().PdfCode39ExtendedBarcode_CreatePdfCode39ExtendedBarcodeT.argtypes=[c_wchar_p]
+        GetDllLibPdf().PdfCode39ExtendedBarcode_CreatePdfCode39ExtendedBarcodeT.restype = c_void_p
+        intPtr = GetDllLibPdf().PdfCode39ExtendedBarcode_CreatePdfCode39ExtendedBarcodeT(text)
+        super(PdfCode39ExtendedBarcode, self).__init__(intPtr)
+    """
+    <summary>
+        Represents a Code39 Extended barcode.
+            Code 39 Extended is designed to encode 128 full ASCII characters.
+    </summary>
+<remarks> All 128 ASCII characters can be encoded in an extended Code 39 barcode</remarks>
+    """

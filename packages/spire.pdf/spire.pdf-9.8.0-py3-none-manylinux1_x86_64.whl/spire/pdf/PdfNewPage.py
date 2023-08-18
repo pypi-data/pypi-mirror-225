@@ -1,0 +1,44 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfNewPage (  PdfPageBase) :
+    """
+    <summary>
+        Represents a single PDF page.
+    </summary>
+    """
+    @property
+
+    def Size(self)->'SizeF':
+        """
+    <summary>
+        Gets the size of the page.
+    </summary>
+        """
+        GetDllLibPdf().PdfNewPage_get_Size.argtypes=[c_void_p]
+        GetDllLibPdf().PdfNewPage_get_Size.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfNewPage_get_Size(self.Ptr)
+        ret = None if intPtr==None else SizeF(intPtr)
+        return ret
+
+
+    @property
+
+    def Annotations(self)->'PdfAnnotationCollection':
+        """
+    <summary>
+        Gets a collection of the annotations of the page.
+    </summary>
+        """
+        GetDllLibPdf().PdfNewPage_get_Annotations.argtypes=[c_void_p]
+        GetDllLibPdf().PdfNewPage_get_Annotations.restype=c_void_p
+        intPtr = GetDllLibPdf().PdfNewPage_get_Annotations(self.Ptr)
+        ret = None if intPtr==None else PdfAnnotationCollection(intPtr)
+        return ret
+
+

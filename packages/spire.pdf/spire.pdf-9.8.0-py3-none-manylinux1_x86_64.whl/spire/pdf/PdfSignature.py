@@ -1,0 +1,140 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class PdfSignature (SpireObject) :
+    """
+    <summary>
+        The pdf signature.
+    </summary>
+    """
+    @property
+
+    def Filter(self)->str:
+        """
+    <summary>
+        The name of the preferred signature handler to use when validating this signature.
+    </summary>
+        """
+        GetDllLibPdf().PdfSignature_get_Filter.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_Filter.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_Filter(self.Ptr))
+        return ret
+
+
+    @property
+
+    def SubFilter(self)->str:
+        """
+    <summary>
+        A name that describes the encoding of the signature value.
+    </summary>
+        """
+        GetDllLibPdf().PdfSignature_get_SubFilter.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_SubFilter.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_SubFilter(self.Ptr))
+        return ret
+
+
+    @property
+
+    def Name(self)->str:
+        """
+    <summary>
+        The name of the person or anthority signing the document
+            this value should be used only when it is not possible to extract the name from the signature
+            for example, from the certificat of the signer
+    </summary>
+    <param name="name"></param>
+        """
+        GetDllLibPdf().PdfSignature_get_Name.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_Name.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_Name(self.Ptr))
+        return ret
+
+
+    @Name.setter
+    def Name(self, value:str):
+        GetDllLibPdf().PdfSignature_set_Name.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().PdfSignature_set_Name(self.Ptr, value)
+
+#    @property
+#
+#    def Date(self)->'Nullable1':
+#        """
+#    <summary>
+#        The time of signing. Depending on the signature handler
+#            this may be a normal unverified computer time or a time generated in a verifiable way from a secure time server
+#    </summary>
+#        """
+#        GetDllLibPdf().PdfSignature_get_Date.argtypes=[c_void_p]
+#        GetDllLibPdf().PdfSignature_get_Date.restype=c_void_p
+#        intPtr = GetDllLibPdf().PdfSignature_get_Date(self.Ptr)
+#        ret = None if intPtr==None else Nullable1(intPtr)
+#        return ret
+#
+
+
+    @property
+
+    def Location(self)->str:
+        """
+    <summary>
+        Gets or sets the physical location of the signing.
+    </summary>
+        """
+        GetDllLibPdf().PdfSignature_get_Location.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_Location.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_Location(self.Ptr))
+        return ret
+
+
+    @Location.setter
+    def Location(self, value:str):
+        GetDllLibPdf().PdfSignature_set_Location.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().PdfSignature_set_Location(self.Ptr, value)
+
+    @property
+
+    def Reason(self)->str:
+        """
+    <summary>
+        Gets or sets reason of signing.
+            The reason for the signing, such as ( I agree … ).
+    </summary>
+        """
+        GetDllLibPdf().PdfSignature_get_Reason.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_Reason.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_Reason(self.Ptr))
+        return ret
+
+
+    @Reason.setter
+    def Reason(self, value:str):
+        GetDllLibPdf().PdfSignature_set_Reason.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().PdfSignature_set_Reason(self.Ptr, value)
+
+    @property
+
+    def ContactInfo(self)->str:
+        """
+    <summary>
+        Gets or sets a phone number of signer
+            Information provided by the signer to enable a recipient to contact the signer to verify the signature; for example, a phone number.
+    </summary>
+        """
+        GetDllLibPdf().PdfSignature_get_ContactInfo.argtypes=[c_void_p]
+        GetDllLibPdf().PdfSignature_get_ContactInfo.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().PdfSignature_get_ContactInfo(self.Ptr))
+        return ret
+
+
+    @ContactInfo.setter
+    def ContactInfo(self, value:str):
+        GetDllLibPdf().PdfSignature_set_ContactInfo.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().PdfSignature_set_ContactInfo(self.Ptr, value)
+

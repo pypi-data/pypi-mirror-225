@@ -1,0 +1,47 @@
+from enum import Enum
+from plum import dispatch
+from typing import TypeVar,Union,Generic,List,Tuple
+from spire.pdf.common import *
+from spire.pdf import *
+from ctypes import *
+import abc
+
+class XfaImageField (  XfaField) :
+    """
+
+    """
+    @property
+
+    def ImageValueBase64(self)->str:
+        """
+
+        """
+        GetDllLibPdf().XfaImageField_get_ImageValueBase64.argtypes=[c_void_p]
+        GetDllLibPdf().XfaImageField_get_ImageValueBase64.restype=c_void_p
+        ret = PtrToStr(GetDllLibPdf().XfaImageField_get_ImageValueBase64(self.Ptr))
+        return ret
+
+
+    @ImageValueBase64.setter
+    def ImageValueBase64(self, value:str):
+        GetDllLibPdf().XfaImageField_set_ImageValueBase64.argtypes=[c_void_p, c_wchar_p]
+        GetDllLibPdf().XfaImageField_set_ImageValueBase64(self.Ptr, value)
+
+    @property
+
+    def Image(self)->'Image':
+        """
+
+        """
+        GetDllLibPdf().XfaImageField_get_Image.argtypes=[c_void_p]
+        GetDllLibPdf().XfaImageField_get_Image.restype=c_void_p
+        intPtr = GetDllLibPdf().XfaImageField_get_Image(self.Ptr)
+        ret = None if intPtr==None else Image(intPtr)
+        return ret
+
+
+    @Image.setter
+    def Image(self, value:'Image'):
+        GetDllLibPdf().XfaImageField_set_Image.argtypes=[c_void_p, c_void_p]
+        GetDllLibPdf().XfaImageField_set_Image(self.Ptr, value.Ptr)
+
