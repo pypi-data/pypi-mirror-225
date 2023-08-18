@@ -1,0 +1,27 @@
+[project]
+name = "llm-claude"
+version = "0.4.0"
+
+description = "LLM plugin for Anthropic's Claude"
+readme = "README.md"
+authors = [{name = "Tom Viner"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+
+dependencies = [
+    "llm",
+    "anthropic",
+]
+
+requires-python = ">3.7"
+
+[project.optional-dependencies]
+test = ["pytest", "click"]
+
+[project.urls]
+Homepage = "https://github.com/tomviner/llm-claude"
+
+[project.entry-points.llm]
+claude = "llm_claude"
