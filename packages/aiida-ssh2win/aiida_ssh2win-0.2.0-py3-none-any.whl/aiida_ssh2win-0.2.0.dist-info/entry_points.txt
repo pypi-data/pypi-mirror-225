@@ -1,0 +1,3 @@
+[aiida.transports]
+ssh2win=aiida_ssh2win.transport:SshToWindowsTransport
+
