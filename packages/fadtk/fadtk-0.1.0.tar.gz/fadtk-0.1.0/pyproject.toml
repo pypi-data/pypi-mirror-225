@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "fadtk"
+version = "0.1.0"
+description = "FAD Toolkit"
+authors = ["Azalea <22280294+hykilpikonna@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.scripts]
+fadtk = "fadtk.__main__:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
