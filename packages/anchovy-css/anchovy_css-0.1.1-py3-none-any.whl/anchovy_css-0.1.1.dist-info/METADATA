@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: anchovy-css
+Version: 0.1.1
+Summary: A simple, pure-Python CSS pre-processor.
+Author-email: Daniel Foerster <pydsigner@gmail.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/pydsigner/anchovy_css
+Keywords: css
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Pre-processors
+Classifier: Topic :: Text Processing :: Markup
+Classifier: Typing :: Typed
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: tinycss2 >=1.1.1
+Provides-Extra: cq
+Requires-Dist: anchovy-css[format] ; extra == 'cq'
+Requires-Dist: pylint ; extra == 'cq'
+Requires-Dist: pyright ; extra == 'cq'
+Requires-Dist: pytest ; extra == 'cq'
+Requires-Dist: pytest-cov ; extra == 'cq'
+Provides-Extra: format
+Requires-Dist: lightningcss >=0.1.1 ; extra == 'format'
+
+[![PyPI - Project Version](https://img.shields.io/pypi/v/anchovy_css)](https://pypi.org/project/anchovy_css)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/anchovy_css)](https://pypi.org/project/anchovy_css)
+[![GitHub - Project License](https://img.shields.io/github/license/pydsigner/anchovy_css)](https://github.com/pydsigner/anchovy_css)
+[![GitHub - Code Size](https://img.shields.io/github/languages/code-size/pydsigner/anchovy_css)](https://github.com/pydsigner/anchovy_css)
+[![codecov](https://codecov.io/gh/pydsigner/anchovy_css/graph/badge.svg?token=4Z1HNY0CPG)](https://codecov.io/gh/pydsigner/anchovy_css)
+
+# Anchovy CSS
+
+anchovy_css is a pure-Python CSS pre-processor. The key feature it currently
+offers is arbitrary selector and media query nesting. Future releases will add
+more feature parity with established competitors, adding inclusions, features
+flags, and custom properties/functions.
+
+## Installation
+
+anchovy_css includes wheels which can be installed using pip:
+`pip install anchovy_css`.
+
+Alternatively, anchovy_css may be installed directly from source:
+`pip install git+https://github.com/pydsigner/anchovy_css`.
