@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OBP_devops_u1"
+version = "0.2.2"
+authors = [
+  { name="dheeraj.banodha", email="dheeraj.banodha@impetus.com" },
+  { name="ravish.sharma", email="ravish.sharma@impetus.com"}
+]
+description = "Provides AWS compliance details"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "boto3",
+    "pytz"
+]
+
+#[project.urls]
+#"Homepage" = ""
+#"Bug Tracker" = ""
