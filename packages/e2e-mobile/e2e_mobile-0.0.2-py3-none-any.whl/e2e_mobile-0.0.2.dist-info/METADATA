@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: e2e-mobile
+Version: 0.0.2
+Summary: E2E Testing package for mobile apps
+Author-email: Thuyen Trinh <trinhngocthuyen@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/trinhngocthuyen/e2e-mobile
+Keywords: ci,cd,ci/cd,mobile,ios
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: retry
+Requires-Dist: Appium-Python-Client
+Requires-Dist: pytest
+Requires-Dist: click
+Requires-Dist: seeeye >=0.0.5
+Provides-Extra: dev
+Requires-Dist: setuptools >=61.0.0 ; extra == 'dev'
+Requires-Dist: pip-tools ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: autoflake ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: bumpver ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme ; extra == 'dev'
+
+End-to-end Testing Package for Mobile Apps
+==========================================
+
+.. _readthedocs: https://e2e-mobile.readthedocs.io
+.. _contributing guidelines: https://e2e-mobile.readthedocs.io/en/latest/contributing.html
+.. _FAQ: https://e2e-mobile.readthedocs.io/en/latest/faq.html#python-setup
+
+.. image:: https://img.shields.io/pypi/v/e2e-mobile.svg
+    :target: https://pypi.org/project/e2e-mobile
+
+.. image:: https://img.shields.io/pypi/l/e2e-mobile.svg
+    :target: https://github.com/trinhngocthuyen/e2e-mobile/blob/main/LICENSE
+
+``e2e-mobile`` is a Python package providing convenient setup for end-to-end testing in mobile apps.
+
+.. image:: _static/recording.gif
+
+Installation
+------------
+
+``e2e-mobile`` is `available on PyPI (Python Package Index)
+<https://pypi.org/project/e2e-mobile>`_. You can install with with ``pip``:
+
+.. code-block:: console
+
+   $ pip install --upgrade e2e-mobile
+
+First time hearing ``pip``? Check this `FAQ`_.
+
+Usage
+-----
+
+Kindly check out the related docs on readthedocs_:
+
+- `Getting Started <https://e2e-mobile.readthedocs.io/en/latest/getting_started/index.html>`_
+
+Documentation
+-------------
+
+Kindly check out the related docs on readthedocs_:
+
+- `API Reference <https://e2e-mobile.readthedocs.io/en/latest/api/reference.html>`_
+
+Contributing
+------------
+
+Refer to the `contributing guidelines`_ for how to contribute to this project.

@@ -1,0 +1,5 @@
+from e2e import Simulation
+
+
+class ${prefix}Simulation(Simulation):
+    pass

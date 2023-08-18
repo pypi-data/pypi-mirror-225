@@ -1,0 +1,5 @@
+from e2e import Screen
+
+
+class ${prefix}Screen(Screen):
+    pass
