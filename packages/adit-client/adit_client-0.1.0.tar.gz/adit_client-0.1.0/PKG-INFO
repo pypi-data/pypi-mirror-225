@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: adit-client
+Version: 0.1.0
+Summary: ADIT Client library to connect to an ADIT server.
+License: GPLv3
+Author: Kai Schlamp
+Author-email: kai.schlamp@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: dicomweb-client (>=0.59.1,<0.60.0)
+Requires-Dist: pydicom (>=2.4.3,<3.0.0)
+Description-Content-Type: text/markdown
+
+# Adit Client
+
+## About
+
+Adit Client is the official Python client for ADIT (Automated DICOM Transfer). [Visit ADIT on GitHub](https://github.com/radexperts/adit).
+
