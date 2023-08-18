@@ -1,0 +1,90 @@
+Metadata-Version: 2.1
+Name: opentelemetry-instrument-openai
+Version: 0.7.0
+Summary: OpenTelemetry openai instrumentation
+License: Apache-2.0
+Author: cartermp
+Author-email: pcarter@fastmail.com
+Maintainer: cartermp
+Maintainer-email: pcarter@fastmail.com
+Requires-Python: >=3.7.1,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: instruments
+Requires-Dist: openai (>=0.27.8,<0.28.0) ; extra == "instruments"
+Requires-Dist: opentelemetry-api (>=1.18.0,<1.19.0)
+Requires-Dist: opentelemetry-instrumentation (>=0.39b0,<1.0)
+Requires-Dist: opentelemetry-semantic-conventions (>=0.39b0,<1.0)
+Requires-Dist: wrapt (>=1.15.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+# opentelemetry-instrument-openai
+
+It's OpenTelemetry instrumentation (python) for OpenAI's library.
+
+Project site: https://github.com/cartermp/opentelemetry-instrument-openai-py
+
+Supported APIs:
+
+- [x] Chat
+- [x] Embeddings
+- [x] Moderation
+- [x] Image (generation, edit, variation)
+- [x] Audio (transcribe, translate)
+- [x] Completion (GPT-3)
+- [x] Edit (GPT-3)
+
+## How to use it
+
+Simple! First, install this package.
+
+### Usage
+
+With autoinstrumentation agent:
+
+```
+poetry add opentelemetry-instrument-openai
+poetry run opentelemetry-bootstrap -a install
+poetry run opentelemetry-instrument python your_app.py
+```
+
+If you prefer to do it in code, you can do that too:
+
+```python
+import openai
+from dotenv import load_dotenv
+from opentelemetry.instrument.openai import OpenAIInstrumentor
+
+OpenAIInstrumentor().instrument()
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role":"user", "content":"Tell me a joke about opentelemetry"}],
+)
+```
+
+You can then run your app normally with your own opentelemetry initialization.
+
+## How to develop
+
+Get [poetry](https://python-poetry.org/).
+
+Now install and run tests:
+
+```
+poetry install
+poetry run pytest
+```
+
+Now you can develop and run tests as you go!
+
+## How to run the example
+
+Click the example folder and read the README.
