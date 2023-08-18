@@ -1,0 +1,84 @@
+Metadata-Version: 2.1
+Name: dicfg
+Version: 0.0.12
+Author-email: Mart van Rijthoven <mart.vanrijthoven@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2022 martvanrijthoven
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/martvanrijthoven/dicfg/
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+<img src="https://raw.githubusercontent.com/martvanrijthoven/dicfg/f6639bb5788b6426133967b1929e8f4374eab78a/docs/source/_static/logo.svg" width="50%" height="50%">
+
+
+[![PyPI](https://img.shields.io/pypi/v/dicfg?color=0&label=pypi%20package)](https://pypi.org/project/dicfg/)
+[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/dicfg)](https://anaconda.org/conda-forge/dicfg)
+[![docs](https://github.com/martvanrijthoven/dicfg/actions/workflows/docs.yml/badge.svg)](https://github.com/martvanrijthoven/dicfg/actions/workflows/docs.yml)
+[![CI Tests](https://github.com/martvanrijthoven/dicfg/actions/workflows/ci_tests.yml/badge.svg)](https://github.com/martvanrijthoven/dicfg/actions/workflows/ci_tests.yml)
+[![Coverage Status](https://coveralls.io/repos/github/martvanrijthoven/dicfg/badge.svg?branch=main)](https://coveralls.io/github/martvanrijthoven/dicfg?branch=main)
+[![GitHub](https://img.shields.io/github/license/martvanrijthoven/dicfg)](https://github.com/martvanrijthoven/dicfg/blob/main/LICENSE)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dicfg)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7320310.svg)](https://doi.org/10.5281/zenodo.7320310)
+
+Dicfg is a **configuration system** that supports **dependency injection** via **object interpolation** in config files.
+
+**Main Features**
+
+- Loading of predefined config files (YAML and JSON).
+- Overwrite config with user_config files/dictionaries, command line interface, and/or presets.
+- Customize merge/replace behavior for dictionaries and lists.
+- Interpolation support for sub-config files, config variables, environment variables, and python objects.
+- Build object instances directly in the config.
+- Dependency injection via object interpolation: configure all object dependencies directly in the config.
+- Use object attribute interpolation for referencing object attributes directly in the config file.
+
+## Installation 
+
+
+```bash
+pip install dicfg
+```
+
+
+```bash
+conda install -c conda-forge dicfg
+```
+
+## Docs
+
+[https://martvanrijthoven.github.io/dicfg/](https://martvanrijthoven.github.io/dicfg/)
+
+
+
+
+
