@@ -1,0 +1,744 @@
+id: http://w3id.org/mcodegpt/core
+name: core
+title: AI core Template
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  core: http://w3id.org/mcodegpt/core/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  RO: http://purl.obolibrary.org/obo/RO_
+description: Core upper level
+
+default_prefix: core
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+  CancerAnnotations:
+    tree_root: true
+    description: A result of extracting cancer information on people
+    attributes:
+
+
+      human_specimen_identifier:
+        description: What is the identifier for the human specimen?
+        multivalued: true
+        range: Human_Specimen_Identifier
+    
+
+      human_specimen_collection_site:
+        description: Where was the human specimen collected from?
+        multivalued: true
+        range: Human_Specimen_Collection_Site
+    
+
+      human_specimen_specimen_type:
+        description: What type of specimen is the human specimen?
+        multivalued: true
+        range: Human_Specimen_Specimen_Type
+    
+
+      name:
+        description: What is the name of the patient?
+        multivalued: true
+        range: Name
+    
+
+      contact_info:
+        description: What is the patient's contact information?
+        multivalued: true
+        range: Contact_Info
+    
+
+      birth_date:
+        description: What is the patient's birth date?
+        multivalued: true
+        range: Birth_Date
+    
+
+      gender:
+        description: What is the patient's gender?
+        multivalued: true
+        range: Gender
+    
+
+      zip_code:
+        description: What is the patient's zip code?
+        multivalued: true
+        range: Zip_Code
+    
+
+      us_core_race:
+        description: What is the patient's recorded race (US Core standard)?
+        multivalued: true
+        range: Us_Core_Race
+    
+
+      us_core_birth_sex:
+        description: What is the patient's birth sex (US Core standard)?
+        multivalued: true
+        range: Us_Core_Birth_Sex
+    
+
+      us_core_ethnicity:
+        description: What is the patient's ethnicity (US Core standard)?
+        multivalued: true
+        range: Us_Core_Ethnicity
+    
+
+      death_date:
+        description: What is the patient's date of death?
+        multivalued: true
+        range: Death_Date
+    
+
+      disease_status_evidence_type:
+        description: What type of evidence indicates the disease status?
+        multivalued: true
+        range: Disease_Status_Evidence_Type
+    
+
+      tumor_identifier:
+        description: What is the identifier for the tumor?
+        multivalued: true
+        range: Tumor_Identifier
+    
+
+      tumor_body_location:
+        description: Where is the tumor located in the body?
+        multivalued: true
+        range: Tumor_Body_Location
+    
+
+      tumor_size_longest_dimension:
+        description: What is the tumor's longest dimension?
+        multivalued: true
+        range: Tumor_Size_Longest_Dimension
+    
+
+      cancer_stage_stage_type:
+        description: What type of cancer stage is identified?
+        multivalued: true
+        range: Cancer_Stage_Stage_Type
+    
+
+      cancer_asserted_date:
+        description: What date was the cancer asserted?
+        multivalued: true
+        range: Cancer_Asserted_Date
+    
+
+      cancer_body_site:
+        description: What body site is affected by the cancer?
+        multivalued: true
+        range: Cancer_Body_Site
+    
+
+      tumor_marker_test_result_value:
+        description: What is the result value of the tumor marker test?
+        multivalued: true
+        range: Tumor_Marker_Test_Result_Value
+    
+
+      people_human_specimen_identifier_interaction:
+        description: list of what people has Human Specimen Identifier, separated by semi-colons
+        multivalued: true
+        range: People_Human_Specimen_Identifier_Interaction
+    
+
+      people_human_specimen_collection_site_interaction:
+        description: list of what people has Human Specimen Collection Site, separated by semi-colons
+        multivalued: true
+        range: People_Human_Specimen_Collection_Site_Interaction
+    
+
+      people_human_specimen_specimen_type_interaction:
+        description: list of what people has Human Specimen Specimen Type, separated by semi-colons
+        multivalued: true
+        range: People_Human_Specimen_Specimen_Type_Interaction
+    
+
+      people_name_interaction:
+        description: list of what people has Name, separated by semi-colons
+        multivalued: true
+        range: People_Name_Interaction
+    
+
+      people_contact_info_interaction:
+        description: list of what people has Contact Info, separated by semi-colons
+        multivalued: true
+        range: People_Contact_Info_Interaction
+    
+
+      people_birth_date_interaction:
+        description: list of what people has Birth Date, separated by semi-colons
+        multivalued: true
+        range: People_Birth_Date_Interaction
+    
+
+      people_gender_interaction:
+        description: list of what people has Gender, separated by semi-colons
+        multivalued: true
+        range: People_Gender_Interaction
+    
+
+      people_zip_code_interaction:
+        description: list of what people has Zip Code, separated by semi-colons
+        multivalued: true
+        range: People_Zip_Code_Interaction
+    
+
+      people_us_core_race_interaction:
+        description: list of what people has US Core Race, separated by semi-colons
+        multivalued: true
+        range: People_Us_Core_Race_Interaction
+    
+
+      people_us_core_birth_sex_interaction:
+        description: list of what people has US Core Birth Sex, separated by semi-colons
+        multivalued: true
+        range: People_Us_Core_Birth_Sex_Interaction
+    
+
+      people_us_core_ethnicity_interaction:
+        description: list of what people has US Core Ethnicity, separated by semi-colons
+        multivalued: true
+        range: People_Us_Core_Ethnicity_Interaction
+    
+
+      people_death_date_interaction:
+        description: list of what people has Death Date, separated by semi-colons
+        multivalued: true
+        range: People_Death_Date_Interaction
+    
+
+      people_disease_status_evidence_type_interaction:
+        description: list of what people has Disease Status Evidence Type, separated by semi-colons
+        multivalued: true
+        range: People_Disease_Status_Evidence_Type_Interaction
+    
+
+      people_tumor_identifier_interaction:
+        description: list of what people has Tumor Identifier, separated by semi-colons
+        multivalued: true
+        range: People_Tumor_Identifier_Interaction
+    
+
+      people_tumor_body_location_interaction:
+        description: list of what people has Tumor Body Location, separated by semi-colons
+        multivalued: true
+        range: People_Tumor_Body_Location_Interaction
+    
+
+      people_tumor_size_longest_dimension_interaction:
+        description: list of what people has Tumor Size Longest Dimension, separated by semi-colons
+        multivalued: true
+        range: People_Tumor_Size_Longest_Dimension_Interaction
+    
+
+      people_cancer_stage_stage_type_interaction:
+        description: list of what people has Cancer Stage Stage Type, separated by semi-colons
+        multivalued: true
+        range: People_Cancer_Stage_Stage_Type_Interaction
+    
+
+      people_cancer_asserted_date_interaction:
+        description: list of what people has Cancer Asserted Date, separated by semi-colons
+        multivalued: true
+        range: People_Cancer_Asserted_Date_Interaction
+    
+
+      people_cancer_body_site_interaction:
+        description: list of what people has Cancer Body Site, separated by semi-colons
+        multivalued: true
+        range: People_Cancer_Body_Site_Interaction
+    
+
+      people_tumor_marker_test_result_value_interaction:
+        description: list of what people has Tumor Marker Test Result Value, separated by semi-colons
+        multivalued: true
+        range: People_Tumor_Marker_Test_Result_Value_Interaction
+    
+
+  Human_Specimen_Identifier:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the identifier for the human specimen?
+    
+
+  Human_Specimen_Collection_Site:
+    is_a: NamedEntity
+    annotations:
+      prompt: Where was the human specimen collected from?
+    
+
+  Human_Specimen_Specimen_Type:
+    is_a: NamedEntity
+    annotations:
+      prompt: What type of specimen is the human specimen?
+    
+
+  Name:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the name of the patient?
+    
+
+  Contact_Info:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's contact information?
+    
+
+  Birth_Date:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's birth date?
+    
+
+  Gender:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's gender?
+    
+
+  Zip_Code:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's zip code?
+    
+
+  Us_Core_Race:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's recorded race (US Core standard)?
+    
+
+  Us_Core_Birth_Sex:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's birth sex (US Core standard)?
+    
+
+  Us_Core_Ethnicity:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's ethnicity (US Core standard)?
+    
+
+  Death_Date:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the patient's date of death?
+    
+
+  Disease_Status_Evidence_Type:
+    is_a: NamedEntity
+    annotations:
+      prompt: What type of evidence indicates the disease status?
+    
+
+  Tumor_Identifier:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the identifier for the tumor?
+    
+
+  Tumor_Body_Location:
+    is_a: NamedEntity
+    annotations:
+      prompt: Where is the tumor located in the body?
+    
+
+  Tumor_Size_Longest_Dimension:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the tumor's longest dimension?
+    
+
+  Cancer_Stage_Stage_Type:
+    is_a: NamedEntity
+    annotations:
+      prompt: What type of cancer stage is identified?
+    
+
+  Cancer_Asserted_Date:
+    is_a: NamedEntity
+    annotations:
+      prompt: What date was the cancer asserted?
+    
+
+  Cancer_Body_Site:
+    is_a: NamedEntity
+    annotations:
+      prompt: What body site is affected by the cancer?
+    
+
+  Tumor_Marker_Test_Result_Value:
+    is_a: NamedEntity
+    annotations:
+      prompt: What is the result value of the tumor marker test?
+    
+
+  People_Human_Specimen_Identifier_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      human_specimen_identifier:
+        range: Human_Specimen_Identifier
+        annotations:
+          prompt: What is the identifier for the human specimen?
+    
+
+  People_Human_Specimen_Collection_Site_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      human_specimen_collection_site:
+        range: Human_Specimen_Collection_Site
+        annotations:
+          prompt: Where was the human specimen collected from?
+    
+
+  People_Human_Specimen_Specimen_Type_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      human_specimen_specimen_type:
+        range: Human_Specimen_Specimen_Type
+        annotations:
+          prompt: What type of specimen is the human specimen?
+    
+
+  People_Name_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      name:
+        range: Name
+        annotations:
+          prompt: What is the name of the patient?
+    
+
+  People_Contact_Info_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      contact_info:
+        range: Contact_Info
+        annotations:
+          prompt: What is the patient's contact information?
+    
+
+  People_Birth_Date_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      birth_date:
+        range: Birth_Date
+        annotations:
+          prompt: What is the patient's birth date?
+    
+
+  People_Gender_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      gender:
+        range: Gender
+        annotations:
+          prompt: What is the patient's gender?
+    
+
+  People_Zip_Code_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      zip_code:
+        range: Zip_Code
+        annotations:
+          prompt: What is the patient's zip code?
+    
+
+  People_Us_Core_Race_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      us_core_race:
+        range: Us_Core_Race
+        annotations:
+          prompt: What is the patient's recorded race (US Core standard)?
+    
+
+  People_Us_Core_Birth_Sex_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      us_core_birth_sex:
+        range: Us_Core_Birth_Sex
+        annotations:
+          prompt: What is the patient's birth sex (US Core standard)?
+    
+
+  People_Us_Core_Ethnicity_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      us_core_ethnicity:
+        range: Us_Core_Ethnicity
+        annotations:
+          prompt: What is the patient's ethnicity (US Core standard)?
+    
+
+  People_Death_Date_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      death_date:
+        range: Death_Date
+        annotations:
+          prompt: What is the patient's date of death?
+    
+
+  People_Disease_Status_Evidence_Type_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      disease_status_evidence_type:
+        range: Disease_Status_Evidence_Type
+        annotations:
+          prompt: What type of evidence indicates the disease status?
+    
+
+  People_Tumor_Identifier_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      tumor_identifier:
+        range: Tumor_Identifier
+        annotations:
+          prompt: What is the identifier for the tumor?
+    
+
+  People_Tumor_Body_Location_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      tumor_body_location:
+        range: Tumor_Body_Location
+        annotations:
+          prompt: Where is the tumor located in the body?
+    
+
+  People_Tumor_Size_Longest_Dimension_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      tumor_size_longest_dimension:
+        range: Tumor_Size_Longest_Dimension
+        annotations:
+          prompt: What is the tumor's longest dimension?
+    
+
+  People_Cancer_Stage_Stage_Type_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      cancer_stage_stage_type:
+        range: Cancer_Stage_Stage_Type
+        annotations:
+          prompt: What type of cancer stage is identified?
+    
+
+  People_Cancer_Asserted_Date_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      cancer_asserted_date:
+        range: Cancer_Asserted_Date
+        annotations:
+          prompt: What date was the cancer asserted?
+    
+
+  People_Cancer_Body_Site_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      cancer_body_site:
+        range: Cancer_Body_Site
+        annotations:
+          prompt: What body site is affected by the cancer?
+    
+
+  People_Tumor_Marker_Test_Result_Value_Interaction:
+    is_a: CompoundExpression
+    attributes:
+      people:
+        range: People
+        annotations:
+          prompt: the name of the person
+      tumor_marker_test_result_value:
+        range: Tumor_Marker_Test_Result_Value
+        annotations:
+          prompt: What is the result value of the tumor marker test?
+          
+  NamedEntity:
+    abstract: true
+    attributes:
+      id:
+        description: >-
+          A unique identifier for the named entity
+        comments:
+          - this is populated during the grounding and normalization step
+        identifier: true
+        annotations:
+          prompt.skip: "true"
+      label:
+        aliases:
+          - name
+        description: >-
+          The label (name) of the named thing
+        range: string
+        slot_uri: rdfs:label
+        annotations:
+          owl: AnnotationProperty, AnnotationAssertion
+
+  CompoundExpression:
+    abstract: true
+
+  Triple:
+    abstract: true
+    description: Abstract parent for Relation Extraction tasks
+    is_a: CompoundExpression
+    attributes:
+      subject:
+        range: NamedEntity
+      predicate:
+        range: RelationshipType
+      object:
+        range: NamedEntity
+      qualifier:
+        range: string
+        description: >-
+          A qualifier for the statements, e.g. "NOT" for negation
+      subject_qualifier:
+        range: NamedEntity
+        description: >-
+          An optional qualifier or modifier for the subject of the statement, e.g. "high dose" or "intravenously administered"
+      object_qualifier:
+        range: NamedEntity
+        description: >-
+          An optional qualifier or modifier for the object of the statement, e.g. "severe" or "with additional complications"
+
+  TextWithTriples:
+    attributes:
+      publication:
+        range: Publication
+        inlined: true
+        annotations:
+          prompt.skip: "true"
+      triples:
+        range: Triple
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  RelationshipType:
+    is_a: NamedEntity
+    id_prefixes:
+      - RO
+      - biolink
+
+  Publication:
+    attributes:
+      id:
+        description: >-
+          The publication identifier
+      title:
+        description: >-
+          The title of the publication
+      abstract:
+        description: >-
+          The abstract of the publication
+      combined_text:
+      full_text:
+        description: >-
+          The full text of the publication
+
+  AnnotatorResult:
+    attributes:
+      subject_text:
+      object_id:
+      object_text:
+
+enums:
+
+  NullDataOptions:
+    permissible_values:
+      UNSPECIFIED_METHOD_OF_ADMINISTRATION:
+        meaning: NCIT:C149701
+      NOT_APPLICABLE:
+        meaning: NCIT:C18902
+        aliases:
+          - "not applicable"
+          - "N/A"
+      NOT_MENTIONED:
