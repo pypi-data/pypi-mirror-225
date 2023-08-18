@@ -1,0 +1,60 @@
+from odoo import fields, models, api, _
+from odoo.exceptions import UserError, ValidationError
+
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    def create_user(self, partner):
+        user_obj = self.env["res.users"]
+        vat = partner.vat
+
+        user = user_obj.search([("login", "=", vat)])
+        if not user:
+            user = user_obj.search([("login", "=", vat), ("active", "=", False)])
+            if user:
+                user.sudo().write({"active": True})
+            else:
+                user_values = {"partner_id": partner.id,
+                               "login": vat,
+                               "company_ids": [partner.company_id.id],
+                               "company_id": partner.company_id.id,
+                               "role_line_ids":
+                                   [(0, 0, {
+                                       'role_id': self.env.ref('energy_communities.role_ce_member').id,
+                                       'company_id': partner.company_id.id
+                                   })]
+                               }
+                user = user_obj.sudo()._signup_create_user(user_values)
+                # We requiere the user to update the password in keycloak
+                # user.sudo().with_context({"create_user": True}).action_reset_password()
+                if partner.company_id.create_user_in_keycloak:
+                    user.create_users_on_keycloak()
+        return user
+
+    def get_sequence_register(self):
+        ret = super(AccountMove, self).get_sequence_register()
+        company_seq = self.env['ir.sequence'].search(
+            [('code','=','subscription.register'),('company_id','=',self.env.company.id),('active','=',True)])
+        if not company_seq:
+            raise ValidationError(
+                _("You must have a company specific sequence number for subscription.register")
+            )
+        return company_seq
+
+    def get_sequence_operation(self):
+        ret = super(AccountMove, self).get_sequence_operation()
+        company_seq = self.env['ir.sequence'].search(
+            [('code','=','register.operation'),('company_id','=',self.env.company.id),('active','=',True)])
+        if not company_seq:
+            raise ValidationError(
+                _("You must have a company specific sequence number for register.operation")
+            )
+        return company_seq
+
+    def send_capital_release_request_mail(self):
+        # temporal fix por Gares Bide needs
+        # capital_release_mail only must be sent when is a mandatory share
+        #TODO Remove it and implement a configuration
+        if not self.subscription_request.is_voluntary:
+            return super(AccountMove, self).send_capital_release_request_mail()
