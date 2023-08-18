@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: odoo14-addon-energy-project-energy-communities
+Version: 14.0.1.1.2
+Summary: Module glue between Energy Projects and Energy Communities.
+Home-page: https://somcomunitats.coop/
+Author: Coopdevs Treball SCCL & Som Energia SCCL
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Odoo
+Classifier: Framework :: Odoo :: 14.0
+Requires-Python: >=3.6
+Requires-Dist: odoo14-addon-energy-communities (==14.0.1.1.13)
+Requires-Dist: odoo14-addon-energy-project (==14.0.1.1.3)
+Requires-Dist: odoo (<14.1dev,>=14.0a)
+
+
+Module glue between Energy Projects and Energy Communities.
+
+
