@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: pyFinazon
+Version: 0.1
+Summary: finazon wrapper
+Home-page: https://github.com/bossdown123/pyFinazon
+Author: Adam
+Author-email: adamvibeo@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+
+# pyFinazon
+
+A Python package for fetching financial data from the Finazon API.
+
+## Installation
+
+```bash
+pip install finazon
+```
+[![Python package](https://github.com/bossdown123/pyFinazon/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/bossdown123/pyFinazon/actions/workflows/python-package.yml)
