@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: serverinfo
+Version: 0.1.6
+Summary: AI Server(System + NVIDIA GPU) monitoring and power limit setting
+Home-page: https://www.circul.us
+Author: rippertnt
+Author-email: rippertnt@circul.us
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: xmltodict
+
