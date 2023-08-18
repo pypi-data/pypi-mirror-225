@@ -1,0 +1,10 @@
+toml==0.10.2
+numpy==1.25.2
+matplotlib==3.7.2
+plotly==5.16.1
+
+[dev]
+pytest==7.4.0
+pytest-cov==4.1.0
+black==23.7.0
+flake8==6.1.0
