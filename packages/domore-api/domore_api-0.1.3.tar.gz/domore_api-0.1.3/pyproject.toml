@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "domore-api"
+version = "0.1.3"
+description = "Easily do more testing for API."
+license = "Apache-2.0"
+readme = "README.md"
+authors = ["evan.zhang"]
+
+homepage = ""
+repository = ""
+documentation = ""
+
+keywords = ["HTTP", "api", "test", "requests", "locustio"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
+packages= [{include = "domore"}]
+include = ["CHANGELOG.md"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.22.0"
+pydantic = "~1.8"   # >=1.8.0 <1.9.0
+loguru = "^0.4.1"
+jmespath = "^0.9.5"
+pytest = "^7.1.1"
+sentry-sdk = "^0.14.4"
+allure-pytest = "^2.13.2"
+requests-toolbelt = {version = "^0.9.1", optional = true}
+filetype = {version = "^1.0.7", optional = true}
+locust = {version = "^1.0.3", optional = true}
+Brotli = "^1.0.9"
+jinja2 = "^3.0.3"
+black = "^22.3.0"
+pytest-html = "4.0.0rc6"
+pyyaml = "^6.0.1"
+
+[tool.poetry.extras]
+allure = ["allure-pytest"]                  # pip install "domore[allure]", poetry install -E allure
+upload = ["requests-toolbelt", "filetype"]  # pip install "domore[upload]", poetry install -E upload
+locust = ["locust"]                         # pip install "domore[locust]", poetry install -E locust
+
+[tool.poetry.dev-dependencies]
+#coverage = "^4.5.4"
+#fastapi = "^0.70.0"
+#uvicorn = "^0.17.6"
+
+[tool.poetry.scripts]
+domore = "domore.cli:main"
+domake = "domore.cli:main_make_alias"
+har2case = "domore.cli:main_har2case_alias"
+har2pytest = "domore.cli:main_har2pytest_alias"
+dorun = "domore.cli:main_dorun_alias"
+
+locusts = "domore.ext.locust:main_locusts"
+
+[build-system]
+requires = ["poetry>=1.0.0"]
+build-backend = "poetry.masonry.api"
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
