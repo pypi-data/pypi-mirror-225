@@ -1,0 +1,138 @@
+Metadata-Version: 2.1
+Name: ngsderive
+Version: 3.3.1
+Summary: Forensic analysis tool useful in backwards computing information from next-generation sequencing data.
+Home-page: https://github.com/claymcleod/ngsderive
+License: MIT
+Keywords: bioinformatics,genomics,sam,bam,fastq
+Author: Clay McLeod
+Author-email: Clay.McLeod@STJUDE.org
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Dist: colorlog (>=6.6.0,<7.0.0)
+Requires-Dist: gtfparse (>=1.2.1,<2.0.0)
+Requires-Dist: pysam (>=0.21,<0.22)
+Requires-Dist: pytabix (>=0.1,<0.2)
+Requires-Dist: rstr (>=3.0.0,<4.0.0)
+Requires-Dist: sortedcontainers (>=2.4.0,<3.0.0)
+Project-URL: Repository, https://github.com/claymcleod/ngsderive
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <h1 align="center">
+    ngsderive
+  </h1>
+
+  <p align="center">
+    <a href="https://actions-badge.atrox.dev/stjudecloud/ngsderive/goto" target="_blank">
+      <img alt="Actions: CI Status"
+          src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fstjudecloud%2Fngsderive%2Fbadge&style=flat" />
+    </a>
+    <a href="https://pypi.org/project/ngsderive/" target="_blank">
+      <img alt="PyPI"
+          src="https://img.shields.io/pypi/v/ngsderive?color=orange">
+    </a>
+    <a href="https://pypi.python.org/pypi/ngsderive/" target="_blank">
+      <img alt="PyPI: Downloads"
+          src="https://img.shields.io/pypi/dm/ngsderive?color=orange">
+    </a>
+    <a href="https://pypi.python.org/pypi/ngsderive/" target="_blank">
+      <img alt="PyPI: Downloads"
+          src="https://img.shields.io/pypi/pyversions/ngsderive?color=orange">
+    </a>
+    <a href="https://github.com/stjudecloud/ngsderive/blob/master/LICENSE.md" target="_blank">
+    <img alt="License: MIT"
+          src="https://img.shields.io/badge/License-MIT-blue.svg" />
+    </a>
+  </p>
+
+
+  <p align="center">
+    Forensic analysis tool useful in backwards computing information from next-generation sequencing data and annotating splice junctions.
+    <br />
+    <a href="https://stjudecloud.github.io/ngsderive/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/stjudecloud/ngsderive/issues/new?assignees=&labels=&template=feature_request.md&title=Descriptive%20Title&labels=enhancement">Request Feature</a>
+    ·
+    <a href="https://github.com/stjudecloud/ngsderive/issues/new?assignees=&labels=&template=bug_report.md&title=Descriptive%20Title&labels=bug">Report Bug</a>
+    ·
+    ⭐ Consider starring the repo! ⭐
+    <br />
+  </p>
+</p>
+
+> Notice: `ngsderive` is largely a forensic analysis tool useful in backwards computing information
+> from next-generation sequencing data. Notably, most results are provided as a 'best guess' —
+> the tool does not claim 100% accuracy and results should be considered with that understanding.
+> An exception would be the `junction-annotation` tool which analyzes more concrete evidence than the other tools.
+
+## 🎨 Features
+
+The following attributes can be guessed using ngsderive:
+
+* <b>Illumina Instrument.</b> Infer which Illumina instrument was used to generate the data by matching against known instrument and flowcell naming patterns. Each guess comes with a confidence score.
+* <b>RNA-Seq Strandedness.</b> Infer from the data whether RNA-Seq data was generated using a Stranded-Forward, Stranded-Reverse, or Unstranded protocol.
+* <b>Pre-trimmed Read Length.</b> Compute the distribution of read lengths in the file and attempt to guess what the original read length of the experiment was.
+* <b>PHRED Score Encoding.</b> Infers which encoding scheme was used to store PHRED scores as ASCII characters.
+* <b>Junction Annotation.</b> Annotates splice junctions as novel, partial novel, or known in comparison to a reference gene model.
+
+## 📚 Getting Started
+
+### Installation
+
+You can install ngsderive using the Python Package Index ([PyPI](https://pypi.org/)).
+
+```bash
+pip install ngsderive
+```
+
+## 🖥️ Development
+
+If you are interested in contributing to the code, please first review our [CONTRIBUTING.md][contributing-md] document. 
+
+To bootstrap a development environment, please use the following commands.
+
+```bash
+# Clone the repository
+git clone git@github.com:stjudecloud/ngsderive.git
+cd ngsderive
+
+# Install the project using poetry
+poetry install
+```
+
+## 🚧️ Tests
+
+ngsderive provides a (currently patchy) set of tests — both unit and end-to-end.
+
+```bash
+py.test
+```
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/stjudecloud/ngsderive/issues). You can also take a look at the [contributing guide][contributing-md].
+
+## 📝 License
+
+This project is licensed as follows:
+
+* All code related to the `instrument` subcommand is licensed under the [AGPL v2.0][agpl-v2]. This is not due to any strict requirement, but out of deference to some [code][10x-inspiration] I drew inspiration from (and copied patterns from), the decision was made to license this code consistently.
+* The rest of the project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+Copyright © 2020 [St. Jude Cloud Team](https://github.com/stjudecloud).<br />
+
+[10x-inspiration]: https://github.com/10XGenomics/supernova/blob/master/tenkit/lib/python/tenkit/illumina_instrument.py
+[agpl-v2]: http://www.affero.org/agpl2.html
+[contributing-md]: https://github.com/stjudecloud/ngsderive/blob/master/CONTRIBUTING.md
+[license-md]: https://github.com/stjudecloud/ngsderive/blob/master/LICENSE.md
+
