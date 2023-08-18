@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: datasci-agents
+Version: 0.1.0
+Summary: Datasci Agents
+Author: Ivan Bestvina
+Author-email: ivan.bestvina@qluent.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: colorama (>=0.4.6,<0.5.0)
+Requires-Dist: ipykernel (>=6.25.1,<7.0.0)
+Requires-Dist: ipython (>=8.14.0,<9.0.0)
+Requires-Dist: jupyter-client (>=8.3.0,<9.0.0)
+Requires-Dist: litellm (>=0.1.398,<0.2.0)
+Requires-Dist: nbformat (>=5.9.2,<6.0.0)
+Requires-Dist: pandas (>=2.0.3,<3.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Requires-Dist: pyyaml (>=6.0.1,<7.0.0)
+Requires-Dist: tabulate (>=0.9.0,<0.10.0)
+Description-Content-Type: text/markdown
+
+
+<p align="center">
+  <img src="media/image.jpg" height="200" alt="Datasci Agents fig"/>
+</p>
+
+Data science agents are LLM-powered helpers designed to help with routine tasks around EDA, feature engineering and modelling.
+
+Although they are able to deliver full datasci projects on their own (and even compete on Kaggle fully autonomously), they are primarily designed as assistants relying on careful human steering.
+
+# Installation
+TODO
+
+# Kaggle integration
+Coming soon!
