@@ -1,0 +1,6 @@
+class QsParsingError(Exception):
+    ...
+
+
+class WrongParamsError(Exception):
+    ...
