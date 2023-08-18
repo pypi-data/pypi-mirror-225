@@ -1,0 +1,35 @@
+[project]
+name = "pycodecage"
+version = "0.1.2"
+authors = [
+  { name="Ivan Simantiev", email="ivan@simantiev.com" },
+]
+description = "PyCodeCage is a Python library for running code in a sandboxed environment."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/iyasha/pycodecage"
+"Bug Tracker" = "https://github.com/iyasha/pycodecage/issues"
+
+[tool.poetry]
+name = "pycodecage"
+version = "0.1.2"
+description = ""
+authors = ["iYasha <33287747+iYasha@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "pycodecage"}]
+
+[tool.poetry.dependencies]
+python = ">=3.6, <3.12"
+restrictedpython = "^6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
