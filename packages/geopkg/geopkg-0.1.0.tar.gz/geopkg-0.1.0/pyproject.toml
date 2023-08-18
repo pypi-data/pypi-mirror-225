@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "geopkg"
+version = "0.1.0"
+description = ""
+authors = ["ellsphillips <elliott.phillips.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^4.1.0"
+pre-commit = "^3.3.3"
+flake8 = "^6.1.0"
+mypy = "^1.5.1"
+isort = "^5.12.0"
+black = {version = "^23.7.0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
