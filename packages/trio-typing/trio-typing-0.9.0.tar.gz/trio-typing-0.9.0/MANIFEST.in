@@ -1,0 +1,7 @@
+include LICENSE LICENSE.MIT LICENSE.APACHE2
+include README.rst
+include CODE_OF_CONDUCT.md CONTRIBUTING.md
+recursive-include trio-stubs *.pyi
+recursive-include async_generator-stubs *.pyi
+recursive-include outcome-stubs *.pyi
+recursive-include trio_typing *.py *.pyi *.test py.typed
