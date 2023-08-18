@@ -1,0 +1,16 @@
+numpy
+pyarrow
+boto3
+tqdm
+
+[dynamodb]
+pynamodb
+
+[flyte]
+flytekit
+
+[spark]
+pyspark
+
+[wandb]
+wandb
