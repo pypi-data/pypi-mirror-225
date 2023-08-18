@@ -1,0 +1,6 @@
+recursive-include src *.py *.json
+include src/mavis/py.typed
+include README.md
+include LICENSE
+prune docs
+prune tests
