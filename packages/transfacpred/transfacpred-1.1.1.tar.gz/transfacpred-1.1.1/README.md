@@ -1,0 +1,84 @@
+TransFacPred
+
+A highly accurate method to predict the transcription factors using protein sequences.
+
+
+## Introduction
+
+TransFacPred is developed for predicting the transcription factors (TFs) using the protein primary sequence information. In this approach, Hybrid model was implemented in which is a combination of ET-based model and BLAST Search.
+
+
+## Webserver and Standalone
+
+Available as web-server at https://webs.iiitd.edu.in/raghava/transfacpred
+
+Available as standalone at https://github.com/raghavagps/transfacpred/
+
+## Installation
+
+
+To install the Transfacpred package, use the following command:
+
+```bash
+pip install transfacpred
+```
+
+
+## Minimum USAGE
+
+To explore the available options for the command-line tool, use:
+
+```bash
+transfacpred -h
+```
+
+## Full Usage
+
+```bash
+usage: transfacpred [-h] 
+                       [-i INPUT 
+                       [-o OUTPUT]
+                       [-t THRESHOLD]
+                       [-d {1,2}]
+
+
+Please provide following arguments for successful run
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input: File name containing protein or peptide sequence in FASTA format.
+  -o OUTPUT, --output OUTPUT
+                        Output: File for saving results by default outfile.csv
+  -t THRESHOLD, --threshold THRESHOLD
+                        Threshold: Value between -0.5 to 1.5 by default -0.38
+  -d {1,2}, --display {1,2}
+                        Display: 1:Transcription Factors, 2: All Sequences, by default 1
+```
+
+
+**Input File:** It allow users to provide input in the FASTA format.
+
+**Output File:** Program will save the results in the CSV format, in case user do not provide output file name, it will be stored in "outfile.csv".
+
+**Threshold:** User should provide threshold between -0.5 and 1.5.
+
+
+**Example usage details:**
+
+```bash
+transfacpred.py -i protein.fa
+```
+
+This will predict if the submitted sequences are TFs or Non-TFs and display only the TFs. It will use other parameters by default. It will save the output in "outfile.csv"
+
+
+```bash
+transfacpred -i protein.fa -o output.csv -t 0.55 -d 2
+```
+
+This will predict if the submitted sequences are TFs or Non-TFs and display all. It will save the output in "output.csv" in CSV (comma seperated variables).
+
+
+# Reference
+Patiyal et al. (2022) A hybrid approach for predicting transcription factors. <a href="https://doi.org/10.1101/2022.07.13.499865">Bioxriv doi: https://doi.org/10.1101/2022.07.13.499865 </a> 
