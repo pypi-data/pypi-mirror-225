@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cascabel - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
+    {% block style %}{% endblock %}
+</head>
+
+<body data-bs-theme="dark">
+    {% include '/includes/flash_toast.html' %}
+
+    <div class="flex-container">
+        
+        <div class="flex-header">
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <a href="{{ url_for('home_index') }}"><button class="btn btn-outline-warning">Home</button></a>
+                    <div>
+                        <a href="{{ url_for('home_get_login') }}"><button class="btn btn-outline-warning">Login Test</button></a>
+                        <a href="{{ url_for('home_get_register') }}"><button class="btn btn-outline-warning">Register Test</button></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    
+        <div class="flex-body">
+            <div class="center-container">
+                <div class="flex-object-centering">
+                    <div class="mb-5">
+                        <img class="img-fluid mb-5 mt-5"src="{{ url_for('static', filename='images/cascabel.png')}}" alt="">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+        
+                </div>
+            </div> 
+        </div>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    
+    <script>
+        $(document).ready(function(){ $("#toast").toast("show");});
+    </script>
+
+</body>
+</html>
