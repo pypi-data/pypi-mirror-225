@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema for the ROS parameter setup json file",
+  "definitions": {
+    "generalObject": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/parameterValue" }
+    },
+    "distributionObject": {
+      "type": "object",
+      "required": ["distribution_type", "distribution_param1", "param1_type", "distribution_param2", "param2_type"],
+      "properties": {
+        "distribution_type": {
+          "description": "Type of distribution",
+          "type": "string",
+          "enum": ["NORMAL", "EXPONITIONAL", "LAPLACE", "POISSON", "POWER", "UNIFORM", "ZIPF", "VONMISES", "RAYLEIGH", "FLOAT", "STRING"]
+        },
+        "distribution_param1": {
+          "type": "number"
+        },
+        "param1_type": {
+          "type": "string",
+          "enum": ["FLOAT", "INT"]
+        },
+        "distribution_param2": {
+          "type": "number"
+        },
+        "param2_type": {
+          "type": "string",
+          "enum": ["FLOAT", "INT"]
+        }
+      }
+    },
+    "parameterValue": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/definitions/parameterValue" }
+        },
+        { "$ref": "#/definitions/generalObject" },
+        { "$ref": "#/definitions/distributionObject" }
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "packages": {
+      "description": "A dictionary of all packages in the project",
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "description": "Any package name",
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "description": "Any node name",
+              "type": "object",
+              "properties": {
+                "ros__parameters": {
+                  "description": "Parameters of the node",
+                  "type": "object",
+                  "patternProperties": {
+                    "^.*$": {
+                      "description": "Any parameter name",
+                      "$ref": "#/definitions/parameterValue"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
