@@ -1,0 +1,18 @@
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
+
+import pytest
+
+from quantify_scheduler.schemas.examples import utils
+
+
+@pytest.mark.parametrize(
+    "filename",
+    [
+        "qblox_hardware_compilation_config.json",
+        "zhinst_hardware_compilation_config.json",
+    ],
+)
+def test_load_json_example_scheme(filename: str) -> None:
+    utils.load_json_example_scheme(filename)
