@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: streamlit-review-component
+Version: 0.0.1
+Summary: Streamlit component that allows you to create a review component for the testimonial section
+Home-page: UNKNOWN
+Author: Vignesh Prakash
+Author-email: pranomvignesh@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: devel
+License-File: LICENSE
+
+# streamlit-review-component
+
+Streamlit component that allows you to create a review component for the testimonial section
+
+## Installation instructions
+
+```sh
+pip install streamlit-review-component
+```
+
+## Usage instructions
+
+```python
+import streamlit as st
+
+from review_component import review_component
+
+value = review_component()
+
+st.write(value)
+```
+
