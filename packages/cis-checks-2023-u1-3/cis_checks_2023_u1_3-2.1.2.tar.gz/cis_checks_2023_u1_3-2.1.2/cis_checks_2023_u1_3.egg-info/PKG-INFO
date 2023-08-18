@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: cis-checks-2023-u1-3
+Version: 2.1.2
+Summary: Provides AWS compliance details
+Author-email: Dheeraj Banodha <dheeraj.banodha@impetus.com>, Ravish Sharma <ravish.sharma@impetus.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# OBP_security_pillar
+
+OBP_security_Pillar package can be used to get the compliance details of Operational Best Practices for AWS Well Architected Security Pillar.
+
+Release Notes:
+# v0.0.1
+1. Added following compliance checks:
+   - RdsAutomaticMinorVersionUpgradeEnabled
+   - RdsInstancePublicAccessCheck
+   - RdsSnapshotEncrypted
+   - RdsSnapshotsPublicProhibited
+   - RdsStorageEncrypted
+   - S3BucketLoggingEnabled
+   - S3BucketVersioningEnabled
