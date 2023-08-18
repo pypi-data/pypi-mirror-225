@@ -1,0 +1,56 @@
+[build-system]
+requires = [
+  "flit_core >=3.2,<4"
+]
+build-backend = "flit_core.buildapi"
+
+
+
+[project]
+name = "railtownai"
+authors = [
+  {name = "Guan Zheng Huang", email = "guan@railtown.ai"}, 
+  {name = "Jaime Bueza", email = "jaime@railtown.ai"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = [ 
+  "requests == 2.31.0",
+  "pydantic == 1.10.7",
+  "requests-mock == 1.11.0",
+  "python-dotenv",
+]
+
+[project.urls]
+Home = "https://railtown.ai"
+ 
+
+[tool.flit.module]
+name = "railtownai"
+
+[tool.black]
+line-length = 120
+fast = true 
+ 
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+executionEnvironments = [
+  { root = "src" }
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest >=7.1.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+testpaths = ["tests"]
