@@ -1,0 +1,35 @@
+[project]
+# UPDATE THIS BEFORE PUBLISHING
+name = "autora-synthetic-abstract-equation"
+description = "An experiment runner from arbitrary equations"
+authors = [{ name = "Younes Strittmatter", email = "younes_strtittmatter@brown.edu" }]
+dynamic = ["version"]
+
+readme = "README.md"
+license = { text = "MIT license" }
+requires-python = ">=3.8,<4"
+
+# ADD NEW DEPENDENCIES HERE
+dependencies = [
+    "autora-core",
+    "autora-synthetic",
+    "scikit-learn",
+    "sympy"
+]
+
+[project.optional-dependencies]
+dev = [
+    "autora-core[dev]"
+]
+
+[project.urls]
+homepage = "http://www.empiricalresearch.ai"
+repository = "https://github.com/AutoResearch/autora-synthetic-abstract-equation"
+documentation = "https://autoresearch.github.io/autora/"
+
+
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
