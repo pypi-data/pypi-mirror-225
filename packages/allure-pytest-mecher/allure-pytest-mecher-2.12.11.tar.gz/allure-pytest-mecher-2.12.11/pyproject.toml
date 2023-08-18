@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "allure-pytest-mecher"
+version = "2.12.11"
+authors = [
+  { name="Maksim Cherniak", email="maximchernyak98@gmail.com" },
+]
+description = "Modified allure-pytest"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poe.tasks]
+linter = "flake8 ./src"
+tests = "pytest ../tests/allure_pytest"
