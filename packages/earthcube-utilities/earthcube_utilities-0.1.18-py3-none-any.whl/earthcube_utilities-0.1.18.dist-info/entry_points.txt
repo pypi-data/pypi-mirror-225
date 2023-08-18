@@ -1,0 +1,8 @@
+[console_scripts]
+bucketutil = ec.bucketutil:start
+check_sitemap = ec.check_sitemap:start
+ec_reports = ec.ec_reports:start
+generategraphstats = ec.generate_graph_stats:start
+missing_report = ec.missing_report:start
+query_graph = ec.query_graph:start
+summarize_identifier_metadata = ec.summarize_identifier_metadata:start
