@@ -1,0 +1,11 @@
+# Running the gin model with the largemix dataset on IPU.
+defaults:
+  - base_config: large
+  - _self_
+
+constants:
+  name: neurips2023_large_data_gin
+
+architecture:
+  gnn:  # Set as null to avoid a post-nn network
+    layer_type: 'pyg:gin'
