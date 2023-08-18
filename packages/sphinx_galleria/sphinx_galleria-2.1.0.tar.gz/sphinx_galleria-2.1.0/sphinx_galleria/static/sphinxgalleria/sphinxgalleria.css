@@ -1,0 +1,333 @@
+.sphinxgalleria-core {
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.sphinxgalleria-core.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sphinxgalleria-core.align-left {
+    float: left;
+    margin-right: 1rem;
+}
+
+.sphinxgalleria-core.align-right {
+    float: right;
+    margin-left: 1rem;
+}
+
+.sphinxgalleria-core figure {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1000;
+    flex-shrink: 1000;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.sphinxgalleria-core figure .row {
+    position: relative;
+    flex-shrink: 1000;
+    flex-grow: 1000;
+}
+
+.sphinxgalleria-core figure .row button {
+    cursor: pointer;
+}
+
+.sphinxgalleria-core figure .row button.button-modal {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: unset;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: transparent;
+}
+
+.sphinxgalleria-core figure .row button.button-modal::hover {
+    background-color: transparent;
+}
+
+.sphinxgalleria-core figure .caption {
+    background-color: hsl(0, 0%, 34%);
+    color: white;
+    text-transform: none;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border: none;
+    margin: 0;
+    padding: .5rem 1.5rem .5rem 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+}
+
+.sphinxgalleria-core figure figcaption {
+    font-style: italic;
+    text-align: center;
+}
+
+.sphinxgalleria-core figure .row button.button-modal img {
+    margin: auto;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    transition: width ease .4s, height ease .4s, opacity ease .4s;
+    object-fit: contain;
+    flex-grow: 1000;
+    flex-shrink: 1000;
+}
+.sphinxgalleria-core.no-transition figure .row button.button-modal img {
+    transition: unset;
+}
+
+.sphinxgalleria-core input[type=range] {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1.5rem;
+    border: none;
+    -webkit-appearance: none;
+}
+.sphinxgalleria-core input[type=range]:focus {
+    outline: none;
+    border: none;
+}
+.sphinxgalleria-core input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: .1rem;
+    padding: 0 1rem 0 1rem;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    animate: 0.2s;
+    background-color: hsl(0, 0%, 34%);
+}
+.sphinxgalleria-core input[type=range]::-webkit-slider-thumb {
+    height: 1rem;
+    width: 1rem;
+    border-radius: .5rem;
+    border: none;
+    background-color: hsl(0, 0%, 34%);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -.5rem;
+}
+.sphinxgalleria-core input[type=range]:focus::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background-color: hsl(0, 0%, 34%);
+    border: none;
+}
+.sphinxgalleria-core input[type=range]::-moz-range-track {
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+    margin: 0;
+    border: none;
+    height: .1rem;
+    cursor: pointer;
+    animate: 0.2s;
+    background-color: hsl(0, 0%, 34%);
+}
+.sphinxgalleria-core input[type=range]::-moz-range-thumb {
+    height: 1rem;
+    width: 1rem;
+    border-radius: .5rem;
+    background-color: hsl(0, 0%, 34%);
+    cursor: pointer;
+}
+
+.sphinxgalleria-core .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: hsla(0, 0%, 0%, 80%);
+    z-index: 1000;
+}
+
+.sphinxgalleria-core .submask {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.sphinxgalleria-core dialog {
+    position: absolute;
+    top: 2.5vh;
+    left: 0;
+    max-height: 95vh;
+    width: max-content;
+    margin: auto;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    background-color: black;
+    color: white;
+    border: white solid 0.2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.sphinxgalleria-core dialog img {
+    height: 100%;
+    width: 100%;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    object-fit: contain;
+    flex-grow: 1000;
+    flex-shrink: 1000;
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 0;
+    transition: width ease 1s, height ease 1s, opacity ease .4s;
+}
+.sphinxgalleria-core.no-transition dialog img {
+    transition: unset;
+}
+
+.sphinxgalleria-core dialog menu {
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.sphinxgalleria-core dialog button {
+    border: none;
+    padding: .5em;
+    background-color: black;
+    color: white;
+}
+
+.sphinxgalleria-core dialog button:hover,
+.sphinxgalleria-core dialog button:focus {
+    background-color: hsl(0, 0%, 34%);
+    transition: background-color ease 0.4s;
+}
+
+.sphinxgalleria-core dialog header button {
+    position: absolute;
+    top: .5rem;
+    right: 0;
+    background: transparent;
+}
+
+.sphinxgalleria-core dialog header button::after {
+    content: '✕';
+    text-shadow: .1rem .05rem black;
+}
+
+.sphinxgalleria-core dialog header {
+    position: relative;
+    max-width: 90vw !important;
+}
+
+.sphinxgalleria-core dialog menu {
+    height: 3rem;
+}
+
+.sphinxgalleria-core dialog header::after {
+    clear: both;
+}
+
+.sphinxgalleria-core dialog menu button.close {
+    float: right;
+}
+.sphinxgalleria-core dialog menu button.close::before {
+    margin-right: 0.5rem;
+    content: '✕';
+}
+
+.sphinxgalleria-core figure button.prev,
+.sphinxgalleria-core figure button.next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    color: hsl(0, 0%, 34%);
+    background-color: transparent;
+    font-size: 4rem;
+    padding: 1rem;
+    height: auto;
+    display: inline;
+    vertical-align: middle;
+    margin: 0;
+    border: none;
+}
+
+.sphinxgalleria-core figure button.prev:hover,
+.sphinxgalleria-core figure button.next:hover,
+.sphinxgalleria-core figure button.prev:focus,
+.sphinxgalleria-core figure button.next:focus {
+    color: hsl(0, 0%, 64%);
+    transition: color ease .4s;
+}
+
+.sphinxgalleria-core figure button.prev {
+    left: 0;
+}
+
+.sphinxgalleria-core figure button.next {
+    right: 0;
+}
+
+.sphinxgalleria-core figure button.prev::before,
+.sphinxgalleria-core dialog menu button.prev::before {
+    content: '<';
+}
+
+.sphinxgalleria-core dialog menu button.next {
+    float: right;
+}
+
+.sphinxgalleria-core figure button.next::after,
+.sphinxgalleria-core dialog menu button.next::after {
+    margin-left: 0.5rem;
+    content: '>';
+}
+
+.sphinxgalleria-core ul.thumbnails {
+    overflow-x: hidden;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    max-width: 100%;
+    height: max-content;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.sphinxgalleria-core ul.thumbnails li {
+    list-style: none;
+}
+
+.sphinxgalleria-core ul.thumbnails li input[type=radio] {
+    display: none;
+}
+
+.sphinxgalleria-core ul.thumbnails li input:checked + label {
+    opacity: .5;
+}
+
+.sphinxgalleria-core ul.thumbnails li img {
+    margin: 0.5rem;
+    cursor: pointer;
+    object-fit: contain;
+    max-width: unset;
+    width: auto;
+    height: auto;
+}
