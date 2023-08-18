@@ -1,0 +1,2 @@
+
+from pyqtclass.core import *
