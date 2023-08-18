@@ -1,0 +1,15 @@
+[project]
+name = "byquant"
+version = "1.8.12"
+dependencies = [
+  "requests",
+  "pandas",
+  "quantstats",
+  "IPython",
+  "tushare",
+  "ccxt>=4.0.43",
+  "alpaca-py",
+  "backtrader",
+  "mplfinance"
+  
+]
