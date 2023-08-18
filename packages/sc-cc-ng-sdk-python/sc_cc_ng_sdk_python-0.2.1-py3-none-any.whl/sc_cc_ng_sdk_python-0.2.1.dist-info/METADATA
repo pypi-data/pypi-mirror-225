@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: sc-cc-ng-sdk-python
+Version: 0.2.1
+Summary: 
+Author: Rikard Olsson
+Author-email: rikard@thryselius.se
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: sc-cc-ng-models-python (>=0.1.9,<0.2.0)
+Description-Content-Type: text/markdown
+
+
