@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: playwright-spy
+Version: 1.0.0
+Summary: A plugin for playwright to prevent detection.
+Home-page: https://github.com/dsppman/playwright-spy
+Author: dsppman
+Author-email: dsppman@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: playwright >=1.15
+
+# playwright-spy [![GitHub Workflow Status](https://img.shields.io/badge/playwright-python-8A2BE2)
+
+> A plugin for [playwright-python](https://img.shields.io/badge/just%20the%20message-8A2BE2) to prevent detection.
+
+<p align="center"><img src="https://i.imgur.com/q2xBjqH.png" /></p>
+
+## Install
+
+```bash
+pip install playwright-spy
+```
+
+## Usage
+
+```python
+from playwright.sync_api import sync_playwright
+import playwright_spy
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page()
+    playwright_spy.load_sync(page)
+    page.goto("https://bot.sannysoft.com/")
+    page.screenshot(path="example.png", full_page=True)
+    browser.close()
+```
