@@ -1,0 +1,107 @@
+# See pyproject.toml for more cibuildwheel configuration. Putting it here is a
+# problem due to GitLab CI interpreting env variables as someting it should
+# render itself...
+stages:
+  - test
+  - release
+
+# For tagged versions, upload to PyPI
+release:
+  stage: release
+  image: python:3.11
+  dependencies:
+    - linux
+    - macos
+    - windows
+  only:
+    - tags
+  script:
+    - python -m pip install --upgrade pip
+    - pip install maturin
+    # Create sdist (maturin needs cargo to do an sdist, sigh):
+    - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+    - PATH=~/.cargo/bin:$PATH maturin sdist
+    - mkdir -p wheelhouse
+    - mv target/wheels/*.tar.gz wheelhouse/
+    # Upload:
+    - maturin upload --username "__token__" wheelhouse/*
+
+
+linux:
+  image: python:3.11
+  only:
+    - main
+    - merge_requests
+    - tags
+  stage: test
+
+  # Run Docker, so cibuildwheel can use it.
+  services:
+    - name: docker:dind
+
+  # Tell Docker client where to find it.
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - curl -sSL https://get.docker.com/ | sh
+    - python -m pip install cibuildwheel==2.13.1
+    - cibuildwheel --output-dir wheelhouse
+
+  artifacts:
+    paths:
+      - wheelhouse/
+
+
+# https://docs.gitlab.com/ee/ci/runners/saas/macos_saas_runner.html
+macos:
+  only:
+    - main
+    - merge_requests
+    - tags
+  stage: test
+  tags:
+    - saas-macos-medium-m1
+  image: macos-12-xcode-14
+
+  variables:
+    MACOSX_DEPLOYMENT_TARGET: "11.0"
+    ARCHFLAGS: " -arch x86_64 -arch arm64"
+    # Can't be set in pyproject.toml, alas
+    CIBW_ARCHS_MACOS: "universal2"
+
+  script:
+    - python -m pip install --upgrade pip
+    - python -m pip install cibuildwheel==2.13.1
+    - python -m cibuildwheel --output-dir wheelhouse
+
+  artifacts:
+    paths:
+      - wheelhouse/
+
+windows:
+  only:
+    - main
+    - merge_requests
+    - tags
+  stage: test
+  tags:
+    - shared-windows
+    - windows
+    - windows-1809
+
+  script:
+    - Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+    - choco install -y python --version=3.9.9
+    - choco install -y rustup.install
+    - refreshenv
+    - rustup toolchain install stable-msvc
+    - refreshenv
+    - cargo --version
+    - c:\python39\scripts\pip install cibuildwheel==2.13.1
+    - c:\python39\scripts\cibuildwheel --output-dir wheelhouse
+
+  artifacts:
+    paths:
+      - wheelhouse/

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+python-source = "pysrc"
+
+[project]
+name = "pycddl"
+requires-python = ">=3.8"
+dynamic = [
+    "authors",
+    "description",
+    "license",
+    "readme",
+    "version"
+]
+
+[tool.cibuildwheel]
+test-command = """\
+pip install -r {project}/requirements-dev.txt
+pytest {project}/
+"""
+
+[tool.cibuildwheel.linux]
+before-all = "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y"
+environment = 'PATH="$PATH:$HOME/.cargo/bin"'
+# Skip musl for now just because it slows development down so much (makes CI
+# take minimum of 25 minutes): https://gitlab.com/tahoe-lafs/pycddl/-/issues/8.
+# Skip i686 because who cares.
+skip = "*i686 *musl* pp37* cp37*"
+build = "pp3*-manylinux_x86_64 cp3*_x86_64"
+
+[tool.cibuildwheel.macos]
+before-all = """curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
+rustup target add aarch64-apple-darwin
+rustup target add x86_64-apple-darwin
+rustc --version
+"""
+environment = 'PATH="$HOME/.cargo/bin":$PATH'
+skip = "pp37* cp37*"
+build = "cp3*universal2"
+test-skip = "*_x86_64 *_universal2:x86_64"
+
+[tool.cibuildwheel.windows]
+# 32-bit builds require downloading matching Rust which I haven't figured out
+# yet...
+skip = "*win32 pp37* cp37*"
+build = "cp3*"

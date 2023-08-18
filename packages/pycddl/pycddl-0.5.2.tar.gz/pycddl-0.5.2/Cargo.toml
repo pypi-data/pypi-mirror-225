@@ -1,0 +1,27 @@
+[package]
+name = "pycddl"
+version = "0.5.2"  # pycddl version, for bumpversion
+edition = "2021"
+license = "MIT"
+authors = ["Tahoe-LAFS project"]
+description = "Validate CBOR documents using CDDL schema language"
+homepage = "https://gitlab.com/tahoe-lafs/pycddl"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "pycddl"
+crate-type = ["cdylib"]
+
+[dependencies]
+cddl = "0.9.2"
+ciborium = "0.2"
+self_cell = "1.0"
+pyo3 = { version = "0.19", features = ["extension-module"] }
+
+[build-dependencies]
+pyo3-build-config = { version = "0.19", features = ["resolve-config"] }
+
+[profile.release]
+lto = "thin"
