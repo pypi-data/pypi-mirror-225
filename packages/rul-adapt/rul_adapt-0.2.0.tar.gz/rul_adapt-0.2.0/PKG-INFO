@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: rul-adapt
+Version: 0.2.0
+Summary: A collection of unsupervised domain adaption approaches for RUL estimation.
+Home-page: https://krokotsch.eu/rul-adapt
+License: MIT
+Author: Krokotsch, Tilman
+Author-email: tilman.krokotsch@tu-berlin.de
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering 
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Dist: dtaidistance (>=2.3.10,<3.0.0)
+Requires-Dist: hydra-core (>=1.3.1,<2.0.0)
+Requires-Dist: pytorch-lightning (>=1.8.0.post1,<2.0.0)
+Requires-Dist: pywavelets (>=1.4.1,<2.0.0)
+Requires-Dist: rul-datasets (>=0.10.5,<0.11.0)
+Requires-Dist: tqdm (>=4.62.2,<5.0.0)
+Project-URL: Repository, https://github.com/tilman151/rul-adapt
+Description-Content-Type: text/markdown
+
+# RUL Adapt
+
+[![Master](https://github.com/tilman151/rul-adapt/actions/workflows/on_push.yaml/badge.svg)](https://github.com/tilman151/rul-adapt/actions/workflows/on_push.yaml)
+[![Release](https://github.com/tilman151/rul-adapt/actions/workflows/on_release.yaml/badge.svg)](https://github.com/tilman151/rul-adapt/actions/workflows/on_release.yaml)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+This library contains a collection of unsupervised domain adaption algorithms for RUL estimation.
+They are provided as [LightningModules](https://pytorch-lightning.readthedocs.io/en/stable/api/lightning.pytorch.core.LightningModule.html#lightning.pytorch.core.LightningModule) to be used in [PyTorch Lightning](https://pytorch-lightning.readthedocs.io/en/latest/).
+
+Currently, five approaches are implemented, including their original hyperparameters:
+
+* **LSTM-DANN** by Da Costa et al. (2020)
+* **ADARUL** by Ragab et al. (2020)
+* **LatentAlign** by Zhang et al. (2021)
+* **TBiGRU** by Cao et al. (2021)
+* **Consistency-DANN** by Siahpour et al. (2022)
+
+Three approaches are implemented without their original hyperparameters:
+
+* **ConditionalDANN** by Cheng et al. (2021)
+* **ConditionalMMD** by Cheng et al. (2021)
+* **PseudoLabels** as used by Wang et al. (2022)
+
+This includes the following general approaches adapted for RUL estimation:
+
+* **Domain Adaption Neural Networks (DANN)** by Ganin et al. (2016)
+* **Multi-Kernel Maximum Mean Discrepancy (MMD)** by Long et al. (2015)
+
+Each approach has an example notebook which can be found in the [examples](https://github.com/tilman151/rul-adapt/tree/master/examples) folder.
+
+## Installation
+
+This library is pip-installable. Simply type:
+
+```bash
+pip install rul-adapt
+```
+
+## Contribution
+
+Contributions are always welcome. Whether you want to fix a bug, add a feature or a new approach, just open an issue and a PR.
