@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - UTF-8,*
+      Accept-encoding:
+      - gzip
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+      User-Agent:
+      - jellyfin___init__/0.4.0
+      X-Application:
+      - jellyfin___init__/0.4.0
+      x-emby-authorization:
+      - MediaBrowser Client=jellyfin___init__, Device=wrecked, DeviceId=01442e7c-472f-40ba-b03c-d5abf79ead80,
+        Version=0.4.0
+    method: GET
+    uri: https://demo.jellyfin.org/stable/system/info/public
+  response:
+    body:
+      string: '{"LocalAddress":"http://172.17.0.2:8096/stable","ServerName":"Stable
+        Demo","Version":"10.8.10","ProductName":"Jellyfin Server","OperatingSystem":"Linux","Id":"713dc3fe952b438fa70ed35e4ef0525a","StartupWizardCompleted":true}'
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 20 Jun 2023 10:30:28 GMT
+      referrer-policy:
+      - no-referrer,same-origin,strict-origin,strict-origin-when-cross-origin
+      server:
+      - Kestrel
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains;preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-response-time-ms:
+      - '1'
+      x-xss-protection:
+      - 1;mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - UTF-8,*
+      Accept-encoding:
+      - gzip
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/x-www-form-urlencoded; charset=UTF-8
+      User-Agent:
+      - jellyfin___init__/0.4.0
+      X-Application:
+      - jellyfin___init__/0.4.0
+      X-MediaBrowser-Token:
+      - efb1cef07e9c42edbc4eb622bc13beff
+      x-emby-authorization:
+      - MediaBrowser Client=jellyfin___init__, Device=wrecked, DeviceId=01442e7c-472f-40ba-b03c-d5abf79ead80,
+        Version=0.4.0
+    method: GET
+    uri: https://demo.jellyfin.org/stable/system/info
+  response:
+    body:
+      string: '{"OperatingSystemDisplayName":"Linux","HasPendingRestart":false,"IsShuttingDown":false,"SupportsLibraryMonitor":true,"WebSocketPortNumber":8096,"CompletedInstallations":[],"CanSelfRestart":false,"CanLaunchWebBrowser":false,"ProgramDataPath":"/config","WebPath":"/jellyfin/jellyfin-web","ItemsByNamePath":"/config/metadata","CachePath":"/cache","LogPath":"/config/log","InternalMetadataPath":"/config/metadata","TranscodingTempPath":"/config/transcodes","HasUpdateAvailable":false,"EncoderLocation":"NotFound","SystemArchitecture":"X64","LocalAddress":"http://172.17.0.2:8096/stable","ServerName":"Stable
+        Demo","Version":"10.8.10","OperatingSystem":"Linux","Id":"713dc3fe952b438fa70ed35e4ef0525a"}'
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Tue, 20 Jun 2023 10:30:29 GMT
+      referrer-policy:
+      - no-referrer,same-origin,strict-origin,strict-origin-when-cross-origin
+      server:
+      - Kestrel
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains;preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-response-time-ms:
+      - '95'
+      x-xss-protection:
+      - 1;mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
