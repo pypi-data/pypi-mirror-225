@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# -*- Python Version: 3.7 -*-
+
+"""PHX Program Class for organizing Fresh-Air Ventilation Data."""
+
+from __future__ import annotations
+from dataclasses import dataclass, field
+
+from PHX.model.loads import ventilation as vent_loads
+from PHX.model.schedules import ventilation as vent_schedules
+
+
+@dataclass
+class PhxProgramVentilation:
+    """A PHX Program for the Fresh-Air Ventilation with a load and schedule."""
+
+    display_name: str = "Unnamed_Ventilation_Program"
+    load: vent_loads.PhxLoadVentilation = field(
+        default_factory=vent_loads.PhxLoadVentilation
+    )
+    schedule: vent_schedules.PhxScheduleVentilation = field(
+        default_factory=vent_schedules.PhxScheduleVentilation
+    )
