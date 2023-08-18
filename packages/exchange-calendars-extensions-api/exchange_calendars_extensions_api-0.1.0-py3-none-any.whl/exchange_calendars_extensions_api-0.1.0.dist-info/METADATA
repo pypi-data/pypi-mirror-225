@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: exchange-calendars-extensions-api
+Version: 0.1.0
+Summary: A package that defines parts of the API of the exchange-calendars-extensions package.
+Home-page: https://github.com/jenskeiner/exchange_calendars_extensions_api/
+License: Apache-2.0
+Keywords: keywords...
+Author: Jens Keiner
+Author-email: jens.keiner@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Requires-Dist: pandas (>=1)
+Requires-Dist: pydantic (>=2,<3)
+Requires-Dist: typing-extensions (>=4.0,<5)
+Project-URL: Documentation, https://github.com/jenskeiner/exchange_calendars_extensions_api/tree/main/docs/
+Project-URL: Repository, https://github.com/jenskeiner/exchange_calendars_extensions_api/
+Description-Content-Type: text/markdown
+
+# exchange-calendars-extensions-api
+This package contains parts of the API of 
+[exchange-calendars-extensions](https://pypi.org/project/exchange-calendars-extensions/).
+
+To separate the API from the implementation, the API is defined in a separate distribution package 
+[exchange-calendars-extensions-api](https://pypi.org/project/exchange-calendars-extensions_api/), i.e. this package, 
+that contains the sub-package `exchange_calendars_extensions.api`.
+
+The implementation has been moved to the sub-package `exchange_calendars_extensions.core` and is distributed via 
+[exchange-calendars-extensions](https://pypi.org/project/exchange-calendars-extensions/).
+
+The package `exchange_calendars_extensions` is now a namespace package that wraps the sub-packages.
+
