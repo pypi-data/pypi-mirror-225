@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: py-ke-utils-fastapi
+Version: 2.1.6
+Summary: Utilities for FastAPI
+Author: KE
+Author-email: 
+Keywords: python,FastAPI,PyJWT,decorator,token
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Description-Content-Type: text/markdown
+Requires-Dist: redis (>=4.5.0)
+Requires-Dist: deepdiff (>=6.2.1)
+Requires-Dist: fastapi (>=0.90)
+Requires-Dist: SQLAlchemy (>=2.0.1)
+Requires-Dist: alembic (>=1.10)
+
