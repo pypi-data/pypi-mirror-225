@@ -1,0 +1,12 @@
+# Copyright Log10, Inc 2023
+
+defaults:
+  - tests/capitals
+name: capitals
+model: gpt-4-16k
+temperature: 0.9
+variables:
+  - name: country
+messages:
+  - role: "human"
+    content: "what is the capital of {country}?"

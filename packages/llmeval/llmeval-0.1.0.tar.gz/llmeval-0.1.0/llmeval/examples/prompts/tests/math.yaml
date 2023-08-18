@@ -1,0 +1,12 @@
+# Copyright Log10, Inc 2023
+
+metrics:
+  - name: exact_match
+    code: |
+      metric = actual == expected
+      result = metric
+references:
+  - input:
+      a: 4
+      b: 4
+    expected: "8"

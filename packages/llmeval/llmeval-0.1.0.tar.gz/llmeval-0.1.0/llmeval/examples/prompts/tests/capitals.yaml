@@ -1,0 +1,21 @@
+# Copyright Log10, Inc 2023
+
+metrics:
+  - name: correctness
+    code: |
+      from langchain.evaluation import load_evaluator
+      evaluator = load_evaluator("labeled_criteria", criteria="correctness")
+      eval_result = evaluator.evaluate_strings(
+        input=prompt,
+        prediction=actual,
+        reference=expected,
+      )
+      metric = eval_result["score"]
+      result = metric > 0.5
+references:
+  - input:
+      country: Denmark
+    expected: Copenhagen
+  - input:
+      country: Germany
+    expected: Berlin
