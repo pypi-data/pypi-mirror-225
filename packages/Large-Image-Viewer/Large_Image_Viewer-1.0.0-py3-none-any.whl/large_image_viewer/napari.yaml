@@ -1,0 +1,11 @@
+name: Large-Image-Viewer
+display_name: Large Image Viewer
+contributions:
+  commands:
+    - id: Large-Image-Viewer.get_reader
+      python_name: large_image_viewer._reader:napari_get_reader
+      title: Open data with Large Image Viewer
+  readers:
+    - command: Large-Image-Viewer.get_reader
+      accepts_directories: false
+      filename_patterns: ["*.tiff", "*.tif", "*.jpg", "*.png", "*.nd2", "*.lif", "*.czi"]
