@@ -1,0 +1,26 @@
+{
+    "proxies": {
+      "http": "",
+      "https": ""
+    },
+    "servers": [
+	{
+          "type": "http",
+          "name": "esa_legacy",
+          "host": "navigation-office.esa.int",
+          "path": "products/gnss-products/__wk__",
+          "templatefinal": "esa__wk____wd__.sp3.Z",
+          "templaterapid": "esr__wk____wd__.sp3.Z",
+          "templateultra": "esu__wk____wd___%02d.sp3.Z"
+        },
+        {
+          "type": "http",
+          "name": "esa",
+          "host": "navigation-office.esa.int",
+          "path": "products/gnss-products/__wk__",
+          "templatefinal": "ESA0OPSFIN___yyyy____doy____hh____mm___01D_05M_ORB.SP3.gz",
+          "templaterapid": "ESA0OPSRAP___yyyy____doy____hh____mm___01D_15M_ORB.SP3.gz",
+          "templateultra": "ESA0OPSULT___yyyy____doy____hh____mm___02D_15M_ORB.SP3.gz"
+        }
+    ]
+}
