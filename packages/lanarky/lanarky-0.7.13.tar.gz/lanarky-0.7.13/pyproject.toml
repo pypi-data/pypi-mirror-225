@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "lanarky"
+version = "0.7.13"
+description = "Ship production-ready LLM projects with FastAPI"
+authors = ["Ajinkya Indulkar <26824103+ajndkr@users.noreply.github.com>"]
+readme = "README.md"
+homepage = "https://github.com/ajndkr/lanarky"
+repository = "https://github.com/ajndkr/lanarky"
+license = "MIT"
+packages = [{include = "lanarky"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = ">=0.97.0"
+langchain = ">=0.0.200"
+urllib3 = "<=1.26.15"  # added due to poetry errors
+python-dotenv = "^1.0.0"
+typing-extensions = "4.5.0"  # added due to https://github.com/hwchase17/langchain/issues/5113
+redis = {version = "^4.5.5", optional = true}
+gptcache = {version = "^0.1.31", optional = true}
+openai = {version = "^0.27.8", optional = true}
+tiktoken = {version = "^0.4.0", optional = true}
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.3"
+
+
+[tool.poetry.group.docs.dependencies]
+furo = "^2023.5.20"
+sphinx-autobuild = "^2021.3.14"
+myst-parser = "^1.0.0"
+sphinx-copybutton = "^0.5.2"
+autodoc-pydantic = "^1.8.0"
+toml = "^0.10.2"
+
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.3.2"
+pytest-cov = "^4.1.0"
+pytest-asyncio = "^0.21.0"
+coveralls = "^3.3.1"
+httpx = "^0.24.1"
+
+[tool.poetry.extras]
+openai = ["openai", "tiktoken"]
+redis = ["redis"]
+gptcache = ["gptcache"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+ignore = ["E501"]
