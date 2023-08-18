@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: mediapipe-model-maker
+Version: 0.2.1.1
+Summary: MediaPipe Model Maker is a simple, low-code solution for customizing on-device ML models
+Home-page: https://github.com/google/mediapipe/tree/master/mediapipe/model_maker
+Author: The MediaPipe Authors
+Author-email: mediapipe@google.com
+License: Apache 2.0
+Keywords: mediapipe,model,maker
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Requires-Dist: absl-py
+Requires-Dist: mediapipe >=0.10.0
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: tensorflow >=2.10
+Requires-Dist: tensorflow-addons
+Requires-Dist: tensorflow-datasets
+Requires-Dist: tensorflow-hub
+Requires-Dist: tf-models-official >=2.13.1
+
