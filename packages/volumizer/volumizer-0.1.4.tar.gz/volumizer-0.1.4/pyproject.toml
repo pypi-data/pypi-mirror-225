@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "volumizer"
+version = "0.1.4"
+description = "Search the RCSB for occluded volumes like cavities, pockets, and pores."
+authors = ["Aron Broom <broomsday@gmail.com>"]
+readme = "README.md"
+packages = [{include = "volumizer"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyntcloud = "^0.1.5"
+biotite = "^0.37.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+"Homepage" = "https://github.com/broomsday/volumizer"
