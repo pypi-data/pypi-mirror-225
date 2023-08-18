@@ -1,0 +1,18 @@
+# YoloV7
+
+A packaged version of the yolov7 implementation by Wong Kin Yiu:
+https://github.com/WongKinYiu/yolov7
+
+# Example usage
+
+The package contains both `models` and `utils` as importable modules, using
+`import models` and `import utils` respectively.
+
+The scripts found in the root directory of the repository (such as `export.py`
+and `train.py`) can be ran directly from the command line. To prevent naming
+conflicts, they have been renamed to add 'yolov7_' at the beginning. For
+example, `export.py` can be executed with the following command:
+
+```shell
+yolov7_export --weights yolov7.pt ...
+```
