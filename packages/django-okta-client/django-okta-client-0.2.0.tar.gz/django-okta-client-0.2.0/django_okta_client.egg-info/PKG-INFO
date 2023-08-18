@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: django-okta-client
+Version: 0.2.0
+Summary: Okta client Django app
+Author-email: Irving Leonard <irvingleonard@gmail.com>
+License: BSD 2-Clause "Simplified" License
+Project-URL: homepage, https://github.com/irvingleonard/django-okta-client
+Project-URL: repository, https://github.com/irvingleonard/django-okta-client.git
+Keywords: okta,saml,saml2
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: System :: Systems Administration :: Authentication/Directory
+Requires-Python: >=3.7
+License-File: LICENSE
+
+This app adapts your Django site to work with Okta as it's idP
