@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "lambda-cloud-client"
+version = "0.1.1"
+description = ""
+authors = ["Patryk Dwórznik <patryk@dworznik.com>"]
+readme = "README.md"
+packages = [{include = "lambda_cloud_client"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+certifi = "^2023.7.22"
+frozendict = "^2.3.8"
+python-dateutil = "^2.8.2"
+setuptools = "^68.1.0"
+typing-extensions = "^4.7.1"
+urllib3 = "^2.0.4"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = ">=2.8.1"
+pytest-randomly = "1.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
