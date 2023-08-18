@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: pssepy
+Version: 0.5.0
+Summary: A high-level python interface for PSS/E
+Home-page: http://www.github.com/nrel/pypsse
+Author: Aadil Latif
+Author-email: Aadil.Latif@nrel.gov
+License: BSD 3 clause
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: BSD License
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: click
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: toml
+Requires-Dist: h5py
+Requires-Dist: helics
+Requires-Dist: terminaltables
+Requires-Dist: networkx
+Requires-Dist: requests
+Requires-Dist: pytest
+Requires-Dist: aiohttp
+Requires-Dist: aiohttp-swagger
+Requires-Dist: aiohttp-swagger3
+Requires-Dist: PyYAML
+Requires-Dist: aiohttp-cors
+
+﻿## :blush: Welcome to the PyPSSE Repository
+
+> A python wrapper around psspy (python API for PSSE simulator) to perform
+> time series powerflow and dynamic simulation for power system fault
+
+### :email: Contact Information
+* :snowman: [Aadil Latif](mailto:aadil.latif@nrel.gov)
+* :snowman: [Kapil Duwadi](mailto:kapil.duwadi@nrel.gov)
+
+### :computer: Setup 
+
+1. Clone this repository
+2. Open up a Anaconda command prompt and execute command `set CONDA_FORCE_32BIT=1`.
+3. Create a virtual environment by executing `conda create -n <name> python=3.7` in anaconda prompt
+4. Activate environmnet by executing `conda activate <name>`
+5. From the cloned PyPSSE directory execute command `python install -e.` to install PyPSSE in the same environment
+
+### :syringe: Testing repository
+1. Activate the environment
+2. Execute command `pytest` from the cloned repository
