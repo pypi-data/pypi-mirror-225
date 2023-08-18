@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bathyreq"
+description = "BathyReq: A Python package for querying public bathymetric data sources."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+keywords = ["bathymetry", "oceanography", "data", "query", "download"]
+authors = [{name = "William Jenkins", email = "wjenkins@ucsd.edu"}]
+dependencies = ["python-dotenv", "rasterio", "requests", "scipy"]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://neptuneprojects.github.io/BathyReq/"
+Repository = "https://github.com/NeptuneProjects/BathyReq"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bathyreq*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "bathyreq.__version__"}
