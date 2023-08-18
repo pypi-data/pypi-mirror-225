@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: apopy
+Version: 0.1.3
+Summary: Simple Apollo Config Client for Python.
+License: MIT
+Author: ringsaturn
+Author-email: ringsaturn.me@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: httpx[socks] (>=0.24.1,<0.25.0)
+Description-Content-Type: text/markdown
+
+# apopy: Simple Apollo Config Client for Python.
+
+```python
+from apopy import Client, NamespaceType
+
+client = Client(
+    config_server_url="http://81.68.181.139:8080",
+    app_id="apollo-common",
+    cluster_name="default",
+    secret="5fdc723621054e0f945cb441561687eb",
+    ip="192.168.1.4",
+)
+
+# 读取 Namespace 为 application 的配置（接口带缓存）
+print(client.read_namespace_with_cache(namespace="application"))
+
+# 读取 Namespace 为 application 的配置（接口无缓存）
+print(
+    client.read_namespace_without_cache(
+        namespace="application", namespace_type=NamespaceType.PROPERTIES
+    )
+)
+
+# 读取配置
+print(client.get("test"))
+```
+
