@@ -1,0 +1,97 @@
+[tool.poetry]
+name = "openldap-schema-parser"
+version = "1.1.7"
+description = "OpenLDAP schema file parser"
+authors = ["KAWAI Shun <shun@osstech.co.jp>"]
+license = "MIT"
+readme = "README.rst"
+repository = "https://github.com/mypaceshun/openldap-schema-parser"
+documentation = "https://openldap-schema-parser.readthedocs.io/"
+keywords = [
+  "OpenLDAP",
+  "schema",
+  "parser",
+]
+packages = [
+  { include = "openldap_schema_parser", from = "src" }
+]
+include = [
+  "CHANGELOG.rst",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^8.1.2"
+rich = "^12.2.0"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+autoflake = "^1.4"
+black = "^22.3.0"
+poethepoet = "^0.13.1"
+pre-commit = "^2.18.1"
+mypy = "^0.942"
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+types-setuptools = "^57.4.12"
+lark = "^1.1.2"
+flake8 = "^4.0.1"
+Sphinx = "^4.5.0"
+pyproject-flake8 = "^0.0.1-alpha.4"
+
+[tool.poetry.scripts]
+schema-parser = "openldap_schema_parser.command:cli"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+
+[tool.poe.tasks.test]
+cmd = "pytest -v --cov=src/ --cov-report=html --cov-report=xml --cov-report=term tests/"
+help = "run test"
+
+[tool.poe.tasks.lint]
+sequence = [
+  { cmd = "pflake8 src/ tests/" },
+  { cmd = "mypy src/" }
+]
+help = "check syntax"
+ignore_fail = "return_non_zero"
+
+[tool.poe.tasks.format]
+sequence = [ 
+  { cmd = "autoflake -ir --remove-all-unused-imports --ignore-init-module-imports --exclude schema_parser.py src/ tests/" },
+  { cmd = "isort src/ tests/" },
+  { cmd = "black src/ tests/" },
+  "lint"
+]
+help = "format code style"
+
+[tool.poe.tasks.doc]
+sequence = [
+  { cmd = "sphinx-apidoc -f -e -o docs/ src/openldap_schema_parser/ src/openldap_schema_parser/command.py src/openldap_schema_parser/schema_parser.py"},
+]
+help = "build document"
+
+[tool.poe.tasks.pre-build]
+shell = "python -m lark.tools.standalone src/openldap_schema_parser/schema.lark > src/openldap_schema_parser/schema_parser.py"
+help = "pre build lark file"
+
+[tool.isort]
+profile = "black"
+skip = "schema_parser.py"
+
+[tool.flake8]
+max-line-length = 88
+exclude = "src/openldap_schema_parser/schema_parser.py"
+
+[tool.black]
+extend_exclude = "src/openldap_schema_parser/schema_parser.py"
+
+[tool.mypy]
+
+exclude = "src/openldap_schema_parser/schema_parser.py"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
