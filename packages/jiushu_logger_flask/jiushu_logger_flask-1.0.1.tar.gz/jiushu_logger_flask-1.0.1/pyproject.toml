@@ -1,0 +1,37 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "jiushu_logger_flask"
+authors = [
+    { name = "Ai Tutu", email = "zhixiao.yang0124@gmail.com" },
+]
+description = "Jiushu logger for Flask routes."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Logging",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+
+dependencies = [
+    "flask >=2.0.0",
+    "jiushu-logger >=1.0.0",
+    "orjson >=3.8.0",
+    "python-ulid >=1.1.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "flask-unittest"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/XiaoxiaFamily/jiushu-logger-flask"
+"Bug Tracker" = "https://github.com/XiaoxiaFamily/jiushu-logger-flask/issues"
