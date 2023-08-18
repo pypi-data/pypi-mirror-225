@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "simple-gcode-sender"
+version = "1.0.0"
+description = "A simple gcode sender"
+authors = ["fdev31 <fdev31@gmail.com>"]
+license = "GPL"
+readme = "README.md"
+homepage = "https://github.com/fdev31/simple-gcode-sender"
+
+[tool.poetry.scripts]
+sgs = 'simple_gcode_sender:main'
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+pyserial = "^3.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
