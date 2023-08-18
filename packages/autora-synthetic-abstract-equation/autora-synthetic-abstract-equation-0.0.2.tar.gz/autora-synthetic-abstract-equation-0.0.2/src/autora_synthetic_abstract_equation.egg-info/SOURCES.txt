@@ -1,0 +1,22 @@
+.gitignore
+.pre-commit-config.yaml
+README.md
+mkdocs.yml
+pyproject.toml
+.github/pull_request_template.md
+.github/workflows/python-publish.yml
+docs/Basic Usage.ipynb
+docs/Equation Sampler.ipynb
+docs/index.md
+docs/quickstart.md
+docs/javascripts/mathjax.js
+mkdocs/base.yml
+src/autora/experiment_runner/synthetic/abstract/equation/__init__.py
+src/autora_synthetic_abstract_equation.egg-info/PKG-INFO
+src/autora_synthetic_abstract_equation.egg-info/SOURCES.txt
+src/autora_synthetic_abstract_equation.egg-info/dependency_links.txt
+src/autora_synthetic_abstract_equation.egg-info/requires.txt
+src/autora_synthetic_abstract_equation.egg-info/top_level.txt
+tests/README.md
+tests/__init__.py
+tests/test_autora_synthetic_abstract_equation.py
