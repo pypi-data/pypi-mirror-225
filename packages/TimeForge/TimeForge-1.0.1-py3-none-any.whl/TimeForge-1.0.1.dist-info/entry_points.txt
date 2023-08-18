@@ -1,0 +1,3 @@
+[console_scripts]
+timeforge = timeforge.__main__:main
+timeforge-tui = timeforge.gui:main
