@@ -1,0 +1,16 @@
+qiskit-terra==0.25.1
+
+[all]
+qiskit-terra[all]
+
+[crosstalk-pass]
+qiskit-terra[crosstalk-pass]
+
+[csp-layout-pass]
+qiskit-terra[csp-layout-pass]
+
+[qasm3-import]
+qiskit-terra[qasm3-import]
+
+[visualization]
+qiskit-terra[visualization]
