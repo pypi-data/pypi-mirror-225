@@ -1,0 +1,21 @@
+-e .
+
+sphinx>=6.2.1,<7
+sphinx_autodoc_typehints
+sphinx_autopackagesummary
+sphinx_rtd_theme
+
+pre-commit
+pyupgrade
+black
+
+pylint
+mypy
+
+pytest
+pytest-cov
+pytest-cases
+pytest-mock
+pytest-qt
+
+tox
