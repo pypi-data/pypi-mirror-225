@@ -1,0 +1,104 @@
+// vi: set ft=lark :
+start: schema+
+
+schema: attributetype
+      | objectclass
+      | objectidentifier
+      | ldapsyntax
+
+attributetype: "attributetype"i LEFTCASE MACROOID attributetype_state* RIGHTCASE
+attributetype_state: name
+                   | desc
+                   | OBSOLETE
+                   | attributetype_sup
+                   | equality
+                   | ordering
+                   | substr
+                   | syntax
+                   | single_value
+                   | collective
+                   | no_user_modification
+                   | usage
+                   | user_attr
+
+objectclass: "objectclass"i LEFTCASE MACROOID objectclass_state* RIGHTCASE
+objectclass_state: name
+                 | desc
+                 | OBSOLETE
+                 | objectclass_sup
+                 | structural
+                 | must
+                 | may
+                 | user_attr
+
+objectidentifier: "objectidentifier"i DESCR MACROOID
+
+ldapsyntax: "ldapsyntax"i LEFTCASE MACROOID ldapsyntax_state* RIGHTCASE
+ldapsyntax_state: name
+                | desc
+                | user_attr
+
+name: "NAME" qdescrs
+desc: "DESC" DQSTRING
+OBSOLETE: "OBSOLETE"
+attributetype_sup: "SUP" WOID
+objectclass_sup: "SUP" oids
+equality: "EQUALITY" WOID
+ordering: "ORDERING" WOID
+substr: "SUBSTR" WOID
+syntax: "SYNTAX" NOIDLEN
+single_value: "SINGLE-VALUE" [WS]
+collective: "COLLECTIVE" [WS]
+no_user_modification: "NO-USER-MODIFICATION" [WS]
+usage: "USAGE" [WS] ATTRIBUTE_USAGE
+ATTRIBUTE_USAGE: "userApplications"
+               | "directoryOperation"
+               | "distributedOperation"
+               | "dSAOperation"
+
+user_attr: USER_KEY DQSTRING
+USER_KEY: "x-"i DESCR
+
+structural: ABSTRACT
+          | STRUCTURAL
+          | AUXILIARY
+ABSTRACT: "ABSTRACT"
+STRUCTURAL: "STRUCTURAL"
+AUXILIARY: "AUXILIARY"
+must: "MUST" oids
+may: "MAY" oids
+
+// oid
+oids: WOID
+    | LEFTCASE oidlist RIGHTCASE
+oidlist: WOID ("$" WOID)*
+MACROOID: NUMERICOID
+        | DESCR ":" NUMERICOID
+NOIDLEN: NUMERICOID [ "{" INT "}" ]
+WOID: [WS] OID [WS]
+OID: DESCR | NUMERICOID
+NUMERICOID: INT [DOT INT]*
+
+// string
+qdescrs: QDESCR
+       | [WS] LEFTCASE qdescrlist RIGHTCASE [WS]
+qdescrlist: QDESCR+
+DQSTRING: [WS] QUOT STRING QUOT [WS]
+QDESCR: QUOT DESCR QUOT
+DESCR: A K*
+STRING: /[^']+/
+
+A: "a".."z" | "A".."Z"
+D: "0".."9"
+K: A | D | "-" | ";"
+DOT: "."
+QUOT: "'"
+LEFTCASE: "("
+RIGHTCASE: ")"
+
+%import common.INT
+%import common.WS
+%import common.SH_COMMENT
+
+%ignore SH_COMMENT
+%ignore WS
