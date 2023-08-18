@@ -1,0 +1,12 @@
+MANIFEST.in
+requirements.txt
+setup.py
+glue_ray_etl/__init__.py
+glue_ray_etl.egg-info/PKG-INFO
+glue_ray_etl.egg-info/SOURCES.txt
+glue_ray_etl.egg-info/dependency_links.txt
+glue_ray_etl.egg-info/requires.txt
+glue_ray_etl.egg-info/top_level.txt
+glue_ray_etl/io/__init__.py
+glue_ray_etl/io/hive.py
+glue_ray_etl/io/utils.py
