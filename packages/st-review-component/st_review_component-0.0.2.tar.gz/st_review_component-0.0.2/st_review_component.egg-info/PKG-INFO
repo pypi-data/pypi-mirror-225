@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: st-review-component
+Version: 0.0.2
+Summary: Streamlit component that allows you to do X
+Home-page: UNKNOWN
+Author: Vignesh Prakash
+Author-email: pranomvignesh@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: devel
+License-File: LICENSE
+
+# streamlit-custom-component
+
+Streamlit component that allows you to do X
+
+## Installation instructions
+
+```sh
+pip install streamlit-custom-component
+```
+
+## Usage instructions
+
+```python
+import streamlit as st
+
+from st_review_component import review_component
+
+value = review_component()
+
+st.write(value)
+```
+
