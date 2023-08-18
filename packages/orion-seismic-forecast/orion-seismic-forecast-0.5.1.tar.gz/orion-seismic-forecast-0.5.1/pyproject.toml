@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "orion-seismic-forecast"
+authors = [
+  { name="Christopher Sherman", email="sherman27@llnl.gov" },
+  { name="Kayla Kroll", email="kroll5@llnl.gov" },
+  { name="Corinne Layland-Bachmann", email="cebachmann@lbl.gov" },
+  { name="Keurfon Luu", email="keurfonluu@lbl.gov" },
+]
+description = "Operational Forecasting of Induced Seismicity"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version", "readme", "entry-points"]
+
+
+[tool.setuptools.dynamic]
+version = {file = "src/orion/VERSION"}
+readme = {file = "README.md"}
+
+
+[project.urls]
+"Homepage" = "https://edx.netl.doe.gov/dataset/orion-operational-forecasting-of-induced-seismicity"
+"Documentation" = "https://nrap.gitlab.io/orion/"
+"Repository" = "https://gitlab.com/NRAP/orion"

@@ -1,0 +1,9 @@
+[console_scripts]
+orion_forecast = orion.__main__:main
+
+[gui_scripts]
+orion_forecast_alt = orion.__main__:main
+
+[pyinstaller40]
+hook-dirs = orion:_pyinstaller_hooks_dir
+tests = orion:_pyinstaller_hooks_dir
