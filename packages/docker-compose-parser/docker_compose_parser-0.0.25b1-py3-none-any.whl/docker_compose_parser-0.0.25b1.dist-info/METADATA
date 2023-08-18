@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: docker-compose-parser
+Version: 0.0.25b1
+Summary: Simple module for parsing, modifying, and export `docker-compose` files
+Home-page: https://github.com/EspenAlbert/py-libs
+Author: Espen Albert
+License: MIT
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: model-lib (==0.0.25b1)
+Requires-Dist: pydantic (<3,>=1.10.2)
+Requires-Dist: zero-3rdparty (==0.0.25b1)
+Provides-Extra: pydantic_v1
+Requires-Dist: pydantic (<=2,>=1.10.2) ; extra == 'pydantic_v1'
+Provides-Extra: pydantic_v2
+Requires-Dist: pydantic (<=3,>=2.1.1) ; extra == 'pydantic_v2'
+Requires-Dist: pydantic-settings (>=2.0.3) ; extra == 'pydantic_v2'
+
+# Docker Compose Parser
+- Simple module for parsing, modifying, and export `docker-compose` files
