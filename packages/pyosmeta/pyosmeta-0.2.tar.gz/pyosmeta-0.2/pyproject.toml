@@ -1,0 +1,58 @@
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[project]
+name = "pyosmeta"
+dynamic = []
+description = "Tools that update the pyOpenSci contributor and review metadata that is posted on our website"
+authors = [
+    { name = "Leah Wasser", email = "leah@pyopensci.org" },
+]
+maintainers = [
+    { name = "pyOpenSci", email = "admin@pyopensci.org" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "ruamel-yaml>=0.17.21",
+    "requests",
+    "python-dotenv",
+    "pydantic",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+version = "0.2"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://www.pyopensci.org"
+"Bug Reports" = "https://github.com/pyopensci/pyosmeta/issues"
+Source = "https://github.com/pyopensci/pyosmeta/issues"
+
+[project.scripts]
+update-contributors = "pyosmeta.cli.update_contributors:main"
+update-reviews = "pyosmeta.cli.update_reviews:main"
+update-reviewers = "pyosmeta.cli.update_review_contribs:main"
+
+[tool.pdm.build]
+excludes = [
+    "./**/.git",
+]
+package-dir = "src"
+
+[tool.pdm.version]
+source = "scm"
+write_to = "pyosmeta/_version_generated.py"
+write_template = "__version__ = 'v{}'"
