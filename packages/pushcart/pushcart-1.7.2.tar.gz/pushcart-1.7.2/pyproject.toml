@@ -1,0 +1,135 @@
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+exclude = '''
+(
+  /(
+      \.git
+    | \.github
+    | \.venv
+  )/
+)
+'''
+
+[tool.ruff]
+select = ["ALL"]
+ignore = [
+  "ANN101", # Checks that instance method self arguments have type annotations
+  "ANN102", # Checks that class method cls arguments have type annotations
+  "D203",   # One blank line required before class docstring
+  "D213",   # Multi-line docstring summary should start at the second line
+  "E501",   # Line too long
+  "FBT001", # Boolean positional arg in function definition
+  "FBT002", # Boolean default value in function definition
+  "G004",   # Logging statement uses f-string
+  "S101",   # Use of `assert` detected
+]
+target-version = "py39"
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "I",
+  "N",
+  "Q",
+  "S",
+  "T",
+  "W",
+  "ANN",
+  "ARG",
+  "BLE",
+  "COM",
+  "DJ",
+  "DTZ",
+  "EM",
+  "ERA",
+  "EXE",
+  "FBT",
+  "ICN",
+  "INP",
+  "ISC",
+  "NPY",
+  "PD",
+  "PGH",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "PYI",
+  "RET",
+  "RSE",
+  "RUF",
+  "SIM",
+  "SLF",
+  "TCH",
+  "TID",
+  "TRY",
+  "UP",
+  "YTT",
+]
+unfixable = []
+exclude = [".venv", "tests"]
+
+[tool.poetry]
+name = "pushcart"
+version = "1.7.2"
+description = "Metadata transformations for Spark"
+authors = ["Georgel Preput <georgelpreput@mailbox.org>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: OS Independent",
+  "Topic :: Database :: Database Engines/Servers",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+authlib = "^1.2.1"
+httpx = "^0.24.1"
+ipydatagrid = "^1.1.16"
+ipywidgets = "^8.0.7"
+loguru = "^0.7.0"
+pandas = "^2.0.2"
+pyspark = "^3.4.1"
+python = "3.9.*"
+python-dotenv = "^1.0.0"
+tqdm = "^4.65.0"
+validators = "^0.20.0"
+
+[tool.poetry.group.dev.dependencies]
+black = { version = "*", allow-prereleases = true }
+bumpver = "^2023.1124"
+coverage = "^7.2.7"
+ipykernel = "^6.22.0"
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+requests = "^2.31.0"
+ruff = "^0.0.265"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.bumpver]
+current_version = "1.7.2"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+  '^version = "{version}"$',
+  '^current_version = "{version}"$',
+]
