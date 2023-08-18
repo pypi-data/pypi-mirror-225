@@ -1,0 +1,57 @@
+# Copyright (C) 2022 e:fs TechHub GmbH, Gaimersheim Germany
+#
+# This Source Code Form is subject to the terms of the Apache License 2.0
+# If a copy of the APL2 was not distributed with this
+# file, You can obtain one at https://www.apache.org/licenses/LICENSE-2.0.txt.
+
+[build-system]
+requires = ['setuptools']
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "superb-data-klient"
+description = "A Python API wrapping services of the Superb Data Kraken (SDK)"
+requires-python = ">=3.7"
+version = "1.0.1"
+authors = [
+    { name = "Team SDK | e:fs TechHub GmbH", email = "sdk@efs-techhub.com" },
+]
+maintainers = [
+    { email = "sdk@efs-techhub.com" },
+    { name = "Team SDK" }
+]
+
+keywords = [
+    "sdk",
+    "superb data kraken",
+    "superbdataklient",
+    "super data klient",
+    "superb-data-klient",
+    "superb",
+    "data",
+    "klient",
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+]
+
+dependencies = [
+    "requests>=2.31.0",
+    "opensearch-py>=2.3.0",
+    "PyJWT>=2.8.0",
+    "azure-core>=1.29.0",
+    "azure-storage-blob>=12.17.0",
+    "msrest>=0.7.0",
+]
+
+[project.readme]
+file = "docs/README_PYPI.md"
+content-type = "text/markdown"
+
+[project.license]
+text = "Apache-2.0"
