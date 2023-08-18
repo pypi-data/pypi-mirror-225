@@ -1,0 +1,15 @@
+[console_scripts]
+fetch-nmdc-schema=nmdc_schema.nmdc_data:get_nmdc_jsonschema
+generate_import_slots_regardless=nmdc_schema.generate_import_slots_regardless:main
+get_mixs_slots_matching_slot_list=nmdc_schema.get_mixs_slots_matching_slot_list:main
+get_mixs_slots_used_in_schema=nmdc_schema.get_mixs_slots_used_in_schema:main
+get_neon-nlcd-envo-mapping=nmdc_schema.neon_nlcd_envo_mapping:generate_nlcd_envo_mappings
+get_slots_from_class=nmdc_schema.get_slots_from_class:main
+minimal_get_submissions=nmdc_schema.minimal_get_submissions:cli
+mixs_coverage=nmdc_schema.mixs_coverage:cli
+mixs_deep_diff=nmdc_schema.mixs_deep_diff:cli
+mixs_slot_text_mining=nmdc_schema.mixs_slot_text_mining:cli
+mongodb_exporter=nmdc_schema.mongodb_direct_to_nmdc_Database_file:export_to_yaml
+nmdc-data=nmdc_schema.nmdc_data:cli
+nmdc-version=nmdc_schema.nmdc_version:cli
+
