@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: rbclassifydoc
+Version: 0.2.0
+Summary: Classify documents using rule based approach
+Author: Vishal Varma Kovoru, Divija Kanumury, Pravardhitha Myneni
+License: MIT
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: pytesseract
+Requires-Dist: pdf2image
+Requires-Dist: pytest
+Requires-Dist: Image
+
