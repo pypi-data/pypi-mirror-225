@@ -1,0 +1,54 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="collective.elastic.plone">
+
+  <include package="Products.CMFPlone" />
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+  <include package=".restapi" />
+
+  <include file="permissions.zcml" />
+
+  <include file="upgrades.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="ElasticSearch indexer and index"
+      directory="profiles/default"
+      description="Installs the collective.elastic.plone add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="ElasticSearch indexer and index (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.elastic.plone add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.elastic.plone-hiddenprofiles"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <adapter
+      factory=".proxyindex.IndexNodeAdapter"
+  />
+  <utility
+      factory=".queueprocessor.ElasticSearchIndexQueueProcessor"
+      name="collective.elastic.plone"
+      />
+</configure>
