@@ -1,0 +1,10 @@
+!!python/tuple
+- !!python/object:argparse.Namespace
+  command: template
+  config:
+  - hero=Viking
+  data: hero.yml
+  loglevel: null
+  output: null
+  template:
+  - A {{hero}} with long hair and sword
