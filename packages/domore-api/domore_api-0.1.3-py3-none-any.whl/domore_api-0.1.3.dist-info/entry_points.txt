@@ -1,0 +1,8 @@
+[console_scripts]
+domake=domore.cli:main_make_alias
+domore=domore.cli:main
+dorun=domore.cli:main_dorun_alias
+har2case=domore.cli:main_har2case_alias
+har2pytest=domore.cli:main_har2pytest_alias
+locusts=domore.ext.locust:main_locusts
+
