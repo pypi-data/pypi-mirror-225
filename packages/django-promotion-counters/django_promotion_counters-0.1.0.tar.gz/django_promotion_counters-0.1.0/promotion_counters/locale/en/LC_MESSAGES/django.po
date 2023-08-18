@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-17 19:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: project/apps/promotion/models/achievement_counter.py:20
+msgid "User"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:24
+msgid "Counter"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:30
+#: project/apps/promotion/models/promotion_program.py:63
+msgid "Promotion program"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:34
+msgid "Started at"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:38
+msgid "Last incremented at"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:42
+msgid "Achieved at"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:48
+msgid "Achievement counter"
+msgstr ""
+
+#: project/apps/promotion/models/achievement_counter.py:49
+msgid "Achievement counters"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:15
+msgid "Title"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:19
+msgid "Description"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:23
+msgid "Created at"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:27
+msgid "Start date"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:31
+msgid "End date"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:36
+msgid "Target action"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:40
+msgid "Target value"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:45
+msgid "Achievement callback"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:49
+msgid "Archived"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:53
+msgid "Enabled"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:57
+msgid "Repeatable"
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:59
+msgid ""
+"If enabled, the achievement counter will be recreated after the achievement "
+"is reached."
+msgstr ""
+
+#: project/apps/promotion/models/promotion_program.py:64
+msgid "Promotion programs"
+msgstr ""
