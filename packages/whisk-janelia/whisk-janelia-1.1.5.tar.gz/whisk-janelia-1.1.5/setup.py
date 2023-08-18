@@ -1,0 +1,50 @@
+import os
+import distutils.sysconfig
+from setuptools import setup, find_packages, Command
+from setuptools.command.install import install
+
+class CustomInstall(install):
+    def run(self):
+        super().run()  # Ensure the package is installed first
+        
+        if 'ffmpeg' in self.distribution.extras_require:
+            print("Downloading ffmpeg DLLs...")
+            
+            # Determine the destination directory
+            site_packages_dir = distutils.sysconfig.get_python_lib()
+            print(f"Site packages directory: {site_packages_dir}")
+            whisk_ffmpegbin_dir = os.path.join(site_packages_dir, 'whisk', 'bin', 'ffmpeg_win64_lgpl_shared')
+            
+            from whisk import whisk_utils
+            whisk_utils.download_and_extract_ffmpeg_dlls(destination_dir=whisk_ffmpegbin_dir)
+
+with open('README.md', 'r') as f:
+    long_description = f.read()
+
+setup(
+    name='whisk-janelia',
+    version='1.1.5',
+    author='Nathan Clack',
+    maintainer=', '.join(['clackn','cxrodgers','mitchclough','vncntprvst']),
+    url='https://github.com/nclack/whisk/',
+    license='LICENSE.txt',
+    description='Fully automated tracking of single rows of whiskers in high-speed video.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    install_requires=[],
+    extras_require={
+        'ffmpeg': ["requests>=2.24,<3"], # requests is used to download the ffmpeg DLLs. Trigger this by installing with `pip install whisk[ffmpeg]`
+    },
+    # packages=['whisk'],
+    packages=find_packages(exclude=["whisk.bin.*", "whisk.bin", "pipeline.*", "pipeline", "ui.*", "ui"]),
+    package_data={'whisk': ['bin/*']},
+    include_package_data=True,
+    cmdclass={
+        'install': CustomInstall,
+    }
+)
+
+# Get a list of all binary files 
+# bin_files = [os.path.join('whisk', 'bin', f) for f in os.listdir(os.path.join('whisk', 'bin')) if os.path.isfile(os.path.join('whisk', 'bin', f))]
+
+
