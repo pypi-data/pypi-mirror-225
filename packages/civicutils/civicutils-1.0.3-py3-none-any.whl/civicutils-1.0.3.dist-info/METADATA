@@ -1,0 +1,1184 @@
+Metadata-Version: 2.1
+Name: civicutils
+Version: 1.0.3
+Summary: Python package for querying, matching and downstream processing of CIViC information.
+Project-URL: Homepage, https://github.com/ETH-NEXUS/civicutils
+Project-URL: Bug Tracker, https://github.com/ETH-NEXUS/civicutils/issues
+Author-email: María Lourdes Rosano-Gonzalez <lourdes.rosanogonzalez@gmail.com>, "Vipin T. Sreedharan" <vipin.sreedharan@nexus.ethz.ch>, Antoine Hanns <hanns@nexus.ethz.ch>, "Daniel J. Stekhoven" <stekhoven@nexus.ethz.ch>, Franziska Singer <singer@nexus.ethz.ch>
+Maintainer-email: Antoine Hanns <hanns@nexus.ethz.ch>
+License:                     GNU GENERAL PUBLIC LICENSE
+                               Version 3, 29 June 2007
+        
+         Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+         Everyone is permitted to copy and distribute verbatim copies
+         of this license document, but changing it is not allowed.
+        
+                                    Preamble
+        
+          The GNU General Public License is a free, copyleft license for
+        software and other kinds of works.
+        
+          The licenses for most software and other practical works are designed
+        to take away your freedom to share and change the works.  By contrast,
+        the GNU General Public License is intended to guarantee your freedom to
+        share and change all versions of a program--to make sure it remains free
+        software for all its users.  We, the Free Software Foundation, use the
+        GNU General Public License for most of our software; it applies also to
+        any other work released this way by its authors.  You can apply it to
+        your programs, too.
+        
+          When we speak of free software, we are referring to freedom, not
+        price.  Our General Public Licenses are designed to make sure that you
+        have the freedom to distribute copies of free software (and charge for
+        them if you wish), that you receive source code or can get it if you
+        want it, that you can change the software or use pieces of it in new
+        free programs, and that you know you can do these things.
+        
+          To protect your rights, we need to prevent others from denying you
+        these rights or asking you to surrender the rights.  Therefore, you have
+        certain responsibilities if you distribute copies of the software, or if
+        you modify it: responsibilities to respect the freedom of others.
+        
+          For example, if you distribute copies of such a program, whether
+        gratis or for a fee, you must pass on to the recipients the same
+        freedoms that you received.  You must make sure that they, too, receive
+        or can get the source code.  And you must show them these terms so they
+        know their rights.
+        
+          Developers that use the GNU GPL protect your rights with two steps:
+        (1) assert copyright on the software, and (2) offer you this License
+        giving you legal permission to copy, distribute and/or modify it.
+        
+          For the developers' and authors' protection, the GPL clearly explains
+        that there is no warranty for this free software.  For both users' and
+        authors' sake, the GPL requires that modified versions be marked as
+        changed, so that their problems will not be attributed erroneously to
+        authors of previous versions.
+        
+          Some devices are designed to deny users access to install or run
+        modified versions of the software inside them, although the manufacturer
+        can do so.  This is fundamentally incompatible with the aim of
+        protecting users' freedom to change the software.  The systematic
+        pattern of such abuse occurs in the area of products for individuals to
+        use, which is precisely where it is most unacceptable.  Therefore, we
+        have designed this version of the GPL to prohibit the practice for those
+        products.  If such problems arise substantially in other domains, we
+        stand ready to extend this provision to those domains in future versions
+        of the GPL, as needed to protect the freedom of users.
+        
+          Finally, every program is threatened constantly by software patents.
+        States should not allow patents to restrict development and use of
+        software on general-purpose computers, but in those that do, we wish to
+        avoid the special danger that patents applied to a free program could
+        make it effectively proprietary.  To prevent this, the GPL assures that
+        patents cannot be used to render the program non-free.
+        
+          The precise terms and conditions for copying, distribution and
+        modification follow.
+        
+                               TERMS AND CONDITIONS
+        
+          0. Definitions.
+        
+          "This License" refers to version 3 of the GNU General Public License.
+        
+          "Copyright" also means copyright-like laws that apply to other kinds of
+        works, such as semiconductor masks.
+        
+          "The Program" refers to any copyrightable work licensed under this
+        License.  Each licensee is addressed as "you".  "Licensees" and
+        "recipients" may be individuals or organizations.
+        
+          To "modify" a work means to copy from or adapt all or part of the work
+        in a fashion requiring copyright permission, other than the making of an
+        exact copy.  The resulting work is called a "modified version" of the
+        earlier work or a work "based on" the earlier work.
+        
+          A "covered work" means either the unmodified Program or a work based
+        on the Program.
+        
+          To "propagate" a work means to do anything with it that, without
+        permission, would make you directly or secondarily liable for
+        infringement under applicable copyright law, except executing it on a
+        computer or modifying a private copy.  Propagation includes copying,
+        distribution (with or without modification), making available to the
+        public, and in some countries other activities as well.
+        
+          To "convey" a work means any kind of propagation that enables other
+        parties to make or receive copies.  Mere interaction with a user through
+        a computer network, with no transfer of a copy, is not conveying.
+        
+          An interactive user interface displays "Appropriate Legal Notices"
+        to the extent that it includes a convenient and prominently visible
+        feature that (1) displays an appropriate copyright notice, and (2)
+        tells the user that there is no warranty for the work (except to the
+        extent that warranties are provided), that licensees may convey the
+        work under this License, and how to view a copy of this License.  If
+        the interface presents a list of user commands or options, such as a
+        menu, a prominent item in the list meets this criterion.
+        
+          1. Source Code.
+        
+          The "source code" for a work means the preferred form of the work
+        for making modifications to it.  "Object code" means any non-source
+        form of a work.
+        
+          A "Standard Interface" means an interface that either is an official
+        standard defined by a recognized standards body, or, in the case of
+        interfaces specified for a particular programming language, one that
+        is widely used among developers working in that language.
+        
+          The "System Libraries" of an executable work include anything, other
+        than the work as a whole, that (a) is included in the normal form of
+        packaging a Major Component, but which is not part of that Major
+        Component, and (b) serves only to enable use of the work with that
+        Major Component, or to implement a Standard Interface for which an
+        implementation is available to the public in source code form.  A
+        "Major Component", in this context, means a major essential component
+        (kernel, window system, and so on) of the specific operating system
+        (if any) on which the executable work runs, or a compiler used to
+        produce the work, or an object code interpreter used to run it.
+        
+          The "Corresponding Source" for a work in object code form means all
+        the source code needed to generate, install, and (for an executable
+        work) run the object code and to modify the work, including scripts to
+        control those activities.  However, it does not include the work's
+        System Libraries, or general-purpose tools or generally available free
+        programs which are used unmodified in performing those activities but
+        which are not part of the work.  For example, Corresponding Source
+        includes interface definition files associated with source files for
+        the work, and the source code for shared libraries and dynamically
+        linked subprograms that the work is specifically designed to require,
+        such as by intimate data communication or control flow between those
+        subprograms and other parts of the work.
+        
+          The Corresponding Source need not include anything that users
+        can regenerate automatically from other parts of the Corresponding
+        Source.
+        
+          The Corresponding Source for a work in source code form is that
+        same work.
+        
+          2. Basic Permissions.
+        
+          All rights granted under this License are granted for the term of
+        copyright on the Program, and are irrevocable provided the stated
+        conditions are met.  This License explicitly affirms your unlimited
+        permission to run the unmodified Program.  The output from running a
+        covered work is covered by this License only if the output, given its
+        content, constitutes a covered work.  This License acknowledges your
+        rights of fair use or other equivalent, as provided by copyright law.
+        
+          You may make, run and propagate covered works that you do not
+        convey, without conditions so long as your license otherwise remains
+        in force.  You may convey covered works to others for the sole purpose
+        of having them make modifications exclusively for you, or provide you
+        with facilities for running those works, provided that you comply with
+        the terms of this License in conveying all material for which you do
+        not control copyright.  Those thus making or running the covered works
+        for you must do so exclusively on your behalf, under your direction
+        and control, on terms that prohibit them from making any copies of
+        your copyrighted material outside their relationship with you.
+        
+          Conveying under any other circumstances is permitted solely under
+        the conditions stated below.  Sublicensing is not allowed; section 10
+        makes it unnecessary.
+        
+          3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+        
+          No covered work shall be deemed part of an effective technological
+        measure under any applicable law fulfilling obligations under article
+        11 of the WIPO copyright treaty adopted on 20 December 1996, or
+        similar laws prohibiting or restricting circumvention of such
+        measures.
+        
+          When you convey a covered work, you waive any legal power to forbid
+        circumvention of technological measures to the extent such circumvention
+        is effected by exercising rights under this License with respect to
+        the covered work, and you disclaim any intention to limit operation or
+        modification of the work as a means of enforcing, against the work's
+        users, your or third parties' legal rights to forbid circumvention of
+        technological measures.
+        
+          4. Conveying Verbatim Copies.
+        
+          You may convey verbatim copies of the Program's source code as you
+        receive it, in any medium, provided that you conspicuously and
+        appropriately publish on each copy an appropriate copyright notice;
+        keep intact all notices stating that this License and any
+        non-permissive terms added in accord with section 7 apply to the code;
+        keep intact all notices of the absence of any warranty; and give all
+        recipients a copy of this License along with the Program.
+        
+          You may charge any price or no price for each copy that you convey,
+        and you may offer support or warranty protection for a fee.
+        
+          5. Conveying Modified Source Versions.
+        
+          You may convey a work based on the Program, or the modifications to
+        produce it from the Program, in the form of source code under the
+        terms of section 4, provided that you also meet all of these conditions:
+        
+            a) The work must carry prominent notices stating that you modified
+            it, and giving a relevant date.
+        
+            b) The work must carry prominent notices stating that it is
+            released under this License and any conditions added under section
+            7.  This requirement modifies the requirement in section 4 to
+            "keep intact all notices".
+        
+            c) You must license the entire work, as a whole, under this
+            License to anyone who comes into possession of a copy.  This
+            License will therefore apply, along with any applicable section 7
+            additional terms, to the whole of the work, and all its parts,
+            regardless of how they are packaged.  This License gives no
+            permission to license the work in any other way, but it does not
+            invalidate such permission if you have separately received it.
+        
+            d) If the work has interactive user interfaces, each must display
+            Appropriate Legal Notices; however, if the Program has interactive
+            interfaces that do not display Appropriate Legal Notices, your
+            work need not make them do so.
+        
+          A compilation of a covered work with other separate and independent
+        works, which are not by their nature extensions of the covered work,
+        and which are not combined with it such as to form a larger program,
+        in or on a volume of a storage or distribution medium, is called an
+        "aggregate" if the compilation and its resulting copyright are not
+        used to limit the access or legal rights of the compilation's users
+        beyond what the individual works permit.  Inclusion of a covered work
+        in an aggregate does not cause this License to apply to the other
+        parts of the aggregate.
+        
+          6. Conveying Non-Source Forms.
+        
+          You may convey a covered work in object code form under the terms
+        of sections 4 and 5, provided that you also convey the
+        machine-readable Corresponding Source under the terms of this License,
+        in one of these ways:
+        
+            a) Convey the object code in, or embodied in, a physical product
+            (including a physical distribution medium), accompanied by the
+            Corresponding Source fixed on a durable physical medium
+            customarily used for software interchange.
+        
+            b) Convey the object code in, or embodied in, a physical product
+            (including a physical distribution medium), accompanied by a
+            written offer, valid for at least three years and valid for as
+            long as you offer spare parts or customer support for that product
+            model, to give anyone who possesses the object code either (1) a
+            copy of the Corresponding Source for all the software in the
+            product that is covered by this License, on a durable physical
+            medium customarily used for software interchange, for a price no
+            more than your reasonable cost of physically performing this
+            conveying of source, or (2) access to copy the
+            Corresponding Source from a network server at no charge.
+        
+            c) Convey individual copies of the object code with a copy of the
+            written offer to provide the Corresponding Source.  This
+            alternative is allowed only occasionally and noncommercially, and
+            only if you received the object code with such an offer, in accord
+            with subsection 6b.
+        
+            d) Convey the object code by offering access from a designated
+            place (gratis or for a charge), and offer equivalent access to the
+            Corresponding Source in the same way through the same place at no
+            further charge.  You need not require recipients to copy the
+            Corresponding Source along with the object code.  If the place to
+            copy the object code is a network server, the Corresponding Source
+            may be on a different server (operated by you or a third party)
+            that supports equivalent copying facilities, provided you maintain
+            clear directions next to the object code saying where to find the
+            Corresponding Source.  Regardless of what server hosts the
+            Corresponding Source, you remain obligated to ensure that it is
+            available for as long as needed to satisfy these requirements.
+        
+            e) Convey the object code using peer-to-peer transmission, provided
+            you inform other peers where the object code and Corresponding
+            Source of the work are being offered to the general public at no
+            charge under subsection 6d.
+        
+          A separable portion of the object code, whose source code is excluded
+        from the Corresponding Source as a System Library, need not be
+        included in conveying the object code work.
+        
+          A "User Product" is either (1) a "consumer product", which means any
+        tangible personal property which is normally used for personal, family,
+        or household purposes, or (2) anything designed or sold for incorporation
+        into a dwelling.  In determining whether a product is a consumer product,
+        doubtful cases shall be resolved in favor of coverage.  For a particular
+        product received by a particular user, "normally used" refers to a
+        typical or common use of that class of product, regardless of the status
+        of the particular user or of the way in which the particular user
+        actually uses, or expects or is expected to use, the product.  A product
+        is a consumer product regardless of whether the product has substantial
+        commercial, industrial or non-consumer uses, unless such uses represent
+        the only significant mode of use of the product.
+        
+          "Installation Information" for a User Product means any methods,
+        procedures, authorization keys, or other information required to install
+        and execute modified versions of a covered work in that User Product from
+        a modified version of its Corresponding Source.  The information must
+        suffice to ensure that the continued functioning of the modified object
+        code is in no case prevented or interfered with solely because
+        modification has been made.
+        
+          If you convey an object code work under this section in, or with, or
+        specifically for use in, a User Product, and the conveying occurs as
+        part of a transaction in which the right of possession and use of the
+        User Product is transferred to the recipient in perpetuity or for a
+        fixed term (regardless of how the transaction is characterized), the
+        Corresponding Source conveyed under this section must be accompanied
+        by the Installation Information.  But this requirement does not apply
+        if neither you nor any third party retains the ability to install
+        modified object code on the User Product (for example, the work has
+        been installed in ROM).
+        
+          The requirement to provide Installation Information does not include a
+        requirement to continue to provide support service, warranty, or updates
+        for a work that has been modified or installed by the recipient, or for
+        the User Product in which it has been modified or installed.  Access to a
+        network may be denied when the modification itself materially and
+        adversely affects the operation of the network or violates the rules and
+        protocols for communication across the network.
+        
+          Corresponding Source conveyed, and Installation Information provided,
+        in accord with this section must be in a format that is publicly
+        documented (and with an implementation available to the public in
+        source code form), and must require no special password or key for
+        unpacking, reading or copying.
+        
+          7. Additional Terms.
+        
+          "Additional permissions" are terms that supplement the terms of this
+        License by making exceptions from one or more of its conditions.
+        Additional permissions that are applicable to the entire Program shall
+        be treated as though they were included in this License, to the extent
+        that they are valid under applicable law.  If additional permissions
+        apply only to part of the Program, that part may be used separately
+        under those permissions, but the entire Program remains governed by
+        this License without regard to the additional permissions.
+        
+          When you convey a copy of a covered work, you may at your option
+        remove any additional permissions from that copy, or from any part of
+        it.  (Additional permissions may be written to require their own
+        removal in certain cases when you modify the work.)  You may place
+        additional permissions on material, added by you to a covered work,
+        for which you have or can give appropriate copyright permission.
+        
+          Notwithstanding any other provision of this License, for material you
+        add to a covered work, you may (if authorized by the copyright holders of
+        that material) supplement the terms of this License with terms:
+        
+            a) Disclaiming warranty or limiting liability differently from the
+            terms of sections 15 and 16 of this License; or
+        
+            b) Requiring preservation of specified reasonable legal notices or
+            author attributions in that material or in the Appropriate Legal
+            Notices displayed by works containing it; or
+        
+            c) Prohibiting misrepresentation of the origin of that material, or
+            requiring that modified versions of such material be marked in
+            reasonable ways as different from the original version; or
+        
+            d) Limiting the use for publicity purposes of names of licensors or
+            authors of the material; or
+        
+            e) Declining to grant rights under trademark law for use of some
+            trade names, trademarks, or service marks; or
+        
+            f) Requiring indemnification of licensors and authors of that
+            material by anyone who conveys the material (or modified versions of
+            it) with contractual assumptions of liability to the recipient, for
+            any liability that these contractual assumptions directly impose on
+            those licensors and authors.
+        
+          All other non-permissive additional terms are considered "further
+        restrictions" within the meaning of section 10.  If the Program as you
+        received it, or any part of it, contains a notice stating that it is
+        governed by this License along with a term that is a further
+        restriction, you may remove that term.  If a license document contains
+        a further restriction but permits relicensing or conveying under this
+        License, you may add to a covered work material governed by the terms
+        of that license document, provided that the further restriction does
+        not survive such relicensing or conveying.
+        
+          If you add terms to a covered work in accord with this section, you
+        must place, in the relevant source files, a statement of the
+        additional terms that apply to those files, or a notice indicating
+        where to find the applicable terms.
+        
+          Additional terms, permissive or non-permissive, may be stated in the
+        form of a separately written license, or stated as exceptions;
+        the above requirements apply either way.
+        
+          8. Termination.
+        
+          You may not propagate or modify a covered work except as expressly
+        provided under this License.  Any attempt otherwise to propagate or
+        modify it is void, and will automatically terminate your rights under
+        this License (including any patent licenses granted under the third
+        paragraph of section 11).
+        
+          However, if you cease all violation of this License, then your
+        license from a particular copyright holder is reinstated (a)
+        provisionally, unless and until the copyright holder explicitly and
+        finally terminates your license, and (b) permanently, if the copyright
+        holder fails to notify you of the violation by some reasonable means
+        prior to 60 days after the cessation.
+        
+          Moreover, your license from a particular copyright holder is
+        reinstated permanently if the copyright holder notifies you of the
+        violation by some reasonable means, this is the first time you have
+        received notice of violation of this License (for any work) from that
+        copyright holder, and you cure the violation prior to 30 days after
+        your receipt of the notice.
+        
+          Termination of your rights under this section does not terminate the
+        licenses of parties who have received copies or rights from you under
+        this License.  If your rights have been terminated and not permanently
+        reinstated, you do not qualify to receive new licenses for the same
+        material under section 10.
+        
+          9. Acceptance Not Required for Having Copies.
+        
+          You are not required to accept this License in order to receive or
+        run a copy of the Program.  Ancillary propagation of a covered work
+        occurring solely as a consequence of using peer-to-peer transmission
+        to receive a copy likewise does not require acceptance.  However,
+        nothing other than this License grants you permission to propagate or
+        modify any covered work.  These actions infringe copyright if you do
+        not accept this License.  Therefore, by modifying or propagating a
+        covered work, you indicate your acceptance of this License to do so.
+        
+          10. Automatic Licensing of Downstream Recipients.
+        
+          Each time you convey a covered work, the recipient automatically
+        receives a license from the original licensors, to run, modify and
+        propagate that work, subject to this License.  You are not responsible
+        for enforcing compliance by third parties with this License.
+        
+          An "entity transaction" is a transaction transferring control of an
+        organization, or substantially all assets of one, or subdividing an
+        organization, or merging organizations.  If propagation of a covered
+        work results from an entity transaction, each party to that
+        transaction who receives a copy of the work also receives whatever
+        licenses to the work the party's predecessor in interest had or could
+        give under the previous paragraph, plus a right to possession of the
+        Corresponding Source of the work from the predecessor in interest, if
+        the predecessor has it or can get it with reasonable efforts.
+        
+          You may not impose any further restrictions on the exercise of the
+        rights granted or affirmed under this License.  For example, you may
+        not impose a license fee, royalty, or other charge for exercise of
+        rights granted under this License, and you may not initiate litigation
+        (including a cross-claim or counterclaim in a lawsuit) alleging that
+        any patent claim is infringed by making, using, selling, offering for
+        sale, or importing the Program or any portion of it.
+        
+          11. Patents.
+        
+          A "contributor" is a copyright holder who authorizes use under this
+        License of the Program or a work on which the Program is based.  The
+        work thus licensed is called the contributor's "contributor version".
+        
+          A contributor's "essential patent claims" are all patent claims
+        owned or controlled by the contributor, whether already acquired or
+        hereafter acquired, that would be infringed by some manner, permitted
+        by this License, of making, using, or selling its contributor version,
+        but do not include claims that would be infringed only as a
+        consequence of further modification of the contributor version.  For
+        purposes of this definition, "control" includes the right to grant
+        patent sublicenses in a manner consistent with the requirements of
+        this License.
+        
+          Each contributor grants you a non-exclusive, worldwide, royalty-free
+        patent license under the contributor's essential patent claims, to
+        make, use, sell, offer for sale, import and otherwise run, modify and
+        propagate the contents of its contributor version.
+        
+          In the following three paragraphs, a "patent license" is any express
+        agreement or commitment, however denominated, not to enforce a patent
+        (such as an express permission to practice a patent or covenant not to
+        sue for patent infringement).  To "grant" such a patent license to a
+        party means to make such an agreement or commitment not to enforce a
+        patent against the party.
+        
+          If you convey a covered work, knowingly relying on a patent license,
+        and the Corresponding Source of the work is not available for anyone
+        to copy, free of charge and under the terms of this License, through a
+        publicly available network server or other readily accessible means,
+        then you must either (1) cause the Corresponding Source to be so
+        available, or (2) arrange to deprive yourself of the benefit of the
+        patent license for this particular work, or (3) arrange, in a manner
+        consistent with the requirements of this License, to extend the patent
+        license to downstream recipients.  "Knowingly relying" means you have
+        actual knowledge that, but for the patent license, your conveying the
+        covered work in a country, or your recipient's use of the covered work
+        in a country, would infringe one or more identifiable patents in that
+        country that you have reason to believe are valid.
+        
+          If, pursuant to or in connection with a single transaction or
+        arrangement, you convey, or propagate by procuring conveyance of, a
+        covered work, and grant a patent license to some of the parties
+        receiving the covered work authorizing them to use, propagate, modify
+        or convey a specific copy of the covered work, then the patent license
+        you grant is automatically extended to all recipients of the covered
+        work and works based on it.
+        
+          A patent license is "discriminatory" if it does not include within
+        the scope of its coverage, prohibits the exercise of, or is
+        conditioned on the non-exercise of one or more of the rights that are
+        specifically granted under this License.  You may not convey a covered
+        work if you are a party to an arrangement with a third party that is
+        in the business of distributing software, under which you make payment
+        to the third party based on the extent of your activity of conveying
+        the work, and under which the third party grants, to any of the
+        parties who would receive the covered work from you, a discriminatory
+        patent license (a) in connection with copies of the covered work
+        conveyed by you (or copies made from those copies), or (b) primarily
+        for and in connection with specific products or compilations that
+        contain the covered work, unless you entered into that arrangement,
+        or that patent license was granted, prior to 28 March 2007.
+        
+          Nothing in this License shall be construed as excluding or limiting
+        any implied license or other defenses to infringement that may
+        otherwise be available to you under applicable patent law.
+        
+          12. No Surrender of Others' Freedom.
+        
+          If conditions are imposed on you (whether by court order, agreement or
+        otherwise) that contradict the conditions of this License, they do not
+        excuse you from the conditions of this License.  If you cannot convey a
+        covered work so as to satisfy simultaneously your obligations under this
+        License and any other pertinent obligations, then as a consequence you may
+        not convey it at all.  For example, if you agree to terms that obligate you
+        to collect a royalty for further conveying from those to whom you convey
+        the Program, the only way you could satisfy both those terms and this
+        License would be to refrain entirely from conveying the Program.
+        
+          13. Use with the GNU Affero General Public License.
+        
+          Notwithstanding any other provision of this License, you have
+        permission to link or combine any covered work with a work licensed
+        under version 3 of the GNU Affero General Public License into a single
+        combined work, and to convey the resulting work.  The terms of this
+        License will continue to apply to the part which is the covered work,
+        but the special requirements of the GNU Affero General Public License,
+        section 13, concerning interaction through a network will apply to the
+        combination as such.
+        
+          14. Revised Versions of this License.
+        
+          The Free Software Foundation may publish revised and/or new versions of
+        the GNU General Public License from time to time.  Such new versions will
+        be similar in spirit to the present version, but may differ in detail to
+        address new problems or concerns.
+        
+          Each version is given a distinguishing version number.  If the
+        Program specifies that a certain numbered version of the GNU General
+        Public License "or any later version" applies to it, you have the
+        option of following the terms and conditions either of that numbered
+        version or of any later version published by the Free Software
+        Foundation.  If the Program does not specify a version number of the
+        GNU General Public License, you may choose any version ever published
+        by the Free Software Foundation.
+        
+          If the Program specifies that a proxy can decide which future
+        versions of the GNU General Public License can be used, that proxy's
+        public statement of acceptance of a version permanently authorizes you
+        to choose that version for the Program.
+        
+          Later license versions may give you additional or different
+        permissions.  However, no additional obligations are imposed on any
+        author or copyright holder as a result of your choosing to follow a
+        later version.
+        
+          15. Disclaimer of Warranty.
+        
+          THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+        APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+        HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+        OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+        THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+        PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+        IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+        ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+        
+          16. Limitation of Liability.
+        
+          IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+        WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+        THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+        GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+        USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+        DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+        PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+        EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+        SUCH DAMAGES.
+        
+          17. Interpretation of Sections 15 and 16.
+        
+          If the disclaimer of warranty and limitation of liability provided
+        above cannot be given local legal effect according to their terms,
+        reviewing courts shall apply local law that most closely approximates
+        an absolute waiver of all civil liability in connection with the
+        Program, unless a warranty or assumption of liability accompanies a
+        copy of the Program in return for a fee.
+        
+                             END OF TERMS AND CONDITIONS
+        
+                    How to Apply These Terms to Your New Programs
+        
+          If you develop a new program, and you want it to be of the greatest
+        possible use to the public, the best way to achieve this is to make it
+        free software which everyone can redistribute and change under these terms.
+        
+          To do so, attach the following notices to the program.  It is safest
+        to attach them to the start of each source file to most effectively
+        state the exclusion of warranty; and each file should have at least
+        the "copyright" line and a pointer to where the full notice is found.
+        
+            <one line to give the program's name and a brief idea of what it does.>
+            Copyright (C) <year>  <name of author>
+        
+            This program is free software: you can redistribute it and/or modify
+            it under the terms of the GNU General Public License as published by
+            the Free Software Foundation, either version 3 of the License, or
+            (at your option) any later version.
+        
+            This program is distributed in the hope that it will be useful,
+            but WITHOUT ANY WARRANTY; without even the implied warranty of
+            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+            GNU General Public License for more details.
+        
+            You should have received a copy of the GNU General Public License
+            along with this program.  If not, see <https://www.gnu.org/licenses/>.
+        
+        Also add information on how to contact you by electronic and paper mail.
+        
+          If the program does terminal interaction, make it output a short
+        notice like this when it starts in an interactive mode:
+        
+            <program>  Copyright (C) <year>  <name of author>
+            This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+            This is free software, and you are welcome to redistribute it
+            under certain conditions; type `show c' for details.
+        
+        The hypothetical commands `show w' and `show c' should show the appropriate
+        parts of the General Public License.  Of course, your program's commands
+        might be different; for a GUI interface, you would use an "about box".
+        
+          You should also get your employer (if you work as a programmer) or school,
+        if any, to sign a "copyright disclaimer" for the program, if necessary.
+        For more information on this, and how to apply and follow the GNU GPL, see
+        <https://www.gnu.org/licenses/>.
+        
+          The GNU General Public License does not permit incorporating your program
+        into proprietary programs.  If your program is a subroutine library, you
+        may consider it more useful to permit linking proprietary applications with
+        the library.  If this is what you want to do, use the GNU Lesser General
+        Public License instead of this License.  But first, please read
+        <https://www.gnu.org/licenses/why-not-lgpl.html>.
+License-File: LICENSE.md
+Keywords: API query,CIViC database,clinical relevance,in-silico drug prediction,variant prioritization
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: civicpy>=3.0.0
+Description-Content-Type: text/markdown
+
+# CIViCutils
+
+## General overview
+
+[CIViCutils](https://pypi.org/project/civicutils) is a Python package for rapid retrieval, annotation, prioritization and downstream processing of information from the expert-curated [CIViC knowledgebase](https://civicdb.org/welcome) (Clinical Interpretations of Variants in Cancer). CIViCutils can be integrated into novel and existing clinical workflows to provide variant-level disease-specific information about treatment response, pathogenesis, diagnosis, and prognosis of genomic aberrations (SNVs, InDels and CNVs), as well as differentially expressed genes. It streamlines interpreting large numbers of input alterations with querying and analyzing CIViC information, and enables the harmonization of input across different nomenclatures. Key features of CIViCutils include an automated matching framework for linking clinical evidence to input variants, as well as evaluating the accuracy of the resulting hits, and in-silico prediction of drug-target interactions tailored to individual patients and cancer subtypes of interest. For more details, see the CIViCutils publication.
+
+![README_diagram](https://github.com/ETH-NEXUS/civicutils/blob/master/images/civicutils-workflow.png?raw=true)
+
+## Installation instructions
+
+### Dependencies
+- [civicpy](https://github.com/griffithlab/civicpy):
+To install, first activate the relevant Python (>=3.7) environment and then use pip install:
+
+```
+>> pip install civicpy
+```
+
+Then, to install CIViCutils, first activate the relevant Python (>=3.7) environment (i.e. already containing `civicpy`) and then use pip install:
+
+```
+>> pip install civicutils
+```
+
+The CIViC query implemented in CIViCutils makes use of an offline cache file of the CIViC database. The cache is provided by `civicpy` and retrieved with the initial installation of the CIViCutils package. Afterwards, users have to manually update the cache file if they want to leverage a new release version. To update the cache file, first activate the relevant Python environment, open a Python session, and then type:
+```
+from civicpy import civic
+>> civic.update_cache()
+```
+More information can be found on the [civicpy documentation](https://docs.civicpy.org/en/latest/).
+
+
+## Documentation
+
+### Required input format
+
+Three different data types can be handled by the package: `SNV` (genomic single-nucleotide and insertion-deletion variants), `CNV` (genomic copy number alterations), and `EXPR` (differentially expressed genes). Corresponding functions for reading input data files are `read_in_snvs()`, `read_in_cnvs()` and `read_in_expr()`, respectively. Input files are required to have a tabular format with header and to contain data exclusively from one single data type. Example input files for all three data types are provided in subfolder [data](https://github.com/ETH-NEXUS/civicutils/tree/master/civicutils/data).
+
+#### 1. SNVs/InDels (`SNV`)
+
+An input file of SNV/InDel data can be processed using CIViCutils function `read_in_snvs()`. Assumes header and the following columns:
+* `Gene`: required. One gene symbol per row allowed. Cannot be empty.
+* `Variant_dna`: required. HGVS c. annotation for the variant (can be several possible annotations referring to the same variant, listed in a comma-separated list with no spaces). Can be empty, but at least one non-empty variant annotation must be provided across `Variant_dna` and `Variant_prot` per row.
+* `Variant_prot`: required. HGVS p. annotation for the variant, if available (can can be several possible annotations referring to the same variant, listed in a comma-separated list with no spaces). Can be empty, but at least one non-empty variant annotation must be provided across `Variant_dna` and `Variant_prot` per row.
+* `Variant_impact`: optional. Single or comma-separated list of variant impact annotations with no spaces. Such annotations (e.g. `intron_variant` or `frameshift_variant`) can be retrieved using tools like e.g. VEP or snpEff. Can be empty.
+* `Variant_exon`: optional. Single or comma-separated list of variant exon annotations with no spaces. Such annotations (format: `<N_EXON>/<TOTAL_EXONS>` or `<N_INTRON>/<TOTAL_INTRONS>`, e.g. `1/11`) can be retrieved using tools like e.g. VEP or snpEff. If provided, then `Variant_impact` must exist and elements in both list must have a 1-1 correspondance. The reason is that the variant impact tag is used to determine if the exon annotation is intronic or exonic. Can be empty.
+```
+from civicutils.read_and_write import read_in_snvs
+
+# Read-in file of input SNV variants
+(raw_data, snv_data, extra_header) = read_in_snvs("data/example_snv.txt")
+```
+Function `read_in_snvs()` returns three elements: dictionary containing original rows and fields from input file (i.e. `raw_data`), dictionary of SNV/InDel data to be used for the CIViC query (i.e. `snv_data`), and list of additional columns provided in the input file which are not required for the CIViC query but should nonetheless be reported in case an output file is generated by CIViCutils (i.e. `extra_header`).
+
+Structure of output dictionaries:
+```
+raw_data
+└── <n_line>
+    └── [gene, variant_dna, variant_prot, variant_impact, variant_exon(, ...)] # as many appended fields as extra columns in the input file ('extra_header')
+            
+snv_data
+└── <gene_id>
+    └── <variant_dna|variant_prot|variant_impact|variant_exon|n_line>
+        └── None
+```
+Note that `variant_impact` and `variant_exon` will be empty whenever these annotations were not provided by the user in the input file.
+
+
+#### 2. CNVs (`CNV`)
+
+An input file of CNV data can be processed using CIViCutils function `read_in_cnvs()`. Assumes header and the following columns:
+* `Gene`: required. One gene symbol per row allowed. Cannot be empty.
+* `Variant_cnv`: required. The following types of copy number variation annotations are allowed as input: `AMPLIFICATION`, `AMP`, `GAIN`, `DUPLICATION`, `DUP`, `DELETION`, `DEL`, `LOSS`. Several possible annotations referring to the same copy variant can be provided in a comma-separated list with no spaces. Cannot be empty.
+```
+from civicutils.read_and_write import read_in_cnvs
+
+# Read-in file of input CNV variants
+(raw_data, cnv_data, extra_header) = read_in_cnvs("data/example_cnv.txt")
+```
+Function `read_in_cnvs()` returns three elements: dictionary containing original rows and fields from input file (i.e. `raw_data`), dictionary of CNV data to be used for the CIViC query (i.e. `cnv_data`), and list of additional columns provided in the input file which are not required for the CIViC query but should nonetheless be reported in case an output file is generated by CIViCutils (i.e. `extra_header`).
+
+Structure of output dictionaries:
+```
+raw_data
+└── <n_line>
+    └── [gene, cnv(, ...)] # as many appended fields as extra columns in the input file ('extra_header')
+            
+cnv_data
+└── <gene_id>
+    └── <cnv|n_line>
+        └── None
+```
+
+
+#### 3. Expression (`EXPR`)
+
+An input file of differential gene expression data can be processed using CIViCutils function `read_in_expr()`. Assumes header and the following columns:
+* `Gene`: required. One gene symbol per row allowed. Cannot be empty.
+* `logFC`: required. Log fold-change value for the given gene. The sign of the fold-change is used to match variants in CIViC (either `OVEREXPRESSION` if logFC>0 or `OVEREXPRESSION` if logFC<0). Cannot be empty and only one value allowed per row.
+```
+from civicutils.read_and_write import read_in_expr
+
+# Read-in file of input differentially expressed genes
+(raw_data, expr_data, extra_header) = read_in_expr("data/example_expr.txt")
+```
+Function `read_in_expr()` returns three elements: dictionary containing original rows and fields from input file (i.e. `raw_data`), dictionary of differential gene expression data to be used for the CIViC query (i.e. `expr_data`), and list of additional columns provided in the input file which are not required for the CIViC query but should nonetheless be reported in case an output file is generated by CIViCutils (i.e. `extra_header`).
+
+Structure of output dictionaries:
+```
+raw_data
+└── <n_line>
+    └── [gene, logfc(, ...)] # as many appended fields as extra columns in the input file ('extra_header')
+            
+expr_data
+└── <gene_id>
+    └── <logfc|n_line>
+        └── None
+```
+
+
+### Querying CIViC
+
+CIViCutils leverages the offline cache file of the CIViC database provided by Python package [civicpy](https://docs.civicpy.org/en/latest/), which allows performing high-throughput queries to the database. Information on how to install `civicpy`, as well as how to download and update the CIViC offline cache file, can be found above.
+
+CIViCutils handles queries to CIViC through function `query_civic()`. Queries can only be gene-based and return all variants and associated clinical data which are annotated in the knowledgebase for each queried gene (only if any exist). Three types of identifiers are supported: `entrez_symbol`, `entrez_id` and `civic_id`. Note that the type of gene identifier initially chosen to perform the CIViC query must be selected throughout all the CIViCutils functions applied downstream. 
+```
+from civicutils.query import query_civic
+
+# Query a list of input genes in CIViC
+var_map = query_civic(genes, identifier_type = "entrez_symbol")
+
+# The gene list to be queried can be directly extracted from the output returned by CIViCutils' reading-in functions
+var_map = query_civic(list(snv_data.keys()), identifier_type = "entrez_symbol")
+```
+
+Structure of the nested dictionary returned by the CIViC query (i.e. `var_map`):
+```
+var_map
+└── <gene_id>
+    └── <var_id>
+        ├── 'name' ── <var_name>
+        ├── 'hgvs' ── [hgvs1, ..., hgvsN]                       # empty when no HGVS are available
+        ├── 'types' ── [type1, ..., typeN]                      # 'NULL' when no types are available
+        └── <molecular_profile_id>
+            ├── 'name' ── <molecular_profile_name>
+            ├── 'civic_score' ── <molecular_profile_score>
+            ├── 'n_evidence_items' ── <n_items>
+            └── 'evidence_items'
+                └── <evidence_type>
+                    └── <disease>                               # can be 'NULL'
+                        └── <drug>                              # 'NULL' when no drugs are available
+                            └── <evidence>                      # <EVIDENCE_DIRECTION>:<CLINICAL_SIGNIFICANCE>
+                                └── <level>
+                                    └── [evidence_item1, ...]   # <PUBMED_ID>:<EVIDENCE_STATUS>:<SOURCE_STATUS>:<VARIANT_ORIGIN>:<RATING>
+```
+
+Query returns the following information for each variant retrieved from CIViC:
+* Associated gene identifier
+* CIViC variant identifier
+* Name of the CIViC variant record
+* CIViC Actionability Score: internal database metric computed across all evidence records for each variant to assess the quality and quantity of its associated clinical data
+* Available HGVS expressions (can be empty when none are available)
+* Available variant types: classification based on terms from the [Sequence Ontology](http://www.sequenceontology.org/), e.g. `stop gained` (can be empty when none are available)
+* Total number of evidence records associated with the variant
+* Associated evidence records
+
+In turn, the following information is returned by the query for each evidence record extracted from CIViC:
+* Associated evidence type (either `Predictive`, `Diagnostic`, `Prognostic`, `Predisposing`, `Oncogenic`, or `Functional`)
+* Cancer indication: described using structured terms from the [Disease Ontology database](https://disease-ontology.org/) (can be empty for some evidence types)
+* Drug/therapy (only available for `Predictive` records, empty otherwise) 
+* Clinical action, i.e. combination of evidence direction and clinical significance
+* Evidence level
+* Associated evidence items, i.e. individual publications used by curators to support the clinical claim (either PubMed identifiers or ASCO abstracts)
+
+Last, in turn, the following information is returned by the query for each individual item:
+* Evidence status: whether the given clinical statement has been submitted/unreviewed, rejected or accepted in the database
+* Source status: whether the underlying source/publication is considered submitted, rejected or fully curated
+* Variant origin: presumed origin of the alteration within the underlying study, e.g. inherited or acquired mutation
+* CIViC confidence rating: score assigned by the curator summarizing the quality of the reported evidence in the knowledgebase
+
+We refer to the [CIViC documentation](https://civic.readthedocs.io/en/latest/) for detailed descriptions about the data contained in the knowledgebase.
+
+
+### Filtering CIViC information
+
+CIViCutils enables flexible filtering of CIViC data based on several features via function `filter_civic()`. This offers users the possibility to clean-up and specifically select the set of CIViC records to be considered during the matching and annotation of variant-level data using CIViCutils. A comprehensive overview of available filtering features is provided below. Note that the supplied filtering parameters are evaluated in the order in which they are listed in the function definition, and not in the order specified during the function call. The logic for combining multiple filters is always `AND`; when the desired filtering logic in not possible in one single call, then the function needs to be applied to the data subsequently several times.
+
+Complete list of filters available:
+* `gene_id_in` and `gene_id_not_in`: select or exclude specific gene identifiers (Entrez symbols, Entrez IDs or CIViC IDs), respectively.
+* `min_variants`: select or exclude genes based on their number of associated CIViC variant records.
+* `var_id_in` and `var_id_not_in`: select or exclude specific CIViC variant identifiers, respectively.
+* `var_name_in` and `var_name_not_in`: select or exclude specific CIViC variant names, respectively.
+* `min_civic_score`: select or exclude CIViC variants based on their associated CIViC score.
+* `var_type_in` and `var_type_not_in`: select or exclude CIViC variants based on their associated variant types, respectively.
+* `min_evidence_items`: select or exclude CIViC variants based on their number of associated evidence records.
+* `evidence_type_in` and `evidence_type_not_in`: select or exclude CIViC clinical records based on their associated evidence type, respectively.
+* `disease_in` and `disease_not_in`: select or exclude evidence records based on their associated cancer type, respectively.
+* `drug_name_in` and `drug_name_not_in`: select or exclude predictive records based on their associated drug name, respectively.
+* `evidence_dir_in` and `evidence_dir_not_in`: select or exclude records based on their associated evidence direction, respectively.
+* `evidence_clinsig_in` and `evidence_clinsig_not_in`: select or exclude evidence records based on their associated clinical significance, respectively.
+* `evidence_level_in` and `evidence_level_not_in`: select or exclude records based on their associated evidence level, respectively.
+* `evidence_status_in` and `evidence_status_not_in`: select or exclude records based on their associated evidence status, respectively.
+* `source_status_in` and `source_status_not_in`: select or exclude records based on the status of their supporting publication/source, respectively.
+* `var_origin_in` and `var_origin_not_in`: select or exclude CIViC records based on the presumed origin of the variant, respectively.
+* `source_type_in` and `source_type_not_in`: select or exclude records based on the types of supporting sources available, respectively.
+* `min_evidence_rating`: select or exclude evidence records based on their associated rating.
+
+```
+from civicutils.filtering import filter_civic
+filtered_map = filter_civic(var_map, evidence_status_in = ["ACCEPTED"], var_origin_in = ["SOMATIC"], output_empty=False)
+```
+
+Function `filter_civic()` additionally provides parameter `output_empty`, which indicates whether empty entries resulting from the applied filtering should be included in the dictionary returned by the function. Note that use of `output_empty=True` is not usually recommended, as other CIViCutils functions may behave unexpectedly or not work entirely when `var_map` containes empty entries. Instead, we recommend to only use this option for checking at which level the different records contained in `var_map` failed the applied filters.
+
+
+### Matching to CIViC
+
+CIViCutils provides function `match_in_civic()` to perform automated matching of the input genes and molecular alterations with variant-level evidence records retrieved from CIViC. Three different types of input data can be provided to the function: `SNV`, `CNV` and `EXPR` (see above for more information about the different data types and required formats of the input file in each case).
+
+In order to link input and CIViC variants, the package attempts to standardize the names of the corresponding CIViC records by using a common nomenclature. To this end, the following are used: provided input HGVS expressions (only for data type `SNV`), HGVS expressions available in CIViC (if any exist, and only for data type `SNV`), and most importantly, a set of rules indicating how variants are normally named in the database records so that they can be appropiately translated into the format expected for the input alterations (e.g. input variant `p.Val600Glu` would correspond to CIViC record name `V600E`); for input data types `CNV` and `EXPR`, the matching to CIViC records is exclusively based on the most common variant names that exist in CIViC for each type of molecular aberration (e.g. `OVEREXPRESSION`, `AMPLIFICATION`, etc.).
+
+CIViCutils uses a tier-based rating system to assess the quality of the resulting variant matches. The available tier categories are as follows (listed in descending hierarchical order):
+* `tier_1`: perfect match between input and CIViC variant(s), e.g. `p.Val600Glu` matched to `V600E`.
+* `tier_1b`: a non-perfect match between input and CIViC variant(s), e.g. records like `MUTATION`, `FRAMESHIFT VARIANT` or `EXON 1 VARIANT`.
+* `tier_2`: positional match between input and CIViC variant(s), e.g. `V600M` and `V600K` returned when `V600E` was provided. Note there is a special case of so-called "general" variants, e.g. `V600`, which are prioritized over any other positional hits which may have also been found by CIViCutils.
+* `tier_3`: gene was found in CIViC but no associated variant record could be matched. In this case, all CIViC variant records available for the gene and found to match the given data type are returned by the function (if any). If a `tier_3` was indicated but no matched variants are listed, then this is a consequence of no CIViC records being found for the provided data type and given gene (but indicates the existance of other CIViC records available for a different data type).
+* `tier_4`: gene was not found in CIViC. No hits are returned by the query.
+
+More details about the matching framework implemented in CIViCutils can be found [here](https://github.com/ETH-NEXUS/civicutils/blob/master/info_on_matching_framework.md).
+
+Note that the user can choose to perform filtering on the collected CIViC data before it is even supplied to `match_in_civic()` by providing a custom `var_map` that is used for the matching framework, e.g. if further filtering of the retrieved CIViC evidences needs to be applied so that undesired information is not considered downstream. We highly recommend this, specially to select only evidences tagged as `ACCEPTED` and avoid matching of submitted evidence that has not yet been expert-reviewed. In the case of genomic variants, it is also recommended to filter for the desired variant origin (e.g. `SOMATIC`, `GERMLINE`, etc.). Be aware that when filtering of CIViC evidence is performed prior to matching, then the returned matches and associated information might not reflect the exact state of the database, e.g. genes present in CIViC but specifically excluded from `var_map` by the user will be classified as `tier 4`. On the other hand, if `var_map` is not provided in the arguments of `match_in_civic()`, then per default the function directly retrieves from the database cache file all CIViC information available for the input genes, without applying any prior filtering.
+```
+from civicutils.match import match_in_civic
+
+# Function automatically queries CIViC for the provided genes
+(match_map, matched_ids, var_map) = match_in_civic(snv_data, data_type="SNV", identifier_type="entrez_symbol", select_tier="highest", var_map=None)
+
+# Alternatively, the user can directly supply a custom set of CIViC evidences to match against using 'var_map'
+(match_map, matched_ids, var_map) = match_in_civic(snv_data, data_type="SNV", identifier_type="entrez_symbol", select_tier="highest", var_map=var_map)
+```
+
+Structure of the nested dictionary returned by the variant matching framework (i.e. `match_map`):
+```
+match_map
+└── <gene_id>
+    └── <input_variant>
+        └── <tier>
+            └── [var_id1, ...]
+```
+
+The returned dictionary (`match_map`) contains the same genes and variants provided in the input dictionary (i.e. either `snv_data`, `cnv_data` or `expr_data`, depending on the data type), with additional entries per gene and variant combination for every available tier category and listing the matches found in each case (if any).
+
+#### Filtering based on assigned tiers
+
+CIViCutils offers functionality to filter and prioritize evidence records based on the corresponding tiers of their matched variants. Function `match_in_civic()` (performs the query to CIViC) allows the user to directly filter the returned variant matches based on their assigned tiers through option `select_tier`, which indicates the type of tier selection to be applied, and can be either: `highest` (returns the best tier reported per variant match, using established hierarchy 1>1b>2>3>4), `all` (does not apply any filtering and returns all tiers available for each variant match), or a list of specific tier categories to select for (if all are provided, then no filtering is done).
+
+Alternatively, CIViCutils also provides function `filter_matches()`, which allows the user to select or filter variants based on their assigned tiers after the matching to CIViC evidence has already been performed, e.g. if `match_in_civic()` was initially run with argument `select_tier=all`, and now further filtering by tier is desired. This function offers the same filtering framework that can be applied during the CIViC query, i.e. parameter `select_tier` can be either `highest`, `all` or a list of specific tier categories to select for. Note that `filter_matches()` cannot be applied if the provided `match_map` was already processed and annotated for consensus drug response information.
+```
+from civicutils.match import filter_matches
+
+# Filter based on the best assigned tier classification of the variant matches
+filtered_map = filter_matches(match_map, select_tier = "highest")
+
+# Alternatively, the user can filter variant matches deriving exclusively from specific tier classifications
+# e.g. to remove gene-only variant matches and variants that could not be linked with CIViC data
+filtered_map = filter_matches(match_map, select_tier = ["tier_1", "tier_1b", "tier_2"])
+```
+
+
+### Annotation of CIViC evidence with disease specificity
+
+Variant-specific clinical data retrieved from CIViC can be further annotated with cancer type specificity information, based on their associated disease names and relative to one or more cancer indications of interest provided by the user. Excluding evidence records from undesired diseases can also be done at this step. To this end, the user can use function `annotate_ct()` and supply lists of non-allowed (`disease_name_not_in`), relevant (`disease_name_in`), and high-level/alternative (`alt_disease_names`) terms. More details about these parameters can be found below. As a result of the annotation, each available disease name retrieved from CIViC and the associated evidence are classified as either cancer type specific (`ct`), general specificity (`gt`) or non cancer type specific (`nct`).
+
+The annotation of disease specificity using function `annotate_ct()` can only be applied if the provided `var_map` is not already annotated with this information. The function returns a similar nested dictionary with a slightly different structure, namely, containing one additional layer per evidence type which groups the disease names by their assigned category (see below).
+```
+from civicutils.match import annotate_ct
+
+annotated_map = annotate_ct(var_map, disease_name_not_in, disease_name_in, alt_disease_names)
+```
+
+Structure of `var_map` after being annotated for disease specificity:
+```
+var_map
+└── <gene_id>
+    └── <var_id>
+        ├── 'name'
+        ├── 'hgvs'
+        ├── 'types'
+        └── <molecular_profile_id>
+            ├── 'name' 
+            ├── 'civic_score'       
+            ├── 'n_evidence_items'
+            └── 'evidence_items'
+                └── <evidence_type>
+                    └── <ct>                                # new layer included with the disease specificity label (ct, gt or nct)
+                        └── <disease>
+                            └── <drug>
+                                └── <evidence>
+                                    └── <level>
+                                        └── <evidence_item>
+```
+
+#### Parameters for annotating cancer type specificity
+
+In order to classify each disease and its associated evidences as cancer type specific (ct), general specificity (gt) or not cancer type specific (nct), lists of terms can be provided. Excluding evidences from undesired diseases can also be done at this step.
+
+Relevant and non-allowed disease names or terms can be provided as lists in `disease_name_in` and `disease_name_not_in`, respectively. Relevant terms are used to find evidence records associated to specific cancer types and subtypes which might be of particular significance to the user. On the other hand, non-allowed terms are used to remove evidence records associated to undesired cancer types. In both cases, partial matches to the disease names in CIViC are sought, e.g. `small` will match `non-small cell lung cancer` and `lung small cell carcinoma`, while `non-small` will only match `non-small cell lung cancer`. In the same manner, be aware that `uveal melanoma` will only match `uveal melanoma` and not `melanoma`. As CIViC contains a small number of records associated to more general or high-level disease names, e.g. `cancer` or `solid tumor`, an additional list of alternative terms can be supplied to the package via `alt_disease_names`, which are used as a second-best classification when relevant cancer specificity terms cannot be found. Because these high-level disease names are database-specific, only exact matches are allowed in this case, `cancer` will only match `cancer` and not `lung cancer`. Input terms should always be provided in a comma-separated list, even if only one single term is supplied, and multiple words per term are permitted, e.g. [`ovarian`, `solid tumor`, `sex cord-stromal`] and [`solid tumor`] are both valid parameter inputs.
+
+CIViC records are classified and selected/excluded based on cancer specificity according to the following logic, which is applied based on their associated disease name and the set of terms supplied by the user:
+* If any non-allowed terms are provided in `disease_name_not_in`, partial matches to the available disease names are sought, and any matched records are entirely excluded from the data (and hence from any downstream processing of CIViC information with CIViCutils).
+* For the remaining set of unclassified records, partial matches to the relevant terms in `disease_name_in` are sought, and any matched records are classified and tagged as cancer type specific (`ct`).
+* For the remaining set of unclassified records, exact matches to the high-level terms in `alt_disease_names` are sought as a fall-back case, and any matched records are classified and tagged with general cancer specificity (`gt`).
+* All remaining evidence records which could not be classified are tagged as non-specific cancer type (`nct`), regardless of the associated disease.
+
+The above logic (hierarchy ct>gt>nct) is applied separately for each evidence type (i.e. `Predictive`, `Diagnostic`, `Prognostic` or `Predisposing`), which means that records of distinct evidence types can be associated to different sets of disease names, hence resulting in different cancer specificity classifications for the same variant.
+
+To ease the selection of appropriate terms for classifying the disease specificity of a particular cancer type or subtype of interest, we provide a helper file `civic_available_diseases_<DATE>.txt` in the [data subfolder](https://github.com/ETH-NEXUS/civicutils/tree/master/tcga_analysis/data) of the [TCGA-BLCA analysis](https://github.com/ETH-NEXUS/civicutils/tree/master/tcga_analysis), listing all disease names available in CIViC as of `<DATE>`. To update this file, run standalone script `get_available_diseases_in_civic.py` (which can be found in the [scripts subfolder](https://github.com/ETH-NEXUS/civicutils/tree/master/tcga_analysis/scripts) of the TCGA-BLCA analysis) as follows, replacing `<DATE>` with the new date:
+```
+> python tcga_analysis/scripts/get_available_diseases_in_civic.py --outfile tcga_analysis/data/civic_available_diseases_<DATE>.txt
+```
+
+#### Filtering based on annotated cancer type specificity
+
+Similarly as with the tier-based filtering, it is possible to select or exclude CIViC records based on their annotated cancer type specificity, e.g. to select only evidences from the best possible specificity per evidence type, or to focus on records associated with a particular cancer subtype. Once these annotations have been included into `var_map` using function `annotate_ct()`, the user can use function `filter_ct()` to filter or prioritize the available CIViC evidence based according to their assigned cancer type classifications. Parameter `select_ct` indicates the type of specificity selection to be performed on the supplied CIViC data, and can be either: `highest` (select only the evidences from the best available category per evidence type, using established hierarchy ct>gt>nct), `all` (do not apply any filtering and return all available disease classifications), or a list of specific categories to select for (if all are provided, then no filtering is done). Note that filtering is only possible if the provided `var_map` has been previously annotated with this information. 
+```
+from civicutils.match import filter_ct
+
+# Filter based on the best cancer type specificity found across CIViC data
+filtered_map = filter_ct(var_map, select_ct = "highest")
+
+# Alternatively, the user can filter CIViC data deriving exclusively from concrete specificity categories
+# e.g. to remove evidence records classified as non cancer type specific based on the disease of interest
+filtered_map = filter_ct(var_map, select_ct = ["ct", "gt"])
+```
+
+
+### Annotation of consensus drug response predictions
+
+Available `Predictive` evidence retrieved from CIViC and matched to the input molecular alterations can be further processed and aggregated into so-called "consensus drug response predictions", which aim to effectively summarize the available drug information and facilitate in-silico prediction of candidate drugs and their therapeutic response tailored to specific variants and cancer types. To this end, CIViCutils provides function `process_drug_support()` which can combine multiple predictive evidence items into a single and unanimous response prediction for every tier match, drug, and disease specificity category available, using a majority vote scheme.
+
+In addition, CIViCutils further interprets the evidence items to be aggregated (characterized by their combination of terms in the evidence direction and clinical significance) into a reduced set of concrete expressions relative to the direct therapeutic prediction; namely, `POSITIVE`, `NEGATIVE`, or `UNKNOWN`. To achieve this, the function makes use of a helper dictionary mapping CIViC evidence to drug responses, which is leveraged during the computation of the consensus predictions, and which can be customized by the user.
+
+Structure and default values of `drug_support` entry in config file [data.yml](https://github.com/ETH-NEXUS/civicutils/blob/master/civicutils/data/data.yml):
+```
+drug_support:
+    SUPPORTS:
+        SENSITIVITYRESPONSE: POSITIVE
+        RESISTANCE: NEGATIVE
+        REDUCED SENSITIVITY: NEGATIVE
+        ADVERSE RESPONSE: NEGATIVE
+    DOES_NOT_SUPPORT:
+        RESISTANCE: UNKNOWN_DNS
+        SENSITIVITYRESPONSE: UNKNOWN_DNS
+        REDUCED SENSITIVITY: UNKNOWN_DNS
+        ADVERSE RESPONSE: UNKNOWN_DNS
+```
+Be aware that CIViCutils can distinguish between two subtypes of `UNKNOWN` drug responses: those deriving from blank or null ("N/A") values for the evidence direction and/or clinical significance (`UNKNOWN_BLANK`), and optionally, those deriving from evidence direction `DOES NOT SUPPORT` (`UNKNOWN_DNS`, shown in the support dictionary above). Manual curation performed in [Krentel et al.](https://pubmed.ncbi.nlm.nih.gov/33712636/) proved evidence direction `DOES NOT SUPPORT` to have an ambiguous meaning, dependant on the specific context of the underlying data, hence making it difficult to translate into a clearly defined consequence without the review of an expert. Nonetheless, CIViCutils allows the user to provide a different mapping of their choosing (however, the available categories to choose from are still restricted to either `POSITIVE`, `NEGATIVE`, `UNKNOWN_BLANK`, or `UNKNOWN_DNS`).
+
+The consensus annotations resulting from the majority vote have the following format:
+```
+<DRUG>:<CT>:CIVIC_<CONSENSUS_PREDICTION>:<N_POSITIVE>:<N_NEGATIVE>:<N_UNKNOWN_BLANK>:<N_UNKNOWN_DNS>
+```
+where `<DRUG>` corresponds to the drug name or therapy retrieved from CIViC, `<CT>` to the corresponding cancer type specificity reported by CIViCutils (i.e. either `CT`, `GT` or `NCT`), and `<CONSENSUS_PREDICTION>` to the unanimous drug response assigned by the package based on the counts of evidence items available for each therapeutic prediction, which are also reported (`<N_POSITIVE>`, `<N_NEGATIVE>`, `<N_UNKNOWN_BLANK>` and `<N_UNKNOWN_DNS>`), resulting in the following response categories that can be reported as the final consensus prediction: `SUPPORT` (when most items are `POSITIVE`), `RESISTANCE` (when majority is `NEGATIVE`), `CONFLICT` (unresolved cases of confident and contradicting evidence) and `UNKNOWN` (prevailing category is `UNKNOWN`, i.e. aggregation of `UNKNOWN_BLANK` and `UNKNOWN_DNS` items, meaning that the predictive value is not known).
+
+The annotation of consensus drug response predictions can only be performed if the provided `var_map` has been previously annotated with cancer type specificity information. The function returns a similar nested dictionary as `match_in_civic()`, but with a slightly different structure, namely, containing two additional layers per tier category: `matches` (containing the corresponding variant record hits found in CIViC, if any), and `drug_support` (listing one string for each consensus drug response generated for the given tier match) (see below).
+```
+from civicutils.read_and_write import get_dict_support
+from civicutils.match import process_drug_support
+
+# Get custom dictionary of support from data.yml (default already provided by CIViCutils)
+# This defines how each combination of evidence direction + clinical significance in CIViC is classified in terms of drug support (e.g. sensitivity, resistance, unknown, etc.)
+support_dict = get_dict_support()
+
+# Process consensus drug response predictions for the matched variants based on the available CIViC evidence annotated with disease specificity
+annotated_match = process_drug_support(match_map, var_map, support_dict)
+```
+
+Structure of `match_map` after being annotated for consensus drug response predictions (i.e. `drug_support`):
+```
+match_map
+└── <gene_id>
+    └── <input_variant>
+        └── <tier>
+            ├── 'matched'                       # new layer included to distinguish variant matches from drug information
+            │   └── [var_id1, ...]
+            └── 'drug_support'                  # new layer included with consensus drug response predictions
+                └── [response_prediction1, ...] # <DRUG>:<CT>:CIVIC_<CONSENSUS_PREDICTION>:<N_POSITIVE>:<N_NEGATIVE>:<N_UNKNOWN_BLANK>:<N_UNKNOWN_DNS>
+```
+
+
+### Output
+
+The retrieved CIViC annotations can be written into a new output file with tabular format using function `write_match()`. The output table includes a header and uses a standardized structure which is identical regardless of the type of data at hand, including the same columns and contents of the input file originally supplied to the CIViCutils workflow, in addition to new columns which are appended by the package summarizing the data retrieved from the knowledgebase.
+
+Required columns (dependent on the data type) are reported first in the output, while other columns that may have been present in the original input table can also be appended using parameter `header` (list is always retuned upon reading of the input data file). Subsequently, new CIViC-related columns are appended (see below), and in order to enable keeping track of the specific CIViC record from which each clinical statement in the output is derived, the reported entries include a prefix of the form `<GENE>:<CIVIC_VARIANT>` whenever applicable (namely, only not reported for columns `CIViC_Tier` and `CIViC_Drug_Support`). While `<GENE>` can take different values depending on the type of identifier selected by the user, the name of the retrieved variant record (i.e. `<CIVIC_VARIANT>`) remains unchanged regardless of the kind of queries performed to the knowledgebase.
+```
+from civicutils.read_and_write import write_match
+
+write_match(match_map, var_map, raw_data, extra_header_cols, data_type="SNV", outfile, has_support=True, has_ct=True, write_ct=False, write_support=True, write_complete=False)
+```
+
+New columns appended by CIViCutils to the output file:
+* **CIViC_Tier**: tier category assigned by CIViCutils for the listed variant match(es). Possible categories: `1`, `1b` (only for data type `SNV`), `2` (only data types `SNV` and `CNV`), `3` or `4`.
+* **CIViC_Score**: semi-colon separated list of CIViC variant record(s) matched for the given input variant and their corresponding CIViC Actionability Scores.
+* **CIViC_VariantType**: semi-colon separated list of variant types reported in CIViC for the matched variant record(s).
+* **CIViC_Drug_Support**: semi-colon separated list of consensus drug response predictions generated by CIViCutils based on the available predictive CIViC evidence matched for the input variant. Optional column, only reported when `write_support = True`.
+* **CIViC_PREDICTIVE**: semi-colon separated list of predictive evidence matched in CIViC for the input variant.
+* **CIViC_DIAGNOSTIC**: semi-colon separated list of diagnostic evidence matched in CIViC for the input variant.
+* **CIViC_PROGNOSTIC**: semi-colon separated list of prognostic evidence matched in CIViC for the input variant.
+* **CIViC_PREDISPOSING**: semi-colon separated list of predisposing evidence matched in CIViC for the input variant.
+
+The specific format used for the clinical statements listed in the evidence columns (i.e. `CIViC_PREDICTIVE`, `CIViC_DIAGNOSTIC`, `CIViC_PROGNOSTIC`, `CIViC_PREDISPOSING`) depends on the values supplied for parameters `write_ct` and `write_complete` in function `write_match()`. Furthermore, note that the format of evidences in column `CIViC_PREDICTIVE` deviates slightly from the format used in the other three columns (due to the existance of drugs associated with the evidence records in the former case).
+
+#### Important remarks:
+
+* The evidence items reported in the CIViC evidence columns are aggregated whenever possible; namely, at the level of the disease name, combination of evidence direction and clinical significance, and evidence level. Format:
+```
+# For 'CIViC_DIAGNOSTIC', 'CIViC_PROGNOSTIC' and 'CIViC_PREDISPOSING' data
+<DISEASE>(<DIRECTION>,<SIGNIFICANCE>(<LEVEL>(<SOURCE_ID>,...),...),...);
+
+# For 'CIViC_PREDICTIVE' data (identical but including drug info in a new field)
+<DISEASE>|<DRUG>(<DIRECTION>,<SIGNIFICANCE>(<LEVEL>(<SOURCE_ID>,...),...),...);
+```
+* The user can choose between the default "short" format (`write_complete=False`) and a "long" format (`write_complete=True`) for reporting individual evidence items in the output table. In the first case, only the identifiers of the supporting sources/publications are listed (as shown above), while in the second, additional information is included for each item; namely, its evidence status, source status, variant origin and confidence rating. Format:
+```
+# Short format (default)
+<SOURCE_ID>
+# Long format
+<SOURCE_ID>:<EVIDENCE_STATUS>:<SOURCE_STATUS>:<VARIANT_ORIGIN>:<RATING>
+```
+* Argument `write_ct=True` can be selected to report the cancer type specificity label assigned to each disease (`<CT>`) in the items of the CIViC evidence columns. Note that when input `var_map` is annotated with disease specificity, then `has_ct=True` must be selected in `write_match()` (and viceversa). Format:
+```
+# For 'CIViC_DIAGNOSTIC', 'CIViC_PROGNOSTIC' and 'CIViC_PREDISPOSING' data
+<DISEASE>|<CT>(<DIRECTION>,<SIGNIFICANCE>(<LEVEL>(<SOURCE_ID>,...),...),...);
+
+# For 'CIViC_PREDICTIVE' data (identical but including drug info in a new field)
+<DISEASE>|<CT>|<DRUG>(<DIRECTION>,<SIGNIFICANCE>(<LEVEL>(<SOURCE_ID>,...),...),...);
+```
+* Argument `write_support=True` can be selected to include one additional column in the output table, which lists the consensus drug response predictions computed by CIViCutils for each tier match (one prediction generated for each combination of available drug and disease specificity). When input `match_map` was annotated with consensus drug response information, then `has_support=True` must be selected in `write_match()` (and viceversa). Format:
+```
+<DRUG>:<CT>:CIVIC_<CONSENSUS_PREDICTION>:<N_POSITIVE>:<N_NEGATIVE>:<N_UNKNOWN_BLANK>:<N_UNKNOWN_DNS>
+```
+
+#### Other reporting functions
+
+* `write_to_json()`: reports dictionary (e.g. of data retrieved from CIViC) into an output file using JSON format.
+* `write_to_yaml()`: reports dictionary (e.g. of data retrieved from CIViC) into an output file using YAML format.
+
+
+## Demo
+
+```
+# Load package and import relevant functions
+import civicutils
+from civicutils.read_and_write import read_in_snvs, get_dict_support, write_match
+from civicutils.query import query_civic
+from civicutils.filtering import filter_civic
+from civicutils.match import match_in_civic, annotate_ct, filter_ct, process_drug_support
+
+# Read-in file of input SNV variants
+(raw_data, snv_data, extra_header) = read_in_snvs("data/example_snv.txt")
+
+# Query input genes in CIViC
+var_map = query_civic(list(snv_data.keys()), identifier_type="entrez_symbol")
+# Filter undesired evidences to avoid matching later on
+var_map = filter_civic(var_map, evidence_status_in=["ACCEPTED"], var_origin_not_in=["GERMLINE"], output_empty=False)
+
+# Match input SNV variants in CIViC, pick highest tier available per input gene+variant
+# Tier hierarchy: 1 > 1b > 2 > 3 > 4
+(match_map, matched_ids, var_map) = match_in_civic(snv_data, data_type="SNV", identifier_type="entrez_symbol", select_tier="highest", var_map=var_map)
+
+# Annotate matched CIViC evidences with cancer specificity of the associated diseases
+disease_name_not_in = []
+disease_name_in = ["bladder"]
+alt_disease_names = ["solid tumor"]
+annot_map = annotate_ct(var_map, disease_name_not_in, disease_name_in, alt_disease_names)
+
+# Filter CIViC evidences to pick only those for the highest cancer specificity available
+# ct hierarchy: ct > gt > nct
+annot_map = filter_ct(annot_map, select_ct="highest")
+
+# Get custom dictionary of support from data.yml (provided within the package)
+# This defines how each combination of evidence direction + clinical significance in CIViC is classified in terms of drug response (e.g. sensitivity, resistance, unknown, etc.)
+support_dict = get_dict_support()
+
+# Process consensus drug support for the matched variants using the underlying CIViC evidences annotated 
+annot_match = process_drug_support(match_map, annot_map, support_dict)
+
+# Write to output
+# Do not report the CT classification of each disease, and write column with the drug responses predicted for each available CT class of every variant match
+write_match(annot_match, annot_map, raw_data, extra_header, data_type="SNV", outfile, has_support=True, has_ct=True, write_ct=False, write_support=True, write_complete=False)
+```
+
