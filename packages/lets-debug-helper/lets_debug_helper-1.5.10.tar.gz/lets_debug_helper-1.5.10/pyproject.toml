@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "lets-debug-helper"
+version = "1.5.10"
+description = "This is a cli tool that interacts with the Let's Debug API"
+authors = ["Jeffrey Crane <jediknight11206@gmail.com>"]
+license = "License :: OSI Approved :: MIT License"
+include = ["README.md"]
+packages = [
+    { include = "letsdebughelper" },
+]
+
+[tool.yapf]
+based_on_style = "pep8"
+column_limit = 120
+
+[tool.coverage.run]
+relative_files = true
+
+[tool.poetry.scripts]
+lets-debug = "letsdebughelper.letsdebug:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+argparse = "^1.4.0"
+requests = "^2.28.2"
+six = "^1.16.0"
+rich = "^13.3.2"
+
+[tool.poetry.group.lint.dependencies]
+mypy = "^1.5.1"
+
+[tool.poetry.group.dev.dependencies]
+mock = "^5.0.1"
+argparse = "^1.4.0"
+parameterized = "^0.8.1"
+flake8 = "^6.0.0"
+coveralls = "^3.3.1"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+yapf = "^0.32.0"
+toml = "^0.10.2"
+types-requests = "^2.31.0.2"
+
+[tool.mypy]
+# TODO: This is to help with the introduction of Mypy to the repo
+# We will want to decide at some point to re-enable this since it can hide errors
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
