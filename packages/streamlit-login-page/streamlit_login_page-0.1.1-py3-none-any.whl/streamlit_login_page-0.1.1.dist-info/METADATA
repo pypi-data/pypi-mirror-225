@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: streamlit-login-page
+Version: 0.1.1
+Summary: Streamlit component that allows you to do X
+Author: Anthony Alteirac
+Author-email: anthony@alteirac.com
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: streamlit >=1.2
+Requires-Dist: jinja2
+
+# streamlit-login-page
+
+Streamlit component that allows you to do X
+
+## Installation instructions 
+
+```sh
+pip install streamlit-login-page
+```
+
+## Usage instructions
+
+```python
+import streamlit as st
+
+from streamlit_login_page import streamlit_login_page
+
+value = streamlit_login_page()
+
+st.write(value)
