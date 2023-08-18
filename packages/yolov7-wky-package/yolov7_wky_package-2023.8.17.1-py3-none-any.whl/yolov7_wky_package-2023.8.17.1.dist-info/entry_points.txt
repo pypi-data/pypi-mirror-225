@@ -1,0 +1,7 @@
+[console_scripts]
+yolov7_detect = python_scripts.detect:main
+yolov7_export = python_scripts.export:main
+yolov7_hubconf = python_scripts.hubconf:main
+yolov7_test = python_scripts.test:main
+yolov7_train = python_scripts.train:main
+yolov7_train_aux = python_scripts.train_aux:main

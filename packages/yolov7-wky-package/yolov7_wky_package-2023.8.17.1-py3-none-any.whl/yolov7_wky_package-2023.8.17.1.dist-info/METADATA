@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: yolov7-wky-package
+Version: 2023.8.17.1
+Author: ErnisMeshi
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: flatbuffers (==23.1.4)
+Requires-Dist: onnxsim (==0.4.13)
+Requires-Dist: tensorflow-probability (==0.16.0)
+Requires-Dist: matplotlib (>=3.2.2)
+Requires-Dist: numpy (<1.24.0,>=1.18.5)
+Requires-Dist: opencv-python (>=4.1.1)
+Requires-Dist: Pillow (>=7.1.2)
+Requires-Dist: PyYAML (>=5.3.1)
+Requires-Dist: requests (>=2.23.0)
+Requires-Dist: scipy (>=1.4.1)
+Requires-Dist: torch (==1.11.0)
+Requires-Dist: torchvision (==0.12.0)
+Requires-Dist: tqdm (>=4.41.0)
+Requires-Dist: protobuf (<4.21.3)
+Requires-Dist: tensorboard (>=2.4.1)
+Requires-Dist: pandas (>=1.1.4)
+Requires-Dist: seaborn (>=0.11.0)
+Requires-Dist: ipython
+Requires-Dist: psutil
+Requires-Dist: thop
+
+# YoloV7
+
+A packaged version of the yolov7 implementation by Wong Kin Yiu:
+https://github.com/WongKinYiu/yolov7
+
+# Example usage
+
+The package contains both `models` and `utils` as importable modules, using
+`import models` and `import utils` respectively.
+
+The scripts found in the root directory of the repository (such as `export.py`
+and `train.py`) can be ran directly from the command line. To prevent naming
+conflicts, they have been renamed to add 'yolov7_' at the beginning. For
+example, `export.py` can be executed with the following command:
+
+```shell
+yolov7_export --weights yolov7.pt ...
+```
