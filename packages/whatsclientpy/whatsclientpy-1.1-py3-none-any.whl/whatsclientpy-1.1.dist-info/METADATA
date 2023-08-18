@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: whatsclientpy
+Version: 1.1
+Author: Jesus Enrique De Alba Gaytan
+Author-email: enrique.dealba@focograficomx.com
+Requires-Dist: annotated-types
+Requires-Dist: bidict
+Requires-Dist: certifi
+Requires-Dist: charset-normalizer
+Requires-Dist: idna
+Requires-Dist: pydantic
+Requires-Dist: pydantic-core
+Requires-Dist: python-engineio
+Requires-Dist: python-socketio
+Requires-Dist: requests
+Requires-Dist: typing-extensions
+Requires-Dist: urllib3
+Requires-Dist: websocket-client
+
