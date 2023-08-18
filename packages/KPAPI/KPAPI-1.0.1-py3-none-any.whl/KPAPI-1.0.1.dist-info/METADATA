@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: KPAPI
+Version: 1.0.1
+Summary: Facebook API for chat bot app
+Author: Khang Phan
+Author-email: duykhang4341@gmail.com
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# KPAPI
+
+Optimize the use of Facebook API
+
+## Install
+```shell
+pip install KPAPI
+```
+
+### Usage
+
+```python
+import KPAPI
+kpapi=KPAPI(Access_token,sender_id)
+
+#Send message to users
+kpapi.sendMessage()
+
+#Send media
+kpapi.sendMedia("audio/video/image",url_media)
+
+#Seen action
+kpapi.seen()
+
+#Typing On action
+kpapi.typingon()
+
+#Typing Off action
+kpapi.typingon()
+```
+
