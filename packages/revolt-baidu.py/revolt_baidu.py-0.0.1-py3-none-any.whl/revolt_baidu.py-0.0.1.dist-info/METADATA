@@ -1,0 +1,116 @@
+Metadata-Version: 2.1
+Name: revolt-baidu.py
+Version: 0.0.1
+Summary: Python wrapper for the revolt.chat API
+Project-URL: Homepage, https://github.com/psychopurp/revolt.py
+Project-URL: Documentation, https://revoltpy.readthedocs.io/en/latest/
+Project-URL: Source Code, https://github.com/psychopurp/revolt.py
+Project-URL: Bug Tracker, https://github.com/psychopurp/revolt.py/issues
+Author-email: Zomatree <me@zomatree.live>
+License-Expression: MIT
+License-File: LICENSE
+Keywords: api,async,http,websockets,wrapper
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.9
+Requires-Dist: aenum==3.1.*
+Requires-Dist: aiohttp==3.8.*
+Requires-Dist: typing-extensions>=4.4.0
+Requires-Dist: ulid-py==1.1.*
+Provides-Extra: docs
+Requires-Dist: setuptools==65.4.*; extra == 'docs'
+Requires-Dist: sphinx-nameko-theme==0.0.*; extra == 'docs'
+Requires-Dist: sphinx-toolbox==3.2.*; extra == 'docs'
+Requires-Dist: sphinx==5.2.*; extra == 'docs'
+Provides-Extra: speedups
+Requires-Dist: msgpack==1.0.*; extra == 'speedups'
+Requires-Dist: ujson==5.1.*; extra == 'speedups'
+Description-Content-Type: text/markdown
+
+# Revolt.py
+
+An async library to interact with the <https://revolt.chat> API.
+
+You can join the support server [here](https://rvlt.gg/FDXER6hr) and find the library's documentation [here](https://revoltpy.readthedocs.io/en/latest/).
+
+## Installing
+
+You can use `pip` to install revolt.py. It differs slightly depending on what OS/Distro you use.
+
+On Windows
+
+```
+py -m pip install -U revolt.py # -U to update
+```
+
+On macOS and Linux
+
+```
+python3 -m pip install -U revolt.py
+```
+
+## Example
+
+More examples can be found in the [examples folder](https://github.com/revoltchat/revolt.py/blob/master/examples).
+
+```py
+import revolt
+import asyncio
+
+class Client(revolt.Client):
+    async def on_message(self, message: revolt.Message):
+        if message.content == "hello":
+            await message.channel.send("hi how are you")
+
+async def main():
+    async with revolt.utils.client_session() as session:
+        client = Client(session, "BOT TOKEN HERE")
+        await client.start()
+
+asyncio.run(main())
+```
+
+## Bot interaction example
+
+```py
+class Client(revolt.Client):
+    async def on_interaction(
+        self, interaction: InteractionEventPayload, message: revolt.Message
+    ) -> None:
+        logger.info("interaction %s", interaction)
+        user = self.get_user(interaction["author_id"])
+        await message.channel.send(
+            f"Username: {user.name} Your choice is: {interaction['content']} "
+        )
+        components = message.components
+        components[0]["label"] = "edited"
+        components[0]["enabled"] = False
+
+        # update the button component's label
+        await message.edit(content="edited", components=components)
+
+    async def on_message(self, message: revolt.Message):
+        if message.content == "/button":
+            await message.channel.send(
+                "you have these options",
+                components=[
+                    Component(
+                        type="button",
+                        style="color:white; backgroundColor:green; fontSize:16px; fontWeight:400;",
+                        label="continue",
+                        enabled=True,
+                    ),
+                    Component(
+                        type="button", style="color:green", label="quit", enabled=True
+                    ),
+                    Component(
+                        type="button", style="color:red", label="restart", enabled=False
+                    ),
+                ],
+            )
+```
