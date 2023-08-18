@@ -1,0 +1,45 @@
+Symbolite Changelog
+===================
+
+0.4.1 (2023-08-17)
+------------------
+
+- Add option to substitute and eval in multiple
+  symbols respecting the dependencies.
+- Remove reverse operators replacing with reverse arguments.
+- Do not change Exception type (and use add_note)
+
+
+0.4 (2023-08-01)
+----------------
+
+- Merged symbolite-scalar and symbolite-array.
+- Minimum Python version: 3.10.
+- Better vectorization functionality.
+- Several fixes.
+- Homogenous API.
+
+0.3 (2023-02-12)
+----------------
+
+- Reorganized package into a flatter structure.
+
+
+0.2 (2022-12-21)
+----------------
+
+- Everything is now a namespace package to allow extension.
+- Moved to an extendable lib structure.
+- Renamed Symbol to Scalar.
+
+
+0.1.1 (2022-12-18)
+------------------
+
+- Change pyproject.toml to fix some installation issues.
+
+
+0.1 (2022-12-15)
+----------------
+
+- first public release.
