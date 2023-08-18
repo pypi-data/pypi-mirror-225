@@ -1,0 +1,72 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "codit"
+dynamic = ["version"]
+description = "A tool for generating OIDC identities"
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Security",
+  "Topic :: Security :: Cryptography",
+]
+dependencies = [
+  "pydantic",
+  "requests",
+]
+requires-python = ">=3.7"
+
+[tool.isort]
+multi_line_output = 3
+known_first_party = "codit"
+include_trailing_comma = true
+
+[tool.interrogate]
+# don't enforce documentation coverage for packaging, testing, the virtual
+# environment, or the CLI (which is documented separately).
+ignore-semiprivate = true
+ignore-private = true
+# Ignore nested classes for docstring coverage because we use them primarily
+# for pydantic model configuration.
+ignore-nested-classes = true
+fail-under = 100
+
+[tool.mypy]
+allow_redefinition = true
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+sqlite_cache = true
+strict_equality = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+plugins = ["pydantic.mypy"]
+
+[tool.bandit]
+exclude_dirs = ["./test"]
+
+[tool.ruff]
+line-length = 100
+# TODO: Enable "UP" here once Pydantic allows us to:
+# See: https://github.com/pydantic/pydantic/issues/4146
+select = ["E", "F", "W"]
+target-version = "py37"
