@@ -1,0 +1,338 @@
+{
+  "#abstract": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Abstract",
+      "url": "https://wicg.github.io/turtledove/#abstract"
+    }
+  },
+  "#ad-descriptor": {
+    "current": {
+      "number": "9.10",
+      "spec": "Protected Audience",
+      "text": "Ad descriptor",
+      "url": "https://wicg.github.io/turtledove/#ad-descriptor"
+    }
+  },
+  "#ad-size": {
+    "current": {
+      "number": "9.11",
+      "spec": "Protected Audience",
+      "text": "Ad size",
+      "url": "https://wicg.github.io/turtledove/#ad-size"
+    }
+  },
+  "#auction-config": {
+    "current": {
+      "number": "9.4",
+      "spec": "Protected Audience",
+      "text": "Auction config",
+      "url": "https://wicg.github.io/turtledove/#auction-config"
+    }
+  },
+  "#bid-with-currency": {
+    "current": {
+      "number": "9.8",
+      "spec": "Protected Audience",
+      "text": "Bid with currency",
+      "url": "https://wicg.github.io/turtledove/#bid-with-currency"
+    }
+  },
+  "#bidding-global-scope": {
+    "current": {
+      "number": "6.3.1",
+      "spec": "Protected Audience",
+      "text": "InterestGroupBiddingScriptRunnerGlobalScope",
+      "url": "https://wicg.github.io/turtledove/#bidding-global-scope"
+    }
+  },
+  "#currency-tag": {
+    "current": {
+      "number": "9.3",
+      "spec": "Protected Audience",
+      "text": "Currency tag",
+      "url": "https://wicg.github.io/turtledove/#currency-tag"
+    }
+  },
+  "#generated-bid": {
+    "current": {
+      "number": "9.9",
+      "spec": "Protected Audience",
+      "text": "Generated bid",
+      "url": "https://wicg.github.io/turtledove/#generated-bid"
+    }
+  },
+  "#global-scopes": {
+    "current": {
+      "number": "6.3",
+      "spec": "Protected Audience",
+      "text": "Global scopes",
+      "url": "https://wicg.github.io/turtledove/#global-scopes"
+    }
+  },
+  "#idl-index": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "IDL Index",
+      "url": "https://wicg.github.io/turtledove/#idl-index"
+    }
+  },
+  "#index": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Index",
+      "url": "https://wicg.github.io/turtledove/#index"
+    }
+  },
+  "#index-defined-elsewhere": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Terms defined by reference",
+      "url": "https://wicg.github.io/turtledove/#index-defined-elsewhere"
+    }
+  },
+  "#index-defined-here": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Terms defined by this specification",
+      "url": "https://wicg.github.io/turtledove/#index-defined-here"
+    }
+  },
+  "#interest-group": {
+    "current": {
+      "number": "9.1",
+      "spec": "Protected Audience",
+      "text": "Interest group",
+      "url": "https://wicg.github.io/turtledove/#interest-group"
+    }
+  },
+  "#interest-group-ad": {
+    "current": {
+      "number": "9.2",
+      "spec": "Protected Audience",
+      "text": "Interest group ad",
+      "url": "https://wicg.github.io/turtledove/#interest-group-ad"
+    }
+  },
+  "#interest-group-updates": {
+    "current": {
+      "number": "7",
+      "spec": "Protected Audience",
+      "text": "Interest Group Updates",
+      "url": "https://wicg.github.io/turtledove/#interest-group-updates"
+    }
+  },
+  "#intro": {
+    "current": {
+      "number": "1",
+      "spec": "Protected Audience",
+      "text": "Introduction",
+      "url": "https://wicg.github.io/turtledove/#intro"
+    }
+  },
+  "#issues-index": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Issues Index",
+      "url": "https://wicg.github.io/turtledove/#issues-index"
+    }
+  },
+  "#joining-interest-groups": {
+    "current": {
+      "number": "2",
+      "spec": "Protected Audience",
+      "text": "Joining Interest Groups",
+      "url": "https://wicg.github.io/turtledove/#joining-interest-groups"
+    }
+  },
+  "#k-anonymity": {
+    "current": {
+      "number": "5",
+      "spec": "Protected Audience",
+      "text": "K-anonymity",
+      "url": "https://wicg.github.io/turtledove/#k-anonymity"
+    }
+  },
+  "#leading-bid-info": {
+    "current": {
+      "number": "9.13",
+      "spec": "Protected Audience",
+      "text": "Leading bid info",
+      "url": "https://wicg.github.io/turtledove/#leading-bid-info"
+    }
+  },
+  "#leaving-interest-groups": {
+    "current": {
+      "number": "3",
+      "spec": "Protected Audience",
+      "text": "Leaving Interest Groups",
+      "url": "https://wicg.github.io/turtledove/#leaving-interest-groups"
+    }
+  },
+  "#normative": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Normative References",
+      "url": "https://wicg.github.io/turtledove/#normative"
+    }
+  },
+  "#per-buyer-bid-generator": {
+    "current": {
+      "number": "9.5",
+      "spec": "Protected Audience",
+      "text": "Per buyer bid generator",
+      "url": "https://wicg.github.io/turtledove/#per-buyer-bid-generator"
+    }
+  },
+  "#per-signals-url-bid-generator": {
+    "current": {
+      "number": "9.6",
+      "spec": "Protected Audience",
+      "text": "Per signals url bid generator",
+      "url": "https://wicg.github.io/turtledove/#per-signals-url-bid-generator"
+    }
+  },
+  "#permissions-policy-integration": {
+    "current": {
+      "number": "8",
+      "spec": "Protected Audience",
+      "text": "Permissions Policy integration",
+      "url": "https://wicg.github.io/turtledove/#permissions-policy-integration"
+    }
+  },
+  "#previous-win": {
+    "current": {
+      "number": "9.7",
+      "spec": "Protected Audience",
+      "text": "Previous win",
+      "url": "https://wicg.github.io/turtledove/#previous-win"
+    }
+  },
+  "#privacy-considerations": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "10. Privacy Considerations",
+      "url": "https://wicg.github.io/turtledove/#privacy-considerations"
+    }
+  },
+  "#realm-and-agent": {
+    "current": {
+      "number": "6.1",
+      "spec": "Protected Audience",
+      "text": "Realm and agent",
+      "url": "https://wicg.github.io/turtledove/#realm-and-agent"
+    }
+  },
+  "#references": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "References",
+      "url": "https://wicg.github.io/turtledove/#references"
+    }
+  },
+  "#reporting-global-scope": {
+    "current": {
+      "number": "6.3.3",
+      "spec": "Protected Audience",
+      "text": "InterestGroupReportingScriptRunnerGlobalScope",
+      "url": "https://wicg.github.io/turtledove/#reporting-global-scope"
+    }
+  },
+  "#runadauction": {
+    "current": {
+      "number": "4.1",
+      "spec": "Protected Audience",
+      "text": "runAdAuction()",
+      "url": "https://wicg.github.io/turtledove/#runadauction"
+    }
+  },
+  "#running-ad-auctions": {
+    "current": {
+      "number": "4",
+      "spec": "Protected Audience",
+      "text": "Running Ad Auctions",
+      "url": "https://wicg.github.io/turtledove/#running-ad-auctions"
+    }
+  },
+  "#score-ad-output": {
+    "current": {
+      "number": "9.12",
+      "spec": "Protected Audience",
+      "text": "Score ad output",
+      "url": "https://wicg.github.io/turtledove/#score-ad-output"
+    }
+  },
+  "#scoring-global-scope": {
+    "current": {
+      "number": "6.3.2",
+      "spec": "Protected Audience",
+      "text": "InterestGroupScoringScriptRunnerGlobalScope",
+      "url": "https://wicg.github.io/turtledove/#scoring-global-scope"
+    }
+  },
+  "#script-evaluation": {
+    "current": {
+      "number": "6.2",
+      "spec": "Protected Audience",
+      "text": "Script evaluation",
+      "url": "https://wicg.github.io/turtledove/#script-evaluation"
+    }
+  },
+  "#script-runners": {
+    "current": {
+      "number": "6",
+      "spec": "Protected Audience",
+      "text": "Script Runners",
+      "url": "https://wicg.github.io/turtledove/#script-runners"
+    }
+  },
+  "#security-considerations": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "11. Security Considerations",
+      "url": "https://wicg.github.io/turtledove/#security-considerations"
+    }
+  },
+  "#status": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Status of this document",
+      "url": "https://wicg.github.io/turtledove/#status"
+    }
+  },
+  "#structures": {
+    "current": {
+      "number": "9",
+      "spec": "Protected Audience",
+      "text": "Structures",
+      "url": "https://wicg.github.io/turtledove/#structures"
+    }
+  },
+  "#title": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Protected Audience (formerly FLEDGE)",
+      "url": "https://wicg.github.io/turtledove/#title"
+    }
+  },
+  "#toc": {
+    "current": {
+      "number": "",
+      "spec": "Protected Audience",
+      "text": "Table of Contents",
+      "url": "https://wicg.github.io/turtledove/#toc"
+    }
+  }
+}
