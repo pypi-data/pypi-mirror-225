@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pandaskit"
+version = "0.1.0"
+description = ""
+authors = ["kyrie1218 <kyrie1218@163.com>"]
+readme = "README.md"
+packages = [{include = "pandaskit"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.3"
+numpy = "^1.25.2"
+pyreadstat = "^1.2.2"
+ipykernel = "^6.25.1"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
