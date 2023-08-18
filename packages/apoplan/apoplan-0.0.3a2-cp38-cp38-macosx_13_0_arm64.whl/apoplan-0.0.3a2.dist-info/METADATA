@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: apoplan
+Version: 0.0.3a2
+Summary: Bauplan CLI
+Author: Jacopo Tagliabue
+Author-email: jacopo.tagliabue@bauplanlabs.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+
+# Bauplan CLI
+
+## Requirements
+
+- [direnv](https://direnv.net/)
+- [nix](https://nixos.org)
+- [devenv](https://devenv.sh/)
+
+## Package publication
+
+```bash
+$ poetry build
+$ poetry publish
+```
+
