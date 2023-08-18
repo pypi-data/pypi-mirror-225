@@ -1,0 +1,214 @@
+"""
+===================================
+#!/usr/bin/python3.9
+# -*- coding: utf-8 -*-
+@Author: chenxw
+@Email : gisfanmachel@gmail.com
+@File: datetimeTools.py
+@Date: Create in 2021/1/25 16:36
+@Description: 
+@ Software: PyCharm
+===================================
+"""
+import datetime
+import re
+import time
+
+# 需要引用最顶层的
+from vgis_utils.commonTools import CommonHelper
+
+
+class DateTimeHelper:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    # 解析字符串为标准时间
+    def get_standTime_By_Str( time_str):
+        info_time = time_str
+        current_year = str(datetime.datetime.now().year)
+        current_month = str(datetime.datetime.now().month)
+        current_day = str(datetime.datetime.now().day)
+        current_hour = str(datetime.datetime.now().hour)
+        current_minute = str(datetime.datetime.now().minute)
+        current_second = str(datetime.datetime.now().second)
+        info_time = info_time.strip()
+        # 39秒前
+        if "秒" in info_time:
+            second_num = int(re.findall("\d+", info_time)[0])
+            info_time = (datetime.datetime.now() - datetime.timedelta(seconds=second_num)).strftime("%Y-%m-%d %H:%M:%S")
+        # 1分钟前
+        if "分" in info_time:
+            minute_num = int(re.findall("\d+", info_time)[0])
+            info_time = (datetime.datetime.now() - datetime.timedelta(minutes=minute_num)).strftime("%Y-%m-%d %H:%M:%S")
+        # 今天09:45
+        if "今天" in info_time:
+            info_time = info_time.replace("今天",
+                                          current_year + "-" + current_month + "-" + current_day + " ")
+            if info_time.count(":") == 1:
+                info_time = info_time + ":00"
+        # 01月24日 12:39
+        if "年" not in info_time and "月" in info_time and "日" in info_time:
+            info_time = current_year + "年" + info_time
+            if info_time.count(":") == 1:
+                info_time = info_time + ":00"
+        # 2020年12月22日 20:31
+        if "年" in info_time and "月" in info_time and "日" in info_time:
+            if info_time.count(":") == 1:
+                info_time = info_time + ":00"
+        return info_time
+
+    @staticmethod
+    # 将秒数转换为时分秒
+    def convert_seconds(seconds):
+        m, s = divmod(seconds, 60)
+        h, m = divmod(m, 60)
+        result = "{}秒".format(int(s))
+        if m > 0:
+            result = "{}分".format(int(m)) + result
+        if h > 0:
+            result = "{}时".format(int(m)) + result
+        # print("程序总共耗时%02d:%02d:%02d" % (h, m, s))
+        return result
+
+
+
+    @staticmethod
+    # 将识别字符如2月23日转换为2023-02-27,年份默认用当年
+    # 2022年12月22日，需要翻译成2022-12-22
+    # 05-May-23 翻译 2023-05-27
+    def convert_date(recog_str):
+        need_date = None
+        try:
+            # 先验证是否是日期类型
+            if CommonHelper.is_date_str(recog_str):
+                need_date = recog_str
+            else:
+                # 2月23日,增加当前年
+                if "年" not in recog_str and "月" in recog_str and "日" in recog_str:
+                    ret = re.findall(r'\s*(\d{1,2})\s*[\./月-]\s*(\d{1,2})\s*日?', recog_str)
+                    if ret:
+                        month, day = ret[0]
+                        year = datetime.datetime.today().year
+                        need_date = str(year) + "-" + str(month) + "-" + str(day)
+                # 2022年12月22日
+                if "年" in recog_str and "月" in recog_str and "日" in recog_str:
+                    ret = re.findall(r'(\d{4})\s*[\./年-]\s*(\d{1,2})\s*[\./月-]\s*(\d{1,2})\s*日?', recog_str)
+                    if ret:
+                        year, month, day = ret[0]
+                        need_date = str(year) + "-" + str(month) + "-" + str(day)
+                # 05-May-23
+                if CommonHelper.is_has_en_month(recog_str):
+                    month_str = re.sub("[\u4e00-\u9fa5\0-9\,\。]", "", recog_str)
+                    month_num = CommonHelper.convert_month_from_en_to_num(month_str)
+                    need_date_split = recog_str.split("-")
+                    year = need_date_split[2]
+                    if len(year) == 2:
+                        year = "20" + year
+                    need_date = year + "-" + month_num + "-" + need_date_split[0]
+
+        except Exception as exp:
+            print(exp)
+            print(exp.__traceback__.tb_frame.f_globals["__file__"])  # 发生异常所在的文件
+            print(exp.__traceback__.tb_lineno)  # 发生异常所在的行数
+        finally:
+            # print(need_date)
+            return need_date
+
+    @staticmethod
+    # 日期里是否含有英文月份
+    def is_has_en_month(date_str):
+        is_find = False
+        month_list = "January,Jan,JAN,February,Feb,FEB,March,Mar,MAR,April,Apr,APR,May,MAY,June,JUNE,Jun,JUN,July,Jul,JUL,August,Aug,AUG,September,Sep,SEP,October,Oct,OCT,November,Nov,NOV,December,Dec,DEC".split(
+            ",")
+        month_str = re.sub("[\u4e00-\u9fa5\0-9\,\。]", "", date_str)
+        if month_str in month_list:
+            is_find = True
+        return is_find
+
+    @staticmethod
+    # 将月份从字母转为数字
+    def convert_month_from_en_to_num(month_en):
+        month_abbr_list = [
+            'JAN',
+            'FEB',
+            'MAR',
+            'APR',
+            'MAY',
+            'JUN',
+            'JUL',
+            'AUG',
+            'SEP',
+            'OCT',
+            'NOV',
+            'DEC']
+        month_index = month_abbr_list.index(month_en.upper())
+        month_num = month_index + 1
+        if len(str(month_num)) == 1:
+            month_num = "0" + str(month_num)
+        return str(month_num)
+
+    @staticmethod
+    # 从日期中提取年月日
+    # 输入2023年12月22日、12月22日、2023-12-22
+    # 输出2023、12、22
+    def parse_date(date_str):
+        date_year = None
+        date_month = None
+        date_day = None
+        try:
+            date_str = CommonHelper.convert_date(date_str)
+            date_year = date_str.split("-")[0]
+            date_month = date_str.split("-")[1]
+            date_day = date_str.split("-")[2]
+        except Exception as exp:
+            pass
+            # logger.error(exp)
+            # logger.error(exp.__traceback__.tb_frame.f_globals["__file__"])  # 发生异常所在的文件
+            # logger.error(exp.__traceback__.tb_lineno)  # 发生异常所在的行数
+        finally:
+            # print(need_date)
+            return date_year, date_month, date_day
+
+
+    @staticmethod
+    # 判断字符串是否为日期类型
+    def is_date_str(date_text):
+        is_date_type = True
+        try:
+            datetime.datetime.strptime(date_text, '%Y-%m-%d')
+            is_date_type = True
+        except ValueError:
+            is_date_type = False
+        if is_date_type is False:
+            try:
+                datetime.datetime.strptime(date_text, '%Y %m %d')
+                is_date_type = True
+            except ValueError:
+                is_date_type = False
+        # print(is_date_type)
+
+        return is_date_type
+
+    @staticmethod
+    # 根据时间戳（到毫秒）获取uuid
+    def get_uuid():
+        return datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
+
+    @staticmethod
+    # 时间字符串转换为时间数字
+    def string2time_stamp(str_value):
+
+        try:
+            d = datetime.datetime.strptime(str_value, "%Y-%m-%d %H:%M:%S.%f")
+            t = d.timetuple()
+            time_stamp = int(time.mktime(t))
+            time_stamp = float(str(time_stamp) + str("%06d" % d.microsecond)) / 1000000
+            return time_stamp
+        except ValueError as e:
+            print(e)
+            d = datetime.datetime.strptime(str_value, "%Y-%m-%d %H:%M:%S")
+            t = d.timetuple()
+            time_stamp = int(time.mktime(t))
+            time_stamp = float(str(time_stamp) + str("%06d" % d.microsecond)) / 1000000
+            return time_stamp
