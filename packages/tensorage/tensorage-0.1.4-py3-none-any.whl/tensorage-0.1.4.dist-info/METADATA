@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: tensorage
+Version: 0.1.4
+Summary: Storing tensors in a supabase backend
+Author: Mirko Mälicke
+Author-email: mirko@hydrocode.de
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typing-extensions
+Requires-Dist: supabase
+Requires-Dist: python-dotenv
+Requires-Dist: numpy
+Requires-Dist: xarray
+Requires-Dist: tqdm
+
+# tensor-store
+
+[![Test and deploy](https://github.com/hydrocode-de/tensorage/actions/workflows/main.yml/badge.svg)](https://github.com/hydrocode-de/tensorage/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/hydrocode-de/tensorage/graph/badge.svg?token=1eF6OGb9XW)](https://codecov.io/gh/hydrocode-de/tensorage)
+
+Store tensor data structures into Supabase
+
+A detailed getting started will follow soon!
