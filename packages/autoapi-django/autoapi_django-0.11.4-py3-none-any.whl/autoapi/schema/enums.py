@@ -1,0 +1,8 @@
+from enum import Enum
+
+
+class ParamKind(str, Enum):
+    POSITIONAL_OR_KEYWORD = 'POSITIONAL_OR_KEYWORD'
+    VAR_POSITIONAL = 'VAR_POSITIONAL'
+    KEYWORD_ONLY = 'KEYWORD_ONLY'
+    VAR_KEYWORD = 'VAR_KEYWORD'
