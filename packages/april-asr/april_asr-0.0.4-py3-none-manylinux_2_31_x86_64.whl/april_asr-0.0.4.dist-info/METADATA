@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: april-asr
+Version: 0.0.4
+Summary: Offline open source speech recognition API based on next-generation Kaldi
+Home-page: https://github.com/abb128/april-asr
+Author: abb128
+Author-email: april@sapples.net
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: librosa
+
+# april-asr for Python
+
+april_asr is a minimal library that provides an API for offline streaming speech-to-text applications
+
+Read the documentation here: https://abb128.github.io/april-asr/
+
