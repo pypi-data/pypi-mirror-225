@@ -1,0 +1,88 @@
+{
+    "backend": "quantify_scheduler.backends.qblox_backend.hardware_compile",
+    "cluster0": {
+        "instrument_type": "Cluster",
+        "ref": "internal",
+        "cluster0_module1": {
+            "instrument_type": "QCM_RF",
+            "complex_output_0": {
+                "lo_freq": null,
+                "dc_mixer_offset_I": 0.0,
+                "dc_mixer_offset_Q": 0.0,
+                "portclock_configs": [
+                    {
+                        "port": "qe0:mw",
+                        "clock": "qe0.spec",
+                        "interm_freq": 200000000.0,
+                        "mixer_amp_ratio": 0.9999,
+                        "mixer_phase_error_deg": -4.2
+                    }
+                ]
+            }
+        },
+        "cluster0_module2": {
+            "instrument_type": "QCM",
+            "real_output_0": {
+                "lo_name": "lo_spinpump_laser",
+                "mix_lo": false,
+                "portclock_configs": [
+                    {
+                        "port": "qe0:optical_control",
+                        "clock": "qe0.ge1",
+                        "interm_freq": 200e6
+                    }
+                ]
+            },
+            "real_output_1": {
+                "lo_name": "lo_green_laser",
+                "mix_lo": false,
+                "portclock_configs": [
+                    {
+                        "port": "qe0:optical_control",
+                        "clock": "qe0.ionization",
+                        "interm_freq": 200e6
+                    }
+                ]
+            },
+            "real_output_2": {
+                "lo_name": "lo_readout_laser",
+                "mix_lo": false,
+                "portclock_configs": [
+                    {
+                        "port": "qe0:optical_control",
+                        "clock": "qe0.ge0",
+                        "interm_freq": 200e6
+                    }
+                ]
+            }
+        },
+        "cluster0_module4": {
+            "instrument_type": "QRM",
+            "real_output_0": {
+                "portclock_configs": [
+                    {
+                        "port": "qe0:optical_readout",
+                        "clock": "qe0.ge0",
+                        "interm_freq": 0,
+                        "ttl_acq_threshold": 0.7
+                    }
+                ]
+            }
+        }
+    },
+    "lo_readout_laser": {
+        "instrument_type": "LocalOscillator",
+        "frequency": null,
+        "power": 1
+    },
+    "lo_spinpump_laser": {
+        "instrument_type": "LocalOscillator",
+        "frequency": null,
+        "power": 1
+    },
+    "lo_green_laser": {
+        "instrument_type": "LocalOscillator",
+        "frequency": null,
+        "power": 1
+    }
+}
