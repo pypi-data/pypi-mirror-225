@@ -1,0 +1,53 @@
+{#
+Simple form with default templates:
+
+{{ upper({href: str, label: str, children: link[]}) }}
+
+
+Advanced form with custom templates:
+
+{% call(part, details) upper(upper_groups) %}
+  {% if part == "heading" %}
+    <a href="{{ details.href }}">HEADING: {{ details.label }}</a>
+  {% elif part == "link" %}
+    <a href="{{ details.href }}">LINK: {{ details.label }}</a>
+  {% endif %}
+{% endcall %}
+
+#}
+
+{% macro upper(groups) %}
+    <div class="nsw-footer__upper">
+        <div class="nsw-container">
+
+            {% for group in groups %}
+                <div class="nsw-footer__group">
+                    <div class="nsw-footer__heading">
+                        {% if caller is defined %}
+                            {{ caller("heading", group) }}
+                        {% else %}
+                            <a href="{{ group.href }}">{{ group.label }}</a>
+                        {% endif %}
+                    </div>
+
+                    {% if group.subnav %}
+                        <ul>
+                            {% for link in group.subnav.children %}
+                                <li>
+                                    {% if caller is defined %}
+                                        {{ caller("link", link) }}
+                                    {% else %}
+                                        <a href="{{ link.href }}">{{ link.label }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endmacro %}

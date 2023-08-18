@@ -1,0 +1,29 @@
+nswdesignsystem-js:
+  filter: rjsmin
+  output: ckanext-nswdesignsystem/%(version)s-nswdesignsystem.js
+  contents:
+    - vendor/main.js
+    - script.js
+  extra:
+    preload:
+      - base/main
+
+nswdesignsystem-css:
+  filter: cssrewrite
+  output: ckanext-nswdesignsystem/%(version)s-nswdesignsystem.css
+  contents:
+    - vendor/main.css
+    - style.css
+
+
+hljs-js:
+  filter: rjsmin
+  output: ckanext-nswdesignsystem/%(version)s-hljs.js
+  contents:
+    - vendor/hljs.js
+
+hljs-css:
+  filter: cssrewrite
+  output: ckanext-nswdesignsystem/%(version)s-hljs.css
+  contents:
+    - vendor/hljs.css

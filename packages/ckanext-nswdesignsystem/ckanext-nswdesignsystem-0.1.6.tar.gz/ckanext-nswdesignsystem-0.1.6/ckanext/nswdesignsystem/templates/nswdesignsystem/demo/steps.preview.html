@@ -1,0 +1,7 @@
+{% from "macros/nswdesignsystem/steps.html" import steps with context  %}
+
+{% call(idx, part) steps(["Discovery", "Alpha", "Beta"], 1) %}
+
+{{ lipsum(idx + 1, min=5, max=20) }}
+
+{% endcall %}
