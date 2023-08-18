@@ -1,0 +1,17 @@
+shepherd-core[elf,inventory]
+click
+h5py
+matplotlib
+numpy
+pandas<2.0.0
+pyYAML
+scipy
+tqdm
+
+[dev]
+shepherd-core[dev]
+pandas-stubs
+
+[test]
+shepherd-core[test]
+pytest-click
