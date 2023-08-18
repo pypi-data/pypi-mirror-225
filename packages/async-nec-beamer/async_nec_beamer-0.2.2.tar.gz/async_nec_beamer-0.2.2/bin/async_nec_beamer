@@ -1,0 +1,248 @@
+#!/usr/bin/env python
+import asyncio
+import logging
+
+import click
+from async_nec_beamer import Nec_Beamer
+
+# Default values for the NEC Beamer
+NAME = "NEC Beamer"
+IP_ADDRESS = "192.168.0.175"
+
+_logger = logging.getLogger("async_nec_beamer")
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def turn_on(ip_address, name, json):
+    """Turn on the Beamer"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.turn_on())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def turn_off(ip_address, name, json):
+    """Turn off the Beamer"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.turn_off())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def rgb1(ip_address, name, json):
+    """Select input rgb1 (VGA)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_rgb1())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def rgb2(ip_address, name, json):
+    """Select input rgb2 (BNC)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_rgb2())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def rgb3(ip_address, name, json):
+    """Select input rgb3 (DVI)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_rgb3())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def status(ip_address, name, json):
+    """Update the Beamer"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def composite(ip_address, name, json):
+    """Select input comp (Component)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_comp())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def s_video(ip_address, name, json):
+    """Select input svid (S-Video)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_svid())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def video(ip_address, name, json):
+    """Select input video (Video)"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.source_vidn())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def mute_all(ip_address, name, json):
+    """Mute the Beamer"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.mute())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def mute_picture(ip_address, name, json):
+    """Mute the Beamer Picture"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.mute_picture())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def mute_audio(ip_address, name, json):
+    """Mute the Beamer Audio"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.mute_audio())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+@click.command()
+@click.option("--ip_address", default=IP_ADDRESS, help="IP Address of the Beamer")
+@click.option("--name", default=NAME, help="Name of the Beamer")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+def mute_osd(ip_address, name, json):
+    """Mute the Beamer OSD"""
+    nec = Nec_Beamer(name=name, ip_address=ip_address)
+    asyncio.run(nec.mute_osd())
+    # asyncio.run(nec.update())
+    nec.print_status(json)
+
+# add a verbose option to cli group
+@click.group()
+@click.option("--verbose/--no-verbose", default=False, help="Logging with verbosity")
+@click.option("--debug/--no-debug", default=False, help="Logging with debug")
+@click.option("--json/--no-json", default=False, help="output as JSON")
+@click.pass_context
+def cli(ctx, verbose, debug, json):
+    """ Control a NEC Beamer via LAN
+
+    This script is used to control a NEC Beamer available via LAN.
+    It is tested with a NEC NP2000.
+
+    This script uses the NEC Beamer's web interface to control it.
+
+    Web Interface is Copyright (C) NEC Viewtechnology, Ltd. 2002-2006
+
+    This script should be a drop-in replacement for the NEC Beamer
+    in asyncio-necbeamer.
+
+    """
+    setup_verbose_logging(verbose, debug)
+
+def setup_verbose_logging(verbose=False, debug=False):
+    # print logging messages to console
+    ch = logging.StreamHandler()
+    _logger.addHandler(ch)
+
+    # if verbose, add verbosity to _logger
+    if debug:
+        _logger.setLevel(logging.DEBUG)
+        _logger.debug("Verbose mode activated")
+    elif verbose:
+        _logger.setLevel(logging.INFO)
+        _logger.info("Logging level set to INFO")
+    else:
+        # deactivate console logging
+        # and suppress all messages
+        _logger.setLevel(logging.CRITICAL)
+        _logger.debug("Verbose mode deactivated")
+
+@click.group()
+def legacy_input():
+    """ Select legacy input Source """
+    pass
+
+
+@ click.group()
+def select_input():
+    """ Select input Source """
+    pass
+
+@click.group()
+def mute():
+    """Mute the Beamer"""
+    pass
+
+cli.add_command(turn_on)
+cli.add_command(turn_off)
+cli.add_command(status)
+cli.add_command(rgb1)
+cli.add_command(rgb2)
+cli.add_command(rgb3)
+
+# add commands to subgroup
+legacy_input.add_command(composite)
+legacy_input.add_command(s_video)
+legacy_input.add_command(video)
+
+select_input.add_command(rgb1)
+select_input.add_command(rgb2)
+select_input.add_command(rgb3)
+
+mute.add_command(mute_all)
+mute.add_command(mute_picture)
+mute.add_command(mute_audio)
+mute.add_command(mute_osd)
+
+# add subgroup to main group
+cli.add_command(legacy_input)
+cli.add_command(select_input)
+cli.add_command(mute)
+cli.add_command(mute_all)
+
+if __name__ == "__main__":
+    cli()
