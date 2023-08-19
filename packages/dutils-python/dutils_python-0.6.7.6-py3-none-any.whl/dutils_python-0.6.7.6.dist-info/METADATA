@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: dutils-python
+Version: 0.6.7.6
+Summary: UUtils library for 3d stuff
+Home-page: 
+Author: Norman Müller
+Author-email: norman.mueller@tum.de
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# dutils
+
+## Install
+```
+pip install .
+```
+
+## Usage 
+Only uses self-contained functions, just use
+```
+from dutils import <function_name>
+```
