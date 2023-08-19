@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: django-promotion-counters
+Version: 0.1.1
+Summary: Django app to handle promotion and marketing events.
+Author: rukosenpa
+Author-email: daniktarasov@gmail.com
+Requires-Python: >=3.8
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: django (==3.2)
+Requires-Dist: uuid7 (>=0.1.0,<0.2.0)
+Description-Content-Type: text/markdown
+
+=====
+Promotion Counters
+=====
+
+Django app to handle promotion and marketing
+events based on it's counting and process such counters as achievements.
+
+Quick start
+-----------
+
+1. Add "promotion_counters" to your INSTALLED_APPS setting like this::
+
+    INSTALLED_APPS = [
+        ...,
+        "promotion_counters",
+    ]
+
+
+3. Run ``python manage.py migrate`` to create
+the promotion program and promotion counter models.
+
+4. Define your promotion action like this::
+
+    registration = Action(
+        alias='registration',
+        verbose_name='Регистрация по ссылке',
+    )
+
+5. Define your achievement handler like this::
+
+    @on_achievement(action='Issue promo code')
+    def registration_handler(counter: Counter):
+        PromoCode.objects.create(
+            user=counter.user,
+            code=generate_promo_code(),
+            type=PromoCode.DISCOUNT,
+            value=10,
+        )
+
+6. Create promotion program using promotion action and achievement handler in admin panel.
