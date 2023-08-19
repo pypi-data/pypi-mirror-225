@@ -1,0 +1,28 @@
+{% extends base_template %}
+
+{% load i18n %}
+
+
+{% block content %}
+
+<h1 class="h2 subtitle">
+  {% translate 'Home' %}
+</h1>
+
+{% blocktrans %}
+
+<p>
+    Welcome to Django Silly Auth :)
+</p>
+<p>
+    You should not see this page in production.
+</p>
+<p>
+    Please change this index in your project.
+
+{% endblocktrans %}
+
+    (settings.SILLY_AUTH["CLASSIC_INDEX"])
+</p>
+
+{% endblock content %}
