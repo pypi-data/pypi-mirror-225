@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: minecraftVersions
+Version: 1.0.5.2
+Summary: A simple Minecraft version wrapper written in Python
+Home-page: https://github.com/tungdo0602/MinecraftVersions.py
+Author: tungdo0602
+License: MIT
+Project-URL: Issue tracker, https://github.com/tungdo0602/MinecraftVersions.py/issues
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Python: >=3.8.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# MinecraftVersions.py
+#### A library for getting Minecraft versions
+
+## Installing
+#### Python 3.8 or higher is required
+### To install the stable version:
+#### For linux/MacOS
+```bash
+python3 -m pip install -U "minecraftVersions"
+```
+#### For Windows
+```batch
+pip install -U minecraftVersions
+```
+### To install the development version:
+#### For linux/MacOS
+```bash
+python3 -m pip install -U git+https://github.com/tungdo0602/MinecraftVersions.py
+```
+#### For Windows
+```batch
+pip install -U git+https://github.com/tungdo0602/MinecraftVersions.py
+```
+
+## Example
+#### Get the latest release minecraft server software:
+```python
+import minecraftVersions
+from minecraftVersions import MCVersion
+mc = MCVersion()
+mc.latest().server().download("server.jar")
+```
+
+#### Get the specific minecraft version:
+```python
+import minecraftVersions
+from minecraftVersions import MCVersion
+mc = MCVersion()
+mc.getVersion("1.18.2")
+##Do something with it
+```
