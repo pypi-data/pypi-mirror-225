@@ -1,0 +1,38 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "pip>=22.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jammies"
+version = "0.4.1"
+authors = [
+    { name = "Aaron Haim", email = "ahaim@ashwork.net" }
+]
+description = "A helper for constructing, managing, and patching projects"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.28",
+    "click>=8.1",
+    "tomlkit>=0.11.8",
+    "platformdirs>=3.5"
+]
+
+[project.urls]
+homepage = "https://github.com/ahaim5357/project-patcher"
+issue_tracker = "https://github.com/ahaim5357/project-patcher/issues"
+
+[project.optional-dependencies]
+git = ["GitPython>=3.1"]
+notebook = ["nbconvert>=7"]
+all = ["jammies[git,notebook]"]
+
+[tools.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+jammies = "jammies.cli:main"
