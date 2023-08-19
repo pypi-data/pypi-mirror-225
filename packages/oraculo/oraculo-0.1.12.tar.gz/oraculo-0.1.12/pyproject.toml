@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "oraculo"
+version = "0.1.12"
+description = "A project to use Sentence Transformers and embeddings to make a pocket search engine"
+authors = ["Joao Tedeschi <joaorafaelbt@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "oraculo/**/*.py"}
+]
+
+[tool.poetry.scripts]
+oraculo = "oraculo.cli:app"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.22.0"
+sentence-transformers = "^2.2.2"
+pandas = "^2.0.1"
+numpy = "^1.24.3"
+langchain = "^0.0.158"
+chromadb = "^0.3.21"
+typer = {extras = ["all"], version = "^0.9.0"}
+pyyaml = "^6.0"
+black = "^23.3.0"
+datasets = "^2.12.0"
+tqdm = "^4.65.0"
+duckdb-engine = "^0.7.0"
+duckdb = "^0.7.1"
+openai-whisper = "^20230314"
+pytube = "^15.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
