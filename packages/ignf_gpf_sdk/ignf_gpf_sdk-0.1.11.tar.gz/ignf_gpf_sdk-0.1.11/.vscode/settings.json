@@ -1,0 +1,93 @@
+{
+    "cSpell.words": [
+        "autorefs",
+        "bbox",
+        "dateutil",
+        "EPSG",
+        "fontawesome",
+        "Géoplateforme",
+        "GEOSERVER",
+        "geotuileur",
+        "ignf",
+        "inlinehilite",
+        "insee",
+        "isoparse",
+        "jsonschema",
+        "linenums",
+        "mkapi",
+        "mkdocs",
+        "mkdocstrings",
+        "mypy",
+        "parsables",
+        "pathes",
+        "pathlib",
+        "processings",
+        "pylint",
+        "pylintrc",
+        "pymdownx",
+        "pyotp",
+        "pypi",
+        "pypirc",
+        "rcfile",
+        "recupere",
+        "requêtage",
+        "setuptools",
+        "sharings",
+        "sidc",
+        "superfences",
+        "testpypi",
+        "tippecanoe",
+        "totp",
+        "unicode",
+        "UNPUBLISHING",
+        "venv",
+        "virtualenv",
+        "WMTS",
+        "workdir"
+    ],
+    // On définit la docstring de base comme étant celle de google
+    "autoDocstring.docstringFormat": "google",
+    // COMMITS PROPRES
+    // On ne garde qu'une et une seule ligne en fin de fichier
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    // On vire tous les espaces en fin de ligne
+    "files.trimTrailingWhitespace": true,
+    // Fin de ligne
+    "files.eol": "\n",
+    "cSpell.language": "en,fr",
+    // PYTHON : formatage et linter
+    "python.languageServer": "Pylance",
+    "python.analysis.extraPaths": [
+        ".",
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--strict",
+        "--check-untyped-defs",
+        "--show-column-numbers",
+    ],
+    "[python]": {
+        "editor.formatOnSave": true,
+    },
+    "python.formatting.provider": "black",
+    // ASSOCIATIONS DE FICHIERS
+    "files.associations": {
+        // .pylintrc est au format .ini
+        ".pylintrc": "ini",
+        // .flake8 est au format .ini
+        ".flake8": "ini",
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests",
+        "-p",
+        "*TestCase.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "pylint.importStrategy": "fromEnvironment",
+}
