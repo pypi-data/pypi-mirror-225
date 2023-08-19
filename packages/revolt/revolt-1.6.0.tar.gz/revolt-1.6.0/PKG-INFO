@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: revolt
+Version: 1.6.0
+Summary: Value substitutor for district42 schema
+Home-page: https://github.com/tsv1/revolt
+Author: Nikita Tsvetkov
+Author-email: tsv1@fastmail.com
+License: Apache-2.0
+Project-URL: Docs, https://d42.vedro.io
+Project-URL: GitHub, https://github.com/tsv1/revolt
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# revolt
+
+[![Codecov](https://img.shields.io/codecov/c/github/tsv1/revolt/master.svg?style=flat-square)](https://codecov.io/gh/tsv1/revolt)
+[![PyPI](https://img.shields.io/pypi/v/revolt.svg?style=flat-square)](https://pypi.python.org/pypi/revolt/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/revolt?style=flat-square)](https://pypi.python.org/pypi/revolt/)
+[![Python Version](https://img.shields.io/pypi/pyversions/revolt.svg?style=flat-square)](https://pypi.python.org/pypi/revolt/)
+
+`revolt` is a package designed to substitute values based on the [district42](https://github.com/tsv1/district42) schemas. It provides a simple and flexible way to substitute values in complex data structures.
+
+This package is part of the [d42 package](https://pypi.org/project/d42/). For a quick-start guide and detailed documentation, please visit the official documentation at [d42.vedro.io/docs/quick-start](https://d42.vedro.io/docs/quick-start)
