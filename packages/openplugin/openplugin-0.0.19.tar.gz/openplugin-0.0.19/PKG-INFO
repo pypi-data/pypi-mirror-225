@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: openplugin
+Version: 0.0.19
+Summary: 
+Author: shrikant
+Author-email: shrikant.pm14@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: fastapi (>=0.95.2,<0.96.0)
+Requires-Dist: langchain (>=0.0.178,<0.0.179)
+Requires-Dist: load-dotenv (>=0.1.0,<0.2.0)
+Requires-Dist: openai (>=0.27.7,<0.28.0)
+Requires-Dist: pydantic (>=1.0.0,<2.0.0)
+Requires-Dist: requests (==2.29.0)
+Requires-Dist: typer[all] (>=0.9.0,<0.10.0)
+Requires-Dist: uvicorn (>=0.22.0,<0.23.0)
+Description-Content-Type: text/markdown
+
+### OpenPlugin
+
+Please see the complete documentation here: https://openplugin.org/
+
+#### Summary:
+
