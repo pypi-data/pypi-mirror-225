@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: d42
+Version: 1.6.0
+Summary: One package for district42 ecosystem
+Home-page: https://github.com/tsv1/d42
+Author: Nikita Tsvetkov
+Author-email: tsv1@fastmail.com
+License: Apache-2.0
+Project-URL: Docs, https://d42.vedro.io
+Project-URL: GitHub, https://github.com/tsv1/d42
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: district42 <1.7,>=1.6
+Requires-Dist: blahblah <1.7,>=1.6
+Requires-Dist: valera <1.7,>=1.6
+Requires-Dist: revolt <1.7,>=1.6
+
+# d42
+
+[![PyPI](https://img.shields.io/pypi/v/d42.svg?style=flat-square)](https://pypi.python.org/pypi/d42/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/d42?style=flat-square)](https://pypi.python.org/pypi/d42/)
+[![Python Version](https://img.shields.io/pypi/pyversions/d42.svg?style=flat-square)](https://pypi.python.org/pypi/d42/)
+
+`d42` package offers several tools to define, generate, validate, and substitute data based on models defined using the district42 data description language.
+
+## Installation
+
+```shell
+$ pip3 install d42
+```
+
+## Components
+
+The [d42](https://pypi.org/project/d42/) package comprises the following components:
+- [district42](https://pypi.org/project/district42/) — a data description language for defining data models
+- [blahblah](https://pypi.org/project/blahblah/) — a fake data generator tailored for the district42 schema
+- [valera](https://pypi.org/project/valera/) — a validator designed for the district42 schema
+- [revolt](https://pypi.org/project/revolt/) — a value substitutor compatible with the district42 schema
+
+## Usage
+
+```python
+from d42 import schema, fake, validate_or_fail
+
+# Define a schema with a string "banana"
+sch = schema.str("banana")
+
+# Generate a fake value based on the schema and validate it
+assert validate_or_fail(sch, fake(sch))
+```
+
+For a more comprehensive guide and detailed information, check out the [official documentation](https://d42.vedro.io/).
