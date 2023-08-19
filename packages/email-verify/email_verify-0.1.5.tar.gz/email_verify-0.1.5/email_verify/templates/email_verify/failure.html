@@ -1,0 +1,11 @@
+{% extends "email_verify/base.html" %}
+{% block email_verify_content %}
+<div class="message-container">
+    <div class="message">
+        <h1>E-mail verification failed!</h1>
+        {% if message %}
+            <p> {{ message }} </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock email_verify_content %}
