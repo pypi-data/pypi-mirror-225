@@ -1,0 +1,16 @@
+{
+  "title": "WorldWide Telescope",
+  "description": "Settings for the WorldWide Telescope JupyterLab integration.",
+  "jupyter.lab.setting-icon": "@wwtelescope/jupyterlab:research:wwt",
+  "jupyter.lab.setting-icon-label": "WorldWide Telescope",
+  "properties": {
+    "appUrl": {
+      "title": "WWT research application URL",
+      "description": "The URL of the research application web app.",
+      "type": "string",
+      "default": "https://web.wwtassets.org/research/latest/"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
