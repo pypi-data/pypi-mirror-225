@@ -1,0 +1,10 @@
+{% include "admin/partials/header.html" %}
+
+{% for field in fields %}
+
+<label>
+  {{ field.name }}
+  <div class="field-contents">{{ field.editable|safe }}</div>
+</label>
+
+{% endfor %}
