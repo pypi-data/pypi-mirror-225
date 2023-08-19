@@ -1,0 +1,12 @@
+requests
+pandas
+httpx
+pydantic<2
+
+[dev]
+black
+nbdev
+plotly
+python-dotenv
+openbb
+statsforecast
