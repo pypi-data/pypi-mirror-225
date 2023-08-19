@@ -1,0 +1,6 @@
+#!/bin/bash
+
+code-server --install-extension ms-python.python
+
+# Install the VS code proxy
+pip install -e.
