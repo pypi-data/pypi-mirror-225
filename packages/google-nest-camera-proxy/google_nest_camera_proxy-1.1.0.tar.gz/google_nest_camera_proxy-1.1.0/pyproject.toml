@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "google_nest_camera_proxy"
+version = "1.1.0"
+description = "Proxy your Nest Camera through rtsp-simple-server so you can view it on any RTSP reader"
+authors = ["Xev Gittler"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.urls]
+Homepage = "https://github.com/xevg/google-nest-camera-proxy"
+
+[tool.poetry.scripts]
+google-nest-camera-proxy = 'google_nest_camera_proxy:run'
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-google-nest = "^5.1.1"
+colorama = "^0.4.6"
+python-dateutil = "^2.8.2"
+click = "^8.1.6"
+configparser = "^6.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+myst-nb = {version = "^0.17.2", python = "^3.9"}
+sphinx-autoapi = "^2.1.1"
+sphinx-rtd-theme = "^1.2.2"
+python-semantic-release = "^8.0.5"
+
+[tool.semantic_release]
+version_variables = ["pyproject.toml:version"] # version location
+branch = "main"                             # branch to make releases of
+changelog_file = "CHANGELOG.md"             # changelog file
+build_command = "pip install poetry && poetry build"              # build dists
+dist_path = "dist/"                         # where to put dists
+upload_to_release = true                    # auto-create GitHub release
+upload_to_pypi = false                      # don't auto-upload to PyPI
+remove_dist = false                         # don't remove dists
+patch_without_tag = true                    # patch release by default
+
+[tool.semantic_release.remote.token]
+env = "GH_TOKEN"
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "serial",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
