@@ -1,0 +1,17 @@
+numpy
+magicgui
+qtpy
+napari-clusters-plotter
+sdtfile
+natsort
+rocket-fft
+dask
+zarr
+
+[testing]
+tox
+pytest
+pytest-cov
+pytest-qt
+napari
+pyqt5
