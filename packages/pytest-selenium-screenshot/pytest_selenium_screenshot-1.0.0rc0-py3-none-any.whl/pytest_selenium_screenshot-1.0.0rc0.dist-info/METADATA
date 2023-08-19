@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: pytest-selenium-screenshot
+Version: 1.0.0rc0
+Summary: pytest plugin to automatically capture screenshots upon selenium webdriver events
+Keywords: pytest,selenium,webtest,webtesting
+Author-email: Harmin Parra Rueda <harmin.rueda@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: Framework :: Pytest
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: Topic :: Software Development :: Testing
+Requires-Dist: pytest >= 7.0.0
+Requires-Dist: pytest-html >= 3.2.0
+Requires-Dist: pytest-metadata >= 3.0.0
+Requires-Dist: selenium >= 4.9.0
+Project-URL: Home, https://github.com/harmin-parra/pytest-selenium-screenshot
+
+# pytest-selenium-screenshot
+
+Pytest plugin to automatically capture screenshots upon selenium webdriver events.
+
+![](https://img.shields.io/badge/license-MIT%202.0-blue.svg)
+
+## Resources ##
+
+- [Documentation](https://pytest-selenium-screenshot.readthedocs.io/en/1.0.x/)
+- [Issue tracker](https://github.com/harmin-parra/pytest-selenium-screenshot/issues)
+- [Source code](https://github.com/harmin-parra/pytest-selenium-screenshot)
