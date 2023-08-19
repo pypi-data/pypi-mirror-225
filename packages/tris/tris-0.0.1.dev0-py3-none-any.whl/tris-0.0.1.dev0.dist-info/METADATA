@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: tris
+Version: 0.0.1.dev0
+Summary: An open-source screening system for Trinary Star Candidates.
+Home-page: https://three-body-analysis.github.io/codebase
+License: MIT
+Keywords: NASA,Kepler,TESS,Astronomy
+Author: Vikram Ramanathan
+Requires-Python: >=3.7
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Requires-Dist: astropy (>=5.0)
+Requires-Dist: matplotlib (>=3.1)
+Requires-Dist: numpy (<=1.24)
+Requires-Dist: pandas (>=1.1.4)
+Requires-Dist: requests (>=2.22.0)
+Requires-Dist: scipy (>=1.7)
+Requires-Dist: tqdm (>=4.25.0)
+Requires-Dist: urllib3 (>=1.23) ; python_version >= "3.8" and python_version < "4.0"
+Project-URL: Bug Tracker, https://github.com/three-body-analysis/codebase/issues
+Project-URL: Documentation, https://three-body-analysis.github.io/codebase
+Project-URL: Repository, https://github.com/three-body-analysis/codebase
+Description-Content-Type: text/markdown
+
+# Tris
+
+[![Python Package tests status](https://github.com/three-body-analysis/codebase/actions/workflows/python-package.yml/badge.svg)](https://github.com/three-body-analysis/codebase/actions?query=workflow%3Apython-package)
+[![Python Package using Conda tests status](https://github.com/three-body-analysis/codebase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/three-body-analysis/codebase/actions?query=workflow%3Apython-package-conda)
+[![Docs CI status](https://github.com/three-body-analysis/codebase/actions/workflows/docs.yml/badge.svg)](https://three-body-analysis.github.io/codebase/)
+
+This repository comprises the codebase for our paper, "An Automated Screening System for Trinary Star System Candidates",
+that has been submitted to _Physica Scripta_.
+
+Tris is an open-source tool that offers a specialized method to determine "observed-minus-computed" (OC) diagrams from 
+astronomical flux time series data (lightcurves) obtained from NASA's Kepler and K2 missions.
+
+Here is a brief outline of the algorithm:
+
+![Diagram of Algorithm](img/methodology.png)
+
+Basic Guide to Codebase
+-------------
+
+[//]: # (- `data` - Contains the acquired `.fits` files that contain the light curves for all objects classified as EBs.)
+- `datagen` - Contains the data generation and acquisition scheme to get the files in `data`.
+- `docs` - Contains the documentation code for the codebase.
+- `logbooks` - Personal Logbooks of us determining our ideal algorithm. It uses an older version of the codebase.
+- `notebooks` - Notebooks to test our code and visualise them, and also to give examples of usage
+- `pipelining` - Older versions of `datagen`.
+- `src` and `utils` - Older versions of `tris`.
+- `tris` - Currently contains (early-stage) versions of our improved library code that will later be deployed on PyPI.
+- `manual_classification.xlsx` - Post Algorithm Manual Classification done by us.
+
+Do note that in our codebase, you will see references to a `data/` folder. This folder contains the acquired `.fits` 
+files that contain the light curves for all objects classified as EBs. You can install this by running 
+`datagen/load.sh`.
+
+Documentation
+-------------
+
+Read the documentation at [`https://three-body-analysis.github.io/codebase/`](https://three-body-analysis.github.io/codebase/).
+
+
+Setup
+-------------
+
+The `conda`, `pip` and `poetry` installation system is present in this repository.
+
+### Conda
+
+To set up an environment 
+
+
+TODO: Cleanup
+-------------
+
+This repo is currently being cleaned up to make way for a more organised library structure. The directories 
+`pipelining`, `src`, `utils` will soon be removed. Hence, we would recommend not dealing with these directories or 
+integrating them into your codebases.
