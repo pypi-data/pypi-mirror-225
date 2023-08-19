@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: minimalkv
+Version: 1.7.0
+Summary: A key-value storage for binary data, support many backends.
+Home-page: https://github.com/data-engineering-collective/minimalkv
+Author: Data Engineering Collective
+Author-email: minimalkv@uwekorn.com
+License: BSD-3-clause
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+License-File: LICENSE
+License-File: AUTHORS
+
+minimal key-value storage api
+=============================
+
+*minimalkv* is an API for very basic key-value stores used for small, frequently
+accessed data or large binary blobs. Its basic interface is easy to implement
+and it supports a number of backends, including the filesystem, SQLAlchemy,
+MongoDB, Redis and Amazon S3/Google Storage.
+
+Installation
+------------
+minimalkv is `available on PyPI <http://pypi.python.org/pypi/minimalkv/>`_ and
+can be installed through `pip <http://pypi.python.org/pypi/pip>`_::
+
+   pip install minimalkv
+   
+or via ``conda`` on `conda-forge <https://github.com/conda-forge/minimalkv-feedstock>`_::
+
+  conda install -c conda-forge minimalkv
+
+Documentation
+-------------
+The documentation for minimalkv is available at
+https://minimalkv.readthedocs.io.
+
+License
+-------
+minimalkv is `MIT licensed
+<http://www.opensource.org/licenses/mit-license.php>`_.
