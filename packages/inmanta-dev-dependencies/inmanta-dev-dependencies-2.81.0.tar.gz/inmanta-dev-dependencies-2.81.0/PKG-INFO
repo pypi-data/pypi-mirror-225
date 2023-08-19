@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: inmanta-dev-dependencies
+Version: 2.81.0
+Summary: Package collecting all common dev dependencies of inmanta modules and extensions to synchronize dependency versions.
+Author-email: Inmanta <code@inmanta.com>
+Requires-Python: >=3.9
+Provides-Extra: module
+Provides-Extra: core
+Provides-Extra: extension
+Provides-Extra: async
+Provides-Extra: pytest
