@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "django-custom-admin-pages"
+authors = [
+    "Leif Kjos <leif+pypi@leifkjos.com>",
+]
+maintainers = [
+    "Leif Kjos <leif+pypi@leifkjos.com>",
+]
+version = "1.1.1"
+description = "A django app that lets you add standard class-based views to the django admin index and navigation."
+license = "BSD-3-Clause"
+readme = "README.md"
+homepage = "https://github.com/lekjos/django-custom-admin-pages"
+repository = "https://github.com/lekjos/django-custom-admin-pages"
+keywords = ["django", "admin", "django-admin", "django admin", "interface", "customize admin", "custom admin", "customize"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django", 
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0", 
+    "Framework :: Django :: 4.1", 
+    "Framework :: Django :: 4.2", 
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules", 
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+include = [
+    "LICENSE.md",
+]
+exclude = [
+    "django_custom_admin_pages/boot_django.py",
+    "django_custom_admin_pages/conftest.py",
+    "django_custom_admin_pages/pytest.ini",
+    "django_custom_admin_pages/test_proj",
+    "django_custom_admin_pages/tests",
+]
+
+packages = [{include = "django_custom_admin_pages"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = ">=3.2,<5.0"
+
+[tool.poetry.group.dev.dependencies]
+twine = "^4.0.2"
+pytest-cov = "^4.1.0"
+pytest = "^7.4.0"
+tox = "^4.9.0"
+black = "^23.7.0"
+pylint = "^2.17.5"
+pylint-django = "^2.5.3"
+isort = "^5.12.0"
+coverage = "^7.3"
+pytest-django = "^4.5.2"
+sphinx-rtd-theme = "^1.2.2"
+sphinx = "^6"
+sphinx-autobuild = "^2021.3.14"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+py_version = 310
+src_paths =  ["src"]
+include_trailing_comma = true
+profile = "black"
+default_section = "THIRDPARTY"
+known_first_party = ["src"]
+known_django = ["django"]
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
