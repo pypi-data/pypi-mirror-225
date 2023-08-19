@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: ci-buildbot
+Version: 0.10.0
+Summary: Slack client for reporting on CodePipeline runs
+Home-page: https://github.com/caltechads/ci-buildbot
+Author: Caltech IMSS ADS
+Author-email: imss-ads-staff@caltech.edu
+Keywords: ['aws','ecs','docker','devops']
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: slackclient (>=2.5.0)
+Requires-Dist: docker (>=4.2.1)
+Requires-Dist: gitpython (>=3.1.0)
+Requires-Dist: giturlparse (>=0.10.0)
+Requires-Dist: click (>=7.0)
+Requires-Dist: jinja2 (>=2.11.1)
+Requires-Dist: pydantic (>=1.6.2)
+Requires-Dist: pydantic-settings (>=2.0.0)
+Requires-Dist: pytz (==2019.1)
+Requires-Dist: sh (==1.13.1)
+
+long_description,
