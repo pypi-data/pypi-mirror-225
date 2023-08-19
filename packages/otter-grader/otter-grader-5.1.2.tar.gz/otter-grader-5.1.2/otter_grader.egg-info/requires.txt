@@ -1,0 +1,18 @@
+dill
+jinja2
+nbformat
+pandas
+PyYAML
+python-on-whales
+requests
+wrapt
+jupytext
+click
+fica>=0.2.0
+ipython
+astunparse
+ipywidgets
+ipylab
+
+[:sys_platform != "emscripten" and sys_platform != "wasi"]
+nbconvert
