@@ -1,0 +1,26 @@
+# vim: ft=yaml
+os:
+  - linux
+  - osx
+
+language: bash
+
+sudo: required
+
+env:
+  - TRAVIS_BASH_VERSION="4.1" TRAVIS_ZSH_VERSION="5.0.0" TRAVIS_FISH_VERSION="2.2.0" TRAVIS_GIT_VERSION="1.8.5"
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./tests/test-utils/installs/install-linux-deps.sh; fi;
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./tests/test-utils/installs/install-osx-deps.sh; fi;
+
+install:
+  - PATH=$PWD/bin:$PATH
+
+script:
+  - git --version
+  - bash --version
+  - zsh --version
+  - fish --version
+  - ./tests/bunit/bin/checkstyle.sh ./lib
+  - ./tests/bunit/bin/unit-tests.sh ./tests/unit-tests
