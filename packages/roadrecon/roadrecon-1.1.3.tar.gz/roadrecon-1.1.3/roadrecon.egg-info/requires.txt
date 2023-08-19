@@ -1,0 +1,10 @@
+roadlib>=0.17
+flask
+sqlalchemy<2
+marshmallow
+flask-sqlalchemy>=2.5
+flask-marshmallow
+flask-cors
+marshmallow-sqlalchemy>=0.22
+aiohttp
+openpyxl
