@@ -1,0 +1,98 @@
+name: Test and deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  pytest:
+    name: Test ${{ matrix.platform }} py${{ matrix.python-version }}
+    strategy:
+      matrix:
+        platform:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        python-version:
+          - '3.9'
+          - '3.10'
+          - '3.11'
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python -m pip install --user pytest pytest-cov
+          python -m pip install --user -e .
+      - name: Run pytest
+        shell: bash
+        run: python -m pytest
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+  pages:
+    name: Pages
+    needs: pytest
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: 'pages'
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/configure-pages@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python -m pip install --user json-schema-for-humans
+          python -m pip install --user -e .
+      - name: Generate site
+        shell: bash
+        run: ./generate-site.sh
+      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/deploy-pages@v2
+        id: deployment
+  pypi:
+    name: PyPI
+    needs: pytest
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install pypa/build
+        shell: bash
+        run: python -m pip install --user build
+      - name: Build a source tarball and a binary wheel
+        shell: bash
+        run: python -m build --sdist --wheel --outdir dist/ .
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
