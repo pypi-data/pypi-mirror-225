@@ -1,0 +1,17 @@
+[package]
+name = "linguars"
+version = "0.4.0"
+edition = "2018"
+description = "lingua-rs Python binding"
+license = "MIT"
+repository = "https://github.com/messense/lingua-py"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+lingua = "1.4.0"
+pyo3 = { version = "0.19.2", features = ["abi3-py37", "extension-module"] }
