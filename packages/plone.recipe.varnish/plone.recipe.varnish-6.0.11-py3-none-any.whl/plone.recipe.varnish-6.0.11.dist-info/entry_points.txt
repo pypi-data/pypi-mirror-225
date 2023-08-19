@@ -1,0 +1,4 @@
+[zc.buildout]
+build = plone.recipe.varnish.recipe:BuildRecipe
+configuration = plone.recipe.varnish.recipe:ConfigureRecipe
+script = plone.recipe.varnish.recipe:ScriptRecipe
