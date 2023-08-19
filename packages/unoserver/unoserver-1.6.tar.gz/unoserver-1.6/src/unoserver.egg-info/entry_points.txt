@@ -1,0 +1,5 @@
+[console_scripts]
+unocompare = unoserver.comparer:main
+unoconvert = unoserver.converter:main
+unoserver = unoserver.server:main
+
