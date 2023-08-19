@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: tdrpa.tdcore2
+Version: 0.0.3
+Summary: RPA sdk for professional developers
+Home-page: https://tdrpa.thingswell.cn
+Author: tdrpa
+Author-email: armstrong.wang@gmail.com
+License: Apache 2.0
+Keywords: RPA,tdRPA,uiautomation,uia
+Platform: Windows Only
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: psutil
+Requires-Dist: uiautomation
+Requires-Dist: tzlocal
+
+RPA sdk for professional developers
+
+
