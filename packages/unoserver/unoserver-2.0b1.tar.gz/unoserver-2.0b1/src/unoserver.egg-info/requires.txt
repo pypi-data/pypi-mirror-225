@@ -1,0 +1,10 @@
+setuptools
+
+[devenv]
+black
+check-manifest
+flake8
+pyroma
+pytest
+pytest-cov
+zest.releaser
