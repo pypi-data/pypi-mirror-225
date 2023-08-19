@@ -1,0 +1,12 @@
+click<9.0,>=7.1
+click-log>=0.2.1
+humanize
+icalendar>=4.0.3
+parsedatetime
+python-dateutil
+pyxdg
+urwid
+tinydb>=4.8.0
+
+[repl]
+click-repl>=0.1.6
