@@ -1,0 +1,28 @@
+[package]
+name = "sparesults"
+version = "0.1.8"
+authors = ["Tpt <thomas@pellissier-tanon.fr>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["SPARQL"]
+repository = "https://github.com/oxigraph/oxigraph/tree/main/lib/sparesults"
+homepage = "https://oxigraph.org/"
+description = """
+SPARQL query results formats parsers and serializers
+"""
+documentation = "https://docs.rs/sparesults"
+edition = "2021"
+rust-version = "1.60"
+resolver = "2"
+
+[features]
+default = []
+rdf-star = ["oxrdf/rdf-star"]
+
+[dependencies]
+json-event-parser = "0.1"
+oxrdf = { version = "0.1.6", path= "../oxrdf" }
+quick-xml = "0.28"
+
+[package.metadata.docs.rs]
+all-features = true
