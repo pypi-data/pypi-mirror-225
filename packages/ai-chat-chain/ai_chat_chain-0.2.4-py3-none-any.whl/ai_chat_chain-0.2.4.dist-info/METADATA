@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: ai-chat-chain
+Version: 0.2.4
+Summary: maintain chat conversation state
+License: MIT
+Author: erik aronesty
+Author-email: erik@q32.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: all
+Provides-Extra: openai
+Provides-Extra: supabase
+Requires-Dist: ai-functions (>=0.4.0,<0.5.0)
+Requires-Dist: openai (>=0.27.8,<0.28.0) ; extra == "openai" or extra == "all"
+Requires-Dist: supabase (>=1.0.3,<2.0.0) ; extra == "supabase" or extra == "all"
+Description-Content-Type: text/markdown
+
+# simple chat context manager
+
+- override everything
+- works with any model
+- works with any prompt recovery system (simple history, embedding search, whatever)
+- chains functions well
+- uses ai-functions and executes them
+
+## install
+
+poetry add or pip install this repo, for now
+
+## example:
+
+
+```python
+from ai_chat import AiConfig
+
+# only supports openai for now, todo: add other models
+from ai_chat.openai import OpenaiChat
+from ai_chat.store import SupabaseStore
+from ai_functions import AIFunctions
+
+# supports SqliteStore() as well as MemoryStore() for storing the chain of prompts
+
+store = SupabaseStore()
+conf = AiConfig(id="persona-id-1", system="You are a silly friend.")
+session = OpenaiChat(store=store, ai=conf, thread_id="session-1")
+
+def search_google():
+    ...
+
+def get_calendar():
+    ...
+
+def add_calendar():
+    ...
+
+session.functions = AIFunctions([search_google, get_calendar, add_calendar])
+
+print(session.chat("hello").content)
+
+# this contains the hello, and the reply in the context
+print(session.chat("cool").content)
+```
+
