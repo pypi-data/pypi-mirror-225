@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: pypomes_cloud
+Version: 0.1.3
+Summary: A collection of Python pomes, pennyeach (cloud storage modules)
+Project-URL: Homepage, https://github.com/TheWiseCoder/PyPomes-Cloud
+Project-URL: Bug Tracker, https://github.com/TheWiseCoder/PyPomes-Cloud/issues
+Author-email: GT Nunes <wisecoder01@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Requires-Dist: azure-common>=1.1.28
+Requires-Dist: azure-core>=1.29.2
+Requires-Dist: azure-identity>=1.14.0
+Requires-Dist: azure-storage-blob>=12.17.0
+Requires-Dist: pip>=23.2.1
+Requires-Dist: pypomes-core>=0.2.8
+Requires-Dist: setuptools>=68.0.0
+Requires-Dist: wheel>=0.41.0
