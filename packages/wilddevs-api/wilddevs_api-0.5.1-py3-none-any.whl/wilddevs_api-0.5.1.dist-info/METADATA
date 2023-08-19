@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: wilddevs-api
+Version: 0.5.1
+Summary: A Python API wrapper for the WildDevsAPI
+Author: Labret
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: aiohttp
+
+
+# WildDevs API Python
