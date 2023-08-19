@@ -1,0 +1,17 @@
+LICENSE
+README.md
+setup.py
+logger_local/Component.py
+logger_local/LoggerComponentEnum.py
+logger_local/LoggerLocal.py
+logger_local/LoggerService.py
+logger_local/MessageSeverity.py
+logger_local/SendToLogzIo.py
+logger_local/Writer.py
+logger_local/__init__.py
+logger_local/fields.py
+logger_local.egg-info/PKG-INFO
+logger_local.egg-info/SOURCES.txt
+logger_local.egg-info/dependency_links.txt
+logger_local.egg-info/top_level.txt
+tests/test_writer.py
