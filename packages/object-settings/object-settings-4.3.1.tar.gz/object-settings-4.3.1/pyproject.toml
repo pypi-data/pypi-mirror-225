@@ -1,0 +1,29 @@
+[project]
+
+name = "object-settings"
+version = "4.3.1"
+description = "Simple object-oriented config library, where your settings are objects"
+readme = "README.md"
+dynamic = ["dependencies"]
+keywords = ["settings", "setting", "config", "OOP", "GUI"]
+urls = {"Homepage"="https://github.com/SamuLumio/object-settings"}
+license = {text="MIT License"}
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Typing :: Typed",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces"
+]
+
+[tool.setuptools]
+include-package-data = true
+package-data = {'settings_gui.tkinter'=['icons/*']}
+dynamic = { dependencies = {file = "requirements.txt"} }
