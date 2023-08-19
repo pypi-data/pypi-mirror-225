@@ -1,0 +1,29 @@
+heflow:
+  image: inaccel/heflow
+  # pullPolicy: ...
+  # resources: ...
+  tag: latest
+
+minio:
+  auth:
+    existingSecret: "{{ $.Release.Name }}"
+  defaultBuckets: heflow
+  persistence:
+    annotations:
+      helm.sh/resource-policy: keep
+
+# nodeSelector: ...
+
+postgresql:
+  auth:
+    database: heflow
+    enablePostgresUser: false
+    existingSecret: "{{ $.Release.Name }}"
+    secretKeys:
+      userPasswordKey: root-password
+    username: heflow
+  primary:
+    persistence:
+      subPath: postgresql
+
+# replicas: ...
