@@ -1,0 +1,72 @@
+{{ halutils.generate_file_header() }}
+#ifndef __{{ halnode.type_name|upper }}_H_
+#define __{{ halnode.type_name|upper }}_H_
+
+#include <stdint.h>
+#include "include/halcpp_base.h"
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wundefined-var-template"
+#endif
+
+{% for c in halutils.get_unique_type_nodes(halnode.addrmaps) %}
+#include "{{ halutils.get_include_file(c) }}"
+{% endfor %}
+
+namespace {{ halnode.orig_type_name}}_nm {
+{% for r in halutils.get_unique_type_nodes(halnode.regs) %}
+
+{% for f in r.fields %}
+{% set has_enum, enum_name, enum_strings, enum_values, enum_desc, const_width = f.get_enum() %}
+{% if has_enum %}
+class {{ enum_name }} {
+public:
+{% for  s, v, d in enum_strings|zip(enum_values, enum_desc) %}
+    static const halcpp::Const<{{ const_width }}, {{ v }}> {{ s }}; // {{ d }}
+{% endfor %}
+};
+{% endif %}
+{% endfor %}
+
+{{ r.get_docstring() }}
+{{ r.get_template_line() }}
+class {{ r.type_name|upper }} : public halcpp::{{ r.cpp_type }}{{ r.get_cls_tmpl_spec(True) }} {
+public:
+{% for f in r.fields %}
+    static halcpp::{{ f.cpp_type }}<{{ f.node.low }}, {{ f.node.high }}, {{ r.get_cls_tmpl_spec(False) }} > {{ f.node.inst_name }};
+{% endfor %}
+
+{% if r.node.has_sw_writable %}
+    using halcpp::{{ r.cpp_type }}{{ r.get_cls_tmpl_spec(True) }}::operator=;
+
+{% endif %}
+};
+
+{% endfor %}
+
+{% for m in halutils.get_unique_type_nodes(halnode.mems) %}
+{{ m.get_template_line() }}
+class {{ m.type_name|upper }} : public MemNode{{ m.get_cls_tmpl_spec(True) }} {
+
+};
+{% endfor %}
+}
+
+{{ halnode.get_docstring() }}
+{{ halnode.get_template_line() }}
+class {{ halnode.type_name|upper }} : public AddrmapNode<BASE, PARENT_TYPE> {
+public:
+
+{% for c in halnode.addrmaps + halnode.regs + halnode.mems %}
+    {% if c.__class__.__name__ == "HalArrReg" %}
+    static halcpp::REG_ARR_NODE<{{ halnode.orig_type_name }}_nm::{{ c.type_name|upper }}, 0x{{ "%0x"|format(c.addr_offset|int) }}, {{ c.width }}, {{ c.node.array_stride }}, {{ halnode.get_cls_tmpl_spec() }}, {{ c.node.array_dimensions|join(', ') }}> {{ c.node.inst_name }};
+    {% elif c.__class__.__name__ == "HalReg" or c.__class__.__name__ == "HalMem" %}
+    static {{ halnode.orig_type_name }}_nm::{{ c.type_name|upper }}<0x{{ "%0x"|format(c.addr_offset|int) }}, {{ c.width }}, {{ halnode.get_cls_tmpl_spec() }}> {{ c.node.inst_name }};
+    {% else %}
+    static {{ halutils.get_extern(c)|upper }}<0x{{ "%0x"|format(c.addr_offset|int) }}, {{ halnode.get_cls_tmpl_spec() }}> {{ c.node.inst_name }};
+    {% endif %}
+{% endfor %}
+
+
+};
+
+#endif
