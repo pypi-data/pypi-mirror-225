@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: eganetswahilicleaner
+Version: 0.0.1
+Summary: SWAHILI TEXT CLEANING LIBRARY FOR NATURAL LANGUAGE PROCESSING
+Home-page: 
+Author: Shadrack Kajigili
+Author-email: shadrackkajigili4@gmail.com
+License: MIT
+Keywords: swahili_text_cleaner
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: iOS
+Description-Content-Type: text/markdown
+License-File: LICENCE.txt
+
+# SWAHILI CLEANER
+## _Best Swahili Processing Library_
+
+
+
+Swahili Cleaner is the swahili version Text Processing library for Natural Language Processing
+
+- ✨Magic ✨
+
+## Features
+
+- It can clean text by removing emojs
+- Remove Unicode characters
+- Cleaning the urls
+- Cleaning the html elements
+- remove parentheses
+- remove numbers and keep text/alphabet only
+- set in lowercase
+- Removing stop words both Swahili and English
+- Cleaning the whitespaces
+
+
+
+## Installation
+
+
+
+```sh
+!pip install swahilicleaner
+```
+
+
+## How to use
+
+```sh
+from swahilicleaner.clean import clean_text
+train['text']=train['text'].apply(clean_text)
+test['text']=test['text'].apply(clean_text)
+
+```
+_Where train['text'] this is a column in a pandas dataframe_
