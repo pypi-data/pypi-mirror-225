@@ -1,0 +1,81 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry]
+name = "arraylake-client"
+version = "0.4.6"  # placeholder
+description = "Python client for ArrayLake"
+authors = ["Joe Hamman <joe@earthmover.io>"]
+readme = "README.md"
+packages = [{include = "arraylake_client"}]
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+style = "pep440"
+strict = true
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+aiobotocore = { version = "^2.4.0", extras = ["boto3"]}
+types-aiobotocore = "^2.4.0"
+anyio = "^3.7"
+uvloop = ">=0.17,<1.0"
+zarr = ">=2.14,<2.15"
+numpy = "^1.20"
+donfig = ">=0.7,<1.0"
+pydantic = {extras = ["email"], version = "^1.10"}
+httpx = ">=0.23.0,<1.0"
+pymongo = { version = "^4.2.0"}
+ruamel-yaml = { version = ">=0.17,<1.0", optional = true }
+typer = { version = ">=0.6.1,<1.0", optional = true }
+rich = { version = ">=12.6,<14.0", optional = true }
+fsspec = { version = ">=2022.11.0", optional = true }
+kerchunk = { version = ">=0.1,<1.0", optional = true }
+h5py = { version = "^3.7.0", optional = true }
+s3fs = { version = ">=2022.11.0", optional = true }
+cachetools = "^5.3.0"
+structlog = "^23.1.0"
+ipytree = { version = ">=0.2.2,<1.0", optional = true }
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3"
+pytest-cov = "^4.0.0"
+pytest-click = "^1.1.0"
+pooch = "^1.6.0"
+netCDF4 = "^1.6.1"
+xarray = ">=2022.12.0"
+pandas = "^1.3"
+dask = "^2022.10.2"
+distributed = "^2022.10.2"
+respx = "^0.20.1"
+scipy = "^1.10.1"
+arraylake-mongo-metastore = {path = "../mongo-metastore", develop = true}
+pytest-timeout = "^2.1.0"
+
+[tool.poetry.scripts]
+arraylake = 'arraylake_client.cli.main:app'
+
+[tool.poetry.extras]
+cli = ["ruamel-yaml", "typer", "rich"]
+virtual = ["fsspec", "kerchunk", "h5py", "s3fs"]
+widgets = ["ipytree"]
+
+[tool.coverage.run]
+branch = true
+source = ["arraylake_client/*"]
+include = ["arraylake_client/*"]
+omit = ["tests/*", "**/__init__.py", "**/__main__.py", "arraylake_client/token.py", "arraylake_client/cli/auth.py"]
+
+[tool.coverage.report]
+include = ["arraylake_client/*"]
+
+[tool.pytest.ini_options]
+markers = ["slow: mark test as slow"]
+filterwarnings = [
+    'ignore:.*pkg_resources.*:DeprecationWarning',
+    'ignore:.*make_current is deprecated; start the event loop first.*:DeprecationWarning',
+    'ignore:.*no current event loop.*:DeprecationWarning',
+]
