@@ -1,0 +1,15 @@
+
+"-main" : "rabbit.multiply_by_file",
+"-rabbit" : true,
+
+"seed": {
+	"-main" : "demo.check_file",
+	"infile" : "(.*).(.*)",
+	"outfile": "{1}.{2}",
+	"infile~=.py": {
+		"outfile": "{1}",
+	},
+},
+
+"appkeys": ["outfile"],
+

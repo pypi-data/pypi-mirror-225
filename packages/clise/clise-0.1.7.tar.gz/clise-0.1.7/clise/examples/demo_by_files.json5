@@ -1,0 +1,21 @@
+{
+	"-main" : "demo.check_file",
+	"infile" : "cmd.sh",
+	"outfile": "test.sh",
+	"-return" : "a,b",
+},
+{
+	"-main" : "demo.check_file",
+	"infile" : "cmd.sh",
+	"outfile": "cmd.sh",
+	"-return" : "a,b",
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-list": ["a","b"],
+	},
+},
+

@@ -1,0 +1,21 @@
+{
+	// in fact, the native task generator can do a lot more
+	// in this example, it bundles two tasks into multiple sequence
+	"-main" : "rabbit.multiply_by_id_multi",
+
+	// to indicate this is a task generation instead of normal run
+	// this should be set
+	"-rabbit": true,
+
+	"seed": "demo_two_tasks.json5",
+	
+},
+// and then you can add any other job here
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-scalar": ["a","b"],
+	},
+},

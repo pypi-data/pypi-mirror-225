@@ -1,0 +1,20 @@
+{
+	// scan hdus of a file and plot them all
+
+	"-main": "cmdscript.search_heron",
+
+	"-loop": {
+		"recursive": true,
+		"indir": ".",
+	},
+
+	"-logfile" : "",
+
+},
+{ 
+	"-main" : "cmdscript.summary",
+	"summary"  : true,
+	"overview" : false,
+	"-accept": ["^-"],
+}
+

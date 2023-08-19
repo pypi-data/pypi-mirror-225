@@ -1,0 +1,15 @@
+
+// put keymap or something generic here
+
+"-logfile" : "~/rlocal/jpy/log/heron.log",
+
+// uncomment this to keep the log for cmd line tools as well
+// whether a run is cmdline or not is determined by whether json input paramter file exists or not
+// if run was done purely by command line options, then it's considered as a cmdline tool
+// these are often set as alias in the shell
+// "-save_cli_only_run" : true,   
+
+// uncomment this to automatically generate history files of file cfg json file
+// the auto option saves them in the log file directory
+"-hisfile" : "_auto_",
+

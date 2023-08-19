@@ -1,0 +1,25 @@
+{
+	"-main"   : "rabbit.multiply_by_file_multi",
+	"-rabbit" : 2,    // this sets beginning of repetition block if -rabbit>1
+	"appkeys" : ["outfile"],
+},
+{
+	"-main"   : "demo.check_file",
+	"infile"  : "(.*).(.*)",
+	"outfile" : "{1}.{2}",
+	"-return" : "a,b",
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x"     : "len(a)",
+		"y"     : "len(b)",
+		"-list" : ["a","b"],
+	},
+},
+{
+	"-rabbit": -1,	// this sets end of the repetition block
+	"infile~=.py": {
+		"outfile": "{1}",
+	},
+},

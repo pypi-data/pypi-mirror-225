@@ -1,0 +1,37 @@
+{
+	// alternatively one can simply call the auto gen routine
+	"-main" : "rabbit.multiply_by_id",
+
+	// to indicate this is a task generation instead of normal run
+	// this should be set
+	"-rabbit": true,
+
+	"seed": { 
+		"-main" : "demo.sum_and_diff",
+		"x"     : 3,
+		"y"     : 5,
+		// save the return values, which are all stored as OrderedDict
+		"-return" : "a,b",
+
+		"-id": ["small","medium","big","as it is"], // this will be the job ID
+		"-id==small"  : { "x": 1, "y": 2, },
+		"-id==medium" : { "x": 15, "y": 26, },
+		"-id==big"    : { "x": 135, "y": 233, },
+	},
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-list": ["a","b"],
+	},
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-scalar": ["a","b"],
+	},
+},

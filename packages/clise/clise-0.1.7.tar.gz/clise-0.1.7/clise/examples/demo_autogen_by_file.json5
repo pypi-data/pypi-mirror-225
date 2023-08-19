@@ -1,0 +1,12 @@
+
+"-main" : "demo.check_file",
+"infile" : "(.*).(.*)",
+"outfile": "{1}.{2}",
+
+"-loop": {
+	"appkeys": ["outfile"],
+},
+
+"infile~=.py": {
+	"outfile": "{1}",
+},

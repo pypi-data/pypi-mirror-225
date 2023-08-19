@@ -1,0 +1,34 @@
+{
+	// scan hdus of a file and plot them all
+
+	"-main": "plottool.plottool.collect_data",
+	"-loop": {
+		"-main": "plottool.plottool.scan_fits_hdus",
+		"infile": "{infile}",
+		"x": "{x}",
+		"y": "{y}",
+		/* "hdu": "{=hdu}", */
+		/* "verbose": "{=verbose}", */
+		"tolist": true,
+	},
+
+	"verbose" : 0,
+	"hdu": "",
+
+	"linestyle" : "solid",
+	"marker"   : "None",
+	"display"  : true,
+
+	"xlog"  : true,
+	"ylog"  : true,
+	"margin": 0.05,
+
+	"-logfile": "",
+	"-collect_kwpars": true,
+
+},
+{ 
+	"-main" : "plottool.plottool.mplot1d",
+	"-accept": ["^-"],
+}
+

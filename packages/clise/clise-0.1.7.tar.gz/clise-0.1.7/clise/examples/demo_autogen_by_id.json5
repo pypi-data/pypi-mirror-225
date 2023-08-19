@@ -1,0 +1,30 @@
+{
+	"-main" : "demo.sum_and_diff",
+	"x"     : 3,
+	"y"     : 5,
+	// save the return values, which are all stored as OrderedDict
+	"-return" : "a,b",
+
+	// "-id" being a list (instead of a scalar string) will indicate
+	// this routine will run multiple times with some variations
+	"-id": ["small","medium","big","as it is"], // this will be the job ID
+	"-id==small"  : { "x": 1, "y": 2, },
+	"-id==medium" : { "x": 15, "y": 26, },
+	"-id==big"    : { "x": 135, },
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-scalar": ["a","b"],
+	},
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-list": ["a","b"],
+	},
+},

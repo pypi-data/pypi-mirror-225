@@ -1,0 +1,61 @@
+{
+	"-main" : "demo.sum_and_diff",
+	"x"     : 3,
+	"y"     : 5,
+	// save the return values, which are all stored as OrderedDict
+	"-return" : "a,b",
+},
+{
+	"-main" : "demo.square",
+	"x"     : 3,
+	// we don't save anything from the return here
+},
+{
+	"-main" : "demo.square",
+	"x"     : 4,
+	"-return" : "a", 
+},
+{
+	"-main" : "demo.square",
+	"-inherit" : {
+		"x": "a+a",
+		// takes only first value of the previous output a
+		"-scalar": ["a"],
+	},
+},
+{
+	"-main" : "demo.square",
+	"-inherit" : {
+		"x": "a",
+		// takes the output a as a list instead of OrderedDict
+		"-list": ["a"],
+	},
+},
+{
+	"-main" : "demo.show",
+	"x": "a",
+	"y": "b",
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+	},
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-list": ["a","b"],
+	},
+},
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-scalar": ["a","b"],
+	},
+},

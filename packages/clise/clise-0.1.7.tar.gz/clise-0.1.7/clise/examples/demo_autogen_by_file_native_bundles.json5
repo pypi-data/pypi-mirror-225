@@ -1,0 +1,28 @@
+
+"-main" : "rabbit.multiply_by_file_multi",
+"-rabbit" : true,
+
+"seed": [
+	{
+		"-main" : "demo.check_file",
+		"infile" : "(.*).(.*)",
+		"outfile": "{1}.{2}",
+		"-return" : "a,b",
+	},
+	{
+		"-main" : "demo.show",
+		"-inherit" : {
+			"x": "len(a)",
+			"y": "len(b)",
+			"-list": ["a","b"],
+		},
+	},
+],
+
+"appkeys": ["outfile"],
+
+"cases": {
+	"infile~=.py": {
+		"outfile": "{1}",
+	},
+},

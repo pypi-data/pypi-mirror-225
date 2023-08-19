@@ -1,0 +1,45 @@
+{
+	// in fact, the native task generator can do a lot more
+	// in this example, it bundles two tasks into multiple sequence
+	"-main" : "rabbit.multiply_by_id_multi",
+
+	// to indicate this is a task generation instead of normal run
+	// this should be set
+	"-rabbit": true,
+
+	"cases": {
+		"-id": ["small","medium","big","as it is"], // this will be the base for the job ID
+		"-id~=small"  : { "x": 1, "y": 2, },	  // note ~= instead of == since job ID will now have subtask number
+		"-id~=medium" : { "x": 15, "y": 26, },
+		"-id~=big"    : { "x": 135, },
+		"-id==big.2"  : { "y": 75, },			// this give y value only to demo.show task
+	},
+
+	"seed": [
+		{ 
+			"-main" : "demo.sum_and_diff",
+			"x"     : 3,
+			"y"     : 5,
+			// save the return values, which are all stored as OrderedDict
+			"-return" : "a,b",
+
+		},
+		{
+			"-main" : "demo.show",
+			"y"	 : 1,
+			"-inherit" : {
+				"x": "a",
+				"-list": ["a"],
+			},
+		},
+	]
+},
+// and then you can add any other job here
+{
+	"-main" : "demo.show",
+	"-inherit" : {
+		"x": "a",
+		"y": "b",
+		"-scalar": ["a","b"],
+	},
+},

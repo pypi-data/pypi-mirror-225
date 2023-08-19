@@ -1,0 +1,8 @@
+{
+	"-main" : "demo.show",
+	"-id"   : "this show",
+	"x"     : "'a':1,'b':2",
+	/* "**y"   : "'a':1,'b':{'c':3,'d':4}", */
+	"**y"   : "'a':1,'b':[{'c':3,'d':4},{'e':5}]",
+	"name"  : "string to dict conversion with **key",
+},
