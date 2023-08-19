@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "psusigner"
+version = "0.1.7"
+description = "PSU Signer"
+authors = ["Thanathip Limna <thanathip.l@coe.psu.ac.th>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+endesive = "^2.0.16"
+pyjwt = "^2.7.0"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
