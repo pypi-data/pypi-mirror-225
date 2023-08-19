@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: xoa-utils
+Version: 2.0.2
+Summary: Xena OpenAutomation Utilities provides a shell-like command-line interface for users to do explorative tests interactively, such as ANLT test.
+Home-page: https://github.com/xenanetworks/open-automation-utilities
+Author: Ron Ding, Leonard Yu
+Author-email: rdi@xenanetworks.com, hyu@xenanetworks.com
+Maintainer: Xena Networks
+Maintainer-email: support@xenanetworks.com
+License: Apache 2.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/xoa-utils) [![PyPI](https://img.shields.io/pypi/v/xoa-utils)](https://pypi.python.org/pypi/xoa-utils) ![GitHub](https://img.shields.io/github/license/xenanetworks/open-automation-utilities) [![Documentation Status](https://readthedocs.org/projects/xena-openautomation-utilities/badge/?version=stable)](https://xena-openautomation-utilities.readthedocs.io/en/stable/?badge=stable)
+
+# Xena OpenAutomation Utilities
+
+Xena OpenAutomation Utilities (XOA ANLT Utility) provides an **interactive shell** for users to control Xena testers via **command-line interface** (CLI) commands to performance operations such as ANLT testing and resource management in an interactive fashion.
+
+## Installation
+See [installation guide](https://docs.xenanetworks.com/projects/xoa-utilities/en/stable/getting_started/installation.html)
+
+## Step-by-Step Guide
+
+See [step-by-step guide](https://docs.xenanetworks.com/projects/xoa-utilities/en/stable/getting_started/step_by_step.html)
