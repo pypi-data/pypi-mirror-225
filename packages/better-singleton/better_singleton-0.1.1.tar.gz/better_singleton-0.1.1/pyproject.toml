@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "better-singleton"
+version = "0.1.1"
+description = ""
+authors = ["Stephan Schmiedmayer <56692976+StephanSchmiedmayer@users.noreply.github.com>"]
+readme = "README.md"
+repository = "https://github.com/StephanSchmiedmayer/SingletonPython"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
