@@ -1,0 +1,54 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "numpy>=1.23.5"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qubolite"
+version = "0.8.3"
+authors = [
+    { name = "Sascha Mücke", email="sascha.muecke@tu-dortmund.de" },
+    { name = "Thore Gerlach", email="thore.gerlach@iais.fraunhofer.de" }
+]
+description = "Toolbox for quadratic binary optimization"
+license = {file = "LICENSE"}
+readme = "README.md"
+#repository = "https://github.com/smuecke/qubolite"
+#documentation = "https://smuecke.github.io/qubolite/api.html"
+keywords = ["qubo", "optimization", "quantum", "annealing"]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics"
+]
+dependencies = [
+    "numpy>=1.23.5",
+    "networkx>=3.1"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/smuecke/qubolite"
+"Documentation" = "https://smuecke.github.io/qubolite"
+
+[project.optional-dependencies]
+roof_dual = [
+    "igraph>=0.10.4"
+]
+kendall_tau = [
+    "scipy>=1.10.1"
+]
+embedding = [
+    "scikit-learn>=1.2.2"
+]
+preprocessing = [
+    "portion>=2.4.0"
+]
+all = [
+    "igraph>=0.10.4",
+    "scikit-learn>=1.2.2",
+    "portion>=2.4.0",
+    "scipy>=1.10.1"
+]
