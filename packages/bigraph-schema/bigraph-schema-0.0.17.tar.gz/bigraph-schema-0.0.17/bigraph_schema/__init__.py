@@ -1,0 +1,1 @@
+from bigraph_schema.type_system import TypeSystem
