@@ -1,0 +1,103 @@
+[project]
+name = "gamma-io"
+version = "0.1.0"
+description = "Extensible library for interacting with datasets in data intensive projects"
+authors = [
+    { name = "Cloves Almeida", email = "almeida.cloves@bcg.com" },
+]
+dependencies = [
+    "click>=8.1.6",
+    "tqdm>=4.65.0",
+    "pandas>=2.0.3",
+    "pyarrow>=12.0.1",
+    "pydantic>=2.1.1",
+    "fsspec>=2023.6.0",
+    "aiohttp>=3.8.5",
+    "requests>=2.31.0",
+    "decorator>=5.1.1",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+polars = [
+    "polars>=0.18.13",
+]
+full = [
+    "polars>=0.18.13",
+    "gamma-config>=0.7.1",
+    "s3fs>=2023.6.0",
+    "sqlalchemy>=2.0.20",
+]
+aws = [
+    "s3fs>=2023.6.0",
+]
+sql = [
+    "sqlalchemy>=2.0.20",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pre-commit>=3.3.3",
+    "black>=23.7.0",
+    "ipython>=8.14.0",
+    "jupyterlab>=4.0.3",
+    "isort>=5.12.0",
+    "ruff>=0.0.282",
+    "ipykernel>=6.25.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "gamma-config>=0.7.0",
+    "pdbpp>=0.10.3",
+    "openpyxl>=3.1.2",
+    "polars>=0.18.13",
+    "localstack>=2.2.0",
+    "awscli-local>=0.21",
+    "s3fs>=2023.6.0",
+    "sqlalchemy-utils>=0.41.1",
+    "twine>=4.0.2",
+]
+
+[tool.pdm.version]
+source = "file"
+path = "gamma/io/__version__.py"
+
+[tool.pdm.build]
+includes = [
+    "gamma/io",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+src = [
+    "gamma",
+]
+select = [
+    "E",
+    "F",
+    "D",
+]
+ignore = [
+    "F811",
+]
+exclude = [
+    "tests",
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.pytest.ini_options]
+addopts = "--import-mode importlib --cov=gamma.io --cov-report term --cov-report xml:cov.xml"
+testpaths = "tests"
