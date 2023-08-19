@@ -1,0 +1,115 @@
+syntax = "proto3";
+package inventory;
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service InventoryService {
+    rpc GetProductInventoryById(GetProductInventoryByIdRequest) returns (GetProductInventoryByIdResponse) {}
+    rpc GetUnitTypeById(GetUnitTypeByIdRequest) returns (GetUnitTypeByIdResponse) {}
+    rpc GetProductInventoryByUserIDAndQuantity(GetProductInventoryByUserIDAndQuantityRequest) returns (ProductInventoryListResponse) {}
+    rpc GetProductInventoryByUserId(GetProductInventoryByUserIdRequest) returns (ProductInventoryListResponse) {}
+    rpc GetRetailerProductList(GetRetailerProductListRequest) returns (GetRetailerProductListResponse) {}
+    rpc GetAllProductInventories(google.protobuf.Empty) returns (ProductInventoryListResponse) {}
+    rpc ChangeProductInventoryCount(ChangeProductInventoryCountRequest) returns (GetProductInventoryByIdResponse) {}
+    rpc UpdateProductInventoryById(UpdateProductInventoryByIdRequest) returns (UpdateProductInventoryByIdResponse) {}
+    rpc RemoveProductInventoryFromCartById(RemoveProductInventoryFromCartByIdRequest) returns (google.protobuf.Empty) {}
+}
+
+
+message ProductInventory {
+    string id = 1;
+    string name = 2;
+    float cost_price = 3;
+    int64 current_quantity = 4;
+    int64 minimum_stock_quantity = 5;
+    string created_by_id = 6;
+    string image = 7;
+    int64 default_quantity = 8;
+    UnitType unit_type = 9;
+    Category category = 10;
+    string description = 11;
+    optional bool low_quantity = 12;
+    float selling_price = 13;
+}
+
+message ProductAdminList { 
+    int64 stock_quantity = 1; 
+    int64 stock_value = 2; 
+    int64 sold = 3; 
+    string status = 4; 
+    float selling_price = 5; 
+    string business_name = 6; 
+    float cost_price = 7; 
+    string id = 8; 
+    string description = 9; 
+    int64 minimum_stock_quantity = 10; 
+    int64 default_quantity = 11; 
+    string name = 12; 
+    google.protobuf.Timestamp created_at = 13; 
+}
+
+message UnitType {
+    string id = 1;
+    string name = 2;
+}
+
+message Category {
+    string id = 1;
+    string name = 2;
+}
+
+message GetProductInventoryByIdRequest {
+    string id = 1;
+}
+
+message GetUnitTypeByIdRequest {
+    string id = 1;
+}
+
+message GetProductInventoryByIdResponse {
+    ProductInventory product_inventory = 1;
+}
+
+message GetUnitTypeByIdResponse {
+    UnitType unit_type = 1;
+}
+
+message GetProductInventoryByUserIDAndQuantityRequest {
+    string created_by_id = 1;
+    bool low_quantity = 2;
+}
+
+message ChangeProductInventoryCountRequest {
+    string id = 1;
+    string change_type = 2;
+    int64 value = 3;
+}
+
+message ProductInventoryListResponse {
+    repeated ProductInventory product_inventory = 1;
+}
+
+message GetProductInventoryByUserIdRequest {
+    string created_by_id = 1;
+}
+message GetRetailerProductListRequest { 
+    string created_by_id = 1; 
+    string status = 2; 
+    string ordering = 3; 
+} 
+
+message GetRetailerProductListResponse { 
+    repeated ProductAdminList product_inventory = 1; 
+}
+
+message UpdateProductInventoryByIdRequest {
+    ProductInventory product_inventory = 1;
+}
+
+message UpdateProductInventoryByIdResponse {
+    ProductInventory product_inventory = 1;
+}
+
+message RemoveProductInventoryFromCartByIdRequest {
+    string id = 1; 
+}
