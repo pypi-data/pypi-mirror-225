@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: qt-brohub
+Version: 0.0.3
+Summary: Python Broker API client, not your typical bro, but definitely the one you need for trading.
+Home-page: https://github.com/QuantTrade-io/qt-brohub
+Author: Joris Jansen
+Author-email: "Joris Jansen" <github@tpotjj.com>
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# qt-brohub
+Python Broker API client, not your typical bro, but definitely the one you need for trading.
+
+## Installation
+
+```shell
+$ python -m pip install qt-brohub
+```
