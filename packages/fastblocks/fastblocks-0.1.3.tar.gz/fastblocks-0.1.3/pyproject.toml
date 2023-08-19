@@ -1,0 +1,76 @@
+[project]
+name = "fastblocks"
+version = "0.1.3"
+description = "Starlette based app for the rapid delivery HTMX/Jinja template blocks"
+authors = [
+    { name = "lesleslie", email = "les@wedgwoodwebworks.com" },
+]
+dependencies = [
+    "starlette>=0.31.0",
+    "asgi-htmx>=0.1.0",
+    "asgi-logger>=0.1.0",
+    "brotli-asgi>=1.4.0",
+    "secure>=0.3.0",
+    "jinja2-async-environment>=0.1.10",
+    "cashews>=6.2.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.license]
+text = "BSD-3-Clause"
+
+[project.optional-dependencies]
+sitemap = [
+    "asgi-sitemaps>=1.0.0",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pre-commit>=3.3.3",
+    "crackerjack>=0.3.14",
+    "-e file:///${PROJECT_ROOT}/../starlette-async-jinja#egg=starlette-async-jinja",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+fix = true
+show-fixes = true
+show-source = true
+
+[tool.ruff.isort]
+force-single-line = true
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.black]
+target-version = [
+    "py311",
+]
+
+[tool.refurb]
+enable_all = true
+
+[tool.pyanalyze]
+paths = [
+    "fastblocks",
+]
+
+[tool.pyright]
+include = [
+    "fastblocks",
+]
+reportMissingImports = true
+reportMissingTypeStubs = false
+pythonVersion = "3.11"

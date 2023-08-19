@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: fastblocks
+Version: 0.1.3
+Summary: Starlette based app for the rapid delivery HTMX/Jinja template blocks
+Author-Email: lesleslie <les@wedgwoodwebworks.com>
+License: BSD-3-Clause
+Requires-Python: >=3.11
+Requires-Dist: starlette>=0.31.0
+Requires-Dist: asgi-htmx>=0.1.0
+Requires-Dist: asgi-logger>=0.1.0
+Requires-Dist: brotli-asgi>=1.4.0
+Requires-Dist: secure>=0.3.0
+Requires-Dist: jinja2-async-environment>=0.1.10
+Requires-Dist: cashews>=6.2.0
+Requires-Dist: asgi-sitemaps>=1.0.0; extra == "sitemap"
+Provides-Extra: sitemap
+Description-Content-Type: text/markdown
+
+<p align="center">
+<img src="https://drive.google.com/uc?id=1pMUqyvgMkhGYoLz3jBibZDl3J63HEcCC">
+</p>
+
+# FastBlocks
+
+[![Code style: crackerjack](https://img.shields.io/badge/code%20style-crackerjack-000042)](https://github.com/lesleslie/crackerjack)
+
+
+FastBlocks is an asynchronous web application, inspired by FastApi
+and based on Starlette, flavoured for rapid delivery of server-side
+rendered HTMX/Jinja template blocks.
+
+## Features
+
+- Asynchronous
+  [Jinja template loaders, environment](https://github.com/lesleslie/jinja2-async-environment) &
+  [template rendering](https://github.com/lesleslie/starlette-async-jinja)
+- Integrated [Jinja Partials](https://github.com/mikeckennedy/jinja_partials)
+  and [Jinja Fragments](https://github.com/sponsfreixes/jinja2-fragments)
+- Client-side Redis caching
+- [Asynchronous Component Base](https://github.com/lesleslie/acb)
+- Pydantic v2 / SQLModel support
+- Dependency injection
+
+
+## Getting Started
+
+
+## Acknowledgements
+
+
+## License
+
+BSD-3-Clause
