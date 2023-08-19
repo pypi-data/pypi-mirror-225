@@ -1,0 +1,58 @@
+protocol = "bronkhorst-mfc-flow-bus"
+doc = ""
+traits = ["has-transformed-position", "has-limits", "has-position", "uses-serial", "uses-uart", "is-daemon"]
+hardware = ["bronkhorst:el-flow"]
+
+[links]
+source = "https://github.com/yaq-project/yaqd-bronkhorst"
+bugtracker = "https://github.com/yaq-project/yaqd-bronkhorst/-/issues"
+
+[installation]
+PyPI = "https://pypi.org/project/yaqd-bronkhorst"
+
+[[types]]
+type = "record"
+name = "calibration_point"
+fields = [{"name"="setpoint", "type"="double"},
+          {"name"="measured", "type"="double"}]
+
+[config]
+
+[config.baud_rate]
+default = 38400
+
+[config.calibration]
+type = {"type"="array", "items"="calibration_point"}
+doc = "Array of calibration points for MFC, in units."
+default = [{"setpoint"=0.0, "measured"=0.0}, {"setpoint"=1000000.0, "measured"=1000000.0}]
+
+[state]
+
+[messages]
+
+[messages.get_fluid_name]
+response = "string"
+doc = "Read fluid name from MFC memory."
+
+[messages.get_temperature]
+response = "double"
+doc = "MFC current temperature."
+
+[messages.get_temperature_units]
+response = "string"
+doc = "Units of temperature returned by get_temperature."
+
+[properties]
+
+[properties.fluid_name]
+type = "string"
+getter = "get_fluid_name"
+control_kind = "normal"
+record_kind = "metadata"
+
+[properties.temperature]
+type = "double"
+getter = "get_temperature"
+units_getter = "get_temperature_units"
+control_kind = "normal"
+record_kind = "metadata"
