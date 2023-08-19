@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: amrnet
+Version: 0.1.0
+Summary: Deep Learning library
+Author: Amr Hegazy
+Author-email: amr.hegazy128@gmail.com
+License: MIT
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+
+# AmrNet: Deep Learning Library
+
+
+
+AmrNet is a lightweight deep learning library designed for simplicity and ease of use. It provides a set of basic tools to help you quickly build and train neural networks.
+
+
+
+<!-- ## Features
+
+
+
+- **Simple API:** Easily define, train, and evaluate neural networks with just a few lines of code.
+
+- **Modularity:** Construct networks using pre-built layers or create custom layers for more flexibility.
+
+- **Optimizers:** Choose from a variety of gradient descent optimizers to train your models.
+
+- **Example Usage:** Check out the `examples` directory for code snippets and sample projects.
+
+
+
+## Installation
+
+
+
+```bash
+
+pip install amrnet -->
+
