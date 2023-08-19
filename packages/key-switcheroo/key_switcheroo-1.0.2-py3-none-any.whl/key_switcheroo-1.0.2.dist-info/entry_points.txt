@@ -1,0 +1,5 @@
+[console_scripts]
+switcheroo_configure=switcheroo.base.scripts.configure:run_with_cli
+switcheroo_publish=switcheroo.ssh.scripts.publish:main
+switcheroo_retrieve=switcheroo.ssh.scripts.retrieve:main
+
