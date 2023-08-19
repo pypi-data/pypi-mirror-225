@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: drawio-cli-exporter
+Version: 0.1.0
+Summary: 
+License: Apache-2
+Author: Jacques Supcik
+Author-email: jacques@supcik.net
+Requires-Python: >=3.10
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: psutil (>=5.9.5,<6.0.0)
+Description-Content-Type: text/markdown
+
+# drawio-cli-exporter
+
