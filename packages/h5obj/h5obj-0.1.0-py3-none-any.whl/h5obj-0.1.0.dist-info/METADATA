@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: h5obj
+Version: 0.1.0
+Summary: Store native Python objects in HDF5 files using strings in json format. Defines wrappers for h5py.File and h5py.Group.
+Project-URL: Source, https://github.com/proggy/h5obj
+Project-URL: Homepage, https://github.com/proggy/h5obj
+Project-URL: Bug Tracker, https://github.com/proggy/h5obj/issues
+Author-email: Daniel Jung <proggy-contact@mailbox.org>
+Maintainer-email: Daniel Jung <proggy-contact@mailbox.org>
+License-File: LICENSE.txt
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: cofunc
+Requires-Dist: h5py
+Requires-Dist: numpy
+Description-Content-Type: text/markdown
+
+h5obj
+=====
+
+Store native Python objects in HDF5 files using strings in json format.
+Defines wrappers for h5py.File and h5py.Group.
+
+
+
+Copyright notice
+----------------
+
+Copyright (C) 2013-2023 Daniel Jung
+Contact: proggy-contact@mailbox.org
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
