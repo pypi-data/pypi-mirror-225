@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: devoir
+Version: 1.0.0
+Summary: "Quickly set up a working environment to edit a file.
+Home-page: http://framagit.org/spalax/devoir
+Author: Louis Paternault
+Author-email: spalax@gresille.org
+License: GPLv3 or any later version
+Project-URL: Documentation, http://devoir.readthedocs.io
+Project-URL: Source, https://framagit.org/spalax/devoir
+Project-URL: Tracker, https://framagit.org/spalax/devoir/issues
+Keywords: work setup
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Utilities
+Requires-Python: <4,>=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+License-File: AUTHORS
+
+Devoir ✏️ Quickly set up a working environment to edit a file
+=============================================================
+
+When editing a LaTeX file, I want the file being edited with `vim <http://www.vim.org>`_, the compiled file displayed using a pdf viewer, and latex being run whenever something changes, using `latexmk <http://users.phys.psu.edu/~collins/software/latexmk-jcc/>`_. But wait, there is more.
+
+- I often start a LaTeX document by copying an existing one, as a template.
+- The pdf file may or may not exist when I start working: if I have already
+  been working on this file before, the pdf file exists; if not, it does not
+  exists, and my pdf viewer won't start on a non-existing file.
+
+This program aims to automate all this process. I built it to process LaTeX
+files, but it should work with other files too.
+
+What's new?
+-----------
+
+See `changelog <https://git.framasoft.org/spalax/devoir/blob/main/CHANGELOG.md>`_.
+
+Download and install
+--------------------
+
+See the end of list for a (quick and dirty) Debian package.
+
+* From sources:
+
+  * Download: https://pypi.python.org/pypi/devoir
+  * Install (in a `virtualenv`, if you do not want to mess with your distribution installation system)::
+
+        python3 setup.py install
+
+* From pip::
+
+    pip install devoir
+
+* Quick and dirty Debian (and Ubuntu?) package
+
+  This requires `stdeb <https://github.com/astraw/stdeb>`_ to be installed::
+
+      python3 setup.py --command-packages=stdeb.command bdist_deb
+      sudo dpkg -i deb_dist/devoir-<VERSION>_all.deb
+
+Documentation
+-------------
+
+* The compiled documentation is available on `readthedocs <http://devoir.readthedocs.io>`_
+
+* To compile it from source, download and run::
+
+      cd doc && make html
