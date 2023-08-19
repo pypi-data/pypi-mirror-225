@@ -1,0 +1,59 @@
+// Executable Shlaer-Mellor Slass Model syntax for *.xsm files
+
+// State Model
+// In Executable UML a state model is either a lifecycle or an assigner
+statemodel = EOL* metadata? domain_header (lifecycle / assigner) events* initial_transitions* state_block* EOF
+
+// Metadata
+metadata = metadata_header data_item* // Header and set of metadata items
+metadata_header = "metadata" EOL* // Metadata header
+data_item = INDENT name SP* (resource_item / text_item) EOL* // Metadata item
+resource_item = '>' SP* name
+text_item = ':' SP* r'.*' // Field content can be any text
+
+// Scope headers
+domain_header = "domain" SP name EOL*
+lifecycle = "class" SP name EOL*
+assigner = "relationship" SP rnum EOL*
+
+// Events
+events = events_header event_spec* block_end
+events_header = "events" EOL*
+event_spec = INDENT event_name EOL*
+event_name = name
+
+// Initial transitions
+initial_transitions = it_header transition* block_end
+it_header = "initial transitions" EOL*
+
+// State block
+state_block = state_header activity transitions? block_end
+// state_header = "state" SP state_spec signature? nl
+state_header = "state" SP state_name signature? (SP DELETION)? EOL*
+//state_spec = state_name (SP DELETION)?
+signature = '()' / '(' SP? parameter_set SP? ')'
+parameter_set = parameter (',' SP parameter)*
+parameter = parameter_name SP? ':' SP? type_name
+parameter_name = name
+type_name = name
+DELETION = r'!*'
+activity = activity_header body_line* // A block of activity text (not parsed further)
+activity_header = "activity" EOL*
+transitions = transition_header transition*
+transition_header = "transitions" EOL*
+transition = INDENT event_name (SP '>' SP state_name)? EOL*
+state_name = name
+
+// Elements
+name = word (delim word)* r'\?'? // A name is a sequence of one or more words separated by delimiters with optional ?
+word = r"[A-Za-z][A-Za-z0-9']*" // Word beginning with an alpha character allowing apostrophe for contractions
+body_line = INDENT r'.*\n' // An unstructured line of text for capturing action language to be parsed elsewhere
+rnum = r'O?R[1-9][0-9]*' // Relationship number
+delim = r'[ _]' // Delimiter used inside of names
+INDENT = "    "  // Need INDENT for clarity and to signal unstructured lines of text
+block_end = "--" EOL*  // Signifies end of a block (within section)
+
+// Whitespace and comments
+EOL = SP* COMMENT? '\n' // end of line: Comments, blank lines, whitespace we can omit from the parser result
+COMMENT = '//' r'.*' // Comment slashes don't work if included in the regular expression for some reason
+SP = " "
