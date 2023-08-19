@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: sotai
+Version: 0.4.2
+Summary: A Python Library For Calibrated Modeling Built With PyTorch
+Author-email: SOTAI <support@sotai.ai>
+Maintainer-email: SOTAI <support@sotai.ai>
+License: MIT
+Project-URL: Source, https://github.com/SOTAI-Labs/sotai
+Project-URL: Documentation, https://github.com/SOTAI-Labs/sotai/tree/main/docs
+Project-URL: Feature Requests, https://github.com/SOTAI-Labs/pytorch-calibrated/issues
+Project-URL: Bug Reports, https://github.com/SOTAI-Labs/pytorch-calibrated/issues
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: <3.11,>=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# SOTAI
+
+[![](https://img.shields.io/pypi/v/sotai)](https://pypi.org/project/sotai/) [![](https://github.com/SOTAI-Labs/sotai/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/SOTAI-Labs/sotai/actions/workflows/tests.yml)
+
+A Library For Interpretable Machine Learning. This library is a PyTorch implementation of modeling techniques found in [Monotonic Calibrated Interpolated Look-Up Tables](https://jmlr.org/papers/volume17/15-243/15-243.pdf).
+
+Installing the package:
+
+```shell
+pip install sotai
+```
+
+Importing the package:
+
+```python
+import sotai
+```
+
+## SDK Documentation
+
+You can find documentation for this SDK at [https://docs.sotai.ai/v/sdk-ref](https://docs.sotai.ai/v/sdk-ref) or in the repo [docs folder](./).
+
+## Web Client User Documentation
+
+You can find documentation for how to use the hosted web client at [https://docs.sotai.ai/](https://docs.sotai.ai/)
+
+## Contribution Guidelines
+
+See the guide on [contributing](CONTRIBUTING.md) for full details on how to contribute to the library. For any feature and/or bug requests, visit our [Issues](https://github.com/SOTAI-Labs/sotai/issues).
+
+## Examples
+
+For detailed examples on how to use the library, see [examples](https://github.com/SOTAI-Labs/sotai/tree/main/docs/examples).
+
+## License
+
+[MIT](../LICENSE/)
