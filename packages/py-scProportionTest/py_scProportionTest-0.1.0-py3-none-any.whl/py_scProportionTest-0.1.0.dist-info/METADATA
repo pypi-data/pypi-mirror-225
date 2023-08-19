@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: py-scProportionTest
+Version: 0.1.0
+Summary: Python package to evaluate differences in cell type proportions
+Home-page: https://github.com/SamuelAMiller1/py-scProportionTest
+Author: Sam Miller
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: statsmodels
+Requires-Dist: matplotlib
+Requires-Dist: tqdm
+
+# py-scProportionTest
