@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pytimes"
+version = "1.10.0"
+description = "Descriptively reference time ranges in Python. `ONE_DAY` instead of `86400`."
+authors = ["Wyko ter Haar <wyko.ter.haar@ing.com>"]
+readme = "README.md"
+packages = [
+	{ include = "times" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
