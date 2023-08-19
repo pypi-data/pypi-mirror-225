@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+
+name = "datatransport"
+dynamic = ["version"]
+description = "Data Transport Network"
+readme = "README.rst"
+requires-python= ">= 3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name= 'Todd Valentic', email='todd.valentic@gmail.com' }
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "python-dateutil",
+    "pytimeparse2",
+    "sapphire_config",
+    "texttable",
+    "importlib_resources>1.3; python_version < '3.10'"
+]
+
+[project.optional-dependencies]
+devel = [
+    'black',
+    'build',
+    'pyfakefs',
+    'pylint',
+    'pytest',
+    'black',
+    ]
+
+[project.urls]
+homepage="https://github.com/valentic/datatransport"
+repository="https://github.com/valentic/datatransport"
+
+[project.scripts]
+    archivegroups = "datatransport.apps.archivegroups:main"
+    directoryservice = "datatransport.apps.directoryservice:main"
+    diskmonitor = "datatransport.apps.diskmonitor:main"
+    filepost = "datatransport.apps.filepost:main"
+    filewatch = "datatransport.apps.filewatch:main"
+    groupcontrol = "datatransport.apps.groupcontrol:main"
+    instrumentstatus = "datatransport.apps.InstrumentStatus:main"
+    newsgateway = "datatransport.apps.newsgateway:main"
+    newsgroupmonitor = "datatransport.apps.NewsgroupMonitor:main"
+    plottool = "datatransport.apps.PlotTool:main"
+    postdatafiles = "datatransport.apps.postdatafiles:main"
+    realtimefeed = "datatransport.apps.realtimefeed:main"
+    resourcemonitor = "datatransport.apps.resourcemonitor:main"
+    scheduler = "datatransport.apps.scheduler:main"
+    watchurl = "datatransport.apps.watchurl:main"
+
+    cancelnewsgroup = "datatransport.commands.cancelnewsgroup:main"
+    console = "datatransport.commands.console:main"
+    listnewsgroups = "datatransport.commands.listnewsgroups:main"
+    transportctl = "datatransport.commands.transportctl:main"
+    transportd = "datatransport.commands.transportd:main"
+    transport-create-app = "datatransport.commands.transport_create_app:main"
+    transportps = "datatransport.commands.transportps:main"
+    viewlog = "datatransport.commands.viewlog:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "datatransport.metadata.__version__"}
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib"
+]
+
