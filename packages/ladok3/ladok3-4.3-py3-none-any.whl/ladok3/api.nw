@@ -1,0 +1,1370 @@
+\chapter{Overview of helper functions and methods}
+
+We will now document some possible API calls to LADOK.
+We also document the tests of these functions to illustrate their use.
+
+
+\section{Example outputs and test code for the API}
+
+We will provide both example outputs and test code.
+The test code is the test cases we want to be able to run with [[pytest]] 
+later.
+We will design the test functions in such a way that we can reuse them to show 
+the example outputs from the API requests.
+
+We will use the following to test the API methods.
+<<test api.py>>=
+import json
+import ladok3
+import os
+
+ladok = ladok3.LadokSession(
+            os.environ["LADOK_INST"],
+            vars={"username": os.environ["LADOK_USER"],
+                  "password": os.environ["LADOK_PASS"]},
+            test_environment=True) # for experiments
+
+student_uid = "de709f81-a867-11e7-8dbf-78e86dc2470c"
+dasak_instance_id = "39c56d6a-73d8-11e8-b4e0-063f9afb40e3"
+dasak_education_id = "39cf7fb4-73d8-11e8-afa7-8e408e694e54"
+dasak_round_id = "79a8cb1b-73da-11e8-b4e0-063f9afb40e3"
+LAB1_uid = "39ca27fe-73d8-11e8-afa7-8e408e694e54"
+LAB1_instance_id = "39ca2861-73d8-11e8-b4e0-063f9afb40e3"
+KTH_org_id = "2474f616-dc41-11e8-8cc1-eaeeb71b497f"
+
+<<test functions>>
+@ We will then add [[test_X()]] functions in the [[<<test functions>>]] code 
+block that will perform the tests.
+These test functions will also show how to use the functions.
+Also we will include example output from the function calls in the tests.
+This is useful for development and when LADOK changes anything in the API.
+\begin{pycode}[apitest]
+import json
+import ladok3
+import os
+
+ladok = ladok3.LadokSession(
+            os.environ["LADOK_INST"],
+            vars={"username": os.environ["LADOK_USER"],
+                  "password": os.environ["LADOK_PASS"]},
+            test_environment=True) # for experiments
+
+student_uid = "de709f81-a867-11e7-8dbf-78e86dc2470c"
+dasak_instance_id = "39c56d6a-73d8-11e8-b4e0-063f9afb40e3"
+dasak_education_id = "39cf7fb4-73d8-11e8-afa7-8e408e694e54"
+dasak_round_id = "79a8cb1b-73da-11e8-b4e0-063f9afb40e3"
+LAB1_uid = "39ca27fe-73d8-11e8-afa7-8e408e694e54"
+LAB1_instance_id = "39ca2861-73d8-11e8-b4e0-063f9afb40e3"
+KTH_org_id = "2474f616-dc41-11e8-8cc1-eaeeb71b497f"
+\end{pycode}
+
+
+\section{HTTP queries to LADOK}
+
+We will make all queries to LADOK over HTTP as they provide a REST API.
+This means that we must keep track of some headers and whether we use the test 
+or production system.
+
+\subsection{Data about the LADOK session}
+
+The data that we must keep track of is which URL to use, \ie which system to 
+access: the production system or test system.
+To run against the test environment, change the base URL to
+\begin{center}
+\url{https://www.test.ladok.se}\footnote{%
+  According to 
+  \url{https://ladok.se/drift-och-support/produktionsmiljo-for-nya-ladok}.
+}
+\end{center}
+<<LadokSession constructor body>>=
+self.base_url = "https://www.start.ladok.se" if not test_environment \
+  else "https://www.test.ladok.se"
+self.base_gui_url = self.base_url + "/gui"
+self.base_gui_proxy_url = self.base_gui_url + "/proxy"
+@
+
+We also set the headers that we will accept.
+<<LadokSession constructor body>>=
+self.headers = { 'Accept' : 'application/vnd.ladok-resultat+json, \
+application/vnd.ladok-kataloginformation+json, \
+application/vnd.ladok-studentinformation+json, \
+application/vnd.ladok-studiedeltagande+json, \
+application/vnd.ladok-utbildningsinformation+json, \
+application/vnd.ladok-examen+json, application/vnd.ladok-extintegration+json, \
+application/vnd.ladok-uppfoljning+json, application/vnd.ladok-extra+json, \
+application/json, text/plain' }
+@
+
+
+\subsection{GET, PUT and POST queries}
+
+To make things easier, we will add four methods: [[get_query]], [[put_query]], 
+[[post_query]] and [[del_query]], which are shortcuts to make GET, PUT, POST 
+and DEL queries to LADOK.
+
+We note that we must record the time of the last GET request to track the 
+freshness of the XSRF token.
+The other requests track that by the use of the XSRF token itself.
+We'll get back to this in \cref{XSRFtoken}.
+<<LadokSession data methods>>=
+def get_query(self, path, content_type="application/vnd.ladok-resultat+json"):
+  """Returns GET query response for path on the LADOK server"""
+  headers = self.headers.copy()
+  headers["Content-Type"] = content_type
+
+  <<record time of request>>
+
+  return self.session.get(
+    url=self.base_gui_proxy_url + path,
+    headers=headers)
+
+def put_query(self, path, put_data,
+  content_type="application/vnd.ladok-resultat+json"):
+  """Returns PUT query response for path on the LADOK server"""
+  headers = self.headers.copy()
+  headers["Content-Type"] = content_type
+  headers["X-XSRF-TOKEN"] = self.xsrf_token
+  headers["Referer"] = self.base_gui_url
+
+  return self.session.put(
+    url=self.base_gui_proxy_url + path,
+    json=put_data,
+    headers=headers)
+
+def post_query(self, path, post_data,
+  content_type="application/vnd.ladok-resultat+json"):
+  """Returns POST query response for path on the LADOK server"""
+  headers = self.headers.copy()
+  headers["Content-Type"] = content_type
+  headers["X-XSRF-TOKEN"] = self.xsrf_token
+  headers["Referer"] = self.base_gui_url
+
+  return self.session.post(
+    url=self.base_gui_proxy_url + path,
+    json=post_data,
+    headers=headers)
+
+def del_query(self, path):
+  """Returns GET query response for path on the LADOK server"""
+  headers = self.headers.copy()
+  headers["X-XSRF-TOKEN"] = self.xsrf_token
+
+  return self.session.delete(
+    url=self.base_gui_proxy_url + path,
+    headers=headers)
+@
+
+\subsection{The XSRF token}\label{XSRFtoken}
+
+We note that the PUT, POST and DEL queries require an XSRF token.
+They all get it through [[self.xsrf_token]].
+We provide a property for that.
+LADOK sets the XSRF token when we make our first request.
+If we haven't made any request, we don't have one.
+Also, if too long time passes between requests, the existing XSRF token will be 
+invalidated by LADOK.
+<<LadokSession data methods>>=
+@property
+def xsrf_token(self):
+  <<ensure the XSRF token is fresh>>
+
+  cookies = self.session.cookies.get_dict()
+  return cookies["XSRF-TOKEN"]
+@
+
+Now, we must ensure there is a fresh XSRF token.
+There are two cases:
+\begin{enumerate}
+\item
+If we don't have an XSRF token, this means that we must log in to get one.
+Since we use [[weblogin]], we'll simply perform a GET request, \ie one that 
+doesn't require an XSRF token.
+\item
+If we have one, it might be expired due to a timeout.
+In this case, we must log in again to get a new one.
+\end{enumerate}
+This means that we want to keep track of when the last request happened, so we 
+can determine if our XSRF token is fresh or not.
+<<LadokSession constructor body>>=
+self.__access_time = None
+self.__timeout = datetime.timedelta(minutes=15)
+<<record time of request>>=
+self.__access_time = datetime.datetime.now()
+@ We note here that we assume that whenever the XSRF token is requested, a PUT, 
+POST or DEL request will soon follow.
+Hence, we can update the time of the last request whenever the XSRF token is 
+read.
+<<ensure the XSRF token is fresh>>=
+if not self.__access_time \
+      or datetime.datetime.now()-self.__access_time > self.__timeout:
+  self.user_info_JSON() # trigger login
+else:
+  <<record time of request>>
+@
+
+
+\section{Cleaning data for printing}
+
+We sometimes want to print the data, for instance, example output in this 
+document.
+For this reason we introduce some cleaning functions.
+These recursively transcends the JSON structure removing the data that should 
+be removed.
+<<functions>>=
+def clean_data(json_obj):
+  remove_links(json_obj)
+  pseudonymize(json_obj)
+  return json_obj
+@
+
+The [[remove_links]] functions removes the [[link]] key--value pairs.
+The [[link]] values contains URLs for all requests that data are based on.
+<<functions>>=
+def remove_links(json_obj):
+  """Recursively removes all "link" keys and values"""
+  if isinstance(json_obj, dict):
+    if "link" in json_obj:
+      json_obj.pop("link")
+    for key, value in json_obj.items():
+      remove_links(value)
+  elif isinstance(json_obj, list):
+    for item in json_obj:
+      remove_links(item)
+@
+
+The [[pseudonymize]] function replaces names and personnummer with dummy 
+entries.
+<<functions>>=
+def pseudonymize(json_obj):
+  """Recursively pseudonymizes a JSON data record"""
+  if isinstance(json_obj, dict):
+    if "Fornamn" in json_obj:
+      json_obj["Fornamn"] = "Student"
+    if "Efternamn" in json_obj:
+      json_obj["Efternamn"] = "Studentzadeh"
+    if "Personnummer" in json_obj:
+      json_obj["Personnummer"] = "191234561234"
+    if "Epostadress" in json_obj:
+      json_obj["Epostadress"] = "user@domain.se"
+    if "Anvandarnamn" in json_obj:
+      json_obj["Anvandarnamn"] = "user@domain.se"
+    if "Utdelningsadress" in json_obj:
+      json_obj["Utdelningsadress"] = "Stora vägen 1"
+    if "Postnummer" in json_obj:
+      json_obj["Postnummer"] = "12345"
+    if "Postort" in json_obj:
+      json_obj["Postort"] = "Byn"
+    if "Telefonnummer" in json_obj:
+      json_obj["Telefonnummer"] = "0701234567"
+    for value in json_obj.values():
+      pseudonymize(value)
+  elif isinstance(json_obj, list):
+    for item in json_obj:
+      pseudonymize(item)
+@
+
+
+\chapter{Grade-related API calls}
+
+\section{[[grade_scales_JSON]]}\label{GradeScalesJSON}
+
+To request the grading scales from LADOK, we request all of them and return a 
+list of JSON data objects containing the grading scale data.
+<<LadokSession data methods>>=
+def grade_scales_JSON(self):
+  response = self.get_query(
+    "/kataloginformation/internal/grunddata/betygsskala",
+    content_type="application/vnd.ladok-kataloginformation+json;charset=UTF-8")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Betygsskala"]
+  raise Exception(f"can't fetch grading scales: {response.text}")
+@
+
+We add the following test.
+If we can convert the return value do JSON, it's probably correct.
+(No this isn't the best of tests.)
+<<test functions>>=
+def test_grade_scales_JSON():
+  assert ladok.grade_scales_JSON()
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+print(json.dumps(
+  ladok3.clean_data(ladok.grade_scales_JSON()),
+  indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\chapter{Student-related API calls}
+
+Here we have collected API-calls related to students.
+
+\section{[[get_student_data_JSON]] and [[get_student_data_by_uid_JSON]]}
+
+This method fetches the basic information about a student based on 
+personnummer.
+To pull the data based on personnummer we must actually form a search query.
+(This code is a merge of a slight adaptation of the code by Baltatzis and that 
+of Chip.)
+<<LadokSession data methods>>=
+#####################################################################
+#
+# get_student_data_JSON
+#
+# person_nr          - personnummer, flera format accepteras enligt regex:
+#                      (\d\d)?(\d\d)(\d\d\d\d)[+\-]?(\w\w\w\w)
+#
+# lang               - language code 'en' or 'sv', defaults to 'sv'
+#
+# RETURNERAR en dictionary med för- och efternamn and more
+def get_student_data_JSON(self, person_nr_raw, lang = 'sv'):
+  person_nr =  format_personnummer(person_nr_raw)
+  
+  if not person_nr: raise Exception('Invalid person nr ' + person_nr_raw)
+
+  response = self.session.get(
+    url=self.base_gui_proxy_url +
+      "/studentinformation/internal/student/filtrera"
+      f"?personnummer={person_nr}"
+      "&limit=2&page=1"
+      "&orderby=EFTERNAMN_ASC&orderby=FORNAMN_ASC"
+      "&orderby=PERSONNUMMER_ASC",
+    headers=self.headers)
+  
+  if response.status_code == requests.codes.ok:
+    record = response.json()["Resultat"]
+  else:
+    raise ValueError(
+      f"can't find student based on personnummer {person_nr}: "
+      f"bad response: {response.text}")
+
+  if len(record) != 1:
+    raise ValueError(
+      f"can't find student based on personnummer {person_nr}: "
+      f"not a unique match: {record}")
+
+  return record[0]
+@
+
+To test this function, we do the following.
+<<test functions>>=
+def test_get_student_data_JSON():
+  assert ladok.get_student_data_JSON("8506097891")
+@
+
+We also have the corresponding for LADOK's UID, which fetches the record 
+directly.
+<<LadokSession data methods>>=
+#####################################################################
+#
+# get_student_data_by_uid_JSON
+#
+# uid                - Ladok ID
+#
+# RETURNERAR en dictionary med för- och efternamn and more
+def get_student_data_by_uid_JSON(self, uid):
+  response = self.get_query(
+    f"/studentinformation/internal/student/{uid}",
+    content_type="application/vnd.ladok-studentinformation+json;charset=UTF-8")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise AttributeError(f"can't fetch student attributes by LADOK ID {uid}")
+@
+
+To test this function, we do the following.
+<<test functions>>=
+def test_get_student_data_by_uid_JSON():
+  assert ladok.get_student_data_by_uid_JSON(student_uid)
+@
+
+The result is the same for both method.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+result = ladok.get_student_data_by_uid_JSON(student_uid)
+print(json.dumps(ladok3.clean_data(result), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{[[get_student_contact_data_JSON]]}
+
+We want to get the contact info for a student from LADOK.
+This data includes email, postal address and phone number.
+It also includes when they were last updated.
+<<LadokSession data methods>>=
+def get_student_contact_data_JSON(self, student_id):
+  """Returns contact data for student with student_id, returns JSON"""
+  response = self.get_query(
+    f"/studentinformation/internal/student/{student_id}/kontaktuppgifter",
+    "application/vnd.ladok-studentinformation+json")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception("can't get contact data for "
+                 f"student {student_id}: {response.text}")
+@
+
+We test this function.
+<<test functions>>=
+def test_get_student_contact_data_JSON():
+  assert ladok.get_student_contact_data_JSON(student_uid)
+@
+
+The output is as follows.
+\begin{pycode}[apitest][numbers=left,firstnumber=last]
+print(r"\begin{minted}{JSON}")
+result = ladok.get_student_contact_data_JSON(student_uid)
+print(json.dumps(ladok3.clean_data(result), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{[[get_student_suspensions_JSON]]}
+
+We want to check if any student is suspended from studies.
+We can get a list of all suspension periods from LADOK.
+<<LadokSession data methods>>=
+def get_student_suspensions_JSON(self, student_id):
+  """
+  Returns suspensions from studies for student with student_id,
+  returns JSON
+  """
+  response = self.get_query(
+    f"/studentinformation/internal/avstangning/student/{student_id}",
+    "application/vnd.ladok-studentinformation+json")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception("can't get suspensions for "
+                 f"student {student_id}: {response.text}")
+@
+
+We test this function.
+<<test functions>>=
+def test_get_student_suspensions_JSON():
+  assert ladok.get_student_suspensions_JSON(student_uid)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+result = ladok.get_student_suspensions_JSON(student_uid)
+print(json.dumps(ladok3.clean_data(result), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+
+\section{[[registrations_JSON]]}
+
+This methods returns \emph{all} registrations for a student, \ie registrations 
+on courses and programmes.
+<<LadokSession data methods>>=
+def registrations_JSON(self, student_id):
+  """Return all registrations for student with ID student_id."""
+  response = self.get_query(
+    "/studiedeltagande/internal/tillfallesdeltagande/kurstillfallesdeltagande"
+      f"/student/{student_id}",
+    "application/vnd.ladok-studiedeltagande+json")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Tillfallesdeltaganden"]
+  raise Exception("can't get registrations for "
+                  f"student {student_id}: {response.text}")
+@
+
+We provide the following test.
+<<test functions>>=
+def test_registrations_JSON():
+  results = ladok.registrations_JSON(student_uid)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.registrations_JSON(student_uid)
+print(json.dumps(ladok3.clean_data(results), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+
+\section{[[registrations_on_course_JSON]]}
+
+This method returns all registrations for a particular course for a particular 
+student.
+This way we can check if a student has been registered several times on a 
+course.
+<<LadokSession data methods>>=
+def registrations_on_course_JSON(self,
+    course_education_id, student_id):
+  """Return a list of registrations on course with education_id for student 
+  with student_id. JSON format."""
+  response = self.get_query(
+    "/studiedeltagande/internal/tillfallesdeltagande"
+      f"/utbildning/{course_education_id}/student/{student_id}",
+    "application/vnd.ladok-studiedeltagande+json")
+  
+  if response.status_code == requests.codes.ok:
+    return response.json()["Tillfallesdeltaganden"]
+  raise Exception("can't get registrations for "
+                  f"student {student_id} on course {course_education_id}: "
+                  f"{response.text}")
+@
+
+We add the following test.
+<<test functions>>=
+def test_registrations_on_course_JSON():
+  results = ladok.registrations_on_course_JSON(dasak_education_id, student_uid)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.registrations_on_course_JSON(dasak_education_id, student_uid)
+print(json.dumps(ladok3.clean_data(results), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+
+\chapter{Course-related API calls}
+
+\section{[[search_course_rounds_JSON]]}
+
+We want to search for course rounds by one or more keys.
+<<LadokSession data methods>>=
+def search_course_rounds_JSON(self, /, **kwargs):
+  """Query LADOK about course rounds, possible keys:
+  code, round_code, name
+  """
+  url = "/resultat/internal/kurstillfalle/filtrera?"
+
+  if "code" in kwargs:
+    url += f"kurskod={kwargs['code']}&"
+  if "name" in kwargs:
+    url += f"benamning={kwargs['name']}&"
+  if "round_code" in kwargs:
+    url += f"tillfalleskod={kwargs['round_code']}&"
+
+  url += "page=1&limit=400&sprakkod=sv"
+
+  response = self.get_query(url)
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Resultat"]
+  raise Exception(f"search_course_rounds_JSON failed: {response.text}")
+@
+
+We add the following test.
+<<test functions>>=
+def test_search_course_rounds_JSON():
+  results = ladok.search_course_rounds_JSON(code="DD1317")
+  assert results
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+prgi = ladok.search_course_rounds_JSON(code="DD1317")
+ladok3.clean_data(prgi)
+print(json.dumps(prgi, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+
+\section{[[course_rounds_JSON]]}
+
+This method fetches all course rounds that uses the given course instance.
+<<LadokSession data methods>>=
+def course_rounds_JSON(self, course_instance_id):
+  """Requires course instance ID"""
+  response = self.get_query(
+    f"/resultat/internal/kurstillfalle/kursinstans/{course_instance_id}")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Utbildningstillfalle"]
+  raise Exception(f"can't list course round for course {course_instance_id}: "
+                  f"{response.text}")
+@
+
+We test this method as follows.
+<<test functions>>=
+def test_course_rounds_JSON():
+  results = ladok.course_rounds_JSON(dasak_instance_id)
+  assert json.dumps(results[:1]+results[-1:], indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.course_rounds_JSON(dasak_instance_id)
+
+ladok3.clean_data(results)
+print(json.dumps(results[:1]+results[-1:], indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{[[course_instance_JSON]]}
+
+This method fetches the data for a given course instance.
+It requires the course instance ID.
+(This is a slightly rewritten version of Maguire's original method.)
+<<LadokSession data methods>>=
+def course_instance_JSON(self, instance_id):
+  """Returns course instance data for a course with instance ID instance_id"""
+  response = self.get_query(
+    f"/resultat/internal/utbildningsinstans/kursinstans/{instance_id}")
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(f"can't get course instance data for {instance_id}: "
+                  f"{response.text}")
+@
+
+We add the following test.
+<<test functions>>=
+def test_course_instance_JSON():
+  results = ladok.course_instance_JSON(dasak_instance_id)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.course_instance_JSON(dasak_instance_id)
+
+ladok3.clean_data(results)
+print(json.dumps(results, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{Course components}
+
+There are two ways to get the components for a course.
+
+\subsection{[[course_round_components_JSON]]}
+
+This method fetches the course components of a course round from LADOK.
+It requires the course round ID.
+This one includes data such as the number of registered students as well, 
+unlike the method in the next section.
+<<LadokSession data methods>>=
+def course_round_components_JSON(self, round_id):
+  response = self.put_query(
+    "/resultat/internal/kurstillfalle/moment",
+    {"Identitet": [round_id]}
+  )
+
+  if response.status_code == 200:
+    return response.json()["MomentPerKurstillfallen"][0]["Moment"]
+  raise Exception(response.json()["Meddelande"])
+@
+
+We add the following test.
+<<test functions>>=
+def test_course_round_components_JSON():
+  components = ladok.course_round_components_JSON(dasak_round_id)
+  assert json.dumps(components, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+try:
+  components = ladok.course_round_components_JSON(dasak_round_id)
+except Exception as err:
+  print(f"error: {err}")
+else:
+  ladok3.clean_data(components)
+  print(json.dumps(components, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\subsection{[[course_instance_components_JSON]]}
+
+This method fetches the course components for a course instance, \ie a version 
+of the syllabus.
+<<LadokSession data methods>>=
+def course_instance_components_JSON(self, course_instance_id):
+  response = self.put_query(
+    "/resultat/internal/utbildningsinstans/moduler",
+    {"Identitet": [course_instance_id]}
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Utbildningsinstans"][0]
+  raise Exception(response.json()["Meddelande"])
+@
+
+We add the following test code.
+<<test functions>>=
+def test_course_instance_components_JSON():
+  components = ladok.course_instance_components_JSON(dasak_instance_id)
+  assert json.dumps(components, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+try:
+  components = ladok.course_instance_components_JSON(dasak_instance_id)
+except Exception as err:
+  print(f"error: {err}")
+else:
+  ladok3.clean_data(components)
+  print(json.dumps(components, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\chapter{Results-related API calls}
+
+In this chapter we look at how to fetch results from LADOK and report new 
+results to LADOK.
+
+\section{Reported results}
+
+There are two ways to get results for a course.
+One method gives more data than the other.
+
+\subsection{[[search_reported_results_JSON]]}
+
+This method searches for student results for a given component on a given 
+course round.
+<<LadokSession data methods>>=
+def search_reported_results_JSON(self, course_round_id, component_instance_id):
+  """Requires:
+  course_round_id: round_id for a course,
+  component_instance_id: instance_id for a component of the course.
+  """
+  put_data = {
+    "Filtrering": ["OBEHANDLADE", "UTKAST", "ATTESTERADE"],
+    "KurstillfallenUID": [course_round_id],
+    "OrderBy": [
+      "EFTERNAMN_ASC",
+      "FORNAMN_ASC",
+      "PERSONNUMMER_ASC"
+    ],
+    "Limit": 400,
+    "Page": 1,
+    "StudenterUID": []
+  }
+
+  response = self.put_query(
+    "/resultat/internal/studieresultat/rapportera"
+      f"/utbildningsinstans/{component_instance_id}/sok",
+    put_data)
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Resultat"]
+  raise Exception(f"failed searching for results for "
+                  f"course {course_round_id}, "
+                  f"component {component_instance_id}: {response.text}")
+@
+
+We write the following test.
+<<test functions>>=
+def test_search_reported_results_JSON():
+  results = ladok.search_reported_results_JSON(dasak_round_id,
+    LAB1_instance_id)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.search_reported_results_JSON(dasak_round_id, LAB1_instance_id)
+
+ladok3.clean_data(results)
+results = list(filter(
+  lambda x: x["Student"]["Uid"] == student_uid,
+  results))
+print(json.dumps(results, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[search_course_results_JSON]]}
+
+Another method, which gives slightly different results is the following.
+<<LadokSession data methods>>=
+def search_course_results_JSON(self, course_round_id, component_instance_id):
+  put_data = {
+    "KurstillfallenUID": [course_round_id],
+    "Tillstand": ["REGISTRERAD", "AVKLARAD", "AVBROTT"],
+    "OrderBy": ["EFTERNAMN_ASC", "FORNAMN_ASC"],
+    "Limit": 400,
+    "Page": 1,
+  }
+
+  response = self.put_query(
+    "/resultat/internal/resultatuppfoljning/resultatuppfoljning/sok",
+    put_data)
+
+  if response.status_code == requests.codes.ok:
+    return response.json()["Resultat"]
+  raise Exception("can't get course results for "
+                 f"course {course_round_id}, "
+                 f"component {component_instance_id}: {response.text}")
+@
+
+We test this by the following.
+<<test functions>>=
+def test_search_course_results_JSON():
+  results = ladok.search_course_results_JSON(dasak_round_id, LAB1_instance_id)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.search_course_results_JSON(dasak_round_id, LAB1_instance_id)
+
+ladok3.clean_data(results)
+results = list(filter(
+  lambda x: x["Student"]["Uid"] == student_uid,
+  results))
+print(json.dumps(results, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{Results for a student: [[student_results_JSON]]}
+
+This method pulls results for an individual student for a particular course.
+LADOK changed this API request in 2022.
+<<LadokSession data methods>>=
+def student_results_JSON(self, student_id, course_education_id):
+  """Returns the results for a student on a course"""
+  response = self.get_query(
+    "/resultat/internal/studentenskurser/kursinformation"
+    f"/student/{student_id}/kursUID/{course_education_id}"
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(response.json()["Meddelande"])
+@
+ 
+We test this in the following way.
+<<test functions>>=
+def test_student_results_JSON():
+  results = ladok.student_results_JSON(student_uid, dasak_education_id)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.student_results_JSON(student_uid, dasak_education_id)
+
+ladok3.clean_data(results)
+print(json.dumps(results, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+
+\section{Modifying results}
+
+We have two alternatives: add a new result or update an existing result draft.
+
+\subsection{[[create_result_JSON]]}
+
+This method is used to create a new result.
+This result will be a draft.
+It must later be finalized and then attested.
+
+Note that since this is a new result, we must provide the [[StudieresultatUID]] 
+where we want to add the result.
+When we've done this, we'll get a [[ResultatUID]] back in the response.
+From then on, it's the [[ResultatUID]] that's interesting.
+<<LadokSession data methods>>=
+def create_result_JSON(self,
+      student_id, course_instance_id, component_id,
+      grade_id, date,
+      project_title=None):
+  """Creates a new result"""
+  response = self.post_query(
+    f"/resultat/internal/resultat/student/{student_id}"
+    f"/kursinstans/{course_instance_id}"
+    f"/utbildningsinstans/{component_id}"
+    f"/skapa",
+    {
+      "Betygsgrad": grade_id,
+      "Examinationsdatum": date,
+      "Projekttitel": project_title
+    }
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(f"LADOK create request failed: "
+                  f"{response.json()['Meddelande']}")
+@
+
+We test this in the following way.
+<<test functions>>=
+datintro_student_uid = "76291c55-d24a-11ea-a4db-82cca4dd4b3e"
+datintro_instance_id = "2179e02c-d6b5-11e8-8fd5-cf9d2c5c41ba"
+datintro_LAB1_id = "385a4428-73d8-11e8-b4e0-063f9afb40e3"
+
+result_uid = None
+result_last_modified = None
+
+def test_create_result_JSON():
+  result = ladok.create_result_JSON(
+    datintro_student_uid, datintro_instance_id, datintro_LAB1_id,
+    131663, "2022-11-29")
+
+  global result_uid
+  result_uid = result["Uid"]
+  global result_last_modified
+  result_last_modified = result["SenasteResultatandring"]
+
+  assert json.dumps(result, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+datintro_student_uid = "76291c55-d24a-11ea-a4db-82cca4dd4b3e"
+datintro_instance_id = "2179e02c-d6b5-11e8-8fd5-cf9d2c5c41ba"
+datintro_LAB1_id = "385a4428-73d8-11e8-b4e0-063f9afb40e3"
+
+result = ladok.create_result_JSON(
+  datintro_student_uid, datintro_instance_id, datintro_LAB1_id,
+  131663, "2022-11-27")
+
+ladok3.clean_data(result)
+print(json.dumps(result, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+LADOK changed this API request in 2022.
+
+\subsection{[[update_result_JSON]]}\label{UpdateResult}
+
+This method updates an existing result draft.
+Note that we cannot use this method to update a finalized result.
+Note also that we use the [[ResultatUID]] and not the [[StudieresultatUID]] as 
+we did for [[create_result_JSON]].
+<<LadokSession data methods>>=
+def update_result_JSON(self,
+      result_id, grade_id, date, last_modified, notes=[]):
+  response = self.put_query(
+    f"/resultat/internal/resultat/uppdatera/{result_id}",
+    {
+      'Betygsgrad': grade_id,
+      'Examinationsdatum': date,
+      'Noteringar': notes,
+      'SenasteResultatandring': last_modified
+    }
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(f"LADOK request to modify result failed: "
+                  f"{response.json()['Meddelande']}")
+@
+
+We test this in the following way.
+<<test functions>>=
+def test_update_result_JSON():
+  global result_uid
+  global result_last_modified
+
+  result = ladok.update_result_JSON(
+    result_uid, 131658, "2022-11-28", result_last_modified)
+
+  result_last_modified = result["SenasteResultatandring"]
+
+  assert json.dumps(result, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+result = ladok.update_result_JSON(
+  result["Uid"], 131658, "2022-11-29", result["SenasteResultatandring"])
+
+ladok3.clean_data(result)
+print(json.dumps(result, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\section{Finalizing a result}
+
+Here we cover the API calls needed to finalize (klarmarkera) a result in LADOK.
+To finalize a result, we first need to know the possible reporters and 
+attestants.
+However, normally that's us, so we want to find the info of the currently 
+logged in LADOK user.
+
+\subsection{[[result_attestants_JSON]] and [[result_reporters_JSON]]}
+
+To finalize a result, we must know two things: who is reporting and who can 
+attest.
+We start with who can attest.
+<<LadokSession data methods>>=
+def result_attestants_JSON(self, result_id):
+  """Returns a list of result attestants"""
+  response = self.put_query(
+    "/resultat/internal/anvandare/resultatrattighet/attestanter/kurstillfallesrapportering",
+    {"Identitet": [result_id]}
+  )
+
+  if response.status_code == 200:
+    return response.json()["Anvandare"]
+  raise Exception(response.json()["Meddelande"])
+@ The [[result_id]] is the ID returned in the [[ResultatUID]] field in the 
+response from the [[create_result_JSON]] method.
+
+LADOK changed this API request in 2022: the [[internal]] is mandatory part of 
+the path.
+
+We can test this in the following way.
+<<test functions>>=
+def test_result_attestants_JSON():
+  global result_uid
+  try:
+    attestants = ladok.result_attestants_JSON(result_uid)
+    assert json.dumps(attestants, indent=2, ensure_ascii=False)
+  except Exception as err:
+    assert "Några av angivna resultatidentiter" in str(err)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+attestants = ladok.result_attestants_JSON(result["Uid"])
+
+print(json.dumps(ladok3.clean_data(attestants), indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+Now, we get a list of who can report (basically anyone registered in the entire 
+organization).
+<<LadokSession data methods>>=
+def result_reporters_JSON(self, organization_id):
+  """Returns a list of who can report results in an organization"""
+  response = self.get_query(
+    "/kataloginformation/internal/anvandare/organisation/" +
+      organization_id + "/resultatrapportorer",
+    "application/vnd.ladok-kataloginformation+json"
+  )
+
+  if response.status_code == 200:
+    return response.json()["Anvandare"]
+  raise Exception(response.text)
+@
+
+We test this method as follows.
+<<test functions>>=
+def test_result_reporters_JSON():
+  reporters = ladok.result_reporters_JSON(KTH_org_id)
+  assert json.dumps(reporters, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+reporters = ladok.result_reporters_JSON(components["OrganisationUID"])
+ladok3.remove_links(reporters)
+
+print(json.dumps(ladok3.clean_data(reporters[:3]),
+  indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[user_info_JSON]]}
+
+Usually, we want to set the reporter to the logged-in user.
+We can use the following API call to get information about the logged-in user.
+<<LadokSession data methods>>=
+def user_info_JSON(self):
+  response = self.get_query(
+    "/kataloginformation/internal/anvandare/anvandarinformation",
+    "application/vnd.ladok-kataloginformation+json"
+  )
+
+  if response.status_code == 200:
+    return response.json()
+  raise Exception(response.text)
+@
+
+We test this as follows.
+<<test functions>>=
+def test_user_info_JSON():
+  me_teacher = ladok.user_info_JSON()
+  assert json.dumps(me_teacher, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+me_teacher = ladok.user_info_JSON()
+ladok3.clean_data(me_teacher)
+
+print(json.dumps(me_teacher, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[finalize_result_JSON]]}
+
+Finally, we can finalize the reported grade.
+If [[attestant_id]] is not [[None]], then LADOK will send a notification to 
+that person.
+(LADOK changed this API request in 2022.)
+<<LadokSession data methods>>=
+def finalize_result_JSON(self,
+    result_id, last_modified, reporter_id, attestant_ids=[],
+    others=[]):
+  """Marks a result as finalized (klarmarkera)"""
+  response = self.put_query(
+    f"/resultat/internal/resultat/klarmarkera/{result_id}",
+    {
+      "Beslutsfattare": attestant_ids,
+      "KlarmarkeradAvUID": reporter_id,
+      "RattadAv": [],
+      "OvrigaMedverkande": "\n".join(set(others)),
+      "ResultatetsSenastSparad": last_modified
+    }
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(response.json()["Meddelande"])
+@ This method returns a copy of the finalized result.
+
+We test this in the following way.
+<<test functions>>=
+reporter_id = "21f4667a-e864-11ea-adbf-a14961264cf0"
+
+def test_finalize_result_JSON():
+  global result_uid
+  global result_last_modified
+
+  result = ladok.finalize_result_JSON(
+    result_uid, result_last_modified, reporter_id)
+
+  result_last_modified = result["SenasteResultatandring"]
+
+  assert json.dumps(result, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+reporter_id = "21f4667a-e864-11ea-adbf-a14961264cf0"
+
+result = ladok.finalize_result_JSON(
+  result["Uid"], result["SenasteResultatandring"], reporter_id)
+
+ladok3.clean_data(result)
+print(json.dumps(result, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[update_finalized_result_JSON]]}
+
+To update an already finalised result, we can use the following API call.
+The only difference from the call above (\cref{UpdateResult}) is that the URL 
+uses [[uppdateraklarmarkerat]] instead of just [[uppdatera]].
+<<LadokSession data methods>>=
+def update_finalized_result_JSON(self,
+      result_id, grade_id, date, last_modified, notes=[]):
+  response = self.put_query(
+    f"/resultat/internal/resultat/uppdateraklarmarkerat/{result_id}",
+    {
+      'Betygsgrad': grade_id,
+      'Examinationsdatum': date,
+      'Noteringar': notes,
+      'SenasteResultatandring': last_modified
+    }
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(f"LADOK request to modify finalized result failed: "
+                  f"{response.json()['Meddelande']}")
+@
+
+We test this in the following way.
+<<test functions>>=
+def test_update_finalized_result_JSON():
+  global result_uid
+  global result_last_modified
+
+  result = ladok.update_finalized_result_JSON(
+    result_uid, 131658, "2022-11-29", result_last_modified)
+
+  result_last_modified = result["SenasteResultatandring"]
+
+  assert json.dumps(result, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+result = ladok.update_finalized_result_JSON(
+  result["Uid"], 131658, "2022-11-29", result["SenasteResultatandring"])
+
+ladok3.clean_data(result)
+print(json.dumps(result, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[finalized_result_to_draft_JSON]]}
+
+We can also change a result from finalized back to draft status.
+<<LadokSession data methods>>=
+def finalized_result_to_draft_JSON(self, result_id, last_modified):
+  response = self.put_query(
+    f"/resultat/internal/resultat/tillbakatillutkast/{result_id}",
+    {
+      'ResultatUID': result_id,
+      'ResultatetsSenastSparad': last_modified
+    }
+  )
+
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  raise Exception(f"LADOK request to change finalized result to draft failed: "
+                  f"{response.json()['Meddelande']}")
+@
+
+We test this in the following way.
+<<test functions>>=
+def test_finalized_result_to_draft_JSON():
+  global result_uid
+  global result_last_modified
+
+  result = ladok.finalized_result_to_draft_JSON(
+    result_uid, result_last_modified)
+
+  assert json.dumps(result, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+result = ladok.finalized_result_to_draft_JSON(
+  result["Uid"], result["SenasteResultatandring"])
+
+ladok3.clean_data(result)
+print(json.dumps(result, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
+\subsection{[[remove_result_draft_JSON]]}
+
+We can also change a result from finalized back to draft status.
+<<LadokSession data methods>>=
+def remove_result_draft_JSON(self, result_id):
+  response = self.del_query(
+    f"/resultat/internal/resultat/tabort/{result_id}"
+  )
+
+  if response.status_code != 204:
+    raise Exception(f"LADOK request to remove draft result failed: "
+                    f"{response.status_code}: {response.text}")
+@
+
+We test this in the following way.
+<<test functions>>=
+def test_remove_result_draft_JSON():
+  global result_uid
+
+  ladok.remove_result_draft_JSON(result_uid)
+@
+
+There is no output.
+\begin{pycode}[apitest]
+ladok.remove_result_draft_JSON(result["Uid"])
+\end{pycode}
+
+
+\section{[[participants_JSON]]}
+
+The method returns JSON data containing a list of students (the participants in 
+the course round).
+(This is an extension of Maguire's original [[participants_JSON]] method.
+The essential difference is keyword arguments to filter which students to 
+include.)
+<<LadokSession data methods>>=
+def participants_JSON(self, course_round_id, /, **kwargs):
+  """Returns JSON record containing participants in a course identified by 
+  round ID.
+  Filters in kwargs: not_started, ongoing, registered, finished, cancelled"""
+  participants_types = []
+  if "not_started" in kwargs and kwargs["not_started"]:
+    participants_types.append("EJ_PABORJAD")
+  if "ongoing" in kwargs and kwargs["ongoing"]:
+    participants_types.append("PAGAENDE")
+  if "registered" in kwargs and kwargs["registered"]:
+    participants_types.append("REGISTRERAD")
+  if "finished" in kwargs and kwargs["finished"]:
+    participants_types.append("AVKLARAD")
+  if "cancelled" in kwargs and kwargs["cancelled"]:
+    participants_types.append("AVBROTT")
+  # 'ATERBUD', # Withdrawal
+  # 'PAGAENDE_MED_SPARR', # on-going block exists
+  # 'EJ_PAGAENDE_TILLFALLESBYTE', # not on-going due to instance exchange
+  # 'UPPEHALL', # not on-going due to approved leave from studies
+
+  if not kwargs:
+    participants_types = ["PAGAENDE", "REGISTRERAD", "AVKLARAD"]
+
+  put_data = {
+    'page': 1,
+    'limit': 400,
+    'orderby': ['EFTERNAMN_ASC',
+                'FORNAMN_ASC',
+                'PERSONNUMMER_ASC',
+                'KONTROLLERAD_KURS_ASC'],
+    'deltagaretillstand': participants_types,
+    'utbildningstillfalleUID': [course_round_id]
+  }
+
+  response = self.put_query(
+    '/studiedeltagande/internal/deltagare/kurstillfalle',
+    put_data,
+    "application/vnd.ladok-studiedeltagande+json")
+  if response.status_code == requests.codes.ok:
+    return response.json()["Resultat"]
+  raise Exception(f"can't get participants "
+                  f"with course_round_id = {course_round_id}: "
+                  f"{response.text}")
+@
+
+We test this as follows.
+<<test functions>>=
+def test_participants_JSON():
+  results = ladok.participants_JSON(dasak_round_id)
+  assert json.dumps(results, indent=2, ensure_ascii=False)
+@
+
+The output looks like this.
+\begin{pycode}[apitest]
+print(r"\begin{minted}{JSON}")
+results = ladok.participants_JSON(dasak_round_id)
+
+ladok3.clean_data(results)
+results = list(filter(
+  lambda x: x["Student"]["Uid"] == student_uid,
+  results))
+print(json.dumps(results, indent=2, ensure_ascii=False))
+print(r"\end{minted}")
+\end{pycode}
+
