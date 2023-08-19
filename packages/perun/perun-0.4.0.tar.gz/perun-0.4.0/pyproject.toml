@@ -1,0 +1,83 @@
+[tool.poetry]
+name = "perun"
+version = "0.4.0"
+description = ""
+authors = ["Gutiérrez Hermosillo Muriedas, Juan Pedro <juanpedroghm@gmail.com>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+homepage = "https://github.com/Helmholtz-AI-Energy/perun"
+
+[tool.poetry.scripts]
+perun = "perun.api.cli:main"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+click = "^8.0.0"
+py-cpuinfo = ">=5.0.0"
+numpy = "^1.20.0"
+psutil = "^5.9.0"
+h5py = "^3.5.9"
+pandas = {version = ">=1.3"}
+tabulate = ">=0.9"
+nvidia-ml-py = "^12.535.77"
+mpi4py = {version = "^3.1", optional = true}
+
+[tool.poetry.extras]
+mpi = ["mpi4py"]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-cov = "*"
+flake8 = "*"
+mypy = "*"
+black = "*"
+pre-commit = "*"
+pydocstyle = "*"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "<7.0"
+sphinx-rtd-theme = "*"
+sphinx-autoapi = "*"
+
+[tool.poetry.group.mpi]
+optional = true
+
+[tool.poetry.group.mpi.dependencies]
+mpi4py = "^3.1"
+
+[tool.semantic_release]
+version_variable = [ "perun/__init__.py:__version__" ]
+version_toml = ["pyproject.toml:tool.poetry.version"]
+commit_message = "{version} [skip ci]"
+build_command = "pip install poetry && poetry build"
+
+[tool.semantic_release.branches.release]
+match = "release"
+prerelease = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.isort]
+skip = ["perun/__init__.py"]
+known_third_party = ["click", "cpuinfo", "h5py", "numpy", "pandas", "psutil", "pynvml", "pytest"]
+profile = "black"
+
+[tool.pydocstyle]
+match-dir = 'perun'
+convention = 'numpy'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+exclude = [
+    'tests/**/*'
+]
