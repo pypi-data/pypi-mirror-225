@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+# discard previous execution if you commit to a branch that is already running
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect-changes:
+    uses: ./.github/workflows/_detect_changes.yml
+    with:
+      backend_directories: atlasq
+      ubuntu_version: latest
+
+
+
+  python:
+     needs: detect-changes
+#     if: ${{ needs.detect-changes.outputs.backend > 0 }}
+     uses: ./.github/workflows/_python.yml
+     secrets: inherit
+     with:
+      working_directory: .
+      use_black: true
+      use_isort: true
+      use_flake8: true
+      use_pylint: true
+      use_bandit: true
+      use_autoflake: true
+
+      run_codeql: true
+
+      requirements_path: requirements.txt
+
+      check_requirements_licenses: true
+
+      use_coverage: true
+      upload_coverage: true
+
+      python_versions: >-
+        ["3.8", "3.9", "3.10"]
+      max_timeout: 7
+      ubuntu_version: latest
