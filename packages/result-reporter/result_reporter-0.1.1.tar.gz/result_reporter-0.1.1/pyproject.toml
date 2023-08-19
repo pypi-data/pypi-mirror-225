@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "result-reporter"
+version = "0.1.1"
+description = "A context manager to report results to and endpoint."
+authors = ["Paul Logston <paul.logston@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "rr", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+requests = ">=2.25.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+responses = "^0.23.1"
+flake8 = "^6.0.0"
+coverage = "^7.2.7"
+pytest-cov = "^4.1.0"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+
+pythonpath = "src"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
