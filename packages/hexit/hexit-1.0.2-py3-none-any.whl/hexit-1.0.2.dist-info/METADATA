@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: hexit
+Version: 1.0.2
+Summary: Simple python utility for creating HEX versions of binary files.
+Author-email: Alexey Garifov <al.garifov@gmail.com>
+Project-URL: Homepage, https://github.com/Al-Garifov/hexit
+Project-URL: Bug Tracker, https://github.com/Al-Garifov/hexit/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Hexit
+Simple python utility for creating HEX versions of binary files.
+I needed a hex version of binary code to insert it in x64dbg so I created this script.
+
+## Usage
+```
+python -m hexit [-h] -i INPUT [-o OUTPUT]
+
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input .bin file
+  -o OUTPUT, --output OUTPUT
+                        Output .hex file```
+
