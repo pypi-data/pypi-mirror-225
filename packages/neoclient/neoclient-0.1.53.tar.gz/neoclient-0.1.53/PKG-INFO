@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: neoclient
+Version: 0.1.53
+Summary: Fast API Clients for Python
+Home-page: https://github.com/tombulled/neoclient
+License: MIT
+Keywords: python,api,http,client,json,framework,web,rest
+Author: Tom Bulled
+Author-email: 26026015+tombulled@users.noreply.github.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: httpx (>=0.23.3,<0.24.0)
+Requires-Dist: mediate (>=0.1.8,<0.2.0)
+Requires-Dist: mediatype (>=0.1.6,<0.2.0)
+Requires-Dist: pydantic (>=1.10.0,<2.0.0)
+Requires-Dist: tombulled-annotate (>=0.1.15,<0.2.0)
+Requires-Dist: typing-extensions (>=4.3.0,<5.0.0)
+Project-URL: Repository, https://github.com/tombulled/neoclient
+Description-Content-Type: text/markdown
+
+# neoclient
+🚀 Fast API Clients for Python
+
+## Installation
+```console
+pip install neoclient
+```
+
+## Introduction
+The simplest `neoclient` file might look like this:
+```python
+from neoclient import get
+
+@get("https://httpbin.org/ip")
+def ip():
+    ...
+```
+```python
+>>> ip()
+{'origin': '1.2.3.4'}
+```
+
+However, it's almost always better to create a `NeoClient` instance:
+```python
+from neoclient import NeoClient
+
+client = NeoClient("https://httpbin.org/")
+
+@client.get("/ip")
+def ip():
+    ...
+```
+```python
+>>> ip()
+{'origin': '1.2.3.4'}
+```
