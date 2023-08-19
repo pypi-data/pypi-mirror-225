@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: mvc4kivy
+Version: 0.2.0
+Summary: tool to create MVC project for kivy
+Author: Kenechukwu Akubue
+Author-email: kengoon19@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: kivy (>=2.0.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# mvc4kivy (m4k)
+Borrowed from the [kivymd's](https://github.com/kivymd/KivyMD) MVC tool project creator but with some features added
+like lazy loading of kv file and lazy adding of screen to improve application speed at startup.
