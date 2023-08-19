@@ -1,0 +1,98 @@
+[build-system]
+# setuptools v64 was first to support `pip install -e` for packages defined using
+# pyproject.toml (older versions support this, but only for setup.py projects)
+requires = ["setuptools>=64", "wheel"]
+
+[project]
+name = "flask-rest-jsonapi-next"
+version = "0.42.0"
+description = "Flask extension to create REST web api according to JSONAPI 1.0 specification with Flask, Marshmallow and data provider of your choice (SQLAlchemy, MongoDB, ...)"
+readme = "README.md"
+classifiers = [
+	"Framework :: Flask",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.7",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3 :: Only",
+	"License :: OSI Approved :: MIT License",
+]
+dependencies = [
+	"Flask >= 2.2.0",
+	"marshmallow >= 3",
+	"marshmallow-jsonapi",
+	"sqlalchemy",
+	"requests",
+	"packaging",
+	"python-dateutil",
+]
+keywords = [
+	"web",
+	"api",
+	"rest",
+	"jsonapi",
+	"flask",
+	"sqlalchemy",
+	"marshmallow",
+]
+license = { text = "MIT" }
+requires-python = ">=3.7"
+authors = [{ name = "original miLibris/flask-rest-jsonapi contributors" }]
+maintainers = [
+	{ name = "Tomislav Adamic", email = "tomislav.adamic@gmail.com" },
+]
+
+[project.urls]
+Source = "https://github.com/tadams42/flask-rest-jsonapi-next"
+Documentation = "https://flask-rest-jsonapi-next.readthedocs.io/en/latest/"
+
+[project.optional-dependencies]
+dev = [
+	"black",
+	"bump2version",
+	"ipython",
+	"isort",
+	"psycopg[binary]",
+	"rich",
+	"pre-commit",
+]
+docs = ["furo", "myst-parser", "sphinx", "sphinx-copybutton"]
+tests = ["check-manifest", "pytest", "coverage"]
+
+
+[tool.setuptools]
+zip-safe = false
+platforms = ["any"]
+include-package-data = true
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests"]
+
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+
+[tool.coverage.report]
+show_missing = true
+precision = 2
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+
+python_classes = ["Describe*", "When*", "describe_*", "when_*"]
+python_functions = ["it_*", "test_*", "then_*", "when_*"]
+python_files = ["test_*", "*_spec.py", "*_test.py"]
+
+[tool.pytest-watcher]
+delay = 0.5
