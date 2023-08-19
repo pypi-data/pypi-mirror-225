@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clisk"
+version = "0.0.1"
+authors = [
+    { name = "Robin LIORET", email = "robin.lioret@capgemini.com" },
+]
+description = "A Starter Kit to create CLI applications."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "typer>=0.9.0",
+]
+optional-dependencies.build = [
+    "build>=0.10.0",
+    "twine>=4.0.2"
+]
+
+#[project.urls]
+#"Homepage" = "https://github.com/pypa/sampleproject"
+#"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
