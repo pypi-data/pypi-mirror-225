@@ -1,0 +1,3 @@
+[console_scripts]
+remove_pycache = sagebox.scripts.remove_pycache:main
+sage_sysinfo = sagebox.scripts.sage_sysinfo:main
