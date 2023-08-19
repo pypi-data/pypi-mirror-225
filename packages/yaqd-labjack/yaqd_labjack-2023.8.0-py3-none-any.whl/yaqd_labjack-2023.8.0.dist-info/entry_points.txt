@@ -1,0 +1,5 @@
+[console_scripts]
+yaqd-labjack-analog-output=yaqd_labjack._labjack_analog_output:LabjackAnalogOutput.main
+yaqd-labjack-digital-output=yaqd_labjack._labjack_digital_output:LabjackDigitalOutput.main
+yaqd-labjack-sensor=yaqd_labjack._labjack_sensor:LabjackSensor.main
+
