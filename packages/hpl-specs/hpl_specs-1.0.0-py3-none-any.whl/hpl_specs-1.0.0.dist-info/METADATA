@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: hpl-specs
+Version: 1.0.0
+Summary: High-level Property Specification Language
+Home-page: https://github.com/git-afsantos/hpl-specs
+Author: André Santos
+Author-email: haros.framework@gmail.com
+License: MIT
+Project-URL: Source, https://github.com/git-afsantos/hpl-specs/
+Project-URL: Tracker, https://github.com/git-afsantos/hpl-specs/issues
+Keywords: safety,liveness,property specification,specification language,parser,parsing,ast
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Compilers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Quality Assurance
+Requires-Python: >=3.8, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: attrs ~=23.0
+Requires-Dist: lark ~=1.0
+Provides-Extra: dev
+Requires-Dist: hypothesis[lark] ~=6.82 ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+
+[![DOI](https://zenodo.org/badge/331277331.svg)](https://zenodo.org/badge/latestdoi/331277331)
+
+# HPL - The High-Level Property Specification Language
+
+HPL is a minimalistic specification language tailored for behavioural properties of message-based systems.
+Although it might be useful in other contexts, it was designed with the message-passing system of the [Robot Operating System](https://www.ros.org/) in mind.
+Since properties are message-based, the same language can be used to specify both individual nodes and full applications.
+
+HPL was developed to be an integral part of the [HAROS framework](https://github.com/git-afsantos/haros/).
+HAROS is capable of defining and extracting architectural models of ROS systems (the *ROS Computation Graph*).
+Such models are, inherently, mostly concerned with the structure of the analysed system.
+This language is meant to annotate the architectural models, complementing them with behavioural information.
+
+## What Is In The Box
+
+This repository contains a Python package, and the respective source code, to parse HPL specifications and convert them into *Abstract Syntax Trees* (AST).
+
+## Syntax, Semantics and Use Cases
+
+Check the [documentation](./docs).
+
+## Installing
+
+To install this package, make sure that you have Python 2.7 or greater.
+Simply run the command:
+
+```
+pip install hpl-specs
+```
+
+## Bugs, Questions and Support
+
+Please use the [issue tracker](https://github.com/git-afsantos/hpl-specs/issues).
+
+## Citing
+
+See [CITING](./CITING.md).
+
+## Contributing
+
+See [CONTRIBUTING](./CONTRIBUTING.md).
+
+## Acknowledgment
+
+Until March 2021, this work was financed by the ERDF – European Regional Development Fund through the Operational Programme for Competitiveness and Internationalisation - COMPETE 2020 Programme and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-INF/29583/2017 (POCI-01-0145-FEDER-029583).
