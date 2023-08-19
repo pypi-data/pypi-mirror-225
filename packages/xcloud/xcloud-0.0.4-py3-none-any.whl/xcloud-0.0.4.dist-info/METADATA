@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: xcloud
+Version: 0.0.4
+Summary: UNKNOWN
+Home-page: 
+Author: Marcos Rivera Martínez, Sarthak Langde, Glenn Ko, Subhash G N, Toan Do, Roman Ageev
+Author-email: marcos.rm@stochastic.ai, sarthak.langde@stochastic.ai, glenn@stochastic.ai, subhash.gn@stochastic.ai
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools
+Requires-Dist: pydantic (<=2)
+Requires-Dist: numpy
+Requires-Dist: requests
+Requires-Dist: python-dotenv
+Requires-Dist: kserve
+Requires-Dist: click
+
+UNKNOWN
+
