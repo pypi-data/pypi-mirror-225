@@ -1,0 +1,3 @@
+[pdm.build.hook]
+click = pdm_click:ClickBuildHook
+
