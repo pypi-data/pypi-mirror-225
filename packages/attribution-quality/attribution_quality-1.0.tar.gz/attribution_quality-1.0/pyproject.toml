@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=46", "setuptools_scm[toml]>=5"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attribution_quality"
+authors = [
+    {name = "Sean Mullan", email = "sean-mullan@uiowa.edu"},
+]
+description = "KernelWeighted Contribution implementation for visual understanding of deep learning segmentation"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "scikit-image",
+    "torch",
+    "tqdm"
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+license = {text = "MIT"}
+dynamic = ["version", "readme"]
+
+[project.urls]
+Source = "https://github.com/Mullans/AttributionQuality"
+
+[tool.setuptools]
+packages = ["attribution_quality"]
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+# [project.scripts]
+# ! Do we need this?
