@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "poetry-exp"
+version = "0.1.0"
+description = "test poetry ecxp"
+authors = ["Aafak Mohammad <aafak.mitsmca09@gmail.com>"]
+readme = "README.md"
+packages = [{include = "poetry_exp"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "2.3.2"
+pyvmomi = "8.0.1.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
