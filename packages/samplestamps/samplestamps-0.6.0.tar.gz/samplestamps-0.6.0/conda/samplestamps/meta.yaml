@@ -1,0 +1,42 @@
+{% set data = load_setup_py_data(setup_file='../../setup.py', from_recipe_dir=True) %}
+{% set name = "samplestamps" %}
+{% set version = data.get('version') %}
+
+package:
+  name: samplestamps
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+
+build:
+  number: 0
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python {{ python }}
+    - pip
+    - flit
+  run:
+    - python {{ python }}
+    - numpy>1.20
+    - scipy
+
+test:
+  imports:
+    - samplestamps
+
+about:
+  home: "https://github.com/janclemenslab/samplestamps"
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Convert timestamps."
+  doc_url: "https://github.com/janclemenslab/samplestamps"
+  dev_url: "https://github.com/janclemenslab/samplestamps"
+
+extra:
+  recipe-maintainers:
+    - postpop

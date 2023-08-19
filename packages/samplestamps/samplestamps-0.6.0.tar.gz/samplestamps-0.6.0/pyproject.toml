@@ -1,0 +1,18 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+dist-name = "samplestamps"
+module = "samplestamps"
+author = "Jan Clemens"
+author-email = "clemensjan@googlemail.com"
+home-page = "https://github.com/janclemenslab/samplestamps"
+classifiers = ["License :: OSI Approved :: MIT License"]
+requires-python = ">=3.6"
+requires = ['numpy', 'scipy']
+description-file = "README.md"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests",]
