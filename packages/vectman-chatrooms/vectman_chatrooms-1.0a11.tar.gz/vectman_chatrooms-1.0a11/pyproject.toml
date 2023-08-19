@@ -1,0 +1,182 @@
+[tool.poetry]
+name = "vectman-chatrooms"
+version = "1.0a11"
+description = ""
+authors = ["Francisco Del Roio <francipvb@hotmail.com>"]
+readme = "README.md"
+packages = [{ include = "chatrooms", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+users = "^1.4.4"
+py-optional = "^1.0.1"
+plans = "^1.4.0"
+chatrooms-api-client = "^1.1.1"
+taskiq = {version = "^0.8.6", optional = true}
+pydantic = {version = "^1.10.0", extras = ["dotenv"], optional = true}
+
+[tool.poetry.extras]
+taskiq = ["pydantic", "taskiq"]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.272"
+black = "^23.3.0"
+pytest = "^7.3.2"
+pytest-cov = "^4.1.0"
+factory-boy = "^3.2.1"
+aiohttp = "^3.8.4"
+taskiq = { extras = ["reload"], version = "^0.8.6" }
+pyright = "^1.1.318"
+ipykernel = "^6.25.1"
+
+
+[tool.poetry.group.backend.dependencies]
+python-socketio = "^5.8.0"
+pydantic = { extras = ["dotenv"], version = "^1.10.9" }
+uvicorn = "^0.22.0"
+httptools = "^0.5.0"
+fastapi = "^0.98.0"
+wsproto = "^1.2.0"
+fastapi-simple-pagination = "^1.3.1"
+python-multipart = "^0.0.6"
+pyyaml = "^6.0.1"
+sqlalchemy = "^2.0.19"
+psycopg = { extras = ["binary", "pool"], version = "^3.1.10" }
+taskiq = { extras = ["uv"], version = "^0.8.6" }
+taskiq-redis = "^0.4.0"
+redis = { extras = ["hiredis"], version = "^4.6.0" }
+alembic = "^1.11.1"
+redis-om = "^0.2.1"
+typer = "^0.9.0"
+sentry-sdk = "^1.29.2"
+httpx = "^0.24.1"
+websockets = "^11.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = [
+    "E",
+    "F",
+    "ARG",
+    "RUF",
+    "TRY",
+    "YTT",
+    "PL",
+    "ARG",
+    "PTH",
+    "N",
+    "DTZ",
+    "INT",
+]
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "ANN",
+    "ARG",
+    "BLE",
+    "COM",
+    "DJ",
+    "DTZ",
+    "EM",
+    "ERA",
+    "EXE",
+    "FBT",
+    "ICN",
+    "INP",
+    "ISC",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "PYI",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "chatrooms-api-client",
+]
+per-file-ignores = {}
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.10.
+target-version = "py311"
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+
+[[tool.poetry.source]]
+name = "codeartifact"
+url = "https://imcreate-128983747618.d.codeartifact.us-east-1.amazonaws.com/pypi/python-packs/simple/"
+priority = "primary"
+
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[tool.isort]
+profile = "black"
+
+[tool.poetry.scripts]
+chatrooms = "backend.cli:app"
