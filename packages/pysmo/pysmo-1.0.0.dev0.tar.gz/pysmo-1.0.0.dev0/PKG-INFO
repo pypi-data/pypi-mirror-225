@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: pysmo
+Version: 1.0.0.dev0
+Summary: Python module for seismologists.
+License: GPL-3.0-or-later
+Author: Simon M. Lloyd
+Author-email: simon@slloyd.net
+Requires-Python: >=3.10,<3.12
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Requires-Dist: PyYAML (>=6.0.1,<7.0.0)
+Requires-Dist: matplotlib (>=3.7.2,<4.0.0)
+Requires-Dist: numpy (>=1.25.2,<2.0.0)
+Requires-Dist: pyproj (>=3.5.0,<4.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: scipy (>=1.11.1,<2.0.0)
+Project-URL: Documentation, https://pysmo.readthedocs.io
+Description-Content-Type: text/markdown
+
+
+[![Test Status](https://github.com/pysmo/pysmo/actions/workflows/run-tests.yml/badge.svg)](https://github.com/pysmo/pysmo/actions/workflows/run-tests.yml)
+[![Build Status](https://github.com/pysmo/pysmo/actions/workflows/build.yml/badge.svg)](https://github.com/pysmo/pysmo/actions/workflows/build.yml)
+[![Documentation Status](https://readthedocs.org/projects/pysmo/badge/?version=latest)](https://pysmo.readthedocs.io/en/latest/?badge=latest)
+[![codecov](https://codecov.io/gh/pysmo/pysmo/branch/master/graph/badge.svg?token=ZsHTBN4rxF)](https://codecov.io/gh/pysmo/pysmo)
+[![PyPI](https://img.shields.io/pypi/v/pysmo)](https://pypi.org/project/pysmo/)
+
+Pysmo offers simple data types for seismologists to write code with. Instead
+of working with one big class containing all kinds of data, psymo uses separate,
+narrowly defined classes that are more meaningful when describing things that
+exist in the real world. The type definitions are not tied to any particular
+file format, and thus free users from needing to adhere to Python data structures
+often dictated by a rigid underlying file format.
+
+Together with these data types, pysmo provides a growing library of essential
+functions that benefit from using these types. Programming with pysmo results
+in code that is:
+
+  - using modern Python concepts.
+  - easy to write and understand.
+  - both portable and future proof.
+
+Pysmo itself is designed to be modular and easy to expand without interfering
+with the existing code base, making it straightforward to incorporate user
+contributions.
+
+## Contributors
+
+- Helio Tejedor
+
