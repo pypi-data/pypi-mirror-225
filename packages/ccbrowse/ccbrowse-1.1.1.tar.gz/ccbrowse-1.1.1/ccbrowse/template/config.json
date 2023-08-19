@@ -1,0 +1,47 @@
+{
+    "server": "gunicorn",
+    "workers": 10,
+    "log": null,
+    "loglevel": "info",
+    "accesslog": null,
+    "host": "localhost",
+    "port": 8080,
+    "debug": false,
+    "profile": "profile.json",
+    "colormaps": "colormaps",
+    "cache": {
+        "driver": "htree",
+        "chunk": "128MB",
+        "size": "4GB",
+        "src": "cache/chunks/{'%02d'%bits}:{hash}.tiles",
+        "index": "cache/index.sqlite",
+        "lock": "cache/.lock",
+        "key": "{layer}/{zoom}/{x},{z};{sha1(colormap)}",
+        "hashlen": 5,
+        "select": "SELECT raw_data, modified from tiles WHERE layer={layer} AND zoom={zoom} AND x={x} AND z={z} AND colormap={sha1(colormap)}",
+        "insert": "INSERT OR REPLACE INTO tiles (_id, _hash, layer, zoom, x, z, colormap, modified, raw_data) VALUES ({_id}, {_hash}, {layer}, {zoom}, {x}, {z}, {sha1(colormap)}, strftime('%s'), {raw_data})",
+        "init": [
+            "CREATE TABLE tiles (_id INT, _hash TEXT, layer TEXT, zoom INT, x INT, z INT, colormap TEXT, modified INT, raw_data BLOB)",
+            "CREATE UNIQUE INDEX tiles_idx ON tiles (layer, zoom, x, z, colormap)",
+            "CREATE INDEX tiles_modified_idx ON tiles (modified)"
+        ]
+    },
+    "storage": [
+        {
+            "driver": "fileref",
+            "store_requires": ["ref"],
+            "retrieve_requires": ["layer", "zoom", "x", "z"],
+            "src": "fileref.sqlite"
+        },
+        {
+            "requires": ["layer", "format", "name"],
+            "predicate": "name == 'availability'",
+            "src": "layers/{layer}.{format}"
+        },
+        {
+            "requires": ["layer", "format"],
+            "predicate": "layer == 'geography'",
+            "src": "layers/{layer}.{format}"
+        }
+    ]
+}

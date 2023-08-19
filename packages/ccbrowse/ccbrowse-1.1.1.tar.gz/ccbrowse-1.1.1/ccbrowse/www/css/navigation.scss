@@ -1,0 +1,166 @@
+nav {
+    width: 100%;
+    bottom: 0;
+    font-size: 100%;
+    color: #eee;
+    background: #333;
+    box-shadow: inset 2px 2px 6px black;
+    display: flex;
+    flex-direction: column;
+
+    .panel {
+        display: flex;
+        flex-direction: column;
+        padding: 0.3rem;
+
+        .years {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 1.8em;
+
+            .year-group {
+                display: flex;
+
+                .year {
+                    display: block;
+                    border-left: 1px solid #888;
+                    cursor: pointer;
+                    font-size: 120%;
+                    line-height: 1.2em;
+                    color: white;
+                    padding: 0 0.2em;
+                    margin: 0.1em 0em 0.1em 0.1em;
+                    border-radius: 2px;
+
+                    &.disabled {
+                        cursor: auto;
+                        color: #777;
+                        display: none;
+                    }
+                }
+
+                .months {
+                    display: flex;
+                    overflow: hidden;
+
+                    .month {
+                        display: block;
+                        cursor: pointer;
+                        margin: 0.16em 0em;
+                        border-radius: 2px;
+                        padding: 0.1em 0.2em;
+
+                        &.selected {
+                            background-color: #0197fd;
+                            color: black;
+                        }
+
+                        &.disabled {
+                            cursor: auto;
+                            color: #777;
+                            display: none;
+                        }
+                    }
+                }
+
+                &:first-child {
+                    .year {
+                        border-left: none;
+                    }
+                }
+            }
+        }
+
+        .days {
+            min-height: 1.7em;
+
+            .day {
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 2px;
+                padding: 0.1em 0.3em;
+                margin: 0.1em;
+
+                &.selected {
+                    background-color: #0197fd;
+                    color: black;
+                }
+
+                &.disabled {
+                    cursor: auto;
+                    color: #777;
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .progress {
+        height: 8px;
+        width: 100%;
+        background: black url("../img/progress-unavailable.svg") repeat-x;
+        border-top: 1px solid #555;
+        border-bottom: 1px solid #555;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        overflow-x: clip;
+
+        .indicator {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            height: 100%;
+            background: #0197fd;
+            width: 0;
+            background: url("../img/progress.svg") repeat-x;
+            border-top: 1px solid #555;
+            border-bottom: 1px solid #555;
+            margin-top: -1px;
+        }
+
+        .thumb {
+            z-index: 1;
+            width: 20px;
+            height: 20px;
+            background: url("../img/thumb.svg") no-repeat;
+            position: absolute;
+            margin-left: -10px;
+            margin-top: -6px;
+        }
+
+        .tooltip {
+            font-family: helvetica, sans-serif;
+            font-size: 74%;
+            z-index: 2;
+            position: absolute;
+            margin-top: 20px;
+            padding: 5px 7px;
+            text-align: center;
+            background: black;
+            border-radius: 4px;
+            transition: opacity 100ms;
+            opacity: 0;
+        }
+
+        .availability-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            .availability {
+                position: absolute;
+                background: url("../img/progress-available.svg") repeat-x;
+                border: 1px solid #66fc43;
+                height: 6px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    nav .panel .days .day {
+        padding: 0.1em;
+    }
+}

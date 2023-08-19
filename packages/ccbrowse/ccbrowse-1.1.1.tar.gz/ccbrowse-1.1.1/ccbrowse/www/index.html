@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ccbrowse ‧ CloudSat and CALIPSO data browser</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <base href="/" />
+        <link rel="stylesheet" type="text/css" href="lib/leaflet/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="css/ccbrowse.css" />
+        <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+        <script type="text/javascript" src="/lib/eventemitter2/eventemitter2.js"></script>
+        <script type="text/javascript" src="/lib/leaflet/leaflet-src.js"></script>
+        <script type="text/javascript" src="/lib/d3/d3.v7.min.js"></script>
+        <script type="text/javascript" src="/lib/topojson/topojson.js"></script>
+        <script type="text/javascript" src="/js/projection.js"></script>
+        <script type="text/javascript" src="/js/utils.js"></script>
+        <script type="module" src="/js/ccbrowse.js"></script>
+        <meta name="description" content="Web application for browsing data from the CloudSat and CALIPSO satellites" />
+    </head>
+    <body>
+        <noscript>
+            ccbrowse is an open source web application for browsing data from
+            the CloudSat and CALIPSO satellites. Please see the
+            <a href="https://github.com/peterkuma/ccbrowse/">GitHub repository</a>
+            for more information.
+        </noscript>
+        <div id="overlay"></div>
+
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <h1><a href="./">cc<b>browse</b></a></h1>
+                <div id="toolbox"><a href="#about">About</a></div>
+            </div>
+
+            <!-- Navigation bar -->
+            <nav id="nav">
+                <div class="panel"></div>
+                <div class="progress"></div>
+            </nav>
+        </header>
+
+        <!-- Map context -->
+        <div class="context map">
+            <!-- Map -->
+            <div id="map-container">
+                <!-- Y-axis -->
+                <aside id="yaxis-container"><div class="yaxis"></div></aside>
+                <div class="overlay"><div class="error collapsed"></div></div>
+                <div class="overlay"><div class="note collapsed"></div></div>
+                <div class="globe"></div>
+                <div id="map"></div>
+                <div id="layer-control" class="control collapsed" title="Layers">
+                    <div class="icon" title=""></div>
+                    <div class="content">
+                        <div class="label">Layers</div>
+                        <div class="items"></div>
+                    </div>
+                </div>
+                <div id="location-bar">
+                    <div class="center" title="Information about place not available">…</div>
+                </div>
+                <div class="keyboard-shortcuts">
+                    <input type="checkbox" id="keyboard-shortcuts-checkbox">
+                    <label for="keyboard-shortcuts-checkbox"></label>
+                    <div>
+                        <div class="title">Keyboard shortcuts</div>
+                        <table>
+                            <tr><td>↩</td><td>Pan left</td></tr>
+                            <tr><td>↩</td><td>Pan right</td></tr>
+                            <tr><td>↑</td><td>Pan up</td></tr>
+                            <tr><td>↓</td><td>Pan down</td></tr>
+                            <tr><td>+</td><td>Zoom in</td></tr>
+                            <tr><td>–</td><td>Zoom out</td></tr>
+                            <tr><td>PgUp</td><td>Jump left</td></tr>
+                            <tr><td>PgDown</td><td>Jump right</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colormap -->
+            <aside id="colormap-container"><div id="colormap"></div></aside>
+        </div>
+
+        <!-- Page context -->
+        <div class="context page" style="display: none"></div>
+
+        <!-- Templates -->
+        <div id="templates" style="display: none">
+            <div id="popup-content-template" class="popup-content">
+                <div class="color-value">
+                    <div class="color-box"></div>
+                    <div class="value"></div>
+                </div>
+                <div class="time"></div>
+                <div class="height"></div>
+                <a class="latlon-link">
+                    <span class="latitude"></span>,
+                    <span class="longitude"></span>
+                </a>
+                <div class="country"></div>
+            </div>
+            <div id="tooltip-template" class="tooltip">
+                <div class="content"></div>
+            </div>
+        </div>
+    </body>
+</html>

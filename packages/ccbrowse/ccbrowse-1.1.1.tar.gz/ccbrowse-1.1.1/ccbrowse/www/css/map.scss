@@ -1,0 +1,374 @@
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#map-container {
+    text-align: center;
+    background: url("../img/bg.png") repeat-x;
+    flex-grow: 1;
+    position: relative;
+}
+
+.context.map {
+    flex-direction: row;
+}
+
+#map {
+    background: transparent !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.leaflet-container a.leaflet-active {
+    outline: none;
+}
+
+.leaflet-container .leaflet-control,.control {
+    background: black;
+    color: white;
+    border-radius: 6px;
+    border: 1px solid #555;
+    box-shadow: 0 0 5px rgba(0,0,0,0.8);
+    overflow: hidden;
+    text-align: left;
+    transition: opacity 200ms;
+    opacity: 0.8;
+    z-index: 1000;
+}
+
+.control:hover,.leaflet-container .leaflet-control:hover {
+    opacity: 1;
+}
+
+.leaflet-container .leaflet-control-measure {
+    position: absolute;
+    left: 100px;
+    top: 0px;
+}
+
+.leaflet-container .leaflet-control-measure a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('../img/measure.png') no-repeat center center;
+}
+
+.control {
+    position: absolute;
+}
+
+.control.collapsed {
+    opacity: 0.8;
+}
+
+.control.collapsed:hover {
+    opacity: 1;
+}
+
+.control.collapsed .content {
+    display: none;
+}
+
+.leaflet-container .leaflet-control-attribution {
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 2px 4px;
+    box-shadow: none;
+    font-size: 70%;
+    font-family: Tahoma, sans-serif;
+    border-radius: 0;
+    border: none;
+    opacity: 0.5;
+    transition: opacity 200ms;
+}
+
+.leaflet-container .leaflet-control-attribution:hover {
+    opacity: 1;
+}
+
+.leaflet-container .leaflet-control-attribution a {
+    color: inherit;
+    font-weight: bold;
+    padding: 0;
+}
+
+.leaflet-container .leaflet-control-attribution a:hover {
+    text-decoration: inherit;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 20px;
+}
+
+.leaflet-left .leaflet-control {
+    margin-top: 20px;
+}
+
+.leaflet-control a {
+    background-color: transparent;
+    margin: 0;
+    padding: 8px;
+}
+
+.leaflet-control a:hover {
+    background-color: transparent;
+}
+
+.leaflet-control-zoom {
+    background: black;
+    border-radius: 6px;
+    border: 1px solid #555;
+    box-shadow: 0 0 5px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    padding: 0;
+    transition: opacity 200ms;
+    display: flex;
+}
+
+.leaflet-bar a {
+    border-bottom: none;
+    width: 19px !important;
+    height: 19px !important;
+}
+
+.leaflet-bar a:hover {
+    border-bottom: none !important;
+}
+
+.leaflet-bar a.leaflet-disabled {
+    background: none;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-in.leaflet-disabled {
+    background: url("../img/zoom-in.svg") no-repeat center center;
+    border-right: 1px solid #777;
+    border-radius: 0 !important;
+    font-size: 0 !important;
+}
+
+.leaflet-control-zoom-out,
+.leaflet-control-zoom-out.leaflet-disabled {
+    background: url("../img/zoom-out.svg") no-repeat center center;
+    border-radius: 0 !important;
+    font-size: 0 !important;
+}
+
+.leaflet-touch .leaflet-control-zoom a {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.leaflet-popup-content-wrapper {
+    background: black;
+    border-radius: 5px;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 10px black;
+    position: relative;
+    left: 30%;
+    font-size: 0.9rem;
+}
+
+.leaflet-popup-content {
+    color: white;
+    font-size: inherit;
+    font-family: inherit;
+    margin: 0.5em;
+    box-shadow: 2px 2px 6px black;
+    width: 13rem !important;
+}
+
+.leaflet-popup-close-button {
+    display: none;
+}
+
+.leaflet-popup-tip {
+    background-color: black;
+    box-shadow: 2px 2px 6px black;
+    border: 1px solid #999;
+    position: relative;
+    top: -1px;
+}
+
+.leaflet-popup-tip-container {
+    height: 20px;
+    position: relative;
+    top: -1px;
+}
+
+#layer-control {
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 1000;
+}
+
+#layer-control .icon {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: black url("../img/layers.svg") no-repeat center center;
+    cursor: pointer;
+    position: relative;
+    z-index: 200;
+    margin: 0.6rem;
+}
+
+#layer-control .label {
+    font-size: 150%;
+    margin: 0.5em;
+}
+
+.layer-item {
+    display: block;
+    height: 1.3em;
+    padding: 0.5em 0.5em;
+    white-space: nowrap;
+
+    &:focus {
+        outline: none;
+        text-decoration: underline;
+    }
+
+    &:hover:before {
+        text-decoration: none !important;
+    }
+
+    &.active {
+        background-color: #0197fd;
+        color: black;
+
+        .bulb {
+            background: url("../img/bulb-active.svg") no-repeat;
+        }
+    }
+
+    &.enabled {
+        .bulb {
+            background: url("../img/bulb-enabled.svg") no-repeat;
+        }
+    }
+
+    .bulb {
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+        display: inline-block;
+        background: url("../img/bulb-disabled.svg") no-repeat;
+    }
+}
+
+.popup-content .color-box {
+    width: 10px;
+    height: 10px;
+    margin-right: 1px;
+    display: inline-block;
+}
+
+.popup-content .value {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.popup-content .latlon-link {
+    display: block;
+    color: #0197fd;
+}
+
+.error,.note {
+    position: relative;
+    opacity: 0.85;
+    margin: 0 auto;
+    display: inline-block;
+    top: -2px;
+    z-index: 80;
+    text-align: center;
+    padding: 16px 14px 8px 14px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+    transition: top 200ms;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    z-index: 1500;
+}
+
+.error.collapsed,.note.collapsed,.note.hold {
+    top: -55px;
+}
+
+.error {
+    background-color: #f50000;
+}
+
+.note {
+    background: rgba(0,0,0,0.5);
+}
+
+.keyboard-shortcuts {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.keyboard-shortcuts > input {
+    display: none;
+}
+
+.keyboard-shortcuts > input+label {
+    position: absolute;
+    display: block;
+    bottom: 4px;
+    left: 4px;
+    width: 30px;
+    height: 15px;
+    background: url("../img/keyboard.svg") no-repeat;
+    opacity: 0.5;
+}
+
+.keyboard-shortcuts input:checked+label {
+    opacity: 1;
+}
+
+.keyboard-shortcuts > div {
+    position: absolute;
+    left: 4px;
+    bottom: 23px;
+    padding: 0.3rem;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 100ms;
+    pointer-events: none;
+}
+
+.keyboard-shortcuts input:checked ~ div {
+    opacity: 1;
+}
+
+.keyboard-shortcuts .title {
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+    padding-bottom: 0.3rem;
+}
+
+.keyboard-shortcuts td:first-child {
+    font-weight: bold;
+    text-align: right;
+    padding: 0;
+}
+
+.keyboard-shortcuts td:last-child {
+    text-align: left;
+    padding: 0 0 0 0.3rem;
+}

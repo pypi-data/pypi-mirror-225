@@ -1,0 +1,17 @@
+This is a ccbrowse repository.
+
+ccbrowse is an application for visualizing data from atmospheric profilers.
+See https://github.com/peterkuma/ccbrowse/ for more information.
+
+Contents:
+
+    cache               tile cache
+    colormaps           custom colormaps
+    layers              layer data
+    products            raw product files
+    config.json         repository configuration file
+    profile.json        profile specification
+    wsgi.py             WSGI module
+
+Try `ccbrowse --help' for a list of commands that can be performed
+on the repository.
