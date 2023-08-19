@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: deker-local-adapters
+Version: 1.0.1
+Summary: Plugin with local adapters for deker
+Home-page: https://deker.io/
+License: GPL-3.0-only
+Author: OpenWeather
+Author-email: info@openweathermap.org
+Requires-Python: >=3.9,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: deker-tools (==1.0.0)
+Requires-Dist: h5py (>=3.8.0,<4.0.0)
+Requires-Dist: hdf5plugin (>=4.0.1,<5.0.0)
+Requires-Dist: numpy (>=1.18,<2.0)
+Project-URL: Documentation, https://docs.deker.io/
+Project-URL: Repository, https://github.com/openweathermap/deker-local-adapters
+Description-Content-Type: text/markdown
+
+# Deker Local Adapters
+
+This repository contains [Deker](https://github.com/openweathermap/deker) engine storage adapter
+plugin package that provides support for storing data locally in
+[HDF5](https://www.hdfgroup.org/solutions/hdf5/) files.
+
+Please refer to Deker [documentation](https://docs.deker.io) for more details.
+
