@@ -1,0 +1,115 @@
+Metadata-Version: 2.1
+Name: autofxn
+Version: 0.0.3
+Summary: Create AI prediction functions by describing what they should do. Register at https://fxn.ai.
+Home-page: https://fxn.ai
+Author: NatML Inc.
+Author-email: hi@fxn.ai
+License: Apache License 2.0
+Project-URL: Documentation, https://docs.fxn.ai
+Project-URL: Source, https://github.com/fxnai/autofxn
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# AutoFunction
+
+![autofxn](https://raw.githubusercontent.com/fxnai/autofxn/main/autofxn.gif)
+
+Create AI prediction functions by describing what they do. This project explores using an AI agent to write AI prediction functions, which can then be used to make predictions from anywhere using [Function](https://fxn.ai).
+
+> This project is what powers creating predictors from prompts on [fxn.ai/create](https://fxn.ai/create).
+
+## Installing AutoFunction
+AutoFunction is distributed on PyPi. This distribution contains both the Python library and the command line interface (CLI):
+```bash
+# Open a terminal and run the following command:
+pip install autofxn
+```
+
+## Writing Predictor Code with AI
+First, you will need to generate an [OpenAI API key](https://platform.openai.com/account/api-keys) with GPT-4 access:
+```bash
+# Specify your OpenAI API key
+export OPENAI_API_KEY="<Your OpenAI API key>"
+```
+
+> ✅ If you don't have an OpenAI account, you can generate predictors from prompts at zero cost at [fxn.ai/create](https://fxn.ai/create).
+
+Next, run the following command to generate a predictor notebook:
+```bash
+# Create a predictor notebook that returns a greeting
+# This will generate a `predictor.ipynb` notebook in the current directory
+autofxn create --output-dir . \
+    "Create a predictor that accepts a user's 'name' and returns a greeting"
+```
+
+### Usage from Code
+This library exports a single function, `create_predictor_notebook` which generates a predictor notebook from a given prompt:
+```python
+from autofxn import create_predictor_notebook
+from nbformat import NotebookNode, write
+
+# Generate the notebook
+prompt = "Create a predictor that accepts a user's 'name' and returns a greeting"
+notebook: NotebookNode = create_predictor_notebook(prompt)
+
+# Write to file
+with open("predictor.ipynb", "w") as f:
+    write(notebook, f)
+```
+
+## Making Predictions from Anywhere with Function
+With [Function](https://fxn.ai), you can use the predictor notebook to make predictions from JavaScript, Python, Unity, Zapier, Slack, and more.
+
+First, register or login to Function and [generate an access key](https://www.fxn.ai/account/developer):
+
+![generate access key](https://raw.githubusercontent.com/fxnai/.github/main/access_key.gif)
+
+Then login to the Function CLI:
+```bash
+# Open a terminal and run the following command:
+fxn auth login <ACCESS KEY>
+```
+
+Now you can create and provision an AI-generated predictor notebook on Function by simply specifying a predictor tag:
+```bash
+# Create a predictor notebook that returns a greeting
+autofxn create --tag @username/greeting \
+    "Create a predictor that accepts a user's 'name' and returns a greeting"
+```
+
+> Replace `username` with your Function username.
+
+> The predictor tag uniquely identifies every predictor on Function.
+
+Once the predictor is active, you can use it to make predictions!
+```bash
+# Make a prediction with our AI-generated predictor
+fxn predict @username/greeting --name "Carti"
+```
+
+## Roadmap
+- [x] Generate simple predictors that can be provisioned and used for predictions on [Function](https://fxn.ai).
+- [ ] Support other LLM providers (Anthropic, on-device LLM using `edgefxn` etc).
+- [ ] Plug into organization data sources (Snowflake, Databricks) to leverage highly-relevant information.
+- [ ] Fault tolerance with OpenAI API requests.
+- [ ] External program correctness and validation testing.
+- [ ] Discover and compose [Function predictors](https://fxn.ai/explore).
+- [ ] Discover and compose GitHub repositories.
+
+## Useful Links
+- [Discover predictors to use in your apps](https://fxn.ai/explore).
+- [Join our Discord community](https://fxn.ai/community).
+- [Check out our docs](https://docs.fxn.ai).
+- Learn more about us [on our blog](https://blog.fxn.ai).
+- Reach out to us at [hi@fxn.ai](mailto:hi@fxn.ai).
+
+Thank you very much!
+
