@@ -1,0 +1,10 @@
+env_setup_commands,poetry run pip install --upgrade pip
+env_setup_commands,poetry install
+env_setup_commands,poetry run pre-commit install
+self_check_commands,poetry run pre-commit run -a
+run_tests_commands,poetry run python -m pytest -vvv
+build_docs_commands,echo "Building {PACKAGE_NAME} docs"
+build_docs_commands,find . -maxdepth 1 -name \*.rst -exec cp {{}} {DOCS_WORKING_DIRECTORY} \;
+build_docs_commands,poetry run sphinx-apidoc --output-dir {DOCS_WORKING_DIRECTORY} --no-toc --force --module-first {PACKAGE_NAME}
+build_docs_commands,cp {BASE_DIR}/.jgt_tools.index {BASE_DIR}/{DOCS_WORKING_DIRECTORY}/index.rst
+build_docs_commands,poetry run sphinx-build -c {DOCS_WORKING_DIRECTORY} -aEW {DOCS_WORKING_DIRECTORY} {DOCS_OUTPUT_DIRECTORY}
