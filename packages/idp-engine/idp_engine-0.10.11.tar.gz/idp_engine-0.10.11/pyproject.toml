@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "idp-engine"
+version = "0.10.11"
+description = "IDP-Z3 is a reasoning engine for knowledge represented using the FO(.) (aka FO-dot) language."
+authors = ["pierre.carbonnelle <pierre.carbonnelle@cs.kuleuven.be>"]
+license = "GNU LGPL 3"
+readme = "README-pypi.md"
+homepage = "https://www.idp-z3.be"
+repository = "https://gitlab.com/krr/IDP-Z3"
+documentation = "https://docs.idp-z3.be"
+
+[tool.poetry.scripts]
+idp-engine = "idp_engine.IDP_Z3:cli"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Click="^7.0"
+textX="^2.1.0"
+z3-solver = "^4.11.2"
+python-dateutil = "^2.8.2"
+Flask="^1.1.1"
+Flask-Cors="^3.0.8"
+Flask-RESTful="^0.3.8"
+fast-html = "^1.0.2"
+attrs = "^23.1.0"
+pyyaml = "^6.0.1"
+
+[tool.poetry.dev-dependencies]
+birdseye = "^0.8.4"
+snoop = "^0.2.5"
+pretty-errors = "^1.2.19"
+pycallgraph2="^1.1.3"
+Sphinx = "4.2.0"
+sphinx-autobuild="^0.7.1"
+sphinxcontrib-mermaid = "0.8.1"
+sphinxcontrib-video = {git = "https://github.com/sphinx-contrib/video.git"}
+sphinxcontrib-youtube = "^1.0.1"
+sphinx-bootstrap-theme = "^0.8.0"
+sphinx-rtd-theme="^0.5.0"
+recommonmark="^0.6.0"
+Cython = "^0.29.21"
+coverage = "^6.1.1"
+pytest-cov = "^3.0.0"
+myst-parser = "^0.16.1"
+markupsafe = "2.0.1"
+py-spy = "^0.3.14"
+twine = "^4.0.2"
+mypy = "^1.4.1"
+pyyaml = "^6.0.1"
+
+[tool.poetry.group.dev.dependencies]
+tabulate = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
