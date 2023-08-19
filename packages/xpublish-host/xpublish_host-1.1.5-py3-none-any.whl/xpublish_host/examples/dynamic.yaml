@@ -1,0 +1,40 @@
+---
+
+publish_port: 9000
+cluster_config: null
+
+plugins_config:
+
+  zarr:
+    module: xpublish.plugins.included.zarr.ZarrPlugin
+
+  dconfig:
+    module: xpublish_host.plugins.DatasetsConfigPlugin
+    kwargs:
+
+      datasets_config_file: xpublish_host/examples/ds_config.yaml
+
+      datasets_config:
+
+        simple:
+          id: static
+          title: Static
+          description: Static dataset that is never reloaded
+          loader: xpublish_host.examples.datasets.simple
+
+        kwargs:
+          id: kwargs
+          title: A Simple Dataset using args and kwargs
+          description: This is a dataset accepting args and kwargs
+          loader: xpublish_host.examples.datasets.kwargs
+          args:
+            - temperature
+          kwargs:
+            values: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+        dynamic:
+          id: dynamic
+          title: Dynamic
+          description: Dynamic dataset re-loaded on request periodically
+          loader: xpublish_host.examples.datasets.simple
+          invalidate_after: 10
