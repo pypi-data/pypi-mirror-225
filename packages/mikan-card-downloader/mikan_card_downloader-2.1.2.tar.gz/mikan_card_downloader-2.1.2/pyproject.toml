@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "mikan-card-downloader"
+version = "2.1.2"
+description = "Downloads cards and stills from SIFAS and SIF."
+authors = ["DemonicSavage"]
+license = "GPLv3"
+packages = [
+    {include = "mikan", from = "src"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+beautifulsoup4 = "^4.11.1"
+aiohttp = "^3.8.4"
+lxml = "^4.9.1"
+tqdm = "^4.64.0"
+platformdirs = "^3.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.0.0"
+flake8 = "^6.0.0"
+flake8-bugbear = "^23.0.0"
+bandit = "^1.7.4"
+isort = "^5.10.1"
+pep8-naming = "^0.13.3"
+pre-commit = "^3.0.0"
+pytest = "^7.2.2"
+pytest-asyncio = "^0.21.0"
+pytest-mock = "^3.8.2"
+mypy = "^1.0.0"
+types-beautifulsoup4 = "^4.11.4"
+types-tqdm = "^4.65.0"
+pytest-cov = "^4.0.0"
+
+[tool.poetry.scripts]
+mikan = "mikan.main:main"
+
+[tool.mypy]
+strict = true
+exclude = ["test/"]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+skip = ["test"]
+
+[tool.bandit]
+exclude = ["test"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
