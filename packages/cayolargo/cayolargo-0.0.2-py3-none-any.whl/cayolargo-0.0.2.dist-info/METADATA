@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: cayolargo
+Version: 0.0.2
+Summary: In-Depth Solutions for Crypto Finance
+Home-page: 
+Author: Pawel Lachowicz
+Author-email: enquiries@quantatrisk.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: python-binance (==1.0.17)
+Requires-Dist: matplotlib
+Requires-Dist: requests
+
+cayolargo
+=========
+
+Python library for Cryptocurrency Markets Analysis and Crypto Algo-Trading.
+
+Creatded by Pawel Lachowicz, PhD
+
+QuantAtRisk.com

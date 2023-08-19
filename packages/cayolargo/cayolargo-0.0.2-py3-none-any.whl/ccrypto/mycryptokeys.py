@@ -1,0 +1,3 @@
+binance_api_key = 'xLCjq2MyYMEkQwrHyXuunovrrL196JGbkBf42OUvUcCYp8dRJd1ZawOjf3nPtAn5' 
+binance_api_secret = 'LQAOkiXC3fw02FUX3ssoRnMWw3nIwULDnAB6EBUAmEXdzY5g4bC2i8dQphBUp0Jd'
+cmc_api_key = 'fe1345ce-3f2f-45b5-8832-a3f1d3f83339'
