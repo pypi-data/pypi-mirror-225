@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: clisk
+Version: 0.0.2
+Summary: A Starter Kit to create CLI applications.
+Author-email: Robin LIORET <robin.lioret@capgemini.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: typer >=0.9.0
+Provides-Extra: build
+Requires-Dist: build >=0.10.0 ; extra == 'build'
+Requires-Dist: twine >=4.0.2 ; extra == 'build'
+
+# clisk
+
+CliSK is a little package to extend the possibility of Typer.
+
+See the examples to know how to use it.
