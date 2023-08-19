@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: geomatch
+Version: 0.2.0
+Summary: Matching two satellites up in space.
+Requires-Python: >=3.8
+Requires-Dist: folium>=0.14.0
+Requires-Dist: geopandas>=0.13.2
+Requires-Dist: icc-rt>=2020.0.133
+Requires-Dist: numba>=0.57.1
+Requires-Dist: pymongo==3.13.0
+Requires-Dist: shapely>=2.0.1
+Description-Content-Type: text/markdown
+
+# app
+
+Describe your project here.
