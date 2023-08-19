@@ -1,0 +1,15 @@
+MANIFEST.in
+setup.py
+lyg/__init__.py
+lyg.egg-info/PKG-INFO
+lyg.egg-info/SOURCES.txt
+lyg.egg-info/dependency_links.txt
+lyg.egg-info/top_level.txt
+lyg/python3.10/tx.cp310-win_amd64.pyd
+lyg/python3.10/tx.cpython-310-x86_64-linux-gnu.so
+lyg/python3.11/tx.cp311-win_amd64.pyd
+lyg/python3.11/tx.cpython-311-x86_64-linux-gnu.so
+lyg/python3.8/tx.cp38-win_amd64.pyd
+lyg/python3.8/tx.cpython-38-x86_64-linux-gnu.so
+lyg/python3.9/tx.cp39-win_amd64.pyd
+lyg/python3.9/tx.cpython-39-x86_64-linux-gnu.so
