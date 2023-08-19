@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: oraculo
+Version: 0.1.12
+Summary: A project to use Sentence Transformers and embeddings to make a pocket search engine
+Author: Joao Tedeschi
+Author-email: joaorafaelbt@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: black (>=23.3.0,<24.0.0)
+Requires-Dist: chromadb (>=0.3.21,<0.4.0)
+Requires-Dist: datasets (>=2.12.0,<3.0.0)
+Requires-Dist: duckdb (>=0.7.1,<0.8.0)
+Requires-Dist: duckdb-engine (>=0.7.0,<0.8.0)
+Requires-Dist: langchain (>=0.0.158,<0.0.159)
+Requires-Dist: numpy (>=1.24.3,<2.0.0)
+Requires-Dist: openai-whisper (>=20230314,<20230315)
+Requires-Dist: pandas (>=2.0.1,<3.0.0)
+Requires-Dist: pytube (>=15.0.0,<16.0.0)
+Requires-Dist: pyyaml (>=6.0,<7.0)
+Requires-Dist: sentence-transformers (>=2.2.2,<3.0.0)
+Requires-Dist: streamlit (>=1.22.0,<2.0.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Requires-Dist: typer[all] (>=0.9.0,<0.10.0)
+Description-Content-Type: text/markdown
+
+# Project: Oráculo
+
+Oráculo is a versatile CLI and WebApp application developed for transcription of audios and semantic search. It leverages Sentence Transformers and embeddings to create a compact search engine that aids in retrieving and organizing important information from a collection of documents.
+
+This application is particularly useful for professionals dealing with substantial amounts of audio data and requiring an efficient system to transcribe and conduct semantic search operations on the data.
+
+## Features:
+
+- Audio Transcription: Oráculo can transcribe audio files. You can transcribe a single file or bulk transcribe a folder.
+- Semantic Search: A web app to perform semantic searches on the transcribed audio data.
+
+## Requirements:
+
+- Python 3.10
+- FFmpeg
+- Git
+- Docker (in future)
+
+## Installation:
+
+You can install Oráculo with pip:
+
+```bash
+pip install oraculo
+```
+
+## Usage:
+
+To start the Semantic Search Application, use the following command:
+
+```bash
+oraculo webapp
+```
+
+To initiate a transcription for a single file:
+
+```bash
+oraculo transcribe
+```
+
+To initiate bulk transcription for a folder:
+
+```bash 
+oraculo bulk-transcribe
+```
+
+## About
+
+- Version: 0.1.11
+- Author: Joao Tedeschi
+- Contact: joaorafaelbt@gmail.com
+
+The development of Oráculo is aimed at evolving data analytics and information retrieval capabilities for businesses and individual users. Please feel free to reach out with any feedback or suggestions to improve Oráculo further.
+
