@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: xiver_gpt
+Version: 0.0.3b0
+Summary: The module Xiver team use to work with gpt.
+Home-page: https://github.com/xiver/xiver-gpt
+Download-URL: https://github.com/xiver/xiver-gpt/archive/master.zip
+Author: GigantPro
+Author-email: gigantpro2000@gmail.ru
+License: The GPLv3 License (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+<p align="center">
+        <h1 align="center">Xiver GPT</h1>
+        <h2 align="center">The module we use to work with gpt</h2>
+</a>
+
+## Basic usage
+
+### With default config
+
+```python
+from xiver_gpt import XiverGPT
+
+
+print(XiverGPT().create_response('Hello! How are u?'))
+```
+
+
+### With another model or provider
+
+```python
+from xiver_gpt import XiverGPT
+import g4f
+
+
+print(
+    XiverGPT
+            g4f_model=g4f.Model.your_model,
+            g4f_provider=g4f.Provider.your_provider,
+    ).create_reT(sponse('Hello! How are u?')
+)
+```
+
+## Attention
+
+At the moment the initialization of the XiverGPT class object can be quite 
+long due to the selection of a suitable provider. 
+In the future the initialization time will be reduced many times!
+
+
+## Installation
+
+```bash
+$ pip install xiver_gpt
+```
+
+## Installation from source
+
+### Dependencies:
+- **poetry**
+```bash
+$ git clone https://github.com/xiver/xiver-gpt.git; cd xiver_gpt-master
+$ poetry install
+$ poetry run build; cd dist
+$ pip install $(ls -Art | tail -n 1)
+```
