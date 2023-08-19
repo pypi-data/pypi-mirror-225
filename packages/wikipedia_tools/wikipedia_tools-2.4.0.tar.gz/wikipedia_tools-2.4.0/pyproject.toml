@@ -1,0 +1,65 @@
+# pyproject.toml
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+
+[project]
+name = "wikipedia_tools"
+version = "2.4.0"
+description='This is a Wikipedia Tool to fetch revisions based on a period of time.'
+readme = "README.md"
+authors = [{ name = "Roxanne El Baff", email = "roxanne.elbaff@dlr.de" }]
+license = { file = "LICENSE" }
+keywords=['wikipedia', 'wikipedia revisions', 'wikipedia stats']
+dependencies = ['pandas>=1.0.1',
+                      'matplotlib>=3.2.1',
+                      'pymediawiki==0.7.2',
+                      'IPy>=1.01',
+                      'seaborn>=0.11.2',
+                      'nlpaf>1.0.0; python_version <= "3.8"',
+                      'tqdm==4.43.0',
+                      'dataclasses==0.6',
+                      'beautifulsoup4',
+                      'requests>=2.0.0,<3.0.0',
+                      ]
+requires-python = ">=3.7"
+
+
+[tool.poetry]
+# ...
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Science/Research',
+
+]
+readme = "README.md"
+include = ["data"]
+
+
+[project.optional-dependencies]
+dev = [ "pip-tools"]
+
+[project.urls]
+Homepage = 'https://github.com/DLR-SC/wikipedia-periodic-revisions'
+#[tool.setuptools.package-data]
+#myModule = ["../data/*.csv"]
+
+[tool.setuptools]
+# ...
+# By default, include-package-data is true in pyproject.toml, so you do
+# NOT have to specify this line.
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["data"]
+
+[tool.setuptools.package-data]
+mypkg = ["*.csv"]
+
+[tool.black]
+line-length = 79
