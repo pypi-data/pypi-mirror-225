@@ -1,0 +1,13 @@
+tinycss2>=1.1.0
+
+[dev]
+boussole
+flake8
+pytest
+pytest-django
+freezegun
+Django<3.2,>=2.2
+sphinx
+sphinx-rtd-theme
+livereload
+twine
