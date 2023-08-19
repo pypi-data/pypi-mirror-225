@@ -1,0 +1,13 @@
+{
+    "ruff.args": [
+        "--config=pyproject.toml",
+    ],
+    "editor.formatOnSave": false,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": false,
+          "source.fixAll": false
+        }
+      },
+    "placeholder": "Just to have a last item",
+}
