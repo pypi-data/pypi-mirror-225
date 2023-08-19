@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safetokengen"
+version = "0.0.1"
+authors = [
+  { name="Ebubechukwu Ibeh", email="bgraphixx5@gmail.com" },
+]
+maintainers = [
+  { name="Ebubechukwu Ibeh", email="bgraphixx5@gmail.com" }
+]
+
+description = "Generate Passwords, OTPs, PINs, API keys and Token lists with various options for customization."
+keywords = ["passwords","pins", "otp","api keys"]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/bgraphixx/SafeTokenGen"
+"Bug Tracker" = "https://github.com/bgraphixx/SafeTokenGen/issues"
