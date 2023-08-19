@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlassPy: loading data &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GlassPy: predicting" href="glasspy_predict.html" />
+    <link rel="prev" title="Examples" href="../examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GlassPy: loading data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Basic-usage">Basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Controlling-the-initial-data-collection">Controlling the initial data collection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy_predict.html">GlassPy: predicting</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">glasspy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">GlassPy: loading data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/intro/notebooks/glasspy_data.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="GlassPy:-loading-data">
+<h1>GlassPy: loading data<a class="headerlink" href="#GlassPy:-loading-data" title="Permalink to this heading"></a></h1>
+<section id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this heading"></a></h2>
+<p>GlassPy can load experimental data in its subpackage <code class="docutils literal notranslate"><span class="pre">glasspy.data</span></code>. Currently, GlassPy has the SciGlass database as an available data source.</p>
+</section>
+<section id="Basic-usage">
+<h2>Basic usage<a class="headerlink" href="#Basic-usage" title="Permalink to this heading"></a></h2>
+<p>Below is a minimal example of loading SciGlass data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame. This loads the SciGlass data with the default configuration. This means that you will load most of the available data and metadata.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glasspy.data</span> <span class="kn">import</span> <span class="n">SciGlass</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">SciGlass</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<p>It takes a while to run this cell, but after it loads all the data, we can check what we have.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="10" halign="left">elements</th>
+      <th>...</th>
+      <th colspan="5" halign="left">property</th>
+      <th colspan="5" halign="left">metadata</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>H</th>
+      <th>Li</th>
+      <th>Be</th>
+      <th>B</th>
+      <th>C</th>
+      <th>N</th>
+      <th>O</th>
+      <th>F</th>
+      <th>Na</th>
+      <th>Mg</th>
+      <th>...</th>
+      <th>SurfaceTensionAboveTg</th>
+      <th>SurfaceTension1173K</th>
+      <th>SurfaceTension1473K</th>
+      <th>SurfaceTension1573K</th>
+      <th>SurfaceTension1673K</th>
+      <th>ChemicalAnalysis</th>
+      <th>Author</th>
+      <th>Year</th>
+      <th>NumberElements</th>
+      <th>NumberCompounds</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20400020000</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.666667</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Volarovich M.P.</td>
+      <td>1936</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>20500020001</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.579213</td>
+      <td>0.0</td>
+      <td>0.196815</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>20500020002</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.580869</td>
+      <td>0.0</td>
+      <td>0.193449</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>20500020003</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.581986</td>
+      <td>0.0</td>
+      <td>0.187167</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>20500020004</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.583672</td>
+      <td>0.0</td>
+      <td>0.183080</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4493300611694</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.625485</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.049125</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Murata T.</td>
+      <td>2019</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4493300611695</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.001948</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.637540</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.009932</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Murata T.</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4493300611696</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.635921</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Murata T.</td>
+      <td>2019</td>
+      <td>8</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4493300611697</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.014544</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.622226</td>
+      <td>0.0</td>
+      <td>0.035890</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Murata T.</td>
+      <td>2019</td>
+      <td>9</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4493300611698</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.041532</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.634462</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000487</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>Murata T.</td>
+      <td>2019</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<p>283102 rows × 793 columns</p>
+</div></div>
+</div>
+<p>To avoid naming conflicts and to make it easier to navigate through the DataFrame, the data is structured in two levels. In the first level, we have information grouped by composition, property, or metadata.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;elements&#39;, &#39;compounds&#39;, &#39;property&#39;, &#39;metadata&#39;], dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<p>So if you want to explore the chemical elements of the data, you can just filter that part of the DataFrame.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">els</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;elements&quot;</span><span class="p">]</span>
+<span class="n">els</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>H</th>
+      <th>Li</th>
+      <th>Be</th>
+      <th>B</th>
+      <th>C</th>
+      <th>N</th>
+      <th>O</th>
+      <th>F</th>
+      <th>Na</th>
+      <th>Mg</th>
+      <th>...</th>
+      <th>W</th>
+      <th>Re</th>
+      <th>Pt</th>
+      <th>Au</th>
+      <th>Hg</th>
+      <th>Tl</th>
+      <th>Pb</th>
+      <th>Bi</th>
+      <th>Th</th>
+      <th>U</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20400020000</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.666667</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>20500020001</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.579213</td>
+      <td>0.0</td>
+      <td>0.196815</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>20500020002</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.580869</td>
+      <td>0.0</td>
+      <td>0.193449</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>20500020003</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.581986</td>
+      <td>0.0</td>
+      <td>0.187167</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>20500020004</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.583672</td>
+      <td>0.0</td>
+      <td>0.183080</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4493300611694</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.625485</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.049125</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4493300611695</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.001948</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.637540</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.009932</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4493300611696</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.635921</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4493300611697</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.014544</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.622226</td>
+      <td>0.0</td>
+      <td>0.035890</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4493300611698</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.041532</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.634462</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000487</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>283102 rows × 76 columns</p>
+</div></div>
+</div>
+<p>The same is true if you want to explore a particular column of the DataFrame. Suppose you want to explore the glass transition temperature:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;property&quot;</span><span class="p">][</span><span class="s2">&quot;Tg&quot;</span><span class="p">]</span>
+<span class="n">Tg</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ID
+20400020000          NaN
+20500020001      1017.15
+20500020002      1096.15
+20500020003      1013.15
+20500020004      1013.15
+                  ...
+4493300611694        NaN
+4493300611695        NaN
+4493300611696        NaN
+4493300611697        NaN
+4493300611698        NaN
+Name: Tg, Length: 283102, dtype: float64
+</pre></div></div>
+</div>
+<p>As you can see, not all entries have a value for Tg.</p>
+<p>To check for all available properties in GlassPy, run:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">SciGlass</span><span class="o">.</span><span class="n">available_properties</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;T0&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;T3&#39;, &#39;T4&#39;, &#39;T5&#39;, &#39;T6&#39;, &#39;T7&#39;, &#39;T8&#39;, &#39;T9&#39;, &#39;T10&#39;, &#39;T11&#39;, &#39;T12&#39;, &#39;Viscosity773K&#39;, &#39;Viscosity873K&#39;, &#39;Viscosity973K&#39;, &#39;Viscosity1073K&#39;, &#39;Viscosity1173K&#39;, &#39;Viscosity1273K&#39;, &#39;Viscosity1373K&#39;, &#39;Viscosity1473K&#39;, &#39;Viscosity1573K&#39;, &#39;Viscosity1673K&#39;, &#39;Viscosity1773K&#39;, &#39;Viscosity1873K&#39;, &#39;Viscosity2073K&#39;, &#39;Viscosity2273K&#39;, &#39;Viscosity2473K&#39;, &#39;Tg&#39;, &#39;Tmelt&#39;, &#39;Tliquidus&#39;, &#39;TLittletons&#39;, &#39;TAnnealing&#39;, &#39;Tstrain&#39;, &#39;Tsoft&#39;, &#39;TdilatometricSoftening&#39;, &#39;AbbeNum&#39;, &#39;RefractiveIndex&#39;, &#39;RefractiveIndexLow&#39;, &#39;RefractiveIndexHigh&#39;, &#39;MeanDispersion&#39;, &#39;Permittivity&#39;, &#39;TangentOfLossAngle&#39;, &#39;TresistivityIs1MOhm.m&#39;, &#39;Resistivity273K&#39;, &#39;Resistivity373K&#39;, &#39;Resistivity423K&#39;, &#39;Resistivity573K&#39;, &#39;Resistivity1073K&#39;, &#39;Resistivity1273K&#39;, &#39;Resistivity1473K&#39;, &#39;Resistivity1673K&#39;, &#39;YoungModulus&#39;, &#39;ShearModulus&#39;, &#39;Microhardness&#39;, &#39;PoissonRatio&#39;, &#39;Density293K&#39;, &#39;Density1073K&#39;, &#39;Density1273K&#39;, &#39;Density1473K&#39;, &#39;Density1673K&#39;, &#39;ThermalConductivity&#39;, &#39;ThermalShockRes&#39;, &#39;CTEbelowTg&#39;, &#39;CTE328K&#39;, &#39;CTE373K&#39;, &#39;CTE433K&#39;, &#39;CTE483K&#39;, &#39;CTE623K&#39;, &#39;Cp293K&#39;, &#39;Cp473K&#39;, &#39;Cp673K&#39;, &#39;Cp1073K&#39;, &#39;Cp1273K&#39;, &#39;Cp1473K&#39;, &#39;Cp1673K&#39;, &#39;NucleationTemperature&#39;, &#39;NucleationRate&#39;, &#39;TMaxGrowthVelocity&#39;, &#39;MaxGrowthVelocity&#39;, &#39;CrystallizationPeak&#39;, &#39;CrystallizationOnset&#39;, &#39;SurfaceTensionAboveTg&#39;, &#39;SurfaceTension1173K&#39;, &#39;SurfaceTension1473K&#39;, &#39;SurfaceTension1573K&#39;, &#39;SurfaceTension1673K&#39;]
+</pre></div></div>
+</div>
+<p>See the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/">documentation</a> if you are not familiar with how to use a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame.</p>
+</section>
+<section id="Controlling-the-initial-data-collection">
+<h2>Controlling the initial data collection<a class="headerlink" href="#Controlling-the-initial-data-collection" title="Permalink to this heading"></a></h2>
+<p>It takes a while to load all the SciGlass data. It is wise to load only what you will actually use. You can control what you load by passing your configuration as dictionaries to the <code class="docutils literal notranslate"><span class="pre">SciGlass</span></code> class.</p>
+<p>For example, say you don’t want glasses with silver or gold in their composition, you are only interested in the glass transition temperature, and you don’t want information about the compounds that make up the glass. You can run this query like this:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_properties_except_Tg</span> <span class="o">=</span> <span class="n">SciGlass</span><span class="o">.</span><span class="n">available_properties</span><span class="p">()</span>
+<span class="n">all_properties_except_Tg</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Tg&quot;</span><span class="p">)</span>
+
+<span class="n">config_el</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;drop&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Ag&quot;</span><span class="p">,</span> <span class="s2">&quot;Au&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">config_prop</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;keep&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tg&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;drop&quot;</span><span class="p">:</span> <span class="n">all_properties_except_Tg</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">config_comp</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">SciGlass</span><span class="p">(</span>
+    <span class="n">elements_cfg</span><span class="o">=</span><span class="n">config_el</span><span class="p">,</span>
+    <span class="n">properties_cfg</span><span class="o">=</span><span class="n">config_prop</span><span class="p">,</span>
+    <span class="n">compounds_cfg</span><span class="o">=</span><span class="n">config_comp</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="16" halign="left">elements</th>
+      <th>property</th>
+      <th colspan="4" halign="left">metadata</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>H</th>
+      <th>Li</th>
+      <th>Be</th>
+      <th>B</th>
+      <th>C</th>
+      <th>N</th>
+      <th>O</th>
+      <th>F</th>
+      <th>Na</th>
+      <th>Mg</th>
+      <th>...</th>
+      <th>Tl</th>
+      <th>Pb</th>
+      <th>Bi</th>
+      <th>Th</th>
+      <th>U</th>
+      <th>Tg</th>
+      <th>ChemicalAnalysis</th>
+      <th>Author</th>
+      <th>Year</th>
+      <th>NumberElements</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20500020001</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>57.921249</td>
+      <td>0.0</td>
+      <td>19.681530</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1017.15</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20500020002</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>58.086941</td>
+      <td>0.0</td>
+      <td>19.344940</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1096.15</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20500020003</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>58.198601</td>
+      <td>0.0</td>
+      <td>18.716690</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1013.15</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20500020004</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>58.367241</td>
+      <td>0.0</td>
+      <td>18.308001</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1013.15</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20500020005</th>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>58.282768</td>
+      <td>0.0</td>
+      <td>18.264561</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>978.15</td>
+      <td>False</td>
+      <td>Hoj J.W.</td>
+      <td>1992</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4493200611415</th>
+      <td>0.0</td>
+      <td>7.250638</td>
+      <td>0.0</td>
+      <td>2.368801</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>59.389221</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>8.964828</td>
+      <td>0.0</td>
+      <td>5.536447</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>543.15</td>
+      <td>False</td>
+      <td>Jung Woo Man</td>
+      <td>2019</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4493200611416</th>
+      <td>0.0</td>
+      <td>7.445931</td>
+      <td>0.0</td>
+      <td>2.358826</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>59.595871</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>6.650183</td>
+      <td>0.0</td>
+      <td>5.808963</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>545.15</td>
+      <td>False</td>
+      <td>Jung Woo Man</td>
+      <td>2019</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4493200611417</th>
+      <td>0.0</td>
+      <td>6.593068</td>
+      <td>0.0</td>
+      <td>10.288480</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>59.600090</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>10.782570</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>532.15</td>
+      <td>False</td>
+      <td>Jung Woo Man</td>
+      <td>2019</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4493200611418</th>
+      <td>0.0</td>
+      <td>5.919064</td>
+      <td>0.0</td>
+      <td>1.936039</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>64.014076</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>7.322553</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>506.15</td>
+      <td>False</td>
+      <td>Jung Woo Man</td>
+      <td>2019</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4493200611419</th>
+      <td>0.0</td>
+      <td>6.371798</td>
+      <td>0.0</td>
+      <td>2.019926</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>63.761761</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>7.882636</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>522.15</td>
+      <td>False</td>
+      <td>Jung Woo Man</td>
+      <td>2019</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+<p>91738 rows × 78 columns</p>
+</div></div>
+</div>
+<p>See the documentation for the <code class="docutils literal notranslate"><span class="pre">SciGlass</span></code> class for more information on how to control your initial data collection.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="glasspy_predict.html" class="btn btn-neutral float-right" title="GlassPy: predicting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

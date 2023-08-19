@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glasspy.chemistry package &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="glasspy.data package" href="glasspy.data.html" />
+    <link rel="prev" title="glasspy package" href="glasspy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">glasspy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="glasspy.html">glasspy package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="glasspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">glasspy.chemistry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html">glasspy.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html">glasspy.predict package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.viscosity.html">glasspy.viscosity package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy.support">glasspy.support module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">glasspy</a></li>
+          <li class="breadcrumb-item"><a href="glasspy.html">glasspy package</a></li>
+      <li class="breadcrumb-item active">glasspy.chemistry package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/glasspy.chemistry.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="glasspy-chemistry-package">
+<h1>glasspy.chemistry package<a class="headerlink" href="#glasspy-chemistry-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.chemistry.convert">
+<span id="glasspy-chemistry-convert-module"></span><h2>glasspy.chemistry.convert module<a class="headerlink" href="#module-glasspy.chemistry.convert" title="Permalink to this heading"></a></h2>
+<p>Conversion and rescaling of objects containing chemical information.</p>
+<p>This module offers some helper functions to convert and rescale objects that
+hold chemical information, ChemArrays.</p>
+<p>See the function to_array for an easy way to convert strings, dictionaries, and
+pandas DataFrames to ChemArray.</p>
+<p>Check the function wt_to_mol and mol_to_wt to easily convert a ChemArray from
+wt% to mol% and vice versa.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.convert.mol_to_wt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.convert.</span></span><span class="sig-name descname"><span class="pre">mol_to_wt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.convert.mol_to_wt" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an array from mol% to weight%.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.convert.rescale_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.convert.</span></span><span class="sig-name descname"><span class="pre">rescale_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.convert.rescale_array" title="Permalink to this definition"></a></dt>
+<dd><p>Rescale all rows of an array to have the same sum.</p>
+<p>This function does nothing if rescale_to_sum is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – Raised when rescale_to_sum is negative.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.convert.to_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.convert.</span></span><span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.convert.to_array" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the input object to an array.</p>
+<p>Most of the operations in this module receive an array as the argument. This
+design choice was made because numpy arrays are fast. These arrays may be
+called “chemical arrays”, but they are still instances of numpy array.
+Chemical arrays must follow three rules:</p>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li><p>each row of the array is one chemical substance;</p></li>
+<li><p>each column of the array represents a chemical element or chemical</p></li>
+</ol>
+<blockquote>
+<div><p>molecule;</p>
+</div></blockquote>
+<ol class="lowerroman simple" start="3">
+<li><p>chemical arrays must be 2D arrays.</p></li>
+</ol>
+</div></blockquote>
+<p>Say, for example, that you have a chemical array x. The value stored in
+x[i][j] is the amount of the element/molecule j that the substance i has. It
+is up to the user to define what this amount means. Perhaps it is the mole
+fraction of the element/molecule j; perhaps it is the weight percentage of
+the element/molecule j. It doesn’t matter what it means, as long as this
+definition is the same for all values stored in this chemical array x. Check
+the function wt_to_mol and mol_to_wt to easily convert array from wt% to
+mol% and vice versa. Note: even if your array hold only one substance, it
+must still meet condition iii, that is: it must still be a 2D array (in this
+case with only one row).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>output_cols</strong> – List of strings of chemical compounds or chemical elements. The columns
+of the output array will be arranged in this order. If ‘default’ is
+passed to this argument, then the output array will have the same order
+as the input. Caution: this function does not convert compounds to
+chemical elements, see to_element_array if this is what you are looking
+for.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted ChemArray.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Raised when x is a list or an array that is not 1D or 2D.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.convert.to_element_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.convert.</span></span><span class="sig-name descname"><span class="pre">to_element_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_element_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.convert.to_element_array" title="Permalink to this definition"></a></dt>
+<dd><p>Convert x to an element array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>output_element_cols</strong> – List of strings of chemical element symbols. The columns of the output
+array will be arranged in this order. If ‘all’ is passed to this
+argument, then the output array will be a sequence from hydrogen to
+plutonium sorted by chemical number. If ‘default’ is passed, then the
+output array will have only the chemical elements that are present in x,
+sorted alphabetically.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted ChemArray.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Raised when input_cols has lenght of zero and x is a list or an array</p></li>
+<li><p><strong>AssertionError</strong> – Raised when the lenght of input_cols is different than the lenght of x
+    along the column axis.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.convert.wt_to_mol">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.convert.</span></span><span class="sig-name descname"><span class="pre">wt_to_mol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.convert.wt_to_mol" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an array from weight% to mol%.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.chemistry.data">
+<span id="glasspy-chemistry-data-module"></span><h2>glasspy.chemistry.data module<a class="headerlink" href="#module-glasspy.chemistry.data" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.chemistry.featurizer">
+<span id="glasspy-chemistry-featurizer-module"></span><h2>glasspy.chemistry.featurizer module<a class="headerlink" href="#module-glasspy.chemistry.featurizer" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.featurizer.physchem_featurizer">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.featurizer.</span></span><span class="sig-name descname"><span class="pre">physchem_featurizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elemental_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_invalid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ewa'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#glasspy.chemistry.featurizer.physchem_featurizer" title="Permalink to this definition"></a></dt>
+<dd><p>Extract features from a chemical object.</p>
+<p>For a list of all possible features that can be extracted, check the
+variable <cite>all_features</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>absolute_features</strong> – List of chemical elements that will be part of the features.</p></li>
+<li><p><strong>absolute_features</strong> – List of tuples containing the name of the feature to be extracted and
+the aggregator function. Features computed from this list are absolute.</p></li>
+<li><p><strong>weighted_features</strong> – List of tuples containing the name of the feature to be extracted and
+the aggregator function. Features computed from this list are weighted.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+<li><p><strong>sep</strong> – String used to separate the information of the name of each extracted
+feature.</p></li>
+<li><p><strong>check_invalid</strong> – Checks if there are invalid features that cannot be computed. Invalid
+features are those with missing values in the desired chemical domain.
+The function still works even with invalid features. However, it is not
+recommended to use it in this case. Only disable this check if you are
+sure that no invalid features exist in your chemical domain.</p></li>
+<li><p><strong>order</strong> – String containing the order of the features in the final array. Use the
+letter <cite>e</cite> for elemental features, <cite>w</cite> for weighted features, and <cite>a</cite>
+for absolute features.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A 2D array. Each row is a chemical substance.
+feature_columns;</p>
+<blockquote>
+<div><p>A list of strings containing the name of the extracted chemical feature.
+Strings starting with “A” are absolute features and strings starting
+with “W” are weighted.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>features</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Raised when rescale_to_sum is negative.</p></li>
+<li><p><strong>ValueError</strong> – Raised when the input composition has chemical elements that cannot be
+    used to extract features.</p></li>
+<li><p><strong>ValueError</strong> – Raised when invalid features are present and check_invalid is True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.chemistry.types">
+<span id="glasspy-chemistry-types-module"></span><h2>glasspy.chemistry.types module<a class="headerlink" href="#module-glasspy.chemistry.types" title="Permalink to this heading"></a></h2>
+<p>Provides CompositionLike to check if an object is a valid chemical object and
+the ChemArray class.</p>
+<p>There are many ways to represent a chemical substance using Python objects.
+GlassPy accepts 8 different types:</p>
+<ul class="simple">
+<li><p>String: Any string that can be parsed by the parse_formula of chemparse
+(<a class="reference external" href="https://pypi.org/project/chemparse/">https://pypi.org/project/chemparse/</a>) is allowed. Examples: “SiO2”,
+“CaMgSi2O5”, “(Li2O)1(SiO2)2”, “C1.5O3”. See the <cite>chemparse</cite> documentation for
+more information.</p></li>
+<li><p>List of floats: A simple list of floats can represent a chemical substance. To
+represent SiO2, you could write [1, 2, 0], where the first element represents
+the amount of silicon, the second the amount of oxygen, and the third the
+amount of lithium. Another way to represent this substance would be the list
+[1], where the only element present is silica itself. As you can see, it is up
+to the user to know which element of the list is associated with each chemical
+substance.</p></li>
+<li><p>List of lists of floats: similar to the above, here the user can store more
+than one chemical substance in the same variable. To represent both SiO2 and
+Li2O, you can write “substances = [[1, 2, 0], [0, 1, 2]]”. Note that the first
+index of substances is associated with a single chemical substance, so
+substances[0] contains information about SiO2 and substances[1] contains
+information about Li2O. The second substance index is associated with chemical
+elements or molecules. In this case, the values stored in substances[0][0] and
+substances[1][0] store the amount of silicon that SiO2 and Li2O have.</p></li>
+<li><p>Numpy array: 1D numpy arrays follow the same logic as a list of floats, and 2D
+numpy arrays follow the same logic as a list of lists of floats.</p></li>
+<li><p>Dictionary with string keys and float values: in this case, the keys are the
+chemical elements or molecules and the corresponding values are the amount of
+these elements or molecules. SiO2 can be written as {‘Si’: 1, ‘O’: 2} or
+{‘SiO2’: 1}.</p></li>
+<li><p>Dictionary with string keys and list of float values: similar to the above,
+but the user can store more than one chemical substance in the same
+dictionary. To store SiO2 and Li2O in the same dictionary, you can write
+{‘Si’: [1, 0], ‘O’: [2, 1], ‘Li’: [0, 2]}. Note that the first element of each
+list stores information about one substance (SiO2) and the second element
+stores information about the other (Li2O).</p></li>
+<li><p>Dictionary with string keys and numpy array values: behaves the same as the
+above.</p></li>
+<li><p>Pandas DataFrame: each row of the DataFrame represents a chemical substance.
+The columns represent the chemical elements or molecules that make up the
+substance. Elements and molecules that are not present must be zero. Only
+information related to the chemical composition of the substances can be
+present in the DataFrame.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="glasspy.chemistry.types.ChemArray">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.types.</span></span><span class="sig-name descname"><span class="pre">ChemArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chem_composition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chem_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.chemistry.types.ChemArray" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
+<p>Numpy array for storing chemical composition data.</p>
+<dl class="simple">
+<dt>ChemArrays must obey three rules:</dt><dd><ol class="lowerroman simple">
+<li><p>each row of the array is a chemical substance;</p></li>
+<li><p>each column of the array represents a chemical element or molecule;</p></li>
+<li><p>ChemArrays must be 2D arrays.</p></li>
+</ol>
+</dd>
+</dl>
+<p>For example, suppose you have a ChemArray x. The value stored in x[i][j] is
+the amount of element/molecule j that substance i has. It is up to the user
+to define what this amount means. Maybe it’s the mole fraction of the
+element/molecule j; maybe it’s the weight percentage of the element/molecule
+j. It doesn’t matter what it means, as long as this definition is the same
+for all values stored in this ChemArray.</p>
+<p>Note that even if your array contains only one substance, it must still
+satisfy condition iii, that is, it must still be a 2D array (in this case,
+with only one row). The recommended way to create ChemArrays is to use the
+<cite>to_array</cite> or <cite>to_element_array</cite> function from GlassPy’s <cite>chemistry.convert</cite>
+submodule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chem_composition</strong> – A 2D array. Each row is a chemical element. See the docstring of the
+to_array function for more information.</p></li>
+<li><p><strong>chem_columns</strong> – A list of strings containing the chemical substance associated with each
+column in the array.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Code based on <a class="reference external" href="https://numpy.org/doc/stable/user/basics.subclassing.html#slightly-more-realistic-example-attribute-added-to-existing-array">https://numpy.org/doc/stable/user/basics.subclassing.html#slightly-more-realistic-example-attribute-added-to-existing-array</a></p>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.chemistry">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-glasspy.chemistry" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="glasspy.chemistry.ChemArray">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">ChemArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chem_composition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chem_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.chemistry.ChemArray" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
+<p>Numpy array for storing chemical composition data.</p>
+<dl class="simple">
+<dt>ChemArrays must obey three rules:</dt><dd><ol class="lowerroman simple">
+<li><p>each row of the array is a chemical substance;</p></li>
+<li><p>each column of the array represents a chemical element or molecule;</p></li>
+<li><p>ChemArrays must be 2D arrays.</p></li>
+</ol>
+</dd>
+</dl>
+<p>For example, suppose you have a ChemArray x. The value stored in x[i][j] is
+the amount of element/molecule j that substance i has. It is up to the user
+to define what this amount means. Maybe it’s the mole fraction of the
+element/molecule j; maybe it’s the weight percentage of the element/molecule
+j. It doesn’t matter what it means, as long as this definition is the same
+for all values stored in this ChemArray.</p>
+<p>Note that even if your array contains only one substance, it must still
+satisfy condition iii, that is, it must still be a 2D array (in this case,
+with only one row). The recommended way to create ChemArrays is to use the
+<cite>to_array</cite> or <cite>to_element_array</cite> function from GlassPy’s <cite>chemistry.convert</cite>
+submodule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chem_composition</strong> – A 2D array. Each row is a chemical element. See the docstring of the
+to_array function for more information.</p></li>
+<li><p><strong>chem_columns</strong> – A list of strings containing the chemical substance associated with each
+column in the array.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Code based on <a class="reference external" href="https://numpy.org/doc/stable/user/basics.subclassing.html#slightly-more-realistic-example-attribute-added-to-existing-array">https://numpy.org/doc/stable/user/basics.subclassing.html#slightly-more-realistic-example-attribute-added-to-existing-array</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.mol_to_wt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">mol_to_wt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.mol_to_wt" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an array from mol% to weight%.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.physchem_featurizer">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">physchem_featurizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elemental_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_invalid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ewa'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#glasspy.chemistry.physchem_featurizer" title="Permalink to this definition"></a></dt>
+<dd><p>Extract features from a chemical object.</p>
+<p>For a list of all possible features that can be extracted, check the
+variable <cite>all_features</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>absolute_features</strong> – List of chemical elements that will be part of the features.</p></li>
+<li><p><strong>absolute_features</strong> – List of tuples containing the name of the feature to be extracted and
+the aggregator function. Features computed from this list are absolute.</p></li>
+<li><p><strong>weighted_features</strong> – List of tuples containing the name of the feature to be extracted and
+the aggregator function. Features computed from this list are weighted.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+<li><p><strong>sep</strong> – String used to separate the information of the name of each extracted
+feature.</p></li>
+<li><p><strong>check_invalid</strong> – Checks if there are invalid features that cannot be computed. Invalid
+features are those with missing values in the desired chemical domain.
+The function still works even with invalid features. However, it is not
+recommended to use it in this case. Only disable this check if you are
+sure that no invalid features exist in your chemical domain.</p></li>
+<li><p><strong>order</strong> – String containing the order of the features in the final array. Use the
+letter <cite>e</cite> for elemental features, <cite>w</cite> for weighted features, and <cite>a</cite>
+for absolute features.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A 2D array. Each row is a chemical substance.
+feature_columns;</p>
+<blockquote>
+<div><p>A list of strings containing the name of the extracted chemical feature.
+Strings starting with “A” are absolute features and strings starting
+with “W” are weighted.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>features</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Raised when rescale_to_sum is negative.</p></li>
+<li><p><strong>ValueError</strong> – Raised when the input composition has chemical elements that cannot be
+    used to extract features.</p></li>
+<li><p><strong>ValueError</strong> – Raised when invalid features are present and check_invalid is True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.rescale_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">rescale_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.rescale_array" title="Permalink to this definition"></a></dt>
+<dd><p>Rescale all rows of an array to have the same sum.</p>
+<p>This function does nothing if rescale_to_sum is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – Raised when rescale_to_sum is negative.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.to_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.to_array" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the input object to an array.</p>
+<p>Most of the operations in this module receive an array as the argument. This
+design choice was made because numpy arrays are fast. These arrays may be
+called “chemical arrays”, but they are still instances of numpy array.
+Chemical arrays must follow three rules:</p>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li><p>each row of the array is one chemical substance;</p></li>
+<li><p>each column of the array represents a chemical element or chemical</p></li>
+</ol>
+<blockquote>
+<div><p>molecule;</p>
+</div></blockquote>
+<ol class="lowerroman simple" start="3">
+<li><p>chemical arrays must be 2D arrays.</p></li>
+</ol>
+</div></blockquote>
+<p>Say, for example, that you have a chemical array x. The value stored in
+x[i][j] is the amount of the element/molecule j that the substance i has. It
+is up to the user to define what this amount means. Perhaps it is the mole
+fraction of the element/molecule j; perhaps it is the weight percentage of
+the element/molecule j. It doesn’t matter what it means, as long as this
+definition is the same for all values stored in this chemical array x. Check
+the function wt_to_mol and mol_to_wt to easily convert array from wt% to
+mol% and vice versa. Note: even if your array hold only one substance, it
+must still meet condition iii, that is: it must still be a 2D array (in this
+case with only one row).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>output_cols</strong> – List of strings of chemical compounds or chemical elements. The columns
+of the output array will be arranged in this order. If ‘default’ is
+passed to this argument, then the output array will have the same order
+as the input. Caution: this function does not convert compounds to
+chemical elements, see to_element_array if this is what you are looking
+for.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted ChemArray.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Raised when x is a list or an array that is not 1D or 2D.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.to_element_array">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">to_element_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_element_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.to_element_array" title="Permalink to this definition"></a></dt>
+<dd><p>Convert x to an element array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Any composition like object.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x. Necessary only when x is a list or array, ignored otherwise.</p></li>
+<li><p><strong>output_element_cols</strong> – List of strings of chemical element symbols. The columns of the output
+array will be arranged in this order. If ‘all’ is passed to this
+argument, then the output array will be a sequence from hydrogen to
+plutonium sorted by chemical number. If ‘default’ is passed, then the
+output array will have only the chemical elements that are present in x,
+sorted alphabetically.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted ChemArray.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – Raised when input_cols has lenght of zero and x is a list or an array</p></li>
+<li><p><strong>AssertionError</strong> – Raised when the lenght of input_cols is different than the lenght of x
+    along the column axis.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.chemistry.wt_to_mol">
+<span class="sig-prename descclassname"><span class="pre">glasspy.chemistry.</span></span><span class="sig-name descname"><span class="pre">wt_to_mol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#glasspy.chemistry.types.ChemArray" title="glasspy.chemistry.types.ChemArray"><span class="pre">ChemArray</span></a></span></span><a class="headerlink" href="#glasspy.chemistry.wt_to_mol" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an array from weight% to mol%.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – A 2D array. Each row is a chemical substance. See the docstring of the
+function to_array for more information.</p></li>
+<li><p><strong>input_cols</strong> – List of strings representing the chemical entities related to each
+column of x.</p></li>
+<li><p><strong>rescale_to_sum</strong> – A positive number representing the total sum of each chemical substance.
+If False then the same input array is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2D array. Each row is a chemical substance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="glasspy.html" class="btn btn-neutral float-left" title="glasspy package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="glasspy.data.html" class="btn btn-neutral float-right" title="glasspy.data package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

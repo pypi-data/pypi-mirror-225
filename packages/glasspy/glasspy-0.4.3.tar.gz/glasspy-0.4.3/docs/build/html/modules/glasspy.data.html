@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glasspy.data package &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="glasspy.predict package" href="glasspy.predict.html" />
+    <link rel="prev" title="glasspy.chemistry package" href="glasspy.chemistry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">glasspy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="glasspy.html">glasspy package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="glasspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="glasspy.chemistry.html">glasspy.chemistry package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">glasspy.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html">glasspy.predict package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.viscosity.html">glasspy.viscosity package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy.support">glasspy.support module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">glasspy</a></li>
+          <li class="breadcrumb-item"><a href="glasspy.html">glasspy package</a></li>
+      <li class="breadcrumb-item active">glasspy.data package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/glasspy.data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="glasspy-data-package">
+<h1>glasspy.data package<a class="headerlink" href="#glasspy-data-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.data.load">
+<span id="glasspy-data-load-module"></span><h2>glasspy.data.load module<a class="headerlink" href="#module-glasspy.data.load" title="Permalink to this heading"></a></h2>
+<p>This is the module to load available data in GlassPy.</p>
+<p>Right now, the main source of GlassPy data is the SciGlass database. The SciGlass database is available at <a class="reference external" href="https://github.com/epam/SciGlass">https://github.com/epam/SciGlass</a> licensed under ODC Open Database License (ODbL). For a plain text version of this database, see the for at
+<a class="reference external" href="https://github.com/drcassar/SciGlass">https://github.com/drcassar/SciGlass</a>. Data that ships with GlassPy is the same as the data in the plain text fork.</p>
+<p>Typical usage example:</p>
+<blockquote>
+<div><p>source = SciGlass()
+df = source.data</p>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">glasspy.data.load.</span></span><span class="sig-name descname"><span class="pre">SciGlass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounds_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocleanup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Loader of SciGlass data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elements_cfg</strong> – Dictonary configuring how the <cite>elements</cite> information is collected. See
+docstring for <cite>get_elements</cite> method for more details.</p></li>
+<li><p><strong>properties_cfg</strong> – Dictonary configuring how the <cite>properties</cite> information is collected. See
+docstring for <cite>get_properties</cite> method for more details.</p></li>
+<li><p><strong>compounds_cfg</strong> – Dictonary configuring how the <cite>compounds</cite> information is collected. See
+docstring for <cite>get_compounds</cite> method for more details.</p></li>
+<li><p><strong>autocleanup</strong> – If <cite>True</cite>, automatically delete columns of the final DataFrame that do
+not have any information (only zeros). Default value: True.</p></li>
+<li><p><strong>metadata</strong> – If <cite>True</cite>, add the <cite>metadata</cite> information to the DataFrame. Default
+value: True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#glasspy.data.load.SciGlass.data" title="Permalink to this definition"></a></dt>
+<dd><p>DataFrame of the collected data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.available_properties">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.available_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of available properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.available_properties_metadata">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_properties_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.available_properties_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of available properties metadata.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.elements_from_compounds">
+<span class="sig-name descname"><span class="pre">elements_from_compounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_sum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounds_in_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.elements_from_compounds" title="Permalink to this definition"></a></dt>
+<dd><p>Create atomic fraction information from compound information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all atomic fractions is normalized to this value.
+Usual values are 1 if you want atomic fractions or 100 if you want
+atomic percentages. Default value is 1.</p></li>
+<li><p><strong>compounds_in_weight</strong> – bool
+If <cite>True</cite>, then assume that the compounds fractions are in weight%,
+otherwise assume that the compounds fractions are in mol%. Default
+value is <cite>False</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.get_compounds">
+<span class="sig-name descname"><span class="pre">get_compounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.get_compounds" title="Permalink to this definition"></a></dt>
+<dd><p>Get compound information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of compounds to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of compounds to remove from the final DataFrame.</p></li>
+<li><p><strong>acceptable_sum_deviation</strong> – positive int or float
+The sum of all compound fractions should be 100%.  However, due to
+float point errors or rounding errors, this sum will not be exactly
+100%. This argument controls the acceptable deviation of this sum in
+%. A value of 1 means that the sum of all compound fractions can be
+between 99 and 101. All examples that are not within this range are
+discarted.</p></li>
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all compound fractions is normalized to this value.
+Usual values are 1 if you want compound fractions or 100 if you want
+compound percentages.</p></li>
+<li><p><strong>return_weight</strong> – bool
+If <cite>True</cite>, the chemical information stored in the DataFrame will be
+in weight%. Otherwise it will be in mol%.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.get_elements">
+<span class="sig-name descname"><span class="pre">get_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.get_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Get elemental atomic fraction information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of elements to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of elements to remove from the final DataFrame.</p></li>
+<li><p><strong>translate</strong> – dict
+Dictionary with the information on how to read and convert the
+elements. See variable <cite>AtMol_translation</cite> for an example.</p></li>
+<li><p><strong>acceptable_sum_deviation</strong> – positive int or float
+The sum of all atomic fractions should be 100%.  However, due to
+float point errors or rounding errors, this sum will not be exactly
+100%. This argument controls the acceptable deviation of this sum in
+%. A value of 1 means that the sum of all atomic fractions can be
+between 99 and 101. All examples that are not within this range are
+discarted.</p></li>
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all atomic fractions is normalized to this value.
+Usual values are 1 if you want atomic fractions or 100 if you want
+atomic percentages.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.get_properties">
+<span class="sig-name descname"><span class="pre">get_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.get_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Get properties information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of properties to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of properties to remove from the final DataFrame.</p></li>
+<li><p><strong>translate</strong> – dict
+Dictionary with the information on how to read and convert the
+properties. See variable <cite>SciSK_translation</cite> for an example.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.remove_duplicate_composition">
+<span class="sig-name descname"><span class="pre">remove_duplicate_composition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'elements'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.remove_duplicate_composition" title="Permalink to this definition"></a></dt>
+<dd><p>Remove duplicate compositions from the <cite>data</cite> attribute.</p>
+<p>Note that the original ID and the metadata are lost upon this operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.load.SciGlass.remove_zero_sum_columns">
+<span class="sig-name descname"><span class="pre">remove_zero_sum_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'compounds'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.load.SciGlass.remove_zero_sum_columns" title="Permalink to this definition"></a></dt>
+<dd><p>Removes all columns that have zero sum from the <cite>data</cite> attribute.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-glasspy.data.translators">
+<span id="glasspy-data-translators-module"></span><h2>glasspy.data.translators module<a class="headerlink" href="#module-glasspy.data.translators" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-glasspy.data" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">glasspy.data.</span></span><span class="sig-name descname"><span class="pre">SciGlass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounds_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocleanup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Loader of SciGlass data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elements_cfg</strong> – Dictonary configuring how the <cite>elements</cite> information is collected. See
+docstring for <cite>get_elements</cite> method for more details.</p></li>
+<li><p><strong>properties_cfg</strong> – Dictonary configuring how the <cite>properties</cite> information is collected. See
+docstring for <cite>get_properties</cite> method for more details.</p></li>
+<li><p><strong>compounds_cfg</strong> – Dictonary configuring how the <cite>compounds</cite> information is collected. See
+docstring for <cite>get_compounds</cite> method for more details.</p></li>
+<li><p><strong>autocleanup</strong> – If <cite>True</cite>, automatically delete columns of the final DataFrame that do
+not have any information (only zeros). Default value: True.</p></li>
+<li><p><strong>metadata</strong> – If <cite>True</cite>, add the <cite>metadata</cite> information to the DataFrame. Default
+value: True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#glasspy.data.SciGlass.data" title="Permalink to this definition"></a></dt>
+<dd><p>DataFrame of the collected data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.available_properties">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.available_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of available properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.available_properties_metadata">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_properties_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.available_properties_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of available properties metadata.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.elements_from_compounds">
+<span class="sig-name descname"><span class="pre">elements_from_compounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_sum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounds_in_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.elements_from_compounds" title="Permalink to this definition"></a></dt>
+<dd><p>Create atomic fraction information from compound information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all atomic fractions is normalized to this value.
+Usual values are 1 if you want atomic fractions or 100 if you want
+atomic percentages. Default value is 1.</p></li>
+<li><p><strong>compounds_in_weight</strong> – bool
+If <cite>True</cite>, then assume that the compounds fractions are in weight%,
+otherwise assume that the compounds fractions are in mol%. Default
+value is <cite>False</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.get_compounds">
+<span class="sig-name descname"><span class="pre">get_compounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.get_compounds" title="Permalink to this definition"></a></dt>
+<dd><p>Get compound information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of compounds to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of compounds to remove from the final DataFrame.</p></li>
+<li><p><strong>acceptable_sum_deviation</strong> – positive int or float
+The sum of all compound fractions should be 100%.  However, due to
+float point errors or rounding errors, this sum will not be exactly
+100%. This argument controls the acceptable deviation of this sum in
+%. A value of 1 means that the sum of all compound fractions can be
+between 99 and 101. All examples that are not within this range are
+discarted.</p></li>
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all compound fractions is normalized to this value.
+Usual values are 1 if you want compound fractions or 100 if you want
+compound percentages.</p></li>
+<li><p><strong>return_weight</strong> – bool
+If <cite>True</cite>, the chemical information stored in the DataFrame will be
+in weight%. Otherwise it will be in mol%.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.get_elements">
+<span class="sig-name descname"><span class="pre">get_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.get_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Get elemental atomic fraction information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of elements to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of elements to remove from the final DataFrame.</p></li>
+<li><p><strong>translate</strong> – dict
+Dictionary with the information on how to read and convert the
+elements. See variable <cite>AtMol_translation</cite> for an example.</p></li>
+<li><p><strong>acceptable_sum_deviation</strong> – positive int or float
+The sum of all atomic fractions should be 100%.  However, due to
+float point errors or rounding errors, this sum will not be exactly
+100%. This argument controls the acceptable deviation of this sum in
+%. A value of 1 means that the sum of all atomic fractions can be
+between 99 and 101. All examples that are not within this range are
+discarted.</p></li>
+<li><p><strong>final_sum</strong> – positive int or float
+The final sum of all atomic fractions is normalized to this value.
+Usual values are 1 if you want atomic fractions or 100 if you want
+atomic percentages.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.get_properties">
+<span class="sig-name descname"><span class="pre">get_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.get_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Get properties information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – str
+String with the path to the database csv file.</p></li>
+<li><p><strong>keep</strong> – list
+List of properties to keep in the final DataFrame.</p></li>
+<li><p><strong>drop</strong> – list
+List of properties to remove from the final DataFrame.</p></li>
+<li><p><strong>translate</strong> – dict
+Dictionary with the information on how to read and convert the
+properties. See variable <cite>SciSK_translation</cite> for an example.</p></li>
+<li><p><strong>IDs</strong> – pd.Index
+IDs of the dataset to consider. Each glass in the SciGlass database
+has a glass number and a paper number. This ID used in GlassPy is an
+integer that merges both numbers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.remove_duplicate_composition">
+<span class="sig-name descname"><span class="pre">remove_duplicate_composition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'elements'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.remove_duplicate_composition" title="Permalink to this definition"></a></dt>
+<dd><p>Remove duplicate compositions from the <cite>data</cite> attribute.</p>
+<p>Note that the original ID and the metadata are lost upon this operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="glasspy.data.SciGlass.remove_zero_sum_columns">
+<span class="sig-name descname"><span class="pre">remove_zero_sum_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'compounds'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.data.SciGlass.remove_zero_sum_columns" title="Permalink to this definition"></a></dt>
+<dd><p>Removes all columns that have zero sum from the <cite>data</cite> attribute.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="glasspy.chemistry.html" class="btn btn-neutral float-left" title="glasspy.chemistry package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="glasspy.predict.html" class="btn btn-neutral float-right" title="glasspy.predict package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

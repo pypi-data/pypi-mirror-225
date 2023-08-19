@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glasspy.viscosity package &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="glasspy.predict package" href="glasspy.predict.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">glasspy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="glasspy.html">glasspy package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="glasspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="glasspy.chemistry.html">glasspy.chemistry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html">glasspy.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html">glasspy.predict package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">glasspy.viscosity package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy.support">glasspy.support module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.html#module-glasspy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">glasspy</a></li>
+          <li class="breadcrumb-item"><a href="glasspy.html">glasspy package</a></li>
+      <li class="breadcrumb-item active">glasspy.viscosity package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/glasspy.viscosity.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="glasspy-viscosity-package">
+<h1>glasspy.viscosity package<a class="headerlink" href="#glasspy-viscosity-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.viscosity.diffusion">
+<span id="glasspy-viscosity-diffusion-module"></span><h2>glasspy.viscosity.diffusion module<a class="headerlink" href="#module-glasspy.viscosity.diffusion" title="Permalink to this heading"></a></h2>
+<p>Equations for computing the effective diffusion coefficient from
+viscosity.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.diffusion.diff_coeff_eyring">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.diffusion.</span></span><span class="sig-name descname"><span class="pre">diff_coeff_eyring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viscosity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.diffusion.diff_coeff_eyring" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity diffusion coefficient using Eyring equation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>viscosity</strong> – float or array_like with same lenght as T
+Viscosity at temperature T.</p></li>
+<li><p><strong>diameter</strong> – float or array_like with same lenght as T
+The diameter of the structural unit that is moving due to viscous
+flow.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the effective diffusion coefficient computed using the Eyring
+equation. This equation is similar to the Stokes-Einstein equation, but
+they were obtained by different routes.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Eyring, H. (1936). Viscosity, plasticity, and diffusion as examples of</dt><dd><p>absolute reaction rates. The Journal of Chemical Physics 4, 283–291.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.diffusion.diff_coeff_stokeseinstein">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.diffusion.</span></span><span class="sig-name descname"><span class="pre">diff_coeff_stokeseinstein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viscosity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.diffusion.diff_coeff_stokeseinstein" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity diffusion coefficient using Stokes-Einstein equation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>viscosity</strong> – float or array_like with same lenght as T
+Viscosity at temperature T.</p></li>
+<li><p><strong>diameter</strong> – float or array_like with same lenght as T
+The diameter of the structural unit that is moving due to viscous
+flow.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the effective diffusion coefficient computed using the
+Stokes-Einstein equation. This equation is similar to the Eyring equation,
+but they were obtained by different routes.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Einstein, A. (1905). On the movement of small particles suspended in</dt><dd><p>stationary liquids required by the molecular-kinetic theory of heat.
+Annalen Der Physik 17, 549–560.</p>
+</dd>
+<dt>[2] Einstein, A. (1905). Über die von der molekularkinetischen Theorie der</dt><dd><p>Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten
+Teilchen. Annalen Der Physik 322, 549–560.</p>
+</dd>
+<dt>[3] Stokes, G.G. (1851). On the effect of the internal friction of fluids</dt><dd><p>on the motion of pendulums. Transactions of the Cambridge Philosophical
+Society 9, 8–106.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.viscosity.equilibrium">
+<span id="glasspy-viscosity-equilibrium-module"></span><h2>glasspy.viscosity.equilibrium module<a class="headerlink" href="#module-glasspy.viscosity.equilibrium" title="Permalink to this heading"></a></h2>
+<p>Equations for equilibrium viscosity.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.ag">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">ag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S_conf_fun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.ag" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Adam &amp; Gibbs equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>B</strong> – float
+Adjustable parameter related to the potential energy hindering the
+cooperative rearrangement per monomer segment.</p></li>
+<li><p><strong>S_conf_fun</strong> – callable
+Function that computes the configurational entropy. This function
+accepts one argument, which is the absolute temperature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Adam, G., and Gibbs, J.H. (1965). On the temperature dependence of</dt><dd><p>cooperative relaxation properties in glass-forming liquids. The
+Journal of Chemical Physics 43, 139–146.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.am">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">am</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.am" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Avramov &amp; Milchev equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>alpha</strong> – float
+Adjustable parameter, see original reference. Unitless.</p></li>
+<li><p><strong>beta</strong> – float
+Adjustable parameter with unit of Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Avramov, I., and Milchev, A. (1988). Effect of disorder on diffusion</dt><dd><p>and viscosity in condensed systems. Journal of Non-Crystalline Solids
+104, 253–260.</p>
+</dd>
+<dt>[2] Cornelissen, J., and Waterman, H.I. (1955). The viscosity temperature</dt><dd><p>relationship of liquids. Chemical Engineering Science 4, 238–246.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.am_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">am_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.am_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Avramov &amp; Milchev equation.</p>
+<p>This is the rewriten AM equation found in ref. [3].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [4]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Avramov, I., and Milchev, A. (1988). Effect of disorder on diffusion</dt><dd><p>and viscosity in condensed systems. Journal of Non-Crystalline Solids
+104, 253–260.</p>
+</dd>
+<dt>[2] Cornelissen, J., and Waterman, H.I. (1955). The viscosity temperature</dt><dd><p>relationship of liquids. Chemical Engineering Science 4, 238–246.</p>
+</dd>
+<dt>[3] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[4] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.myega">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">myega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.myega" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the MYEGA equation.</p>
+<p>Mathematicaly, this equation is the same as that proposed in ref. [2] (see
+page 250), however the physical considerations are different.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>K</strong> – float
+See the original reference for the meaning. Unit: Kelvin.</p></li>
+<li><p><strong>C</strong> – float
+See the original reference for the meaning. Unit: Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In the original reference the equation is in base-10 logarithm, see Eq.
+(6) in [1].</p>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[2] Waterton, S.C. (1932). The viscosity-temperature relationship and some</dt><dd><p>inferences on the nature of molten and of plastic glass. J Soc Glass
+Technol 16, 244–249.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.myega_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">myega_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.myega_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the MYEGA equation.</p>
+<p>This is an alternate form of the MYEGA equation found in [1]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [2]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[2] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.vft">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">vft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.vft" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the empirical Vogel-Fulcher-Tammann eq.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>A</strong> – float
+Adjustable parameter inside the exponential. Unit: Kelvin.</p></li>
+<li><p><strong>T0</strong> – float
+Divergence temperature. Unit: Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Vogel, H. (1921). Das Temperatureabhängigketsgesetz der Viskosität von</dt><dd><p>Flüssigkeiten. Physikalische Zeitschrift 22, 645–646.</p>
+</dd>
+<dt>[2] Fulcher, G.S. (1925). Analysis of recent measurements of the viscosity</dt><dd><p>of glasses. Journal of the American Ceramic Society 8, 339–355.</p>
+</dd>
+<dt>[3] Tammann, G., and Hesse, W. (1926). Die Abhängigkeit der Viscosität von</dt><dd><p>der Temperatur bie unterkühlten Flüssigkeiten. Z. Anorg. Allg. Chem.
+156, 245–257.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium.vft_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium.</span></span><span class="sig-name descname"><span class="pre">vft_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium.vft_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Vogel-Fulcher-Tammann eq.</p>
+<p>This is the rewriten VFT equation found in ref. [4].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [5]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>it is <em>not</em> the
+logarithm of viscosity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the viscosity in the units of eta_inf. Note</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Vogel, H. (1921). Das Temperatureabhängigketsgesetz der Viskosität von</dt><dd><p>Flüssigkeiten. Physikalische Zeitschrift 22, 645–646.</p>
+</dd>
+<dt>[2] Fulcher, G.S. (1925). Analysis of recent measurements of the viscosity</dt><dd><p>of glasses. Journal of the American Ceramic Society 8, 339–355.</p>
+</dd>
+<dt>[3] Tammann, G., and Hesse, W. (1926). Die Abhängigkeit der Viscosität von</dt><dd><p>der Temperatur bie unterkühlten Flüssigkeiten. Z. Anorg. Allg. Chem.
+156, 245–257.</p>
+</dd>
+<dt>[4] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[5] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.viscosity.equilibrium_log">
+<span id="glasspy-viscosity-equilibrium-log-module"></span><h2>glasspy.viscosity.equilibrium_log module<a class="headerlink" href="#module-glasspy.viscosity.equilibrium_log" title="Permalink to this heading"></a></h2>
+<p>Equations for the base-10 logarithm of equilibrium viscosity.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.ag">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">ag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S_conf_fun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.ag" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Adam &amp; Gibbs equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>B</strong> – float
+Adjustable parameter related to the potential energy hindering the
+cooperative rearrangement per monomer segment.</p></li>
+<li><p><strong>S_conf_fun</strong> – callable
+Function that computes the configurational entropy. This function
+accepts one argument, which is the absolute temperature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Adam, G., and Gibbs, J.H. (1965). On the temperature dependence of</dt><dd><p>cooperative relaxation properties in glass-forming liquids. The
+Journal of Chemical Physics 43, 139–146.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.am">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">am</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.am" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Avramov &amp; Milchev equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>alpha</strong> – float
+Adjustable parameter, see original reference. Unitless.</p></li>
+<li><p><strong>beta</strong> – float
+Adjustable parameter with unit of Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Avramov, I., and Milchev, A. (1988). Effect of disorder on diffusion</dt><dd><p>and viscosity in condensed systems. Journal of Non-Crystalline Solids
+104, 253–260.</p>
+</dd>
+<dt>[2] Cornelissen, J., and Waterman, H.I. (1955). The viscosity temperature</dt><dd><p>relationship of liquids. Chemical Engineering Science 4, 238–246.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.am_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">am_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.am_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Avramov &amp; Milchev equation.</p>
+<p>This is the rewriten AM equation found in ref. [3].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [4]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Avramov, I., and Milchev, A. (1988). Effect of disorder on diffusion</dt><dd><p>and viscosity in condensed systems. Journal of Non-Crystalline Solids
+104, 253–260.</p>
+</dd>
+<dt>[2] Cornelissen, J., and Waterman, H.I. (1955). The viscosity temperature</dt><dd><p>relationship of liquids. Chemical Engineering Science 4, 238–246.</p>
+</dd>
+<dt>[3] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[4] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.myega">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">myega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.myega" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the MYEGA equation.</p>
+<p>Mathematicaly, this equation is the same as that proposed in ref. [2] (see
+page 250), however the physical considerations are different.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>K</strong> – float
+See the original reference for the meaning. Unit: Kelvin.</p></li>
+<li><p><strong>C</strong> – float
+See the original reference for the meaning. Unit: Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In the original reference the equation is in base-10 logarithm, see Eq.
+(6) in [1].</p>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[2] Waterton, S.C. (1932). The viscosity-temperature relationship and some</dt><dd><p>inferences on the nature of molten and of plastic glass. J Soc Glass
+Technol 16, 244–249.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.myega_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">myega_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.myega_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the MYEGA equation.</p>
+<p>This is an alternate form of the MYEGA equation found in [1]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [2]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[2] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.vft">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">vft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.vft" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the empirical Vogel-Fulcher-Tammann eq.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>A</strong> – float
+Adjustable parameter inside the exponential. Unit: Kelvin.</p></li>
+<li><p><strong>T0</strong> – float
+Divergence temperature. Unit: Kelvin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Vogel, H. (1921). Das Temperatureabhängigketsgesetz der Viskosität von</dt><dd><p>Flüssigkeiten. Physikalische Zeitschrift 22, 645–646.</p>
+</dd>
+<dt>[2] Fulcher, G.S. (1925). Analysis of recent measurements of the viscosity</dt><dd><p>of glasses. Journal of the American Ceramic Society 8, 339–355.</p>
+</dd>
+<dt>[3] Tammann, G., and Hesse, W. (1926). Die Abhängigkeit der Viscosität von</dt><dd><p>der Temperatur bie unterkühlten Flüssigkeiten. Z. Anorg. Allg. Chem.
+156, 245–257.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.viscosity.equilibrium_log.vft_alt">
+<span class="sig-prename descclassname"><span class="pre">glasspy.viscosity.equilibrium_log.</span></span><span class="sig-name descname"><span class="pre">vft_alt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_eta_inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.viscosity.equilibrium_log.vft_alt" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the viscosity using the Vogel-Fulcher-Tammann eq.</p>
+<p>This is the rewriten VFT equation found in ref. [4].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – float or array_like
+Temperature. Unit: Kelvin.</p></li>
+<li><p><strong>eta_inf</strong> – float
+Asymptotic viscosity at the limit of infinite temperature.</p></li>
+<li><p><strong>T12</strong> – float
+Temperature were the viscosity is 10**12 Pa.s. Unit: Kelvin.</p></li>
+<li><p><strong>m</strong> – float
+Fragility index as defined by Angell, see ref. [5]. Unitless.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the base-10 logarithm of viscosity.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Vogel, H. (1921). Das Temperatureabhängigketsgesetz der Viskosität von</dt><dd><p>Flüssigkeiten. Physikalische Zeitschrift 22, 645–646.</p>
+</dd>
+<dt>[2] Fulcher, G.S. (1925). Analysis of recent measurements of the viscosity</dt><dd><p>of glasses. Journal of the American Ceramic Society 8, 339–355.</p>
+</dd>
+<dt>[3] Tammann, G., and Hesse, W. (1926). Die Abhängigkeit der Viscosität von</dt><dd><p>der Temperatur bie unterkühlten Flüssigkeiten. Z. Anorg. Allg. Chem.
+156, 245–257.</p>
+</dd>
+<dt>[4] Mauro, J.C., Yue, Y., Ellison, A.J., Gupta, P.K., and Allan, D.C.</dt><dd><p>(2009). Viscosity of glass-forming liquids. Proceedings of the
+National Academy of Sciences of the United States of America 106,
+19780–19784.</p>
+</dd>
+<dt>[5] Angell, C.A. (1985). Strong and fragile liquids. In Relaxation in</dt><dd><p>Complex Systems, K.L. Ngai, and G.B. Wright, eds. (Springfield: Naval
+Research Laboratory), pp. 3–12.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-glasspy.viscosity">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-glasspy.viscosity" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="glasspy.predict.html" class="btn btn-neutral float-left" title="glasspy.predict package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

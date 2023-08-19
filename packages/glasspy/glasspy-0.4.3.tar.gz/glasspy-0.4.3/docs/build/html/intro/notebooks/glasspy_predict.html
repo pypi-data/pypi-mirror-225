@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlassPy: predicting &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="glasspy" href="../../modules/modules.html" />
+    <link rel="prev" title="GlassPy: loading data" href="glasspy_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="glasspy_data.html">GlassPy: loading data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GlassPy: predicting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#GlassNet-basic-usage">GlassNet basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ViscNet-basic-usage">ViscNet basic usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">glasspy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">GlassPy: predicting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/intro/notebooks/glasspy_predict.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="GlassPy:-predicting">
+<h1>GlassPy: predicting<a class="headerlink" href="#GlassPy:-predicting" title="Permalink to this heading"></a></h1>
+<section id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this heading"></a></h2>
+<p>GlassPy contains two prediction models: <code class="docutils literal notranslate"><span class="pre">GlassNet</span></code> and <code class="docutils literal notranslate"><span class="pre">ViscNet</span></code>. GlassNet is a multitask deep neural network capable of predicting 85 different glass properties and the temperature dependence of viscosity. ViscNet is a physics-informed deep neural network capable of predicting the temperature dependence of viscosity. Both models were trained with data from the SciGlass database.</p>
+</section>
+<section id="GlassNet-basic-usage">
+<h2>GlassNet basic usage<a class="headerlink" href="#GlassNet-basic-usage" title="Permalink to this heading"></a></h2>
+<p>Below is a minimal example of how to load and use the GlassNet model.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glasspy.predict</span> <span class="kn">import</span> <span class="n">GlassNet</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GlassNet</span><span class="p">()</span>
+<span class="n">composition</span> <span class="o">=</span> <span class="s2">&quot;Li2O(SiO2)2&quot;</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">composition</span><span class="p">)</span>
+<span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T0</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>T3</th>
+      <th>T4</th>
+      <th>T5</th>
+      <th>T6</th>
+      <th>T7</th>
+      <th>T8</th>
+      <th>T9</th>
+      <th>...</th>
+      <th>Cp1673K</th>
+      <th>TMaxGrowthVelocity</th>
+      <th>MaxGrowthVelocity</th>
+      <th>CrystallizationPeak</th>
+      <th>CrystallizationOnset</th>
+      <th>SurfaceTensionAboveTg</th>
+      <th>SurfaceTension1173K</th>
+      <th>SurfaceTension1473K</th>
+      <th>SurfaceTension1573K</th>
+      <th>SurfaceTension1673K</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1656.182898</td>
+      <td>1275.016879</td>
+      <td>1178.333341</td>
+      <td>1064.154863</td>
+      <td>956.535513</td>
+      <td>893.408138</td>
+      <td>857.634124</td>
+      <td>820.458542</td>
+      <td>779.195534</td>
+      <td>755.95825</td>
+      <td>...</td>
+      <td>1697.079401</td>
+      <td>1021.145482</td>
+      <td>-6.457834</td>
+      <td>898.463696</td>
+      <td>818.476775</td>
+      <td>0.315797</td>
+      <td>0.299307</td>
+      <td>0.304303</td>
+      <td>0.314809</td>
+      <td>0.312099</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 85 columns</p>
+</div></div>
+</div>
+<p>A composition can also be defined using a dictionary.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">composition</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;SiO2&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;Li2O&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">composition</span><span class="p">)</span>
+<span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T0</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>T3</th>
+      <th>T4</th>
+      <th>T5</th>
+      <th>T6</th>
+      <th>T7</th>
+      <th>T8</th>
+      <th>T9</th>
+      <th>...</th>
+      <th>Cp1673K</th>
+      <th>TMaxGrowthVelocity</th>
+      <th>MaxGrowthVelocity</th>
+      <th>CrystallizationPeak</th>
+      <th>CrystallizationOnset</th>
+      <th>SurfaceTensionAboveTg</th>
+      <th>SurfaceTension1173K</th>
+      <th>SurfaceTension1473K</th>
+      <th>SurfaceTension1573K</th>
+      <th>SurfaceTension1673K</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1656.182898</td>
+      <td>1275.016879</td>
+      <td>1178.333341</td>
+      <td>1064.154863</td>
+      <td>956.535513</td>
+      <td>893.408138</td>
+      <td>857.634124</td>
+      <td>820.458542</td>
+      <td>779.195534</td>
+      <td>755.95825</td>
+      <td>...</td>
+      <td>1697.079401</td>
+      <td>1021.145482</td>
+      <td>-6.457834</td>
+      <td>898.463696</td>
+      <td>818.476775</td>
+      <td>0.315797</td>
+      <td>0.299307</td>
+      <td>0.304303</td>
+      <td>0.314809</td>
+      <td>0.312099</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 85 columns</p>
+</div></div>
+</div>
+<p>GlassNet also accepts <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrames as input. Note that each row represents a material and that only columns related to compositions can exist in the DataFrame.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Li2O&quot;</span><span class="p">,</span> <span class="s2">&quot;Na2O&quot;</span><span class="p">,</span> <span class="s2">&quot;SiO2&quot;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Li2O</th>
+      <th>Na2O</th>
+      <th>SiO2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T0</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>T3</th>
+      <th>T4</th>
+      <th>T5</th>
+      <th>T6</th>
+      <th>T7</th>
+      <th>T8</th>
+      <th>T9</th>
+      <th>...</th>
+      <th>Cp1673K</th>
+      <th>TMaxGrowthVelocity</th>
+      <th>MaxGrowthVelocity</th>
+      <th>CrystallizationPeak</th>
+      <th>CrystallizationOnset</th>
+      <th>SurfaceTensionAboveTg</th>
+      <th>SurfaceTension1173K</th>
+      <th>SurfaceTension1473K</th>
+      <th>SurfaceTension1573K</th>
+      <th>SurfaceTension1673K</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1656.182898</td>
+      <td>1275.016816</td>
+      <td>1178.333278</td>
+      <td>1064.154806</td>
+      <td>956.535427</td>
+      <td>893.408194</td>
+      <td>857.634073</td>
+      <td>820.458542</td>
+      <td>779.195490</td>
+      <td>755.958250</td>
+      <td>...</td>
+      <td>1697.079401</td>
+      <td>1021.145445</td>
+      <td>-6.457834</td>
+      <td>898.463737</td>
+      <td>818.476730</td>
+      <td>0.315797</td>
+      <td>0.299307</td>
+      <td>0.304303</td>
+      <td>0.314809</td>
+      <td>0.312099</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1896.291536</td>
+      <td>1513.411183</td>
+      <td>1279.021743</td>
+      <td>1123.006920</td>
+      <td>1035.724060</td>
+      <td>954.737548</td>
+      <td>912.160878</td>
+      <td>849.827548</td>
+      <td>809.466760</td>
+      <td>781.277537</td>
+      <td>...</td>
+      <td>1484.994346</td>
+      <td>1064.050420</td>
+      <td>-6.311865</td>
+      <td>967.297186</td>
+      <td>852.792449</td>
+      <td>0.281895</td>
+      <td>0.307567</td>
+      <td>0.284295</td>
+      <td>0.286678</td>
+      <td>0.274625</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1490.654549</td>
+      <td>1233.614128</td>
+      <td>1101.165164</td>
+      <td>979.065643</td>
+      <td>921.910502</td>
+      <td>852.842278</td>
+      <td>785.283328</td>
+      <td>760.537597</td>
+      <td>724.843873</td>
+      <td>694.542212</td>
+      <td>...</td>
+      <td>1746.768638</td>
+      <td>1077.191654</td>
+      <td>-5.137042</td>
+      <td>856.429238</td>
+      <td>831.987634</td>
+      <td>0.323965</td>
+      <td>0.303260</td>
+      <td>0.322071</td>
+      <td>0.318062</td>
+      <td>0.325812</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 85 columns</p>
+</div></div>
+</div>
+<p>GlassNet can also predict viscosity and the MYEGA viscosity equation parameters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_log10_viscosity</span><span class="p">(</span>
+    <span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">composition</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([3.43780523, 4.38559973, 2.78879274])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viscosity_parameters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">viscosity_parameters</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">viscosity_parameters</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>log10_eta_infinity (Pa.s)</th>
+      <th>Tg_MYEGA (K)</th>
+      <th>fragility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.185329</td>
+      <td>697.868850</td>
+      <td>43.223825</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.700694</td>
+      <td>710.957761</td>
+      <td>35.991400</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.583741</td>
+      <td>637.292106</td>
+      <td>39.162854</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="ViscNet-basic-usage">
+<h2>ViscNet basic usage<a class="headerlink" href="#ViscNet-basic-usage" title="Permalink to this heading"></a></h2>
+<p>The usage of ViscNet is similar to GlassNet. In fact, GlassNet performs better than ViscNet, so it is recommended to use GlassNet for viscosity prediction. Nevertheless, below is a minimal example of loading and using ViscNet.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glasspy.predict</span> <span class="kn">import</span> <span class="n">ViscNet</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ViscNet</span><span class="p">()</span>
+<span class="n">log10_viscosity</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">composition</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">log10_viscosity</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([5.0632305, 5.2332606, 6.148955 ], dtype=float32)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fragility</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_fragility</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fragility</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[32.876167 29.261871 34.904648]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tg</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_Tg</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[752.03784 735.4263  791.71893]
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="glasspy_data.html" class="btn btn-neutral float-left" title="GlassPy: loading data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../modules/modules.html" class="btn btn-neutral float-right" title="glasspy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>glasspy package &mdash; GlassPy latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="glasspy.chemistry package" href="glasspy.chemistry.html" />
+    <link rel="prev" title="glasspy" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FFFFFF" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GlassPy
+              <img src="../_static/logo_text_small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">glasspy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">glasspy package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.chemistry.html">glasspy.chemistry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html">glasspy.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html">glasspy.predict package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.viscosity.html">glasspy.viscosity package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-glasspy.support">glasspy.support module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#glasspy.support.round_number_with_error"><code class="docutils literal notranslate"><span class="pre">round_number_with_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#glasspy.support.round_to_closest_base"><code class="docutils literal notranslate"><span class="pre">round_to_closest_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#glasspy.support.round_to_significant_figure"><code class="docutils literal notranslate"><span class="pre">round_to_significant_figure()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-glasspy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #FFFFFF" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GlassPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">glasspy</a></li>
+      <li class="breadcrumb-item active">glasspy package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/glasspy.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="glasspy-package">
+<h1>glasspy package<a class="headerlink" href="#glasspy-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glasspy.chemistry.html">glasspy.chemistry package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#module-glasspy.chemistry.convert">glasspy.chemistry.convert module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.convert.mol_to_wt"><code class="docutils literal notranslate"><span class="pre">mol_to_wt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.convert.rescale_array"><code class="docutils literal notranslate"><span class="pre">rescale_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.convert.to_array"><code class="docutils literal notranslate"><span class="pre">to_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.convert.to_element_array"><code class="docutils literal notranslate"><span class="pre">to_element_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.convert.wt_to_mol"><code class="docutils literal notranslate"><span class="pre">wt_to_mol()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#module-glasspy.chemistry.data">glasspy.chemistry.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#module-glasspy.chemistry.featurizer">glasspy.chemistry.featurizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.featurizer.physchem_featurizer"><code class="docutils literal notranslate"><span class="pre">physchem_featurizer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#module-glasspy.chemistry.types">glasspy.chemistry.types module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.types.ChemArray"><code class="docutils literal notranslate"><span class="pre">ChemArray</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.chemistry.html#module-glasspy.chemistry">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.ChemArray"><code class="docutils literal notranslate"><span class="pre">ChemArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.mol_to_wt"><code class="docutils literal notranslate"><span class="pre">mol_to_wt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.physchem_featurizer"><code class="docutils literal notranslate"><span class="pre">physchem_featurizer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.rescale_array"><code class="docutils literal notranslate"><span class="pre">rescale_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.to_array"><code class="docutils literal notranslate"><span class="pre">to_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.to_element_array"><code class="docutils literal notranslate"><span class="pre">to_element_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.chemistry.html#glasspy.chemistry.wt_to_mol"><code class="docutils literal notranslate"><span class="pre">wt_to_mol()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glasspy.data.html">glasspy.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.data.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.data.html#module-glasspy.data.load">glasspy.data.load module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass"><code class="docutils literal notranslate"><span class="pre">SciGlass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.data"><code class="docutils literal notranslate"><span class="pre">SciGlass.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.available_properties"><code class="docutils literal notranslate"><span class="pre">SciGlass.available_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.available_properties_metadata"><code class="docutils literal notranslate"><span class="pre">SciGlass.available_properties_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.elements_from_compounds"><code class="docutils literal notranslate"><span class="pre">SciGlass.elements_from_compounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.get_compounds"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_compounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.get_elements"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.get_properties"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.remove_duplicate_composition"><code class="docutils literal notranslate"><span class="pre">SciGlass.remove_duplicate_composition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.load.SciGlass.remove_zero_sum_columns"><code class="docutils literal notranslate"><span class="pre">SciGlass.remove_zero_sum_columns()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.data.html#module-glasspy.data.translators">glasspy.data.translators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.data.html#module-glasspy.data">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass"><code class="docutils literal notranslate"><span class="pre">SciGlass</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.data"><code class="docutils literal notranslate"><span class="pre">SciGlass.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.available_properties"><code class="docutils literal notranslate"><span class="pre">SciGlass.available_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.available_properties_metadata"><code class="docutils literal notranslate"><span class="pre">SciGlass.available_properties_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.elements_from_compounds"><code class="docutils literal notranslate"><span class="pre">SciGlass.elements_from_compounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.get_compounds"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_compounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.get_elements"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.get_properties"><code class="docutils literal notranslate"><span class="pre">SciGlass.get_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.remove_duplicate_composition"><code class="docutils literal notranslate"><span class="pre">SciGlass.remove_duplicate_composition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.data.html#glasspy.data.SciGlass.remove_zero_sum_columns"><code class="docutils literal notranslate"><span class="pre">SciGlass.remove_zero_sum_columns()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glasspy.predict.html">glasspy.predict package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.predict.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.predict.html#module-glasspy.predict.base">glasspy.predict.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE"><code class="docutils literal notranslate"><span class="pre">AE</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.configure_optimizers"><code class="docutils literal notranslate"><span class="pre">AE.configure_optimizers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.distance_from_training"><code class="docutils literal notranslate"><span class="pre">AE.distance_from_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.domain"><code class="docutils literal notranslate"><span class="pre">AE.domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.forward"><code class="docutils literal notranslate"><span class="pre">AE.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.get_test_dataset"><code class="docutils literal notranslate"><span class="pre">AE.get_test_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.get_training_dataset"><code class="docutils literal notranslate"><span class="pre">AE.get_training_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.get_validation_dataset"><code class="docutils literal notranslate"><span class="pre">AE.get_validation_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.is_within_domain"><code class="docutils literal notranslate"><span class="pre">AE.is_within_domain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.learning_curve_train"><code class="docutils literal notranslate"><span class="pre">AE.learning_curve_train</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.learning_curve_val"><code class="docutils literal notranslate"><span class="pre">AE.learning_curve_val</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.load_training"><code class="docutils literal notranslate"><span class="pre">AE.load_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.predict"><code class="docutils literal notranslate"><span class="pre">AE.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.save_training"><code class="docutils literal notranslate"><span class="pre">AE.save_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.training_epoch_end"><code class="docutils literal notranslate"><span class="pre">AE.training_epoch_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.training_step"><code class="docutils literal notranslate"><span class="pre">AE.training_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.validation_epoch_end"><code class="docutils literal notranslate"><span class="pre">AE.validation_epoch_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.AE.validation_step"><code class="docutils literal notranslate"><span class="pre">AE.validation_step()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Domain"><code class="docutils literal notranslate"><span class="pre">Domain</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Domain.compound"><code class="docutils literal notranslate"><span class="pre">Domain.compound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Domain.element"><code class="docutils literal notranslate"><span class="pre">Domain.element</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP"><code class="docutils literal notranslate"><span class="pre">MLP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.configure_optimizers"><code class="docutils literal notranslate"><span class="pre">MLP.configure_optimizers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.distance_from_training"><code class="docutils literal notranslate"><span class="pre">MLP.distance_from_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.domain"><code class="docutils literal notranslate"><span class="pre">MLP.domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.get_test_dataset"><code class="docutils literal notranslate"><span class="pre">MLP.get_test_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.get_training_dataset"><code class="docutils literal notranslate"><span class="pre">MLP.get_training_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.is_within_domain"><code class="docutils literal notranslate"><span class="pre">MLP.is_within_domain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.learning_curve_train"><code class="docutils literal notranslate"><span class="pre">MLP.learning_curve_train</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.learning_curve_val"><code class="docutils literal notranslate"><span class="pre">MLP.learning_curve_val</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.load_training"><code class="docutils literal notranslate"><span class="pre">MLP.load_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.on_train_epoch_end"><code class="docutils literal notranslate"><span class="pre">MLP.on_train_epoch_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.on_validation_epoch_end"><code class="docutils literal notranslate"><span class="pre">MLP.on_validation_epoch_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.save_training"><code class="docutils literal notranslate"><span class="pre">MLP.save_training()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.training_step"><code class="docutils literal notranslate"><span class="pre">MLP.training_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MLP.validation_step"><code class="docutils literal notranslate"><span class="pre">MLP.validation_step()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MTL"><code class="docutils literal notranslate"><span class="pre">MTL</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MTL.training_step"><code class="docutils literal notranslate"><span class="pre">MTL.training_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.MTL.validation_step"><code class="docutils literal notranslate"><span class="pre">MTL.validation_step()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict"><code class="docutils literal notranslate"><span class="pre">Predict</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.MAE"><code class="docutils literal notranslate"><span class="pre">Predict.MAE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.MSE"><code class="docutils literal notranslate"><span class="pre">Predict.MSE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.MedAE"><code class="docutils literal notranslate"><span class="pre">Predict.MedAE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.PercAE"><code class="docutils literal notranslate"><span class="pre">Predict.PercAE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.R2"><code class="docutils literal notranslate"><span class="pre">Predict.R2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.RD"><code class="docutils literal notranslate"><span class="pre">Predict.RD()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.RMSE"><code class="docutils literal notranslate"><span class="pre">Predict.RMSE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.RRMSE"><code class="docutils literal notranslate"><span class="pre">Predict.RRMSE()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.domain"><code class="docutils literal notranslate"><span class="pre">Predict.domain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.get_test_dataset"><code class="docutils literal notranslate"><span class="pre">Predict.get_test_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.get_training_dataset"><code class="docutils literal notranslate"><span class="pre">Predict.get_training_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.is_within_domain"><code class="docutils literal notranslate"><span class="pre">Predict.is_within_domain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.base.Predict.predict"><code class="docutils literal notranslate"><span class="pre">Predict.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.predict.html#module-glasspy.predict.models">glasspy.predict.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNet"><code class="docutils literal notranslate"><span class="pre">GlassNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNet.predict"><code class="docutils literal notranslate"><span class="pre">GlassNet.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH.forward"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH.target_trans"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.target_trans</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH.targets"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMH.training_file"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.training_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMLP"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMLP.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMLP.target_trans"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.target_trans</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMLP.targets"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetMTMLP.training_file"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.training_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetSTNN"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetSTNN.forward"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetSTNN.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetSTNN.training_step"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.training_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.GlassNetSTNN.validation_step"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.validation_step()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet"><code class="docutils literal notranslate"><span class="pre">ViscNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.absolute_features"><code class="docutils literal notranslate"><span class="pre">ViscNet.absolute_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.featurizer"><code class="docutils literal notranslate"><span class="pre">ViscNet.featurizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.hparams"><code class="docutils literal notranslate"><span class="pre">ViscNet.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.log_viscosity_fun"><code class="docutils literal notranslate"><span class="pre">ViscNet.log_viscosity_fun()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.parameters_range"><code class="docutils literal notranslate"><span class="pre">ViscNet.parameters_range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.state_dict_path"><code class="docutils literal notranslate"><span class="pre">ViscNet.state_dict_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.weighted_features"><code class="docutils literal notranslate"><span class="pre">ViscNet.weighted_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.x_mean"><code class="docutils literal notranslate"><span class="pre">ViscNet.x_mean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNet.x_std"><code class="docutils literal notranslate"><span class="pre">ViscNet.x_std</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNetHuber"><code class="docutils literal notranslate"><span class="pre">ViscNetHuber</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNetVFT"><code class="docutils literal notranslate"><span class="pre">ViscNetVFT</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.models.ViscNetVFT.log_viscosity_fun"><code class="docutils literal notranslate"><span class="pre">ViscNetVFT.log_viscosity_fun()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.predict.html#module-glasspy.predict">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNet"><code class="docutils literal notranslate"><span class="pre">GlassNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNet.predict"><code class="docutils literal notranslate"><span class="pre">GlassNet.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.allow_zero_length_dataloader_with_multiple_devices"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.allow_zero_length_dataloader_with_multiple_devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.forward"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.precision"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.precision</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.prepare_data_per_node"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.prepare_data_per_node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.target_trans"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.target_trans</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.targets"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.training"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMH.training_file"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMH.training_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.allow_zero_length_dataloader_with_multiple_devices"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.allow_zero_length_dataloader_with_multiple_devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.precision"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.precision</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.prepare_data_per_node"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.prepare_data_per_node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.target_trans"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.target_trans</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.targets"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.training"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetMTMLP.training_file"><code class="docutils literal notranslate"><span class="pre">GlassNetMTMLP.training_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.allow_zero_length_dataloader_with_multiple_devices"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.allow_zero_length_dataloader_with_multiple_devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.forward"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.hparams"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.precision"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.precision</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.prepare_data_per_node"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.prepare_data_per_node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.training"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.training_step"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.training_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.GlassNetSTNN.validation_step"><code class="docutils literal notranslate"><span class="pre">GlassNetSTNN.validation_step()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet"><code class="docutils literal notranslate"><span class="pre">ViscNet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.absolute_features"><code class="docutils literal notranslate"><span class="pre">ViscNet.absolute_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.allow_zero_length_dataloader_with_multiple_devices"><code class="docutils literal notranslate"><span class="pre">ViscNet.allow_zero_length_dataloader_with_multiple_devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.featurizer"><code class="docutils literal notranslate"><span class="pre">ViscNet.featurizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.hparams"><code class="docutils literal notranslate"><span class="pre">ViscNet.hparams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.log_viscosity_fun"><code class="docutils literal notranslate"><span class="pre">ViscNet.log_viscosity_fun()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.parameters_range"><code class="docutils literal notranslate"><span class="pre">ViscNet.parameters_range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.precision"><code class="docutils literal notranslate"><span class="pre">ViscNet.precision</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.prepare_data_per_node"><code class="docutils literal notranslate"><span class="pre">ViscNet.prepare_data_per_node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.state_dict_path"><code class="docutils literal notranslate"><span class="pre">ViscNet.state_dict_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.training"><code class="docutils literal notranslate"><span class="pre">ViscNet.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.weighted_features"><code class="docutils literal notranslate"><span class="pre">ViscNet.weighted_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.x_mean"><code class="docutils literal notranslate"><span class="pre">ViscNet.x_mean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNet.x_std"><code class="docutils literal notranslate"><span class="pre">ViscNet.x_std</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNetHuber"><code class="docutils literal notranslate"><span class="pre">ViscNetHuber</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNetVFT"><code class="docutils literal notranslate"><span class="pre">ViscNetVFT</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glasspy.predict.html#glasspy.predict.ViscNetVFT.log_viscosity_fun"><code class="docutils literal notranslate"><span class="pre">ViscNetVFT.log_viscosity_fun()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glasspy.viscosity.html">glasspy.viscosity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.viscosity.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.viscosity.html#module-glasspy.viscosity.diffusion">glasspy.viscosity.diffusion module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.diffusion.diff_coeff_eyring"><code class="docutils literal notranslate"><span class="pre">diff_coeff_eyring()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.diffusion.diff_coeff_stokeseinstein"><code class="docutils literal notranslate"><span class="pre">diff_coeff_stokeseinstein()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.viscosity.html#module-glasspy.viscosity.equilibrium">glasspy.viscosity.equilibrium module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.ag"><code class="docutils literal notranslate"><span class="pre">ag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.am"><code class="docutils literal notranslate"><span class="pre">am()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.am_alt"><code class="docutils literal notranslate"><span class="pre">am_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.myega"><code class="docutils literal notranslate"><span class="pre">myega()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.myega_alt"><code class="docutils literal notranslate"><span class="pre">myega_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.vft"><code class="docutils literal notranslate"><span class="pre">vft()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium.vft_alt"><code class="docutils literal notranslate"><span class="pre">vft_alt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.viscosity.html#module-glasspy.viscosity.equilibrium_log">glasspy.viscosity.equilibrium_log module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.ag"><code class="docutils literal notranslate"><span class="pre">ag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.am"><code class="docutils literal notranslate"><span class="pre">am()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.am_alt"><code class="docutils literal notranslate"><span class="pre">am_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.myega"><code class="docutils literal notranslate"><span class="pre">myega()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.myega_alt"><code class="docutils literal notranslate"><span class="pre">myega_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.vft"><code class="docutils literal notranslate"><span class="pre">vft()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="glasspy.viscosity.html#glasspy.viscosity.equilibrium_log.vft_alt"><code class="docutils literal notranslate"><span class="pre">vft_alt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glasspy.viscosity.html#module-glasspy.viscosity">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-glasspy.support">
+<span id="glasspy-support-module"></span><h2>glasspy.support module<a class="headerlink" href="#module-glasspy.support" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.support.round_number_with_error">
+<span class="sig-prename descclassname"><span class="pre">glasspy.support.</span></span><span class="sig-name descname"><span class="pre">round_number_with_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.support.round_number_with_error" title="Permalink to this definition"></a></dt>
+<dd><p>Round numbers with respect of their errors.</p>
+<dl class="simple">
+<dt>x:</dt><dd><p>Array-like object with numbers. These are the values that will be rounded.</p>
+</dd>
+</dl>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Array-like object with numbers. These are the errors that will guid the
+rounding of x.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>Rounded values of x.
+.. error:: Error of x with 1 significant digit.</p>
+<dl class="simple">
+<dt>text:</dt><dd><p>String array with the values of x with error represented in parenthesis.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>x</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – Happens when you have a negative value in the <cite>error</cite> argument. Errors
+    must be positive.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.support.round_to_closest_base">
+<span class="sig-prename descclassname"><span class="pre">glasspy.support.</span></span><span class="sig-name descname"><span class="pre">round_to_closest_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.support.round_to_closest_base" title="Permalink to this definition"></a></dt>
+<dd><p>Round numbers to closest base number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Array-like object with numbers.</p></li>
+<li><p><strong>base</strong> – Float to which the numbers will be rounded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy array with the rounded numbers.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Implementation by Alok Singhal found in
+<a class="reference external" href="https://stackoverflow.com/a/2272174">https://stackoverflow.com/a/2272174</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="glasspy.support.round_to_significant_figure">
+<span class="sig-prename descclassname"><span class="pre">glasspy.support.</span></span><span class="sig-name descname"><span class="pre">round_to_significant_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#glasspy.support.round_to_significant_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Round numbers to n sifnificant digits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Array-like object with numbers.</p></li>
+<li><p><strong>n</strong> – Integer representing the number of significant digits to round to. Must
+be the same shape as <cite>x</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy array with the numbers rounded to the desired significant digits.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Implementation by Scott Gigante found in
+<a class="reference external" href="https://stackoverflow.com/a/59888924">https://stackoverflow.com/a/59888924</a>.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-glasspy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-glasspy" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="glasspy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="glasspy.chemistry.html" class="btn btn-neutral float-right" title="glasspy.chemistry package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2023, Daniel Roberto Cassar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
