@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ambra_ts_tools"
+version = "0.0.10"
+authors = [
+  { name="Ethan York", email="ethan.york@intelerad.com" },
+]
+description = "Ambra Clone tools for technical services"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/dicomgrid/tech-services-scripts"
