@@ -1,0 +1,16 @@
+aiohttp
+argcomplete
+croniter
+jsonschema
+prometheus-aioexporter>=1.5.1
+prometheus-client
+python-dateutil
+PyYAML
+SQLAlchemy<1.4
+sqlalchemy_aio>=0.17
+toolrack>=4
+
+[testing]
+pytest
+pytest-asyncio
+pytest-mock
