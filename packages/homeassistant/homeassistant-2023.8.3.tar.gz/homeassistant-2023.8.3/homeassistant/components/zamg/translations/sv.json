@@ -1,0 +1,18 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Enheten \u00e4r redan konfigurerad",
+            "cannot_connect": "Det gick inte att ansluta."
+        },
+        "error": {
+            "cannot_connect": "Det gick inte att ansluta."
+        },
+        "flow_title": "{name}"
+    },
+    "issues": {
+        "deprecated_yaml": {
+            "description": "Konfiguration av ZAMG genom YAML \u00e4r borttaget.\n\nDin existerande YAML-konfiguration har importerats till UI automatiskt.\n\nTa bort ZAMGs YAML-konfiguration fr\u00e5n configuration.yaml och starta om Home Assitant f\u00f6r att fixa detta problem.",
+            "title": "ZAMGs YAML-konfiguration kommer tas bort"
+        }
+    }
+}

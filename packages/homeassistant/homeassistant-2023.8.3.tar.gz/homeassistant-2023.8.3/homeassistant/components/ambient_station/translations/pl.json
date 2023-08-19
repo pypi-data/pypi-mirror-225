@@ -1,0 +1,65 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Us\u0142uga jest ju\u017c skonfigurowana"
+        },
+        "error": {
+            "invalid_key": "Nieprawid\u0142owy klucz API",
+            "no_devices": "Nie znaleziono urz\u0105dze\u0144 na koncie"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Klucz API",
+                    "app_key": "Klucz aplikacji"
+                },
+                "title": "Wprowad\u017a dane"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "relay_1": {
+                "name": "Przeka\u017anik 1"
+            }
+        },
+        "sensor": {
+            "absolute_pressure": {
+                "name": "Ci\u015bnienie bezwzgl\u0119dne"
+            },
+            "daily_rain": {
+                "name": "Dzienne opady"
+            },
+            "dew_point": {
+                "name": "Temperatura punktu rosy"
+            },
+            "last_rain": {
+                "name": "Ostatnie opady"
+            },
+            "lifetime_rain": {
+                "name": "Ca\u0142kowite opady"
+            },
+            "lightning_strikes_per_day": {
+                "name": "Dzienne wy\u0142adowania atmosferyczne"
+            },
+            "lightning_strikes_per_hour": {
+                "name": "Godzinne wy\u0142adowania atmosferyczne"
+            },
+            "monthly_rain": {
+                "name": "Miesi\u0119czne opady"
+            },
+            "uv_index": {
+                "name": "Indeks UV"
+            },
+            "weekly_rain": {
+                "name": "Tygodniowe opady"
+            },
+            "wind_direction": {
+                "name": "Kierunek wiatru"
+            },
+            "yearly_rain": {
+                "name": "Roczne opady"
+            }
+        }
+    }
+}

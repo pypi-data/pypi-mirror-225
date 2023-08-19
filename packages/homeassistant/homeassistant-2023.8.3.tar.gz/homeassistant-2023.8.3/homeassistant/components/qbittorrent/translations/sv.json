@@ -1,0 +1,8 @@
+{
+    "issues": {
+        "deprecated_yaml": {
+            "description": "Konfiguration av qBittorrent med YAML tas bort.\n\nDin nuvarande YAML-konfiguration har blivit importerad till UI automatiskt.\n\nTa bort qBittorrents YAML-konfiguration fr\u00e5n din configuration.yaml och starta om Home Assistant f\u00f6r att fixa detta problem.",
+            "title": "YAML-konfiguration av qBittorrent kommer tas bort"
+        }
+    }
+}
