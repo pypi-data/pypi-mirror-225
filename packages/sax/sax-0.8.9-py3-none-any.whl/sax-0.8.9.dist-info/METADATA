@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: sax
+Version: 0.8.9
+Summary: Autograd and XLA for S-parameters
+Author-email: Floris Laporte <floris.laporte@rockleyphotonics.com>
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+License-File: LICENSE
+Requires-Dist: black
+Requires-Dist: fastcore
+Requires-Dist: h5py
+Requires-Dist: natsort
+Requires-Dist: networkx
+Requires-Dist: numpy
+Requires-Dist: orjson
+Requires-Dist: pydantic <2
+Requires-Dist: pyyaml
+Requires-Dist: tables
+Requires-Dist: tqdm
+Provides-Extra: dev
+Requires-Dist: sax[full] ; extra == 'dev'
+Requires-Dist: bump2version ; extra == 'dev'
+Requires-Dist: datamodel-code-generator ; extra == 'dev'
+Requires-Dist: flax ; extra == 'dev'
+Requires-Dist: ipykernel ; extra == 'dev'
+Requires-Dist: ipympl ; extra == 'dev'
+Requires-Dist: ipywidgets ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: jax ; extra == 'dev'
+Requires-Dist: jaxlib ; extra == 'dev'
+Requires-Dist: jupyter-book ; extra == 'dev'
+Requires-Dist: jupyterlab ; extra == 'dev'
+Requires-Dist: line-profiler ; extra == 'dev'
+Requires-Dist: matplotlib ; extra == 'dev'
+Requires-Dist: nbdev <2 ; extra == 'dev'
+Requires-Dist: nbstripout ; extra == 'dev'
+Requires-Dist: pandas ; extra == 'dev'
+Requires-Dist: papermill ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: pyright ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pyyaml ; extra == 'dev'
+Requires-Dist: scipy ; extra == 'dev'
+Requires-Dist: tmm ; extra == 'dev'
+Requires-Dist: tqdm ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Provides-Extra: full
+Requires-Dist: sax[jax,klu] ; extra == 'full'
+Requires-Dist: bokeh ; extra == 'full'
+Requires-Dist: gdsfactory >=6 ; extra == 'full'
+Requires-Dist: graphviz ; extra == 'full'
+Requires-Dist: ipykernel ; extra == 'full'
+Requires-Dist: ipympl ; extra == 'full'
+Requires-Dist: ipywidgets ; extra == 'full'
+Requires-Dist: jupyterlab ; extra == 'full'
+Requires-Dist: matplotlib ; extra == 'full'
+Requires-Dist: meep ; extra == 'full'
+Requires-Dist: pandas ; extra == 'full'
+Requires-Dist: pydot ; extra == 'full'
+Requires-Dist: scipy ; extra == 'full'
+Requires-Dist: shapely ; extra == 'full'
+Provides-Extra: jax
+Requires-Dist: sax ; extra == 'jax'
+Requires-Dist: jax ; extra == 'jax'
+Requires-Dist: flax ; extra == 'jax'
+Requires-Dist: jaxlib ; extra == 'jax'
+Provides-Extra: klu
+Requires-Dist: sax[jax] ; extra == 'klu'
+Requires-Dist: klujax ; extra == 'klu'
+Provides-Extra: nojax
+Requires-Dist: sax ; extra == 'nojax'
+
