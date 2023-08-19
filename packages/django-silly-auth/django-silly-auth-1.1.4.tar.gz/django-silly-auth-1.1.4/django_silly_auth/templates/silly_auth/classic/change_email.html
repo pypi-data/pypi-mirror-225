@@ -1,0 +1,30 @@
+{% extends base_template %}
+
+{% load i18n %}
+
+{% block content %}
+
+<h1 class="h2 subtitle">{% translate 'Change Email' %}</h1>
+
+<p>{% translate 'Your current email:' %} {{ user.email }}</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <p>
+        {{ form.email.label }} <br>
+        {{ form.email }} <br>
+        {% for error in form.errors.email %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+    </p>
+    <p>
+        <input type="submit" class="button is-success m-2 btn btn-success" value="{% translate 'confirm' %}">
+    </p>
+
+</form>
+
+
+
+{% endblock content %}
