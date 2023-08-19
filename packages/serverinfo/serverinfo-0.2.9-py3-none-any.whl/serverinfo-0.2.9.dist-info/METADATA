@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: serverinfo
+Version: 0.2.9
+Summary: AI Server(System + NVIDIA GPU) monitoring and power limit setting
+Home-page: https://www.circul.us
+Author: rippertnt
+Author-email: rippertnt@circul.us
+License: MIT
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: xmltodict
+
+Server mointoring for CPU + GPU
+
+```python
+
+from serverinfo import si
+
+# get cpu + gpu info
+si.getAll()
+"""
+{'os': 'Linux', 'version': '6.2.0', 'ip': '192.168.1.179', 'arch': 'x86_64', 'cpu': {'cores': 16, 'threads': 32, 'max': 3400, 'min': 2200, 'current': 2, 'load': 0.3}, 'mem': {'total': 62.69, 'use': 5.86, 'free': 56.08, 'load': 10.5}, 'disk': {'total': 5767, 'use': 5668, 'free': 924, 'load': 98.28}, 'gpu': {'driver': '530.30.02', 'cuda': 12.1, 'gpus': 1, 'list': [{'name': 'NVIDIA GeForce RTX 4090', 'brand': 'GeForce', 'arch': 'Ada Lovelace', 'persist': True, 'display': True, 'total': 24564, 'use': 839, 'free': 23725, 'mem_load': 3.42, 'gpu_load': 2, 'fan_load': 0, 'temp': 41, 'temp_max': 90, 'power': 13, 'power_limit': 300, 'power_max': 450, 'gpu_clock': 1185, 'gpu_clock_max': 2415, 'mem_clock': 405, 'mem_clock_max': 10501}]}, 'python': '3.9.13'}
+"""
+
+#get gpu info (only works NVIDIA GPU)
+si.getGPU()
+"""
+{'driver': '530.30.02', 'cuda': 12.1, 'gpus': 1, 'list': [{'name': 'NVIDIA GeForce RTX 4090', 'brand': 'GeForce', 'arch': 'Ada Lovelace', 'persist': True, 'display': True, 'total': 24564, 'use': 839, 'free': 23725, 'mem_load': 3.42, 'gpu_load': 1, 'fan_load': 0, 'temp': 41, 'temp_max': 90, 'power': 13, 'power_limit': 300, 'power_max': 450, 'gpu_clock': 1185, 'gpu_clock_max': 2415, 'mem_clock': 405, 'mem_clock_max': 10501}]}
+"""
+
+# get cpu info
+si.getCPU()
+"""
+{'cores': 16, 'threads': 32, 'max': 3400, 'min': 2200, 'current': 2, 'load': 0.4}
+"""
+
+# get memory info
+si.getMem()
+"""
+{'total': 62.69, 'use': 5.86, 'free': 56.07, 'load': 10.6}
+"""
+
+# get disk info
+si.getDisk()
+"""
+{'total': 5767, 'use': 5668, 'free': 924, 'load': 98.28 ... }
+"""
+
+# get ip
+si.getIP()
+"""
+192.168.0.1
+"""
+```
