@@ -1,0 +1,65 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gofigr"
+version = "0.13.0"
+description = "GoFigr client library"
+readme = "README.rst"
+authors = [{ name = "Maciej Pacula", email = "maciej@gofigr.io" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["science", "visualization", "version control", "plotting", "data", "reproducibility"]
+dependencies = [
+    "numpy", "pandas", "pyqrcode", "pillow", "matplotlib", "dateutils",
+    "python-dateutil", "ipython", "requests", "pypng", "ipynbname", "websockets", "plotly", "kaleido"
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "bumpver", "build", "twine", "pylint", "flake8", "sphinx", "sphinx_rtd_theme", "sphinxcontrib-jquery",
+       "seaborn", "matplotlib", "tqdm", "selenium", "webdriver-manager", "openpyxl"]
+
+[project.urls]
+Homepage = "https://www.gofigr.io"
+Documentation = "https://gofigr.io/docs/gofigr-python/0.13.0/"
+
+[project.scripts]
+gfconfig = "gofigr.gfconfig:main"
+
+[tool.bumpver]
+current_version = "0.13.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "Bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'version = "{version}"',
+    'gofigr-python/{version}/'
+]
+
+"version.txt" = [
+    '{version}'
+]
+
+"docs/source/conf.py" = [
+    "release = '{version}'"
+]
+
+"docs/source/index.rst" = [
+    "{version}"
+]
+
+"README.rst" = [
+    "{version}"
+]
