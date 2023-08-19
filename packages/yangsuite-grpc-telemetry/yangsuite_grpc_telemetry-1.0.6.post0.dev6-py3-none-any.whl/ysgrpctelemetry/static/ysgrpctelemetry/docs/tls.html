@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Telemetry over gRPC Secure Channel &mdash; yangsuite-grpc-telemetry 1.0.6 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Telemetry over gRPC Clear Channel" href="clear.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> yangsuite-grpc-telemetry
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="grpc.html">Configuring gRPC Telemetry Receivers</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="clear.html">Telemetry over gRPC Clear Channel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Telemetry over gRPC Secure Channel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upload-server-certificate-and-key-to-device-profile">Upload server certificate and key to device Profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-the-tls-secure-channel-receiver">Starting the TLS secure channel receiver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-receiver-start-stop-and-output">Managing receiver start/stop and output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">yangsuite-grpc-telemetry</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="grpc.html">Configuring gRPC Telemetry Receivers</a> &raquo;</li>
+        
+      <li>Telemetry over gRPC Secure Channel</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tls.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="telemetry-over-grpc-secure-channel">
+<h1>Telemetry over gRPC Secure Channel<a class="headerlink" href="#telemetry-over-grpc-secure-channel" title="Permalink to this heading">¶</a></h1>
+<p>To start a gRPC secure connection a server certificate and key must be
+created and uploaded to the device profile of the router receiving
+the stream from.  The instructions below may not match the router exactly
+so look up the associated documentation the streaming device.</p>
+<ul>
+<li><p><strong>Create an ssl.conf file</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">req</span><span class="p">]</span>
+<span class="n">distinguished_name</span> <span class="o">=</span> <span class="n">req_distinguished_name</span>
+<span class="n">req_extensions</span> <span class="o">=</span> <span class="n">v3_req</span>
+<span class="p">[</span><span class="n">req_distinguished_name</span><span class="p">]</span>
+<span class="n">countryName</span>                 <span class="o">=</span> <span class="n">Country</span> <span class="n">Name</span> <span class="p">(</span><span class="mi">2</span> <span class="n">letter</span> <span class="n">code</span><span class="p">)</span>
+<span class="n">countryName_default</span>         <span class="o">=</span> <span class="n">CA</span>
+<span class="n">stateOrProvinceName</span>         <span class="o">=</span> <span class="n">State</span> <span class="ow">or</span> <span class="n">Province</span> <span class="n">Name</span> <span class="p">(</span><span class="n">full</span> <span class="n">name</span><span class="p">)</span>
+<span class="n">stateOrProvinceName_default</span> <span class="o">=</span> <span class="n">Some</span><span class="o">-</span><span class="n">State</span>
+<span class="n">localityName</span>                <span class="o">=</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">city</span><span class="p">)</span>
+<span class="n">localityName_default</span>        <span class="o">=</span> <span class="n">Kanata</span>
+<span class="n">organizationName</span>            <span class="o">=</span> <span class="n">Organization</span> <span class="n">Name</span> <span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">company</span><span class="p">)</span>
+<span class="n">organizationName_default</span>    <span class="o">=</span> <span class="n">Cisco</span>
+<span class="n">commonName</span>                  <span class="o">=</span> <span class="n">Common</span> <span class="n">Name</span>
+<span class="n">commonName_max</span>              <span class="o">=</span> <span class="mi">64</span>
+<span class="n">commonName_default</span>          <span class="o">=</span> <span class="n">grpc</span>
+
+<span class="p">[</span><span class="n">v3_req</span><span class="p">]</span>
+<span class="n">subjectAltName</span> <span class="o">=</span> <span class="nd">@alt_names</span>
+
+<span class="p">[</span><span class="n">alt_names</span><span class="p">]</span>
+<span class="n">IP</span><span class="mf">.1</span> <span class="o">=</span> <span class="mf">10.19.198.133</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a Private key for certificate authority</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">myca</span><span class="o">.</span><span class="n">key</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a Private key for the receiver (yangsuite)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">key</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create the CA certificate (signs requests for receiver certificate)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">key</span> <span class="n">myca</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">sha256</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span> <span class="o">-</span><span class="n">out</span> <span class="n">myca</span><span class="o">.</span><span class="n">cert</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create receiver certificate request</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">key</span> <span class="n">server</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">config</span> <span class="o">./</span><span class="n">ssl</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Take receiver request and produce certificate for receiver</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">x509</span> <span class="o">-</span><span class="n">req</span> <span class="o">-</span><span class="ow">in</span> <span class="n">server</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">CA</span> <span class="n">myca</span><span class="o">.</span><span class="n">cert</span> <span class="o">-</span><span class="n">CAkey</span> <span class="n">myca</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">CAcreateserial</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">cert</span> <span class="o">-</span><span class="n">days</span> <span class="mi">365</span> <span class="o">-</span><span class="n">extensions</span> <span class="n">v3_req</span> <span class="o">-</span><span class="n">extfile</span> <span class="o">./</span><span class="n">ssl</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Typical configuration for a trustpoint</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="n">t</span>
+<span class="n">crypto</span> <span class="n">pki</span> <span class="n">trustpoint</span> <span class="n">grpc</span><span class="o">-</span><span class="n">receiver</span>
+<span class="n">enrollment</span> <span class="n">terminal</span>
+<span class="n">chain</span><span class="o">-</span><span class="n">validation</span> <span class="n">stop</span>
+<span class="n">revocation</span><span class="o">-</span><span class="n">check</span>  <span class="n">none</span>
+<span class="n">exit</span>
+<span class="n">crypto</span> <span class="n">pki</span> <span class="n">authenticate</span> <span class="n">grpc</span><span class="o">-</span><span class="n">receiver</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>PASTE IN: contents of myca.cert</strong></p></li>
+<li><p><strong>Typical telemetry configuration (set protocol to grpc-tls)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">telemetry</span> <span class="n">ietf</span> <span class="n">subscription</span> <span class="mi">222</span>
+ <span class="n">encoding</span> <span class="n">encode</span><span class="o">-</span><span class="n">kvgpb</span>
+ <span class="nb">filter</span> <span class="n">xpath</span> <span class="o">/</span><span class="n">process</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">ios</span><span class="o">-</span><span class="n">xe</span><span class="o">-</span><span class="n">oper</span><span class="p">:</span><span class="n">cpu</span><span class="o">-</span><span class="n">usage</span><span class="o">/</span><span class="n">cpu</span><span class="o">-</span><span class="n">utilization</span><span class="o">/</span><span class="n">five</span><span class="o">-</span><span class="n">seconds</span>
+ <span class="n">source</span><span class="o">-</span><span class="n">address</span> <span class="mf">172.27.255.22</span>
+ <span class="n">source</span><span class="o">-</span><span class="n">vrf</span> <span class="n">Mgmt</span><span class="o">-</span><span class="n">vrf</span>
+ <span class="n">stream</span> <span class="n">yang</span><span class="o">-</span><span class="n">push</span>
+ <span class="n">update</span><span class="o">-</span><span class="n">policy</span> <span class="n">periodic</span> <span class="mi">2000</span>
+ <span class="n">receiver</span> <span class="n">ip</span> <span class="n">address</span> <span class="mf">10.10.10.10</span> <span class="mi">50070</span> <span class="n">protocol</span> <span class="n">grpc</span><span class="o">-</span><span class="n">tls</span> <span class="n">profile</span> <span class="n">myca</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="upload-server-certificate-and-key-to-device-profile">
+<h2>Upload server certificate and key to device Profile<a class="headerlink" href="#upload-server-certificate-and-key-to-device-profile" title="Permalink to this heading">¶</a></h2>
+<p>Go to the “Setup –&gt; Device profile” page from the main menu.  Select the configured device
+profile of the router you will receive the TLS Telemetry stream from and upload server.cert
+file to the “TLS Server Certificate” field and the server.key to the “TLS Server Key” field.</p>
+</section>
+<section id="starting-the-tls-secure-channel-receiver">
+<h2>Starting the TLS secure channel receiver<a class="headerlink" href="#starting-the-tls-secure-channel-receiver" title="Permalink to this heading">¶</a></h2>
+<p>On the YANG Suite page, enter the IP address and TCP port the stream will come in on and
+check the checkbox labeled “(Optional) TLS receiver”.  A dialog box will pop up asking you
+to choose the device profile where you uploaded the server certificate and key to.
+Click on “Start TLS telemetry receiver”.</p>
+<img alt="Screenshot showing tls dialog box." src="_images/tls.png" />
+</section>
+<section id="managing-receiver-start-stop-and-output">
+<h2>Managing receiver start/stop and output<a class="headerlink" href="#managing-receiver-start-stop-and-output" title="Permalink to this heading">¶</a></h2>
+<p>Click on “Manage receiver” to see what receivers are live on the YANG Suite
+server.  By default, all telemetry messages are sent to the YANG Suite web page.
+There are also choices to send the output to a file and/or a running instance of Elasticsearch.
+For file output, enter the full path of the file targeted for output.  The directory
+must exist, however, the file will be created if it does not exist or appeded if it does.
+To send the output to [Elasticsearch], enter the URI where it is running.
+Click on “Set output(s)” to begin optional output target.
+Click on the “Stop” button next to the receiver you wish to stop.</p>
+<p>[Elasticsearch]:<a class="reference external" href="https://www.elastic.co/">https://www.elastic.co/</a></p>
+<img alt="Screenshot of show/stop dialog box" src="_images/stop.png" />
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="clear.html" class="btn btn-neutral" title="Telemetry over gRPC Clear Channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2021, YANG Suite development team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.6',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
