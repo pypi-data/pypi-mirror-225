@@ -1,0 +1,4 @@
+[console_scripts]
+pestat=pbs_builder.pestat:run
+qbatch=pbs_builder.qbatch:main
+
