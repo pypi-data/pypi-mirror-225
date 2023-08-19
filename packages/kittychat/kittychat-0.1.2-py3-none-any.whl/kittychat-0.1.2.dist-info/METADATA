@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: kittychat
+Version: 0.1.2
+Summary: The cat's meow in AI conversation management.
+Home-page: https://github.com/TeiaLabs/kittychat
+Author: TeiaLabs
+Author-email: contato@teialabs.com
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: totokenizers
+
+# kittychat
+
+The purrfect chat utils library!
+With Kittychat, you'll be feline fine as a kittycat, since it ensures your threads stay within the LLMs token limits by whisking away old messages.
+
+## install
+
+`pip install kittychat`
