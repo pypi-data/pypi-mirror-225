@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: dolo
+Version: 0.4.9.19
+Summary: Economic Modeling in Python
+License: BSD-2-Clause
+Author: Winant Pablo
+Author-email: pablo.winant@gmail.com
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: dolang (>=0.0.20,<0.0.21)
+Requires-Dist: interpolation (>=2.2.4,<3.0.0)
+Requires-Dist: matplotlib (>=3.6.0,<4.0.0)
+Requires-Dist: multipledispatch (>=0.6.0,<0.7.0)
+Requires-Dist: numpy (>=1.23.1)
+Requires-Dist: pandas (>=1.5.0,<2.0.0)
+Requires-Dist: quantecon (>=0.5.3,<0.6.0)
+Requires-Dist: scipy (>=1.10,<2.0)
+Requires-Dist: xarray (>=2022.6.0,<2023.0.0)
+Description-Content-Type: text/markdown
+
+Complete documentation with installation instruction, available at https://www.econforge.org/dolo.py.
+
+Join the chat at https://gitter.im/EconForge/dolo
+
+[![codecov](https://codecov.io/gh/EconForge/dolo.py/branch/master/graph/badge.svg?token=hLAd1OaTRp)](https://codecov.io/gh/EconForge/dolo.py)
+
+![CI](https://github.com/EconForge/dolo.py/workflows/CI/badge.svg)
+
+![Publish docs via GitHub Pages](https://github.com/EconForge/dolo.py/workflows/Publish%20docs%20via%20GitHub%20Pages/badge.svg)
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/EconForge/dolo.git/master?urlpath=lab)
+
