@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: ass-tg
+Version: 2.0.1
+Summary: Arguments Stupendous Searcher (ASS)
+Author: Yacha
+Author-email: yacha@orangefox.tech
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: Babel (>=2,<3)
+Requires-Dist: aiogram (>=3.0.0b7,<3.1.0)
+Requires-Dist: stfu-tg (>=1.4,<2.0)
+Description-Content-Type: text/markdown
+
+# Arguments Stupendous Searcher (ASS)
+
+The library used to parse arguments from the message.
+
+**Currently, works only with Aiogram 3.x!**
+
+See also:
+* [Sophie Text Formatting Utility library (STFU)](https://gitlab.com/SophieBot/stf)
+
+## Quick example:
+Let's create a handler for a tban (temporary ban) command using ASS arguments.
+
+```python
+from ass_tg.types import UserArg, ActionTimeArg, TextArg, OptionalArg
+from ass_tg.types.base_abc import ParsedArg
+
+from stfu_tg import Section, KeyValue
+
+
+@dp.message(Command('tban'))  # Set a command filter
+@flags.args(
+    user=UserArg("User"),
+    time=ActionTimeArg("Time to ban"),
+    description=OptionalArg(TextArg("Reason text"))
+)
+async def tban_user_handler(
+        msg: Message,
+        user: str,
+        time: timedelta,
+        description: str | None
+):
+
+    # Here we used STFU's formatting, but you can use variables as you wish!
+    await msg.reply(str(Section(
+        KeyValue("User", user),
+        KeyValue("On", time),
+        KeyValue("Description", description or "No description"),
+        title="Ban"
+    )))
+
+```
+
+The argument parser contains inbuilt type and argument checker:
+
+![img.png](images/img_1.png)
+
