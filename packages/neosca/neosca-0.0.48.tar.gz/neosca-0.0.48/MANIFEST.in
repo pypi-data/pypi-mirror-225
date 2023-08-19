@@ -1,0 +1,6 @@
+include CHANGELOG.md
+include LICENSE.txt
+include README*.md
+include setup.py
+
+global-exclude *.py[cod]
