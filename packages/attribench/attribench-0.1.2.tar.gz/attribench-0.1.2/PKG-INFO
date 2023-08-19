@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: attribench
+Version: 0.1.2
+Summary: A benchmark for feature attribution techniques
+Author-email: Arne Gevaert <arne.gevaert@ugent.be>, Axel-Jan Rousseau <axeljan.rousseau@uhasselt.be>
+License: MIT License
+        
+        Copyright (c) [year] [fullname]
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/arnegevaert/benchmark
+Project-URL: Documentation, http://attribench.readthedocs.io/
+Keywords: attributions,benchmark,explanation,machine learning
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.10
+Description-Content-Type: text/x-rst
+Provides-Extra: dev
+Provides-Extra: docs
+License-File: LICENSE
+
+AttriBench: Metrics for Feature Attribution Techniques
+======================================================
+**AttriBench** is a `Pytorch <https://pytorch.org/>`_-based implementation of
+several metrics for the evaluation of feature attribution maps and methods.
+AttriBench provides a functional and an object-oriented API for the computation
+of these metrics, along with a set of utility functions for the necessary
+preparations (e.g. computing attribution maps) as well as for the visualization
+of the results.
+
+The **functional API** is generally easier to use, and can be used to get
+started quickly if the scale of the evaluation is not too large. The
+**object-oriented API** is more flexible and can use multiple GPUs for
+evaluation of large datasets.
+
+For more information, see the `documentation <https://attribench.readthedocs.io/>`_.
+
+Installation
+------------
+AttriBench can be installed from PyPI using pip:
+
+.. code-block:: bash
+    
+    pip install attribench
