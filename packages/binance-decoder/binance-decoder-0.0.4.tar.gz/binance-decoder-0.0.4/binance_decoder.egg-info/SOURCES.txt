@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+go.mod
+setup.py
+binance_decoder.egg-info/PKG-INFO
+binance_decoder.egg-info/SOURCES.txt
+binance_decoder.egg-info/dependency_links.txt
+binance_decoder.egg-info/requires.txt
+binance_decoder.egg-info/top_level.txt
+decoder/binance_decoder.c
+decoder/binance_decoder.go
+tests/test.py
