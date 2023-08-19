@@ -1,0 +1,4 @@
+[console_scripts]
+automsr=automsr.cli:cli
+automsr-profiles=automsr.browser.profile:print_profiles
+
