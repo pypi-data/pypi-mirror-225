@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: nivo-pie-chart
+Version: 0.0.2
+Home-page: 
+Author: 
+Author-email: 
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: streamlit (>=0.63)
+Provides-Extra: devel
+Requires-Dist: wheel ; extra == 'devel'
+Requires-Dist: pytest (==7.4.0) ; extra == 'devel'
+Requires-Dist: playwright (==1.36.0) ; extra == 'devel'
+Requires-Dist: requests (==2.31.0) ; extra == 'devel'
+Requires-Dist: pytest-playwright-snapshot (==1.0) ; extra == 'devel'
+Requires-Dist: pytest-rerunfailures (==12.0) ; extra == 'devel'
+
