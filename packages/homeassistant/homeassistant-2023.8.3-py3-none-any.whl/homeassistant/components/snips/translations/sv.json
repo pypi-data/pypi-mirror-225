@@ -1,0 +1,25 @@
+{
+    "services": {
+        "say": {
+            "fields": {
+                "custom_data": {
+                    "name": "Anpassade data"
+                },
+                "text": {
+                    "name": "Text"
+                }
+            },
+            "name": "S\u00e4g"
+        },
+        "say_action": {
+            "fields": {
+                "custom_data": {
+                    "name": "Anpassade data"
+                },
+                "text": {
+                    "name": "Text"
+                }
+            }
+        }
+    }
+}
