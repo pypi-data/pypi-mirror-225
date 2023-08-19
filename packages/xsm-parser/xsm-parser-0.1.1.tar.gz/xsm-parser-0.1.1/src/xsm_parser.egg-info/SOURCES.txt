@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/xsm_parser/__init__.py
+src/xsm_parser/__main__.py
+src/xsm_parser/exceptions.py
+src/xsm_parser/log.conf
+src/xsm_parser/state_model.peg
+src/xsm_parser/state_model_parser.py
+src/xsm_parser/state_model_visitor.py
+src/xsm_parser.egg-info/PKG-INFO
+src/xsm_parser.egg-info/SOURCES.txt
+src/xsm_parser.egg-info/dependency_links.txt
+src/xsm_parser.egg-info/entry_points.txt
+src/xsm_parser.egg-info/requires.txt
+src/xsm_parser.egg-info/top_level.txt
