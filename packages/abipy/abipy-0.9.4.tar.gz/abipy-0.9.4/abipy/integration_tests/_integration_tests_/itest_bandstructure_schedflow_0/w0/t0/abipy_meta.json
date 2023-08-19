@@ -1,0 +1,183 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "ecut",
+                4
+            ],
+            [
+                "nband",
+                4
+            ],
+            [
+                "nstep",
+                50
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "timopt",
+                -1
+            ],
+            [
+                "pawecutdg",
+                8
+            ],
+            [
+                "ngkpt",
+                [
+                    4,
+                    4,
+                    4
+                ]
+            ],
+            [
+                "kptopt",
+                1
+            ],
+            [
+                "nshiftk",
+                1
+            ],
+            [
+                "shiftk",
+                [
+                    [
+                        0,
+                        0,
+                        0
+                    ]
+                ]
+            ],
+            [
+                "tolvrs",
+                0.0001
+            ],
+            [
+                "npimage",
+                1
+            ],
+            [
+                "npkpt",
+                1
+            ],
+            [
+                "npspinor",
+                1
+            ],
+            [
+                "npfft",
+                1
+            ],
+            [
+                "npband",
+                2
+            ],
+            [
+                "bandpp",
+                2
+            ]
+        ],
+        "comment": null,
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "PawXmlSetup",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 14,
+                "Z_val": 4.0,
+                "basename": "Si.GGA_PBE-JTH-paw.xml",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/Si.GGA_PBE-JTH-paw.xml",
+                "l_max": null,
+                "md5": "b0c0c4f2798e4fc9e3df5afe97cc44ab",
+                "symbol": "Si",
+                "type": "PawXmlSetup"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0.0,
+            "lattice": {
+                "a": 3.86697462,
+                "alpha": 59.99999999999999,
+                "b": 3.86697462,
+                "beta": 59.99999999999999,
+                "c": 3.86697462,
+                "gamma": 59.99999999999999,
+                "matrix": [
+                    [
+                        3.3488982567096763,
+                        0.0,
+                        1.9334873100000005
+                    ],
+                    [
+                        1.1162994189032256,
+                        3.1573715557642927,
+                        1.9334873100000005
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        3.86697462
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 40.88829179346891
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "label": "Si1",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Si",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "abc": [
+                        0.25,
+                        0.25,
+                        0.25
+                    ],
+                    "label": "Si1",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Si",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        1.1162994189032256,
+                        0.7893428889410732,
+                        1.9334873100000003
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}

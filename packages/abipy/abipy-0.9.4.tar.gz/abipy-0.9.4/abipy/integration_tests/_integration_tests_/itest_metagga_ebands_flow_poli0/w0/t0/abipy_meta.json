@@ -1,0 +1,202 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "ecut",
+                20
+            ],
+            [
+                "diemac",
+                12
+            ],
+            [
+                "iomode",
+                3
+            ],
+            [
+                "ixc",
+                -208012
+            ],
+            [
+                "prtkden",
+                1
+            ],
+            [
+                "usekden",
+                1
+            ],
+            [
+                "tolvrs",
+                1e-07
+            ],
+            [
+                "ngkpt",
+                [
+                    2,
+                    2,
+                    2
+                ]
+            ],
+            [
+                "kptopt",
+                1
+            ],
+            [
+                "nshiftk",
+                4
+            ],
+            [
+                "shiftk",
+                [
+                    [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    [
+                        0.5,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.5,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.5
+                    ]
+                ]
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "npimage",
+                1
+            ],
+            [
+                "npkpt",
+                2
+            ],
+            [
+                "npspinor",
+                1
+            ],
+            [
+                "npfft",
+                1
+            ],
+            [
+                "npband",
+                1
+            ],
+            [
+                "bandpp",
+                1
+            ]
+        ],
+        "comment": null,
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "NcAbinitPseudo",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 14,
+                "Z_val": 4.0,
+                "basename": "14si.4.hgh",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/hgh_pseudos/14si.4.hgh",
+                "l_max": 1,
+                "md5": "a91cb1fd24bd52eae782c2bd5ab7a0c0",
+                "symbol": "Si",
+                "type": "NcAbinitPseudo"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0.0,
+            "lattice": {
+                "a": 3.86697462,
+                "alpha": 59.99999999999999,
+                "b": 3.86697462,
+                "beta": 59.99999999999999,
+                "c": 3.86697462,
+                "gamma": 59.99999999999999,
+                "matrix": [
+                    [
+                        3.3488982567096763,
+                        0.0,
+                        1.9334873100000005
+                    ],
+                    [
+                        1.1162994189032256,
+                        3.1573715557642927,
+                        1.9334873100000005
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        3.86697462
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 40.88829179346891
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "label": "Si1",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Si",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "abc": [
+                        0.25,
+                        0.25,
+                        0.25
+                    ],
+                    "label": "Si1",
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Si",
+                            "occu": 1.0
+                        }
+                    ],
+                    "xyz": [
+                        1.1162994189032256,
+                        0.7893428889410732,
+                        1.9334873100000003
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}

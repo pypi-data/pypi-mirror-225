@@ -1,0 +1,183 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "nband",
+                10
+            ],
+            [
+                "nbdbuf",
+                2
+            ],
+            [
+                "diemac",
+                6
+            ],
+            [
+                "ecut",
+                15
+            ],
+            [
+                "nstep",
+                100
+            ],
+            [
+                "tolvrs",
+                1e-06
+            ],
+            [
+                "kptrlatt",
+                [
+                    -2,
+                    2,
+                    2,
+                    2,
+                    -2,
+                    2,
+                    2,
+                    2,
+                    -2
+                ]
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "npimage",
+                1
+            ],
+            [
+                "npkpt",
+                2
+            ],
+            [
+                "npspinor",
+                1
+            ],
+            [
+                "npfft",
+                1
+            ],
+            [
+                "npband",
+                1
+            ],
+            [
+                "bandpp",
+                1
+            ]
+        ],
+        "comment": null,
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "NcAbinitPseudo",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 20,
+                "Z_val": 10.0,
+                "basename": "Ca.psp8",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/Ca.psp8",
+                "l_max": 2,
+                "md5": "465a3a044f2c7a72aff2b3fb3f797e8d",
+                "symbol": "Ca",
+                "type": "NcAbinitPseudo"
+            },
+            {
+                "@class": "NcAbinitPseudo",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 8,
+                "Z_val": 6.0,
+                "basename": "O.psp8",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/O.psp8",
+                "l_max": 2,
+                "md5": "733e923716a9eadd6cde8fc80d866281",
+                "symbol": "O",
+                "type": "NcAbinitPseudo"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0,
+            "lattice": {
+                "a": 3.4185522805319852,
+                "alpha": 59.99999999999999,
+                "b": 3.4185522805319852,
+                "beta": 59.99999999999999,
+                "c": 3.4185522805319852,
+                "gamma": 59.99999999999999,
+                "matrix": [
+                    [
+                        0.0,
+                        2.4172814994049037,
+                        2.4172814994049037
+                    ],
+                    [
+                        2.4172814994049037,
+                        0.0,
+                        2.4172814994049037
+                    ],
+                    [
+                        2.4172814994049037,
+                        2.4172814994049037,
+                        0.0
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 28.24955950487294
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Ca",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "abc": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "O",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        2.4172814994049037,
+                        2.4172814994049037,
+                        2.4172814994049037
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}

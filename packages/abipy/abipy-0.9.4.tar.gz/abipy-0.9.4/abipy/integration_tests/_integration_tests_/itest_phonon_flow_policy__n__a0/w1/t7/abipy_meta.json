@@ -1,0 +1,204 @@
+{
+    "_input": {
+        "@class": "AbinitInput",
+        "@module": "abipy.abio.inputs",
+        "abi_args": [
+            [
+                "nband",
+                4
+            ],
+            [
+                "ecut",
+                3.0
+            ],
+            [
+                "ngkpt",
+                [
+                    4,
+                    4,
+                    4
+                ]
+            ],
+            [
+                "shiftk",
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            [
+                "paral_kgb",
+                1
+            ],
+            [
+                "nshiftk",
+                1
+            ],
+            [
+                "rfphon",
+                1
+            ],
+            [
+                "nqpt",
+                1
+            ],
+            [
+                "qpt",
+                [
+                    0.5,
+                    0.5,
+                    0.0
+                ]
+            ],
+            [
+                "rfatpol",
+                [
+                    2,
+                    2
+                ]
+            ],
+            [
+                "rfdir",
+                [
+                    1,
+                    0,
+                    0
+                ]
+            ],
+            [
+                "kptopt",
+                3
+            ],
+            [
+                "tolvrs",
+                1e-10
+            ],
+            [
+                "prtwf",
+                -1
+            ],
+            [
+                "irdwfk",
+                1
+            ],
+            [
+                "nppert",
+                1
+            ],
+            [
+                "npkpt",
+                2
+            ]
+        ],
+        "comment": "# Input file for PH calculation with DFPT.",
+        "decorators": [],
+        "enforce_typat": null,
+        "enforce_znucl": null,
+        "pseudos": [
+            {
+                "@class": "NcAbinitPseudo",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 13,
+                "Z_val": 3.0,
+                "basename": "13al.981214.fhi",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/13al.981214.fhi",
+                "l_max": 2,
+                "md5": "45177dc68580e70ffd690f1e65e9b174",
+                "symbol": "Al",
+                "type": "NcAbinitPseudo"
+            },
+            {
+                "@class": "NcAbinitPseudo",
+                "@module": "pymatgen.io.abinit.pseudos",
+                "Z": 33,
+                "Z_val": 5.0,
+                "basename": "33as.pspnc",
+                "filepath": "/Users/gmatteo/git_repos/abipy/abipy/data/pseudos/33as.pspnc",
+                "l_max": 1,
+                "md5": "56f075499613b4e8e69cc77bd15edc6d",
+                "symbol": "As",
+                "type": "NcAbinitPseudo"
+            }
+        ],
+        "structure": {
+            "@class": "Structure",
+            "@module": "abipy.core.structure",
+            "charge": 0,
+            "lattice": {
+                "a": 3.9701006672990773,
+                "alpha": 60.00000000000001,
+                "b": 3.9701006672990773,
+                "beta": 60.00000000000001,
+                "c": 3.9701006672990773,
+                "gamma": 60.00000000000001,
+                "matrix": [
+                    [
+                        0.0,
+                        2.8072851038404147,
+                        2.8072851038404147
+                    ],
+                    [
+                        2.8072851038404147,
+                        0.0,
+                        2.8072851038404147
+                    ],
+                    [
+                        2.8072851038404147,
+                        2.8072851038404147,
+                        0.0
+                    ]
+                ],
+                "pbc": [
+                    true,
+                    true,
+                    true
+                ],
+                "volume": 44.24758367993175
+            },
+            "sites": [
+                {
+                    "abc": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "Al",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "abc": [
+                        0.25,
+                        0.25,
+                        0.25
+                    ],
+                    "label": null,
+                    "properties": {},
+                    "species": [
+                        {
+                            "element": "As",
+                            "occu": 1
+                        }
+                    ],
+                    "xyz": [
+                        1.4036425519202074,
+                        1.4036425519202074,
+                        1.4036425519202074
+                    ]
+                }
+            ]
+        },
+        "tags": []
+    }
+}
