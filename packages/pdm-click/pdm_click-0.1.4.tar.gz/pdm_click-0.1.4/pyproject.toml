@@ -1,0 +1,50 @@
+[project]
+name = "pdm-click"
+version = "0.1.4"
+description = "PDM build hook to generate completion scripts for Click"
+authors = [
+    { name = "John Bernard", email = "loqusion@gmail.com" },
+]
+dependencies = [
+    "click",
+    "pdm-backend",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/loqusion/pdm-click"
+
+[project.entry-points."pdm.build.hook"]
+click = "pdm_click:ClickBuildHook"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.version]
+source = "scm"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.0.285",
+    "black>=23.7.0",
+]
+
+[tool.ruff]
+extend-select = [
+    "I",
+    "N",
+    "PT",
+    "RUF",
+    "SIM",
+    "TCH",
+    "TID",
+    "UP",
+    "YTT",
+]
