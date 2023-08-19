@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: helm_mkdocs
+Version: 0.0.1
+Summary: Generate mkdocs style documentation for a helm chart.
+Author-email: Ben Donnelly <b.w.donnelly1@gmail.com>
+License-Expression: Apache-2.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Requires-Python: >3.7
+Requires-Dist: pyyaml
+Description-Content-Type: text/markdown
+
+# helm_mkdocs
+This project aims to produce mkdocs style docs from a helm chart.
+
+# Usage
+
+## Install with pipe
+```
+pip install helm_mkdocs
+```
+
+## Run 
+
+```
+helm-mkdocs /path/to/chart
+```
