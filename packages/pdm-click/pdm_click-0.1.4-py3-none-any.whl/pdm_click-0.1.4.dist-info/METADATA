@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: pdm-click
+Version: 0.1.4
+Summary: PDM build hook to generate completion scripts for Click
+Author-Email: John Bernard <loqusion@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/loqusion/pdm-click
+Requires-Python: >=3.11
+Requires-Dist: click
+Requires-Dist: pdm-backend
+Description-Content-Type: text/markdown
+
+# pdm-click
+
+See <https://click.palletsprojects.com/en/8.1.x/shell-completion/>
