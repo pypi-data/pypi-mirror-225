@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+readQR/__init__.py
+readQR/artefacts.py
+readQR/readQR.py
+readQR.egg-info/PKG-INFO
+readQR.egg-info/SOURCES.txt
+readQR.egg-info/dependency_links.txt
+readQR.egg-info/requires.txt
+readQR.egg-info/top_level.txt
+wechat_artefacts/detect.caffemodel
+wechat_artefacts/detect.prototxt
+wechat_artefacts/sr.caffemodel
+wechat_artefacts/sr.prototxt
