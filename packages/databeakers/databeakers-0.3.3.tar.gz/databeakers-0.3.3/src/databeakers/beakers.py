@@ -1,0 +1,177 @@
+import abc
+import json
+import uuid
+from pydantic import BaseModel
+from typing import Iterable, Type, TYPE_CHECKING
+from structlog import get_logger
+from sqlite_utils.db import NotFoundError
+from .exceptions import ItemNotFound
+
+if TYPE_CHECKING:  # pragma: no cover
+    from .pipeline import Pipeline
+
+PydanticModel = Type[BaseModel]
+
+log = get_logger()
+
+
+class Beaker(abc.ABC):
+    def __init__(self, name: str, model: PydanticModel, pipeline: "Pipeline"):
+        self.name = name
+        self.model = model
+        self.pipeline = pipeline
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.name}, {self.model.__name__})"
+
+    @abc.abstractmethod
+    def items(self) -> Iterable[tuple[str, BaseModel]]:
+        """
+        Return list of items in the beaker.
+        """
+
+    @abc.abstractmethod
+    def __len__(self) -> int:
+        """
+        Return number of items in the beaker.
+        """
+
+    @abc.abstractmethod
+    def add_item(
+        self, item: BaseModel, *, parent: str | None, id_: str | None = None
+    ) -> None:
+        """
+        Add an item to the beaker.
+        """
+
+    @abc.abstractmethod
+    def reset(self) -> None:
+        """
+        Reset the beaker to empty.
+        """
+
+    @abc.abstractmethod
+    def get_item(self, id: str) -> BaseModel:
+        """
+        Get an item from the beaker by id.
+        """
+
+    @abc.abstractmethod
+    def parent_id_set(self) -> set[str]:
+        """
+        Return set of parent ids.
+        """
+
+    @abc.abstractmethod
+    def delete(self, parent: str) -> int:
+        """
+        Delete all items with the given parent id.
+
+        Return number of items deleted.
+        """
+        return 0
+
+    def id_set(self) -> set[str]:
+        return set(id for id, _ in self.items())
+
+
+class TempBeaker(Beaker):
+    def __init__(self, name: str, model: PydanticModel, pipeline: "Pipeline"):
+        super().__init__(name, model, pipeline)
+        self._items: dict[str, BaseModel] = {}
+        self._parent_ids: dict[str, str] = {}  # map id to parent id
+
+    def __len__(self) -> int:
+        return len(self._items)
+
+    def add_item(
+        self, item: BaseModel, *, parent: str | None, id_: str | None = None
+    ) -> None:
+        if parent is None:
+            parent = id_ = str(uuid.uuid1())
+        if id_ is None:
+            id_ = str(uuid.uuid1())
+        log.debug("add_item", item=item, parent=parent, id=id_, beaker=self.name)
+        self._items[id_] = item
+        self._parent_ids[id_] = parent
+
+    def items(self) -> Iterable[tuple[str, BaseModel]]:
+        yield from self._items.items()
+
+    def reset(self) -> None:
+        self._items = {}
+
+    def get_item(self, id: str) -> BaseModel:
+        try:
+            return self._items[id]
+        except KeyError:
+            raise ItemNotFound(f"{id} not found in {self.name}")
+
+    def parent_id_set(self) -> set[str]:
+        return set(self._parent_ids.values())
+
+    def delete(self, parent: str) -> int:
+        deleted = 0
+        for id, parent_id in self._parent_ids.items():
+            if parent_id == parent:
+                del self._items[id]
+                del self._parent_ids[id]
+                deleted += 1
+        return deleted
+
+
+class SqliteBeaker(Beaker):
+    def __init__(self, name: str, model: PydanticModel, pipeline: "Pipeline"):
+        super().__init__(name, model, pipeline)
+        # create table if it doesn't exist
+        self._table = self.pipeline._db[name].create(
+            {
+                "uuid": str,
+                "parent": str,
+                "data": dict,  # JSON
+            },
+            pk="uuid",
+            if_not_exists=True,
+        )
+        # TODO: allow pydantic-to-model here
+
+    def items(self) -> Iterable[tuple[str, BaseModel]]:
+        for item in self._table.rows:
+            yield item["uuid"], self.model(**json.loads(item["data"]))
+
+    def __len__(self) -> int:
+        return self._table.count
+
+    def add_item(
+        self, item: BaseModel, *, parent: str | None, id_: str | None = None
+    ) -> None:
+        if not hasattr(item, "model_dump_json"):
+            raise TypeError(
+                f"beaker {self.name} received {item!r} ({type(item)}), "
+                f"expecting an instance of {self.model}"
+            )
+        if parent is None:
+            parent = id_ = str(uuid.uuid1())
+        elif id_ is None:
+            id_ = str(uuid.uuid1())
+        log.debug("add_item", item=item, parent=parent, id=id_, beaker=self.name)
+        self._table.db.execute(
+            f"INSERT INTO {self.name} (uuid, parent, data) VALUES (?, ?, ?)",
+            (id_, parent, item.model_dump_json()),
+        )
+
+    def reset(self) -> None:
+        self._table.delete_where()
+
+    def get_item(self, id: str) -> BaseModel:
+        try:
+            row = self._table.get(id)
+        except NotFoundError:
+            raise ItemNotFound(f"{id} not found in {self.name}")
+        return self.model(**json.loads(row["data"]))
+
+    def parent_id_set(self) -> set[str]:
+        return {row["parent"] for row in self._table.rows}
+
+    def delete(self, parent: str) -> int:
+        return self._table.delete_where(parent=parent).rowcount
