@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: dtrelib
+Version: 0.0.2
+Summary: Drive test report engine (DTRE) core library
+Author-email: AlexTaran <at@dmtel.ru>
+Project-URL: Homepage, https://pypi.org/project/dtrelib
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Drite test reporting engine core
+Core library consist of 5 classes, providing main functions for work with clickhouse, tables, table streams and data processing.
+
+## Query
+Query class provide interaction with clickhouse database and (re)storing data into Redis caching database 
+
+## ResultSet
+ResultSet is a container of data with additional attributes
+
+## ResultSetStream
+ResultSetStream is made as a wrapper over ResultSet to make available file-by-file queries
+
+## Processor
+Processor consist of set of scalar and vector functions to process datasets in serial processing line.
+

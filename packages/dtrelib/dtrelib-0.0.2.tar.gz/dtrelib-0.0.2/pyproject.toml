@@ -1,0 +1,22 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "clickhouse-driver>=0.2.6"
+]
+build-backend = "setuptools.build_meta"
+[project]
+name = "dtrelib"
+version = "0.0.2"
+authors = [
+    {name="AlexTaran", email="at@dmtel.ru"}
+]
+description = "Drive test report engine (DTRE) core library"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+"Homepage" = "https://pypi.org/project/dtrelib"
