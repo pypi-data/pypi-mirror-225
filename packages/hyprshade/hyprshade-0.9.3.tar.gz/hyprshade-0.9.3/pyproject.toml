@@ -1,0 +1,76 @@
+[project]
+name = "hyprshade"
+version = "0.9.3"
+description = "Hyprland shade configuration tool"
+authors = [
+    { name = "John Bernard", email = "loqusion@gmail.com" },
+]
+dependencies = [
+    "more-itertools<10.0.0,>=9.1.0",
+    "click<9.0.0,>=8.1.6",
+]
+requires-python = ">=3.11,<4.0"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+hyprshade = "hyprshade.cli:main"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+includes = [
+    "src/hyprshade",
+    "examples",
+    "shaders",
+]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.7.0",
+    "mypy>=1.5.1",
+    "ruff>=0.0.285",
+]
+test = [
+    "pytest>=7.4.0",
+    "coverage>=7.3.0",
+]
+
+[tool.ruff]
+extend-select = [
+    "B",
+    "C4",
+    "ERA",
+    "I",
+    "N",
+    "PGH",
+    "PIE",
+    "PT",
+    "RUF",
+    "SIM",
+    "TCH",
+    "TID",
+    "UP",
+    "YTT",
+]
+
+[tool.mypy]
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+addopts = [
+    "-r",
+    "a",
+    "--import-mode=importlib",
+    "-m",
+    "not hyprland",
+]
+markers = [
+    "hyprland: Tests that require hyprland to be running",
+]
