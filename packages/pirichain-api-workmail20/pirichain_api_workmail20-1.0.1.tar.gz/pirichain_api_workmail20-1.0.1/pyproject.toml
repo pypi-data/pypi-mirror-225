@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pirichain_api_workmail20"
+version = "1.0.1"
+authors = [
+  { name="workmail20", email="work_mail20@protonmail.com" },
+]
+description = "Package for base Pirichain API calls"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/workmail20/pirichain-api-python"
+"Bug Tracker" = "https://github.com/workmail20/pirichain-api-python/issues"
