@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "sonusai"
+version = "0.12.6"
+description = "Framework for building deep neural network models for sound, speech, and voice AI"
+authors = ["Chris Eddington <chris@aaware.com>", "Jason Calderwood <jason@aaware.com>"]
+maintainers = ["Chris Eddington <chris@aaware.com>", "Jason Calderwood <jason@aaware.com>"]
+homepage = "https://aaware.com"
+license = "GPL-3.0-only"
+readme = "README.rst"
+include = ["sonusai/data/genmixdb.yml", "sonusai/data/whitenoise.wav"]
+
+[tool.poetry.scripts]
+sonusai = 'sonusai.main:main'
+aawscd_probwrite = 'sonusai.aawscd_probwrite:main'
+
+[tool.poetry.dependencies]
+PyYAML = "^6.0"
+aixplain = "^0.2.1"
+dataclasses-json = "^0.5.7"
+deepgram-sdk = "^2.3.0"
+docopt = "^0.6.2"
+jiwer = "^3.0.2"
+keras-tuner = "^1.1.3"
+lightning = "^2.0.4"
+matplotlib = "^3.6.1"
+multiprocess = "^0.70.15"
+#onnxruntime-gpu = "^1.12.1"
+onnxruntime = "^1.12.1"
+#openai-whisper = "^20230308"
+paho-mqtt = "^1.6.1"
+pandas = "^2.0.3"
+pesq = "^0.0.4"
+protobuf = "^4.24.0"
+pyaaware = "^1.4.19"
+python = ">=3.8,<3.11"
+python-magic = "^0.4.27"
+scikit-learn = "^1.3.0"
+sh = "^1.14.3"
+sox = "^1.4.1"
+soxbindings = "^1.2.3"
+speechrecognition = "^3.9.0"
+# Cannot upgrade tensorflow until tf2onnx supports latest version
+tensorflow = "^2.11.0"
+tensorflow-addons = "^0.21.0"
+tf2onnx = "^1.14.0"
+torch = "^2.0.1"
+#torch = { url = "https://download.pytorch.org/whl/cpu/torch-2.0.1%2Bcpu-cp38-cp38-linux_x86_64.whl" }
+torchaudio = "^2.0.2"
+torchinfo = "^1.8.0"
+tqdm = "^4.64.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.0"
+mypy-extensions = "^1.0.0"
+pytest = "^7.2.0"
+yappi = "^1.4.0"
+
+[tool.mypy]
+python_version = "3.8"
+ignore_missing_imports = true
+strict_optional = false
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
