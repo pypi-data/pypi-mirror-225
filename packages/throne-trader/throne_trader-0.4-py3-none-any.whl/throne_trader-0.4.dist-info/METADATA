@@ -1,0 +1,200 @@
+Metadata-Version: 2.1
+Name: throne-trader
+Version: 0.4
+Summary: Python module that provides collection of algorithms to analyze, categorize and predict stocks.
+Author-email: Vignesh Sivanandha Rao <svignesh1793@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2023 Vignesh Rao
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/thevickypedia/throne-trader
+Project-URL: Docs, https://thevickypedia.github.io/throne-trader
+Project-URL: Source, https://github.com/thevickypedia/throne-trader
+Project-URL: Bug Tracker, https://github.com/thevickypedia/throne-trader/issues
+Project-URL: Release Notes, https://github.com/thevickypedia/throne-trader/blob/main/release_notes.rst
+Keywords: investment,stock-prediction,stock-market
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Information Technology
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: yfinance
+Requires-Dist: tensorflow
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn
+Requires-Dist: pyfinviz
+Requires-Dist: block-stdout
+Provides-Extra: dev
+Requires-Dist: sphinx ==5.1.1 ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: recommonmark ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=Python)](https://python.org)
+
+![Python](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-orange)
+
+[![pypi-publish](https://github.com/thevickypedia/throne-trader/actions/workflows/python-publish.yml/badge.svg)](https://github.com/thevickypedia/throne-trader/actions/workflows/python-publish.yml)
+[![pages-build-deployment](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment)
+
+# ThroneTrader
+
+A collection of algorithms to analyze, categorize and predict stocks.
+
+These algorithms are used to assess stocks, and make predictions about future stock prices.
+
+The collection of algorithms leverage data analysis, machine learning, and statistical methods to achieve its objectives in the context of financial markets and investments.
+
+## Installation
+```shell
+python -m pip install throne-trader
+```
+
+## Usage
+**Predict future stock prices using machine learning**
+```python
+from thronetrader import Predictions
+
+predictions = Predictions(symbol="AAPL")
+print(predictions.linear_regression_prediction())
+print(predictions.gradient_boosting_prediction())
+```
+
+**Generate buy/sell/hold signals based on real-time data**
+```python
+from thronetrader import RealTimeSignals
+
+realtime_signals = RealTimeSignals(symbol="AAPL")
+
+print(realtime_signals.get_financial_signals())
+print(realtime_signals.get_insider_signals())
+
+series1, series2 = realtime_signals.get_trading_volume()
+print(series1.name)
+print(series1.to_dict())
+print(series2.name)
+print(series2.to_dict())
+```
+
+**Generate buy/sell/hold signals based on strategic algorithms**
+```python
+from thronetrader import StrategicSignals
+
+strategic_signals = StrategicSignals(symbol="AAPL")
+
+print(strategic_signals.get_bollinger_bands_signals())
+print(strategic_signals.get_breakout_signals())
+print(strategic_signals.get_crossover_signals())
+print(strategic_signals.get_macd_signals())
+print(strategic_signals.get_rsi_signals())
+```
+
+> :bulb: While individual algorithms may lack optimal accuracy, the aggregation of multiple algorithms proves valuable and effective in enhancing overall prediction accuracy.
+
+> :warning: Please note that stock prediction is inherently challenging, and the accuracy of any prediction model will depend on the quality and relevance of the data used, the choice of algorithms, and the changing dynamics of the stock market. Continuous evaluation and improvement of the model are essential to enhance its predictive capabilities.
+
+## Components
+- [**Predict stock price using deep learning models**][dl_trade]
+- [**Analyze stock price using machine learning models**][ml_trade]
+- [**Generate buy/sell/hold signals using real time data**][realtime]
+- [**Generate buy/sell/hold signals using financial strategies**][strategies]
+
+## Sample Notebooks
+- [**Long Short-Term Memory**][lstm]
+- [**Gradient Boosting**][gradient]
+- [**Linear Regression**][linear]
+
+## Disclaimer
+Remember to thoroughly backtest and paper trade any strategy before using real funds, and always exercise caution and risk management when trading stocks.
+
+<br>
+
+<details>
+<summary>Why <code>throne-trader</code>?</summary>
+
+<br>
+
+<i>This name draws inspiration from the "Game of Thrones" series, where various characters vie for the Iron Throne, 
+symbolizing power, wealth, and influence.
+<br><br>
+"ThroneTrader" signifies the algorithm's quest for dominance in the financial markets, much like the characters in the 
+show strive to sit upon the Iron Throne.</i>
+
+</details>
+
+## Coding Standards
+Docstring format: [`Google`](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) <br>
+Styling conventions: [`PEP 8`](https://www.python.org/dev/peps/pep-0008/) <br>
+Clean code with pre-commit hooks: [`flake8`](https://flake8.pycqa.org/en/latest/) and 
+[`isort`](https://pycqa.github.io/isort/)
+
+## [Release Notes](https://github.com/thevickypedia/throne-trader/blob/main/release_notes.rst)
+**Requirement**
+```shell
+python -m pip install gitverse
+```
+
+**Usage**
+```shell
+gitverse-release reverse -f release_notes.rst -t 'Release Notes'
+```
+
+## Linting
+`PreCommit` will ensure linting, and the doc creation are run on every commit.
+
+**Requirement**
+```shell
+pip install sphinx==5.1.1 pre-commit recommonmark pytest
+```
+
+**Usage**
+```shell
+pre-commit run --all-files
+```
+
+## Pypi Package
+[![pypi-module](https://img.shields.io/badge/Software%20Repository-pypi-1f425f.svg)][pypi]
+
+## Runbook
+[![made-with-sphinx-doc](https://img.shields.io/badge/Code%20Docs-Sphinx-1f425f.svg)][docs]
+
+## License & copyright
+
+&copy; Vignesh Rao
+
+Licensed under the [MIT License][license]
+
+[dl_trade]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/DL_ALGORITHMS.md
+[ml_trade]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/ML_ALGORITHMS.md
+[realtime]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/REALTIME.md
+[strategies]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/STRATEGIES.md
+[license]: https://github.com/thevickypedia/throne-trader/blob/main/LICENSE
+[docs]: https://thevickypedia.github.io/throne-trader/
+[pypi]: https://pypi.org/project/throne-trader
+[lstm]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/lstm.ipynb
+[gradient]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/gradient_boosting.ipynb
+[linear]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/linear_regression.ipynb
