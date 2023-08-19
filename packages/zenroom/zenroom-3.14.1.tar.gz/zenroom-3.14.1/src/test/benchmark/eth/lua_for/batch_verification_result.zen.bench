@@ -1,0 +1,7 @@
+Scenario ethereum: verify sig
+Given I have a 'ethereum address signature pair array' named 'address_signature_pair'
+and I have a 'string' named 'message'
+
+When I use the ethereum address signature pair array 'address_signature_pair' to create the result array of 'message'
+
+Then print the 'result array'
