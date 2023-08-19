@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: serverinfo
+Version: 0.2.8
+Summary: AI Server(System + NVIDIA GPU) monitoring and power limit setting
+Home-page: https://www.circul.us
+Author: rippertnt
+Author-email: rippertnt@circul.us
+License: MIT
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: xmltodict
+
+Server mointoring for CPU + GPU
+
+```python
+
+from serverinfo import si
+
+# get cpu + gpu info
+si.getAll()
+"""
+{'os': 'Linux', 'version': '6.2.0', 'python': '3.9.13', 'ip': '192.168.1.179', 'cpu': {'cores': 16, 'threads': 32, 'cpu_max': 3400, 'cpu_min': 2200, 'cpu_current': 2, 'cpu_load': 0.6, 'mem_total': 62.69, 'mem_use': 5.92, 'mem_free': 56.0, 'mem_load': 10.7, 'disk_total': 5767, 'disk_use': 5668, 'disk_free': 924, 'disk_load': 98.28}, 'gpu': {'isNvidia': True, 'driver': '530.30.02', 'cuda': 12.1, 'gpus': 1, 'list': [{'name': 'NVIDIA GeForce RTX 4090', 'brand': 'GeForce', 'arch': 'Ada Lovelace', 'persist': True, 'display': True, 'mem_total': 24564, 'mem_use': 744, 'mem_free': 23820, 'mem_load': 3.03, 'load': 1, 'fan_speed': 0, 'temp': 41, 'temp_max': 90, 'power': 14, 'power_limit': 300, 'power_max': 450, 'gpu_clock': 1185, 'gpu_clock_max': 2415, 'mem_clock': 405, 'mem_clock_max': 10501}]}}
+
+"""
+
+#get gpu (only works NVIDIA GPU)
+si.getGPU()
+"""
+{'isNvidia': True, 'driver': '530.30.02', 'cuda': 12.1, 'gpus': 1, 'list': [{'name': 'NVIDIA GeForce RTX 4090', 'brand': 'GeForce', 'arch': 'Ada Lovelace', 'persist': True, 'display': True, 'mem_total': 24564, 'mem_use': 733, 'mem_free': 23831, 'mem_load': 2.98, 'load': 2, 'fan_speed': 0, 'temp': 41, 'temp_max': 90, 'power': 13, 'power_limit': 300, 'power_max': 450, 'gpu_clock': 1185, 'gpu_clock_max': 2415, 'mem_clock': 405, 'mem_clock_max': 10501}]}
+
+"""
+
+# get cpu only
+si.getCPU()
+"""
+{'cores': 16, 'threads': 32, 'cpu_max': 3.4, 'cpu_min': 2.2, 'cpu_current': 2.32, 'cpu_load': 0.2, 'mem_total': 62.69, 'mem_use': 5.66, 'mem_free': 56.28, 'mem_load': 10.2, 'disk_total': 5767, 'disk_use': 5668, 'disk_free': 925, 'disk_load': 98.28}
+"""
+
+# get ip
+si.getIP()
+"""
+192.168.0.1
+"""
+```
