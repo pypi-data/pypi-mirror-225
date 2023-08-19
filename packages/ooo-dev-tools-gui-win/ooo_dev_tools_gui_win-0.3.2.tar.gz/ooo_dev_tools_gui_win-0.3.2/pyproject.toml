@@ -1,0 +1,73 @@
+# using: https://pypi.org/project/poetry-version-plugin/
+[tool.poetry]
+name = "ooo-dev-tools-gui-win"
+version = "0"
+description = "Methods for ooo-dev-tools and LibreOffice that require automatic GUI interaction for windows."
+authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
+license = "Apache Software License"
+readme = "README.md"
+keywords = ["ooodev", "libreoffice", "openoffice", "ooo-dev-tools", "uno", "ooouno", "pyuno"]
+homepage = "https://github.com/Amourspirit/python-ooo-dev-tools-gui-win"
+repository = "https://github.com/Amourspirit/python-ooo-dev-tools-gui-win"
+packages = [
+    { include = "odevgui_win" }
+]
+classifiers = [
+    "Topic :: Office/Business",
+    "Operating System :: Microsoft :: Windows",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.odevgui_win]
+docs_name = "OooDev GUI Automation for windows"
+author = ":Barry-Thomas-Paul: Moss"
+copyright = "2022"
+ooodev_url= "https://python-ooo-dev-tools.readthedocs.io/en/latest/"
+
+[tool.poetry-version-plugin]
+source = "init"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+ooo-dev-tools = ">=0.12.2"
+pywinauto = ">=0.6.8"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=22.10.0"
+types-PyAutoGUI = ">=0.9.3.1"
+pytest = ">=7.2.0"
+oooenv = ">=0.2.2"
+toml = "^0.10.2"
+poetry-version-plugin = "^0.2.0"
+
+
+[tool.poetry.group.docs.dependencies]
+sphinx-toolbox = ">=3.2.0"
+sphinx-tabs = ">=3.4.1"
+sphinx-rtd-dark-mode = ">=1.2.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[[tool.poetry.source]]
+name = "pypi-test"
+url = "https://test.pypi.org/legacy/"
+priority = "supplemental"
+
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
