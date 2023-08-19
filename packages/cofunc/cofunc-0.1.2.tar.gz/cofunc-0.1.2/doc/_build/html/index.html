@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cofunc &mdash; cofunc 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="cofunc 0.1 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">cofunc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cofunc">
+<h1>cofunc<a class="headerlink" href="#cofunc" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<span class="target" id="module-cofunc"></span><p>Implement a class that represents a continuous function.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cofunc.coFunc">
+<em class="property">class </em><tt class="descclassname">cofunc.</tt><tt class="descname">coFunc</tt><big>(</big><em>x=</em><span class="optional">[</span><span class="optional">]</span>, <em>y=</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=None</em>, <em>attrs={}</em><big>)</big><a class="headerlink" href="#cofunc.coFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a continuous function using discrete datapoints (x-y value
+pairs).  Because of the assumption that the x-y value pairs represent a
+computer approximation of some continuous function, various mathematical
+operations can be implemented that seem natural from a mathematical
+viewpoint, but not as trivial in a computer environment where data can have
+different x-axis discretisations etc.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cofunc.coFunc2d">
+<em class="property">class </em><tt class="descclassname">cofunc.</tt><tt class="descname">coFunc2d</tt><big>(</big><em>x=</em><span class="optional">[</span><span class="optional">]</span>, <em>y=</em><span class="optional">[</span><span class="optional">]</span>, <em>z=</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=None</em>, <em>attrs={}</em><big>)</big><a class="headerlink" href="#cofunc.coFunc2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent a continuous 2D function using discrete datapoints (x-y-z
+value triples).  Because of the assumption that the x-y-z value triples
+represent a computer approximation of a continuous 2D function, various
+mathematical operations can be implemented that seem like natural from a
+mathematical point of view, but not as trivial in a computer environment
+where the data can have different x- and y-axis discretisations etc.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cofunc.mean">
+<tt class="descclassname">cofunc.</tt><tt class="descname">mean</tt><big>(</big><em>cofuncs</em><big>)</big><a class="headerlink" href="#cofunc.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mean of the given coFunc objects.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cofunc.var">
+<tt class="descclassname">cofunc.</tt><tt class="descname">var</tt><big>(</big><em>cofuncs</em><big>)</big><a class="headerlink" href="#cofunc.var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the variance of the given coFunc objects.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cofunc.intersection">
+<tt class="descclassname">cofunc.</tt><tt class="descname">intersection</tt><big>(</big><em>cofuncs</em>, <em>enhance=1</em><big>)</big><a class="headerlink" href="#cofunc.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return intersection of x-values of the given coFunc objects. Enhance the
+resolution of the new axis by the given factor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cofunc.combine">
+<tt class="descclassname">cofunc.</tt><tt class="descname">combine</tt><big>(</big><em>cofuncs</em>, <em>cut=False</em><big>)</big><a class="headerlink" href="#cofunc.combine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine the x-y pairs of the given continuous function objects. Return a
+new continuous function instance. If cut is True, only the intersection of
+the x-axes is kept, the rest of the input functions is cut away. In that
+case, raise an exception if the x-axes do not intersect.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">cofunc</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">cofunc 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Daniel Jung.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
