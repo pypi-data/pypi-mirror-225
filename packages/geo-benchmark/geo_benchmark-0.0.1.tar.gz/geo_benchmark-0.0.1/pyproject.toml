@@ -1,0 +1,100 @@
+[tool.poetry]
+name = "geo-benchmark"
+version = "0.0.1"
+description = "A benchmark designed to advance foundation models for Earth monitoring, tailored for remote sensing. It encompasses six classification and six segmentation tasks, curated for precision and model evaluation. The package also features a comprehensive evaluation methodology and showcases results from 20 established baseline models."
+authors = [
+    "Alexandre Lacoste <alexandre.lacoste@servicenow.com>",
+    "Nils Lehmann",
+    "Pau Rodriguez",
+    "Evan David Sherwin",
+    "Hannah Kerner",
+    "Björn Lütjens",
+    "Jeremy Andrew Irvin",
+    "David Dao",
+    "Hamed Alemohammad",
+    "Alexandre Drouin",
+    "Mehmet Gunturkun",
+    "Gabriel Huang",
+    "David Vazquez",
+    "Dava Newman",
+    "Yoshua Bengio",
+    "Stefano Ermon",
+    "Xiao Xiang Zhu"
+]
+license = "Apache-2.0"
+packages = [
+    { include = "geobench" }
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9.0,<4"
+segmentation-models-pytorch = "0.3.3"
+#torchgeo = "0.4.1"
+torchvision = "0.13.0"
+torchmetrics = "0.11.1"
+torch = ">=1.12.0"
+"ruamel.yaml" = "^0.17.21"
+h5py = "^3.8.0"
+wandb = "^0.13.10"
+pre-commit = "^3.0.4"
+ipykernel = "^6.15.2"
+ipyplot = "^1.1.1"
+ipyleaflet = "^0.17.1"
+pandas = "^1.5.3"
+xmltodict = "^0.12.0"
+seaborn = "^0.12.0"
+sickle = "^0.7"
+
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+isort = "^5.10.1"
+colorama = "^0.4.4"
+flake8 = "^4.0.1"
+pydocstyle = "^6.1.1"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+line_length = 120
+
+[tool.flake8]
+max-line-length = 120
+max-complexity = 23
+
+[tool.mypy]
+ignore_missing_imports = true
+show_error_codes = true
+exclude = "(docs|data)/"
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore::PossibleUserWarning",
+]
+
+[tool.poetry.scripts]
+geobench-expgen = "geobench.experiment.experiment_generator:start"
+geobench-trainer = "geobench.torch_toolbox.trainer:start"
+geobench-sweep-trainer = "geobench.torch_toolbox.sweep_trainer:start"
+geobench-toolkit = "toolkit.dispatch_toolkit:start"

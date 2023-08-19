@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: geo-benchmark
+Version: 0.0.1
+Summary: A benchmark designed to advance foundation models for Earth monitoring, tailored for remote sensing. It encompasses six classification and six segmentation tasks, curated for precision and model evaluation. The package also features a comprehensive evaluation methodology and showcases results from 20 established baseline models.
+License: Apache-2.0
+Author: Alexandre Lacoste
+Author-email: alexandre.lacoste@servicenow.com
+Requires-Python: >=3.9.0,<4
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: h5py (>=3.8.0,<4.0.0)
+Requires-Dist: ipykernel (>=6.15.2,<7.0.0)
+Requires-Dist: ipyleaflet (>=0.17.1,<0.18.0)
+Requires-Dist: ipyplot (>=1.1.1,<2.0.0)
+Requires-Dist: pandas (>=1.5.3,<2.0.0)
+Requires-Dist: pre-commit (>=3.0.4,<4.0.0)
+Requires-Dist: ruamel.yaml (>=0.17.21,<0.18.0)
+Requires-Dist: seaborn (>=0.12.0,<0.13.0)
+Requires-Dist: segmentation-models-pytorch (==0.3.3)
+Requires-Dist: sickle (>=0.7,<0.8)
+Requires-Dist: torch (>=1.12.0)
+Requires-Dist: torchmetrics (==0.11.1)
+Requires-Dist: torchvision (==0.13.0)
+Requires-Dist: wandb (>=0.13.10,<0.14.0)
+Requires-Dist: xmltodict (>=0.12.0,<0.13.0)
+Description-Content-Type: text/markdown
+
+# GEO-Bench: Toward Foundation Models for Earth Monitoring
+
+GeoBench is a [ServiceNow Research](https://www.servicenow.com/research) project. 
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Language: Python](https://img.shields.io/badge/language-Python%203.7%2B-green?logo=python&logoColor=green)](https://www.python.org)
+
+GEO-Bench is a General Earth Observation benchmark for evaluating the performances of large pre-trained models on geospatial data. Read the [full paper](https://arxiv.org/abs/2306.03831) for usage details and evaluation of existing pre-trained vision models.
+
+<img src="https://github.com/ServiceNow/geo-bench/raw/main/banner.png" width="500" />
+
+## Installation
+
+You can install GEO-Bench with [pip](https://pip.pypa.io/):
+
+```console
+$ pip install geo-benchmark
+```
+
+## Downloading the data
+
+Set `$GEO_BENCH_DIR` to your preferred location. If not set, it will be stored in `$HOME/dataset/geobench`.
+
+Next, use the [download script](https://github.com/ServiceNow/geo-bench/blob/main/geobench/download_geobench.py). This will automatically download from [Zenodo](https://zenodo.org/communities/geo-bench/)
+
+```console
+cd geobench
+python download_geobench.py
+```
+
+## Loading Datasets
+
+See [`example_load_dataset.py`](https://github.com/ServiceNow/geo-bench/blob/main/geobench/example_load_datasets.py) for how to iterate over datasets.
+
+```python
+from geobench import io
+
+for task in io.task_iterator(benchmark_name="classification_v0.9.0"):
+    dataset = task.get_dataset(split="train")
+    sample = dataset[0]
+    for band in sample.bands:
+        print(f"  {band.band_info.name}: {band.data.shape}")
+
+```
+## Visualizing Results
+
+See the notebook [`baseline_results.ipynb`](https://github.com/ServiceNow/geo-bench/blob/main/geobench/baseline_results.ipynb) for an example of how to visualize the results.
+
+
+
