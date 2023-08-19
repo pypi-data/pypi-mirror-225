@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: aiobaseclient
+Version: 0.2.7
+Home-page: https://github.com/izihawa/aiobaseclient
+Author: Pasha Podolsky
+License: MIT
+Classifier: Topic :: Utilities
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiodns >=2.0.0
+Requires-Dist: aiohttp >=3.6.3
+Requires-Dist: aiohttp-socks >=0.5.5
+Requires-Dist: aiokit >=0.1.1
+Requires-Dist: faust-cchardet
+Requires-Dist: izihawa-utils >=0.1.0
+Requires-Dist: orjson >=3.4.1
+Requires-Dist: python-socks >=1.1.0
+Requires-Dist: tenacity >=6.2.0
+
+# AIO Base Client
+
+Abstract class for creating HTTP API clients
