@@ -1,0 +1,3 @@
+[console_scripts]
+riboformer = transcript_transformer.riboformer:main
+transcript_transformer = transcript_transformer.transcript_transformer:main
