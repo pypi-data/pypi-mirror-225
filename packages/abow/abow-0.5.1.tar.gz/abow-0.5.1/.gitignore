@@ -1,0 +1,15 @@
+*.pyc
+*.pot
+*.po~
+*.mo
+.coverage*
+.tox
+/.version
+/README.md
+/pyproject.toml
+/abow.egg-info
+/build
+/dist
+/htmlcov
+/tmp
+/config.example
