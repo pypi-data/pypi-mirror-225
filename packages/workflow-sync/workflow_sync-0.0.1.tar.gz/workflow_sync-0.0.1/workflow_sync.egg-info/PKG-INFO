@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: workflow-sync
+Version: 0.0.1
+Summary: Sync databricks workflows
+Home-page: http://zwio.com
+Author: Daniel Humphreys
+Author-email: Dan Humphreys <dan.humphreys@zwio.com>
+License: The 3-Clause BSD License
+Project-URL: Homepage, https://github.com/zwio-com/workflow-sync
+Project-URL: Bug Tracker, https://github.com/zwio-com/workflow-sync/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# workflow-sync
+
+A library for syncing Databricks workflows defined in JSON format with Databricks.
+
+## Introduction
+
+Databricks jobs and Delta Live Table pipelines (workflows) are usually created manually using the Databricks web user interface.  At [zwio](www.zwio.com) we wanted to manage our pipelines using Git and JSON and therefore needed a way to sync our JSON workflows in Databricks.
+
+## Usage
+
+Clone from Github:
+
+```
+git clone https://github.com/zwio-com/workflow-sync.git
+cd workflow-sync
+```
+
+Set environment variables:
+
+```
+CLUSTER_ID=
+```
+
+Run:
+
+```shell
+python sync --dir=
+```

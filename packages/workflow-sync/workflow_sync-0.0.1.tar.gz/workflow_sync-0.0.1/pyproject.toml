@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workflow_sync"
+version = "0.0.1"
+authors = [
+  { name="Dan Humphreys", email="dan.humphreys@zwio.com" },
+]
+description = "Sync databricks workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/zwio-com/workflow-sync"
+"Bug Tracker" = "https://github.com/zwio-com/workflow-sync/issues"
