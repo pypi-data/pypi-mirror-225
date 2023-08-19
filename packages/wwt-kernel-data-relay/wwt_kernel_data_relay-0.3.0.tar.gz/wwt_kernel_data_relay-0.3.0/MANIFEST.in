@@ -1,0 +1,19 @@
+include CHANGELOG.md
+include LICENSE
+include README.md
+include .coveragerc
+include *.md
+include *.yml
+
+graft docs
+prune docs/_build
+
+recursive-include jupyter-config *.json
+
+graft wwt_kernel_data_relay/tests
+
+global-exclude *~
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .git
+global-exclude .ipynb_checkpoints

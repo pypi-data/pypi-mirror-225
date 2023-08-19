@@ -1,0 +1,13 @@
+jupyter-client>=7
+jupyter-server>=2
+tornado>=6
+traitlets>=5
+
+[docs]
+astropy-sphinx-theme
+numpydoc
+sphinx
+sphinx-automodapi
+
+[test]
+pytest-cov
