@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: digo
+Version: 0.0.1
+Summary: digo
+Home-page: https://github.com/xxx/xxxx
+Author: Openxlab Contributors
+Author-email: myname@example.com
+License: Apache License 2.0
+Keywords: openxlab,xxxx
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown
+Provides-Extra: tests
+Provides-Extra: build
+Provides-Extra: optional
+
+# openxlab-cli
+
+## Getting started
+
+### 代码结构
+
+├─openxlab
+│  ├─config                存放通用配置
+│  ├─demo                 给出的一个demo，模型中心，应用中心可以创建自己的文件夹
+│  ├─types		   通用参数定义
+│  ├─xlab		   主站逻辑
+
+### 架构说明
+
+types 中定义定义命令基类
+
+- sub_command_list 	填入下一级命令对应的类定义
+- add_args        		用于添加当前命令的参数  --xxx
+- take_action 		用于定义当前命令的行为，未实现默认使用 argparse 的 help
+
+命令继承基类实现，通过 sub_command_list 实现多级子命令
+
+### 本地测试
+
+```
+python -m openxlab.cli 
+python -m openxlab.cli  model help  
+python -m openxlab.cli  model upload
+```
+
+
+### testpypi 联调
+
+```
+打包，  命令将生成一个 dist 目录
+python setup.py sdist bdist_wheel
+
+上传 pip 包到 test pypi
+twine upload --repository testpypi dist/*
+
+从 test pypi 下载
+pip install -i https://test.pypi.org/simple/ openxlab==0.0.1
+```
+
+
