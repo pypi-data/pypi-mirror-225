@@ -1,0 +1,6 @@
+[console_scripts]
+HXLib = hydrophobicity_explorer.smiles:main
+HXNB = hydrophobicity_explorer.nb:main
+HXSettings = hydrophobicity_explorer.settings:main
+customPol = hydrophobicity_explorer.custom_input_to_mol_file:main
+makePol = hydrophobicity_explorer.MakePolymer:main
