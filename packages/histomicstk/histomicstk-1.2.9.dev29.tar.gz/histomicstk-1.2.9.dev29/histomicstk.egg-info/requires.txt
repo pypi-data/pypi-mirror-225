@@ -1,0 +1,33 @@
+girder-client
+nimfa
+numpy
+scipy
+Pillow
+pandas
+scikit-image
+scikit-learn
+imageio
+shapely[vectorized]
+matplotlib
+pyvips
+dask[dataframe]
+distributed
+girder-slicer-cli-web
+ctk-cli
+opencv-python-headless
+
+[:python_version < "3.8"]
+importlib-metadata<5
+sqlalchemy<2
+
+[:python_version >= "3.8"]
+sqlalchemy
+
+[:sys_platform != "linux" and sys_platform != "linux2"]
+large-image[pil]
+
+[:sys_platform == "linux"]
+large-image[sources]
+
+[:sys_platform == "linux2"]
+large-image[sources]
