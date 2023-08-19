@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: neon-phal-plugin-fan
+Version: 0.0.4a1
+Summary: Fan Control Interface
+Home-page: https://github.com/NeonGeckoCom/neon-phal-plugin-fan
+Author: Neongecko
+Author-email: developers@neon.ai
+License: BSD-3
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# PHAL Fan Plugin
+Enables fan speed control based on CPU temperature. The fan should remain off
+for CPU temps below 60C and scale linearly to 100% at 80C (RPi thermal throttle temp).
+The temperature is checked every 30 seconds while the plugin is active.
