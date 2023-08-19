@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "promptquality"
+version = "0.5.3"
+description = "🦸 Supercharge your prompts with Galileo's Prompt Inspector!"
+authors = ["Galileo Technologies Inc. <team@rungalileo.io>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.12"
+requests = "^2.31.0"
+pydantic = "^2.1.1"
+pydantic-settings = "^2.0.2"
+tqdm = "^4.65.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+coverage = "^7.2.3"
+pytest-cov = "^4.0.0"
+pytest-xdist = "^3.3.1"
+requests-mock = "^1.11.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.1"
+pre-commit = "^3.3.3"
+types-requests = "^2.31.0.1"
+pydantic = {extras = ["mypy"], version = "^2.0.2"}
+types-tqdm = "^4.65.0.1"
+pytest-socket = "^0.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Test.
+[tool.pytest.ini_options]
+pythonpath = ["./src/"]
+addopts = [
+    # Run tests in parallel.
+    "-n", "auto",
+    # Show local variables in tracebacks.
+    "--showlocals",
+    # Show extra test summary info as specified by chars.
+    "-o", "console_output_style=progress",
+    # Disable warnings.
+    "--disable-warnings",
+    # Show slowest 10 test durations.
+    "--durations=10",
+    # Disable internet access.
+    "--disable-socket",
+]
+
+# Formatters.
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+
+
+# Linters.
+[tool.ruff]
+line-length = 88
+ignore = ["D10", "D415"]
+fix = true
+ignore-init-module-imports = true
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+mypy_path = ["src"]
+disallow_untyped_defs = true
+plugins = ["pydantic.mypy"]
