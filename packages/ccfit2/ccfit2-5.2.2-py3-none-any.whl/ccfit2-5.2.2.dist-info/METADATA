@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: ccfit2
+Version: 5.2.2
+Summary: CCFIT2 is a program for fitting AC and DC magnetisation data
+Home-page: https://gitlab.com/chilton-group/cc-fit2
+Project-URL: Bug Tracker, https://gitlab.com/chilton-group/cc-fit2/-/issues
+Project-URL: Documentation, https://chilton-group.gitlab.io/cc-fit2
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy >=1.24.3
+Requires-Dist: scipy >=1.10.1
+Requires-Dist: matplotlib >=3.7.1
+Requires-Dist: pillow >=9.5.0
+Requires-Dist: requests >=2.31.0
+Requires-Dist: qtpy >=2.3.1
+Requires-Dist: pyqtgraph >=0.13.2
+Requires-Dist: charset-normalizer >=3.1.0
+
+# ccfit2
+
+ccfit2 is a package for fitting AC and DC magnetisation data to obtain magnetic
+relaxation rates, and then to model the field- and/or temperature-dependence of
+these rates with parameterised models of spin-phonon coupling mechanisms.
+
+## Installation
+
+See the [`ccfit2`](https://chilton-group.gitlab.io/cc-fit2/installation). documentation for installation instructions.
+
+## Documentation
+
+The online documentation for `ccfit2` can be found [here](https://chilton-group.gitlab.io/cc-fit2/).
