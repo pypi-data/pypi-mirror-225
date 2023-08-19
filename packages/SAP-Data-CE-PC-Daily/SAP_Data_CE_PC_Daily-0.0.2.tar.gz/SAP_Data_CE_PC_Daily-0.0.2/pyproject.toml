@@ -1,0 +1,19 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+
+[project]
+name = "SAP_Data_CE_PC_Daily"
+version = "0.0.2"
+description = "A Python package to fetch and print Dataframe for SAP Data CE PC Daily."
+readme = "README.md"
+authors = [
+    {name = "Hossam Ibrahim", email = "hossam.ibrahim@hlag.com"},
+]
+license = { file = "LICENSE" }
+dependencies = [
+    "requests",
+    "pandas",
+]
