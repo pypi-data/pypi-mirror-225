@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: ooo-dev-tools-gui-win
+Version: 0.3.2
+Summary: Methods for ooo-dev-tools and LibreOffice that require automatic GUI interaction for windows.
+Home-page: https://github.com/Amourspirit/python-ooo-dev-tools-gui-win
+License: Apache Software License
+Keywords: ooodev,libreoffice,openoffice,ooo-dev-tools,uno,ooouno,pyuno
+Author: :Barry-Thomas-Paul: Moss
+Author-email: vibrationoflife@protonmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Office/Business
+Requires-Dist: ooo-dev-tools (>=0.12.2)
+Requires-Dist: pywinauto (>=0.6.8)
+Project-URL: Repository, https://github.com/Amourspirit/python-ooo-dev-tools-gui-win
+Description-Content-Type: text/markdown
+
+# ooo-dev-tools-gui-win
+
+This package contains Automation for use with LIbreOffice and [OOO Development Tools] project.
+
+## Documentation
+
+Read [Documentation]
+
+## Installation
+
+```sh
+pip install ooo-dev-tools-gui-win
+```
+
+See Also:
+
+- [OOO Development Tools - Part 3: Draw & Impress](https://python-ooo-dev-tools.readthedocs.io/en/latest/odev/part3/index.html)
+
+[OOO Development Tools]: https://python-ooo-dev-tools.readthedocs.io/en/latest/index.html
+[Documentation]: https://ooo-dev-tools-gui-win.readthedocs.io/en/latest/index.html
+
