@@ -1,0 +1,49 @@
+[build-system]
+requires = [
+    "hatchling",
+    "hatch-ci",
+    "typing-extensions",
+    "jinja2"
+]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "ci"
+version-file = "src/pytest_tdd/__init__.py"
+
+
+[project]
+name = "pytest-tdd"
+dynamic = ["version"]
+description = "run pytest on a python module"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Antonio cavallo", email = "a.cavallo@cavallinux.eu" },
+]
+maintainers = [
+    {name = "Antonio cavallo", email = "a.cavallo@cavallinux.eu" },
+]
+keywords = [ "pre-commit", ]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.urls]
+Homepage = "https://github.com/cav71/pytest-tdd"
+Documentation = "https://github.com/cav71/pytest-tdd"
+Repository = "https://github.com/cav71/pytest-tdd"
+
+[project.scripts]
+pytest-tdd = "pytest_tdd:pytest_tdd.__main__"
+
+
+[tool.hatch.build]
+ignore-ci = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pytest_tdd"]
+
+
