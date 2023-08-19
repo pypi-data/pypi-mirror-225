@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: learnMSA
+Version: 1.3.0
+Summary: learnMSA: Learning and Aligning large Protein Families
+Home-page: https://github.com/Gaius-Augustus/learnMSA
+Author: Felix Becker
+Author-email: beckerfelix94@gmail.com
+License: MIT
+Requires-Dist: tensorflow <2.11,>=2.5.0
+Requires-Dist: networkx
+Requires-Dist: logomaker
+Requires-Dist: seaborn
+Requires-Dist: biopython >=1.69
+Requires-Dist: pyfamsa
+Requires-Dist: transformers
+
