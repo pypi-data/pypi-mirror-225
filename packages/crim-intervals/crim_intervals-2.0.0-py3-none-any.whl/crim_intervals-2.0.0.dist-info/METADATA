@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: crim-intervals
+Version: 2.0.0
+Summary: CRIM intervals package
+License: creative commons
+Author: Richard Freedman
+Author-email: rfreedma@haverford.edu
+Requires-Python: >=3.7.1,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: XlsxWriter (==3.0.2)
+Requires-Dist: altair (==4.2.0)
+Requires-Dist: certifi (==2020.12.5)
+Requires-Dist: chardet (>=4.0.0,<5.0.0)
+Requires-Dist: h11 (==0.12.0)
+Requires-Dist: httpcore (==0.13.2)
+Requires-Dist: httpx (==0.18.1)
+Requires-Dist: idna (==3.1)
+Requires-Dist: ipywidgets (==7.6.3)
+Requires-Dist: joblib (==1.0.1)
+Requires-Dist: lxml (==4.6.3)
+Requires-Dist: more-itertools (==8.7.0)
+Requires-Dist: music21 (==7.1.0)
+Requires-Dist: numpy (>=1.20.2,<2.0.0)
+Requires-Dist: pandas (==1.2.4)
+Requires-Dist: python-dateutil (>=2.8.2,<3.0.0)
+Requires-Dist: pytz (==2021.1)
+Requires-Dist: pyvis (==0.1.9)
+Requires-Dist: requests (==2.27.0)
+Requires-Dist: rfc3986 (==1.4.0)
+Requires-Dist: seaborn (==0.11.2)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: sniffio (>=1.2.0,<2.0.0)
+Requires-Dist: textdistance (==4.2.1)
+Requires-Dist: webcolors (==1.11.1)
