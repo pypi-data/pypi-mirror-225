@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-loader"
+description = "repository loader for github and chatgpt"
+requires-python = ">=3.7"
+keywords = ["template-python-cmd"]
+license = { text = "BSD 3-Clause License" }
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = [
+    "pyperclip",
+    "pathspec==0.11.1",
+    "tqdm==4.65.0"
+]
+
+version = "0.2.3"
+
+[tool.pylint."MESSAGES CONTROL"]
+good-names = [
+    "c",
+    "i",
+    "ok",
+    "id",
+    "e",
+    "f",
+    "x",
+    "y",
+    "pf"
+]
+
+[tool.pylint.message-control]
+disable = "missing-function-docstring,missing-module-docstring,line-too-long,unspecified-encoding,missing-class-docstring"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+
+[project.scripts]
+repo-loader = "repo_loader.cli:main"
