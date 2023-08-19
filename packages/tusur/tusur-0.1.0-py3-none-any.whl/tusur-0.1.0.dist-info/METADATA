@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: tusur
+Version: 0.1.0
+Summary: A project that allows you to work with tusur.ru via python
+Home-page: https://github.com/Weebp-Team/tusur
+Author: Tarodictrl
+Author-email: vudi600@gmail.com
+Keywords: python python3.7 tusur
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests (>=2.31.0)
+Requires-Dist: beautifulsoup4 (>=4.12.2)
+
+# Tusur API
+![PyPI](https://img.shields.io/pypi/v/tusur?color=orange) ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Weebp-Team/tusur?color=blueviolet) ![License](https://img.shields.io/pypi/l/tusur?color=blueviolet) ![Forks](https://img.shields.io/github/forks/Weebp-team/tusur?style=social)
+
+Python library for working with site TUSUR
+
+## Installation
+
+```sh
+pip install tusur 
+```
+
+## Usage
+How get timetable by group:
+```python
+from tusur import Timetable
+
+>>> timetable = Timetable()
+>>> timetable.get_timetable("571-2", week_id=666)
+>>> [
+        { "day": "РїРЅ, 22 РјР°СЏ",
+        "lessons": [
+            {
+            "discipline": "РћР Р‘Р”",
+            "kind": "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р°",
+            "teacher": "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р°",
+            "time": "08:50 10:25"
+        },
+        {
+            "discipline": "РћР Р‘Р”",
+            "kind": "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р°",
+            "teacher": "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р°",
+            "time": "10:40 12:15"
+        },
+        {
+            "discipline": "РњР›РёРўРђ",
+            "kind": "РџСЂР°РєС‚РёРєР°",
+            "teacher": "РџСЂР°РєС‚РёРєР°",
+            "time": "13:15 14:50"
+        },
+        ...
+    ]
+``` 
+
+
+## Dependencies
+
+- [requests](https://pypi.org/project/requests/)
+- [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+
+## Contributing
+
+Bug reports and/or pull requests are welcome
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
