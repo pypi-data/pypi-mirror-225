@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "tomlev"
+version = "0.0.5"
+description = "TomlEv - Open-source Python framework to manage environment variables"
+authors = ["Mykola Bubelich <m+github@bubelich.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/thesimj/tomlev"
+repository = "https://github.com/thesimj/tomlev"
+keywords = ["toml", "environment", "variables", "config"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Typing :: Typed",
+]
+include = ["LICENSE"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1"
+tomli = "^2.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4.0"
+black = "^23.7.0"
+coverage = "^7.3.0"
+pytest-cov = "^4.1.0"
+pre-commit = "^3.3.0"
+flake8 = "^6.0.0"
+pep8-naming = "^0.13.0"
+pyproject-flake8 = "^6.0.0"
+click = "^8.1.7"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/thesimj/tomlev/issues"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+branch = true
+source = ['tomlev']
+
+[tool.flake8]
+max-line-length = 120
+select = "C,E,F,W,B,B9"
+# ignore = "E501"
+exclude = ".git,.venv,__pycache__"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
