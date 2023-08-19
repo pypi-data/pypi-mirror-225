@@ -1,0 +1,3 @@
+[nose.plugins]
+ddf_setup = ddf_setup:DDFSetup
+queries = queries:Queries
