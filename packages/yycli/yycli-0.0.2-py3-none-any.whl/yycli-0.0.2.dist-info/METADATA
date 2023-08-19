@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: yycli
+Version: 0.0.2
+Summary: tools for routine work
+Author-email: Pride Leong <lykling.lyk@gmail.com>
+Project-URL: Homepage, https://github.com/lykling/comet/tree/main/yycli
+Project-URL: Bug Tracker, https://github.com/lykling/comet/issues
+Requires-Python: >=3.11
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: pycryptodome ==3.18.0
+Requires-Dist: setuptools ==65.5.1
+
+# a command line tools for routines
