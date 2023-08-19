@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: turtlemd
+Version: 2023.2.dev3
+Summary: A slow molecular dynamics library for testing
+License: MIT
+Author: Anders Lervik
+Author-email: andersle@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: numpy (>=1.24.2,<2.0.0)
+Description-Content-Type: text/markdown
+
+# TurtleMD
+![Tests](https://github.com/infretis/turtlemd/actions/workflows/test.yaml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/infretis/turtlemd/badge.svg?branch=main)](https://coveralls.io/github/infretis/turtlemd?branch=main)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+TurtleMD is a slow molecular dynamics software for testing.
+
