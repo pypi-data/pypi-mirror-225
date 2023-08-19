@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "sherlockpack"
+version = "0.3.0"
+license = "MIT"
+description = "Pip package for repository github.com/sherlock-project/sherlock"
+authors = ["Siddharth Dushantha"]
+maintainers = [
+    "Viet Nguyen <viet@qadojo.tech>",
+]
+readme = "README.md"
+repository = "https://github.com/sherlock-project/sherlock"
+homepage = "https://github.com/sherlock-project/sherlock"
+packages = [
+    { include = "sherlock" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+certifi = ">=2019.6.16"
+colorama = ">=0.4.1"
+pysocks = ">=1.7.0"
+requests = ">=2.22.0"
+requests-futures = ">=1.0.0"
+stem = ">=1.8.0"
+torrequest = ">=0.1.0"
+pandas = ">=1.0.0"
+openpyxl = "<=3.0.10"
+exrex = ">=0.11.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
