@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ssspy"
+authors = [
+    {name = "Takuya Hasumi"},
+]
+description = "A Python toolkit for sound source separation."
+readme = "README.md"
+license = {file = "LICENSE"}
+urls = {url = "https://github.com/tky823/ssspy"}
+requires-python = ">=3.8, <4"
+dependencies = [
+    "numpy",
+]
+dynamic = [
+    "version",
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8",
+    "black",
+    "isort"
+]
+docs = [
+    "sphinx",
+    "sphinx-autodoc-typehints",
+    "sphinx-autobuild",
+    "nbsphinx",
+    "furo",
+]
+notebooks = [
+    "ipykernel",
+    "matplotlib",
+    "scipy",  # for STFT in notebooks
+]
+tests = [
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "scipy",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "ssspy.__version__"}
+
+[tool.setuptools.packages.find]
+include = [
+    "ssspy",
+]
+
+[tool.black]
+line-length = 100
+
+[tools.flake8]
+max-line-length = 100
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+# to import relative paths
+pythonpath = [
+    "tests",
+]
