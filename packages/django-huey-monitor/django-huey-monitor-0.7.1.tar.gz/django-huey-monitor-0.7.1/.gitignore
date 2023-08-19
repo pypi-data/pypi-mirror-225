@@ -1,0 +1,26 @@
+.*
+
+!.github
+!.editorconfig
+!.flake8
+!.gitignore
+!.gitkeep
+
+__pycache__
+/build/
+/dist/
+*.egg-info
+/coverage.json
+/coverage.xml
+
+# from test projects:
+/volumes/
+/static/
+/media/
+*.sqlite3
+*.json
+
+# Django
+secret.txt
+
+
