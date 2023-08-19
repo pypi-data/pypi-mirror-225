@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ruobr-student"
+version = "1.0.0"
+description = "Доступ к данным cabinet.ruobr.ru для студентов"
+authors = ["QuoNaro <QuoNaro@mail.ru>"]
+readme = "README.md"
+packages = [{include = "ruobr_student"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+requests = "2.31.0"
+asyncio= "3.4.3"
+bs4= "4.12.2"
+aiohttp= "3.8.5"
+lxml= "4.9.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
