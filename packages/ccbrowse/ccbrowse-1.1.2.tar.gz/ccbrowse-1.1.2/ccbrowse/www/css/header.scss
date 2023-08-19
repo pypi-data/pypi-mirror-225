@@ -1,0 +1,51 @@
+header {
+    z-index: 2000;
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: clip;
+
+    .header-top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3rem 0;
+    }
+
+    h1 {
+        margin: auto 0.6rem;
+        font-size: 100%;
+
+        a {
+            display: block;
+            font-size: 200%;
+            font-weight: normal;
+            color: transparent;
+            background: url("../img/ccbrowse.svg") no-repeat center center;
+            background-size: 4em;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    #toolbox {
+        color: #eee;
+        margin: auto 0.6rem;
+        display: flex;
+        align-items: center;
+
+        a {
+            display: block;
+            font-size: 160%;
+            padding-left: 1.8em;
+        }
+
+        a[href="#about"] {
+            background: url("../img/about.svg") no-repeat 0.6em center;
+            background-size: 0.8em;
+        }
+    }
+}

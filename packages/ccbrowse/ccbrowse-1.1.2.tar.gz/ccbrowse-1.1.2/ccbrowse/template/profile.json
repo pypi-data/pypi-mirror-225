@@ -1,0 +1,198 @@
+{
+    "name": "A-Train",
+    "primary": "calipso",
+    "origin": ["2006-01-01 00:00:00", 0],
+    "prefix": "",
+    "zoom":
+    {
+        "0":
+        {
+            "width": 131072,
+            "height": 65536
+        },
+        "1":
+        {
+            "width": 65536,
+            "height": 32768
+        },
+        "2":
+        {
+            "width": 32768,
+            "height": 16384
+        },
+        "3":
+        {
+            "width": 16384,
+            "height": 8192
+        },
+        "4":
+        {
+            "width": 8192,
+            "height": 4096
+        }
+    },
+    "z-bounds": [0, 15000],
+    "layers": {
+        "calipso532":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "xz",
+            "units": "km<sup>-1</sup> sr<sup>-1</sup>",
+            "title": "Total Att. Backscatter 532nm",
+            "src": "layers/calipso532/{zoom}/{x},{z}.png",
+            "availability": "layers/calipso532/availability.json",
+            "attribution": "Data courtesy <a href=\"https://www-calipso.larc.nasa.gov\">NASA LARC</a>",
+            "colormap": "colormaps/calipso-backscatter.json"
+        },
+        "calipso532p":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "xz",
+            "units": "km<sup>-1</sup> sr<sup>-1</sup>",
+            "title": "Perpendicular Att. Backscatter 532nm",
+            "src": "layers/calipso532p/{zoom}/{x},{z}.png",
+            "availability": "layers/calipso532p/availability.json",
+            "attribution": "Data courtesy <a href=\"https://www-calipso.larc.nasa.gov\">NASA LARC</a>",
+            "colormap": "colormaps/calipso-backscatter.json"
+        },
+        "calipso1064":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "xz",
+            "units": "km<sup>-1</sup> sr<sup>-1</sup>",
+            "title": "Attenuated Backscatter 1064nm",
+            "src": "layers/calipso1064/{zoom}/{x},{z}.png",
+            "availability": "layers/calipso1064/availability.json",
+            "attribution": "Data courtesy <a href=\"https://www-calipso.larc.nasa.gov\">NASA LARC</a>",
+            "colormap": "colormaps/calipso-backscatter.json"
+        },
+        "cloudsat-reflec":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "xz",
+            "units": "dBZe",
+            "title": "Radar Reflectivity Factor",
+            "src": "layers/cloudsat-reflec/{zoom}/{x},{z}.png",
+            "availability": "layers/cloudsat-reflec/availability.json",
+            "attribution": "Data courtesy <a href=\"http://www.cloudsat.cira.colostate.edu\">CloudSat DPC</a>",
+            "colormap": "colormaps/cloudsat-reflectivity.json"
+        },
+        "cloudsat-longitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CloudSat Longitude",
+            "src": "layers/cloudsat-longitude/{zoom}/{x},0.png",
+            "availability": "layers/cloudsat-longitude/availability.json"
+        },
+        "cloudsat-latitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CloudSat Latitude",
+            "src": "layers/cloudsat-latitude/{zoom}/{x},0.png",
+            "availability": "layers/cloudsat-latitude/availability.json"
+        },
+        "cloudsat-trajectory":
+        {
+            "format": "json",
+            "type": "geojson",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CloudSat Trajectory",
+            "src": "layers/cloudsat-trajectory/{zoom}/{x},0.json",
+            "availability": "layers/cloudsat-trajectory/availability.json"
+        },
+        "calipso-longitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CALIPSO Longitude",
+            "src": "layers/calipso-longitude/{zoom}/{x},0.png",
+            "availability": "layers/calipso-longitude/availability.json"
+        },
+        "calipso-latitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CloudSat Latitude",
+            "src": "layers/calipso-latitude/{zoom}/{x},0.png",
+            "availability": "layers/calipso-latitude/availability.json"
+        },
+        "calipso-trajectory":
+        {
+            "format": "json",
+            "type": "geojson",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "CALIPSO Trajectory",
+            "src": "layers/calipso-trajectory/{zoom}/{x},0.json",
+            "availability": "layers/calipso-trajectory/availability.json"
+        },
+        "longitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "Longitude",
+            "src": "layers/longitude/{zoom}/{x},0.png",
+            "availability": "layers/longitude/availability.json"
+        },
+        "latitude":
+        {
+            "format": "png",
+            "type": "float32",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "Latitude",
+            "src": "layers/latitude/{zoom}/{x},0.png",
+            "availability": "layers/latitude/availability.json"
+        },
+        "trajectory":
+        {
+            "format": "json",
+            "type": "geojson",
+            "dimensions": "x",
+            "units": "degree",
+            "title": "Trajectory",
+            "src": "layers/trajectory/{zoom}/{x},0.json",
+            "availability": "layers/trajectory/availability.json"
+        },
+        "geography":
+        {
+            "format": "json",
+            "type": "geojson",
+            "title": "Geography",
+            "src": "layers/geography.json"
+        },
+        "geocoding":
+        {
+            "format": "json",
+            "type": "geojson",
+            "dimensions": "x",
+            "title": "Geocoding",
+            "src": "layers/geocoding/{zoom}/{x},0.json"
+        },
+        "places":
+        {
+            "format": "json",
+            "type": "geojson",
+            "dimensions": "x",
+            "title": "Places",
+            "src": "layers/places/{zoom}/{x},0.json"
+        }
+    }
+}
