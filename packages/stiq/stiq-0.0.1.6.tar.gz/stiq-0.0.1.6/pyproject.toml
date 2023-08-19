@@ -1,0 +1,16 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stiq"
+description = "Just an experiment for fun"
+version = "0.0.1.6"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+                "vnstock"
+                ]
