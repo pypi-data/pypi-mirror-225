@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: geeeks
+Version: 0.0.6
+Summary: A package to make your life easy.
+Author: yashpra1010 (Yash Prajapati)
+Author-email: yashpra1010@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Geeeks - A simple and helpful package
+Install/Upgrade our package
+```
+pip install geeeks # install
+pip install --upgrade geeeks # upgrade
+```
+
+## String Functions
+1. Reverse String
+```
+from geeeks import StringFunctions as sf
+
+my_string = "AnyRandomString"
+rev = sf.reverse_str(my_string)
+
+print(rev)
+# Output: gnirtSmodnaRynA
+```
+
+2. Make Link
+```
+from geeeks import StringFunctions as sf
+
+my_string = "Any Random String"
+link = sf.make_link(my_string)
+
+print(link)
+# Output: any-random-string
+```
