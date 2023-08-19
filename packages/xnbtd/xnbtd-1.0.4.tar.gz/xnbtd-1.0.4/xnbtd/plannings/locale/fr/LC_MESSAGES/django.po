@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-18 19:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: xnbtd/plannings/admin.py:12
+msgid "status"
+msgstr "statut de la demande"
+
+#: xnbtd/plannings/admin.py:18 xnbtd/plannings/admin.py:47
+msgid "validated"
+msgstr "Validé"
+
+#: xnbtd/plannings/admin.py:19 xnbtd/plannings/admin.py:48
+msgid "pending"
+msgstr "En attente"
+
+#: xnbtd/plannings/admin.py:51 xnbtd/plannings/models.py:20
+msgid "Status"
+msgstr "statut de la demande"
+
+#: xnbtd/plannings/apps.py:8
+msgid "app_plannings_name"
+msgstr "Calendrier"
+
+#: xnbtd/plannings/forms.py:23
+msgid "Only admin users can change the status."
+msgstr "Vous ne pouvez pas changer le statut de vos congés."
+
+#: xnbtd/plannings/models.py:7
+msgid "Date"
+msgstr "date"
+
+#: xnbtd/plannings/models.py:8
+msgid "Title"
+msgstr "titre"
+
+#: xnbtd/plannings/models.py:14
+msgid "Event"
+msgstr "évènement"
+
+#: xnbtd/plannings/models.py:15
+msgid "Events"
+msgstr "évènements"
+
+#: xnbtd/plannings/models.py:21
+msgid "Deliveryman"
+msgstr "livreur"
+
+#: xnbtd/plannings/models.py:22
+msgid "Start Date"
+msgstr "début des congés"
+
+#: xnbtd/plannings/models.py:23
+msgid "End Date"
+msgstr "fin des congés"
+
+#: xnbtd/plannings/models.py:29
+msgid "Rest"
+msgstr "congé"
+
+#: xnbtd/plannings/models.py:30
+msgid "Rests"
+msgstr "congés"
