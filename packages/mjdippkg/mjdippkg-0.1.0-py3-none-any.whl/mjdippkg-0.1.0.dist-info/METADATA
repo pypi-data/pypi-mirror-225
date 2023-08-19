@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: mjdippkg
+Version: 0.1.0
+Summary: 
+Author: Mohammad Javadpur
+Author-email: mjavadpur@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: matplotlib (>=3.7.2,<4.0.0)
+Requires-Dist: numpy (>=1.25,<2.0)
+Requires-Dist: opencv-python (>=4.8.0.76,<5.0.0.0)
+Requires-Dist: scikit-image (>=0.21.0,<0.22.0)
+Description-Content-Type: text/markdown
+
+
