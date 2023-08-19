@@ -1,0 +1,183 @@
+syntax = "proto3";
+package order;
+import "google/protobuf/empty.proto";
+
+service OrderService {
+    rpc GetOrderById(GetOrderByIdRequest) returns (GetOrderByIdResponse) {}
+    rpc GetOrderItemById(GetOrderItemByIdRequest) returns (GetOrderItemByIdResponse) {}
+    rpc GetOrderItemsByProductId(GetOrderItemsByProductIdRequest) returns (OrderItemsListResponse) {}
+    rpc GetCustomerById(GetCustomerByIdRequest) returns (GetCustomerByIdResponse) {}
+    rpc GetOrderItemQuantityByProductId(GetOrderItemQuantityByProductIdRequest) returns (GetOrderItemQuantityByProductIdResponse) {}
+    rpc GetOrderItemsByCreatedById(GetOrderItemsByCreatedByIdRequest) returns (OrderItemsListResponse) {}
+    rpc GetOrderByCreatedByIdAndPaymentType(GetOrderByCreatedByIdAndPaymentTypeRequest) returns (GetOrderByCreatedByIdAndPaymentTypeResponse) {}
+    rpc GetOrderItemsByProductIdAndCreatedById(GetOrderItemsByProductIdAndCreatedByIdRequest) returns (OrderItemsListResponse) {}
+    rpc GetAllOrderItems(google.protobuf.Empty) returns (OrderItemsListResponse) {}
+    rpc GetAllCustomers(google.protobuf.Empty) returns (CustomerListResponse) {}
+    rpc GetCustomersByCreatedBy(GetCustomersByCreatedByRequest) returns (GetCustomersByCreatedByResponse) {}
+    rpc GetOrderItemsByOrderId(GetOrderItemsByOrderIdRequest) returns (OrderItemsListResponse) {}
+    rpc UpdateOrderById(UpdateOrderByIdRequest) returns (UpdateOrderByIdResponse) {}
+    rpc RemoveProductFromCartByProductId(RemoveProductFromCartByProductIdRequest) returns (RemoveProductFromCartByProductIdResponse) {}
+    rpc GetCustomerDebtById(GetCustomerDebtByIdRequest) returns (GetCustomerDebtByIdResponse) {}
+    rpc UpdateCustomerDebtById(UpdateCustomerDebtByIdRequest) returns (UpdateCustomerDebtByIdResponse) {}
+    rpc GetCartByProductId(GetCartByProductIdRequest) returns (GetCartByProductIdResponse) {}
+}
+
+message Order {
+    string id = 1;
+    string customer_id = 2;
+    string payment_type = 3;
+    string payment_option = 4;
+    float amount_payment = 5;
+    float shipping_fee = 6;
+    float balance = 7;
+    float total_price = 8;
+    float discount = 9;
+    float grand_total = 10;
+    string transaction_id = 11;
+    string created_by_id = 12;
+    string status = 13;
+}
+
+message OrderItem {
+    string product_id = 1;
+    string order_id = 2;
+    int64 quantity = 3;
+    float discount_selling_price = 4;
+    float product_cost_price = 5;
+    float selling_price = 6;
+    float total_price = 7;
+    string created_by_id = 8;
+}
+
+message Cart {
+    string id = 1;
+    string product_id = 2;
+    int64 quantity = 3;
+    float selling_price = 4;
+    float discount_selling_price = 5;
+    float total_price = 6;
+    string created_by_id = 7;
+}
+
+message GetOrderByIdRequest {
+    string id = 1;
+}
+
+message GetOrderByCreatedByIdAndPaymentTypeRequest {
+    string created_by_id = 1;
+    string payment_type = 2;
+}
+
+message GetOrderItemByIdRequest {
+    string id = 1;
+}
+
+message GetOrderByIdResponse {
+    Order order = 1;
+}
+
+message GetOrderByCreatedByIdAndPaymentTypeResponse {
+    repeated Order order = 1;
+}
+
+message GetOrderItemByIdResponse {
+    OrderItem order_item = 1;
+}
+
+message GetOrderItemsByProductIdRequest {
+    string product_id = 1;
+}
+
+message GetOrderItemsByOrderIdRequest {
+    string order_id = 1;
+}
+
+message GetOrderItemsByProductIdAndCreatedByIdRequest {
+    string created_by_id = 1;
+    string product_id = 2;
+}
+
+message GetOrderItemsByCreatedByIdRequest {
+    string created_by_id = 1;
+}
+
+message OrderItemsListResponse {
+    repeated OrderItem order_item = 1;
+}
+
+message Customer{
+    string customer_name = 1;
+    string customer_phone = 2;
+    string customer_email = 3;
+    string description = 4;
+}
+
+message GetCustomerByIdRequest{
+    string id = 1; 
+}
+
+message GetCustomerByIdResponse{
+    Customer customer = 1;
+}
+
+message CustomerListResponse{
+    repeated Customer customer = 1;
+}
+
+message GetOrderItemQuantityByProductIdRequest{
+    string product_id = 1;
+}
+
+message GetOrderItemQuantityByProductIdResponse{
+    int64 quantity = 1;
+}
+
+message GetCustomersByCreatedByRequest{
+    string created_by_id = 1;
+}
+
+message GetCustomersByCreatedByResponse{
+    repeated Customer customers = 1;
+}
+
+message UpdateOrderByIdRequest{
+    Order order = 1;
+}
+
+message UpdateOrderByIdResponse{
+    Order order = 1;
+}
+
+message RemoveProductFromCartByProductIdRequest {
+    string product_id = 1;
+}
+
+message RemoveProductFromCartByProductIdResponse {
+    string response = 1;
+}
+
+message GetCustomerDebtByIdRequest {
+    string customer_id = 1;
+}
+
+message GetCustomerDebtByIdResponse {
+    float debt = 1;
+}
+
+message UpdateCustomerDebtByIdRequest {
+    string customer_id = 1;
+    float amount_paid = 2;
+}
+
+message UpdateCustomerDebtByIdResponse {
+    string customer_id = 1;
+    float debt = 2;
+}
+
+message GetCartByProductIdRequest {
+    string product_id = 1;
+}
+
+message GetCartByProductIdResponse {
+    Cart cart = 1;
+}
