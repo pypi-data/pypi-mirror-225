@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: circuitree
+Version: 0.5.1
+Summary: Genetic circuit design using Monte Carlo tree search
+License: GPLv3
+Author: pranav-bhamidipati
+Author-email: pbhamidi@usc.edu
+Requires-Python: >=3.10,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: examples
+Provides-Extra: parallel
+Requires-Dist: h5py (>=3.8.0,<4.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: matplotlib (>=3.7.1,<4.0.0); extra == "examples"
+Requires-Dist: more-itertools (>=9.1.0,<10.0.0); extra == "examples"
+Requires-Dist: networkx (>=3.1,<4.0)
+Requires-Dist: numba (>=0.57.0); extra == "examples"
+Requires-Dist: numpy (>=1.23.0,<2.0.0)
+Requires-Dist: pandas (>=2.0.0,<3.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: psutil (>=5.9.4,<6.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: pyarrow (>=12.0.0,<13.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: ray[default] (>=2.4.0,<3.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: scipy (>=1.10.1,<2.0.0); (python_version >= "3.10" and python_version < "3.12") and (extra == "examples")
+Requires-Dist: seaborn (>=0.12.2,<0.13.0); extra == "examples"
+Requires-Dist: tables (>=3.8.0,<4.0.0); extra == "examples" or extra == "parallel"
+Requires-Dist: tqdm (>=4.65.0,<5.0.0); extra == "examples"
+Description-Content-Type: text/markdown
+
+# CircuiTree
+Genetic circuit design using Monte Carlo tree search
+
+## Installation
+
+### From a package repository
+To install using `pip`:
+
+```pip install circuitree```
+
+### From the GitHub repository
+
+To install and use `circuitree` from the GitHub source code, first clone the repo into a directory.
+
+```git clone https://github.com/pranav-bhamidipati/circuitree.git[ dir_name]```
+
+Then, you can build the environment using the command-line tool `poetry`. Instructions for installation can be [found here](https://python-poetry.org/). 
+
+From the main project directory, run `poetry install` to install a virtual environment with `circuitree` installed. The easiest way to use this environment is to run it interactively with `poetry shell`. Alternatively, you can run a command in the virtual environment with `poetry run <command>`. For instance, to launch a Jupyter notebook with `circuitree` pre-loaded, run `poetry run jupyter notebook`. 
+
+## Usage
+
+See the [quick-start demo](examples/quick_start.ipynb).
+
