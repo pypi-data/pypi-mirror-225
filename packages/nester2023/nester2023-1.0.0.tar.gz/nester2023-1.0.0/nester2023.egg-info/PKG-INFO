@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: nester2023
+Version: 1.0.0
+Summary: A simple printer of nested lists
+Home-page: 
+Author: SM
+Author-email: sonalimetkar1@gmail.com
+Description-Content-Type: text/markdown
+
+
+
+1) This function takes a positional arguments called "the_list","indent" and "level", 'the_list' is
+any Python list (of - possibly - nested lists). Each data item in the 
+provided list is (recursively) printed to the screen on it's own line.
+2) A second argument 'indent' is set to default value 'False', which means indentation or tab-stops are not required
+by default. If user wants to add indentation while printing the nested list it should be set to 'True'.
+3) A Third argument 'level' is used to insert required number of tab_stops when nested list is encountered.
+4) Fourth argument 'fh' is used to specify where the output of this function should write (place to write your
+data to), a default value of this argument is sys.stdout so that it continues to write to the screen if no file object
+is specified when the function is invoked.
