@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "subsetsio"
+version = "0.1.0"
+description = ""
+authors = ["Nathan Snellaert <nathan@subsets.io>"]
+readme = "README.md"
+packages = [{include = "subsetsio"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
