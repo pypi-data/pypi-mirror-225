@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "antievil"
+version = "0.1.5"
+description = "Custom Errors for different programming languages."
+authors = ["ryzhovalex <thed4rkof@gmail.com>"]
+license = "MIT"
+readme = ".readme.md"
+include = [
+    "**/.readme.md"
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.285"
+coverage = "^7.3.0"
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
