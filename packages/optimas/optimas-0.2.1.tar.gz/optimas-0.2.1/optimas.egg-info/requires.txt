@@ -1,0 +1,8 @@
+libensemble>=0.10.2
+jinja2
+ax-platform>=0.2.9
+mpi4py
+
+[test]
+flake8
+pytest
