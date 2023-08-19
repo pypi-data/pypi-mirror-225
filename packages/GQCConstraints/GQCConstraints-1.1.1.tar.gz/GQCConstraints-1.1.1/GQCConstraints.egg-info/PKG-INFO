@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: GQCConstraints
+Version: 1.1.1
+Summary: This library build on GQCP provides easy to work with utilities in order to perform constrained quantum chemical calculations.
+Author: The Ghent Quantum Chemistry Group
+Keywords: quantum chemistry,constraints,GQCP
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# GQCConstraints
+GQCConstraints or GQCC for short is a python library, based on [GQCP](https://github.com/GQCG/GQCP), that can be used to run several constrained quantum chemical calculations.
+
+Constraint and symmetries are closely related and as such, applying different kind of constraints on quantum chemical calculations can lead to some very interesting insights. 
+
+# Getting started
+In order to get started you first of all need a working `GQCP docker container`.
+
+First [install Docker](https://docs.docker.com/get-docker/). Then pull our `GQCP` image to the infrastructure in question.
+
+```bash
+docker pull gqcg/gqcp
+```
+
+Next, on top of this installation you can install GQCConstraints.
+
+```bash
+pip install GQCConstraints
+```
+
+To use the code import both GQCPy and GQCConstraints.
+
+```python
+import gqcpy
+import GQCC
+```
+
+## Reasearch
+
+GQCC is a research tool first and foremost. And research for which this library is used can be found here.
+
+- [Constraining chemical wavefunctions](https://github.com/GQCG-res/constraining_chemical_wave_functions)
+- [Constrained entanglement](https://github.com/GQCG-res/constrained-entanglement)
+- [Constrained NOCI](https://github.com/GQCG-res/constrained-NOCI)
+- [Fukui Hubbard](https://github.com/GQCG-res/fukui-hubbard)
+- [Spin contamination constraints](https://github.com/GQCG-res/spin-contamination-constraints)
