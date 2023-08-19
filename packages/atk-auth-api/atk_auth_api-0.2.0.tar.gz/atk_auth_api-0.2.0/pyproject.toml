@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "atk-auth-api"
+version = "0.2.0"
+description = "An API for interfacing with DEX IdP"
+authors = ["Panu Oksiala <panu@oksiala.fi>"]
+readme = "README.md"
+packages = [{include = "auth_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.101.0"
+pydantic = "^2.1.1"
+requests = "^2.31.0"
+requests-oauthlib = "^1.3.1"
+sentry-sdk = {extras = ["fastapi"], version = "^1.29.2"}
+pyyaml = "^6.0.1"
+pyjwt = {extras = ["crypto"], version = "^2.8.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
