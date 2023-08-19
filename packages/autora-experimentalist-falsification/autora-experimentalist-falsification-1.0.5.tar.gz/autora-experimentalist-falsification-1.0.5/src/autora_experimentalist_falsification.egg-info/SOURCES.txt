@@ -1,0 +1,27 @@
+.gitignore
+.pre-commit-config.yaml
+LICENSE
+README.md
+mkdocs.yml
+pyproject.toml
+.github/workflows/python-publish.yml
+.github/workflows/test-pytest.yml
+docs/Basic Usage.ipynb
+docs/index.md
+docs/model-vs-data.png
+docs/mse.png
+docs/quickstart.md
+docs/javascripts/mathjax.js
+mkdocs/base.yml
+src/autora/experimentalist/falsification/__init__.py
+src/autora/experimentalist/falsification/popper_net.py
+src/autora/experimentalist/falsification/utils.py
+src/autora_experimentalist_falsification.egg-info/PKG-INFO
+src/autora_experimentalist_falsification.egg-info/SOURCES.txt
+src/autora_experimentalist_falsification.egg-info/dependency_links.txt
+src/autora_experimentalist_falsification.egg-info/requires.txt
+src/autora_experimentalist_falsification.egg-info/top_level.txt
+tests/README.md
+tests/__init__.py
+tests/test_exp_falsification_pooler.py
+tests/test_exp_falsification_sampler.py
