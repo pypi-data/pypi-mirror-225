@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: tdrpa.tdcore
+Version: 0.0.1
+Summary: RPA sdk for professional developers
+Home-page: https://tdrpa.thingswell.cn
+Author: tdrpa
+Author-email: armstrong.wang@gmail.com
+License: Apache 2.0
+Keywords: RPA,tdRPA,uiautomation,uia
+Platform: Windows Only
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Dist: filecmp
+Requires-Dist: psutil
+Requires-Dist: webbrowser
+Requires-Dist: win32api
+Requires-Dist: win32con
+Requires-Dist: base64
+Requires-Dist: tempfile
+Requires-Dist: threading
+Requires-Dist: abc
+Requires-Dist: time
+Requires-Dist: keyboard
+Requires-Dist: uiautomation
+Requires-Dist: subprocess
+Requires-Dist: hashlib
+Requires-Dist: enum
+Requires-Dist: re
+Requires-Dist: fnmatch
+Requires-Dist: collections
+Requires-Dist: win32com.client
+Requires-Dist: uuid
+Requires-Dist: logging
+Requires-Dist: tzlocal
+Requires-Dist: platform
+Requires-Dist: datetime
+Requires-Dist: requests
+
+RPA sdk for professional developers
+
+
