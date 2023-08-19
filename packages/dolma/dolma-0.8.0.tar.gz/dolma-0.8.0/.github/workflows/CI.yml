@@ -1,0 +1,229 @@
+name: CI
+
+on:
+   push:
+     branches:
+       - main
+       - master
+     tags:
+       - '*'
+   pull_request:
+      branches:
+        - main
+        - master
+   workflow_dispatch:
+
+
+permissions:
+  contents: read
+
+jobs:
+
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo environment variables
+        run: |
+          echo "reference:  ${{ github.ref }}"
+          echo "event name: ${{ github.event_name }}"
+          echo "run tests:  ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}"
+          echo "is main:    ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}"
+          echo "is release: ${{ startsWith(github.ref, 'refs/tags/') }}"
+          echo "commit:     ${{ github.sha }}"
+          echo "-------------------------------------------------------------------------"
+          echo "Full PR details:"
+          echo "${{ toJson(github.event.pull_request) }}"
+
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python: [3.8]
+        task:
+          - name: Check Python style
+            run: |
+              isort --check .
+              black --check .
+
+          - name: Check Rust style
+            run: |
+              rustfmt --edition 2021 src/*.rs --check
+
+          - name: Lint
+            run: |
+              flake8 .
+
+          - name: Type check
+            run: |
+              mypy .
+
+          - name: Test
+            run: |
+              pytest -v --color=yes tests/python/
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup system libraries
+        run:  |
+          sudo apt-get update
+          sudo apt-get install --yes --upgrade build-essential cmake protobuf-compiler libssl-dev glibc-source
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: "x64"
+          sccache: true
+
+      - name: Create a new Python environment & install maturin
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -U pip
+          pip install maturin
+
+      - name: Install dolma wheels
+        run: |
+          source .venv/bin/activate
+          maturin develop --extras=dev
+
+      - name: ${{ matrix.task.name }}
+        run: |
+          source .venv/bin/activate
+          ${{ matrix.task.run }}
+
+      - name: Clean up
+        if: always()
+        run: |
+          source .venv/bin/activate
+          pip uninstall -y dolma
+
+
+
+  build-linux:
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-latest
+    env:
+      CC:   gcc-11
+      CXX:  g++-11
+    strategy:
+      matrix:
+        target: [x86_64, x86, aarch64, armv7]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Setup environment
+        run:  |
+          sudo apt-get update
+          sudo apt-get install --yes --upgrade build-essential cmake protobuf-compiler libssl-dev glibc-source
+      - name: Install 32bit version of libc
+        if: ${{ matrix.target == 'x86' }}
+        run: |
+          sudo apt-get install --yes --upgrade libc6-dev-i386
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist --find-interpreter
+          sccache: ${{ matrix.target == 'x86' && 'false' || 'true' }}
+          manylinux: ${{ matrix.target == 'x86' && 'auto' || '2_28' }}
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  build-windows:
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') }}
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        target: [x64, x86]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          architecture: ${{ matrix.target }}
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist --find-interpreter
+          sccache: true
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  build-macos:
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') }}
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target: [x86_64, aarch64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Build wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist --find-interpreter
+          sccache: true
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  sdist:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build sdist
+        uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+      - name: Upload sdist
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: "startsWith(github.ref, 'refs/tags/')"
+    needs: [build-linux, build-windows, build-macos, sdist]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: wheels
+      - name: Publish to PyPI
+        uses: PyO3/maturin-action@v1
+        env:
+          MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        with:
+          command: upload
+          args: --skip-existing *
