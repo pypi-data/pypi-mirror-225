@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: ag-llama2-api-s
+Version: 0.0.18
+Summary: ag_llama2_api_s Test Package for Somthing
+Author: AA
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: accelerate (~=0.20.3)
+Requires-Dist: bitsandbytes (~=0.39.0)
+Requires-Dist: build (>=0.10.0)
+Requires-Dist: coverage (>=6.4.2)
+Requires-Dist: flake8 (>=3.7.9)
+Requires-Dist: flask-cors (~=3.0.10)
+Requires-Dist: flask (>=2.2.1)
+Requires-Dist: huggingface-hub (~=0.15.1)
+Requires-Dist: jinja2 (>=3.1.2)
+Requires-Dist: pytest (>=6.2.5)
+Requires-Dist: safetensors (~=0.3.1)
+Requires-Dist: torch (>=1.12.1)
+Requires-Dist: transformers[sentencepiece] (>=4.31.0)
+Requires-Dist: waitress (~=2.1.2)
+Requires-Dist: loguru (>=0.7.0)
+Requires-Dist: numexpr (>=2.7.3)
+Requires-Dist: pynvml (>=11.5.0)
+
+long_description
