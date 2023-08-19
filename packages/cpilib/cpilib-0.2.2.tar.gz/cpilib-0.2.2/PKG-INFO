@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: cpilib
+Version: 0.2.2
+Summary: Library for handling CPI data
+License: MIT
+Author: Thomas Kientz
+Author-email: thomas@kientz.net
+Requires-Python: >=3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pandas (>=2.0.2,<3.0.0)
+Requires-Dist: plotly (>=5.15.0,<6.0.0)
+Requires-Dist: pyarrow (>=12.0.1,<13.0.0)
+Requires-Dist: tqdm (>=4.65.0,<5.0.0)
+Description-Content-Type: text/markdown
+
+## **CPI-Lib**
+
+A CPI Python library.
+
