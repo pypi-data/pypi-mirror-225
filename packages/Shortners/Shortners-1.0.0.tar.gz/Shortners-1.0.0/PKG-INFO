@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: Shortners
+Version: 1.0.0
+Summary: Python url shortner
+Home-page: https://github.com/Clinton-Abraham/SHORTNER
+Author: Clinton Abraham
+Author-email: clintonabrahamc@gmail.com
+License: UNKNOWN
+Keywords: python,shortner,telegram
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: ~=3.8
+Description-Content-Type: text/markdown
+
+`PYTHON URL SHORTNER © 2023`
+
+## INSTALLING
+```bash
+pip install shortners
+```
+
+## SHORTNERS
+```python
+
+import asyncio
+from Shortners import Shortners
+
+api = "a1cgsja52iey3j53mg"
+site = "https://tnshort.net/api"
+link = "https://github.com/Clinton-Abraham"
+
+core = Shortners(api, site)
+
+async def test():
+    o = await core.shortlink(link)
+    print(f"RESULT : {o}")
+
+asyncio.run(test())
+
+```
+
+`REACH ME ⬇️`
+
+<p align="center">
+   <a href="https://telegram.dog/clinton_abraham"><img src="https://img.shields.io/badge/𝑪𝒍𝒊𝒏𝒕𝒐𝒏 𝑨𝒃𝒓𝒂𝒉𝒂𝒎-30302f?style=flat&logo=telegram" alt="telegram badge"/>
+   <a href="https://telegram.dog/Space_x_bots"><img src="https://img.shields.io/badge/Sᴘᴀᴄᴇ ✗ ʙᴏᴛꜱ-30302f?style=flat&logo=telegram" alt="telegram badge"/>
+   <a href="https://telegram.dog/sources_codes"><img src="https://img.shields.io/badge/Sᴏᴜʀᴄᴇ ᴄᴏᴅᴇꜱ-30302f?style=flat&logo=telegram" alt="telegram badge"/>
+</p>
+
+<div align="center">
+
+
