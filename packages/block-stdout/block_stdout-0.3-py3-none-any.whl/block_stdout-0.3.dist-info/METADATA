@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: block-stdout
+Version: 0.3
+Summary: Python module that blocks the standard output, preventing print statements from being displayed
+Author-email: Vignesh Sivanandha Rao <svignesh1793@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2023 Vignesh Rao
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/thevickypedia/block-stdout
+Project-URL: Docs, https://thevickypedia.github.io/block-stdout
+Keywords: python,block-stdout
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+
+# Block Stdout
+A context manager that blocks the standard output when wrapped around ``print`` statements.
+
+## Installation
+```shell
+python -m pip install block-stdout
+```
+
+## Usage
+```python
+from blockstdout import BlockPrint
+
+
+def printer():
+    print('I will not be printed')
+
+def tester():
+    print('I will be printed')
+    with BlockPrint():
+        printer()
+    print('I will also be printed')
+
+if __name__ == '__main__':
+    tester()
+```
+
+## Pypi Package
+[![pypi-module](https://img.shields.io/badge/Software%20Repository-pypi-1f425f.svg)][pypi]
+
+## License & copyright
+
+&copy; Vignesh Rao
+
+Licensed under the [MIT License][license]
+
+[pypi]: https://pypi.org/project/block-stdout/
+[license]: https://github.com/thevickypedia/block-stdout/blob/main/LICENSE
