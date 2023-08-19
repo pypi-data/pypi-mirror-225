@@ -1,0 +1,15 @@
+#!/bin/bash
+# Lingfei Wang, 2022. All rights reserved.
+
+set -e
+
+if [ "a$1" == "a" ]; then
+	echo "Usage: $(basename "$0") helper_script_name [arguments passed to helper script]"
+	echo "Available helper scripts:"
+	p="$(python3 -c "import dictys;from os.path import dirname,join;print(join(dirname(dictys.__file__),'scripts','helper'))")"
+	ls -1 "$p" | grep -v '^__pycache__$'
+fi
+
+p="$(python3 -c "import dictys;from os.path import dirname,join;print(join(dirname(dictys.__file__),'scripts','helper','$1'))")"
+shift
+"$p" "$@"
