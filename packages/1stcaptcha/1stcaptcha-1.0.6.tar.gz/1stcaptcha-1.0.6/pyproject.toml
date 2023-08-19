@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "1stcaptcha"
+packages = [
+    { include = "onest_captcha" },
+]
+version = "1.0.6"
+description = "Solver recaptchaV2, recaptchaV3, hcaptcha, funcaptcha, imageToText, Zalo Captcha,.... Super fast and cheapest"
+authors = ["NguyenLinhUET <nguyenlinh.uet@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/1stcaptcha/1stcaptcha-python"
+homepage = "https://github.com/1stcaptcha/1stcaptcha-python"
+license = "MIT"
+keywords = ["1stcaptcha", "recaptcha", "recaptchav3", "hcaptcha", "funcaptcha", "imagetotext", "zalo captcha", "solver captcha"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
